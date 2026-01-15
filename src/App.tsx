@@ -296,18 +296,18 @@ const App: React.FC = () => {
         <div className="container mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2 cursor-pointer group" onClick={() => setActiveView('home')}>
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center shadow-lg group-hover:rotate-12 transition-transform">
-              <span className="text-black text-2xl font-black">A</span>
+              <span className="text-[var(--text-on-accent)] text-2xl font-black">A</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold tracking-tight text-white leading-none">ALPHA STUDIO</span>
+              <span className="text-xl font-bold tracking-tight text-[var(--text-primary)] leading-none">ALPHA STUDIO</span>
               <span className="text-[10px] text-[var(--accent-primary)] font-bold tracking-widest uppercase">AI Academy</span>
             </div>
           </div>
 
           <div className="hidden md:flex items-center gap-10 text-[11px] font-extrabold uppercase tracking-widest">
-            <button onClick={() => setActiveView('home')} className="text-white hover:text-[var(--accent-primary)] transition-colors">{t('landing.nav.academy')}</button>
+            <button onClick={() => setActiveView('home')} className="text-[var(--text-primary)] hover:text-[var(--accent-primary)] transition-colors">{t('landing.nav.academy')}</button>
             <button onClick={() => setActiveView('workflow')} className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors">{t('landing.nav.connect')}</button>
-            <button onClick={() => setActiveView('server')} className="text-[var(--accent-primary)] border border-[var(--accent-primary)]/30 px-4 py-1.5 rounded-full hover:bg-[var(--accent-primary)] hover:text-black transition-all">{t('landing.nav.aiCloud')}</button>
+            <button onClick={() => setActiveView('server')} className="text-[var(--accent-primary)] border border-[var(--accent-primary)]/30 px-4 py-1.5 rounded-full hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-all">{t('landing.nav.aiCloud')}</button>
           </div>
 
           <div className="flex items-center gap-4">
@@ -315,7 +315,7 @@ const App: React.FC = () => {
             <ThemeSwitcher />
             <button
               onClick={() => setActiveView('studio')}
-              className="hidden lg:block py-2.5 px-6 bg-[var(--accent-primary)] text-black font-bold rounded-xl shadow-[0_0_20px_rgba(0,212,255,0.3)] hover:scale-105 transition-all"
+              className="hidden lg:block py-2.5 px-6 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-bold rounded-xl shadow-[var(--accent-shadow)] hover:scale-105 transition-all"
             >
               {t('landing.nav.enterStudio')}
             </button>
@@ -338,7 +338,7 @@ const App: React.FC = () => {
             <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--accent-primary)]">{t('landing.hero.badge')}</span>
           </div>
 
-          <h1 className="text-5xl md:text-8xl font-black text-white leading-[1.1] tracking-tight">
+          <h1 className="text-5xl md:text-8xl font-black text-[var(--text-primary)] leading-[1.1] tracking-tight">
             {t('landing.hero.title1')} <br />
             <span className="text-gradient">{t('landing.hero.title2')}</span>
           </h1>
@@ -348,10 +348,10 @@ const App: React.FC = () => {
           </p>
 
           <div className="flex flex-wrap justify-center gap-5 pt-6">
-            <button onClick={() => setActiveView('studio')} className="py-4 px-12 bg-white text-black font-black rounded-2xl shadow-xl hover:bg-[var(--accent-primary)] transition-all">
+            <button onClick={() => setActiveView('studio')} className="py-4 px-12 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-black rounded-2xl shadow-xl hover:bg-[var(--accent-secondary)] transition-all">
               {t('landing.hero.exploreStudio')}
             </button>
-            <button onClick={() => setActiveView('server')} className="py-4 px-12 glass-card text-white font-black rounded-2xl hover:border-[var(--accent-primary)] transition-all">
+            <button onClick={() => setActiveView('server')} className="py-4 px-12 glass-card text-[var(--text-primary)] font-black rounded-2xl hover:border-[var(--accent-primary)] transition-all">
               {t('landing.hero.gpuServer')}
             </button>
           </div>
@@ -363,7 +363,7 @@ const App: React.FC = () => {
         <div className="container mx-auto px-6">
           <div className="flex justify-between items-end mb-16">
             <div className="space-y-2">
-              <h2 className="text-4xl font-black text-white">{t('landing.courses.title')}</h2>
+              <h2 className="text-4xl font-black text-[var(--text-primary)]">{t('landing.courses.title')}</h2>
               <p className="text-[var(--text-secondary)]">{t('landing.courses.subtitle')}</p>
             </div>
             <div className="hidden md:block">
@@ -382,10 +382,10 @@ const App: React.FC = () => {
                   {course.icon}
                 </div>
                 <div className="space-y-4 flex-grow">
-                  <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-black uppercase tracking-widest text-[var(--accent-primary)]">
+                  <span className="px-3 py-1 rounded-full bg-[var(--bg-tertiary)]/50 border border-[var(--border-primary)] text-[10px] font-black uppercase tracking-widest text-[var(--accent-primary)]">
                     {course.tag}
                   </span>
-                  <h3 className="text-xl font-bold text-white group-hover:text-[var(--accent-primary)] transition-colors">
+                  <h3 className="text-xl font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors">
                     {course.title}
                   </h3>
                   <p className="text-sm text-[var(--text-secondary)] leading-relaxed line-clamp-3">
@@ -399,7 +399,7 @@ const App: React.FC = () => {
                       e.stopPropagation();
                       setSelectedCourse(course);
                     }}
-                    className="w-full py-2.5 rounded-xl bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] font-bold text-sm border border-[var(--accent-primary)]/20 hover:bg-[var(--accent-primary)] hover:text-black transition-all flex items-center justify-center gap-2"
+                    className="w-full py-2.5 rounded-xl bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] font-bold text-sm border border-[var(--accent-primary)]/20 hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-all flex items-center justify-center gap-2"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
@@ -408,7 +408,7 @@ const App: React.FC = () => {
                   </button>
                 </div>
 
-                <div className="flex justify-between items-center mt-6 pt-6 border-t border-white/5 text-[11px] font-bold text-[var(--text-tertiary)]">
+                <div className="flex justify-between items-center mt-6 pt-6 border-t border-[var(--border-primary)] text-[11px] font-bold text-[var(--text-tertiary)]">
                   <div className="flex gap-4">
                     <span>⏱ {course.duration} {t('landing.course.hours')}</span>
                     <span>📚 {course.lessonsCount} {t('landing.course.lessons')}</span>
@@ -425,7 +425,7 @@ const App: React.FC = () => {
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] -z-10"></div>
         <div className="container mx-auto px-6">
           <div className="text-center mb-16 space-y-4">
-            <h2 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">{t('landing.showcase.title')}</h2>
+            <h2 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)]">{t('landing.showcase.title')}</h2>
             <p className="text-[var(--text-secondary)]">{t('landing.showcase.subtitle')}</p>
           </div>
 
@@ -434,12 +434,12 @@ const App: React.FC = () => {
               <div key={idx} onClick={() => setSelectedStudent(student)} className="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-transform duration-500 cursor-pointer">
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img src={student.work} alt="Work" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#050a18] to-transparent opacity-80"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] to-transparent opacity-90"></div>
                   <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <img src={student.image} alt={student.name} className="w-10 h-10 rounded-full border-2 border-[var(--accent-primary)] object-cover" />
                       <div className="text-left">
-                        <h4 className="text-white font-bold text-sm">{student.name}</h4>
+                        <h4 className="text-[var(--text-primary)] font-bold text-sm">{student.name}</h4>
                         <p className="text-[10px] text-[var(--accent-primary)] uppercase tracking-wide">{student.role}</p>
                       </div>
                     </div>
@@ -463,11 +463,11 @@ const App: React.FC = () => {
       </section>
 
       {/* Strategic Partners Section */}
-      <section className="py-24 bg-black/20 border-y border-[var(--border-primary)]">
+      <section className="py-24 bg-[var(--bg-secondary)]/50 border-y border-[var(--border-primary)]">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-12 mb-16">
             <div className="md:w-1/3 space-y-4">
-              <h2 className="text-3xl font-black text-white">{t('landing.partners.title')}</h2>
+              <h2 className="text-3xl font-black text-[var(--text-primary)]">{t('landing.partners.title')}</h2>
               <p className="text-[var(--text-secondary)] text-sm leading-relaxed">
                 {t('landing.partners.subtitle')}
               </p>
@@ -481,20 +481,20 @@ const App: React.FC = () => {
                   <div
                     key={idx}
                     onClick={() => setSelectedPartner(partner)}
-                    className="relative group cursor-pointer aspect-square rounded-2xl overflow-hidden border border-white/10 hover:border-[var(--accent-primary)] transition-all duration-300"
+                    className="relative group cursor-pointer aspect-square rounded-2xl overflow-hidden border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-all duration-300"
                   >
                     {/* Background Image */}
                     <div className="absolute inset-0">
                       <img src={partner.coverImage || "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=400&fit=crop"} alt={partner.name} className="w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent"></div>
                     </div>
 
                     {/* Content */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center z-10">
-                      <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center text-2xl mb-2 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-12 h-12 rounded-xl bg-[var(--bg-tertiary)]/50 backdrop-blur-md flex items-center justify-center text-2xl mb-2 shadow-lg group-hover:scale-110 transition-transform duration-300">
                         {partner.logo}
                       </div>
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-white/80 group-hover:text-white transition-colors line-clamp-2">{partner.name}</span>
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors line-clamp-2">{partner.name}</span>
                     </div>
                   </div>
                 ))}
@@ -508,7 +508,7 @@ const App: React.FC = () => {
       <section className="py-24">
         <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
-            <h2 className="text-4xl md:text-5xl font-black text-white">
+            <h2 className="text-4xl md:text-5xl font-black text-[var(--text-primary)]">
               {t('landing.features.title')} <span className="text-gradient">{t('landing.features.highlight')}</span>
             </h2>
             <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
@@ -521,7 +521,7 @@ const App: React.FC = () => {
                 t('landing.features.item3'),
                 t('landing.features.item4')
               ].map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-white font-bold">
+                <li key={i} className="flex items-center gap-3 text-[var(--text-primary)] font-bold">
                   <div className="w-6 h-6 rounded-full bg-[var(--accent-primary)]/20 flex items-center justify-center text-[var(--accent-primary)] text-xs">✓</div>
                   {item}
                 </li>
