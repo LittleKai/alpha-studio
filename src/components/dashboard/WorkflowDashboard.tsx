@@ -1,483 +1,884 @@
+
 import React, { useState } from 'react';
 import { useTranslation } from '../../i18n/context';
-import type { Project, WorkflowDocument, DepartmentType, TeamMember, Task } from '../../types';
+import type { WorkflowDocument, DepartmentType, Job, Transaction, PartnerCompany, PartnerType, UserProfile, AutomationRule, AffiliateStats, CreativeAsset, SharedResource, TeamMember, Comment, Project, Task } from '../../types';
+import StudentProfileModal from '../modals/StudentProfileModal';
+import PartnerRegistrationModal from '../modals/PartnerRegistrationModal';
+import LanguageSwitcher from '../ui/LanguageSwitcher';
+import ThemeSwitcher from '../ui/ThemeSwitcher';
+import Login from '../ui/Login';
 
 interface WorkflowDashboardProps {
   onBack: () => void;
+  documents: WorkflowDocument[];
+  onAddDocument: (doc: WorkflowDocument) => void;
+  onOpenStudio: () => void;
+  projects: Project[];
+  setProjects: React.Dispatch<React.SetStateAction<Project[]>>;
 }
 
-// Mock data
-const MOCK_TEAM: TeamMember[] = [
-  { id: '1', name: 'John Doe', role: 'Project Manager', avatar: '' },
-  { id: '2', name: 'Jane Smith', role: 'Designer', avatar: '' },
-  { id: '3', name: 'Mike Johnson', role: 'Developer', avatar: '' },
-  { id: '4', name: 'Sarah Wilson', role: 'Creative Director', avatar: '', isExternal: true },
-];
-
-const MOCK_PROJECTS: Project[] = [
-  {
-    id: '1',
-    name: 'Tech Conference 2024',
-    client: 'TechCorp Inc.',
-    description: 'Annual technology conference with keynote speakers and exhibitions',
-    department: 'event_planner',
-    status: 'active',
-    startDate: '2024-01-15',
-    deadline: '2024-03-20',
-    budget: 50000,
-    expenses: 32000,
-    team: MOCK_TEAM.slice(0, 3),
-    files: [],
-    progress: 65,
-    chatHistory: [],
-    tasks: [
-      { id: 't1', title: 'Venue booking', assigneeId: '1', assigneeName: 'John Doe', status: 'done', dueDate: '2024-02-01' },
-      { id: 't2', title: 'Speaker coordination', assigneeId: '2', assigneeName: 'Jane Smith', status: 'in_progress', dueDate: '2024-02-15' },
-      { id: 't3', title: 'Marketing materials', assigneeId: '3', assigneeName: 'Mike Johnson', status: 'todo', dueDate: '2024-02-28' },
-    ],
-  },
-  {
-    id: '2',
-    name: 'Product Launch Event',
-    client: 'StartUp Co.',
-    description: 'New product launch with media coverage',
-    department: 'creative',
-    status: 'planning',
-    startDate: '2024-02-01',
-    deadline: '2024-04-15',
-    budget: 30000,
-    expenses: 5000,
-    team: MOCK_TEAM.slice(1, 4),
-    files: [],
-    progress: 20,
-    chatHistory: [],
-    tasks: [],
-  },
-];
-
-const MOCK_DOCUMENTS: WorkflowDocument[] = [
-  {
-    id: '1',
-    name: 'Venue Contract.pdf',
-    type: 'pdf',
-    size: '2.4 MB',
-    uploadDate: '2024-01-20',
-    uploader: 'John Doe',
-    department: 'event_planner',
-    status: 'approved',
-  },
-  {
-    id: '2',
-    name: 'Stage Design.psd',
-    type: 'psd',
-    size: '45 MB',
-    uploadDate: '2024-01-22',
-    uploader: 'Jane Smith',
-    department: 'creative',
-    status: 'pending',
-  },
-  {
-    id: '3',
-    name: 'Budget Report.xlsx',
-    type: 'xlsx',
-    size: '156 KB',
-    uploadDate: '2024-01-25',
-    uploader: 'Mike Johnson',
-    department: 'operation',
-    status: 'pending',
-  },
-];
-
-type TabType = 'projects' | 'documents' | 'team';
-
-const WorkflowDashboard: React.FC<WorkflowDashboardProps> = ({ onBack }) => {
+export default function WorkflowDashboard({ onBack, documents, onAddDocument, onOpenStudio, projects, setProjects }: WorkflowDashboardProps) {
   const { t } = useTranslation();
-  const [activeTab, setActiveTab] = useState<TabType>('projects');
-  const [departmentFilter, setDepartmentFilter] = useState<DepartmentType>('all');
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  // Navigation State
+  const [activeView, setActiveView] = useState<'documents' | 'projects' | 'jobs' | 'wallet' | 'partners' | 'automation' | 'affiliate' | 'creative' | 'resources'>('documents');
+  const [selectedDept, setSelectedDept] = useState<DepartmentType>('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [partnerFilter, setPartnerFilter] = useState<PartnerType>('agency');
 
-  // Filter projects by department
-  const filteredProjects = MOCK_PROJECTS.filter(project => {
-    if (departmentFilter !== 'all' && project.department !== departmentFilter) return false;
-    if (searchQuery && !project.name.toLowerCase().includes(searchQuery.toLowerCase())) return false;
-    return true;
+  // Collaboration State
+  const [activeDocForChat, setActiveDocForChat] = useState<WorkflowDocument | null>(null);
+  const [chatMessage, setChatMessage] = useState('');
+  const [showMemberSelect, setShowMemberSelect] = useState(false);
+
+  // Project Hub State
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [projectTab, setProjectTab] = useState<'overview' | 'team' | 'files' | 'finance' | 'chat' | 'tasks'>('overview');
+  const [projectChatMessage, setProjectChatMessage] = useState('');
+
+  // Task Management State
+  const [showTaskModal, setShowTaskModal] = useState(false);
+  const [selectedFileForTask, setSelectedFileForTask] = useState<WorkflowDocument | null>(null);
+  const [newTaskData, setNewTaskData] = useState({ title: '', assigneeId: '', dueDate: '' });
+
+  // Modal States
+  const [showProfileModal, setShowProfileModal] = useState(false);
+  const [showPartnerModal, setShowPartnerModal] = useState(false);
+  const [showCreativeModal, setShowCreativeModal] = useState(false);
+  const [showResourceModal, setShowResourceModal] = useState(false);
+  const [showProjectModal, setShowProjectModal] = useState(false);
+
+  // New Project Data
+  const [newProjectData, setNewProjectData] = useState({ name: '', description: '', department: 'event_planner' as DepartmentType, client: '', budget: 0 });
+
+  // Mock Available Users for Collaboration
+  const availableUsers: TeamMember[] = [
+      { id: 'u1', name: 'Minh Thu', role: 'Event Director', avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop', isExternal: false },
+      { id: 'u2', name: 'Quang Huy', role: '3D Artist', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop', isExternal: false },
+      { id: 'u3', name: 'Hoàng Nam', role: 'VFX Lead (Expert)', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop', isExternal: true },
+      { id: 'u4', name: 'Thảo My', role: 'Concept Artist', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop', isExternal: false },
+      { id: 'u5', name: 'David Nguyen', role: 'Technical Director (Expert)', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop', isExternal: true },
+  ];
+
+  // User Profile State
+  const [userProfile, setUserProfile] = useState<UserProfile>({
+    name: 'Nguyen Van A',
+    role: 'Event 3D Visualizer',
+    email: 'student.a@alphastudio.vn',
+    phone: '0909 123 456',
+    bio: 'Đam mê thiết kế sân khấu và ứng dụng AI vào quy trình sáng tạo. Đang tìm kiếm cơ hội thực tập tại Agency chuyên nghiệp.',
+    skills: ['Midjourney', 'Stable Diffusion', 'Blender', 'Photoshop'],
+    portfolioUrl: 'behance.net/studentA'
   });
 
-  // Filter documents by department
-  const filteredDocuments = MOCK_DOCUMENTS.filter(doc => {
-    if (departmentFilter !== 'all' && doc.department !== departmentFilter) return false;
-    if (searchQuery && !doc.name.toLowerCase().includes(searchQuery.toLowerCase())) return false;
-    return true;
+  // Wallet State
+  const [balance, setBalance] = useState(1250);
+  const [transactions, setTransactions] = useState<Transaction[]>([
+    { id: 't1', type: 'deposit', amount: 500, description: 'Nạp tiền qua MOMO', date: '2024-06-20', status: 'completed' },
+    { id: 't2', type: 'spend', amount: -50, description: 'Thuê Server GPU (2h)', date: '2024-06-21', status: 'completed' },
+    { id: 't3', type: 'spend', amount: -100, description: 'Mua khóa học nâng cao', date: '2024-06-22', status: 'completed' },
+    { id: 't4', type: 'earning', amount: 50, description: 'Hoa hồng Affiliate (User #882)', date: '2024-06-23', status: 'completed' },
+  ]);
+
+  const [automations, setAutomations] = useState<AutomationRule[]>([
+    { id: 'a1', name: 'Gửi file Thiết kế cho Art Director', trigger: 'file_upload', action: 'send_telegram', target: '@ArtDirectorGroup', isActive: true, lastRun: '2 phút trước' },
+    { id: 'a2', name: 'Thông báo khách hàng khi duyệt file', trigger: 'status_approved', action: 'send_email', target: 'client@event.com', isActive: true, lastRun: '1 ngày trước' },
+    { id: 'a3', name: 'Báo lỗi render qua WhatsApp', trigger: 'status_rejected', action: 'send_whatsapp', target: '+84909000111', isActive: false },
+  ]);
+
+  const [affiliateData, setAffiliateData] = useState<AffiliateStats>({
+    totalEarned: 1250,
+    pending: 300,
+    referrals: 12,
+    clicks: 450,
+    links: [
+        { id: 'l1', name: 'Giới thiệu Khóa học AI Basic', url: 'https://alphastudio.vn/ref/user001/course', commission: '10% giá trị khóa học' },
+        { id: 'l2', name: 'Tuyển dụng Designer cho Job', url: 'https://alphastudio.vn/ref/user001/job/123', commission: '50 Credit / ứng viên' },
+    ]
   });
 
-  const getDepartmentColor = (dept: DepartmentType) => {
-    switch (dept) {
-      case 'event_planner': return 'bg-purple-500/20 text-purple-400';
-      case 'creative': return 'bg-pink-500/20 text-pink-400';
-      case 'operation': return 'bg-blue-500/20 text-blue-400';
-      default: return 'bg-gray-500/20 text-gray-400';
+  const [creativeAssets, setCreativeAssets] = useState<CreativeAsset[]>([
+    { id: 'c1', title: 'Cyberpunk Stage Prompt', type: 'prompt', content: 'Futuristic stage, neon lights, holographic screens...', tags: ['stage', 'cyberpunk', 'midjourney'], author: 'Admin', likes: 15, downloads: 4 },
+    { id: 'c2', title: 'Logo 3D Workflow', type: 'workflow', content: 'ComfyUI JSON for turning 2D logo to 3D metallic.', tags: ['logo', '3d', 'comfyui'], author: 'ProUser', likes: 28, downloads: 12 },
+  ]);
+  const [newAssetData, setNewAssetData] = useState({ title: '', type: 'prompt', content: '', tags: '' });
+
+  const [resources, setResources] = useState<SharedResource[]>([
+    { id: 'r1', title: 'Stage Design 3D Model (SketchUp)', type: 'project_file', format: 'SKP', size: '150 MB', author: 'Minh Thu', downloads: 25, uploadDate: '2024-06-24', description: 'Full 3D model for outdoor music festival stage.' },
+    { id: 'r2', title: 'Event Budget Template 2024', type: 'industry_data', format: 'XLSX', size: '2 MB', author: 'Admin', downloads: 120, uploadDate: '2024-06-20', description: 'Comprehensive Excel template for event budgeting.' },
+    { id: 'r3', title: 'Luxury Texture Pack', type: 'design_asset', format: 'ZIP', size: '500 MB', author: 'Quang Huy', downloads: 45, uploadDate: '2024-06-22', description: 'High-res textures for luxury event mapping.' },
+  ]);
+  const [newResourceData, setNewResourceData] = useState({ title: '', type: 'project_file', format: '', description: '' });
+
+  const jobs: Job[] = [
+    {
+        id: '1',
+        title: 'Thiết kế Key Visual sự kiện ra mắt xe điện',
+        client: 'VinFast Agency',
+        budget: '5.000.000đ',
+        deadline: '25/06/2024',
+        description: 'Cần một bạn thiết kế KV phong cách Futuristic, sử dụng AI Midjourney và Photoshop. Yêu cầu biết Inpainting mở rộng bối cảnh.',
+        tags: ['2D Design', 'Midjourney', 'Futuristic'],
+        postedDate: '2 giờ trước',
+        applicants: 12
+    },
+  ];
+
+  const [partners, setPartners] = useState<PartnerCompany[]>([
+    {
+      id: 'p1',
+      name: 'Visionary Events',
+      type: 'agency',
+      logo: '✨',
+      description: 'Agency chuyên tổ chức các sự kiện luxury và fashion show hàng đầu Việt Nam.',
+      location: 'Hà Nội',
+      contact: { phone: '0901234567', email: 'contact@visionary.vn', website: 'visionary.vn' },
+      specialties: ['Concept', 'Luxury', 'Fashion'],
+      isVerified: true
+    },
+    {
+      id: 'p2',
+      name: 'Alpha Creative Lab',
+      type: 'agency',
+      logo: '🧬',
+      description: 'Creative Agency tập trung vào trải nghiệm công nghệ tương tác và AI.',
+      location: 'TP.HCM',
+      contact: { phone: '0987654321', email: 'hello@alpha.vn', website: 'alphacreative.vn' },
+      specialties: ['Interactive', 'AI Art', 'Exhibition'],
+      isVerified: true
+    }
+  ]);
+
+  const handleLoginSuccess = (username: string) => {
+    setIsAuthenticated(true);
+    setUserProfile(prev => ({...prev, name: username || 'Student'}));
+  };
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      const newDoc: WorkflowDocument = {
+        id: Date.now().toString(),
+        name: file.name,
+        type: file.name.split('.').pop()?.toUpperCase() || 'FILE',
+        size: `${(file.size / 1024 / 1024).toFixed(2)} MB`,
+        uploadDate: new Date().toISOString().split('T')[0],
+        uploader: `${userProfile.name} (User)`,
+        department: selectedDept === 'all' ? 'event_planner' : selectedDept,
+        status: 'pending',
+        team: [],
+        comments: [],
+        projectId: selectedProject?.id,
+        tasks: []
+      };
+      onAddDocument(newDoc);
+
+      if (selectedProject) {
+          const sysMsg: Comment = {
+              id: `sys-${Date.now()}`,
+              author: 'System',
+              text: `${userProfile.name} uploaded file: ${file.name}`,
+              timestamp: new Date().toLocaleTimeString(),
+              isSystem: true
+          };
+          updateProjectChat(selectedProject.id, sysMsg);
+      }
     }
   };
+
+  const handleCreateProject = (e: React.FormEvent) => {
+      e.preventDefault();
+      const newProject: Project = {
+          id: `proj-${Date.now()}`,
+          name: newProjectData.name,
+          client: newProjectData.client,
+          description: newProjectData.description,
+          department: newProjectData.department,
+          status: 'planning',
+          startDate: new Date().toISOString().split('T')[0],
+          deadline: 'TBD',
+          budget: Number(newProjectData.budget),
+          expenses: 0,
+          team: [{ id: 'me', name: userProfile.name, role: userProfile.role, avatar: 'https://ui-avatars.com/api/?name=Me', isExternal: false }],
+          files: [],
+          progress: 0,
+          chatHistory: [{ id: 'sys-init', author: 'System', text: `Project "${newProjectData.name}" initialized.`, timestamp: new Date().toLocaleTimeString(), isSystem: true }],
+          tasks: []
+      };
+      setProjects(prev => [newProject, ...prev]);
+
+      const projectDoc: WorkflowDocument = {
+          id: newProject.id,
+          name: newProject.name,
+          type: 'PROJECT',
+          size: 'N/A',
+          uploadDate: newProject.startDate,
+          uploader: userProfile.name,
+          department: newProject.department,
+          status: 'approved',
+          isProject: true,
+          team: newProject.team,
+          comments: [],
+          projectId: newProject.id
+      };
+      onAddDocument(projectDoc);
+
+      setShowProjectModal(false);
+      setNewProjectData({ name: '', description: '', department: 'event_planner', client: '', budget: 0 });
+      alert(t('workflow.dashboard.project.success'));
+  };
+
+  const handleBuyCredit = (amount: number, packageName: string) => {
+      if(confirm(`Xác nhận mua ${packageName} với giá tương ứng?`)) {
+          setBalance(prev => prev + amount);
+          const newTransaction: Transaction = {
+              id: `t${Date.now()}`,
+              type: 'deposit',
+              amount: amount,
+              description: `Mua ${packageName}`,
+              date: new Date().toISOString().split('T')[0],
+              status: 'completed'
+          };
+          setTransactions(prev => [newTransaction, ...prev]);
+          alert(t('workflow.wallet.success'));
+      }
+  };
+
+  const handleWithdraw = () => {
+      if (balance < 1000) {
+          alert(t('workflow.wallet.withdrawMin'));
+          return;
+      }
+      if (confirm(`Bạn có chắc muốn quy đổi ${balance} Coins thành tiền mặt?`)) {
+          const amount = balance;
+          setBalance(0);
+          const newTransaction: Transaction = {
+              id: `w${Date.now()}`,
+              type: 'withdrawal',
+              amount: -amount,
+              description: `Quy đổi tiền mặt (${amount} Coins)`,
+              date: new Date().toISOString().split('T')[0],
+              status: 'pending'
+          };
+          setTransactions(prev => [newTransaction, ...prev]);
+          alert(t('workflow.wallet.withdrawSuccess'));
+      }
+  };
+
+  const handleCreateAsset = (e: React.FormEvent) => {
+      e.preventDefault();
+      const asset: CreativeAsset = {
+          id: `c-${Date.now()}`,
+          title: newAssetData.title,
+          type: newAssetData.type as 'prompt' | 'workflow' | 'dataset',
+          content: newAssetData.content,
+          tags: newAssetData.tags.split(',').map(t => t.trim()),
+          author: userProfile.name,
+          likes: 0,
+          downloads: 0
+      };
+      setCreativeAssets(prev => [asset, ...prev]);
+      setShowCreativeModal(false);
+      setBalance(prev => prev + 100);
+      setTransactions(prev => [{ id: `r-${Date.now()}`, type: 'reward', amount: 100, description: 'Thưởng đóng góp dữ liệu sáng tạo', date: new Date().toISOString().split('T')[0], status: 'completed' }, ...prev]);
+      alert(t('workflow.creative.success'));
+      setNewAssetData({ title: '', type: 'prompt', content: '', tags: '' });
+  };
+
+  const handleUploadResource = (e: React.FormEvent) => {
+      e.preventDefault();
+      const resource: SharedResource = {
+          id: `r-${Date.now()}`,
+          title: newResourceData.title,
+          type: newResourceData.type as any,
+          format: newResourceData.format || 'ZIP',
+          size: '10 MB',
+          author: userProfile.name,
+          downloads: 0,
+          uploadDate: new Date().toISOString().split('T')[0],
+          description: newResourceData.description
+      };
+      setResources(prev => [resource, ...prev]);
+      setShowResourceModal(false);
+      setBalance(prev => prev + 300);
+      setTransactions(prev => [{ id: `rr-${Date.now()}`, type: 'reward', amount: 300, description: 'Thưởng chia sẻ tài nguyên', date: new Date().toISOString().split('T')[0], status: 'completed' }, ...prev]);
+      alert(t('workflow.resources.success'));
+      setNewResourceData({ title: '', type: 'project_file', format: '', description: '' });
+  };
+
+  const handleAddPartner = (newPartner: PartnerCompany) => { setPartners(prev => [...prev, newPartner]); };
+  const toggleAutomation = (id: string) => { setAutomations(prev => prev.map(a => a.id === id ? { ...a, isActive: !a.isActive } : a)); };
+  const copyToClipboard = (text: string) => { navigator.clipboard.writeText(text); alert(t('workflow.affiliate.copied')); };
+
+  const handleOpenChat = (doc: WorkflowDocument) => { setActiveDocForChat(doc); };
+
+  const handleAddMemberToProject = (user: TeamMember) => {
+      if (!selectedProject) return;
+      const currentTeam = selectedProject.team || [];
+      if (currentTeam.find(m => m.id === user.id)) return;
+
+      const MEMBER_COST = 50;
+
+      if (user.isExternal) {
+          if (balance < MEMBER_COST) {
+              alert(t('workflow.collaboration.insufficient'));
+              return;
+          }
+          if (confirm(`${t('workflow.collaboration.feeNotice')} (${MEMBER_COST} Coins)`)) {
+              setBalance(prev => prev - MEMBER_COST);
+              setTransactions(prev => [{ id: `fee-${Date.now()}`, type: 'spend', amount: -MEMBER_COST, description: `Phí thêm thành viên dự án: ${user.name}`, date: new Date().toISOString().split('T')[0], status: 'completed' }, ...prev]);
+
+              updateProjectTeamAndFinance(user, MEMBER_COST);
+          }
+      } else {
+          if(confirm(`${t('workflow.collaboration.freeNotice')} (${user.name})`)) {
+              updateProjectTeamAndFinance(user, 0);
+          }
+      }
+  };
+
+  const updateProjectTeamAndFinance = (user: TeamMember, cost: number) => {
+      const sysMsg: Comment = {
+          id: `sys-${Date.now()}`,
+          author: 'System',
+          text: `${user.name} joined the project.`,
+          timestamp: new Date().toLocaleTimeString(),
+          isSystem: true
+      };
+
+      setProjects(prev => prev.map(p => p.id === selectedProject?.id ? {
+          ...p,
+          team: [...p.team, user],
+          expenses: p.expenses + cost,
+          chatHistory: [...p.chatHistory, sysMsg]
+      } : p));
+
+      setSelectedProject(prev => prev ? {
+          ...prev,
+          team: [...prev.team, user],
+          expenses: prev.expenses + cost,
+          chatHistory: [...prev.chatHistory, sysMsg]
+      } : null);
+
+      setShowMemberSelect(false);
+  };
+
+  const handleSendProjectMessage = (e: React.FormEvent) => {
+      e.preventDefault();
+      if (!projectChatMessage.trim() || !selectedProject) return;
+
+      const newMsg: Comment = {
+          id: `msg-${Date.now()}`,
+          author: userProfile.name,
+          text: projectChatMessage,
+          timestamp: new Date().toLocaleTimeString()
+      };
+
+      updateProjectChat(selectedProject.id, newMsg);
+      setProjectChatMessage('');
+  };
+
+  const updateProjectChat = (projectId: string, msg: Comment) => {
+      setProjects(prev => prev.map(p => p.id === projectId ? {
+          ...p,
+          chatHistory: [...p.chatHistory, msg]
+      } : p));
+
+      if (selectedProject && selectedProject.id === projectId) {
+          setSelectedProject(prev => prev ? {
+              ...prev,
+              chatHistory: [...prev.chatHistory, msg]
+          } : null);
+      }
+  };
+
+  const handlePackageProject = () => {
+      if (!selectedProject) return;
+      if (confirm(t('workflow.dashboard.project.package.confirm'))) {
+          setProjects(prev => prev.map(p => p.id === selectedProject.id ? { ...p, status: 'completed' } : p));
+          setSelectedProject(prev => prev ? { ...prev, status: 'completed' } : null);
+          alert(t('workflow.dashboard.project.package.success'));
+      }
+  };
+
+  const handleCreateTask = () => {
+      if (!newTaskData.title || !newTaskData.assigneeId) {
+          alert("Vui lòng điền đủ thông tin nhiệm vụ.");
+          return;
+      }
+
+      const assignee = availableUsers.find(u => u.id === newTaskData.assigneeId);
+      const newTask: Task = {
+          id: `task-${Date.now()}`,
+          title: newTaskData.title,
+          assigneeId: newTaskData.assigneeId,
+          assigneeName: assignee ? assignee.name : 'Unknown',
+          status: 'todo',
+          dueDate: newTaskData.dueDate || 'TBD',
+          fileId: selectedFileForTask ? selectedFileForTask.id : undefined
+      };
+
+      if (selectedProject) {
+          const sysMsg: Comment = {
+              id: `sys-task-${Date.now()}`,
+              author: 'System',
+              text: `Assigned task: "${newTask.title}" to ${newTask.assigneeName}`,
+              timestamp: new Date().toLocaleTimeString(),
+              isSystem: true
+          };
+
+          setProjects(prev => prev.map(p => p.id === selectedProject.id ? {
+              ...p,
+              tasks: [...p.tasks, newTask],
+              chatHistory: [...p.chatHistory, sysMsg]
+          } : p));
+
+          setSelectedProject(prev => prev ? {
+              ...prev,
+              tasks: [...prev.tasks, newTask],
+              chatHistory: [...prev.chatHistory, sysMsg]
+          } : null);
+      } else if (selectedFileForTask) {
+          alert(`Đã giao việc "${newTask.title}" cho file ${selectedFileForTask.name}`);
+      }
+
+      setShowTaskModal(false);
+      setNewTaskData({ title: '', assigneeId: '', dueDate: '' });
+      setSelectedFileForTask(null);
+  };
+
+  const openTaskModalForFile = (doc: WorkflowDocument) => {
+      setSelectedFileForTask(doc);
+      setShowTaskModal(true);
+  };
+
+  const filteredDocs = documents.filter(doc => {
+    const matchesDept = selectedDept === 'all' || doc.department === selectedDept;
+    const matchesSearch = doc.name.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesDept && matchesSearch;
+  });
+
+  const filteredPartners = partners.filter(p => p.type === partnerFilter);
 
   const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'active':
-      case 'approved': return 'bg-green-500/20 text-green-400';
-      case 'planning':
-      case 'pending': return 'bg-yellow-500/20 text-yellow-400';
-      case 'completed': return 'bg-blue-500/20 text-blue-400';
-      case 'archived':
-      case 'rejected': return 'bg-red-500/20 text-red-400';
-      default: return 'bg-gray-500/20 text-gray-400';
+    switch(status) {
+      case 'approved': return 'bg-green-500/20 text-green-400 border-green-500/50';
+      case 'rejected': return 'bg-red-500/20 text-red-400 border-red-500/50';
+      default: return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/50';
     }
   };
 
-  const renderProjectDetail = () => {
-    if (!selectedProject) return null;
+  if (!isAuthenticated) {
+    return <Login onLoginSuccess={handleLoginSuccess} />;
+  }
 
-    return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setSelectedProject(null)} />
-        <div className="relative z-10 w-full max-w-3xl bg-[var(--bg-primary)] rounded-2xl overflow-hidden shadow-2xl max-h-[90vh] overflow-y-auto">
-          {/* Header */}
-          <div className="sticky top-0 bg-[var(--bg-primary)] border-b border-[var(--border-primary)] px-6 py-4 flex items-center justify-between">
-            <div>
-              <h2 className="text-xl font-bold text-[var(--text-primary)]">{selectedProject.name}</h2>
-              <p className="text-sm text-[var(--text-secondary)]">{selectedProject.client}</p>
-            </div>
-            <button
-              onClick={() => setSelectedProject(null)}
-              className="p-2 hover:bg-[var(--bg-secondary)] rounded-lg transition-colors"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[var(--text-secondary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
+  const renderProjectHub = () => {
+      if (!selectedProject) return null;
+      const projectDocs = documents.filter(d => d.projectId === selectedProject.id);
 
-          <div className="p-6">
-            {/* Progress */}
-            <div className="mb-6">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-sm text-[var(--text-secondary)]">{t('workflow.progress')}</span>
-                <span className="text-sm font-medium text-[var(--accent-primary)]">{selectedProject.progress}%</span>
-              </div>
-              <div className="h-2 bg-[var(--bg-tertiary)] rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-gradient-to-r from-[var(--accent-primary)] to-orange-500 rounded-full transition-all"
-                  style={{ width: `${selectedProject.progress}%` }}
-                />
-              </div>
-            </div>
-
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-              <div className="p-4 bg-[var(--bg-secondary)] rounded-xl">
-                <p className="text-sm text-[var(--text-tertiary)]">{t('workflow.budget')}</p>
-                <p className="text-xl font-bold text-[var(--text-primary)]">${selectedProject.budget.toLocaleString()}</p>
-              </div>
-              <div className="p-4 bg-[var(--bg-secondary)] rounded-xl">
-                <p className="text-sm text-[var(--text-tertiary)]">{t('workflow.spent')}</p>
-                <p className="text-xl font-bold text-[var(--accent-primary)]">${selectedProject.expenses.toLocaleString()}</p>
-              </div>
-              <div className="p-4 bg-[var(--bg-secondary)] rounded-xl">
-                <p className="text-sm text-[var(--text-tertiary)]">{t('workflow.deadline')}</p>
-                <p className="text-xl font-bold text-[var(--text-primary)]">{new Date(selectedProject.deadline).toLocaleDateString()}</p>
-              </div>
-              <div className="p-4 bg-[var(--bg-secondary)] rounded-xl">
-                <p className="text-sm text-[var(--text-tertiary)]">{t('workflow.team')}</p>
-                <p className="text-xl font-bold text-[var(--text-primary)]">{selectedProject.team.length}</p>
-              </div>
-            </div>
-
-            {/* Description */}
-            <div className="mb-6">
-              <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-2">{t('workflow.description')}</h3>
-              <p className="text-[var(--text-secondary)]">{selectedProject.description}</p>
-            </div>
-
-            {/* Tasks */}
-            {selectedProject.tasks.length > 0 && (
-              <div className="mb-6">
-                <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-3">{t('workflow.tasks')}</h3>
-                <div className="flex flex-col gap-2">
-                  {selectedProject.tasks.map((task: Task) => (
-                    <div
-                      key={task.id}
-                      className="flex items-center justify-between p-3 bg-[var(--bg-secondary)] rounded-lg"
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className={`w-2 h-2 rounded-full ${
-                          task.status === 'done' ? 'bg-green-500' :
-                          task.status === 'in_progress' ? 'bg-yellow-500' : 'bg-gray-500'
-                        }`} />
-                        <span className={`text-sm ${task.status === 'done' ? 'text-[var(--text-tertiary)] line-through' : 'text-[var(--text-primary)]'}`}>
-                          {task.title}
-                        </span>
+      return (
+          <div className="flex flex-col h-full animate-fade-in">
+              <div className="p-6 border-b border-[var(--border-primary)] bg-[var(--bg-card)] flex justify-between items-center sticky top-0 z-10">
+                  <div>
+                      <button onClick={() => setSelectedProject(null)} className="text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-1 flex items-center gap-1">
+                          ← Back to Projects
+                      </button>
+                      <h1 className="text-2xl font-black text-[var(--text-primary)]">{selectedProject.name}</h1>
+                      <div className="flex items-center gap-3 text-xs mt-1">
+                          <span className="text-[var(--accent-primary)] font-bold">{selectedProject.client}</span>
+                          <span className="text-[var(--text-tertiary)]">• {selectedProject.startDate} - {selectedProject.deadline}</span>
+                          <span className={`px-2 py-0.5 rounded-full ${selectedProject.status === 'completed' ? 'bg-green-500/20 text-green-400' : 'bg-blue-500/20 text-blue-400'}`}>
+                              {selectedProject.status.toUpperCase()}
+                          </span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs text-[var(--text-tertiary)]">{task.assigneeName}</span>
-                        <span className="text-xs text-[var(--text-tertiary)]">|</span>
-                        <span className="text-xs text-[var(--text-tertiary)]">{new Date(task.dueDate).toLocaleDateString()}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Team */}
-            <div>
-              <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-3">{t('workflow.teamMembers')}</h3>
-              <div className="flex flex-wrap gap-2">
-                {selectedProject.team.map((member: TeamMember) => (
-                  <div
-                    key={member.id}
-                    className="flex items-center gap-2 px-3 py-2 bg-[var(--bg-secondary)] rounded-lg"
-                  >
-                    <div className="w-8 h-8 bg-[var(--accent-primary)]/20 rounded-full flex items-center justify-center text-[var(--accent-primary)] font-medium">
-                      {member.name.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="text-sm text-[var(--text-primary)]">{member.name}</p>
-                      <p className="text-xs text-[var(--text-tertiary)]">{member.role}</p>
-                    </div>
-                    {member.isExternal && (
-                      <span className="px-2 py-0.5 bg-blue-500/20 text-blue-400 text-xs rounded-full">{t('workflow.external')}</span>
-                    )}
                   </div>
-                ))}
+                  {selectedProject.status !== 'completed' && (
+                      <button onClick={handlePackageProject} className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-2 rounded-lg font-bold shadow-lg hover:opacity-90">
+                          📦 {t('workflow.dashboard.project.package.btn')}
+                      </button>
+                  )}
               </div>
-            </div>
+
+              <div className="flex border-b border-[var(--border-primary)] px-6 bg-[var(--bg-secondary)] overflow-x-auto">
+                  {['overview', 'team', 'files', 'finance', 'chat', 'tasks'].map(tab => (
+                      <button
+                        key={tab}
+                        onClick={() => setProjectTab(tab as any)}
+                        className={`py-3 px-6 font-bold text-sm border-b-2 transition-colors whitespace-nowrap ${projectTab === tab ? 'border-[var(--accent-primary)] text-[var(--accent-primary)]' : 'border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
+                      >
+                          {t(`workflow.dashboard.project.tabs.${tab}`)}
+                      </button>
+                  ))}
+              </div>
+
+              <div className="p-6 overflow-y-auto flex-1">
+                  {projectTab === 'overview' && (
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                          <div className="md:col-span-2 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-6">
+                              <h3 className="text-lg font-bold mb-4">Description</h3>
+                              <p className="text-[var(--text-secondary)]">{selectedProject.description}</p>
+                              <div className="mt-6">
+                                  <h3 className="text-sm font-bold mb-2">Progress</h3>
+                                  <div className="w-full bg-[var(--bg-secondary)] rounded-full h-4">
+                                      <div className="bg-[var(--accent-primary)] h-4 rounded-full" style={{ width: `${selectedProject.progress}%` }}></div>
+                                  </div>
+                                  <p className="text-right text-xs mt-1">{selectedProject.progress}%</p>
+                              </div>
+                          </div>
+                          <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-6">
+                              <h3 className="text-lg font-bold mb-4">Quick Stats</h3>
+                              <div className="space-y-4">
+                                  <div className="flex justify-between"><span>Files</span> <span>{projectDocs.length}</span></div>
+                                  <div className="flex justify-between"><span>Members</span> <span>{selectedProject.team.length}</span></div>
+                                  <div className="flex justify-between text-yellow-400"><span>Budget</span> <span>{selectedProject.budget.toLocaleString()} Coins</span></div>
+                              </div>
+                          </div>
+                      </div>
+                  )}
+
+                  {projectTab === 'team' && (
+                      <div className="space-y-6">
+                          <div className="flex justify-between items-center">
+                              <h3 className="text-lg font-bold">Project Members</h3>
+                              <button onClick={() => setShowMemberSelect(true)} className="bg-[var(--accent-primary)] text-black px-4 py-2 rounded-lg font-bold text-sm">+ Add Member</button>
+                          </div>
+                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                              {selectedProject.team.map(member => (
+                                  <div key={member.id} className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-4 rounded-xl flex items-center gap-4">
+                                      <img src={member.avatar} className="w-10 h-10 rounded-full" />
+                                      <div>
+                                          <p className="font-bold">{member.name}</p>
+                                          <p className="text-xs text-[var(--text-tertiary)]">{member.role}</p>
+                                      </div>
+                                      {member.isExternal && <span className="ml-auto text-[10px] bg-yellow-500/20 text-yellow-500 px-2 py-1 rounded">External (50c)</span>}
+                                  </div>
+                              ))}
+                          </div>
+                          {showMemberSelect && (
+                            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-4 rounded-xl mt-4">
+                                <h4 className="font-bold mb-2">Select to Add</h4>
+                                <div className="space-y-2">
+                                    {availableUsers.map(u => (
+                                        <div key={u.id} onClick={() => handleAddMemberToProject(u)} className="flex justify-between items-center p-2 hover:bg-[var(--bg-secondary)] rounded cursor-pointer border border-transparent hover:border-[var(--border-primary)]">
+                                            <div className="flex items-center gap-2">
+                                                <img src={u.avatar} className="w-6 h-6 rounded-full" />
+                                                <span>{u.name}</span>
+                                            </div>
+                                            <span className="text-xs text-[var(--accent-primary)]">{u.isExternal ? '50 Coins' : 'Free'}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                                <button onClick={() => setShowMemberSelect(false)} className="mt-2 text-xs underline text-[var(--text-tertiary)]">Cancel</button>
+                            </div>
+                          )}
+                      </div>
+                  )}
+
+                  {projectTab === 'files' && (
+                      <div className="space-y-4">
+                          <div className="flex justify-between items-center">
+                              <h3 className="text-lg font-bold">Project Files</h3>
+                              <label className="cursor-pointer bg-[var(--bg-secondary)] border border-[var(--border-primary)] px-4 py-2 rounded-lg font-bold text-sm hover:bg-[var(--border-primary)]">
+                                  Upload File <input type="file" className="hidden" onChange={handleFileUpload} />
+                              </label>
+                          </div>
+                          <div className="grid grid-cols-1 gap-2">
+                              {projectDocs.length > 0 ? projectDocs.map(doc => (
+                                  <div key={doc.id} className="flex items-center justify-between p-3 bg-[var(--bg-card)] rounded-lg border border-[var(--border-primary)]">
+                                      <div className="flex items-center gap-3">
+                                          <div className="w-8 h-8 bg-[var(--bg-secondary)] flex items-center justify-center rounded text-xs font-bold">{doc.type}</div>
+                                          <div>
+                                              <p className="font-medium text-sm">{doc.name}</p>
+                                              <p className="text-xs text-[var(--text-tertiary)]">{doc.size} • {doc.uploadDate}</p>
+                                          </div>
+                                      </div>
+                                      <div className="flex gap-2">
+                                          <button onClick={() => openTaskModalForFile(doc)} className="text-xs bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 px-3 py-1 rounded">Assign Task</button>
+                                          <button className="text-xs bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] px-3 py-1 rounded">Open</button>
+                                      </div>
+                                  </div>
+                              )) : <p className="text-[var(--text-tertiary)] italic">No files in this project yet.</p>}
+                          </div>
+                      </div>
+                  )}
+
+                  {projectTab === 'finance' && (
+                      <div className="space-y-6">
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                              <div className="bg-gradient-to-br from-green-900/50 to-green-800/20 border border-green-500/30 p-6 rounded-2xl">
+                                  <p className="text-sm text-green-300 font-bold uppercase">{t('workflow.dashboard.project.finance.budget')}</p>
+                                  <div className="flex items-center gap-2 mt-1">
+                                      <span className="text-2xl">🪙</span>
+                                      <p className="text-2xl font-black text-white">{selectedProject.budget.toLocaleString()}</p>
+                                  </div>
+                              </div>
+                              <div className="bg-gradient-to-br from-red-900/50 to-red-800/20 border border-red-500/30 p-6 rounded-2xl">
+                                  <p className="text-sm text-red-300 font-bold uppercase">{t('workflow.dashboard.project.finance.expenses')}</p>
+                                  <div className="flex items-center gap-2 mt-1">
+                                      <span className="text-2xl">🪙</span>
+                                      <p className="text-2xl font-black text-white">{selectedProject.expenses.toLocaleString()}</p>
+                                  </div>
+                              </div>
+                              <div className="bg-gradient-to-br from-blue-900/50 to-blue-800/20 border border-blue-500/30 p-6 rounded-2xl">
+                                  <p className="text-sm text-blue-300 font-bold uppercase">{t('workflow.dashboard.project.finance.profit')}</p>
+                                  <div className="flex items-center gap-2 mt-1">
+                                      <span className="text-2xl">🪙</span>
+                                      <p className="text-2xl font-black text-white">{(selectedProject.budget - selectedProject.expenses).toLocaleString()}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-6">
+                              <h3 className="font-bold mb-4">Add Expense</h3>
+                              <div className="flex gap-2">
+                                  <input placeholder="Expense Name" className="flex-1 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg p-2 text-sm" />
+                                  <input placeholder="Amount (Coins)" type="number" className="w-32 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg p-2 text-sm" />
+                                  <button className="bg-[var(--accent-primary)] text-black px-4 py-2 rounded-lg font-bold text-sm">Add</button>
+                              </div>
+                          </div>
+                      </div>
+                  )}
+
+                  {projectTab === 'chat' && (
+                      <div className="flex flex-col h-full">
+                          <div className="flex-1 overflow-y-auto space-y-4 mb-4 pr-2">
+                              {selectedProject.chatHistory.map(msg => (
+                                  <div key={msg.id} className={`flex flex-col ${msg.isSystem ? 'items-center' : (msg.author === userProfile.name ? 'items-end' : 'items-start')}`}>
+                                      {msg.isSystem ? (
+                                          <span className="text-[10px] text-[var(--text-tertiary)] bg-[var(--bg-secondary)] px-2 py-0.5 rounded-full border border-[var(--border-primary)]">{msg.text}</span>
+                                      ) : (
+                                          <>
+                                              <div className={`max-w-[80%] p-3 rounded-xl text-sm ${msg.author === userProfile.name ? 'bg-[var(--accent-primary)] text-black rounded-tr-none' : 'bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-tl-none border border-[var(--border-primary)]'}`}>
+                                                  {msg.text}
+                                              </div>
+                                              <span className="text-[10px] text-[var(--text-tertiary)] mt-1 px-1">
+                                                  {msg.author !== userProfile.name && `${msg.author} • `}{msg.timestamp}
+                                              </span>
+                                          </>
+                                      )}
+                                  </div>
+                              ))}
+                          </div>
+                          <form onSubmit={handleSendProjectMessage} className="pt-4 border-t border-[var(--border-primary)] flex gap-2">
+                              <button type="button" onClick={() => setShowTaskModal(true)} className="p-2.5 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--accent-primary)] hover:bg-[var(--accent-primary)] hover:text-black transition-colors" title={t('workflow.dashboard.project.tasks.addTask')}>
+                                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" /></svg>
+                              </button>
+                              <input type="text" value={projectChatMessage} onChange={(e) => setProjectChatMessage(e.target.value)} placeholder={t('workflow.dashboard.project.chat.placeholder')} className="flex-1 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-[var(--accent-primary)]" />
+                              <button type="submit" disabled={!projectChatMessage.trim()} className="bg-[var(--accent-primary)] text-black px-6 py-2 rounded-lg font-bold hover:opacity-90 transition-opacity disabled:opacity-50">{t('workflow.dashboard.project.chat.send')}</button>
+                          </form>
+                      </div>
+                  )}
+
+                  {projectTab === 'tasks' && (
+                      <div className="space-y-6">
+                          <div className="flex justify-between items-center">
+                              <h3 className="text-lg font-bold">{t('workflow.dashboard.project.tasks.title')}</h3>
+                              <button onClick={() => setShowTaskModal(true)} className="bg-[var(--accent-primary)] text-black px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-2"><span>+</span> {t('workflow.dashboard.project.tasks.addTask')}</button>
+                          </div>
+                          <div className="space-y-3">
+                              {selectedProject.tasks && selectedProject.tasks.length > 0 ? (
+                                  selectedProject.tasks.map(task => (
+                                      <div key={task.id} className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-4 rounded-xl flex items-center justify-between hover:border-[var(--accent-primary)] transition-all">
+                                          <div className="flex items-center gap-4">
+                                              <div className={`w-3 h-3 rounded-full ${task.status === 'todo' ? 'bg-gray-500' : task.status === 'in_progress' ? 'bg-blue-500' : 'bg-green-500'}`}></div>
+                                              <div>
+                                                  <h4 className="font-bold">{task.title}</h4>
+                                                  <p className="text-xs text-[var(--text-tertiary)]">{t('workflow.dashboard.project.tasks.assigned')}: {task.assigneeName} • Due: {task.dueDate}</p>
+                                              </div>
+                                          </div>
+                                          <div className="flex items-center gap-2">
+                                              <span className="text-xs uppercase font-bold tracking-wider px-2 py-1 rounded bg-[var(--bg-secondary)] text-[var(--text-secondary)]">{t(`workflow.dashboard.project.tasks.status.${task.status}`)}</span>
+                                          </div>
+                                      </div>
+                                  ))
+                              ) : (
+                                  <div className="text-center py-10 text-[var(--text-tertiary)] italic">{t('workflow.dashboard.project.tasks.noTasks')}</div>
+                              )}
+                          </div>
+                      </div>
+                  )}
+              </div>
           </div>
-        </div>
+      );
+  };
+
+  const renderProjectList = () => (
+      <div className="p-6 md:p-8 overflow-y-auto flex-1 animate-fade-in">
+          <div className="flex justify-between items-center mb-8">
+              <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-primary)] to-purple-500">{t('workflow.dashboard.project.hubTitle')}</h1>
+              <button onClick={() => setShowProjectModal(true)} className="bg-[var(--accent-primary)] text-black font-bold px-6 py-2.5 rounded-lg shadow-lg hover:opacity-90 transition-all">+ {t('workflow.dashboard.createProject')}</button>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {projects.map(project => (
+                  <div key={project.id} onClick={() => setSelectedProject(project)} className="bg-[var(--bg-card)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] rounded-2xl p-6 cursor-pointer transition-all hover:-translate-y-1 shadow-lg group">
+                      <div className="flex justify-between items-start mb-4">
+                          <div className="w-12 h-12 rounded-lg bg-[var(--bg-secondary)] flex items-center justify-center text-2xl">{project.department === 'event_planner' ? '📅' : project.department === 'creative' ? '🎨' : '⚙️'}</div>
+                          <span className={`px-2 py-1 rounded text-[10px] font-bold uppercase ${project.status === 'active' ? 'bg-green-500/20 text-green-400' : 'bg-gray-500/20 text-gray-400'}`}>{project.status}</span>
+                      </div>
+                      <h3 className="text-xl font-bold text-[var(--text-primary)] mb-1 group-hover:text-[var(--accent-primary)] transition-colors">{project.name}</h3>
+                      <p className="text-xs text-[var(--text-tertiary)] mb-4">{project.client}</p>
+                      <div className="space-y-3">
+                          <div className="flex justify-between text-xs font-medium"><span>Progress</span><span>{project.progress}%</span></div>
+                          <div className="w-full h-1.5 bg-[var(--bg-secondary)] rounded-full overflow-hidden"><div className="h-full bg-[var(--accent-primary)] rounded-full" style={{ width: `${project.progress}%` }}></div></div>
+                          <div className="flex justify-between items-center pt-2 border-t border-[var(--border-primary)]">
+                              <div className="flex -space-x-2">{project.team.slice(0,3).map(m => (<img key={m.id} src={m.avatar} className="w-6 h-6 rounded-full border border-[var(--bg-card)]" />))}{project.team.length > 3 && <div className="w-6 h-6 rounded-full bg-[var(--bg-secondary)] flex items-center justify-center text-[8px] border border-[var(--bg-card)]">+{project.team.length-3}</div>}</div>
+                              <span className="text-xs text-[var(--text-secondary)]">{project.deadline}</span>
+                          </div>
+                      </div>
+                  </div>
+              ))}
+          </div>
       </div>
-    );
+  );
+
+  const renderContent = () => {
+    if (selectedProject) return renderProjectHub();
+
+    switch (activeView) {
+      case 'projects': return renderProjectList();
+      case 'resources': return (
+        <div className="p-6 md:p-8 overflow-y-auto flex-1 animate-fade-in">
+            <div className="flex justify-between items-center mb-8">
+                <div><h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400 mb-2">{t('workflow.resources.title')}</h1><p className="text-[var(--text-secondary)]">{t('workflow.resources.subtitle')}</p></div>
+                <button onClick={() => setShowResourceModal(true)} className="bg-[var(--accent-primary)] text-black font-bold px-6 py-2.5 rounded-lg shadow-lg hover:opacity-90 transition-all flex items-center gap-2"><span>+</span> {t('workflow.resources.upload')}</button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {resources.map(res => (
+                    <div key={res.id} className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-6 rounded-xl hover:border-[var(--accent-primary)] transition-all flex flex-col h-full group">
+                        <div className="flex justify-between items-start mb-4"><span className={`px-2 py-1 rounded text-xs font-bold uppercase ${res.type === 'project_file' ? 'bg-blue-500/20 text-blue-400' : res.type === 'design_asset' ? 'bg-purple-500/20 text-purple-400' : 'bg-green-500/20 text-green-400'}`}>{t(`workflow.resources.types.${res.type}`)}</span><div className="text-xs text-[var(--text-tertiary)] bg-[var(--bg-secondary)] px-2 py-1 rounded">{res.format}</div></div>
+                        <h3 className="text-lg font-bold text-[var(--text-primary)] mb-2 group-hover:text-[var(--accent-primary)] transition-colors">{res.title}</h3>
+                        <p className="text-sm text-[var(--text-secondary)] mb-4 flex-grow line-clamp-3">{res.description}</p>
+                        <div className="flex justify-between items-center text-xs text-[var(--text-tertiary)] border-t border-[var(--border-primary)] pt-4 mt-auto"><span>{res.size} • {res.uploadDate}</span><div className="flex items-center gap-2"><span>⬇️ {res.downloads}</span><span>👤 {res.author}</span></div></div>
+                        <button className="w-full mt-4 py-2 rounded-lg bg-[var(--bg-secondary)] hover:bg-[var(--accent-primary)] hover:text-black font-bold text-sm transition-all border border-[var(--border-primary)]">Download</button>
+                    </div>
+                ))}
+            </div>
+        </div>
+      );
+      case 'creative': return (
+        <div className="p-6 md:p-8 overflow-y-auto flex-1 animate-fade-in">
+            <div className="flex justify-between items-center mb-8"><div><h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400 mb-2">{t('workflow.creative.title')}</h1><p className="text-[var(--text-secondary)]">{t('workflow.creative.subtitle')}</p></div><button onClick={() => setShowCreativeModal(true)} className="bg-[var(--accent-primary)] text-black font-bold px-6 py-2.5 rounded-lg shadow-lg hover:opacity-90 transition-all flex items-center gap-2"><span>+</span> {t('workflow.creative.create')}</button></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">{creativeAssets.map(asset => (<div key={asset.id} className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-6 rounded-xl hover:border-[var(--accent-primary)] transition-all"><div className="flex justify-between items-start mb-4"><span className={`px-2 py-1 rounded text-xs font-bold uppercase ${asset.type === 'prompt' ? 'bg-blue-500/20 text-blue-400' : 'bg-purple-500/20 text-purple-400'}`}>{asset.type}</span><div className="text-xs text-[var(--text-tertiary)] flex gap-3"><span>❤️ {asset.likes}</span><span>⬇️ {asset.downloads}</span></div></div><h3 className="text-lg font-bold text-[var(--text-primary)] mb-2">{asset.title}</h3><p className="text-sm text-[var(--text-secondary)] line-clamp-3 mb-4 font-mono bg-black/20 p-2 rounded">{asset.content}</p><div className="flex flex-wrap gap-2 mb-4">{asset.tags.map(tag => (<span key={tag} className="text-[10px] bg-[var(--bg-secondary)] text-[var(--text-tertiary)] px-2 py-1 rounded">#{tag}</span>))}</div><div className="text-xs text-[var(--text-tertiary)] text-right">By {asset.author}</div></div>))}</div>
+        </div>
+      );
+      case 'automation': return (
+        <div className="p-6 md:p-8 overflow-y-auto flex-1 animate-fade-in">
+            <div className="flex justify-between items-center mb-8"><h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">{t('workflow.automation.title')}</h1><button className="bg-[var(--accent-primary)] text-black font-bold px-6 py-2.5 rounded-lg shadow-lg hover:opacity-90 transition-all flex items-center gap-2"><span>+</span> {t('workflow.automation.create')}</button></div>
+            <div className="grid grid-cols-1 gap-4">{automations.map(auto => (<div key={auto.id} className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 transition-all hover:border-[var(--accent-primary)]"><div className="flex items-center gap-4"><div className={`w-12 h-12 rounded-lg flex items-center justify-center text-2xl ${auto.isActive ? 'bg-green-500/10 text-green-500' : 'bg-gray-500/10 text-gray-500'}`}>{auto.action === 'send_email' ? '📧' : auto.action === 'send_telegram' ? '✈️' : '💬'}</div><div><h3 className="font-bold text-lg text-[var(--text-primary)]">{auto.name}</h3><p className="text-sm text-[var(--text-secondary)] flex items-center gap-2"><span className="font-mono bg-[var(--bg-secondary)] px-1.5 py-0.5 rounded text-xs">{t(`workflow.automation.triggers.${auto.trigger}`)}</span><span>➜</span><span className="font-mono bg-[var(--bg-secondary)] px-1.5 py-0.5 rounded text-xs">{auto.target}</span></p>{auto.lastRun && <p className="text-xs text-[var(--text-tertiary)] mt-1">{t('workflow.automation.lastRun')}: {auto.lastRun}</p>}</div></div><div className="flex items-center gap-4"><span className={`text-sm font-bold ${auto.isActive ? 'text-green-500' : 'text-gray-500'}`}>{auto.isActive ? t('workflow.automation.active') : t('workflow.automation.inactive')}</span><label className="relative inline-flex items-center cursor-pointer"><input type="checkbox" checked={auto.isActive} onChange={() => toggleAutomation(auto.id)} className="sr-only peer" /><div className="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div></label></div></div>))}</div>
+        </div>
+      );
+      case 'affiliate': return (
+        <div className="p-6 md:p-8 overflow-y-auto flex-1 animate-fade-in">
+            <div className="mb-8"><h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-400 mb-2">{t('workflow.affiliate.title')}</h1><p className="text-[var(--text-secondary)]">{t('workflow.affiliate.subtitle')}</p></div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-6 rounded-2xl"><p className="text-xs font-bold text-[var(--text-tertiary)] uppercase mb-2">{t('workflow.affiliate.totalEarned')}</p><p className="text-3xl font-black text-yellow-400">{affiliateData.totalEarned} <span className="text-sm text-[var(--text-secondary)]">Coins</span></p></div><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-6 rounded-2xl"><p className="text-xs font-bold text-[var(--text-tertiary)] uppercase mb-2">{t('workflow.affiliate.pending')}</p><p className="text-3xl font-black text-blue-400">{affiliateData.pending} <span className="text-sm text-[var(--text-secondary)]">Coins</span></p></div><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-6 rounded-2xl"><p className="text-xs font-bold text-[var(--text-tertiary)] uppercase mb-2">{t('workflow.affiliate.referrals')}</p><p className="text-3xl font-black text-green-400">{affiliateData.referrals}</p></div><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-6 rounded-2xl"><p className="text-xs font-bold text-[var(--text-tertiary)] uppercase mb-2">{t('workflow.affiliate.clicks')}</p><p className="text-3xl font-black text-purple-400">{affiliateData.clicks}</p></div></div>
+            <h3 className="text-xl font-bold text-[var(--text-primary)] mb-4">{t('workflow.affiliate.program')}</h3>
+            <div className="space-y-4 mb-8">{affiliateData.links.map(link => (<div key={link.id} className="bg-[var(--bg-secondary)] border border-[var(--border-primary)] p-4 rounded-xl flex flex-col md:flex-row items-center justify-between gap-4"><div className="flex-1"><h4 className="font-bold text-[var(--text-primary)]">{link.name}</h4><p className="text-xs text-[var(--accent-primary)] mt-1">{t('workflow.affiliate.commission')}: {link.commission}</p></div><div className="flex items-center gap-3 w-full md:w-auto"><code className="bg-black/30 px-3 py-2 rounded text-xs text-[var(--text-secondary)] flex-1 md:flex-none truncate max-w-[200px]">{link.url}</code><button onClick={() => copyToClipboard(link.url)} className="bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] hover:bg-[var(--accent-primary)] hover:text-black px-4 py-2 rounded-lg text-xs font-bold transition-colors">{t('workflow.affiliate.copyLink')}</button></div></div>))}</div>
+        </div>
+      );
+      case 'wallet': return (
+        <div className="p-6 md:p-8 overflow-y-auto flex-1 animate-fade-in">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10"><div className="bg-gradient-to-r from-yellow-600 to-amber-600 rounded-2xl p-8 text-white shadow-xl relative overflow-hidden"><div className="absolute top-0 right-0 p-8 opacity-20 transform translate-x-10 -translate-y-10"><svg className="w-48 h-48" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05 1.18 1.91 2.53 1.91 1.29 0 2.13-.72 2.13-1.55 0-.8-.68-1.38-2.26-1.75-2.03-.49-3.08-1.5-3.08-2.81 0-1.74 1.35-2.88 3.2-3.21V6h2.67v1.95c1.47.33 2.65 1.28 2.87 2.9h-1.99c-.15-.99-1.09-1.63-2.16-1.63-1.15 0-1.92.7-1.92 1.5 0 .75.64 1.29 2.16 1.65 2.12.51 3.19 1.57 3.19 2.92 0 1.91-1.54 3.03-3.36 3.35z"/></svg></div><div className="relative z-10"><h2 className="text-sm font-bold uppercase tracking-widest opacity-80 mb-2">{t('workflow.wallet.balance')}</h2><div className="text-6xl font-black mb-4 flex items-end gap-2">{balance.toLocaleString()}<span className="text-2xl font-bold mb-2">Coins</span></div><p className="text-sm opacity-90 max-w-md">Sử dụng Alpha Coin để thuê máy chủ GPU tốc độ cao, đăng ký khóa học chuyên sâu.</p></div></div><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-8 flex flex-col justify-center shadow-xl"><h2 className="text-xl font-bold text-[var(--text-primary)] mb-2">{t('workflow.wallet.withdraw')}</h2><p className="text-sm text-[var(--text-secondary)] mb-6">{t('workflow.wallet.withdrawDesc')}</p><div className="mt-auto"><button onClick={handleWithdraw} disabled={balance < 1000} className={`w-full py-4 rounded-xl font-bold transition-all shadow-lg ${balance >= 1000 ? 'bg-green-600 hover:bg-green-500 text-white' : 'bg-[var(--bg-secondary)] text-[var(--text-disabled)] cursor-not-allowed'}`}>{t('workflow.wallet.withdrawBtn')}</button>{balance < 1000 && <p className="text-xs text-red-400 mt-2 text-center">{t('workflow.wallet.withdrawMin')}</p>}</div></div></div>
+            <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-6">{t('workflow.wallet.buy')}</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">{[{ id: 'p1', name: t('workflow.wallet.packages.starter'), amount: 100, price: '100.000đ', color: 'from-blue-500 to-cyan-500' }, { id: 'p2', name: t('workflow.wallet.packages.pro'), amount: 500, price: '450.000đ', color: 'from-purple-500 to-pink-500', popular: true }, { id: 'p3', name: t('workflow.wallet.packages.biz'), amount: 1200, price: '1.000.000đ', color: 'from-orange-500 to-red-500' },].map(pkg => (<div key={pkg.id} className={`bg-[var(--bg-card)] border ${pkg.popular ? 'border-[var(--accent-primary)]' : 'border-[var(--border-primary)]'} rounded-2xl p-6 relative overflow-hidden group hover:-translate-y-1 transition-transform`}>{pkg.popular && (<div className="absolute top-0 right-0 bg-[var(--accent-primary)] text-black text-[10px] font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider">{t('workflow.wallet.popular')}</div>)}<div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${pkg.color} flex items-center justify-center text-white font-bold text-xl mb-4`}>💎</div><h4 className="text-lg font-bold text-[var(--text-primary)]">{pkg.name}</h4><div className="text-3xl font-black text-[var(--text-primary)] my-2">{pkg.amount} Coins</div><div className="text-sm text-[var(--text-secondary)] mb-6">{pkg.price}</div><ul className="space-y-2 mb-6 text-sm text-[var(--text-secondary)]"><li className="flex items-center gap-2"><span className="text-green-500">✓</span> {t('workflow.wallet.benefits.server')}</li><li className="flex items-center gap-2"><span className="text-green-500">✓</span> {t('workflow.wallet.benefits.course')}</li><li className="flex items-center gap-2"><span className="text-green-500">✓</span> {t('workflow.wallet.benefits.job')}</li></ul><button onClick={() => handleBuyCredit(pkg.amount, pkg.name)} className={`w-full py-3 rounded-lg font-bold text-white transition-all ${pkg.popular ? 'bg-[var(--accent-primary)] text-black hover:opacity-90' : 'bg-white/10 hover:bg-white/20'}`}>Mua ngay</button></div>))}</div>
+            <h3 className="text-xl font-bold text-[var(--text-primary)] mb-4">{t('workflow.wallet.history')}</h3>
+            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl overflow-hidden"><table className="w-full text-left border-collapse"><thead><tr className="bg-[var(--bg-secondary)] text-xs uppercase text-[var(--text-secondary)]"><th className="p-4">Thời gian</th><th className="p-4">Nội dung</th><th className="p-4 text-right">Thay đổi</th><th className="p-4 text-right">Trạng thái</th></tr></thead><tbody className="divide-y divide-[var(--border-primary)]">{transactions.map(tx => (<tr key={tx.id} className="text-sm"><td className="p-4 text-[var(--text-secondary)]">{tx.date}</td><td className="p-4 font-medium text-[var(--text-primary)]">{tx.description}</td><td className={`p-4 text-right font-bold ${tx.type === 'deposit' || tx.type === 'earning' || tx.type === 'reward' ? 'text-green-500' : 'text-red-500'}`}>{tx.type === 'deposit' || tx.type === 'earning' || tx.type === 'reward' ? '+' : ''}{tx.amount}</td><td className="p-4 text-right"><span className="px-2 py-1 bg-green-500/10 text-green-500 rounded text-xs font-bold uppercase">{tx.status}</span></td></tr>))}</tbody></table></div>
+        </div>
+      );
+      case 'partners': return (
+        <div className="p-6 md:p-8 overflow-y-auto flex-1 animate-fade-in">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4"><div><h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 mb-2">{t('workflow.partners.title')}</h1><p className="text-[var(--text-secondary)]">{t('workflow.partners.subtitle')}</p></div><button onClick={() => setShowPartnerModal(true)} className="bg-[var(--accent-primary)] text-black font-bold px-6 py-2.5 rounded-lg shadow-lg hover:opacity-90 transition-all flex items-center gap-2"><span>+</span> {t('workflow.partners.register')}</button></div>
+            <div className="flex gap-4 mb-8"><button onClick={() => setPartnerFilter('agency')} className={`px-6 py-2.5 rounded-full font-bold text-sm transition-all ${partnerFilter === 'agency' ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25' : 'bg-[var(--bg-card)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'}`}>{t('workflow.partners.tabs.agency')}</button><button onClick={() => setPartnerFilter('supplier')} className={`px-6 py-2.5 rounded-full font-bold text-sm transition-all ${partnerFilter === 'supplier' ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-500/25' : 'bg-[var(--bg-card)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'}`}>{t('workflow.partners.tabs.supplier')}</button></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">{filteredPartners.map(partner => (<div key={partner.id} className="bg-[var(--bg-card)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] rounded-2xl p-6 transition-all shadow-lg hover:shadow-[0_0_20px_rgba(0,0,0,0.3)] group relative overflow-hidden flex flex-col"><div className="flex justify-between items-start mb-4"><div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[var(--bg-secondary)] to-[var(--bg-primary)] flex items-center justify-center text-4xl shadow-inner border border-[var(--border-primary)]">{partner.logo}</div>{partner.isVerified && (<span className="flex items-center gap-1 bg-blue-500/10 text-blue-400 text-[10px] font-bold px-2 py-1 rounded-full border border-blue-500/20"><svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>{t('workflow.partners.verified')}</span>)}</div><h3 className="text-xl font-bold text-[var(--text-primary)] mb-1">{partner.name}</h3><p className="text-xs text-[var(--text-tertiary)] mb-4 flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" /></svg>{partner.location}</p><p className="text-sm text-[var(--text-secondary)] mb-4 line-clamp-3 flex-grow">{partner.description}</p><div className="flex flex-wrap gap-2 mb-6">{partner.specialties.map(spec => (<span key={spec} className="text-[10px] bg-[var(--bg-secondary)] text-[var(--text-secondary)] px-2 py-1 rounded border border-[var(--border-primary)]">#{spec}</span>))}</div><div className="grid grid-cols-2 gap-3 mt-auto"><a href={`mailto:${partner.contact.email}`} className="flex items-center justify-center gap-2 py-2 rounded-lg bg-[var(--bg-secondary)] text-[var(--text-primary)] text-xs font-bold hover:bg-[var(--border-primary)] transition-colors"><svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" /></svg>{t('workflow.partners.contact')}</a><a href={`https://${partner.contact.website}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 py-2 rounded-lg border border-[var(--border-primary)] text-[var(--text-primary)] text-xs font-bold hover:bg-[var(--bg-secondary)] transition-colors"><svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clipRule="evenodd" /></svg>{t('workflow.partners.website')}</a></div></div>))}</div>
+        </div>
+      );
+      default: return (
+        <div className="p-6 md:p-8 overflow-y-auto flex-1">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+                <div><h1 className="text-2xl font-bold">{t(`workflow.depts.${selectedDept}`)}</h1><p className="text-[var(--text-secondary)]">{filteredDocs.length} documents found</p></div>
+                <div className="flex gap-3">
+                    <button onClick={onOpenStudio} className="py-2 px-4 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-[var(--text-on-accent)] font-bold rounded-lg hover:opacity-90 transition-opacity flex items-center gap-2 shadow-lg shadow-[var(--accent-shadow)]"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" /></svg>{t('workflow.dashboard.create')}</button>
+                    <label className="cursor-pointer py-2 px-4 bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] font-bold rounded-lg hover:bg-[var(--border-primary)] transition-colors flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" /></svg>{t('workflow.dashboard.upload')}<input type="file" className="hidden" onChange={handleFileUpload} /></label>
+                </div>
+            </div>
+            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl overflow-hidden shadow-sm">
+                <div className="overflow-x-auto">
+                    <table className="w-full text-left border-collapse">
+                        <thead><tr className="bg-[var(--bg-secondary)] border-b border-[var(--border-primary)] text-xs uppercase tracking-wider text-[var(--text-secondary)]"><th className="p-4 font-medium">{t('workflow.dashboard.table.name')}</th><th className="p-4 font-medium">{t('workflow.dashboard.table.dept')}</th><th className="p-4 font-medium hidden md:table-cell">{t('workflow.dashboard.table.date')}</th><th className="p-4 font-medium">{t('workflow.dashboard.table.status')}</th><th className="p-4 font-medium text-right">{t('workflow.dashboard.table.action')}</th></tr></thead>
+                        <tbody className="divide-y divide-[var(--border-primary)]">
+                            {filteredDocs.length > 0 ? filteredDocs.map((doc) => (
+                                <tr key={doc.id} className="hover:bg-[var(--bg-secondary)]/50 transition-colors group">
+                                    <td className="p-4"><div className="flex items-center gap-3"><div className={`w-8 h-8 rounded flex items-center justify-center text-xs font-bold ${doc.isProject ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30' : 'bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)]'}`}>{doc.isProject ? 'P' : doc.type}</div><div><p className={`font-medium ${doc.isProject ? 'text-[var(--accent-primary)]' : 'text-[var(--text-primary)]'}`}>{doc.name}</p><p className="text-xs text-[var(--text-tertiary)]">{doc.uploader} • {doc.size}</p></div></div></td>
+                                    <td className="p-4 text-sm text-[var(--text-secondary)] capitalize">{t(`workflow.depts.${doc.department}`)}</td>
+                                    <td className="p-4 text-sm text-[var(--text-secondary)] hidden md:table-cell">{doc.uploadDate}</td>
+                                    <td className="p-4"><span className={`px-2 py-1 rounded text-xs font-bold uppercase border ${getStatusColor(doc.status)}`}>{t(`workflow.dashboard.status.${doc.status}`)}</span></td>
+                                    <td className="p-4 text-right"><div className="flex justify-end gap-2"><button onClick={() => doc.isProject ? setSelectedProject(projects.find(p => p.id === (doc.projectId || doc.id)) || null) : handleOpenChat(doc)} className="p-1 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" /></svg></button><button className="p-1 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" /></svg></button></div></td>
+                                </tr>
+                            )) : (<tr><td colSpan={5} className="p-8 text-center text-[var(--text-tertiary)]">{t('workflow.dashboard.noFiles')}</td></tr>)}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+      );
+    }
   };
 
   return (
-    <div className="min-h-screen bg-[var(--bg-primary)]">
-      {/* Header */}
-      <header className="sticky top-0 z-30 bg-[var(--bg-primary)]/80 backdrop-blur-lg border-b border-[var(--border-primary)]">
-        <div className="max-w-6xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-4">
-              <button
-                onClick={onBack}
-                className="p-2 hover:bg-[var(--bg-secondary)] rounded-lg transition-colors"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[var(--text-secondary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
-              </button>
-              <div>
-                <h1 className="text-xl font-bold text-[var(--text-primary)]">{t('workflow.title')}</h1>
-                <p className="text-sm text-[var(--text-secondary)]">{t('workflow.subtitle')}</p>
-              </div>
+    <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] font-sans flex">
+        {/* Sidebar */}
+        <div className="w-20 md:w-64 bg-[var(--bg-card)] border-r border-[var(--border-primary)] flex flex-col flex-shrink-0">
+            <div className="p-6 border-b border-[var(--border-primary)] flex items-center gap-3">
+                <button onClick={onBack} className="p-2 rounded-lg hover:bg-[var(--bg-secondary)] transition-colors"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" /></svg></button>
+                <span className="font-black text-lg hidden md:block tracking-tight text-white">Alpha Connect</span>
             </div>
-
-            {/* Search */}
-            <div className="relative">
-              <svg xmlns="http://www.w3.org/2000/svg" className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[var(--text-tertiary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder={t('workflow.search')}
-                className="pl-10 pr-4 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-sm text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent-primary)]"
-              />
+            <div className="flex-1 overflow-y-auto py-6 space-y-6 px-3">
+                <div><p className="px-4 text-[10px] font-bold text-[var(--text-tertiary)] uppercase tracking-wider mb-2">QUẢN LÝ FILE</p>
+                    <div className="space-y-1">
+                        <button onClick={() => { setActiveView('documents'); setSelectedProject(null); setSelectedDept('all'); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'documents' && selectedDept === 'all' && !selectedProject ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">📂</span><span className="hidden md:block text-sm">Tất cả tài liệu</span></button>
+                        <button onClick={() => { setActiveView('documents'); setSelectedProject(null); setSelectedDept('creative'); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'documents' && selectedDept === 'creative' && !selectedProject ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">🎨</span><span className="hidden md:block text-sm">Team Creative</span></button>
+                        <button onClick={() => { setActiveView('documents'); setSelectedProject(null); setSelectedDept('event_planner'); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'documents' && selectedDept === 'event_planner' && !selectedProject ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">📢</span><span className="hidden md:block text-sm">Event Planner</span></button>
+                        <button onClick={() => { setActiveView('projects'); setSelectedProject(null); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'projects' && !selectedProject ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">💼</span><span className="hidden md:block text-sm">Account</span></button>
+                        <button onClick={() => { setActiveView('documents'); setSelectedProject(null); setSelectedDept('operation'); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'documents' && selectedDept === 'operation' && !selectedProject ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">🏭</span><span className="hidden md:block text-sm">Sản xuất</span></button>
+                    </div>
+                </div>
+                <div><p className="px-4 text-[10px] font-bold text-[var(--text-tertiary)] uppercase tracking-wider mb-2">MẠNG LƯỚI & CƠ HỘI</p>
+                    <div className="space-y-1">
+                        <button onClick={() => { setActiveView('jobs'); setSelectedProject(null); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'jobs' ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">🚀</span><div className="hidden md:flex flex-col items-start"><span className="text-sm">Sàn việc làm</span><span className="text-[10px] opacity-70">Freelancer</span></div>{(activeView as string) !== 'jobs' && <span className="ml-auto bg-red-500 text-white text-[9px] px-1.5 py-0.5 rounded-full font-bold">New</span>}</button>
+                        <button onClick={() => { setActiveView('partners'); setSelectedProject(null); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'partners' ? 'bg-[#1e293b] border border-[var(--border-primary)] shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">🤝</span><span className={`hidden md:block text-sm ${(activeView as string) === 'partners' ? 'text-[var(--accent-primary)] font-bold' : ''}`}>Đối tác liên kết</span></button>
+                        <button onClick={() => { setActiveView('affiliate'); setSelectedProject(null); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'affiliate' ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">💸</span><span className="hidden md:block text-sm">Affiliate</span></button>
+                        <button onClick={() => { setActiveView('wallet'); setSelectedProject(null); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'wallet' ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">🪙</span><span className="hidden md:block text-sm">Ví Credit</span></button>
+                    </div>
+                </div>
+                <div><p className="px-4 text-[10px] font-bold text-[var(--text-tertiary)] uppercase tracking-wider mb-2">CỘNG ĐỒNG & TÀI NGUYÊN</p>
+                    <div className="space-y-1">
+                        <button onClick={() => { setActiveView('creative'); setSelectedProject(null); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'creative' ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">🎨</span><span className="hidden md:block text-sm">Chia sẻ Prompt</span></button>
+                        <button onClick={() => { setActiveView('resources'); setSelectedProject(null); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'resources' ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">📦</span><span className="hidden md:block text-sm">Kho Tài Nguyên</span></button>
+                    </div>
+                </div>
             </div>
-          </div>
-
-          {/* Tabs & Filters */}
-          <div className="flex items-center justify-between">
-            {/* Tabs */}
-            <div className="flex gap-1 bg-[var(--bg-secondary)] p-1 rounded-lg">
-              {(['projects', 'documents', 'team'] as TabType[]).map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`px-4 py-2 text-sm font-medium rounded-md transition-colors ${
-                    activeTab === tab
-                      ? 'bg-[var(--accent-primary)] text-white'
-                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
-                  }`}
-                >
-                  {t(`workflow.tab.${tab}`)}
-                </button>
-              ))}
-            </div>
-
-            {/* Department Filter */}
-            <select
-              value={departmentFilter}
-              onChange={(e) => setDepartmentFilter(e.target.value as DepartmentType)}
-              className="px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-sm text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)]"
-            >
-              <option value="all">{t('workflow.dept.all')}</option>
-              <option value="event_planner">{t('workflow.dept.eventPlanner')}</option>
-              <option value="creative">{t('workflow.dept.creative')}</option>
-              <option value="operation">{t('workflow.dept.operation')}</option>
-            </select>
-          </div>
+            <div className="p-4 border-t border-[var(--border-primary)]"><button onClick={onBack} className="flex items-center gap-3 p-2 w-full rounded-xl hover:bg-[var(--bg-secondary)] text-[var(--text-secondary)] hover:text-white transition-colors"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg><span className="hidden md:block text-sm font-bold">Thoát Studio</span></button></div>
         </div>
-      </header>
 
-      <main className="max-w-6xl mx-auto px-4 py-6">
-        {/* Projects Tab */}
-        {activeTab === 'projects' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {filteredProjects.map((project) => (
-              <button
-                key={project.id}
-                onClick={() => setSelectedProject(project)}
-                className="p-4 bg-[var(--bg-secondary)] rounded-xl text-left hover:bg-[var(--bg-tertiary)] transition-colors group"
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <h3 className="font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors">
-                      {project.name}
-                    </h3>
-                    <p className="text-sm text-[var(--text-tertiary)]">{project.client}</p>
-                  </div>
-                  <span className={`px-2 py-1 text-xs rounded-full ${getStatusColor(project.status)}`}>
-                    {t(`workflow.status.${project.status}`)}
-                  </span>
-                </div>
+        {/* Main Content */}
+        <div className="flex-1 flex flex-col h-screen overflow-hidden">
+            <header className="h-16 border-b border-[var(--border-primary)] bg-[var(--bg-card-alpha)] backdrop-blur-md flex items-center justify-between px-6 sticky top-0 z-20">
+                 <div className="flex items-center gap-4 flex-1"><div className="relative w-full max-w-md"><input type="text" placeholder={t('workflow.dashboard.search')} value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full pl-10 pr-4 py-2 bg-[#0f172a] border border-[var(--border-primary)] rounded-lg text-sm text-white focus:ring-1 focus:ring-[var(--accent-primary)] placeholder-gray-500" /><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg></div></div>
+                 <div className="flex items-center gap-4"><div className="flex items-center gap-2"><LanguageSwitcher /><ThemeSwitcher /></div><div onClick={() => setShowProfileModal(true)} className="w-8 h-8 rounded-full bg-gradient-to-tr from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center text-[var(--text-on-accent)] font-bold text-sm cursor-pointer hover:scale-110 transition-transform">{userProfile.name.charAt(0).toUpperCase()}</div></div>
+            </header>
+            {renderContent()}
+        </div>
 
-                <p className="text-sm text-[var(--text-secondary)] mb-3 line-clamp-2">{project.description}</p>
+        {/* Modals */}
+        <StudentProfileModal isOpen={showProfileModal} onClose={() => setShowProfileModal(false)} profile={userProfile} onSave={setUserProfile} />
+        <PartnerRegistrationModal isOpen={showPartnerModal} onClose={() => setShowPartnerModal(false)} onSubmit={handleAddPartner} />
 
-                {/* Progress Bar */}
-                <div className="mb-3">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs text-[var(--text-tertiary)]">{t('workflow.progress')}</span>
-                    <span className="text-xs text-[var(--accent-primary)]">{project.progress}%</span>
-                  </div>
-                  <div className="h-1.5 bg-[var(--bg-tertiary)] rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-[var(--accent-primary)] rounded-full"
-                      style={{ width: `${project.progress}%` }}
-                    />
-                  </div>
-                </div>
+        {showProjectModal && (<div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6"><h2 className="text-2xl font-bold mb-4">{t('workflow.dashboard.project.modalTitle')}</h2><form onSubmit={handleCreateProject} className="space-y-4"><input placeholder={t('workflow.dashboard.project.nameLabel')} value={newProjectData.name} onChange={e => setNewProjectData({...newProjectData, name: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input placeholder={t('workflow.dashboard.project.descLabel')} value={newProjectData.description} onChange={e => setNewProjectData({...newProjectData, description: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input placeholder="Client" value={newProjectData.client} onChange={e => setNewProjectData({...newProjectData, client: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input type="number" placeholder="Budget (Coins)" value={newProjectData.budget || ''} onChange={e => setNewProjectData({...newProjectData, budget: parseInt(e.target.value)})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><select value={newProjectData.department} onChange={e => setNewProjectData({...newProjectData, department: e.target.value as any})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"><option value="event_planner">Event Planner</option><option value="creative">Creative</option><option value="operation">Operation</option></select><div className="flex gap-2 justify-end mt-4"><button type="button" onClick={() => setShowProjectModal(false)} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">Cancel</button><button type="submit" className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.dashboard.project.createBtn')}</button></div></form></div></div>)}
 
-                <div className="flex items-center justify-between">
-                  <span className={`px-2 py-1 text-xs rounded-full ${getDepartmentColor(project.department)}`}>
-                    {t(`workflow.dept.${project.department.replace('_', '')}`)}
-                  </span>
-                  <div className="flex -space-x-2">
-                    {project.team.slice(0, 3).map((member, i) => (
-                      <div
-                        key={member.id}
-                        className="w-6 h-6 bg-[var(--accent-primary)]/20 rounded-full border-2 border-[var(--bg-secondary)] flex items-center justify-center text-xs text-[var(--accent-primary)]"
-                        style={{ zIndex: 3 - i }}
-                      >
-                        {member.name.charAt(0)}
-                      </div>
-                    ))}
-                    {project.team.length > 3 && (
-                      <div className="w-6 h-6 bg-[var(--bg-tertiary)] rounded-full border-2 border-[var(--bg-secondary)] flex items-center justify-center text-xs text-[var(--text-tertiary)]">
-                        +{project.team.length - 3}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </button>
-            ))}
-          </div>
-        )}
+        {showCreativeModal && (<div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6"><h2 className="text-2xl font-bold mb-4">{t('workflow.creative.form.title')}</h2><form onSubmit={handleCreateAsset} className="space-y-4"><input placeholder={t('workflow.creative.form.assetTitle')} value={newAssetData.title} onChange={e => setNewAssetData({...newAssetData, title: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><select value={newAssetData.type} onChange={e => setNewAssetData({...newAssetData, type: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"><option value="prompt">Prompt</option><option value="workflow">Workflow</option><option value="dataset">Dataset</option></select><textarea placeholder={t('workflow.creative.form.content')} value={newAssetData.content} onChange={e => setNewAssetData({...newAssetData, content: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg h-32" required /><input placeholder={t('workflow.creative.form.tags')} value={newAssetData.tags} onChange={e => setNewAssetData({...newAssetData, tags: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" /><div className="flex gap-2 justify-end mt-4"><button type="button" onClick={() => setShowCreativeModal(false)} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">Cancel</button><button type="submit" className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.creative.form.submit')}</button></div></form></div></div>)}
 
-        {/* Documents Tab */}
-        {activeTab === 'documents' && (
-          <div className="flex flex-col gap-3">
-            {filteredDocuments.map((doc) => (
-              <div
-                key={doc.id}
-                className="flex items-center gap-4 p-4 bg-[var(--bg-secondary)] rounded-xl hover:bg-[var(--bg-tertiary)] transition-colors"
-              >
-                {/* File Icon */}
-                <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
-                  doc.type === 'pdf' ? 'bg-red-500/20 text-red-400' :
-                  doc.type === 'psd' ? 'bg-blue-500/20 text-blue-400' :
-                  'bg-green-500/20 text-green-400'
-                }`}>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
+        {showResourceModal && (<div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6"><h2 className="text-2xl font-bold mb-4">{t('workflow.resources.form.title')}</h2><form onSubmit={handleUploadResource} className="space-y-4"><input placeholder={t('workflow.resources.form.name')} value={newResourceData.title} onChange={e => setNewResourceData({...newResourceData, title: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><select value={newResourceData.type} onChange={e => setNewResourceData({...newResourceData, type: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"><option value="project_file">Project File</option><option value="design_asset">Design Asset</option><option value="industry_data">Industry Data</option><option value="template">Template</option></select><input placeholder={t('workflow.resources.form.format')} value={newResourceData.format} onChange={e => setNewResourceData({...newResourceData, format: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><textarea placeholder={t('workflow.resources.form.desc')} value={newResourceData.description} onChange={e => setNewResourceData({...newResourceData, description: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg h-32" required /><div className="flex gap-2 justify-end mt-4"><button type="button" onClick={() => setShowResourceModal(false)} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">Cancel</button><button type="submit" className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.resources.form.submit')}</button></div></form></div></div>)}
 
-                {/* File Info */}
-                <div className="flex-1">
-                  <h3 className="font-medium text-[var(--text-primary)]">{doc.name}</h3>
-                  <p className="text-sm text-[var(--text-tertiary)]">
-                    {doc.size} • {doc.uploader} • {new Date(doc.uploadDate).toLocaleDateString()}
-                  </p>
-                </div>
-
-                {/* Status */}
-                <span className={`px-3 py-1 text-xs rounded-full ${getStatusColor(doc.status)}`}>
-                  {t(`workflow.status.${doc.status}`)}
-                </span>
-
-                {/* Actions */}
-                <div className="flex gap-2">
-                  <button className="p-2 hover:bg-[var(--bg-secondary)] rounded-lg transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[var(--text-secondary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                    </svg>
-                  </button>
-                  <button className="p-2 hover:bg-[var(--bg-secondary)] rounded-lg transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[var(--text-secondary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* Team Tab */}
-        {activeTab === 'team' && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {MOCK_TEAM.map((member) => (
-              <div
-                key={member.id}
-                className="p-4 bg-[var(--bg-secondary)] rounded-xl text-center"
-              >
-                <div className="w-20 h-20 mx-auto mb-3 bg-gradient-to-br from-[var(--accent-primary)] to-orange-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
-                  {member.name.charAt(0)}
-                </div>
-                <h3 className="font-semibold text-[var(--text-primary)]">{member.name}</h3>
-                <p className="text-sm text-[var(--text-secondary)] mb-2">{member.role}</p>
-                {member.isExternal && (
-                  <span className="px-3 py-1 bg-blue-500/20 text-blue-400 text-xs rounded-full">
-                    External Partner
-                  </span>
-                )}
-              </div>
-            ))}
-
-            {/* Add Team Member */}
-            <button className="p-4 bg-[var(--bg-secondary)] rounded-xl border-2 border-dashed border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-colors flex flex-col items-center justify-center min-h-[180px]">
-              <div className="w-12 h-12 bg-[var(--bg-tertiary)] rounded-full flex items-center justify-center mb-2">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[var(--text-tertiary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
-                </svg>
-              </div>
-              <span className="text-sm text-[var(--text-tertiary)]">{t('workflow.addMember')}</span>
-            </button>
-          </div>
-        )}
-      </main>
-
-      {/* Project Detail Modal */}
-      {selectedProject && renderProjectDetail()}
+        {showTaskModal && (<div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6"><h2 className="text-2xl font-bold mb-4">{t('workflow.dashboard.project.tasks.modal.title')}</h2><div className="space-y-4"><input placeholder={t('workflow.dashboard.project.tasks.modal.titleLabel')} value={newTaskData.title} onChange={e => setNewTaskData({...newTaskData, title: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" /><select value={newTaskData.assigneeId} onChange={e => setNewTaskData({...newTaskData, assigneeId: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"><option value="">Select Assignee</option>{availableUsers.map(u => (<option key={u.id} value={u.id}>{u.name} ({u.role})</option>))}</select><input type="date" value={newTaskData.dueDate} onChange={e => setNewTaskData({...newTaskData, dueDate: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" />{selectedFileForTask && (<div className="text-sm bg-[var(--bg-secondary)] p-2 rounded">Attached: {selectedFileForTask.name}</div>)}<div className="flex gap-2 justify-end mt-4"><button onClick={() => { setShowTaskModal(false); setSelectedFileForTask(null); }} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">Cancel</button><button onClick={handleCreateTask} className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.dashboard.project.tasks.modal.submit')}</button></div></div></div></div>)}
     </div>
   );
-};
-
-export default WorkflowDashboard;
+}
