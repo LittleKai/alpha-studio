@@ -339,6 +339,7 @@ export default {
     deadline: "Deadline",
     team: "Team",
     teamMembers: "Team Members",
+    external: "External",
     description: "Description",
     tasks: "Tasks",
     addMember: "Add Member",

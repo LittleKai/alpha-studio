@@ -244,7 +244,7 @@ const WorkflowDashboard: React.FC<WorkflowDashboardProps> = ({ onBack }) => {
                       <p className="text-xs text-[var(--text-tertiary)]">{member.role}</p>
                     </div>
                     {member.isExternal && (
-                      <span className="px-2 py-0.5 bg-blue-500/20 text-blue-400 text-xs rounded-full">External</span>
+                      <span className="px-2 py-0.5 bg-blue-500/20 text-blue-400 text-xs rounded-full">{t('workflow.external')}</span>
                     )}
                   </div>
                 ))}

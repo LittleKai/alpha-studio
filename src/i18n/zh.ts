@@ -226,6 +226,38 @@ export default {
   workflow: {
     title: "Alpha Connect",
     subtitle: "集中式文档中心",
+    search: "搜索...",
+    progress: "进度",
+    budget: "预算",
+    spent: "已花费",
+    deadline: "截止日期",
+    team: "团队",
+    teamMembers: "团队成员",
+    external: "外部",
+    description: "描述",
+    tasks: "任务",
+    addMember: "添加成员",
+    tab: {
+      projects: "项目",
+      documents: "文档",
+      team: "团队"
+    },
+    dept: {
+      all: "所有部门",
+      eventPlanner: "活动策划",
+      eventplanner: "活动策划",
+      creative: "创意",
+      operation: "运营"
+    },
+    status: {
+      planning: "规划中",
+      active: "进行中",
+      completed: "已完成",
+      archived: "已归档",
+      pending: "待处理",
+      approved: "已批准",
+      rejected: "已拒绝"
+    },
     login: {
       title: "员工访问",
       email: "员工 ID / 邮箱",
