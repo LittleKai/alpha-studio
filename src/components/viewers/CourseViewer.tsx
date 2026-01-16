@@ -32,8 +32,26 @@ const CourseViewer: React.FC<CourseViewerProps> = ({ course, onBack }) => {
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)]">
+      {/* Sticky Header */}
+      <header className="sticky top-0 z-30 bg-[var(--bg-primary)]/80 backdrop-blur-lg border-b border-[var(--border-primary)]">
+        <div className="max-w-4xl mx-auto px-4 py-3 flex items-center gap-4">
+          <button
+            onClick={onBack}
+            className="p-2 hover:bg-[var(--bg-secondary)] rounded-lg transition-colors"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[var(--text-secondary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+          </button>
+          <div className="flex-1 min-w-0">
+            <h1 className="text-lg font-bold text-[var(--text-primary)] truncate">{course.title}</h1>
+            <p className="text-sm text-[var(--text-secondary)]">{course.tag || course.level}</p>
+          </div>
+        </div>
+      </header>
+
       {/* Hero Section */}
-      <div className="relative h-64 md:h-80 bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)]">
+      <div className="relative h-48 md:h-64 bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)]">
         {course.image && (
           <img
             src={course.image}
@@ -42,16 +60,6 @@ const CourseViewer: React.FC<CourseViewerProps> = ({ course, onBack }) => {
           />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] to-transparent" />
-
-        {/* Back Button */}
-        <button
-          onClick={onBack}
-          className="absolute top-4 left-4 p-2 bg-[var(--bg-tertiary)]/50 hover:bg-[var(--bg-tertiary)] rounded-full transition-colors backdrop-blur-sm"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[var(--text-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-        </button>
 
         {/* Course Info */}
         <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
@@ -64,7 +72,7 @@ const CourseViewer: React.FC<CourseViewerProps> = ({ course, onBack }) => {
                 {course.duration} {t('landing.course.hours')}
               </span>
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-2">{course.title}</h1>
+            <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-2">{course.title}</h1>
             <p className="text-[var(--text-secondary)]">{course.instructor ? `${t('course.by')} ${course.instructor}` : ''}</p>
           </div>
         </div>

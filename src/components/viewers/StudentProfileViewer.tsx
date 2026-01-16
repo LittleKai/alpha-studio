@@ -14,8 +14,33 @@ const StudentProfileViewer: React.FC<StudentProfileViewerProps> = ({ student, on
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)]">
-      {/* Header */}
-      <div className="relative h-64 bg-gradient-to-br from-purple-600 to-[var(--accent-primary)]">
+      {/* Sticky Header */}
+      <header className="sticky top-0 z-30 bg-[var(--bg-primary)]/80 backdrop-blur-lg border-b border-[var(--border-primary)]">
+        <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <button
+              onClick={onBack}
+              className="p-2 hover:bg-[var(--bg-secondary)] rounded-lg transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[var(--text-secondary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+            </button>
+            <div className="flex-1 min-w-0">
+              <h1 className="text-lg font-bold text-[var(--text-primary)] truncate">{student.name}</h1>
+              <p className="text-sm text-[var(--accent-primary)]">{student.role}</p>
+            </div>
+          </div>
+          {student.hired && (
+            <span className="px-3 py-1 bg-green-500/20 text-green-400 text-sm font-medium rounded-full">
+              {t('student.hired')}
+            </span>
+          )}
+        </div>
+      </header>
+
+      {/* Cover Image */}
+      <div className="relative h-48 bg-gradient-to-br from-purple-600 to-[var(--accent-primary)]">
         {student.work && (
           <img
             src={student.work}
@@ -24,25 +49,6 @@ const StudentProfileViewer: React.FC<StudentProfileViewerProps> = ({ student, on
           />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] to-transparent" />
-
-        {/* Back Button */}
-        <button
-          onClick={onBack}
-          className="absolute top-4 left-4 p-2 bg-black/30 hover:bg-black/50 rounded-full transition-colors"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-        </button>
-
-        {/* Hired Badge */}
-        {student.hired && (
-          <div className="absolute top-4 right-4">
-            <span className="px-4 py-2 bg-green-500/80 backdrop-blur-sm text-white font-medium rounded-full">
-              {t('student.hired')}
-            </span>
-          </div>
-        )}
       </div>
 
       {/* Profile Content */}

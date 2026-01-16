@@ -12,8 +12,39 @@ const PartnerProfileViewer: React.FC<PartnerProfileViewerProps> = ({ partner, on
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)]">
-      {/* Header */}
-      <div className="relative h-48 md:h-64 bg-gradient-to-br from-blue-600 to-[var(--accent-primary)]">
+      {/* Sticky Header */}
+      <header className="sticky top-0 z-30 bg-[var(--bg-primary)]/80 backdrop-blur-lg border-b border-[var(--border-primary)]">
+        <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <button
+              onClick={onBack}
+              className="p-2 hover:bg-[var(--bg-secondary)] rounded-lg transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[var(--text-secondary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+            </button>
+            <div className="flex items-center gap-2">
+              <h1 className="text-lg font-bold text-[var(--text-primary)] truncate">{partner.name}</h1>
+              {partner.isVerified && (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+              )}
+            </div>
+          </div>
+          <span className={`px-3 py-1 text-sm font-medium rounded-full ${
+            partner.type === 'agency'
+              ? 'bg-purple-500/20 text-purple-400'
+              : 'bg-blue-500/20 text-blue-400'
+          }`}>
+            {partner.type === 'agency' ? t('partner.agency') : t('partner.supplier')}
+          </span>
+        </div>
+      </header>
+
+      {/* Cover Image */}
+      <div className="relative h-40 md:h-48 bg-gradient-to-br from-blue-600 to-[var(--accent-primary)]">
         {partner.coverImage && (
           <img
             src={partner.coverImage}
@@ -22,27 +53,6 @@ const PartnerProfileViewer: React.FC<PartnerProfileViewerProps> = ({ partner, on
           />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] to-transparent" />
-
-        {/* Back Button */}
-        <button
-          onClick={onBack}
-          className="absolute top-4 left-4 p-2 bg-black/30 hover:bg-black/50 rounded-full transition-colors"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-        </button>
-
-        {/* Partner Type Badge */}
-        <div className="absolute top-4 right-4">
-          <span className={`px-4 py-2 backdrop-blur-sm font-medium rounded-full ${
-            partner.type === 'agency'
-              ? 'bg-purple-500/80 text-white'
-              : 'bg-blue-500/80 text-white'
-          }`}>
-            {partner.type === 'agency' ? t('partner.agency') : t('partner.supplier')}
-          </span>
-        </div>
       </div>
 
       {/* Profile Content */}
