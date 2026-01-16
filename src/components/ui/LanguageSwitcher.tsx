@@ -15,7 +15,7 @@ const LanguageSwitcher: React.FC = () => {
       className="py-2 px-3 text-sm font-semibold text-[var(--text-primary)] bg-[rgba(107,114,128,0.2)] rounded-md hover:bg-[rgba(107,114,128,0.4)] transition-colors duration-200"
       aria-label="Switch language"
     >
-      {language === 'en' ? 'Tiếng Việt' : 'EN'}
+      {language === 'en' ? 'Tiếng Việt' : 'English'}
     </button>
   );
 };

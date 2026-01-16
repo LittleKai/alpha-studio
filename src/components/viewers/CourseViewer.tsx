@@ -1,6 +1,19 @@
 import React, { useState } from 'react';
 import { useTranslation } from '../../i18n/context';
-import type { CourseData, CourseModule } from '../../types';
+
+export interface CourseData {
+  id: string;
+  title: string;
+  tag: string;
+  description: string;
+  duration: string;
+  lessonsCount: number;
+  progress: number;
+  icon: string;
+  color: string;
+  videoUrl?: string; // Placeholder for video
+  syllabus: { title: string; duration: string }[];
+}
 
 interface CourseViewerProps {
   course: CourseData;
@@ -9,187 +22,134 @@ interface CourseViewerProps {
 
 const CourseViewer: React.FC<CourseViewerProps> = ({ course, onBack }) => {
   const { t } = useTranslation();
-  const [expandedModules, setExpandedModules] = useState<Set<string>>(new Set());
-
-  const toggleModule = (moduleId: string) => {
-    setExpandedModules(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(moduleId)) {
-        newSet.delete(moduleId);
-      } else {
-        newSet.add(moduleId);
-      }
-      return newSet;
-    });
-  };
-
-  // Handle both modules and syllabus formats
-  const modules = course.modules || [];
-  const syllabus = course.syllabus || [];
-  const totalLessons = modules.length > 0
-    ? modules.reduce((acc, mod) => acc + mod.lessons.length, 0)
-    : syllabus.length;
+  const [activeTab, setActiveTab] = useState<'syllabus' | 'overview'>('syllabus');
 
   return (
-    <div className="min-h-screen bg-[var(--bg-primary)]">
-      {/* Sticky Header */}
-      <header className="sticky top-0 z-30 bg-[var(--bg-primary)]/80 backdrop-blur-lg border-b border-[var(--border-primary)]">
-        <div className="max-w-4xl mx-auto px-4 py-3 flex items-center gap-4">
+    <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] font-sans flex flex-col">
+      {/* Header */}
+      <header className="sticky top-0 z-30 bg-[var(--bg-card-alpha)] backdrop-blur-lg border-b border-[var(--border-primary)] p-4">
+        <div className="container mx-auto flex items-center gap-4">
           <button
             onClick={onBack}
-            className="p-2 hover:bg-[var(--bg-secondary)] rounded-lg transition-colors"
+            className="p-2 rounded-full hover:bg-[var(--bg-secondary)] transition-colors text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[var(--text-secondary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
           </button>
-          <div className="flex-1 min-w-0">
-            <h1 className="text-lg font-bold text-[var(--text-primary)] truncate">{course.title}</h1>
-            <p className="text-sm text-[var(--text-secondary)]">{course.tag || course.level}</p>
-          </div>
+          <h1 className="text-lg md:text-xl font-bold truncate">{course.title}</h1>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <div className="relative h-48 md:h-64 bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)]">
-        {course.image && (
-          <img
-            src={course.image}
-            alt={course.title}
-            className="absolute inset-0 w-full h-full object-cover opacity-30"
-          />
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] to-transparent" />
-
-        {/* Course Info */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex flex-wrap gap-2 mb-3">
-              <span className="px-3 py-1 bg-[var(--bg-tertiary)]/50 backdrop-blur-sm rounded-full text-[var(--text-primary)] text-sm">
-                {course.level || course.tag}
-              </span>
-              <span className="px-3 py-1 bg-[var(--bg-tertiary)]/50 backdrop-blur-sm rounded-full text-[var(--text-primary)] text-sm">
-                {course.duration} {t('landing.course.hours')}
-              </span>
+      <main className="container mx-auto p-4 md:p-8 flex flex-col lg:flex-row gap-8 animate-fade-in">
+        {/* Left Column: Video Player & Main Content */}
+        <div className="flex-1 flex flex-col gap-6">
+          <div className="relative aspect-video bg-black rounded-2xl overflow-hidden border border-[var(--border-primary)] shadow-2xl">
+            {/* Mock Video Player UI */}
+            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-900 to-black">
+               <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${course.color} flex items-center justify-center blur-2xl opacity-50 absolute`}></div>
+               <button className="relative z-10 w-16 h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center hover:scale-110 transition-transform group">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white fill-current" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+               </button>
             </div>
-            <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mb-2">{course.title}</h1>
-            <p className="text-[var(--text-secondary)]">{course.instructor ? `${t('course.by')} ${course.instructor}` : ''}</p>
+            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+                <p className="text-white font-medium">01. {t('landing.course.intro')}</p>
+                <div className="w-full h-1 bg-gray-600 rounded-full mt-2 overflow-hidden">
+                    <div className="h-full bg-[var(--accent-primary)] w-1/3"></div>
+                </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      {/* Content */}
-      <div className="max-w-4xl mx-auto px-4 md:px-8 py-8">
-        {/* Stats */}
-        <div className="grid grid-cols-3 gap-4 mb-8">
-          <div className="bg-[var(--bg-secondary)] rounded-xl p-4 text-center">
-            <div className="text-2xl font-bold text-[var(--accent-primary)]">{modules.length > 0 ? modules.length : syllabus.length}</div>
-            <div className="text-sm text-[var(--text-secondary)]">{t('course.modules')}</div>
-          </div>
-          <div className="bg-[var(--bg-secondary)] rounded-xl p-4 text-center">
-            <div className="text-2xl font-bold text-[var(--accent-primary)]">{totalLessons}</div>
-            <div className="text-sm text-[var(--text-secondary)]">{t('course.lessons')}</div>
-          </div>
-          <div className="bg-[var(--bg-secondary)] rounded-xl p-4 text-center">
-            <div className="text-2xl font-bold text-[var(--accent-primary)]">{course.duration}</div>
-            <div className="text-sm text-[var(--text-secondary)]">{t('course.duration')}</div>
-          </div>
-        </div>
-
-        {/* Description */}
-        <div className="mb-8">
-          <h2 className="text-xl font-semibold text-[var(--text-primary)] mb-3">
-            {t('course.description')}
-          </h2>
-          <p className="text-[var(--text-secondary)] leading-relaxed">{course.description}</p>
-        </div>
-
-        {/* Modules */}
-        <div>
-          <h2 className="text-xl font-semibold text-[var(--text-primary)] mb-4">
-            {t('course.curriculum')}
-          </h2>
-          <div className="flex flex-col gap-3">
-            {modules.length > 0 ? modules.map((module: CourseModule, index: number) => {
-              const isExpanded = expandedModules.has(module.id);
-              return (
-                <div
-                  key={module.id}
-                  className="bg-[var(--bg-secondary)] rounded-xl overflow-hidden"
+          <div>
+             <div className="flex gap-6 border-b border-[var(--border-primary)] mb-4">
+                <button
+                    onClick={() => setActiveTab('syllabus')}
+                    className={`pb-2 text-sm font-semibold transition-colors relative ${activeTab === 'syllabus' ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
                 >
-                  <button
-                    onClick={() => toggleModule(module.id)}
-                    className="w-full p-4 flex items-center justify-between hover:bg-[var(--bg-tertiary)] transition-colors"
-                  >
-                    <div className="flex items-center gap-4">
-                      <span className="w-8 h-8 flex items-center justify-center bg-[var(--accent-primary)]/20 text-[var(--accent-primary)] rounded-lg font-semibold text-sm">
-                        {index + 1}
-                      </span>
-                      <div className="text-left">
-                        <h3 className="font-medium text-[var(--text-primary)]">{module.title}</h3>
-                        <p className="text-sm text-[var(--text-tertiary)]">
-                          {module.lessons.length} {t('course.lessons')} • {module.duration}
-                        </p>
-                      </div>
-                    </div>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className={`h-5 w-5 text-[var(--text-secondary)] transition-transform ${
-                        isExpanded ? 'rotate-180' : ''
-                      }`}
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
+                    {t('landing.course.syllabus')}
+                    {activeTab === 'syllabus' && <div className="absolute bottom-0 left-0 w-full h-0.5 bg-[var(--accent-primary)]"></div>}
+                </button>
+                <button
+                    onClick={() => setActiveTab('overview')}
+                    className={`pb-2 text-sm font-semibold transition-colors relative ${activeTab === 'overview' ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}
+                >
+                    {t('landing.course.overview')}
+                    {activeTab === 'overview' && <div className="absolute bottom-0 left-0 w-full h-0.5 bg-[var(--accent-primary)]"></div>}
+                </button>
+             </div>
 
-                  {isExpanded && (
-                    <div className="border-t border-[var(--border-primary)]">
-                      {module.lessons.map((lesson, lessonIndex) => (
-                        <div
-                          key={lessonIndex}
-                          className="px-4 py-3 flex items-center gap-3 hover:bg-[var(--bg-tertiary)] transition-colors"
-                        >
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[var(--text-tertiary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="text-sm text-[var(--text-secondary)]">{lesson}</span>
+             {activeTab === 'syllabus' ? (
+                 <div className="space-y-2">
+                    {course.syllabus.map((lesson, idx) => (
+                        <div key={idx} className="flex items-center justify-between p-4 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-colors cursor-pointer group">
+                            <div className="flex items-center gap-4">
+                                <div className="w-8 h-8 rounded-full bg-[var(--bg-card)] flex items-center justify-center text-xs font-bold text-[var(--text-tertiary)] group-hover:bg-[var(--accent-primary)] group-hover:text-white transition-colors">
+                                    {idx + 1}
+                                </div>
+                                <div>
+                                    <h4 className="font-medium text-[var(--text-primary)]">{lesson.title}</h4>
+                                    <p className="text-xs text-[var(--text-secondary)]">Video • {lesson.duration}</p>
+                                </div>
+                            </div>
+                            <div className="p-2 rounded-full border border-[var(--border-primary)] text-[var(--text-tertiary)] group-hover:bg-[var(--accent-primary)] group-hover:border-[var(--accent-primary)] group-hover:text-white transition-all">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                                </svg>
+                            </div>
                         </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              );
-            }) : syllabus.map((item, index) => (
-              <div
-                key={index}
-                className="bg-[var(--bg-secondary)] rounded-xl overflow-hidden p-4"
-              >
-                <div className="flex items-center gap-4">
-                  <span className="w-8 h-8 flex items-center justify-center bg-[var(--accent-primary)]/20 text-[var(--accent-primary)] rounded-lg font-semibold text-sm">
-                    {index + 1}
-                  </span>
-                  <div className="text-left flex-1">
-                    <h3 className="font-medium text-[var(--text-primary)]">{item.title}</h3>
-                    <p className="text-sm text-[var(--text-tertiary)]">{item.duration}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
+                    ))}
+                 </div>
+             ) : (
+                 <div className="prose prose-invert max-w-none">
+                     <p className="text-[var(--text-secondary)] leading-relaxed">{course.description}</p>
+                     <h3 className="text-[var(--text-primary)] font-bold mt-4">{t('landing.course.whatYouLearn')}</h3>
+                     <ul className="list-disc pl-5 text-[var(--text-secondary)] space-y-2">
+                        <li>{t('landing.course.point1')}</li>
+                        <li>{t('landing.course.point2')}</li>
+                        <li>{t('landing.course.point3')}</li>
+                     </ul>
+                 </div>
+             )}
           </div>
         </div>
 
-        {/* Enroll Button */}
-        <div className="mt-8">
-          <button className="w-full py-3 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-[var(--text-on-accent)] font-semibold rounded-xl hover:opacity-90 transition-all shadow-lg shadow-[var(--accent-shadow)]">
-            {t('course.enroll')}
-          </button>
+        {/* Right Column: Stats & Instructor (Sidebar) */}
+        <div className="w-full lg:w-80 flex flex-col gap-6">
+            <div className="p-6 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-primary)]">
+                <div className={`w-full aspect-video rounded-lg bg-gradient-to-br ${course.color} mb-4 flex items-center justify-center text-4xl shadow-lg`}>
+                    {course.icon}
+                </div>
+                <div className="flex justify-between items-center mb-4">
+                    <span className="text-2xl font-bold text-[var(--accent-primary)]">Free</span>
+                    <span className="px-2 py-1 text-xs font-bold bg-[var(--bg-secondary)] rounded border border-[var(--border-primary)]">{course.tag}</span>
+                </div>
+
+                <button className="w-full py-3 rounded-xl bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-[var(--text-on-accent)] font-bold shadow-lg shadow-[var(--accent-shadow)] hover:scale-105 transition-transform mb-4 flex items-center justify-center gap-2 group">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 group-hover:animate-pulse" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                    </svg>
+                    {t('landing.course.startLearning')}
+                </button>
+
+                <div className="space-y-3 text-sm text-[var(--text-secondary)]">
+                    <div className="flex justify-between border-b border-[var(--border-primary)] pb-2">
+                        <span>{t('landing.course.duration')}</span>
+                        <span className="font-medium text-[var(--text-primary)]">{course.duration} {t('landing.course.hours')}</span>
+                    </div>
+                    <div className="flex justify-between border-b border-[var(--border-primary)] pb-2">
+                        <span>{t('landing.course.lessons')}</span>
+                        <span className="font-medium text-[var(--text-primary)]">{course.lessonsCount}</span>
+                    </div>
+                    <div className="flex justify-between">
+                        <span>{t('landing.course.level')}</span>
+                        <span className="font-medium text-[var(--text-primary)]">{t('landing.course.beginner')}</span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 };

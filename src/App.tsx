@@ -40,7 +40,7 @@ const App: React.FC = () => {
     },
     {
       id: "ai-pro-design",
-      title: "AI Design Expert 2024",
+      title: "AI Design Expert 2026",
       tag: "Pro Course",
       description: "Master Midjourney, Stable Diffusion and advanced in-painting techniques to create event Key Visuals in 30 seconds.",
       duration: "18",
@@ -304,7 +304,7 @@ const App: React.FC = () => {
             </div>
           </div>
 
-          <div className="hidden md:flex items-center gap-10 text-[11px] font-extrabold uppercase tracking-widest">
+          <div className="hidden md:flex items-center gap-10 text-[14px] font-extrabold uppercase tracking-widest">
             <button onClick={() => setActiveView('home')} className="text-[var(--text-primary)] hover:text-[var(--accent-primary)] transition-colors">{t('landing.nav.academy')}</button>
             <button onClick={() => setActiveView('workflow')} className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors">{t('landing.nav.connect')}</button>
             <button onClick={() => setActiveView('server')} className="text-[var(--accent-primary)] border border-[var(--accent-primary)]/30 px-4 py-1.5 rounded-full hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-all">{t('landing.nav.aiCloud')}</button>
@@ -324,7 +324,7 @@ const App: React.FC = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative py-28 flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+      <section className="relative py-10 flex flex-col items-center justify-center text-center px-6 overflow-hidden">
         {/* Background Orbs */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[var(--accent-primary)]/10 rounded-full blur-[120px] -z-10"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] -z-10"></div>
@@ -359,7 +359,7 @@ const App: React.FC = () => {
       </section>
 
       {/* Training Programs Section */}
-      <section className="py-24 bg-[var(--bg-secondary)]/50 border-t border-[var(--border-primary)]">
+      <section className="py-10 bg-[var(--bg-secondary)]/50 border-t border-[var(--border-primary)]">
         <div className="container mx-auto px-6">
           <div className="flex justify-between items-end mb-16">
             <div className="space-y-2">
@@ -421,7 +421,7 @@ const App: React.FC = () => {
       </section>
 
       {/* Student Showcase Section */}
-      <section className="py-24 border-t border-[var(--border-primary)] relative overflow-hidden">
+      <section className="py-16 border-t border-[var(--border-primary)] relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] -z-10"></div>
         <div className="container mx-auto px-6">
           <div className="text-center mb-16 space-y-4">
@@ -463,7 +463,7 @@ const App: React.FC = () => {
       </section>
 
       {/* Strategic Partners Section */}
-      <section className="py-24 bg-[var(--bg-secondary)]/50 border-y border-[var(--border-primary)]">
+      <section className="py-10 bg-[var(--bg-secondary)]/50 border-y border-[var(--border-primary)]">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-12 mb-16">
             <div className="md:w-1/3 space-y-4">
@@ -505,7 +505,7 @@ const App: React.FC = () => {
       </section>
 
       {/* Features Showcase */}
-      <section className="py-24">
+      <section className="py-16">
         <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
             <h2 className="text-4xl md:text-5xl font-black text-[var(--text-primary)]">
@@ -556,7 +556,7 @@ const App: React.FC = () => {
             <span className="text-sm font-bold text-[var(--text-primary)] tracking-widest">ALPHA STUDIO ACADEMY</span>
           </div>
           <p className="text-[10px] text-[var(--text-tertiary)] font-bold uppercase tracking-widest">
-            © 2024 {t('landing.footer.copyright')}
+            © 2026 {t('landing.footer.copyright')}
           </p>
         </div>
       </footer>
