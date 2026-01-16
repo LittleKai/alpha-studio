@@ -1,19 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from '../../i18n/context';
-
-export interface CourseData {
-  id: string;
-  title: string;
-  tag: string;
-  description: string;
-  duration: string;
-  lessonsCount: number;
-  progress: number;
-  icon: string;
-  color: string;
-  videoUrl?: string; // Placeholder for video
-  syllabus: { title: string; duration: string }[];
-}
+import type { CourseData } from '../../types';
 
 interface CourseViewerProps {
   course: CourseData;
@@ -47,7 +34,7 @@ const CourseViewer: React.FC<CourseViewerProps> = ({ course, onBack }) => {
           <div className="relative aspect-video bg-black rounded-2xl overflow-hidden border border-[var(--border-primary)] shadow-2xl">
             {/* Mock Video Player UI */}
             <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-900 to-black">
-               <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${course.color} flex items-center justify-center blur-2xl opacity-50 absolute`}></div>
+               <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${course.color || 'from-purple-600 to-pink-500'} flex items-center justify-center blur-2xl opacity-50 absolute`}></div>
                <button className="relative z-10 w-16 h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center hover:scale-110 transition-transform group">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white fill-current" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z" />
@@ -82,7 +69,7 @@ const CourseViewer: React.FC<CourseViewerProps> = ({ course, onBack }) => {
 
              {activeTab === 'syllabus' ? (
                  <div className="space-y-2">
-                    {course.syllabus.map((lesson, idx) => (
+                    {(course.syllabus || []).map((lesson, idx) => (
                         <div key={idx} className="flex items-center justify-between p-4 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-colors cursor-pointer group">
                             <div className="flex items-center gap-4">
                                 <div className="w-8 h-8 rounded-full bg-[var(--bg-card)] flex items-center justify-center text-xs font-bold text-[var(--text-tertiary)] group-hover:bg-[var(--accent-primary)] group-hover:text-white transition-colors">
@@ -118,12 +105,12 @@ const CourseViewer: React.FC<CourseViewerProps> = ({ course, onBack }) => {
         {/* Right Column: Stats & Instructor (Sidebar) */}
         <div className="w-full lg:w-80 flex flex-col gap-6">
             <div className="p-6 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-primary)]">
-                <div className={`w-full aspect-video rounded-lg bg-gradient-to-br ${course.color} mb-4 flex items-center justify-center text-4xl shadow-lg`}>
-                    {course.icon}
+                <div className={`w-full aspect-video rounded-lg bg-gradient-to-br ${course.color || 'from-purple-600 to-pink-500'} mb-4 flex items-center justify-center text-4xl shadow-lg`}>
+                    {course.icon || '📚'}
                 </div>
                 <div className="flex justify-between items-center mb-4">
                     <span className="text-2xl font-bold text-[var(--accent-primary)]">Free</span>
-                    <span className="px-2 py-1 text-xs font-bold bg-[var(--bg-secondary)] rounded border border-[var(--border-primary)]">{course.tag}</span>
+                    {course.tag && <span className="px-2 py-1 text-xs font-bold bg-[var(--bg-secondary)] rounded border border-[var(--border-primary)]">{course.tag}</span>}
                 </div>
 
                 <button className="w-full py-3 rounded-xl bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-[var(--text-on-accent)] font-bold shadow-lg shadow-[var(--accent-shadow)] hover:scale-105 transition-transform mb-4 flex items-center justify-center gap-2 group">
@@ -140,7 +127,7 @@ const CourseViewer: React.FC<CourseViewerProps> = ({ course, onBack }) => {
                     </div>
                     <div className="flex justify-between border-b border-[var(--border-primary)] pb-2">
                         <span>{t('landing.course.lessons')}</span>
-                        <span className="font-medium text-[var(--text-primary)]">{course.lessonsCount}</span>
+                        <span className="font-medium text-[var(--text-primary)]">{course.lessonsCount || 0}</span>
                     </div>
                     <div className="flex justify-between">
                         <span>{t('landing.course.level')}</span>

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from '../../i18n/context';
 import type { WorkflowDocument, DepartmentType, Job, Transaction, PartnerCompany, PartnerType, UserProfile, AutomationRule, AffiliateStats, CreativeAsset, SharedResource, TeamMember, Comment, Project, Task } from '../../types';
-import StudentProfileModal from '../modals/StudentProfileModal';
+// StudentProfileModal not used - using inline profile display instead
 import PartnerRegistrationModal from '../modals/PartnerRegistrationModal';
 import LanguageSwitcher from '../ui/LanguageSwitcher';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
@@ -10,14 +10,23 @@ import Login from '../ui/Login';
 
 interface WorkflowDashboardProps {
   onBack: () => void;
-  documents: WorkflowDocument[];
-  onAddDocument: (doc: WorkflowDocument) => void;
-  onOpenStudio: () => void;
-  projects: Project[];
-  setProjects: React.Dispatch<React.SetStateAction<Project[]>>;
+  documents?: WorkflowDocument[];
+  onAddDocument?: (doc: WorkflowDocument) => void;
+  onOpenStudio?: () => void;
+  projects?: Project[];
+  setProjects?: React.Dispatch<React.SetStateAction<Project[]>>;
 }
 
-export default function WorkflowDashboard({ onBack, documents, onAddDocument, onOpenStudio, projects, setProjects }: WorkflowDashboardProps) {
+export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
+  // Internal state for documents and projects when not provided as props
+  const [internalDocuments, setInternalDocuments] = useState<WorkflowDocument[]>([]);
+  const [internalProjects, setInternalProjects] = useState<Project[]>([]);
+
+  const documents = internalDocuments;
+  const projects = internalProjects;
+  const setProjects = setInternalProjects;
+  const onAddDocument = (doc: WorkflowDocument) => setInternalDocuments(prev => [...prev, doc]);
+  const onOpenStudio = () => {};
   const { t } = useTranslation();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -28,8 +37,8 @@ export default function WorkflowDashboard({ onBack, documents, onAddDocument, on
   const [partnerFilter, setPartnerFilter] = useState<PartnerType>('agency');
 
   // Collaboration State
-  const [activeDocForChat, setActiveDocForChat] = useState<WorkflowDocument | null>(null);
-  const [chatMessage, setChatMessage] = useState('');
+  const [_activeDocForChat, setActiveDocForChat] = useState<WorkflowDocument | null>(null);
+  const [_chatMessage, _setChatMessage] = useState('');
   const [showMemberSelect, setShowMemberSelect] = useState(false);
 
   // Project Hub State
@@ -87,7 +96,7 @@ export default function WorkflowDashboard({ onBack, documents, onAddDocument, on
     { id: 'a3', name: 'Báo lỗi render qua WhatsApp', trigger: 'status_rejected', action: 'send_whatsapp', target: '+84909000111', isActive: false },
   ]);
 
-  const [affiliateData, setAffiliateData] = useState<AffiliateStats>({
+  const [affiliateData, _setAffiliateData] = useState<AffiliateStats>({
     totalEarned: 1250,
     pending: 300,
     referrals: 12,
@@ -111,7 +120,7 @@ export default function WorkflowDashboard({ onBack, documents, onAddDocument, on
   ]);
   const [newResourceData, setNewResourceData] = useState({ title: '', type: 'project_file', format: '', description: '' });
 
-  const jobs: Job[] = [
+  const _jobs: Job[] = [
     {
         id: '1',
         title: 'Thiết kế Key Visual sự kiện ra mắt xe điện',
@@ -307,7 +316,20 @@ export default function WorkflowDashboard({ onBack, documents, onAddDocument, on
       setNewResourceData({ title: '', type: 'project_file', format: '', description: '' });
   };
 
-  const handleAddPartner = (newPartner: PartnerCompany) => { setPartners(prev => [...prev, newPartner]); };
+  const handleAddPartner = (formData: { companyName: string; type: 'agency' | 'supplier'; email: string; phone: string; website: string; location: string; description: string; specialties: string[] }) => {
+    const newPartner: PartnerCompany = {
+      id: `p-${Date.now()}`,
+      name: formData.companyName,
+      logo: formData.type === 'agency' ? '✨' : '🔧',
+      type: formData.type,
+      location: formData.location,
+      description: formData.description,
+      contact: { phone: formData.phone, email: formData.email, website: formData.website },
+      specialties: formData.specialties,
+      isVerified: false
+    };
+    setPartners(prev => [...prev, newPartner]);
+  };
   const toggleAutomation = (id: string) => { setAutomations(prev => prev.map(a => a.id === id ? { ...a, isActive: !a.isActive } : a)); };
   const copyToClipboard = (text: string) => { navigator.clipboard.writeText(text); alert(t('workflow.affiliate.copied')); };
 
@@ -869,7 +891,32 @@ export default function WorkflowDashboard({ onBack, documents, onAddDocument, on
         </div>
 
         {/* Modals */}
-        <StudentProfileModal isOpen={showProfileModal} onClose={() => setShowProfileModal(false)} profile={userProfile} onSave={setUserProfile} />
+        {showProfileModal && (
+            <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+                <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-md p-6">
+                    <h2 className="text-2xl font-bold mb-4">Profile</h2>
+                    <div className="space-y-4">
+                        <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center text-3xl font-bold text-white">
+                            {userProfile.name.charAt(0).toUpperCase()}
+                        </div>
+                        <div className="text-center">
+                            <h3 className="text-xl font-bold">{userProfile.name}</h3>
+                            <p className="text-[var(--text-secondary)]">{userProfile.role}</p>
+                            <p className="text-[var(--text-tertiary)] text-sm">{userProfile.email}</p>
+                        </div>
+                        <div className="pt-4 border-t border-[var(--border-primary)]">
+                            <p className="text-sm text-[var(--text-secondary)]">{userProfile.bio}</p>
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                            {userProfile.skills.map(skill => (
+                                <span key={skill} className="px-2 py-1 bg-[var(--bg-secondary)] rounded text-xs">{skill}</span>
+                            ))}
+                        </div>
+                        <button onClick={() => setShowProfileModal(false)} className="w-full py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">Close</button>
+                    </div>
+                </div>
+            </div>
+        )}
         <PartnerRegistrationModal isOpen={showPartnerModal} onClose={() => setShowPartnerModal(false)} onSubmit={handleAddPartner} />
 
         {showProjectModal && (<div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6"><h2 className="text-2xl font-bold mb-4">{t('workflow.dashboard.project.modalTitle')}</h2><form onSubmit={handleCreateProject} className="space-y-4"><input placeholder={t('workflow.dashboard.project.nameLabel')} value={newProjectData.name} onChange={e => setNewProjectData({...newProjectData, name: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input placeholder={t('workflow.dashboard.project.descLabel')} value={newProjectData.description} onChange={e => setNewProjectData({...newProjectData, description: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input placeholder="Client" value={newProjectData.client} onChange={e => setNewProjectData({...newProjectData, client: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input type="number" placeholder="Budget (Coins)" value={newProjectData.budget || ''} onChange={e => setNewProjectData({...newProjectData, budget: parseInt(e.target.value)})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><select value={newProjectData.department} onChange={e => setNewProjectData({...newProjectData, department: e.target.value as any})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"><option value="event_planner">Event Planner</option><option value="creative">Creative</option><option value="operation">Operation</option></select><div className="flex gap-2 justify-end mt-4"><button type="button" onClick={() => setShowProjectModal(false)} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">Cancel</button><button type="submit" className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.dashboard.project.createBtn')}</button></div></form></div></div>)}

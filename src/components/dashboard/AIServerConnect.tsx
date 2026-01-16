@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from '../../i18n/context';
 import type { WorkflowDocument, ServerApp } from '../../types';
 
 interface AIServerConnectProps {
   onBack: () => void;
-  onAddDocument: (doc: WorkflowDocument) => void;
+  onAddDocument?: (doc: WorkflowDocument) => void;
 }
 
-const AIServerConnect: React.FC<AIServerConnectProps> = ({ onBack, onAddDocument }) => {
+export default function AIServerConnect({ onBack, onAddDocument }: AIServerConnectProps) {
   const { t } = useTranslation();
   const [isConnected, setIsConnected] = useState(false);
   const [isConnecting, setIsConnecting] = useState(false);
@@ -60,7 +60,7 @@ const AIServerConnect: React.FC<AIServerConnectProps> = ({ onBack, onAddDocument
       department: 'creative',
       status: 'approved'
     };
-    onAddDocument(newDoc);
+    onAddDocument?.(newDoc);
     alert(t('server.syncSuccess'));
   };
 
@@ -264,6 +264,4 @@ const AIServerConnect: React.FC<AIServerConnectProps> = ({ onBack, onAddDocument
       </footer>
     </div>
   );
-};
-
-export default AIServerConnect;
+}
