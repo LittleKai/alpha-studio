@@ -285,7 +285,7 @@ const StudioTool: React.FC<StudioToolProps> = ({ onBack }) => {
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             {history.length > 0 && (
-              <span className="absolute -top-1 -right-1 w-4 h-4 bg-[var(--accent-primary)] text-white text-xs rounded-full flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 w-4 h-4 bg-[var(--accent-primary)] text-[var(--text-on-accent)] text-xs rounded-full flex items-center justify-center">
                 {history.length}
               </span>
             )}
@@ -379,9 +379,9 @@ const StudioTool: React.FC<StudioToolProps> = ({ onBack }) => {
               <button
                 onClick={handleGenerate}
                 disabled={!canGenerate}
-                className={`w-full py-3 rounded-xl font-semibold text-white transition-all ${
+                className={`w-full py-3 rounded-xl font-semibold text-[var(--text-on-accent)] transition-all ${
                   canGenerate
-                    ? 'bg-gradient-to-r from-[var(--accent-primary)] to-orange-600 hover:from-orange-600 hover:to-[var(--accent-primary)] shadow-lg shadow-orange-500/25'
+                    ? 'bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] hover:opacity-90 shadow-lg shadow-[var(--accent-shadow)]'
                     : 'bg-gray-500 cursor-not-allowed'
                 }`}
               >

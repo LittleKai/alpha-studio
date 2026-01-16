@@ -527,7 +527,7 @@ const App: React.FC = () => {
                 </li>
               ))}
             </ul>
-            <button onClick={() => setActiveView('workflow')} className="py-4 px-10 glass-card rounded-2xl text-[var(--accent-primary)] font-black hover:bg-[var(--accent-primary)] hover:text-black transition-all">
+            <button onClick={() => setActiveView('workflow')} className="py-4 px-10 glass-card rounded-2xl text-[var(--accent-primary)] font-black hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-all">
               {t('landing.features.cta')}
             </button>
           </div>
@@ -535,7 +535,7 @@ const App: React.FC = () => {
             <div className="aspect-square glass-card rounded-[40px] flex items-center justify-center p-12 overflow-hidden shadow-2xl">
               <div className="grid grid-cols-2 gap-4 w-full">
                 {[1, 2, 3, 4].map(i => (
-                  <div key={i} className={`h-40 rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center text-4xl animate-pulse`}>
+                  <div key={i} className={`h-40 rounded-3xl bg-[var(--bg-tertiary)]/30 border border-[var(--border-primary)] flex items-center justify-center text-4xl animate-pulse`}>
                     {i === 1 ? '🎨' : i === 2 ? '📂' : i === 3 ? '⚙️' : '💻'}
                   </div>
                 ))}
@@ -550,10 +550,10 @@ const App: React.FC = () => {
       <footer className="py-16 border-t border-[var(--border-primary)] bg-[var(--bg-primary)] mt-auto">
         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">
-              <span className="text-white font-bold">A</span>
+            <div className="w-8 h-8 rounded-lg bg-[var(--bg-tertiary)]/50 flex items-center justify-center">
+              <span className="text-[var(--text-primary)] font-bold">A</span>
             </div>
-            <span className="text-sm font-bold text-white tracking-widest">ALPHA STUDIO ACADEMY</span>
+            <span className="text-sm font-bold text-[var(--text-primary)] tracking-widest">ALPHA STUDIO ACADEMY</span>
           </div>
           <p className="text-[10px] text-[var(--text-tertiary)] font-bold uppercase tracking-widest">
             © 2024 {t('landing.footer.copyright')}

@@ -33,7 +33,7 @@ const CourseViewer: React.FC<CourseViewerProps> = ({ course, onBack }) => {
   return (
     <div className="min-h-screen bg-[var(--bg-primary)]">
       {/* Hero Section */}
-      <div className="relative h-64 md:h-80 bg-gradient-to-br from-[var(--accent-primary)] to-orange-600">
+      <div className="relative h-64 md:h-80 bg-gradient-to-br from-[var(--accent-primary)] to-[var(--accent-secondary)]">
         {course.image && (
           <img
             src={course.image}
@@ -46,9 +46,9 @@ const CourseViewer: React.FC<CourseViewerProps> = ({ course, onBack }) => {
         {/* Back Button */}
         <button
           onClick={onBack}
-          className="absolute top-4 left-4 p-2 bg-black/30 hover:bg-black/50 rounded-full transition-colors"
+          className="absolute top-4 left-4 p-2 bg-[var(--bg-tertiary)]/50 hover:bg-[var(--bg-tertiary)] rounded-full transition-colors backdrop-blur-sm"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[var(--text-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
             <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
         </button>
@@ -57,15 +57,15 @@ const CourseViewer: React.FC<CourseViewerProps> = ({ course, onBack }) => {
         <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-wrap gap-2 mb-3">
-              <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm">
-                {course.level}
+              <span className="px-3 py-1 bg-[var(--bg-tertiary)]/50 backdrop-blur-sm rounded-full text-[var(--text-primary)] text-sm">
+                {course.level || course.tag}
               </span>
-              <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm">
-                {course.duration}
+              <span className="px-3 py-1 bg-[var(--bg-tertiary)]/50 backdrop-blur-sm rounded-full text-[var(--text-primary)] text-sm">
+                {course.duration} {t('landing.course.hours')}
               </span>
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">{course.title}</h1>
-            <p className="text-white/80">{t('course.by')} {course.instructor}</p>
+            <h1 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-2">{course.title}</h1>
+            <p className="text-[var(--text-secondary)]">{course.instructor ? `${t('course.by')} ${course.instructor}` : ''}</p>
           </div>
         </div>
       </div>
@@ -177,7 +177,7 @@ const CourseViewer: React.FC<CourseViewerProps> = ({ course, onBack }) => {
 
         {/* Enroll Button */}
         <div className="mt-8">
-          <button className="w-full py-3 bg-gradient-to-r from-[var(--accent-primary)] to-orange-600 text-white font-semibold rounded-xl hover:from-orange-600 hover:to-[var(--accent-primary)] transition-all shadow-lg shadow-orange-500/25">
+          <button className="w-full py-3 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-[var(--text-on-accent)] font-semibold rounded-xl hover:opacity-90 transition-all shadow-lg shadow-[var(--accent-shadow)]">
             {t('course.enroll')}
           </button>
         </div>
