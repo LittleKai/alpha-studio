@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { useTranslation } from '../../i18n/context';
-import type { WorkflowDocument, DepartmentType, Job, Transaction, PartnerCompany, PartnerType, UserProfile, AutomationRule, AffiliateStats, CreativeAsset, SharedResource, TeamMember, Comment, Project, Task } from '../../types';
+import type { WorkflowDocument, DepartmentType, Transaction, PartnerCompany, PartnerType, UserProfile, AutomationRule, AffiliateStats, CreativeAsset, SharedResource, TeamMember, Comment, Project, Task } from '../../types';
 // StudentProfileModal not used - using inline profile display instead
 import PartnerRegistrationModal from '../modals/PartnerRegistrationModal';
 import LanguageSwitcher from '../ui/LanguageSwitcher';
@@ -120,19 +120,6 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
   ]);
   const [newResourceData, setNewResourceData] = useState({ title: '', type: 'project_file', format: '', description: '' });
 
-  const _jobs: Job[] = [
-    {
-        id: '1',
-        title: 'Thiết kế Key Visual sự kiện ra mắt xe điện',
-        client: 'VinFast Agency',
-        budget: '5.000.000đ',
-        deadline: '25/06/2024',
-        description: 'Cần một bạn thiết kế KV phong cách Futuristic, sử dụng AI Midjourney và Photoshop. Yêu cầu biết Inpainting mở rộng bối cảnh.',
-        tags: ['2D Design', 'Midjourney', 'Futuristic'],
-        postedDate: '2 giờ trước',
-        applicants: 12
-    },
-  ];
 
   const [partners, setPartners] = useState<PartnerCompany[]>([
     {

@@ -1,5 +1,4 @@
-import React, { useState, useCallback } from 'react';
-import { TRANSFORMATIONS } from '../../constants';
+import { useState, useCallback } from 'react';
 import { editImage } from '../../services/geminiService';
 import type { GeneratedContent, Transformation } from '../../types';
 import TransformationSelector from './TransformationSelector';
@@ -57,7 +56,11 @@ export default function StudioTool({ onBack }: StudioToolProps) {
     setError(null);
 
     try {
-      const promptToUse = selectedTransformation.prompt;
+      const promptToUse = selectedTransformation.prompt || '';
+      if (!promptToUse) {
+        setError(t('app.error.noPrompt') || 'No prompt defined for this transformation');
+        return;
+      }
       const imageParts = [{
         base64: primaryImageUrl.split(',')[1],
         mimeType: primaryImageUrl.split(';')[0].split(':')[1] ?? 'image/png'
@@ -65,8 +68,8 @@ export default function StudioTool({ onBack }: StudioToolProps) {
 
       const result = await editImage(promptToUse, imageParts, selectedTransformation.hasMask ? maskDataUrl : null);
 
-      const finalResult = {
-        ...result,
+      const finalResult: GeneratedContent = {
+        imageUrl: result.imageUrl || '',
         originalImageUrl: primaryImageUrl,
         text: promptToUse
       };
