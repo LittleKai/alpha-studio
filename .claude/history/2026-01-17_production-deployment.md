@@ -35,7 +35,7 @@ VITE_API_URL=https://alpha-studio-backend.onrender.com/api
 ## Vercel Environment Variables
 | Key | Value |
 |-----|-------|
-| `VITE_GEMINI_API_KEY` | `AIzaSyC3SCrar3EW92GIwQGjUd13Ebcn22swQoM` |
+| `VITE_GEMINI_API_KEY` | |
 | `VITE_API_URL` | `https://alpha-studio-backend.onrender.com/api` |
 
 ## Deployment Notes

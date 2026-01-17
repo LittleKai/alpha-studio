@@ -703,5 +703,114 @@ export default {
     footer: {
       copyright: "PROFESSIONAL AI TRAINING PLATFORM. ALL RIGHTS RESERVED."
     }
+  },
+  admin: {
+    courses: {
+      title: "Course Management",
+      subtitle: "Manage training courses and content",
+      createNew: "Create New Course",
+      editCourse: "Edit Course",
+      deleteCourse: "Delete Course",
+      publish: "Publish",
+      unpublish: "Unpublish",
+      archive: "Archive",
+      edit: "Edit",
+      draft: "Draft",
+      published: "Published",
+      archived: "Archived",
+      free: "Free",
+      lessons: "lessons",
+      noDescription: "No description",
+      accessDenied: "Access denied. Admin only.",
+      dismiss: "Dismiss",
+      noCourses: "No courses found",
+      createFirst: "Create Your First Course",
+      searchPlaceholder: "Search courses...",
+      allCategories: "All Categories",
+      allStatus: "All Status",
+      sortNewest: "Newest First",
+      sortOldest: "Oldest First",
+      sortPopular: "Most Popular",
+      sortRating: "Highest Rated",
+      sortPriceHigh: "Price: High to Low",
+      sortPriceLow: "Price: Low to High",
+      deleteConfirmTitle: "Delete Course?",
+      deleteConfirmMessage: "This action cannot be undone. Are you sure you want to delete this course?",
+      categories: {
+        aiBasic: "AI Basic",
+        aiAdvanced: "AI Advanced",
+        aiStudio: "AI Studio",
+        aiCreative: "AI Creative"
+      },
+      levels: {
+        beginner: "Beginner",
+        intermediate: "Intermediate",
+        advanced: "Advanced"
+      },
+      stats: {
+        totalCourses: "Total Courses",
+        publishedCourses: "Published",
+        totalEnrollments: "Total Enrollments",
+        averageRating: "Avg Rating"
+      },
+      form: {
+        basicInfo: "Basic Information",
+        content: "Content",
+        pricing: "Pricing",
+        modules: "Modules",
+        title: "Title",
+        titlePlaceholder: "Enter course title...",
+        description: "Description",
+        descriptionPlaceholder: "Enter course description...",
+        category: "Category",
+        level: "Level",
+        thumbnail: "Thumbnail URL",
+        thumbnailPlaceholder: "https://example.com/image.jpg",
+        duration: "Duration (hours)",
+        instructor: "Instructor",
+        instructorName: "Name",
+        instructorAvatar: "Avatar URL",
+        instructorBio: "Bio",
+        tags: "Tags",
+        addTag: "Add tag...",
+        add: "Add",
+        prerequisites: "Prerequisites",
+        addPrerequisite: "Add prerequisite...",
+        learningOutcomes: "Learning Outcomes",
+        addOutcome: "Add Outcome",
+        price: "Price (VND)",
+        discount: "Discount (%)",
+        pricePreview: "Final Price Preview",
+        saveDraft: "Save as Draft",
+        publishCourse: "Publish Course",
+        saving: "Saving...",
+        cancel: "Cancel",
+        addModule: "Add Module",
+        addLesson: "Add Lesson",
+        noModules: "No modules yet",
+        addFirstModule: "Add Your First Module",
+        moduleTitleVi: "Module title (Vietnamese)",
+        moduleTitleEn: "Module title (English)",
+        lessonTitleVi: "Lesson title (Vietnamese)",
+        lessonTitleEn: "Lesson title (English)",
+        contentUrl: "Content URL",
+        lessonTypes: {
+          video: "Video",
+          text: "Text",
+          quiz: "Quiz",
+          assignment: "Assignment"
+        },
+        errors: {
+          titleRequired: "Title in both languages is required",
+          categoryRequired: "Category is required"
+        }
+      },
+      messages: {
+        createSuccess: "Course created successfully!",
+        updateSuccess: "Course updated successfully!",
+        deleteSuccess: "Course deleted successfully!",
+        publishSuccess: "Course published successfully!"
+      }
+    }
   }
 };

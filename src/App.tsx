@@ -13,12 +13,13 @@ import PartnerProfileViewer from './components/viewers/PartnerProfileViewer';
 import ThemeSwitcher from './components/ui/ThemeSwitcher';
 import LanguageSwitcher from './components/ui/LanguageSwitcher';
 import Login from './components/ui/Login';
+import CourseManagement from './components/admin/CourseManagement';
 
 const App: React.FC = () => {
   const { t } = useTranslation();
   const { isAuthenticated, isLoading: authLoading, user, logout } = useAuth();
 
-  const [activeView, setActiveView] = useState<'home' | 'studio' | 'workflow' | 'server'>('home');
+  const [activeView, setActiveView] = useState<'home' | 'studio' | 'workflow' | 'server' | 'admin-courses'>('home');
   const [selectedCourse, setSelectedCourse] = useState<CourseData | null>(null);
   const [selectedStudent, setSelectedStudent] = useState<FeaturedStudent | null>(null);
   const [selectedPartner, setSelectedPartner] = useState<PartnerCompany | null>(null);
@@ -332,6 +333,7 @@ const App: React.FC = () => {
   if (activeView === 'studio') return <StudioTool onBack={() => setActiveView('home')} />;
   if (activeView === 'server') return <AIServerConnect onBack={() => setActiveView('home')} />;
   if (activeView === 'workflow') return <WorkflowDashboard onBack={() => setActiveView('home')} />;
+  if (activeView === 'admin-courses') return <CourseManagement onBack={() => setActiveView('home')} />;
   if (selectedCourse) return <CourseViewer course={selectedCourse} onBack={() => setSelectedCourse(null)} />;
   if (selectedStudent) return <StudentProfileViewer student={selectedStudent} onBack={() => setSelectedStudent(null)} />;
   if (selectedPartner) return <PartnerProfileViewer partner={selectedPartner} onBack={() => setSelectedPartner(null)} />;
@@ -386,6 +388,17 @@ const App: React.FC = () => {
                       <p className="text-sm font-medium text-[var(--text-primary)] truncate">{user?.email}</p>
                       <p className="text-xs text-[var(--accent-primary)] capitalize">{user?.role}</p>
                     </div>
+                    {user?.role === 'admin' && (
+                      <button
+                        onClick={() => setActiveView('admin-courses')}
+                        className="w-full text-left px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] transition-colors flex items-center gap-2"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                          <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
+                        </svg>
+                        {t('admin.courses.title')}
+                      </button>
+                    )}
                     <button
                       onClick={handleLogout}
                       className="w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-red-500/10 transition-colors flex items-center gap-2"
