@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from '../../i18n/context';
 import type { WorkflowDocument, ServerApp } from '../../types';
+import LanguageSwitcher from '../ui/LanguageSwitcher';
+import ThemeSwitcher from '../ui/ThemeSwitcher';
 
 interface AIServerConnectProps {
   onBack: () => void;
@@ -66,27 +68,52 @@ export default function AIServerConnect({ onBack, onAddDocument }: AIServerConne
 
   if (!isConnected) {
     return (
-      <div className="min-h-screen bg-[#050a18] text-white flex items-center justify-center p-6 relative overflow-hidden">
+      <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] flex flex-col relative overflow-hidden">
         <div className="absolute top-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,212,255,0.05)_0,transparent_70%)]"></div>
 
-        {/* Balance Display Top Right */}
-        <div className="absolute top-6 right-6 z-20 flex items-center gap-4">
-            <div className="glass-card px-4 py-2 rounded-full flex items-center gap-2 border-yellow-500/30">
+        {/* Sticky Header */}
+        <header className="sticky top-0 z-30 bg-[var(--bg-card-alpha)] backdrop-blur-lg border-b border-[var(--border-primary)] px-6 py-4">
+          <div className="container mx-auto flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <button
+                onClick={onBack}
+                className="p-2 rounded-full hover:bg-[var(--bg-secondary)] transition-colors text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+              </button>
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--accent-primary)] to-blue-600 flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">A</span>
+                </div>
+                <span className="text-lg font-bold">AI Cloud GPU</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              {/* Balance Display */}
+              <div className="glass-card px-4 py-2 rounded-full flex items-center gap-2 border-yellow-500/30">
                 <span className="text-yellow-400 text-xl">🪙</span>
                 <div>
-                    <div className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">{t('server.billing.balance')}</div>
-                    <div className="font-mono font-bold text-lg leading-none">{balance}</div>
+                  <div className="text-[10px] text-[var(--text-tertiary)] font-bold uppercase tracking-wider">{t('server.billing.balance')}</div>
+                  <div className="font-mono font-bold text-lg leading-none">{balance}</div>
                 </div>
-            </div>
-            <button
+              </div>
+              <button
                 onClick={handleTopUp}
                 className="bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-400 hover:to-amber-500 text-black px-4 py-2 rounded-full font-bold text-xs shadow-lg"
-            >
+              >
                 + {t('server.billing.topUp')}
-            </button>
-        </div>
+              </button>
+              <LanguageSwitcher />
+              <ThemeSwitcher />
+            </div>
+          </div>
+        </header>
 
-        <div className="max-w-md w-full text-center space-y-10 animate-fade-in relative z-10">
+        {/* Main Content */}
+        <div className="flex-1 flex items-center justify-center p-6">
+          <div className="max-w-md w-full text-center space-y-10 animate-fade-in relative z-10">
           <div className="w-32 h-32 bg-blue-600/10 rounded-[40px] flex items-center justify-center mx-auto border border-blue-500/30 shadow-[0_0_50px_rgba(59,130,246,0.2)]">
             <span className="text-6xl">💻</span>
           </div>
@@ -124,32 +151,40 @@ export default function AIServerConnect({ onBack, onAddDocument }: AIServerConne
             </button>
           </div>
 
-          <button onClick={onBack} className="text-xs font-bold text-[var(--text-tertiary)] hover:text-white transition-colors uppercase tracking-widest">
-             Quay lại Trang chủ
-          </button>
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#020617] text-white flex flex-col overflow-hidden select-none font-sans">
+    <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] flex flex-col overflow-hidden select-none font-sans">
       {/* OS Header */}
-      <header className="h-12 bg-black/40 backdrop-blur-xl border-b border-white/5 flex items-center justify-between px-6 text-[10px] font-black tracking-[0.2em] uppercase">
-        <div className="flex items-center gap-6">
+      <header className="h-14 bg-[var(--bg-card-alpha)] backdrop-blur-xl border-b border-[var(--border-primary)] flex items-center justify-between px-6 text-[10px] font-black tracking-[0.2em] uppercase">
+        <div className="flex items-center gap-4">
+          <button
+            onClick={onBack}
+            className="p-2 rounded-full hover:bg-[var(--bg-secondary)] transition-colors text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+          </button>
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
             <span className="text-[var(--accent-primary)]">Alpha Cloud OS v2.5</span>
           </div>
-          <span className="text-gray-500 hidden sm:inline">GPU: 24.5GB / 96GB | Latency: 12ms</span>
+          <span className="text-[var(--text-tertiary)] hidden sm:inline">GPU: 24.5GB / 96GB | Latency: 12ms</span>
         </div>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2 text-yellow-500">
              <span>🪙 {balance}</span>
           </div>
-          <div className="w-px h-3 bg-white/20"></div>
-          <span className="text-gray-500">USER: ALPHA_STUDENT_001</span>
+          <div className="w-px h-3 bg-[var(--border-primary)]"></div>
+          <span className="text-[var(--text-tertiary)] hidden sm:inline">USER: ALPHA_STUDENT_001</span>
           <button onClick={() => setIsConnected(false)} className="bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white px-3 py-1.5 rounded-lg transition-all">Ngắt kết nối</button>
+          <LanguageSwitcher />
+          <ThemeSwitcher />
         </div>
       </header>
 
@@ -162,30 +197,30 @@ export default function AIServerConnect({ onBack, onAddDocument }: AIServerConne
               onClick={() => setActiveApp(app)}
               className="group flex flex-col items-center gap-4 cursor-pointer relative"
             >
-              <div className="absolute top-0 right-0 z-10 bg-black/80 text-yellow-400 text-[10px] px-2 py-0.5 rounded-full border border-yellow-500/30 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="absolute top-0 right-0 z-10 bg-[var(--bg-primary)]/90 text-yellow-400 text-[10px] px-2 py-0.5 rounded-full border border-yellow-500/30 opacity-0 group-hover:opacity-100 transition-opacity">
                   {app.costPerHour} {t('server.billing.costPerHour')}
               </div>
               <div className="w-24 h-24 glass-card rounded-[32px] flex items-center justify-center text-5xl group-hover:scale-110 group-hover:border-[var(--accent-primary)] group-hover:shadow-[0_0_30px_rgba(0,212,255,0.2)] transition-all duration-300 relative overflow-hidden">
                 {app.icon}
                 {app.status === 'busy' && (
-                    <div className="absolute inset-0 bg-black/60 flex items-center justify-center backdrop-blur-sm">
+                    <div className="absolute inset-0 bg-[var(--bg-primary)]/80 flex items-center justify-center backdrop-blur-sm">
                         <span className="text-[10px] font-bold text-red-500 uppercase">Busy</span>
                     </div>
                 )}
               </div>
-              <span className="text-xs font-bold text-gray-400 group-hover:text-white text-center tracking-tight max-w-[120px]">{app.name}</span>
+              <span className="text-xs font-bold text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] text-center tracking-tight max-w-[120px]">{app.name}</span>
             </div>
           ))}
         </div>
 
         {/* Taskbar logic for Virtual Window */}
         {activeApp && (
-          <div className="fixed inset-8 z-50 flex flex-col bg-[#0f172a] rounded-[32px] border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.8)] animate-fade-in overflow-hidden">
-            <div className="h-14 bg-black/40 flex items-center justify-between px-6 border-b border-white/5">
+          <div className="fixed inset-8 z-50 flex flex-col bg-[var(--bg-card)] rounded-[32px] border border-[var(--border-primary)] shadow-[0_40px_100px_rgba(0,0,0,0.8)] animate-fade-in overflow-hidden">
+            <div className="h-14 bg-[var(--bg-card-alpha)] flex items-center justify-between px-6 border-b border-[var(--border-primary)]">
               <div className="flex items-center gap-4">
                 <span className="text-2xl">{activeApp.icon}</span>
                 <div className="flex flex-col">
-                  <span className="text-sm font-black text-white">{activeApp.name}</span>
+                  <span className="text-sm font-black text-[var(--text-primary)]">{activeApp.name}</span>
                   <div className="flex items-center gap-2">
                      <span className="text-[9px] text-green-500 font-bold tracking-widest uppercase">Remote Control Active</span>
                      <span className="text-[9px] text-yellow-500 font-bold">• {activeApp.costPerHour} Coin/h</span>
@@ -201,14 +236,14 @@ export default function AIServerConnect({ onBack, onAddDocument }: AIServerConne
                 </button>
                 <button
                   onClick={() => setActiveApp(null)}
-                  className="bg-white/5 hover:bg-red-600 text-[10px] px-4 py-2 rounded-xl font-black transition-all"
+                  className="bg-[var(--bg-secondary)] hover:bg-red-600 text-[10px] px-4 py-2 rounded-xl font-black transition-all"
                 >
                   ĐÓNG
                 </button>
               </div>
             </div>
 
-            <div className="flex-1 bg-black flex items-center justify-center relative overflow-hidden group">
+            <div className="flex-1 bg-[var(--bg-secondary)] flex items-center justify-center relative overflow-hidden group">
                <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
 
                {/* UI Mockup for the remote software */}
@@ -217,8 +252,8 @@ export default function AIServerConnect({ onBack, onAddDocument }: AIServerConne
                     <span className="text-4xl animate-pulse">⚡</span>
                   </div>
                   <div className="space-y-2">
-                    <p className="text-gray-400 text-sm font-bold uppercase tracking-[0.3em]">Alpha Stream Engine</p>
-                    <p className="text-[10px] text-gray-600">Đang nhận luồng 4K @60fps từ Node_S1</p>
+                    <p className="text-[var(--text-secondary)] text-sm font-bold uppercase tracking-[0.3em]">Alpha Stream Engine</p>
+                    <p className="text-[10px] text-[var(--text-tertiary)]">Đang nhận luồng 4K @60fps từ Node_S1</p>
                   </div>
                   <div className="text-xs text-[var(--accent-primary)] mt-4">
                       {activeApp.description}
@@ -226,12 +261,12 @@ export default function AIServerConnect({ onBack, onAddDocument }: AIServerConne
                </div>
 
                {/* Interaction Hint */}
-               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20 backdrop-blur-[2px] pointer-events-none">
-                  <span className="bg-white text-black px-4 py-2 rounded-full font-bold text-xs shadow-xl">Sử dụng chuột và bàn phím để điều khiển</span>
+               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-[var(--bg-primary)]/20 backdrop-blur-[2px] pointer-events-none">
+                  <span className="bg-[var(--text-primary)] text-[var(--bg-primary)] px-4 py-2 rounded-full font-bold text-xs shadow-xl">Sử dụng chuột và bàn phím để điều khiển</span>
                </div>
             </div>
 
-            <div className="h-10 bg-black/60 px-6 flex items-center justify-between text-[9px] font-bold text-gray-500 uppercase tracking-widest">
+            <div className="h-10 bg-[var(--bg-card-alpha)] px-6 flex items-center justify-between text-[9px] font-bold text-[var(--text-tertiary)] uppercase tracking-widest">
                <span>Memory: 18.4GB / 24.0GB</span>
                <span>RTX 4090 Load: 68%</span>
             </div>
@@ -240,24 +275,24 @@ export default function AIServerConnect({ onBack, onAddDocument }: AIServerConne
       </main>
 
       {/* Taskbar */}
-      <footer className="h-16 bg-black/80 backdrop-blur-3xl border-t border-white/5 flex items-center justify-center gap-5 px-6 pb-2 overflow-x-auto">
-        <div className="w-12 h-12 bg-gradient-to-br from-[var(--accent-primary)] to-blue-600 rounded-2xl flex items-center justify-center text-black font-black text-2xl shadow-lg hover:rotate-12 transition-all cursor-pointer flex-shrink-0">A</div>
-        <div className="w-px h-8 bg-white/10 mx-2 flex-shrink-0"></div>
+      <footer className="h-16 bg-[var(--bg-card-alpha)] backdrop-blur-3xl border-t border-[var(--border-primary)] flex items-center justify-center gap-5 px-6 pb-2 overflow-x-auto">
+        <div className="w-12 h-12 bg-gradient-to-br from-[var(--accent-primary)] to-blue-600 rounded-2xl flex items-center justify-center text-white font-black text-2xl shadow-lg hover:rotate-12 transition-all cursor-pointer flex-shrink-0">A</div>
+        <div className="w-px h-8 bg-[var(--border-primary)] mx-2 flex-shrink-0"></div>
         <div className="flex gap-4">
             {apps.map(app => (
             <div
                 key={app.id}
                 onClick={() => setActiveApp(app)}
-                className={`w-12 h-12 rounded-2xl flex items-center justify-center text-3xl transition-all cursor-pointer hover:bg-white/5 flex-shrink-0 ${activeApp?.id === app.id ? 'bg-white/10 border-b-4 border-[var(--accent-primary)]' : ''}`}
+                className={`w-12 h-12 rounded-2xl flex items-center justify-center text-3xl transition-all cursor-pointer hover:bg-[var(--bg-secondary)] flex-shrink-0 ${activeApp?.id === app.id ? 'bg-[var(--bg-secondary)] border-b-4 border-[var(--accent-primary)]' : ''}`}
                 title={app.name}
             >
                 {app.icon}
             </div>
             ))}
         </div>
-        <div className="w-px h-8 bg-white/10 mx-2 flex-shrink-0"></div>
+        <div className="w-px h-8 bg-[var(--border-primary)] mx-2 flex-shrink-0"></div>
         <div className="flex-1"></div>
-        <div className="text-[10px] font-bold text-gray-500 text-right flex-shrink-0">
+        <div className="text-[10px] font-bold text-[var(--text-tertiary)] text-right flex-shrink-0">
           <div>VN_NODE_ALPHA</div>
           <div className="text-green-500">SECURE CONNECTED</div>
         </div>

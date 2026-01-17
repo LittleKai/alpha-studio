@@ -11,6 +11,7 @@ import StudentProfileViewer from './components/viewers/StudentProfileViewer';
 import PartnerProfileViewer from './components/viewers/PartnerProfileViewer';
 import ThemeSwitcher from './components/ui/ThemeSwitcher';
 import LanguageSwitcher from './components/ui/LanguageSwitcher';
+import Login from './components/ui/Login';
 
 const App: React.FC = () => {
   const { t } = useTranslation();
@@ -18,6 +19,35 @@ const App: React.FC = () => {
   const [selectedCourse, setSelectedCourse] = useState<CourseData | null>(null);
   const [selectedStudent, setSelectedStudent] = useState<FeaturedStudent | null>(null);
   const [selectedPartner, setSelectedPartner] = useState<PartnerCompany | null>(null);
+
+  // Authentication state
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [showLoginDialog, setShowLoginDialog] = useState(false);
+  const [pendingView, setPendingView] = useState<'studio' | 'workflow' | 'server' | null>(null);
+
+  const handleLoginSuccess = (_username: string) => {
+    setIsAuthenticated(true);
+    setShowLoginDialog(false);
+    // Navigate to pending view if there was one
+    if (pendingView) {
+      setActiveView(pendingView);
+      setPendingView(null);
+    }
+  };
+
+  const handleCloseLoginDialog = () => {
+    setShowLoginDialog(false);
+    setPendingView(null);
+  };
+
+  const navigateToProtectedPage = (view: 'studio' | 'workflow' | 'server') => {
+    if (isAuthenticated) {
+      setActiveView(view);
+    } else {
+      setPendingView(view);
+      setShowLoginDialog(true);
+    }
+  };
 
   // Course data
   const courses: CourseData[] = [
@@ -306,19 +336,28 @@ const App: React.FC = () => {
 
           <div className="hidden md:flex items-center gap-10 text-[14px] font-extrabold uppercase tracking-widest">
             <button onClick={() => setActiveView('home')} className="text-[var(--text-primary)] hover:text-[var(--accent-primary)] transition-colors">{t('landing.nav.academy')}</button>
-            <button onClick={() => setActiveView('workflow')} className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors">{t('landing.nav.connect')}</button>
-            <button onClick={() => setActiveView('server')} className="text-[var(--accent-primary)] border border-[var(--accent-primary)]/30 px-4 py-1.5 rounded-full hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-all">{t('landing.nav.aiCloud')}</button>
+            <button onClick={() => navigateToProtectedPage('workflow')} className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors">{t('landing.nav.connect')}</button>
+            <button onClick={() => navigateToProtectedPage('server')} className="text-[var(--accent-primary)] border border-[var(--accent-primary)]/30 px-4 py-1.5 rounded-full hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-all">{t('landing.nav.aiCloud')}</button>
           </div>
 
           <div className="flex items-center gap-4">
             <LanguageSwitcher />
             <ThemeSwitcher />
-            <button
-              onClick={() => setActiveView('studio')}
-              className="hidden lg:block py-2.5 px-6 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-bold rounded-xl shadow-[var(--accent-shadow)] hover:scale-105 transition-all"
-            >
-              {t('landing.nav.enterStudio')}
-            </button>
+            {isAuthenticated ? (
+              <button
+                onClick={() => setActiveView('studio')}
+                className="hidden lg:block py-2.5 px-6 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-bold rounded-xl shadow-[var(--accent-shadow)] hover:scale-105 transition-all"
+              >
+                {t('landing.nav.enterStudio')}
+              </button>
+            ) : (
+              <button
+                onClick={() => setShowLoginDialog(true)}
+                className="hidden lg:block py-2.5 px-6 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-bold rounded-xl shadow-[var(--accent-shadow)] hover:scale-105 transition-all"
+              >
+                {t('login.button') || 'Sign In'}
+              </button>
+            )}
           </div>
         </div>
       </nav>
@@ -348,10 +387,10 @@ const App: React.FC = () => {
           </p>
 
           <div className="flex flex-wrap justify-center gap-5 pt-6">
-            <button onClick={() => setActiveView('studio')} className="py-4 px-12 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-black rounded-2xl shadow-xl hover:bg-[var(--accent-secondary)] transition-all">
+            <button onClick={() => navigateToProtectedPage('studio')} className="py-4 px-12 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-black rounded-2xl shadow-xl hover:bg-[var(--accent-secondary)] transition-all">
               {t('landing.hero.exploreStudio')}
             </button>
-            <button onClick={() => setActiveView('server')} className="py-4 px-12 glass-card text-[var(--text-primary)] font-black rounded-2xl hover:border-[var(--accent-primary)] transition-all">
+            <button onClick={() => navigateToProtectedPage('server')} className="py-4 px-12 glass-card text-[var(--text-primary)] font-black rounded-2xl hover:border-[var(--accent-primary)] transition-all">
               {t('landing.hero.gpuServer')}
             </button>
           </div>
@@ -455,7 +494,7 @@ const App: React.FC = () => {
           </div>
 
           <div className="mt-12 text-center">
-            <button onClick={() => setActiveView('workflow')} className="py-3 px-8 rounded-full border border-[var(--border-primary)] hover:border-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-all text-sm font-bold text-[var(--accent-primary)]">
+            <button onClick={() => navigateToProtectedPage('workflow')} className="py-3 px-8 rounded-full border border-[var(--border-primary)] hover:border-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-all text-sm font-bold text-[var(--accent-primary)]">
               {t('landing.showcase.cta')}
             </button>
           </div>
@@ -471,7 +510,7 @@ const App: React.FC = () => {
               <p className="text-[var(--text-secondary)] text-sm leading-relaxed">
                 {t('landing.partners.subtitle')}
               </p>
-              <button onClick={() => setActiveView('workflow')} className="text-[var(--accent-primary)] text-sm font-bold flex items-center gap-2 hover:underline">
+              <button onClick={() => navigateToProtectedPage('workflow')} className="text-[var(--accent-primary)] text-sm font-bold flex items-center gap-2 hover:underline">
                 {t('landing.partners.join')} →
               </button>
             </div>
@@ -527,7 +566,7 @@ const App: React.FC = () => {
                 </li>
               ))}
             </ul>
-            <button onClick={() => setActiveView('workflow')} className="py-4 px-10 glass-card rounded-2xl text-[var(--accent-primary)] font-black hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-all">
+            <button onClick={() => navigateToProtectedPage('workflow')} className="py-4 px-10 glass-card rounded-2xl text-[var(--accent-primary)] font-black hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-all">
               {t('landing.features.cta')}
             </button>
           </div>
@@ -560,6 +599,11 @@ const App: React.FC = () => {
           </p>
         </div>
       </footer>
+
+      {/* Login Dialog */}
+      {showLoginDialog && (
+        <Login onLoginSuccess={handleLoginSuccess} onClose={handleCloseLoginDialog} />
+      )}
     </div>
   );
 };

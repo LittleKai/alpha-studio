@@ -6,7 +6,6 @@ import type { WorkflowDocument, DepartmentType, Transaction, PartnerCompany, Par
 import PartnerRegistrationModal from '../modals/PartnerRegistrationModal';
 import LanguageSwitcher from '../ui/LanguageSwitcher';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
-import Login from '../ui/Login';
 
 interface WorkflowDashboardProps {
   onBack: () => void;
@@ -28,7 +27,6 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
   const onAddDocument = (doc: WorkflowDocument) => setInternalDocuments(prev => [...prev, doc]);
   const onOpenStudio = () => {};
   const { t } = useTranslation();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // Navigation State
   const [activeView, setActiveView] = useState<'documents' | 'projects' | 'jobs' | 'wallet' | 'partners' | 'automation' | 'affiliate' | 'creative' | 'resources'>('documents');
@@ -71,7 +69,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
   ];
 
   // User Profile State
-  const [userProfile, setUserProfile] = useState<UserProfile>({
+  const [userProfile, _setUserProfile] = useState<UserProfile>({
     name: 'Nguyen Van A',
     role: 'Event 3D Visualizer',
     email: 'student.a@alphastudio.vn',
@@ -145,11 +143,6 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       isVerified: true
     }
   ]);
-
-  const handleLoginSuccess = (username: string) => {
-    setIsAuthenticated(true);
-    setUserProfile(prev => ({...prev, name: username || 'Student'}));
-  };
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -477,10 +470,6 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       default: return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/50';
     }
   };
-
-  if (!isAuthenticated) {
-    return <Login onLoginSuccess={handleLoginSuccess} />;
-  }
 
   const renderProjectHub = () => {
       if (!selectedProject) return null;
