@@ -1,11 +1,11 @@
 # Project Summary
-**Last Updated:** 2026-01-17 (Authentication System)
+**Last Updated:** 2026-01-17 (Frontend/Backend Split)
 **Updated By:** Claude Code
 
 ---
 
 ## 1. Project Overview
-- **Name:** Alpha Studio
+- **Name:** Alpha Studio (Frontend)
 - **Type:** AI Academy Platform / Learning Management System with integrated AI Studio tools
 - **Tech Stack:**
   - React 19.1.0 + TypeScript 5.8
@@ -14,10 +14,9 @@
   - Google Generative AI (@google/genai) - Gemini 2.5 Flash API
 - **i18n:** Custom React Context solution (supports: en, vi, zh)
 - **Theming:** Light/Dark mode via CSS Custom Properties + data-theme attribute
-- **Deployment:** Vercel (based on recent commits)
-- **Backend:** Node.js + Express.js (ES Module)
-  - **Database:** MongoDB Atlas (Cloud Database)
-  - **ODM:** Mongoose 8.x
+- **Deployment:** Vercel
+- **Backend:** Separate repository - [alpha-studio-backend](../alpha-studio-backend)
+
 ---
 
 ## 2. Current Architecture
@@ -105,23 +104,6 @@ App.tsx
 │               └── PartnerProfileViewer
 ```
 
-### Server Structure
-```
-server/
-├── index.js                   # Express server entry point
-├── db/
-│   ├── connection.js          # MongoDB connection
-│   ├── init-collections.js    # Database initialization
-│   ├── test-connection.js     # Connection test script
-│   └── migrate-passwords.js   # Password hashing migration
-├── models/
-│   └── User.js                # User model with bcrypt
-├── middleware/
-│   └── auth.js                # JWT auth middleware
-└── routes/
-    └── auth.js                # Auth API routes (login/register/logout)
-```
-
 ---
 
 ## 3. Key Decisions & Patterns
@@ -135,19 +117,11 @@ server/
 - **Local State:** useState/useCallback for component-level state
 - **No Redux/Zustand:** Simple app, Context is sufficient
 
-### Authentication System
-- **Backend:** Express.js REST API
-- **Database:** MongoDB Atlas (users collection)
-- **Password Security:** bcrypt with 12 salt rounds
-- **Token:** JWT with 7-day expiration
-- **Storage:** localStorage (token + user data) + httpOnly cookie
-- **API Endpoints:**
-  - `POST /api/auth/register` - User registration
-  - `POST /api/auth/login` - User login
-  - `POST /api/auth/logout` - Logout (clears cookie)
-  - `GET /api/auth/me` - Get current user
-  - `PUT /api/auth/profile` - Update profile
-  - `PUT /api/auth/password` - Change password
+### Authentication (Frontend)
+- **Context:** `src/auth/context.tsx` - AuthProvider + useAuth hook
+- **Backend API:** Separate repository (alpha-studio-backend)
+- **Token Storage:** localStorage (token + user data)
+- **API URL:** Configured via `VITE_API_URL` environment variable
 
 ### Styling Approach
 - **Pure CSS:** No Tailwind/CSS-in-JS
@@ -161,7 +135,7 @@ server/
 - **Glass Effect:** `glass-card` class for glassmorphism
 
 ### API Integration
-- **Service:** `geminiService.ts` handles all Gemini API calls
+- **Gemini Service:** `geminiService.ts` handles all Gemini API calls
 - **Model:** `gemini-2.5-flash-preview-05-20`
 - **Features:** Image editing with optional mask support
 - **Error Handling:** Centralized with user-friendly messages
@@ -175,13 +149,7 @@ server/
 - **Dot notation keys:** `t('landing.hero.title1')`
 - **Fallback:** Falls back to English if key not found
 - **Default language:** Vietnamese (vi)
-### Database Architecture (MongoDB Atlas)
-- **Connection:** MongoDB Atlas Cloud (Cluster0)
-- **Database Name:** `alpha-studio`
-- **Collections:** 8 collections (users, courses, students, partners, projects, studio_sessions, transformations, api_usage)
-- **Indexes:** Optimized for common queries
-- **Sample Data:** 2 admin users (admin@alphastudio.com, tanthanh@alphastudio.com)
-- **Documentation:** See DATABASE.md for detailed schema
+
 ---
 
 ## 4. Active Features & Status
@@ -194,7 +162,7 @@ server/
 | AI Server Connect | ✅ Complete | AIServerConnect.tsx | GPU server mock UI |
 | Theme Switching | ✅ Complete | theme/context.tsx | Light/Dark with persistence |
 | i18n (EN/VI/ZH) | ✅ Complete | i18n/* | Full translations |
-| Authentication | ✅ Complete | auth/context.tsx, Login.tsx, server/routes/auth.js | JWT auth with bcrypt |
+| Authentication | ✅ Complete | auth/context.tsx, Login.tsx | JWT auth (backend separate) |
 | Image Mask Editor | ✅ Complete | ImageEditorCanvas.tsx | Canvas-based drawing |
 | User Registration | ✅ Complete | Login.tsx | Email + password + confirm password |
 | User Profile Menu | ✅ Complete | App.tsx | Dropdown with user info + logout |
@@ -206,7 +174,7 @@ server/
 ## 5. Known Issues & TODOs
 
 ### High Priority
-- [x] ~~No real authentication - currently using mock login~~ (Completed: JWT auth implemented)
+- [x] ~~No real authentication~~ (Completed: JWT auth implemented)
 - [ ] API key exposed via environment variable only
 
 ### Medium Priority
@@ -243,54 +211,53 @@ server/
 
 ### Environment Variables:
 - `VITE_GEMINI_API_KEY` - Required for AI features
-- `VITE_API_URL` - Backend API URL (default: http://localhost:3001/api)
-- `MONGODB_URI` - MongoDB connection string (server-side)
-- `JWT_SECRET` - Secret key for JWT tokens (server-side)
+- `VITE_API_URL` - Backend API URL
+
+### Production URLs:
+- **Frontend:** https://alphastudio.vercel.app
+- **Backend:** https://alpha-studio-backend.onrender.com/api
 
 ---
 
 ## 7. Recent Changes (Last 3 Sessions)
 
-1. **2026-01-17** - Authentication System Implementation + Bug Fixes
+1. **2026-01-17** - Production Deployment
+   - Configured Vercel environment variables (VITE_GEMINI_API_KEY, VITE_API_URL)
+   - Updated .env and .env.example with production backend URL
+   - Added production URLs to documentation
+
+2. **2026-01-17** - Frontend/Backend Split
+   - Separated backend into standalone repository (alpha-studio-backend)
+   - Removed server/ folder from frontend
+   - Updated package.json (removed backend dependencies)
+   - Created .env.example for frontend-only variables
+
+3. **2026-01-17** - Authentication System Implementation + Bug Fixes
    - Implemented JWT authentication with bcrypt password hashing
    - Created AuthProvider context for frontend state management
    - Added Login/Register modal with form validation
-   - Built Express.js API routes: login, register, logout, profile
    - Added user profile dropdown menu with logout functionality
-   - Updated translations (en, vi, zh) with auth-related strings
-   - Added password migration script for existing users
-   - **Bug Fixes:**
-     - Fixed Mongoose 8+ pre-save hook (removed `next` callback)
-     - Fixed login route 500 error (use updateOne for lastLogin)
-     - Fixed register route duplicate key error handling
-   - **UI Enhancements:**
-     - Added password visibility toggle (eye icon)
-     - Added "Remember me" checkbox (saves email)
-     - Added confirm password field for registration
-
-2. **2025-01-17** - Initial project setup and documentation
-   - Created `.claude/` documentation structure
-   - Generated PROJECT_SUMMARY.md, CONVENTIONS.md, INSTRUCTIONS_FOR_CLAUDE.md
 
 ---
 
 ## 8. Quick Commands
 ```bash
 # Development
-npm run dev          # Start Vite dev server (frontend)
-npm run server       # Start Express API server (backend)
-npm run dev:full     # Start both frontend + backend concurrently
+npm run dev          # Start Vite dev server
 
 # Build
 npm run build        # TypeScript check + Vite build
 
 # Preview
 npm run preview      # Preview production build
+```
 
-# Database
-npm run db:test      # Test MongoDB connection
-npm run db:init      # Initialize database with sample data
-npm run db:migrate-passwords  # Hash existing passwords with bcrypt
+### Backend (Separate Repository)
+See [alpha-studio-backend](../alpha-studio-backend) for backend setup:
+```bash
+cd ../alpha-studio-backend
+npm install
+npm run dev          # Start backend API server
 ```
 
 ---
