@@ -223,6 +223,39 @@ export default {
       confirm: "确认租赁"
     }
   },
+  login: {
+    subtitle: "登录以继续",
+    registerSubtitle: "创建您的账户",
+    button: "登录",
+    email: "邮箱",
+    emailPlaceholder: "输入您的邮箱",
+    password: "密码",
+    passwordPlaceholder: "输入您的密码",
+    confirmPassword: "确认密码",
+    confirmPasswordPlaceholder: "再次输入密码",
+    name: "姓名",
+    namePlaceholder: "输入您的姓名",
+    rememberMe: "记住我",
+    forgotPassword: "忘记密码？",
+    signIn: "登录",
+    signingIn: "登录中...",
+    register: "创建账户",
+    registering: "创建账户中...",
+    orContinueWith: "或继续使用",
+    noAccount: "没有账户？注册",
+    hasAccount: "已有账户？登录",
+    logout: "退出登录",
+    demoCredentials: "演示账户：",
+    error: {
+      emailRequired: "请输入邮箱",
+      passwordRequired: "请输入密码",
+      nameRequired: "请输入姓名",
+      passwordLength: "密码至少需要6个字符",
+      passwordMismatch: "密码不匹配",
+      network: "网络错误，请重试。",
+      invalid: "邮箱或密码错误"
+    }
+  },
   workflow: {
     title: "Alpha Connect",
     subtitle: "集中式文档中心",

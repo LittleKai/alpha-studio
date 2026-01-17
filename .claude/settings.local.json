@@ -3,7 +3,10 @@
     "allow": [
       "Bash(tree:*)",
       "Bash(npm run build:*)",
-      "Bash(powershell -Command:*)"
+      "Bash(powershell -Command:*)",
+      "Bash(npm install:*)",
+      "Bash(npx tsc:*)",
+      "Bash(node:*)"
     ]
   }
 }

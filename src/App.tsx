@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from './i18n/context';
+import { useAuth } from './auth/context';
 import type { CourseData, FeaturedStudent, PartnerCompany } from './types';
 
 // Components
@@ -15,18 +16,18 @@ import Login from './components/ui/Login';
 
 const App: React.FC = () => {
   const { t } = useTranslation();
+  const { isAuthenticated, isLoading: authLoading, user, logout } = useAuth();
+
   const [activeView, setActiveView] = useState<'home' | 'studio' | 'workflow' | 'server'>('home');
   const [selectedCourse, setSelectedCourse] = useState<CourseData | null>(null);
   const [selectedStudent, setSelectedStudent] = useState<FeaturedStudent | null>(null);
   const [selectedPartner, setSelectedPartner] = useState<PartnerCompany | null>(null);
 
-  // Authentication state
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // Login dialog state
   const [showLoginDialog, setShowLoginDialog] = useState(false);
   const [pendingView, setPendingView] = useState<'studio' | 'workflow' | 'server' | null>(null);
 
-  const handleLoginSuccess = (_username: string) => {
-    setIsAuthenticated(true);
+  const handleLoginSuccess = () => {
     setShowLoginDialog(false);
     // Navigate to pending view if there was one
     if (pendingView) {
@@ -48,6 +49,23 @@ const App: React.FC = () => {
       setShowLoginDialog(true);
     }
   };
+
+  const handleLogout = async () => {
+    await logout();
+    setActiveView('home');
+  };
+
+  // Show loading spinner while checking auth
+  if (authLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)]">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-[var(--accent-primary)]/30 border-t-[var(--accent-primary)] rounded-full animate-spin"></div>
+          <p className="text-[var(--text-secondary)]">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   // Course data
   const courses: CourseData[] = [
@@ -344,12 +362,42 @@ const App: React.FC = () => {
             <LanguageSwitcher />
             <ThemeSwitcher />
             {isAuthenticated ? (
-              <button
-                onClick={() => setActiveView('studio')}
-                className="hidden lg:block py-2.5 px-6 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-bold rounded-xl shadow-[var(--accent-shadow)] hover:scale-105 transition-all"
-              >
-                {t('landing.nav.enterStudio')}
-              </button>
+              <div className="hidden lg:flex items-center gap-3">
+                <button
+                  onClick={() => setActiveView('studio')}
+                  className="py-2.5 px-6 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-bold rounded-xl shadow-[var(--accent-shadow)] hover:scale-105 transition-all"
+                >
+                  {t('landing.nav.enterStudio')}
+                </button>
+                <div className="relative group">
+                  <button className="flex items-center gap-2 py-2 px-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-colors">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-purple-600 flex items-center justify-center text-white text-sm font-bold">
+                      {user?.name?.charAt(0).toUpperCase() || 'U'}
+                    </div>
+                    <span className="text-sm font-medium text-[var(--text-primary)] max-w-[100px] truncate">
+                      {user?.name || 'User'}
+                    </span>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-[var(--text-secondary)]" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </button>
+                  <div className="absolute right-0 mt-2 w-48 py-2 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
+                    <div className="px-4 py-2 border-b border-[var(--border-primary)]">
+                      <p className="text-sm font-medium text-[var(--text-primary)] truncate">{user?.email}</p>
+                      <p className="text-xs text-[var(--accent-primary)] capitalize">{user?.role}</p>
+                    </div>
+                    <button
+                      onClick={handleLogout}
+                      className="w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-red-500/10 transition-colors flex items-center gap-2"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V4a1 1 0 00-1-1H3zm11 4.414l-4.293 4.293a1 1 0 01-1.414 0L4 7.414 5.414 6l3.293 3.293L13 5l1 1.414z" clipRule="evenodd" />
+                      </svg>
+                      {t('login.logout') || 'Sign Out'}
+                    </button>
+                  </div>
+                </div>
+              </div>
             ) : (
               <button
                 onClick={() => setShowLoginDialog(true)}
