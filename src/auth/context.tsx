@@ -5,7 +5,7 @@ export interface User {
     _id: string;
     email: string;
     name: string;
-    role: 'student' | 'partner' | 'admin';
+    role: 'student' | 'partner' | 'mod' | 'admin';
     avatar: string | null;
     subscription: {
         plan: 'free' | 'basic' | 'pro' | 'enterprise';

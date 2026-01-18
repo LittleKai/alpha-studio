@@ -6,7 +6,6 @@ import {
     Course,
     CourseInput,
     Module,
-    Lesson,
     LearningOutcome
 } from '../../services/courseService';
 import ModuleEditor from './ModuleEditor';

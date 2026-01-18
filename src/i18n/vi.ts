@@ -811,6 +811,177 @@ export default {
         deleteSuccess: "Xóa khóa học thành công!",
         publishSuccess: "Xuất bản khóa học thành công!"
       }
-    }
+    },
+    partners: {
+      title: "Quản lý Đối tác",
+      createPartner: "Tạo Đối tác",
+      editPartner: "Sửa Đối tác",
+      noPartners: "Không tìm thấy đối tác",
+      createFirst: "Tạo đối tác đầu tiên",
+      searchPlaceholder: "Tìm kiếm đối tác...",
+      allTypes: "Tất cả loại",
+      allStatuses: "Tất cả trạng thái",
+      featured: "Nổi bật",
+      noDescription: "Chưa có mô tả",
+      stats: {
+        total: "Tổng đối tác",
+        published: "Đã xuất bản",
+        draft: "Nháp",
+        featured: "Nổi bật"
+      },
+      types: {
+        technology: "Công nghệ",
+        education: "Giáo dục",
+        enterprise: "Doanh nghiệp",
+        startup: "Khởi nghiệp",
+        government: "Chính phủ",
+        other: "Khác"
+      },
+      status: {
+        draft: "Nháp",
+        published: "Đã xuất bản",
+        archived: "Lưu trữ"
+      },
+      sort: {
+        newest: "Mới nhất",
+        oldest: "Cũ nhất",
+        nameAZ: "Tên A-Z",
+        nameZA: "Tên Z-A",
+        order: "Thứ tự hiển thị"
+      },
+      edit: "Sửa",
+      publish: "Xuất bản",
+      unpublish: "Hủy xuất bản",
+      form: {
+        companyName: "Tên công ty",
+        companyNamePlaceholder: "Nhập tên công ty",
+        description: "Mô tả",
+        descriptionPlaceholder: "Nhập mô tả đối tác...",
+        partnerType: "Loại đối tác",
+        logo: "URL Logo",
+        website: "Website",
+        email: "Email",
+        phone: "Điện thoại",
+        address: "Địa chỉ",
+        addressPlaceholder: "Nhập địa chỉ",
+        order: "Thứ tự hiển thị",
+        featured: "Đối tác nổi bật",
+        cancel: "Hủy",
+        saveDraft: "Lưu nháp",
+        publish: "Xuất bản",
+        saving: "Đang lưu...",
+        errors: {
+          nameRequired: "Cần nhập tên công ty"
+        }
+      },
+      deleteConfirm: {
+        title: "Xóa Đối tác",
+        message: "Bạn có chắc muốn xóa đối tác này? Hành động này không thể hoàn tác.",
+        cancel: "Hủy",
+        confirm: "Xóa"
+      },
+      pagination: {
+        prev: "Trước",
+        next: "Sau"
+      }
+    },
+    jobs: {
+      title: "Quản lý Tuyển dụng",
+      createJob: "Tạo việc làm",
+      editJob: "Sửa việc làm",
+      noJobs: "Không tìm thấy việc làm",
+      createFirst: "Tạo tin tuyển dụng đầu tiên",
+      searchPlaceholder: "Tìm kiếm việc làm...",
+      allCategories: "Tất cả danh mục",
+      allTypes: "Tất cả loại",
+      allStatuses: "Tất cả trạng thái",
+      untitled: "Chưa đặt tên",
+      noDescription: "Chưa có mô tả",
+      salaryNegotiable: "Thương lượng",
+      upTo: "Lên đến",
+      applications: "ứng viên",
+      skills: "kỹ năng",
+      stats: {
+        total: "Tổng việc làm",
+        published: "Đang tuyển",
+        closed: "Đã đóng",
+        applications: "Ứng viên"
+      },
+      categories: {
+        engineering: "Kỹ thuật",
+        design: "Thiết kế",
+        marketing: "Marketing",
+        operations: "Vận hành",
+        hr: "Nhân sự",
+        finance: "Tài chính",
+        other: "Khác"
+      },
+      types: {
+        fullTime: "Toàn thời gian",
+        partTime: "Bán thời gian",
+        contract: "Hợp đồng",
+        internship: "Thực tập",
+        remote: "Làm từ xa"
+      },
+      levels: {
+        entry: "Mới ra trường",
+        junior: "Junior",
+        mid: "Trung cấp",
+        senior: "Senior",
+        lead: "Trưởng nhóm"
+      },
+      status: {
+        draft: "Nháp",
+        published: "Đang tuyển",
+        closed: "Đã đóng"
+      },
+      sort: {
+        newest: "Mới nhất",
+        oldest: "Cũ nhất",
+        mostApplied: "Nhiều ứng viên nhất"
+      },
+      edit: "Sửa",
+      publish: "Xuất bản",
+      close: "Đóng",
+      form: {
+        title: "Tiêu đề việc làm",
+        titlePlaceholder: "Nhập tiêu đề việc làm",
+        description: "Mô tả",
+        descriptionPlaceholder: "Nhập mô tả công việc...",
+        requirements: "Yêu cầu",
+        requirementsPlaceholder: "Nhập yêu cầu công việc...",
+        category: "Danh mục",
+        jobType: "Loại công việc",
+        experienceLevel: "Kinh nghiệm",
+        location: "Địa điểm",
+        locationPlaceholder: "VD: TP.HCM, Làm từ xa",
+        salary: "Mức lương",
+        negotiable: "Thương lượng",
+        skills: "Kỹ năng yêu cầu",
+        skillsPlaceholder: "Nhập kỹ năng và nhấn Enter",
+        addSkill: "Thêm",
+        deadline: "Hạn nộp hồ sơ",
+        cancel: "Hủy",
+        saveDraft: "Lưu nháp",
+        publish: "Xuất bản",
+        saving: "Đang lưu...",
+        errors: {
+          titleRequired: "Cần tiêu đề bằng cả hai ngôn ngữ"
+        }
+      },
+      deleteConfirm: {
+        title: "Xóa việc làm",
+        message: "Bạn có chắc muốn xóa việc làm này? Hành động này không thể hoàn tác.",
+        cancel: "Hủy",
+        confirm: "Xóa"
+      },
+      pagination: {
+        prev: "Trước",
+        next: "Sau"
+      }
+    },
+    accessDenied: "Truy cập bị từ chối",
+    backToHome: "Quay lại trang chủ",
+    dismiss: "Bỏ qua"
   }
 };

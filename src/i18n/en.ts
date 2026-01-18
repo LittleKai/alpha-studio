@@ -811,6 +811,177 @@ export default {
         deleteSuccess: "Course deleted successfully!",
         publishSuccess: "Course published successfully!"
       }
-    }
+    },
+    partners: {
+      title: "Partner Management",
+      createPartner: "Create Partner",
+      editPartner: "Edit Partner",
+      noPartners: "No partners found",
+      createFirst: "Create your first partner",
+      searchPlaceholder: "Search partners...",
+      allTypes: "All Types",
+      allStatuses: "All Statuses",
+      featured: "Featured",
+      noDescription: "No description",
+      stats: {
+        total: "Total Partners",
+        published: "Published",
+        draft: "Drafts",
+        featured: "Featured"
+      },
+      types: {
+        technology: "Technology",
+        education: "Education",
+        enterprise: "Enterprise",
+        startup: "Startup",
+        government: "Government",
+        other: "Other"
+      },
+      status: {
+        draft: "Draft",
+        published: "Published",
+        archived: "Archived"
+      },
+      sort: {
+        newest: "Newest First",
+        oldest: "Oldest First",
+        nameAZ: "Name A-Z",
+        nameZA: "Name Z-A",
+        order: "Display Order"
+      },
+      edit: "Edit",
+      publish: "Publish",
+      unpublish: "Unpublish",
+      form: {
+        companyName: "Company Name",
+        companyNamePlaceholder: "Enter company name",
+        description: "Description",
+        descriptionPlaceholder: "Enter partner description...",
+        partnerType: "Partner Type",
+        logo: "Logo URL",
+        website: "Website",
+        email: "Email",
+        phone: "Phone",
+        address: "Address",
+        addressPlaceholder: "Enter address",
+        order: "Display Order",
+        featured: "Featured Partner",
+        cancel: "Cancel",
+        saveDraft: "Save as Draft",
+        publish: "Publish",
+        saving: "Saving...",
+        errors: {
+          nameRequired: "Company name is required"
+        }
+      },
+      deleteConfirm: {
+        title: "Delete Partner",
+        message: "Are you sure you want to delete this partner? This action cannot be undone.",
+        cancel: "Cancel",
+        confirm: "Delete"
+      },
+      pagination: {
+        prev: "Previous",
+        next: "Next"
+      }
+    },
+    jobs: {
+      title: "Job Management",
+      createJob: "Create Job",
+      editJob: "Edit Job",
+      noJobs: "No jobs found",
+      createFirst: "Create your first job posting",
+      searchPlaceholder: "Search jobs...",
+      allCategories: "All Categories",
+      allTypes: "All Types",
+      allStatuses: "All Statuses",
+      untitled: "Untitled",
+      noDescription: "No description",
+      salaryNegotiable: "Negotiable",
+      upTo: "Up to",
+      applications: "applications",
+      skills: "skills",
+      stats: {
+        total: "Total Jobs",
+        published: "Published",
+        closed: "Closed",
+        applications: "Applications"
+      },
+      categories: {
+        engineering: "Engineering",
+        design: "Design",
+        marketing: "Marketing",
+        operations: "Operations",
+        hr: "Human Resources",
+        finance: "Finance",
+        other: "Other"
+      },
+      types: {
+        fullTime: "Full-time",
+        partTime: "Part-time",
+        contract: "Contract",
+        internship: "Internship",
+        remote: "Remote"
+      },
+      levels: {
+        entry: "Entry Level",
+        junior: "Junior",
+        mid: "Mid-level",
+        senior: "Senior",
+        lead: "Lead"
+      },
+      status: {
+        draft: "Draft",
+        published: "Published",
+        closed: "Closed"
+      },
+      sort: {
+        newest: "Newest First",
+        oldest: "Oldest First",
+        mostApplied: "Most Applied"
+      },
+      edit: "Edit",
+      publish: "Publish",
+      close: "Close",
+      form: {
+        title: "Job Title",
+        titlePlaceholder: "Enter job title",
+        description: "Description",
+        descriptionPlaceholder: "Enter job description...",
+        requirements: "Requirements",
+        requirementsPlaceholder: "Enter job requirements...",
+        category: "Category",
+        jobType: "Job Type",
+        experienceLevel: "Experience Level",
+        location: "Location",
+        locationPlaceholder: "e.g., Ho Chi Minh City, Remote",
+        salary: "Salary Range",
+        negotiable: "Negotiable",
+        skills: "Required Skills",
+        skillsPlaceholder: "Type skill and press Enter",
+        addSkill: "Add",
+        deadline: "Application Deadline",
+        cancel: "Cancel",
+        saveDraft: "Save as Draft",
+        publish: "Publish",
+        saving: "Saving...",
+        errors: {
+          titleRequired: "Title in both languages is required"
+        }
+      },
+      deleteConfirm: {
+        title: "Delete Job",
+        message: "Are you sure you want to delete this job? This action cannot be undone.",
+        cancel: "Cancel",
+        confirm: "Delete"
+      },
+      pagination: {
+        prev: "Previous",
+        next: "Next"
+      }
+    },
+    accessDenied: "Access Denied",
+    backToHome: "Back to Home",
+    dismiss: "Dismiss"
   }
 };

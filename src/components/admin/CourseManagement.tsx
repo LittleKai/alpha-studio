@@ -21,7 +21,7 @@ interface CourseManagementProps {
 }
 
 const CourseManagement: React.FC<CourseManagementProps> = ({ onBack }) => {
-    const { t, language } = useTranslation();
+    const { t } = useTranslation();
     const { user } = useAuth();
 
     // State
@@ -47,7 +47,7 @@ const CourseManagement: React.FC<CourseManagementProps> = ({ onBack }) => {
     // Filters
     const [searchQuery, setSearchQuery] = useState('');
     const [categoryFilter, setCategoryFilter] = useState('');
-    const [levelFilter, setLevelFilter] = useState('');
+    const [levelFilter, _setLevelFilter] = useState('');
     const [statusFilter, setStatusFilter] = useState('');
     const [sortBy, setSortBy] = useState('-createdAt');
 

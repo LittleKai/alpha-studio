@@ -14,12 +14,14 @@ import ThemeSwitcher from './components/ui/ThemeSwitcher';
 import LanguageSwitcher from './components/ui/LanguageSwitcher';
 import Login from './components/ui/Login';
 import CourseManagement from './components/admin/CourseManagement';
+import PartnerManagement from './components/admin/PartnerManagement';
+import JobManagement from './components/admin/JobManagement';
 
 const App: React.FC = () => {
   const { t } = useTranslation();
   const { isAuthenticated, isLoading: authLoading, user, logout } = useAuth();
 
-  const [activeView, setActiveView] = useState<'home' | 'studio' | 'workflow' | 'server' | 'admin-courses'>('home');
+  const [activeView, setActiveView] = useState<'home' | 'studio' | 'workflow' | 'server' | 'admin-courses' | 'admin-partners' | 'admin-jobs'>('home');
   const [selectedCourse, setSelectedCourse] = useState<CourseData | null>(null);
   const [selectedStudent, setSelectedStudent] = useState<FeaturedStudent | null>(null);
   const [selectedPartner, setSelectedPartner] = useState<PartnerCompany | null>(null);
@@ -334,6 +336,8 @@ const App: React.FC = () => {
   if (activeView === 'server') return <AIServerConnect onBack={() => setActiveView('home')} />;
   if (activeView === 'workflow') return <WorkflowDashboard onBack={() => setActiveView('home')} />;
   if (activeView === 'admin-courses') return <CourseManagement onBack={() => setActiveView('home')} />;
+  if (activeView === 'admin-partners') return <PartnerManagement onBack={() => setActiveView('home')} />;
+  if (activeView === 'admin-jobs') return <JobManagement onBack={() => setActiveView('home')} />;
   if (selectedCourse) return <CourseViewer course={selectedCourse} onBack={() => setSelectedCourse(null)} />;
   if (selectedStudent) return <StudentProfileViewer student={selectedStudent} onBack={() => setSelectedStudent(null)} />;
   if (selectedPartner) return <PartnerProfileViewer partner={selectedPartner} onBack={() => setSelectedPartner(null)} />;
@@ -388,16 +392,37 @@ const App: React.FC = () => {
                       <p className="text-sm font-medium text-[var(--text-primary)] truncate">{user?.email}</p>
                       <p className="text-xs text-[var(--accent-primary)] capitalize">{user?.role}</p>
                     </div>
-                    {user?.role === 'admin' && (
-                      <button
-                        onClick={() => setActiveView('admin-courses')}
-                        className="w-full text-left px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] transition-colors flex items-center gap-2"
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                          <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
-                        </svg>
-                        {t('admin.courses.title')}
-                      </button>
+                    {(user?.role === 'admin' || user?.role === 'mod') && (
+                      <>
+                        <button
+                          onClick={() => setActiveView('admin-courses')}
+                          className="w-full text-left px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] transition-colors flex items-center gap-2"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
+                          </svg>
+                          {t('admin.courses.title')}
+                        </button>
+                        <button
+                          onClick={() => setActiveView('admin-partners')}
+                          className="w-full text-left px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] transition-colors flex items-center gap-2"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+                          </svg>
+                          {t('admin.partners.title')}
+                        </button>
+                        <button
+                          onClick={() => setActiveView('admin-jobs')}
+                          className="w-full text-left px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] transition-colors flex items-center gap-2"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clipRule="evenodd" />
+                            <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z" />
+                          </svg>
+                          {t('admin.jobs.title')}
+                        </button>
+                      </>
                     )}
                     <button
                       onClick={handleLogout}

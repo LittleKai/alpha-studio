@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import { useTranslation } from '../../i18n/context';
 import { Module, Lesson } from '../../services/courseService';
-import { v4 as uuidv4 } from 'uuid';
 
 interface ModuleEditorProps {
     modules: Module[];
