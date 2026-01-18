@@ -34,6 +34,7 @@ export interface LearningOutcome {
 
 export interface Course {
     _id: string;
+    slug: string;
     title: LocalizedString;
     description: LocalizedString;
     category: 'ai-basic' | 'ai-advanced' | 'ai-studio' | 'ai-creative';
@@ -171,9 +172,9 @@ export const getCourses = async (params?: CourseQueryParams): Promise<CourseList
     return response.json();
 };
 
-// Get single course by ID
-export const getCourseById = async (id: string): Promise<Course> => {
-    const response = await fetch(`${API_URL}/courses/${id}`, {
+// Get single course by ID or slug
+export const getCourseById = async (idOrSlug: string): Promise<Course> => {
+    const response = await fetch(`${API_URL}/courses/${idOrSlug}`, {
         method: 'GET',
         headers: getHeaders(true),
         credentials: 'include',
@@ -187,6 +188,9 @@ export const getCourseById = async (id: string): Promise<Course> => {
     const result = await response.json();
     return result.data;
 };
+
+// Alias for getCourseById - explicitly named for slug-based lookups
+export const getCourseBySlug = getCourseById;
 
 // Create a new course
 export const createCourse = async (data: CourseInput): Promise<Course> => {

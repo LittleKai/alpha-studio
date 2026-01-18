@@ -14,6 +14,7 @@ export interface SocialLinks {
 
 export interface Partner {
     _id: string;
+    slug: string;
     companyName: string;
     description: LocalizedString;
     logo: string;
@@ -114,9 +115,9 @@ export const getPartners = async (params: PartnerQueryParams = {}): Promise<Part
     return response.json();
 };
 
-// Get single partner by ID
-export const getPartnerById = async (id: string): Promise<PartnerResponse> => {
-    const response = await fetch(`${API_URL}/partners/${id}`, {
+// Get single partner by ID or slug
+export const getPartnerById = async (idOrSlug: string): Promise<PartnerResponse> => {
+    const response = await fetch(`${API_URL}/partners/${idOrSlug}`, {
         method: 'GET',
         headers: getAuthHeaders()
     });
@@ -128,6 +129,9 @@ export const getPartnerById = async (id: string): Promise<PartnerResponse> => {
 
     return response.json();
 };
+
+// Alias for getPartnerById - explicitly named for slug-based lookups
+export const getPartnerBySlug = getPartnerById;
 
 // Create new partner
 export const createPartner = async (data: PartnerInput): Promise<PartnerResponse> => {
