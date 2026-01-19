@@ -1,11 +1,12 @@
 
 import React, { useState } from 'react';
 import { useTranslation } from '../../i18n/context';
-import type { WorkflowDocument, DepartmentType, Transaction, PartnerCompany, PartnerType, UserProfile, AutomationRule, AffiliateStats, CreativeAsset, SharedResource, TeamMember, Comment, Project, Task } from '../../types';
-// StudentProfileModal not used - using inline profile display instead
-import PartnerRegistrationModal from '../modals/PartnerRegistrationModal';
+import { useAuth } from '../../auth/context';
+import type { WorkflowDocument, DepartmentType, Transaction, AutomationRule, AffiliateStats, CreativeAsset, SharedResource, TeamMember, Comment, Project, Task } from '../../types';
+// StudentProfileModal and PartnerRegistrationModal not used - moved to separate view components
 import LanguageSwitcher from '../ui/LanguageSwitcher';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
+import { JobsView, PartnersView } from './views';
 
 interface WorkflowDashboardProps {
   onBack: () => void;
@@ -27,12 +28,13 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
   const onAddDocument = (doc: WorkflowDocument) => setInternalDocuments(prev => [...prev, doc]);
   const onOpenStudio = () => {};
   const { t } = useTranslation();
+  const { user } = useAuth();
 
   // Navigation State
   const [activeView, setActiveView] = useState<'documents' | 'projects' | 'jobs' | 'wallet' | 'partners' | 'automation' | 'affiliate' | 'creative' | 'resources'>('documents');
   const [selectedDept, setSelectedDept] = useState<DepartmentType>('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [partnerFilter, setPartnerFilter] = useState<PartnerType>('agency');
+  // partnerFilter moved to PartnersView component
 
   // Collaboration State
   const [_activeDocForChat, setActiveDocForChat] = useState<WorkflowDocument | null>(null);
@@ -51,7 +53,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
 
   // Modal States
   const [showProfileModal, setShowProfileModal] = useState(false);
-  const [showPartnerModal, setShowPartnerModal] = useState(false);
+  // showPartnerModal moved to PartnersView component
   const [showCreativeModal, setShowCreativeModal] = useState(false);
   const [showResourceModal, setShowResourceModal] = useState(false);
   const [showProjectModal, setShowProjectModal] = useState(false);
@@ -68,16 +70,16 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       { id: 'u5', name: 'David Nguyen', role: 'Technical Director (Expert)', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop', isExternal: true },
   ];
 
-  // User Profile State
-  const [userProfile, _setUserProfile] = useState<UserProfile>({
-    name: 'Nguyen Van A',
-    role: 'Event 3D Visualizer',
-    email: 'student.a@alphastudio.vn',
-    phone: '0909 123 456',
-    bio: 'Đam mê thiết kế sân khấu và ứng dụng AI vào quy trình sáng tạo. Đang tìm kiếm cơ hội thực tập tại Agency chuyên nghiệp.',
-    skills: ['Midjourney', 'Stable Diffusion', 'Blender', 'Photoshop'],
-    portfolioUrl: 'behance.net/studentA'
-  });
+  // User Profile - connected to authenticated user
+  const userProfile = {
+    name: user?.name || 'Guest User',
+    role: user?.role || 'student',
+    email: user?.email || '',
+    phone: '',
+    bio: '',
+    skills: [] as string[],
+    portfolioUrl: ''
+  };
 
   // Wallet State
   const [balance, setBalance] = useState(1250);
@@ -118,31 +120,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
   ]);
   const [newResourceData, setNewResourceData] = useState({ title: '', type: 'project_file', format: '', description: '' });
 
-
-  const [partners, setPartners] = useState<PartnerCompany[]>([
-    {
-      id: 'p1',
-      name: 'Visionary Events',
-      type: 'agency',
-      logo: '✨',
-      description: 'Agency chuyên tổ chức các sự kiện luxury và fashion show hàng đầu Việt Nam.',
-      location: 'Hà Nội',
-      contact: { phone: '0901234567', email: 'contact@visionary.vn', website: 'visionary.vn' },
-      specialties: ['Concept', 'Luxury', 'Fashion'],
-      isVerified: true
-    },
-    {
-      id: 'p2',
-      name: 'Alpha Creative Lab',
-      type: 'agency',
-      logo: '🧬',
-      description: 'Creative Agency tập trung vào trải nghiệm công nghệ tương tác và AI.',
-      location: 'TP.HCM',
-      contact: { phone: '0987654321', email: 'hello@alpha.vn', website: 'alphacreative.vn' },
-      specialties: ['Interactive', 'AI Art', 'Exhibition'],
-      isVerified: true
-    }
-  ]);
+  // Partners state moved to PartnersView component with database integration
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -296,20 +274,8 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       setNewResourceData({ title: '', type: 'project_file', format: '', description: '' });
   };
 
-  const handleAddPartner = (formData: { companyName: string; type: 'agency' | 'supplier'; email: string; phone: string; website: string; location: string; description: string; specialties: string[] }) => {
-    const newPartner: PartnerCompany = {
-      id: `p-${Date.now()}`,
-      name: formData.companyName,
-      logo: formData.type === 'agency' ? '✨' : '🔧',
-      type: formData.type,
-      location: formData.location,
-      description: formData.description,
-      contact: { phone: formData.phone, email: formData.email, website: formData.website },
-      specialties: formData.specialties,
-      isVerified: false
-    };
-    setPartners(prev => [...prev, newPartner]);
-  };
+  // handleAddPartner moved to PartnersView component
+
   const toggleAutomation = (id: string) => { setAutomations(prev => prev.map(a => a.id === id ? { ...a, isActive: !a.isActive } : a)); };
   const copyToClipboard = (text: string) => { navigator.clipboard.writeText(text); alert(t('workflow.affiliate.copied')); };
 
@@ -461,7 +427,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
     return matchesDept && matchesSearch;
   });
 
-  const filteredPartners = partners.filter(p => p.type === partnerFilter);
+  // Partners filtering moved to PartnersView component
 
   const getStatusColor = (status: string) => {
     switch(status) {
@@ -782,13 +748,8 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
             <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl overflow-hidden"><table className="w-full text-left border-collapse"><thead><tr className="bg-[var(--bg-secondary)] text-xs uppercase text-[var(--text-secondary)]"><th className="p-4">Thời gian</th><th className="p-4">Nội dung</th><th className="p-4 text-right">Thay đổi</th><th className="p-4 text-right">Trạng thái</th></tr></thead><tbody className="divide-y divide-[var(--border-primary)]">{transactions.map(tx => (<tr key={tx.id} className="text-sm"><td className="p-4 text-[var(--text-secondary)]">{tx.date}</td><td className="p-4 font-medium text-[var(--text-primary)]">{tx.description}</td><td className={`p-4 text-right font-bold ${tx.type === 'deposit' || tx.type === 'earning' || tx.type === 'reward' ? 'text-green-500' : 'text-red-500'}`}>{tx.type === 'deposit' || tx.type === 'earning' || tx.type === 'reward' ? '+' : ''}{tx.amount}</td><td className="p-4 text-right"><span className="px-2 py-1 bg-green-500/10 text-green-500 rounded text-xs font-bold uppercase">{tx.status}</span></td></tr>))}</tbody></table></div>
         </div>
       );
-      case 'partners': return (
-        <div className="p-6 md:p-8 overflow-y-auto flex-1 animate-fade-in">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4"><div><h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 mb-2">{t('workflow.partners.title')}</h1><p className="text-[var(--text-secondary)]">{t('workflow.partners.subtitle')}</p></div><button onClick={() => setShowPartnerModal(true)} className="bg-[var(--accent-primary)] text-black font-bold px-6 py-2.5 rounded-lg shadow-lg hover:opacity-90 transition-all flex items-center gap-2"><span>+</span> {t('workflow.partners.register')}</button></div>
-            <div className="flex gap-4 mb-8"><button onClick={() => setPartnerFilter('agency')} className={`px-6 py-2.5 rounded-full font-bold text-sm transition-all ${partnerFilter === 'agency' ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25' : 'bg-[var(--bg-card)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'}`}>{t('workflow.partners.tabs.agency')}</button><button onClick={() => setPartnerFilter('supplier')} className={`px-6 py-2.5 rounded-full font-bold text-sm transition-all ${partnerFilter === 'supplier' ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-500/25' : 'bg-[var(--bg-card)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'}`}>{t('workflow.partners.tabs.supplier')}</button></div>
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">{filteredPartners.map(partner => (<div key={partner.id} className="bg-[var(--bg-card)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] rounded-2xl p-6 transition-all shadow-lg hover:shadow-[0_0_20px_rgba(0,0,0,0.3)] group relative overflow-hidden flex flex-col"><div className="flex justify-between items-start mb-4"><div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[var(--bg-secondary)] to-[var(--bg-primary)] flex items-center justify-center text-4xl shadow-inner border border-[var(--border-primary)]">{partner.logo}</div>{partner.isVerified && (<span className="flex items-center gap-1 bg-blue-500/10 text-blue-400 text-[10px] font-bold px-2 py-1 rounded-full border border-blue-500/20"><svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" /></svg>{t('workflow.partners.verified')}</span>)}</div><h3 className="text-xl font-bold text-[var(--text-primary)] mb-1">{partner.name}</h3><p className="text-xs text-[var(--text-tertiary)] mb-4 flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" /></svg>{partner.location}</p><p className="text-sm text-[var(--text-secondary)] mb-4 line-clamp-3 flex-grow">{partner.description}</p><div className="flex flex-wrap gap-2 mb-6">{partner.specialties.map(spec => (<span key={spec} className="text-[10px] bg-[var(--bg-secondary)] text-[var(--text-secondary)] px-2 py-1 rounded border border-[var(--border-primary)]">#{spec}</span>))}</div><div className="grid grid-cols-2 gap-3 mt-auto"><a href={`mailto:${partner.contact.email}`} className="flex items-center justify-center gap-2 py-2 rounded-lg bg-[var(--bg-secondary)] text-[var(--text-primary)] text-xs font-bold hover:bg-[var(--border-primary)] transition-colors"><svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" /><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" /></svg>{t('workflow.partners.contact')}</a><a href={`https://${partner.contact.website}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 py-2 rounded-lg border border-[var(--border-primary)] text-[var(--text-primary)] text-xs font-bold hover:bg-[var(--bg-secondary)] transition-colors"><svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clipRule="evenodd" /></svg>{t('workflow.partners.website')}</a></div></div>))}</div>
-        </div>
-      );
+      case 'jobs': return <JobsView searchQuery={searchQuery} />;
+      case 'partners': return <PartnersView searchQuery={searchQuery} />;
       default: return (
         <div className="p-6 md:p-8 overflow-y-auto flex-1">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
@@ -893,7 +854,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                 </div>
             </div>
         )}
-        <PartnerRegistrationModal isOpen={showPartnerModal} onClose={() => setShowPartnerModal(false)} onSubmit={handleAddPartner} />
+        {/* PartnerRegistrationModal moved to PartnersView component */}
 
         {showProjectModal && (<div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6"><h2 className="text-2xl font-bold mb-4">{t('workflow.dashboard.project.modalTitle')}</h2><form onSubmit={handleCreateProject} className="space-y-4"><input placeholder={t('workflow.dashboard.project.nameLabel')} value={newProjectData.name} onChange={e => setNewProjectData({...newProjectData, name: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input placeholder={t('workflow.dashboard.project.descLabel')} value={newProjectData.description} onChange={e => setNewProjectData({...newProjectData, description: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input placeholder="Client" value={newProjectData.client} onChange={e => setNewProjectData({...newProjectData, client: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input type="number" placeholder="Budget (Coins)" value={newProjectData.budget || ''} onChange={e => setNewProjectData({...newProjectData, budget: parseInt(e.target.value)})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><select value={newProjectData.department} onChange={e => setNewProjectData({...newProjectData, department: e.target.value as any})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"><option value="event_planner">Event Planner</option><option value="creative">Creative</option><option value="operation">Operation</option></select><div className="flex gap-2 justify-end mt-4"><button type="button" onClick={() => setShowProjectModal(false)} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">Cancel</button><button type="submit" className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.dashboard.project.createBtn')}</button></div></form></div></div>)}
 

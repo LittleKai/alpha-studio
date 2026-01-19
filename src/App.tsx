@@ -3,7 +3,8 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useAuth } from './auth/context';
 
 // Routing Components (keep these non-lazy as they're small and used everywhere)
-import { ProtectedRoute, AdminRoute } from './components/routing';
+import { ProtectedRoute } from './components/routing';
+import { Layout } from './components/layout';
 
 // Lazy load pages for better performance
 const LandingPage = lazy(() => import('./pages/LandingPage'));
@@ -15,9 +16,6 @@ const PartnerPage = lazy(() => import('./pages/PartnerPage'));
 const StudioTool = lazy(() => import('./components/studio/StudioTool'));
 const WorkflowDashboard = lazy(() => import('./components/dashboard/WorkflowDashboard'));
 const AIServerConnect = lazy(() => import('./components/dashboard/AIServerConnect'));
-const CourseManagement = lazy(() => import('./components/admin/CourseManagement'));
-const PartnerManagement = lazy(() => import('./components/admin/PartnerManagement'));
-const JobManagement = lazy(() => import('./components/admin/JobManagement'));
 
 // Loading spinner component
 const LoadingSpinner: React.FC = () => (
@@ -29,18 +27,21 @@ const LoadingSpinner: React.FC = () => (
     </div>
 );
 
-// Wrapper components that add navigation handlers
+// Wrapper components that add navigation handlers and Layout
 const StudioPage: React.FC = () => {
     const navigate = useNavigate();
     return (
-        <Suspense fallback={<LoadingSpinner />}>
-            <StudioTool onBack={() => navigate('/')} />
-        </Suspense>
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <StudioTool onBack={() => navigate('/')} />
+            </Suspense>
+        </Layout>
     );
 };
 
 const WorkflowPage: React.FC = () => {
     const navigate = useNavigate();
+    // WorkflowDashboard has its own sidebar, no Layout needed
     return (
         <Suspense fallback={<LoadingSpinner />}>
             <WorkflowDashboard onBack={() => navigate('/')} />
@@ -51,36 +52,44 @@ const WorkflowPage: React.FC = () => {
 const ServerPage: React.FC = () => {
     const navigate = useNavigate();
     return (
-        <Suspense fallback={<LoadingSpinner />}>
-            <AIServerConnect onBack={() => navigate('/')} />
-        </Suspense>
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <AIServerConnect onBack={() => navigate('/')} />
+            </Suspense>
+        </Layout>
     );
 };
 
-const AdminCoursesPage: React.FC = () => {
-    const navigate = useNavigate();
+// Course detail page with layout
+const CourseDetailPage: React.FC = () => {
     return (
-        <Suspense fallback={<LoadingSpinner />}>
-            <CourseManagement onBack={() => navigate('/')} />
-        </Suspense>
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <CoursePage />
+            </Suspense>
+        </Layout>
     );
 };
 
-const AdminPartnersPage: React.FC = () => {
-    const navigate = useNavigate();
+// Student detail page with layout
+const StudentDetailPage: React.FC = () => {
     return (
-        <Suspense fallback={<LoadingSpinner />}>
-            <PartnerManagement onBack={() => navigate('/')} />
-        </Suspense>
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <StudentPage />
+            </Suspense>
+        </Layout>
     );
 };
 
-const AdminJobsPage: React.FC = () => {
-    const navigate = useNavigate();
+// Partner detail page with layout
+const PartnerDetailPage: React.FC = () => {
     return (
-        <Suspense fallback={<LoadingSpinner />}>
-            <JobManagement onBack={() => navigate('/')} />
-        </Suspense>
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <PartnerPage />
+            </Suspense>
+        </Layout>
     );
 };
 
@@ -88,19 +97,21 @@ const AdminJobsPage: React.FC = () => {
 const NotFoundPage: React.FC = () => {
     const navigate = useNavigate();
     return (
-        <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)]">
-            <div className="text-center space-y-4">
-                <h1 className="text-6xl font-black text-[var(--accent-primary)]">404</h1>
-                <h2 className="text-2xl font-bold text-[var(--text-primary)]">Page Not Found</h2>
-                <p className="text-[var(--text-secondary)]">The page you are looking for does not exist.</p>
-                <button
-                    onClick={() => navigate('/')}
-                    className="py-2.5 px-6 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-bold rounded-xl hover:scale-105 transition-all"
-                >
-                    Go to Home
-                </button>
+        <Layout>
+            <div className="min-h-[calc(100vh-80px)] flex items-center justify-center">
+                <div className="text-center space-y-4">
+                    <h1 className="text-6xl font-black text-[var(--accent-primary)]">404</h1>
+                    <h2 className="text-2xl font-bold text-[var(--text-primary)]">Page Not Found</h2>
+                    <p className="text-[var(--text-secondary)]">The page you are looking for does not exist.</p>
+                    <button
+                        onClick={() => navigate('/')}
+                        className="py-2.5 px-6 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-bold rounded-xl hover:scale-105 transition-all"
+                    >
+                        Go to Home
+                    </button>
+                </div>
             </div>
-        </div>
+        </Layout>
     );
 };
 
@@ -117,9 +128,9 @@ const App: React.FC = () => {
             <Routes>
                 {/* Public Routes */}
                 <Route path="/" element={<LandingPage />} />
-                <Route path="/courses/:slug" element={<CoursePage />} />
-                <Route path="/students/:id" element={<StudentPage />} />
-                <Route path="/partners/:id" element={<PartnerPage />} />
+                <Route path="/courses/:slug" element={<CourseDetailPage />} />
+                <Route path="/students/:id" element={<StudentDetailPage />} />
+                <Route path="/partners/:id" element={<PartnerDetailPage />} />
 
                 {/* Protected Routes (require login) */}
                 <Route
@@ -144,32 +155,6 @@ const App: React.FC = () => {
                         <ProtectedRoute>
                             <ServerPage />
                         </ProtectedRoute>
-                    }
-                />
-
-                {/* Admin Routes (require admin/mod role) */}
-                <Route
-                    path="/admin/courses"
-                    element={
-                        <AdminRoute>
-                            <AdminCoursesPage />
-                        </AdminRoute>
-                    }
-                />
-                <Route
-                    path="/admin/partners"
-                    element={
-                        <AdminRoute>
-                            <AdminPartnersPage />
-                        </AdminRoute>
-                    }
-                />
-                <Route
-                    path="/admin/jobs"
-                    element={
-                        <AdminRoute>
-                            <AdminJobsPage />
-                        </AdminRoute>
                     }
                 />
 
