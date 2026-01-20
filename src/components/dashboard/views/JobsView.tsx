@@ -104,9 +104,11 @@ const JobsView: React.FC<JobsViewProps> = ({ searchQuery }) => {
         }
     };
 
-    const getLocalizedText = (obj: { vi: string; en: string } | undefined): string => {
+    const getLocalizedText = (obj: { vi?: string; en?: string; zh?: string } | undefined): string => {
         if (!obj) return '';
-        return language === 'vi' ? obj.vi || obj.en : obj.en || obj.vi;
+        if (language === 'vi') return obj.vi || obj.en || '';
+        if (language === 'zh') return obj.zh || obj.en || '';
+        return obj.en || obj.vi || '';
     };
 
     const formatSalary = (job: Job): string => {
@@ -176,15 +178,15 @@ const JobsView: React.FC<JobsViewProps> = ({ searchQuery }) => {
     };
 
     const getExperienceLabel = (level: string): string => {
-        const labels: Record<string, { vi: string; en: string }> = {
-            fresher: { vi: 'Fresher', en: 'Fresher' },
-            junior: { vi: 'Junior', en: 'Junior' },
-            mid: { vi: 'Mid-level', en: 'Mid-level' },
-            senior: { vi: 'Senior', en: 'Senior' },
-            lead: { vi: 'Lead', en: 'Lead' },
-            manager: { vi: 'Manager', en: 'Manager' },
+        const labels: Record<string, { vi: string; en: string; zh: string }> = {
+            fresher: { vi: 'Fresher', en: 'Fresher', zh: 'Fresher' },
+            junior: { vi: 'Junior', en: 'Junior', zh: 'Junior' },
+            mid: { vi: 'Mid-level', en: 'Mid-level', zh: 'Mid-level' },
+            senior: { vi: 'Senior', en: 'Senior', zh: 'Senior' },
+            lead: { vi: 'Lead', en: 'Lead', zh: 'Lead' },
+            manager: { vi: 'Manager', en: 'Manager', zh: 'Manager' },
         };
-        return labels[level]?.[language] || level;
+        return labels[level]?.[language] ?? level;
     };
 
     const getExperienceColor = (level: string): string => {

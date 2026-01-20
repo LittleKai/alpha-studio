@@ -24,7 +24,7 @@ const PartnerEditModal: React.FC<PartnerEditModalProps> = ({
     onSubmit,
     partner,
 }) => {
-    const { t, language } = useTranslation();
+    const { language } = useTranslation();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [formData, setFormData] = useState({
         companyName: '',
