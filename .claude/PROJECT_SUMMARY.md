@@ -1,5 +1,5 @@
 # Project Summary
-**Last Updated:** 2026-01-19 (Jobs & Partners CRUD, Card Redesign)
+**Last Updated:** 2026-01-20 (Course Management Integration)
 **Updated By:** Claude Code
 
 ---
@@ -27,7 +27,11 @@ src/
 ├── App.tsx                    # Main app component with React Router routes
 ├── main.tsx                   # React entry point with providers
 ├── pages/
-│   └── LandingPage.tsx        # Landing page component
+│   ├── LandingPage.tsx        # Landing page component with featured courses
+│   ├── CoursesPage.tsx        # Courses catalog with filters/pagination
+│   ├── CoursePage.tsx         # Single course detail page
+│   ├── StudentPage.tsx        # Student profile page
+│   └── PartnerPage.tsx        # Partner profile page
 ├── index.css                  # Global styles, animations, utilities
 ├── types.ts                   # TypeScript interfaces/types
 ├── constants.ts               # TRANSFORMATIONS array for AI tools
@@ -48,7 +52,8 @@ src/
 ├── services/
 │   ├── geminiService.ts       # Gemini API integration (editImage function)
 │   ├── jobService.ts          # Job management API service
-│   └── partnerService.ts      # Partner management API service
+│   ├── partnerService.ts      # Partner management API service
+│   └── courseService.ts       # Course management API service
 │
 ├── utils/
 │   └── fileUtils.ts           # File utilities (downloadImage, etc.)
@@ -148,7 +153,7 @@ App.tsx
 
 ### Routing
 - **Pattern:** React Router v6 with `<BrowserRouter>`
-- **Routes:** `/`, `/studio`, `/workflow`, `/server`, `/courses/:id`, `/students/:id`, `/partners/:id`, `/admin/courses`
+- **Routes:** `/`, `/courses`, `/courses/:slug`, `/studio`, `/workflow`, `/server`, `/students/:id`, `/partners/:id`, `/admin/courses`
 - **Protected Routes:** Login dialog for studio/workflow/server/admin
 - **Layout:** Shared Layout component with navigation header
 
@@ -163,7 +168,9 @@ App.tsx
 
 | Feature | Status | Files Involved | Notes |
 |---------|--------|----------------|-------|
-| Landing Page | ✅ Complete | App.tsx | Courses, students, partners showcase |
+| Landing Page | ✅ Complete | LandingPage.tsx | Featured courses from API, students, partners |
+| Courses Catalog | ✅ Complete | CoursesPage.tsx | Full catalog with filters, search, pagination |
+| Course Detail | ✅ Complete | CoursePage.tsx | Single course view with curriculum |
 | AI Studio | ✅ Complete | components/studio/* | 20+ transformations, mask support |
 | Workflow Dashboard | ✅ Complete | WorkflowDashboard.tsx | Large component (~29k tokens) |
 | AI Server Connect | ✅ Complete | AIServerConnect.tsx | GPU server mock UI |
@@ -197,7 +204,8 @@ App.tsx
 
 ### Low Priority
 - [x] ~~State-based routing~~ (Migrated to React Router v6)
-- [ ] Some hardcoded data in LandingPage.tsx (courses, students, partners)
+- [x] ~~Hardcoded courses in LandingPage.tsx~~ (Now fetches from API)
+- [ ] Some hardcoded data in LandingPage.tsx (students, partners still static)
 - [ ] No loading states for language switching
 - [ ] Consider extracting landing page sections into components
 - [ ] Email verification not implemented
@@ -235,7 +243,17 @@ App.tsx
 
 ## 7. Recent Changes (Last 3 Sessions)
 
-1. **2026-01-19** - Jobs & Partners CRUD, Card Redesign
+1. **2026-01-20** - Course Management Integration
+   - Integrated Course Management API into frontend Landing Page
+   - Replaced hardcoded "Training Programs" section with dynamic "Featured Courses" from API
+   - Created courseService.ts with getCourses, getCourseById, getFeaturedCourses functions
+   - Created CoursesPage.tsx - full courses catalog with filters (category, level), search, sort, pagination
+   - Added /courses route in App.tsx with Layout wrapper
+   - Added i18n translations for courses section in en.ts, vi.ts, zh.ts (landing.courses.*, courseCatalog.*)
+   - Landing page now fetches 6 featured courses sorted by enrollment count
+   - Course cards display: thumbnail, title (multilang), level badge, price/finalPrice, duration, lessons, enrollment count
+
+2. **2026-01-19** - Jobs & Partners CRUD, Card Redesign
    - Fixed /admin/courses 404 error by adding route and AdminCoursesPage component
    - Fixed job creation experienceLevel enum mismatch ('entry' → 'fresher')
    - Fixed partner creation userId duplicate key error (added index cleanup in backend)
@@ -247,17 +265,12 @@ App.tsx
    - Added skills field to Partner model in backend
    - Added getExperienceLabel and getExperienceColor helper functions for job cards
 
-2. **2026-01-19** - UI Improvements & Translations
+3. **2026-01-19** - UI Improvements & Translations
    - Migrated from state-based routing to React Router v6
    - Enhanced account dropdown with better account info section
    - Fixed search input theme colors in WorkflowDashboard
    - Added missing translations (account.*, workflow.jobs.noJobs, workflow.partners.noPartners)
    - Fixed token key mismatch in jobService.ts and partnerService.ts
-
-3. **2026-01-17** - Production Deployment
-   - Configured Vercel environment variables (VITE_GEMINI_API_KEY, VITE_API_URL)
-   - Updated .env and .env.example with production backend URL
-   - Added production URLs to documentation
 
 ---
 

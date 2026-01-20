@@ -232,6 +232,51 @@ export default {
       confirm: "确认租赁"
     }
   },
+  course: {
+    by: "作者",
+    modules: "模块",
+    lessons: "课程",
+    duration: "时长",
+    description: "描述",
+    curriculum: "课程大纲",
+    enroll: "立即报名"
+  },
+  courseCatalog: {
+    title: "所有课程",
+    subtitle: "探索我们全面的 AI 培训项目",
+    searchPlaceholder: "搜索课程...",
+    allCategories: "所有类别",
+    allLevels: "所有级别",
+    sortBy: "排序",
+    sortNewest: "最新",
+    sortPriceLow: "价格：低到高",
+    sortPriceHigh: "价格：高到低",
+    sortPopular: "最受欢迎",
+    categories: {
+      aiBasic: "AI 基础",
+      aiAdvanced: "AI 高级",
+      aiStudio: "AI Studio",
+      aiCreative: "AI 创意"
+    },
+    levels: {
+      beginner: "初级",
+      intermediate: "中级",
+      advanced: "高级"
+    },
+    noCourses: "未找到课程",
+    tryAdjustFilters: "尝试调整筛选条件",
+    loading: "正在加载课程...",
+    error: "加载课程失败",
+    retry: "重试",
+    enrolled: "已注册",
+    free: "免费",
+    pagination: {
+      prev: "上一页",
+      next: "下一页",
+      page: "第",
+      of: "页，共"
+    }
+  },
   login: {
     subtitle: "登录以继续",
     registerSubtitle: "创建您的账户",
@@ -556,6 +601,9 @@ export default {
       utilities: "工具",
       connect: "连接",
       about: "关于",
+      academy: "学院",
+      aiCloud: "AI 云服务器",
+      enterStudio: "进入 AI Studio"
     },
     cta: {
       launch: "启动 Studio",
@@ -563,9 +611,22 @@ export default {
       learnMore: "教学大纲"
     },
     hero: {
-      title1: "AI 培训",
-      title2: "现代活动策划",
+      badge: "#1 AI 活动培训平台",
+      title1: "释放",
+      title2: "AI 力量",
       subtitle: "AI 驱动的活动制作终极生态系统。培训、工具和云计算集于一身。",
+      exploreStudio: "探索 STUDIO",
+      gpuServer: "GPU 服务器"
+    },
+    courses: {
+      title: "精选课程",
+      subtitle: "从概念到执行的深度学习路径。",
+      viewAll: "查看所有课程",
+      loading: "正在加载课程...",
+      error: "加载课程失败",
+      noCourses: "暂无课程",
+      enrolled: "已注册",
+      free: "免费"
     },
     features: {
       title: "学习路径",

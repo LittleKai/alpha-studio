@@ -10,7 +10,14 @@
       "Bash(xcopy:*)",
       "Bash(robocopy:*)",
       "Bash(dir /B:*)",
-      "WebFetch(domain:alpha-studio-backend.onrender.com)"
-    ]
+      "WebFetch(domain:alpha-studio-backend.onrender.com)",
+      "Bash(git reset:*)",
+      "Bash(git commit:*)",
+      "Bash(tree:*)",
+      "Edit(.claude/*)",
+      "Edit(.claude/**/*)",
+      "Edit(*)"
+    ],
+    "autoApprove": true
   }
 }

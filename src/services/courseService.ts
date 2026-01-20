@@ -309,3 +309,12 @@ export const getCourseStats = async (): Promise<CourseStatsResponse['data']> => 
     const result = await response.json();
     return result.data;
 };
+
+// Get featured/popular courses for landing page
+export const getFeaturedCourses = async (limit: number = 6): Promise<CourseListResponse> => {
+    return getCourses({
+        status: 'published',
+        limit,
+        sort: '-enrolledCount' // Sort by most enrolled
+    });
+};

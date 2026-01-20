@@ -9,6 +9,7 @@ import { Layout } from './components/layout';
 // Lazy load pages for better performance
 const LandingPage = lazy(() => import('./pages/LandingPage'));
 const CoursePage = lazy(() => import('./pages/CoursePage'));
+const CoursesPage = lazy(() => import('./pages/CoursesPage'));
 const StudentPage = lazy(() => import('./pages/StudentPage'));
 const PartnerPage = lazy(() => import('./pages/PartnerPage'));
 
@@ -56,6 +57,17 @@ const ServerPage: React.FC = () => {
         <Layout>
             <Suspense fallback={<LoadingSpinner />}>
                 <AIServerConnect onBack={() => navigate('/')} />
+            </Suspense>
+        </Layout>
+    );
+};
+
+// Courses catalog page with layout
+const CoursesCatalogPage: React.FC = () => {
+    return (
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <CoursesPage />
             </Suspense>
         </Layout>
     );
@@ -141,6 +153,7 @@ const App: React.FC = () => {
             <Routes>
                 {/* Public Routes */}
                 <Route path="/" element={<LandingPage />} />
+                <Route path="/courses" element={<CoursesCatalogPage />} />
                 <Route path="/courses/:slug" element={<CourseDetailPage />} />
                 <Route path="/students/:id" element={<StudentDetailPage />} />
                 <Route path="/partners/:id" element={<PartnerDetailPage />} />

@@ -1,81 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import { useAuth } from '../auth/context';
-import type { CourseData, FeaturedStudent, PartnerCompany } from '../types';
+import type { FeaturedStudent, PartnerCompany } from '../types';
 import ThemeSwitcher from '../components/ui/ThemeSwitcher';
 import LanguageSwitcher from '../components/ui/LanguageSwitcher';
 import Login from '../components/ui/Login';
+import { getFeaturedCourses, Course } from '../services/courseService';
 
-// Course data
-const courses: CourseData[] = [
-    {
-        id: "ai-creative-event",
-        title: "AI Creative for Event Design",
-        tag: "Trending",
-        description: "End-to-end process from brainstorming ideas, building moodboards to creating professional Key Visuals with Midjourney & Stable Diffusion.",
-        duration: "16",
-        lessonsCount: 14,
-        progress: 0,
-        icon: "✨",
-        color: "from-purple-600 to-pink-500",
-        syllabus: [
-            { title: "Prompting Mindset for Event Concept", duration: "25:00" },
-            { title: "Building Moodboard & Styleframe", duration: "45:00" },
-            { title: "Developing Multi-channel Key Visual", duration: "60:00" },
-            { title: "Inpainting Techniques for Extending Context", duration: "40:00" },
-        ]
-    },
-    {
-        id: "ai-pro-design",
-        title: "AI Design Expert 2026",
-        tag: "Pro Course",
-        description: "Master Midjourney, Stable Diffusion and advanced in-painting techniques to create event Key Visuals in 30 seconds.",
-        duration: "18",
-        lessonsCount: 12,
-        progress: 0,
-        icon: "💎",
-        color: "from-blue-600 to-cyan-500",
-        syllabus: [
-            { title: "Creative Thinking in AI Era", duration: "20:00" },
-            { title: "Mastering Midjourney: Basic to Advanced", duration: "45:00" },
-            { title: "Stable Diffusion: Control Every Pixel", duration: "60:00" },
-            { title: "Integrating AI into Print Design Workflow", duration: "40:00" },
-        ]
-    },
-    {
-        id: "ai-motion-vfx",
-        title: "Event Video & VFX with AI",
-        tag: "Motion",
-        description: "Transform static images into 3D cinematic films. Apply Runway Gen-3, Luma Dream Machine for LED screen visuals.",
-        duration: "14",
-        lessonsCount: 10,
-        progress: 0,
-        icon: "🎬",
-        color: "from-cyan-500 to-blue-400",
-        syllabus: [
-            { title: "Video AI Overview: The Motion Revolution", duration: "15:00" },
-            { title: "Luma Dream Machine: Surreal Motion", duration: "40:00" },
-            { title: "Runway Gen-3: Direct with Words", duration: "50:00" },
-        ]
-    },
-    {
-        id: "ai-stage-lighting",
-        title: "Stage & Lighting with AI",
-        tag: "3D Stage",
-        description: "Design 3D stage layouts, simulate lighting and fireworks effects professionally with AI only.",
-        duration: "10",
-        lessonsCount: 8,
-        progress: 0,
-        icon: "🎆",
-        color: "from-blue-700 to-indigo-600",
-        syllabus: [
-            { title: "Creating 3D Stage Structures", duration: "30:00" },
-            { title: "Simulating Dynamic Lighting Effects", duration: "45:00" },
-            { title: "High-quality Rendering for Proposals", duration: "40:00" },
-        ]
-    }
-];
+// Category to gradient color mapping
+const categoryGradients: Record<string, string> = {
+    'ai-basic': 'from-green-600 to-emerald-500',
+    'ai-advanced': 'from-purple-600 to-pink-500',
+    'ai-studio': 'from-blue-600 to-cyan-500',
+    'ai-creative': 'from-orange-500 to-red-500'
+};
+
+// Category to icon mapping
+const categoryIcons: Record<string, string> = {
+    'ai-basic': '📚',
+    'ai-advanced': '💎',
+    'ai-studio': '🎬',
+    'ai-creative': '✨'
+};
+
+// Level to translation key mapping
+const levelKeys: Record<string, string> = {
+    'beginner': 'courseCatalog.levels.beginner',
+    'intermediate': 'courseCatalog.levels.intermediate',
+    'advanced': 'courseCatalog.levels.advanced'
+};
 
 // Featured students data
 const featuredStudents: FeaturedStudent[] = [
@@ -269,13 +223,47 @@ const partners: PartnerCompany[] = [
 ];
 
 const LandingPage: React.FC = () => {
-    const { t } = useTranslation();
+    const { t, language } = useTranslation();
     const { isAuthenticated, user, logout } = useAuth();
     const navigate = useNavigate();
 
     // Login dialog state
     const [showLoginDialog, setShowLoginDialog] = useState(false);
     const [pendingNavigation, setPendingNavigation] = useState<string | null>(null);
+
+    // Courses state
+    const [courses, setCourses] = useState<Course[]>([]);
+    const [coursesLoading, setCoursesLoading] = useState(true);
+    const [coursesError, setCoursesError] = useState<string | null>(null);
+
+    // Fetch featured courses
+    useEffect(() => {
+        const loadCourses = async () => {
+            try {
+                setCoursesLoading(true);
+                setCoursesError(null);
+                const response = await getFeaturedCourses(6);
+                setCourses(response.data);
+            } catch (err) {
+                console.error('Failed to fetch courses:', err);
+                setCoursesError(err instanceof Error ? err.message : 'Failed to load courses');
+            } finally {
+                setCoursesLoading(false);
+            }
+        };
+        loadCourses();
+    }, []);
+
+    // Helper to get localized text
+    const getLocalizedText = (text: { vi: string; en: string }) => {
+        return language === 'vi' ? text.vi : text.en;
+    };
+
+    // Format price
+    const formatPrice = (price: number) => {
+        if (price === 0) return t('landing.courses.free');
+        return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+    };
 
     const handleLoginSuccess = () => {
         setShowLoginDialog(false);
@@ -452,7 +440,7 @@ const LandingPage: React.FC = () => {
                 </div>
             </section>
 
-            {/* Training Programs Section */}
+            {/* Featured Courses Section */}
             <section className="py-10 bg-[var(--bg-secondary)]/50 border-t border-[var(--border-primary)]">
                 <div className="container mx-auto px-6">
                     <div className="flex justify-between items-end mb-16">
@@ -461,49 +449,122 @@ const LandingPage: React.FC = () => {
                             <p className="text-[var(--text-secondary)]">{t('landing.courses.subtitle')}</p>
                         </div>
                         <div className="hidden md:block">
-                            <span className="text-[11px] font-bold text-[var(--accent-primary)] border-b border-[var(--accent-primary)] pb-1 cursor-pointer">{t('landing.courses.viewAll')}</span>
+                            <Link to="/courses" className="text-[11px] font-bold text-[var(--accent-primary)] border-b border-[var(--accent-primary)] pb-1 cursor-pointer hover:opacity-80 transition-opacity">
+                                {t('landing.courses.viewAll')}
+                            </Link>
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {courses.map(course => (
-                            <Link
-                                key={course.id}
-                                to={`/courses/${course.id}`}
-                                className="group glass-card rounded-[32px] p-8 hover:bg-[var(--bg-card)] transition-all duration-500 cursor-pointer relative overflow-hidden flex flex-col h-full"
-                            >
-                                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${course.color} flex items-center justify-center text-3xl mb-8 group-hover:scale-110 transition-transform shadow-lg`}>
-                                    {course.icon}
-                                </div>
-                                <div className="space-y-4 flex-grow">
-                                    <span className="px-3 py-1 rounded-full bg-[var(--bg-tertiary)]/50 border border-[var(--border-primary)] text-[10px] font-black uppercase tracking-widest text-[var(--accent-primary)]">
-                                        {course.tag}
-                                    </span>
-                                    <h3 className="text-xl font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors">
-                                        {course.title}
-                                    </h3>
-                                    <p className="text-sm text-[var(--text-secondary)] leading-relaxed line-clamp-3">
-                                        {course.description}
-                                    </p>
-                                </div>
+                    {/* Loading State */}
+                    {coursesLoading && (
+                        <div className="flex items-center justify-center py-20">
+                            <div className="flex flex-col items-center gap-4">
+                                <div className="w-12 h-12 border-4 border-[var(--accent-primary)]/30 border-t-[var(--accent-primary)] rounded-full animate-spin"></div>
+                                <p className="text-[var(--text-secondary)]">{t('landing.courses.loading')}</p>
+                            </div>
+                        </div>
+                    )}
 
-                                <div className="mt-6">
-                                    <span className="w-full py-2.5 rounded-xl bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] font-bold text-sm border border-[var(--accent-primary)]/20 hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-all flex items-center justify-center gap-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                                        </svg>
-                                        {t('landing.course.startLearning')}
-                                    </span>
-                                </div>
+                    {/* Error State */}
+                    {coursesError && !coursesLoading && (
+                        <div className="flex items-center justify-center py-20">
+                            <div className="text-center space-y-4">
+                                <p className="text-red-400">{t('landing.courses.error')}</p>
+                                <button
+                                    onClick={() => window.location.reload()}
+                                    className="py-2 px-4 rounded-xl bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] font-bold text-sm hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-all"
+                                >
+                                    {t('common.retry')}
+                                </button>
+                            </div>
+                        </div>
+                    )}
 
-                                <div className="flex justify-between items-center mt-6 pt-6 border-t border-[var(--border-primary)] text-[11px] font-bold text-[var(--text-tertiary)]">
-                                    <div className="flex gap-4">
-                                        <span>⏱ {course.duration} {t('landing.course.hours')}</span>
-                                        <span>📚 {course.lessonsCount} {t('landing.course.lessons')}</span>
+                    {/* No Courses State */}
+                    {!coursesLoading && !coursesError && courses.length === 0 && (
+                        <div className="flex items-center justify-center py-20">
+                            <p className="text-[var(--text-secondary)]">{t('landing.courses.noCourses')}</p>
+                        </div>
+                    )}
+
+                    {/* Courses Grid */}
+                    {!coursesLoading && !coursesError && courses.length > 0 && (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {courses.map(course => (
+                                <Link
+                                    key={course._id}
+                                    to={`/courses/${course.slug}`}
+                                    className="group glass-card rounded-[32px] overflow-hidden hover:bg-[var(--bg-card)] transition-all duration-500 cursor-pointer relative flex flex-col h-full"
+                                >
+                                    {/* Thumbnail */}
+                                    {course.thumbnail ? (
+                                        <div className="relative h-48 overflow-hidden">
+                                            <img
+                                                src={course.thumbnail}
+                                                alt={getLocalizedText(course.title)}
+                                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] to-transparent opacity-60"></div>
+                                            {/* Level Badge */}
+                                            <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[var(--bg-tertiary)]/80 backdrop-blur-sm border border-[var(--border-primary)] text-[10px] font-black uppercase tracking-widest text-[var(--accent-primary)]">
+                                                {t(levelKeys[course.level] || 'courseCatalog.levels.beginner')}
+                                            </span>
+                                            {/* Price Badge */}
+                                            <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-[var(--accent-primary)] text-[var(--text-on-accent)] text-[11px] font-black">
+                                                {course.discount > 0 ? formatPrice(course.finalPrice) : formatPrice(course.price)}
+                                            </span>
+                                        </div>
+                                    ) : (
+                                        <div className={`relative h-48 bg-gradient-to-br ${categoryGradients[course.category] || 'from-purple-600 to-pink-500'} flex items-center justify-center`}>
+                                            <span className="text-6xl">{categoryIcons[course.category] || '📚'}</span>
+                                            {/* Level Badge */}
+                                            <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-[10px] font-black uppercase tracking-widest text-white">
+                                                {t(levelKeys[course.level] || 'courseCatalog.levels.beginner')}
+                                            </span>
+                                            {/* Price Badge */}
+                                            <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-white text-[var(--accent-primary)] text-[11px] font-black">
+                                                {course.discount > 0 ? formatPrice(course.finalPrice) : formatPrice(course.price)}
+                                            </span>
+                                        </div>
+                                    )}
+
+                                    <div className="p-6 flex flex-col flex-grow">
+                                        <div className="space-y-3 flex-grow">
+                                            <h3 className="text-xl font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors line-clamp-2">
+                                                {getLocalizedText(course.title)}
+                                            </h3>
+                                            <p className="text-sm text-[var(--text-secondary)] leading-relaxed line-clamp-2">
+                                                {getLocalizedText(course.description)}
+                                            </p>
+                                        </div>
+
+                                        <div className="mt-4">
+                                            <span className="w-full py-2.5 rounded-xl bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] font-bold text-sm border border-[var(--accent-primary)]/20 hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-all flex items-center justify-center gap-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                                                </svg>
+                                                {t('landing.course.startLearning')}
+                                            </span>
+                                        </div>
+
+                                        <div className="flex justify-between items-center mt-4 pt-4 border-t border-[var(--border-primary)] text-[11px] font-bold text-[var(--text-tertiary)]">
+                                            <div className="flex gap-4">
+                                                <span>⏱ {course.duration} {t('landing.course.hours')}</span>
+                                                <span>📚 {course.totalLessons} {t('landing.course.lessons')}</span>
+                                            </div>
+                                            <span>👥 {course.enrolledCount} {t('landing.courses.enrolled')}</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </Link>
-                        ))}
+                                </Link>
+                            ))}
+                        </div>
+                    )}
+
+                    {/* Mobile View All Link */}
+                    <div className="md:hidden mt-8 text-center">
+                        <Link to="/courses" className="py-3 px-8 rounded-full border border-[var(--border-primary)] hover:border-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-all text-sm font-bold text-[var(--accent-primary)]">
+                            {t('landing.courses.viewAll')}
+                        </Link>
                     </div>
                 </div>
             </section>
