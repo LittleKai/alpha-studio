@@ -1,5 +1,5 @@
 # Project Summary
-**Last Updated:** 2026-01-20 (Course Management Integration)
+**Last Updated:** 2026-01-20 (Remove Chinese language support)
 **Updated By:** Claude Code
 
 ---
@@ -12,7 +12,7 @@
   - Vite 6.2 (Build tool)
   - CSS (Pure CSS with CSS Custom Properties for theming)
   - Google Generative AI (@google/genai) - Gemini 2.5 Flash API
-- **i18n:** Custom React Context solution (supports: en, vi, zh)
+- **i18n:** Custom React Context solution (supports: en, vi)
 - **Theming:** Light/Dark mode via CSS Custom Properties + data-theme attribute
 - **Deployment:** Vercel
 - **Backend:** Separate repository - [alpha-studio-backend](../alpha-studio-backend)
@@ -43,8 +43,7 @@ src/
 ├── i18n/
 │   ├── context.tsx            # LanguageProvider, useTranslation hook
 │   ├── en.ts                  # English translations
-│   ├── vi.ts                  # Vietnamese translations (default)
-│   └── zh.ts                  # Chinese translations
+│   └── vi.ts                  # Vietnamese translations (default)
 │
 ├── theme/
 │   └── context.tsx            # ThemeProvider, useTheme hook
@@ -175,7 +174,7 @@ App.tsx
 | Workflow Dashboard | ✅ Complete | WorkflowDashboard.tsx | Large component (~29k tokens) |
 | AI Server Connect | ✅ Complete | AIServerConnect.tsx | GPU server mock UI |
 | Theme Switching | ✅ Complete | theme/context.tsx | Light/Dark with persistence |
-| i18n (EN/VI/ZH) | ✅ Complete | i18n/* | Full translations |
+| i18n (EN/VI) | ✅ Complete | i18n/* | Full translations |
 | Authentication | ✅ Complete | auth/context.tsx, Login.tsx | JWT auth (backend separate) |
 | Image Mask Editor | ✅ Complete | ImageEditorCanvas.tsx | Canvas-based drawing |
 | User Registration | ✅ Complete | Login.tsx | Email + password + confirm password |
@@ -209,7 +208,6 @@ App.tsx
 - [ ] No loading states for language switching
 - [ ] Consider extracting landing page sections into components
 - [ ] Email verification not implemented
-- [ ] Add zh.ts (Chinese) translations for new account.* keys
 
 ---
 
@@ -220,7 +218,7 @@ App.tsx
 2. Create new history entry in `.claude/history/`
 3. Follow naming conventions in CONVENTIONS.md
 4. Use CSS Custom Properties for any styling changes
-5. Add translations to ALL language files (en.ts, vi.ts, zh.ts)
+5. Add translations to ALL language files (en.ts, vi.ts)
 6. Use `useTranslation()` hook for any user-facing text
 7. Keep components under 500 lines when possible
 
@@ -243,15 +241,16 @@ App.tsx
 
 ## 7. Recent Changes (Last 3 Sessions)
 
-1. **2026-01-20** - Course Management Integration
+1. **2026-01-20** - Course Management Integration & Remove Chinese
    - Integrated Course Management API into frontend Landing Page
    - Replaced hardcoded "Training Programs" section with dynamic "Featured Courses" from API
-   - Created courseService.ts with getCourses, getCourseById, getFeaturedCourses functions
    - Created CoursesPage.tsx - full courses catalog with filters (category, level), search, sort, pagination
+   - Updated CoursePage.tsx to fetch course details from API (was using hardcoded data)
    - Added /courses route in App.tsx with Layout wrapper
-   - Added i18n translations for courses section in en.ts, vi.ts, zh.ts (landing.courses.*, courseCatalog.*)
+   - Added i18n translations for courses section in en.ts, vi.ts (landing.courses.*, courseCatalog.*)
    - Landing page now fetches 6 featured courses sorted by enrollment count
    - Course cards display: thumbnail, title (multilang), level badge, price/finalPrice, duration, lessons, enrollment count
+   - Removed Chinese language support: deleted zh.ts, updated context.tsx and PROJECT_SUMMARY.md
 
 2. **2026-01-19** - Jobs & Partners CRUD, Card Redesign
    - Fixed /admin/courses 404 error by adding route and AdminCoursesPage component

@@ -1,11 +1,10 @@
 import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 import en from './en';
 import vi from './vi';
-import zh from './zh';
 
-type Language = 'en' | 'vi' | 'zh';
+type Language = 'en' | 'vi';
 
-const translations = { en, vi, zh };
+const translations = { en, vi };
 
 interface LanguageContextType {
   language: Language;
@@ -19,7 +18,7 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   const [language, setLanguage] = useState<Language>(() => {
     try {
       const savedLang = localStorage.getItem('language');
-      return (savedLang === 'en' || savedLang === 'vi' || savedLang === 'zh') ? savedLang : 'vi';
+      return (savedLang === 'en' || savedLang === 'vi') ? savedLang : 'vi';
     } catch {
       return 'vi';
     }
