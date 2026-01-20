@@ -89,7 +89,7 @@ export interface JobQueryParams {
 
 // Helper function to get auth headers
 const getAuthHeaders = (): HeadersInit => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('alpha_studio_token');
     return {
         'Content-Type': 'application/json',
         ...(token && { Authorization: `Bearer ${token}` })
@@ -156,7 +156,7 @@ export const createJob = async (data: JobInput): Promise<JobResponse> => {
 // Update job
 export const updateJob = async (id: string, data: Partial<JobInput>): Promise<JobResponse> => {
     const response = await fetch(`${API_URL}/jobs/${id}`, {
-        method: 'PATCH',
+        method: 'PUT',
         headers: getAuthHeaders(),
         body: JSON.stringify(data)
     });

@@ -1,5 +1,5 @@
 # Project Summary
-**Last Updated:** 2026-01-17 (Frontend/Backend Split)
+**Last Updated:** 2026-01-19 (Jobs & Partners CRUD, Card Redesign)
 **Updated By:** Claude Code
 
 ---
@@ -24,8 +24,10 @@
 ### File Structure (Key Files Only)
 ```
 src/
-├── App.tsx                    # Main app component, routing logic, landing page
+├── App.tsx                    # Main app component with React Router routes
 ├── main.tsx                   # React entry point with providers
+├── pages/
+│   └── LandingPage.tsx        # Landing page component
 ├── index.css                  # Global styles, animations, utilities
 ├── types.ts                   # TypeScript interfaces/types
 ├── constants.ts               # TRANSFORMATIONS array for AI tools
@@ -44,7 +46,9 @@ src/
 │   └── context.tsx            # ThemeProvider, useTheme hook
 │
 ├── services/
-│   └── geminiService.ts       # Gemini API integration (editImage function)
+│   ├── geminiService.ts       # Gemini API integration (editImage function)
+│   ├── jobService.ts          # Job management API service
+│   └── partnerService.ts      # Partner management API service
 │
 ├── utils/
 │   └── fileUtils.ts           # File utilities (downloadImage, etc.)
@@ -83,7 +87,9 @@ src/
 │   └── modals/                # Modal components
 │       ├── ImagePreviewModal.tsx
 │       ├── StudentProfileModal.tsx
-│       └── PartnerRegistrationModal.tsx
+│       ├── PartnerRegistrationModal.tsx
+│       ├── PartnerEditModal.tsx       # Partner edit modal with skills
+│       └── JobManagementModal.tsx     # Job create/edit modal
 ```
 
 ### Component Dependencies
@@ -141,9 +147,10 @@ App.tsx
 - **Error Handling:** Centralized with user-friendly messages
 
 ### Routing
-- **Pattern:** State-based "routing" in App.tsx
-- **Views:** home, studio, workflow, server + detail views
-- **Protected Routes:** Login dialog for studio/workflow/server
+- **Pattern:** React Router v6 with `<BrowserRouter>`
+- **Routes:** `/`, `/studio`, `/workflow`, `/server`, `/courses/:id`, `/students/:id`, `/partners/:id`, `/admin/courses`
+- **Protected Routes:** Login dialog for studio/workflow/server/admin
+- **Layout:** Shared Layout component with navigation header
 
 ### i18n Pattern
 - **Dot notation keys:** `t('landing.hero.title1')`
@@ -165,9 +172,14 @@ App.tsx
 | Authentication | ✅ Complete | auth/context.tsx, Login.tsx | JWT auth (backend separate) |
 | Image Mask Editor | ✅ Complete | ImageEditorCanvas.tsx | Canvas-based drawing |
 | User Registration | ✅ Complete | Login.tsx | Email + password + confirm password |
-| User Profile Menu | ✅ Complete | App.tsx | Dropdown with user info + logout |
+| User Profile Menu | ✅ Complete | LandingPage.tsx | Enhanced dropdown with account info section |
 | Password Toggle | ✅ Complete | Login.tsx | Show/hide password visibility |
 | Remember Me | ✅ Complete | Login.tsx | Saves email to localStorage |
+| React Router | ✅ Complete | App.tsx, pages/* | Full routing with React Router v6 |
+| Theme-aware Search | ✅ Complete | WorkflowDashboard.tsx | CSS variable-based theming |
+| Jobs CRUD | ✅ Complete | JobsView.tsx, JobManagementModal.tsx | Full job management with admin controls |
+| Partners CRUD | ✅ Complete | PartnersView.tsx, PartnerEditModal.tsx | Full partner management with edit/publish |
+| Course Management | ✅ Complete | CourseManagement.tsx | Admin course route at /admin/courses |
 
 ---
 
@@ -184,10 +196,12 @@ App.tsx
 - [ ] Forgot password / password reset not implemented
 
 ### Low Priority
-- [ ] Some hardcoded data in App.tsx (courses, students, partners)
+- [x] ~~State-based routing~~ (Migrated to React Router v6)
+- [ ] Some hardcoded data in LandingPage.tsx (courses, students, partners)
 - [ ] No loading states for language switching
 - [ ] Consider extracting landing page sections into components
 - [ ] Email verification not implemented
+- [ ] Add zh.ts (Chinese) translations for new account.* keys
 
 ---
 
@@ -221,22 +235,29 @@ App.tsx
 
 ## 7. Recent Changes (Last 3 Sessions)
 
-1. **2026-01-17** - Production Deployment
+1. **2026-01-19** - Jobs & Partners CRUD, Card Redesign
+   - Fixed /admin/courses 404 error by adding route and AdminCoursesPage component
+   - Fixed job creation experienceLevel enum mismatch ('entry' → 'fresher')
+   - Fixed partner creation userId duplicate key error (added index cleanup in backend)
+   - Fixed jobs/partners not appearing after creation (admin sees all statuses, users see published)
+   - Fixed job/partner update "Route not found" error (changed PATCH to PUT in services)
+   - Redesigned job cards with new layout: job type badge, experience level badge, time ago, salary in green, skill tags with #, deadline, applicants count
+   - Redesigned partner cards with new layout: logo, verified badge, location, description, skill tags, contact/website buttons
+   - Created PartnerEditModal.tsx for editing partners with skills input
+   - Added skills field to Partner model in backend
+   - Added getExperienceLabel and getExperienceColor helper functions for job cards
+
+2. **2026-01-19** - UI Improvements & Translations
+   - Migrated from state-based routing to React Router v6
+   - Enhanced account dropdown with better account info section
+   - Fixed search input theme colors in WorkflowDashboard
+   - Added missing translations (account.*, workflow.jobs.noJobs, workflow.partners.noPartners)
+   - Fixed token key mismatch in jobService.ts and partnerService.ts
+
+3. **2026-01-17** - Production Deployment
    - Configured Vercel environment variables (VITE_GEMINI_API_KEY, VITE_API_URL)
    - Updated .env and .env.example with production backend URL
    - Added production URLs to documentation
-
-2. **2026-01-17** - Frontend/Backend Split
-   - Separated backend into standalone repository (alpha-studio-backend)
-   - Removed server/ folder from frontend
-   - Updated package.json (removed backend dependencies)
-   - Created .env.example for frontend-only variables
-
-3. **2026-01-17** - Authentication System Implementation + Bug Fixes
-   - Implemented JWT authentication with bcrypt password hashing
-   - Created AuthProvider context for frontend state management
-   - Added Login/Register modal with form validation
-   - Added user profile dropdown menu with logout functionality
 
 ---
 

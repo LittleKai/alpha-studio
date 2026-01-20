@@ -28,11 +28,12 @@ const JOB_TYPE_OPTIONS = [
 ];
 
 const EXPERIENCE_OPTIONS = [
-    { value: 'entry', label: 'Entry Level' },
+    { value: 'fresher', label: 'Fresher' },
     { value: 'junior', label: 'Junior' },
     { value: 'mid', label: 'Mid Level' },
     { value: 'senior', label: 'Senior' },
     { value: 'lead', label: 'Lead' },
+    { value: 'manager', label: 'Manager' },
 ];
 
 const JobManagementModal: React.FC<JobManagementModalProps> = ({
@@ -77,7 +78,7 @@ const JobManagementModal: React.FC<JobManagementModalProps> = ({
         salaryCurrency: 'VND',
         salaryNegotiable: true,
         jobType: 'full-time',
-        experienceLevel: 'entry',
+        experienceLevel: 'fresher',
         category: 'other',
         skills: '',
         applicationDeadline: '',
@@ -103,7 +104,7 @@ const JobManagementModal: React.FC<JobManagementModalProps> = ({
                     salaryCurrency: editingJob.salary?.currency || 'VND',
                     salaryNegotiable: editingJob.salary?.negotiable ?? true,
                     jobType: editingJob.jobType || 'full-time',
-                    experienceLevel: editingJob.experienceLevel || 'entry',
+                    experienceLevel: editingJob.experienceLevel || 'fresher',
                     category: editingJob.category || 'other',
                     skills: editingJob.skills?.join(', ') || '',
                     applicationDeadline: editingJob.applicationDeadline?.split('T')[0] || '',
@@ -124,7 +125,7 @@ const JobManagementModal: React.FC<JobManagementModalProps> = ({
                     salaryCurrency: 'VND',
                     salaryNegotiable: true,
                     jobType: 'full-time',
-                    experienceLevel: 'entry',
+                    experienceLevel: 'fresher',
                     category: 'other',
                     skills: '',
                     applicationDeadline: '',

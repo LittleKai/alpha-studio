@@ -57,8 +57,17 @@ export default {
     actions: {
       download: "下载",
       useAsInput: "继续编辑",
-      savedToWorkflow: "已保存到 Alpha Connect！"
-    }
+      savedToWorkflow: "已保存到 Alpha Connect！",
+      saveToWorkflow: "保存到工作流"
+    },
+    resultView: "结果",
+    compareView: "对比"
+  },
+  transformationSelector: {
+    title: "选择 AI 工具",
+    description: "拖放以按您的喜好重新排列工具。",
+    descriptionWithResult: "上一个结果将用作输入。选择一个工具继续。",
+    changeTool: "更换工具"
   },
   transformations: {
     effects: {

@@ -98,6 +98,14 @@ export default {
     step1Failed: "Step 1 failed",
     unknownError: "An unknown error occurred"
   },
+  account: {
+    info: "Account Info",
+    viewProfile: "View Profile",
+    settings: "Settings",
+    email: "Email",
+    role: "Role",
+    memberSince: "Member since"
+  },
   login: {
     subtitle: "Sign in to continue",
     registerSubtitle: "Create your account",
@@ -179,7 +187,53 @@ export default {
     invalidEmail: "Invalid email address",
     selectSpecialty: "Please select at least one specialty",
     cancel: "Cancel",
-    submit: "Submit"
+    submit: "Submit",
+    confirmDelete: "Are you sure you want to delete this partner?",
+    all: "All",
+    technology: "Technology",
+    education: "Education",
+    enterprise: "Enterprise",
+    startup: "Startup",
+    government: "Government",
+    other: "Other"
+  },
+  job: {
+    title: "Job Title",
+    titleRequired: "Title is required (at least one language)",
+    locationRequired: "Location is required",
+    category: "Category",
+    type: "Job Type",
+    experience: "Experience Level",
+    location: "Location",
+    salary: "Salary Range",
+    negotiable: "Negotiable",
+    description: "Description",
+    requirements: "Requirements",
+    benefits: "Benefits",
+    skills: "Skills (comma separated)",
+    deadline: "Application Deadline",
+    edit: "Edit Job",
+    create: "Create New Job",
+    confirmDelete: "Are you sure you want to delete this job?",
+    publish: "Publish",
+    close: "Close Position",
+    apply: "Apply Now",
+    applicants: "applicants",
+    from: "From",
+    upTo: "Up to",
+    allCategories: "All Categories",
+    allTypes: "All Types"
+  },
+  common: {
+    cancel: "Cancel",
+    saving: "Saving...",
+    update: "Update",
+    create: "Create",
+    retry: "Retry",
+    delete: "Delete",
+    edit: "Edit",
+    save: "Save",
+    close: "Close"
   },
   course: {
     by: "by",
@@ -194,8 +248,17 @@ export default {
     actions: {
       download: "Download",
       useAsInput: "Continue Editing",
-      savedToWorkflow: "Saved to Alpha Connect!"
-    }
+      savedToWorkflow: "Saved to Alpha Connect!",
+      saveToWorkflow: "Save to Workflow"
+    },
+    resultView: "Result",
+    compareView: "Compare"
+  },
+  transformationSelector: {
+    title: "Select AI Tool",
+    description: "Drag and drop to rearrange tools as you prefer.",
+    descriptionWithResult: "Previous result will be used as input. Select a tool to continue.",
+    changeTool: "Change Tool"
   },
   transformations: {
     effects: {
@@ -359,6 +422,24 @@ export default {
     description: "Description",
     tasks: "Tasks",
     addMember: "Add Member",
+    sidebar: {
+      fileManagement: "FILE MANAGEMENT",
+      allDocuments: "All Documents",
+      teamCreative: "Creative Team",
+      eventPlanner: "Event Planner",
+      account: "Account",
+      production: "Production",
+      networkOpportunity: "NETWORK & OPPORTUNITIES",
+      jobMarket: "Job Market",
+      freelancer: "Freelancer",
+      partners: "Partners Network",
+      affiliate: "Affiliate",
+      creditWallet: "Credit Wallet",
+      communityResources: "COMMUNITY & RESOURCES",
+      sharePrompts: "Share Prompts",
+      resourceHub: "Resource Hub",
+      exitStudio: "Exit Studio"
+    },
     tab: {
       projects: "Projects",
       documents: "Documents",
@@ -477,7 +558,9 @@ export default {
       budget: "Budget",
       posted: "Posted",
       deadline: "Deadline",
-      applicants: "applicants"
+      applicants: "applicants",
+      noJobs: "No jobs available at the moment",
+      add: "Post New Job"
     },
     wallet: {
       title: "Credit Wallet",
@@ -506,6 +589,7 @@ export default {
       title: "Partner Network",
       subtitle: "Top Agencies & Suppliers",
       register: "Register Partner",
+      noPartners: "No partners available at the moment",
       tabs: {
         agency: "Event Agency",
         supplier: "Supplier"

@@ -16,6 +16,7 @@ const PartnerPage = lazy(() => import('./pages/PartnerPage'));
 const StudioTool = lazy(() => import('./components/studio/StudioTool'));
 const WorkflowDashboard = lazy(() => import('./components/dashboard/WorkflowDashboard'));
 const AIServerConnect = lazy(() => import('./components/dashboard/AIServerConnect'));
+const CourseManagement = lazy(() => import('./components/admin/CourseManagement'));
 
 // Loading spinner component
 const LoadingSpinner: React.FC = () => (
@@ -93,6 +94,18 @@ const PartnerDetailPage: React.FC = () => {
     );
 };
 
+// Admin Course Management Page
+const AdminCoursesPage: React.FC = () => {
+    const navigate = useNavigate();
+    return (
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <CourseManagement onBack={() => navigate('/')} />
+            </Suspense>
+        </Layout>
+    );
+};
+
 // 404 Not Found Page
 const NotFoundPage: React.FC = () => {
     const navigate = useNavigate();
@@ -154,6 +167,16 @@ const App: React.FC = () => {
                     element={
                         <ProtectedRoute>
                             <ServerPage />
+                        </ProtectedRoute>
+                    }
+                />
+
+                {/* Admin Routes */}
+                <Route
+                    path="/admin/courses"
+                    element={
+                        <ProtectedRoute>
+                            <AdminCoursesPage />
                         </ProtectedRoute>
                     }
                 />

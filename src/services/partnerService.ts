@@ -27,6 +27,7 @@ export interface Partner {
     featured: boolean;
     order: number;
     socialLinks: SocialLinks;
+    skills: string[];
     createdBy?: {
         _id: string;
         name: string;
@@ -50,6 +51,7 @@ export interface PartnerInput {
     featured?: boolean;
     order?: number;
     socialLinks?: SocialLinks;
+    skills?: string[];
 }
 
 export interface PaginationInfo {
@@ -83,7 +85,7 @@ export interface PartnerQueryParams {
 
 // Helper function to get auth headers
 const getAuthHeaders = (): HeadersInit => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('alpha_studio_token');
     return {
         'Content-Type': 'application/json',
         ...(token && { Authorization: `Bearer ${token}` })
@@ -152,7 +154,7 @@ export const createPartner = async (data: PartnerInput): Promise<PartnerResponse
 // Update partner
 export const updatePartner = async (id: string, data: Partial<PartnerInput>): Promise<PartnerResponse> => {
     const response = await fetch(`${API_URL}/partners/${id}`, {
-        method: 'PATCH',
+        method: 'PUT',
         headers: getAuthHeaders(),
         body: JSON.stringify(data)
     });

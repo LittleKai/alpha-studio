@@ -98,6 +98,14 @@ export default {
     step1Failed: "Bước 1 thất bại",
     unknownError: "Đã xảy ra lỗi không xác định"
   },
+  account: {
+    info: "Thông tin tài khoản",
+    viewProfile: "Xem hồ sơ",
+    settings: "Cài đặt",
+    email: "Email",
+    role: "Vai trò",
+    memberSince: "Thành viên từ"
+  },
   login: {
     subtitle: "Đăng nhập để tiếp tục",
     registerSubtitle: "Tạo tài khoản mới",
@@ -179,7 +187,53 @@ export default {
     invalidEmail: "Địa chỉ email không hợp lệ",
     selectSpecialty: "Vui lòng chọn ít nhất một chuyên môn",
     cancel: "Hủy",
-    submit: "Gửi"
+    submit: "Gửi",
+    confirmDelete: "Bạn có chắc muốn xóa đối tác này?",
+    all: "Tất cả",
+    technology: "Công nghệ",
+    education: "Giáo dục",
+    enterprise: "Doanh nghiệp",
+    startup: "Startup",
+    government: "Chính phủ",
+    other: "Khác"
+  },
+  job: {
+    title: "Tiêu đề công việc",
+    titleRequired: "Tiêu đề là bắt buộc (ít nhất một ngôn ngữ)",
+    locationRequired: "Địa điểm là bắt buộc",
+    category: "Danh mục",
+    type: "Loại công việc",
+    experience: "Cấp độ kinh nghiệm",
+    location: "Địa điểm",
+    salary: "Mức lương",
+    negotiable: "Thương lượng",
+    description: "Mô tả",
+    requirements: "Yêu cầu",
+    benefits: "Quyền lợi",
+    skills: "Kỹ năng (phân cách bằng dấu phẩy)",
+    deadline: "Hạn nộp hồ sơ",
+    edit: "Chỉnh sửa",
+    create: "Tạo công việc mới",
+    confirmDelete: "Bạn có chắc muốn xóa công việc này?",
+    publish: "Đăng tuyển",
+    close: "Đóng tin",
+    apply: "Ứng tuyển ngay",
+    applicants: "ứng viên",
+    from: "Từ",
+    upTo: "Đến",
+    allCategories: "Tất cả danh mục",
+    allTypes: "Tất cả loại"
+  },
+  common: {
+    cancel: "Hủy",
+    saving: "Đang lưu...",
+    update: "Cập nhật",
+    create: "Tạo mới",
+    retry: "Thử lại",
+    delete: "Xóa",
+    edit: "Sửa",
+    save: "Lưu",
+    close: "Đóng"
   },
   course: {
     by: "bởi",
@@ -194,8 +248,17 @@ export default {
     actions: {
       download: "Tải xuống",
       useAsInput: "Tiếp tục chỉnh sửa",
-      savedToWorkflow: "Đã lưu vào Alpha Connect!"
-    }
+      savedToWorkflow: "Đã lưu vào Alpha Connect!",
+      saveToWorkflow: "Lưu vào Workflow"
+    },
+    resultView: "Kết quả",
+    compareView: "So sánh"
+  },
+  transformationSelector: {
+    title: "Chọn công cụ AI",
+    description: "Kéo thả để sắp xếp lại các công cụ theo ý bạn.",
+    descriptionWithResult: "Kết quả trước đó sẽ được sử dụng làm đầu vào. Chọn một công cụ để tiếp tục.",
+    changeTool: "Đổi công cụ"
   },
   transformations: {
     effects: {
@@ -359,6 +422,24 @@ export default {
     description: "Mô tả",
     tasks: "Nhiệm vụ",
     addMember: "Thêm thành viên",
+    sidebar: {
+      fileManagement: "QUẢN LÝ FILE",
+      allDocuments: "Tất cả tài liệu",
+      teamCreative: "Team Creative",
+      eventPlanner: "Event Planner",
+      account: "Account",
+      production: "Sản xuất",
+      networkOpportunity: "MẠNG LƯỚI & CƠ HỘI",
+      jobMarket: "Sàn việc làm",
+      freelancer: "Freelancer",
+      partners: "Đối tác liên kết",
+      affiliate: "Affiliate",
+      creditWallet: "Ví Credit",
+      communityResources: "CỘNG ĐỒNG & TÀI NGUYÊN",
+      sharePrompts: "Chia sẻ Prompt",
+      resourceHub: "Kho Tài Nguyên",
+      exitStudio: "Thoát Studio"
+    },
     tab: {
       projects: "Dự án",
       documents: "Tài liệu",
@@ -477,7 +558,9 @@ export default {
       budget: "Ngân sách",
       posted: "Đăng ngày",
       deadline: "Hạn chót",
-      applicants: "ứng viên"
+      applicants: "ứng viên",
+      noJobs: "Chưa có việc làm nào",
+      add: "Đăng việc mới"
     },
     wallet: {
       title: "Ví Credit",
@@ -506,6 +589,7 @@ export default {
       title: "Mạng lưới đối tác",
       subtitle: "Agency & Supplier hàng đầu",
       register: "Đăng ký đối tác",
+      noPartners: "Chưa có đối tác nào",
       tabs: {
         agency: "Agency sự kiện",
         supplier: "Nhà cung cấp"

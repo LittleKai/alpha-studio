@@ -26,7 +26,11 @@ const JobsView: React.FC<JobsViewProps> = ({ searchQuery }) => {
         setIsLoading(true);
         setError(null);
         try {
-            const params: Record<string, string> = { status: 'published' };
+            const params: Record<string, string> = {};
+            // Admin/mod can see all jobs, regular users only see published
+            if (!isAdmin) {
+                params.status = 'published';
+            }
             if (categoryFilter !== 'all') params.category = categoryFilter;
             if (jobTypeFilter !== 'all') params.jobType = jobTypeFilter;
             if (searchQuery) params.search = searchQuery;
@@ -39,7 +43,7 @@ const JobsView: React.FC<JobsViewProps> = ({ searchQuery }) => {
         } finally {
             setIsLoading(false);
         }
-    }, [categoryFilter, jobTypeFilter, searchQuery]);
+    }, [categoryFilter, jobTypeFilter, searchQuery, isAdmin]);
 
     useEffect(() => {
         fetchJobs();
@@ -133,13 +137,66 @@ const JobsView: React.FC<JobsViewProps> = ({ searchQuery }) => {
 
     const getJobTypeColor = (jobType: string): string => {
         const colors: Record<string, string> = {
-            'full-time': 'bg-emerald-500/20 text-emerald-400',
-            'part-time': 'bg-cyan-500/20 text-cyan-400',
-            contract: 'bg-amber-500/20 text-amber-400',
-            internship: 'bg-indigo-500/20 text-indigo-400',
-            remote: 'bg-violet-500/20 text-violet-400',
+            'full-time': 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+            'part-time': 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',
+            contract: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
+            internship: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',
+            remote: 'bg-violet-500/10 text-violet-400 border-violet-500/20',
         };
-        return colors[jobType] || 'bg-gray-500/20 text-gray-400';
+        return colors[jobType] || 'bg-gray-500/10 text-gray-400 border-gray-500/20';
+    };
+
+    const getStatusBadge = (status: string): { color: string; label: string } => {
+        const badges: Record<string, { color: string; label: string }> = {
+            draft: { color: 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20', label: 'Draft' },
+            published: { color: 'bg-green-500/10 text-green-400 border-green-500/20', label: 'Published' },
+            closed: { color: 'bg-red-500/10 text-red-400 border-red-500/20', label: 'Closed' },
+        };
+        return badges[status] || badges.draft;
+    };
+
+    const formatTimeAgo = (dateString: string): string => {
+        const date = new Date(dateString);
+        const now = new Date();
+        const diffMs = now.getTime() - date.getTime();
+        const diffMins = Math.floor(diffMs / 60000);
+        const diffHours = Math.floor(diffMs / 3600000);
+        const diffDays = Math.floor(diffMs / 86400000);
+
+        if (diffMins < 60) return language === 'vi' ? `${diffMins} phút trước` : `${diffMins}m ago`;
+        if (diffHours < 24) return language === 'vi' ? `${diffHours} giờ trước` : `${diffHours}h ago`;
+        if (diffDays < 30) return language === 'vi' ? `${diffDays} ngày trước` : `${diffDays}d ago`;
+        return date.toLocaleDateString(language === 'vi' ? 'vi-VN' : 'en-US');
+    };
+
+    const formatDeadline = (dateString: string | null): string => {
+        if (!dateString) return '';
+        const date = new Date(dateString);
+        return date.toLocaleDateString(language === 'vi' ? 'vi-VN' : 'en-US');
+    };
+
+    const getExperienceLabel = (level: string): string => {
+        const labels: Record<string, { vi: string; en: string }> = {
+            fresher: { vi: 'Fresher', en: 'Fresher' },
+            junior: { vi: 'Junior', en: 'Junior' },
+            mid: { vi: 'Mid-level', en: 'Mid-level' },
+            senior: { vi: 'Senior', en: 'Senior' },
+            lead: { vi: 'Lead', en: 'Lead' },
+            manager: { vi: 'Manager', en: 'Manager' },
+        };
+        return labels[level]?.[language] || level;
+    };
+
+    const getExperienceColor = (level: string): string => {
+        const colors: Record<string, string> = {
+            fresher: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
+            junior: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',
+            mid: 'bg-green-500/10 text-green-400 border-green-500/20',
+            senior: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
+            lead: 'bg-orange-500/10 text-orange-400 border-orange-500/20',
+            manager: 'bg-red-500/10 text-red-400 border-red-500/20',
+        };
+        return colors[level] || 'bg-gray-500/10 text-gray-400 border-gray-500/20';
     };
 
     return (
@@ -222,123 +279,142 @@ const JobsView: React.FC<JobsViewProps> = ({ searchQuery }) => {
                             {t('workflow.jobs.noJobs') || 'Chưa có việc làm nào được đăng tải'}
                         </div>
                     ) : (
-                        jobs.map((job) => (
-                            <div
-                                key={job._id}
-                                className="bg-[var(--bg-card)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] rounded-2xl p-6 transition-all shadow-lg hover:shadow-[0_0_20px_rgba(0,0,0,0.3)] group flex flex-col"
-                            >
-                                {/* Header */}
-                                <div className="flex justify-between items-start mb-4">
-                                    <div className="flex flex-wrap gap-2">
-                                        <span className={`px-2 py-1 rounded text-xs font-bold uppercase ${getCategoryColor(job.category)}`}>
-                                            {job.category}
-                                        </span>
-                                        <span className={`px-2 py-1 rounded text-xs font-bold uppercase ${getJobTypeColor(job.jobType)}`}>
-                                            {job.jobType}
-                                        </span>
-                                    </div>
-                                    {isAdmin && (
-                                        <div className="flex items-center gap-1">
-                                            <button
-                                                onClick={() => {
-                                                    setEditingJob(job);
-                                                    setShowJobModal(true);
-                                                }}
-                                                className="p-1 text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors"
-                                                title="Edit"
-                                            >
-                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
-                                                </svg>
-                                            </button>
-                                            <button
-                                                onClick={() => handleDeleteJob(job._id)}
-                                                className="p-1 text-[var(--text-secondary)] hover:text-red-400 transition-colors"
-                                                title="Delete"
-                                            >
-                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
-                                                </svg>
-                                            </button>
+                        jobs.map((job) => {
+                            const statusBadge = getStatusBadge(job.status);
+                            return (
+                                <div
+                                    key={job._id}
+                                    className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 hover:border-[var(--accent-primary)] transition-all shadow-lg group flex flex-col h-full"
+                                >
+                                    {/* Header */}
+                                    <div className="flex justify-between items-start mb-4">
+                                        <div className="flex flex-wrap gap-2">
+                                            <div className={`${getJobTypeColor(job.jobType)} px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider border`}>
+                                                {job.jobType.replace('-', ' ')}
+                                            </div>
+                                            <div className={`${getExperienceColor(job.experienceLevel)} px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider border`}>
+                                                {getExperienceLabel(job.experienceLevel)}
+                                            </div>
                                         </div>
-                                    )}
-                                </div>
-
-                                {/* Title */}
-                                <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2 group-hover:text-[var(--accent-primary)] transition-colors">
-                                    {getLocalizedText(job.title)}
-                                </h3>
-
-                                {/* Company/Location */}
-                                <p className="text-sm text-[var(--text-tertiary)] mb-3 flex items-center gap-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                                    </svg>
-                                    {job.location}
-                                </p>
-
-                                {/* Description */}
-                                <p className="text-sm text-[var(--text-secondary)] mb-4 line-clamp-3 flex-grow">
-                                    {getLocalizedText(job.description)}
-                                </p>
-
-                                {/* Skills */}
-                                {job.skills && job.skills.length > 0 && (
-                                    <div className="flex flex-wrap gap-2 mb-4">
-                                        {job.skills.slice(0, 4).map((skill) => (
-                                            <span
-                                                key={skill}
-                                                className="text-[10px] bg-[var(--bg-secondary)] text-[var(--text-tertiary)] px-2 py-1 rounded border border-[var(--border-primary)]"
-                                            >
-                                                {skill}
+                                        <div className="flex items-center gap-2">
+                                            {isAdmin && (
+                                                <span className={`${statusBadge.color} px-2 py-0.5 rounded text-[10px] font-bold border`}>
+                                                    {statusBadge.label}
+                                                </span>
+                                            )}
+                                            <span className="text-xs text-[var(--text-tertiary)]">
+                                                {formatTimeAgo(job.createdAt)}
                                             </span>
-                                        ))}
-                                        {job.skills.length > 4 && (
-                                            <span className="text-[10px] text-[var(--text-tertiary)]">
-                                                +{job.skills.length - 4}
-                                            </span>
+                                        </div>
+                                    </div>
+
+                                    {/* Title */}
+                                    <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2 group-hover:text-[var(--accent-primary)] transition-colors">
+                                        {getLocalizedText(job.title)}
+                                    </h3>
+
+                                    {/* Company & Salary */}
+                                    <div className="flex items-center gap-2 mb-4 flex-wrap">
+                                        <span className="text-sm font-medium text-[var(--text-secondary)]">
+                                            {job.location || 'Remote'}
+                                        </span>
+                                        {formatSalary(job) && (
+                                            <>
+                                                <span className="w-1 h-1 bg-[var(--text-tertiary)] rounded-full"></span>
+                                                <span className="text-xs text-green-400 font-bold bg-green-500/10 px-2 py-0.5 rounded">
+                                                    {formatSalary(job)}
+                                                </span>
+                                            </>
                                         )}
                                     </div>
-                                )}
 
-                                {/* Footer */}
-                                <div className="flex justify-between items-center pt-4 border-t border-[var(--border-primary)] mt-auto">
-                                    <div className="text-sm">
-                                        <span className="text-[var(--accent-primary)] font-bold">
-                                            {formatSalary(job)}
-                                        </span>
-                                    </div>
-                                    <div className="text-xs text-[var(--text-tertiary)]">
-                                        {job.applicationCount || 0} {t('job.applicants') || 'applicants'}
+                                    {/* Description */}
+                                    <p className="text-sm text-[var(--text-secondary)] mb-6 line-clamp-3 flex-grow">
+                                        {getLocalizedText(job.description)}
+                                    </p>
+
+                                    {/* Skills */}
+                                    {job.skills && job.skills.length > 0 && (
+                                        <div className="flex flex-wrap gap-2 mb-6">
+                                            {job.skills.slice(0, 3).map((skill) => (
+                                                <span
+                                                    key={skill}
+                                                    className="text-[10px] bg-[var(--bg-secondary)] text-[var(--text-tertiary)] px-2 py-1 rounded border border-[var(--border-primary)]"
+                                                >
+                                                    #{skill}
+                                                </span>
+                                            ))}
+                                            {job.skills.length > 3 && (
+                                                <span className="text-[10px] text-[var(--text-tertiary)] px-2 py-1">
+                                                    +{job.skills.length - 3}
+                                                </span>
+                                            )}
+                                        </div>
+                                    )}
+
+                                    {/* Footer */}
+                                    <div className="mt-auto pt-4 border-t border-[var(--border-primary)]">
+                                        <div className="flex justify-between items-center mb-4 text-xs text-[var(--text-tertiary)]">
+                                            <div className="flex items-center gap-2">
+                                                <span className={`${getCategoryColor(job.category)} px-2 py-0.5 rounded text-[10px] font-bold`}>
+                                                    {job.category}
+                                                </span>
+                                                {job.applicationDeadline && (
+                                                    <span>• {language === 'vi' ? 'Hạn' : 'Due'}: {formatDeadline(job.applicationDeadline)}</span>
+                                                )}
+                                            </div>
+                                            <span>{job.applicationCount || 0} {language === 'vi' ? 'ứng viên' : 'applicants'}</span>
+                                        </div>
+
+                                        {/* Admin Actions */}
+                                        {isAdmin ? (
+                                            <div className="flex items-center gap-2">
+                                                <button
+                                                    onClick={() => {
+                                                        setEditingJob(job);
+                                                        setShowJobModal(true);
+                                                    }}
+                                                    className="flex-1 py-2.5 rounded-xl font-bold text-sm transition-all bg-[var(--bg-secondary)] text-[var(--text-primary)] hover:bg-[var(--border-primary)] flex items-center justify-center gap-2"
+                                                >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                                                    </svg>
+                                                    {language === 'vi' ? 'Sửa' : 'Edit'}
+                                                </button>
+                                                {job.status !== 'published' ? (
+                                                    <button
+                                                        onClick={() => handlePublishJob(job._id)}
+                                                        className="flex-1 py-2.5 rounded-xl font-bold text-sm transition-all bg-emerald-500 text-white hover:bg-emerald-600"
+                                                    >
+                                                        {language === 'vi' ? 'Đăng' : 'Publish'}
+                                                    </button>
+                                                ) : (
+                                                    <button
+                                                        onClick={() => handleCloseJob(job._id)}
+                                                        className="flex-1 py-2.5 rounded-xl font-bold text-sm transition-all bg-gray-500/20 text-gray-400 hover:bg-gray-500/30"
+                                                    >
+                                                        {language === 'vi' ? 'Đóng' : 'Close'}
+                                                    </button>
+                                                )}
+                                                <button
+                                                    onClick={() => handleDeleteJob(job._id)}
+                                                    className="p-2.5 rounded-xl text-red-400 hover:bg-red-500/10 transition-all"
+                                                    title={language === 'vi' ? 'Xóa' : 'Delete'}
+                                                >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        ) : (
+                                            <button className="w-full py-2.5 rounded-xl font-bold text-sm transition-all shadow-lg bg-[var(--text-primary)] text-[var(--bg-primary)] hover:opacity-90">
+                                                {t('workflow.jobs.apply') || 'Ứng tuyển ngay'}
+                                            </button>
+                                        )}
                                     </div>
                                 </div>
-
-                                {/* Admin Actions */}
-                                {isAdmin && job.status !== 'published' && (
-                                    <button
-                                        onClick={() => handlePublishJob(job._id)}
-                                        className="mt-4 w-full py-2 bg-emerald-500/20 text-emerald-400 rounded-lg text-sm font-bold hover:bg-emerald-500/30 transition-colors"
-                                    >
-                                        {t('job.publish') || 'Publish'}
-                                    </button>
-                                )}
-                                {isAdmin && job.status === 'published' && (
-                                    <button
-                                        onClick={() => handleCloseJob(job._id)}
-                                        className="mt-4 w-full py-2 bg-gray-500/20 text-gray-400 rounded-lg text-sm font-bold hover:bg-gray-500/30 transition-colors"
-                                    >
-                                        {t('job.close') || 'Close Position'}
-                                    </button>
-                                )}
-
-                                {/* Apply Button for non-admins */}
-                                {!isAdmin && (
-                                    <button className="mt-4 w-full py-2 bg-[var(--accent-primary)] text-black rounded-lg text-sm font-bold hover:opacity-90 transition-colors">
-                                        {t('job.apply') || 'Apply Now'}
-                                    </button>
-                                )}
-                            </div>
-                        ))
+                            );
+                        })
                     )}
                 </div>
             )}
