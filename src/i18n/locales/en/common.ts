@@ -14,6 +14,43 @@ export default {
     view: "View",
     saveChanges: "Save Changes"
   },
+  payment: {
+    title: "Top Up Balance",
+    balance: "Balance",
+    selectAmount: "Select Amount",
+    customAmount: "Or enter custom amount",
+    totalAmount: "Amount to top up",
+    createRequest: "Create Payment Request",
+    processing: "Processing...",
+    transferInfo: "Bank Transfer Information",
+    newPayment: "New Payment",
+    amountToTransfer: "Amount to transfer",
+    bankName: "Bank",
+    accountNumber: "Account Number",
+    accountHolder: "Account Holder",
+    transferContent: "Transfer Content (IMPORTANT)",
+    copy: "Copy",
+    copied: "Copied",
+    instructions: "Instructions",
+    instruction1: "Open your banking app",
+    instruction2: "Transfer the exact amount shown above",
+    instruction3: "Use the transfer content EXACTLY as shown",
+    instruction4: "Your balance will be updated automatically within 1-5 minutes",
+    history: "Transaction History",
+    refresh: "Refresh",
+    noTransactions: "No transactions yet",
+    checkStatus: "Check",
+    status: {
+      pending: "Pending",
+      completed: "Completed",
+      failed: "Failed"
+    },
+    error: {
+      minAmount: "Minimum amount is 10,000 VND",
+      maxAmount: "Maximum amount is 100,000,000 VND",
+      createFailed: "Failed to create payment request"
+    }
+  },
   profile: {
     editProfile: "Edit Profile",
     name: "Your Name",

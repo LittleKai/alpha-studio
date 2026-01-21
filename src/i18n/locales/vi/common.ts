@@ -14,6 +14,43 @@ export default {
     view: "Xem",
     saveChanges: "Lưu thay đổi"
   },
+  payment: {
+    title: "Nạp tiền",
+    balance: "Số dư",
+    selectAmount: "Chọn số tiền",
+    customAmount: "Hoặc nhập số tiền tùy chọn",
+    totalAmount: "Số tiền cần nạp",
+    createRequest: "Tạo yêu cầu nạp tiền",
+    processing: "Đang xử lý...",
+    transferInfo: "Thông tin chuyển khoản",
+    newPayment: "Giao dịch mới",
+    amountToTransfer: "Số tiền cần chuyển",
+    bankName: "Ngân hàng",
+    accountNumber: "Số tài khoản",
+    accountHolder: "Chủ tài khoản",
+    transferContent: "Nội dung chuyển khoản (QUAN TRỌNG)",
+    copy: "Sao chép",
+    copied: "Đã sao chép",
+    instructions: "Hướng dẫn",
+    instruction1: "Mở ứng dụng ngân hàng",
+    instruction2: "Chuyển đúng số tiền hiển thị ở trên",
+    instruction3: "Nhập NỘI DUNG CHUYỂN KHOẢN đúng như hiển thị",
+    instruction4: "Số dư sẽ được cập nhật tự động trong 1-5 phút",
+    history: "Lịch sử giao dịch",
+    refresh: "Làm mới",
+    noTransactions: "Chưa có giao dịch nào",
+    checkStatus: "Kiểm tra",
+    status: {
+      pending: "Đang chờ",
+      completed: "Hoàn thành",
+      failed: "Thất bại"
+    },
+    error: {
+      minAmount: "Số tiền tối thiểu là 10.000 VND",
+      maxAmount: "Số tiền tối đa là 100.000.000 VND",
+      createFailed: "Không thể tạo yêu cầu nạp tiền"
+    }
+  },
   profile: {
     editProfile: "Chỉnh sửa hồ sơ",
     name: "Tên của bạn",
