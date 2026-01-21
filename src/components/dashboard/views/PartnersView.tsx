@@ -130,10 +130,9 @@ const PartnersView: React.FC<PartnersViewProps> = ({ searchQuery }) => {
         }
     };
 
-    const getLocalizedText = (obj: { vi?: string; en?: string; zh?: string } | undefined): string => {
+    const getLocalizedText = (obj: { vi?: string; en?: string } | undefined): string => {
         if (!obj) return '';
         if (language === 'vi') return obj.vi || obj.en || '';
-        if (language === 'zh') return obj.zh || obj.en || '';
         return obj.en || obj.vi || '';
     };
 

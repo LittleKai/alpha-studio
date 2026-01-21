@@ -80,12 +80,12 @@ export default function StudioTool({ onBack }: StudioToolProps) {
   }, [initializeControlValues]);
 
   // Handle image selection
-  const handlePrimaryImageSelect = useCallback((_file: File, dataUrl: string) => {
+  const handlePrimaryImageSelect = useCallback((_file: File | null, dataUrl: string) => {
     setPrimaryImageUrl(dataUrl);
     setMaskDataUrl(null);
   }, []);
 
-  const handleSecondaryImageSelect = useCallback((_file: File, dataUrl: string) => {
+  const handleSecondaryImageSelect = useCallback((_file: File | null, dataUrl: string) => {
     setSecondaryImageUrl(dataUrl);
   }, []);
 
@@ -100,11 +100,11 @@ export default function StudioTool({ onBack }: StudioToolProps) {
   }, []);
 
   // Storyboard handlers
-  const handleBackgroundSelect = useCallback((_file: File, dataUrl: string) => {
+  const handleBackgroundSelect = useCallback((_file: File | null, dataUrl: string) => {
     setBackgroundImageUrl(dataUrl);
   }, []);
 
-  const handleReferenceSelect = useCallback((_file: File, dataUrl: string) => {
+  const handleReferenceSelect = useCallback((_file: File | null, dataUrl: string) => {
     setReferenceImageUrl(dataUrl);
   }, []);
 

@@ -9,7 +9,7 @@ const translations = { en, vi };
 interface LanguageContextType {
   language: Language;
   changeLanguage: (lang: Language) => void;
-  t: (key: string) => string;
+  t: (key: string, fallback?: string) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -36,7 +36,7 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     setLanguage(lang);
   };
 
-  const t = (key: string): string => {
+  const t = (key: string, fallback?: string): string => {
     const keys = key.split('.');
     let result: any = translations[language];
     for (const k of keys) {
@@ -47,10 +47,10 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
         for (const fk of keys) {
           fallbackResult = fallbackResult?.[fk];
         }
-        return fallbackResult || key;
+        return fallbackResult || fallback || key;
       }
     }
-    return result || key;
+    return result || fallback || key;
   };
 
   return (
