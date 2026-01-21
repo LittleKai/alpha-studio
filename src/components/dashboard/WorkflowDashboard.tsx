@@ -7,6 +7,7 @@ import type { WorkflowDocument, DepartmentType, Transaction, AutomationRule, Aff
 import LanguageSwitcher from '../ui/LanguageSwitcher';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
 import { JobsView, PartnersView } from './views';
+import ProfileEditModal from '../modals/ProfileEditModal';
 
 interface WorkflowDashboardProps {
   onBack: () => void;
@@ -822,38 +823,16 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
         <div className="flex-1 flex flex-col h-screen overflow-hidden">
             <header className="h-16 border-b border-[var(--border-primary)] bg-[var(--bg-card-alpha)] backdrop-blur-md flex items-center justify-between px-6 sticky top-0 z-20">
                  <div className="flex items-center gap-4 flex-1"><div className="relative w-full max-w-md"><input type="text" placeholder={t('workflow.dashboard.search')} value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="w-full pl-10 pr-4 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-sm text-[var(--text-primary)] focus:ring-1 focus:ring-[var(--accent-primary)] placeholder-[var(--text-tertiary)]" /><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-tertiary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg></div></div>
-                 <div className="flex items-center gap-4"><div className="flex items-center gap-2"><LanguageSwitcher /><ThemeSwitcher /></div><div onClick={() => setShowProfileModal(true)} className="w-8 h-8 rounded-full bg-gradient-to-tr from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center text-[var(--text-on-accent)] font-bold text-sm cursor-pointer hover:scale-110 transition-transform">{userProfile.name.charAt(0).toUpperCase()}</div></div>
+                 <div className="flex items-center gap-4"><div className="flex items-center gap-2"><LanguageSwitcher /><ThemeSwitcher /></div><div onClick={() => setShowProfileModal(true)} className="w-8 h-8 rounded-full bg-gradient-to-tr from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center text-[var(--text-on-accent)] font-bold text-sm cursor-pointer hover:scale-110 transition-transform overflow-hidden">{user?.avatar ? <img src={user.avatar} alt={userProfile.name} className="w-full h-full object-cover" /> : userProfile.name.charAt(0).toUpperCase()}</div></div>
             </header>
             {renderContent()}
         </div>
 
         {/* Modals */}
-        {showProfileModal && (
-            <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-                <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-md p-6">
-                    <h2 className="text-2xl font-bold mb-4">Profile</h2>
-                    <div className="space-y-4">
-                        <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-[var(--accent-primary)] to-[var(--accent-secondary)] flex items-center justify-center text-3xl font-bold text-white">
-                            {userProfile.name.charAt(0).toUpperCase()}
-                        </div>
-                        <div className="text-center">
-                            <h3 className="text-xl font-bold">{userProfile.name}</h3>
-                            <p className="text-[var(--text-secondary)]">{userProfile.role}</p>
-                            <p className="text-[var(--text-tertiary)] text-sm">{userProfile.email}</p>
-                        </div>
-                        <div className="pt-4 border-t border-[var(--border-primary)]">
-                            <p className="text-sm text-[var(--text-secondary)]">{userProfile.bio}</p>
-                        </div>
-                        <div className="flex flex-wrap gap-2">
-                            {userProfile.skills.map(skill => (
-                                <span key={skill} className="px-2 py-1 bg-[var(--bg-secondary)] rounded text-xs">{skill}</span>
-                            ))}
-                        </div>
-                        <button onClick={() => setShowProfileModal(false)} className="w-full py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">Close</button>
-                    </div>
-                </div>
-            </div>
-        )}
+        <ProfileEditModal
+            isOpen={showProfileModal}
+            onClose={() => setShowProfileModal(false)}
+        />
         {/* PartnerRegistrationModal moved to PartnersView component */}
 
         {showProjectModal && (<div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6"><h2 className="text-2xl font-bold mb-4">{t('workflow.dashboard.project.modalTitle')}</h2><form onSubmit={handleCreateProject} className="space-y-4"><input placeholder={t('workflow.dashboard.project.nameLabel')} value={newProjectData.name} onChange={e => setNewProjectData({...newProjectData, name: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input placeholder={t('workflow.dashboard.project.descLabel')} value={newProjectData.description} onChange={e => setNewProjectData({...newProjectData, description: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input placeholder="Client" value={newProjectData.client} onChange={e => setNewProjectData({...newProjectData, client: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input type="number" placeholder="Budget (Coins)" value={newProjectData.budget || ''} onChange={e => setNewProjectData({...newProjectData, budget: parseInt(e.target.value)})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><select value={newProjectData.department} onChange={e => setNewProjectData({...newProjectData, department: e.target.value as any})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"><option value="event_planner">Event Planner</option><option value="creative">Creative</option><option value="operation">Operation</option></select><div className="flex gap-2 justify-end mt-4"><button type="button" onClick={() => setShowProjectModal(false)} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">Cancel</button><button type="submit" className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.dashboard.project.createBtn')}</button></div></form></div></div>)}

@@ -16,6 +16,29 @@ export interface User {
     lastLogin: string | null;
     createdAt: string;
     updatedAt: string;
+    // Extended profile fields
+    bio?: string;
+    skills?: string[];
+    phone?: string;
+    location?: string;
+    birthDate?: string;
+    showBirthDate?: boolean;
+    socials?: {
+        linkedin?: string;
+        behance?: string;
+        github?: string;
+    };
+    featuredWorks?: {
+        image: string;
+        title: string;
+        description: string;
+    }[];
+    attachments?: {
+        url: string;
+        filename: string;
+        type: string;
+        size: number;
+    }[];
 }
 
 interface AuthState {
@@ -36,11 +59,38 @@ interface RegisterData {
     name: string;
 }
 
+interface ProfileUpdateData {
+    name?: string;
+    avatar?: string;
+    bio?: string;
+    skills?: string[];
+    phone?: string;
+    location?: string;
+    birthDate?: string;
+    showBirthDate?: boolean;
+    socials?: {
+        linkedin?: string;
+        behance?: string;
+        github?: string;
+    };
+    featuredWorks?: {
+        image: string;
+        title: string;
+        description: string;
+    }[];
+    attachments?: {
+        url: string;
+        filename: string;
+        type: string;
+        size: number;
+    }[];
+}
+
 interface AuthContextType extends AuthState {
     login: (credentials: LoginCredentials) => Promise<{ success: boolean; message: string }>;
     register: (data: RegisterData) => Promise<{ success: boolean; message: string }>;
     logout: () => Promise<void>;
-    updateProfile: (data: { name?: string; avatar?: string }) => Promise<{ success: boolean; message: string }>;
+    updateProfile: (data: ProfileUpdateData) => Promise<{ success: boolean; message: string }>;
     refreshUser: () => Promise<void>;
 }
 
@@ -212,7 +262,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }, [state.token]);
 
     // Update profile
-    const updateProfile = useCallback(async (profileData: { name?: string; avatar?: string }) => {
+    const updateProfile = useCallback(async (profileData: ProfileUpdateData) => {
         if (!state.token) {
             return { success: false, message: 'Not authenticated' };
         }

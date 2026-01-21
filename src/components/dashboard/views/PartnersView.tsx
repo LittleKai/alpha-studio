@@ -58,6 +58,7 @@ const PartnersView: React.FC<PartnersViewProps> = ({ searchQuery }) => {
         location: string;
         description: string;
         specialties: string[];
+        logo: string;
     }) => {
         try {
             // Map the form data to the API format
@@ -67,6 +68,7 @@ const PartnersView: React.FC<PartnersViewProps> = ({ searchQuery }) => {
                     vi: formData.description,
                     en: formData.description,
                 },
+                logo: formData.logo,
                 email: formData.email,
                 phone: formData.phone,
                 website: formData.website,

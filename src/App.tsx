@@ -18,6 +18,7 @@ const StudioTool = lazy(() => import('./components/studio/StudioTool'));
 const WorkflowDashboard = lazy(() => import('./components/dashboard/WorkflowDashboard'));
 const AIServerConnect = lazy(() => import('./components/dashboard/AIServerConnect'));
 const CourseManagement = lazy(() => import('./components/admin/CourseManagement'));
+const ProfilePage = lazy(() => import('./pages/ProfilePage'));
 
 // Loading spinner component
 const LoadingSpinner: React.FC = () => (
@@ -180,6 +181,18 @@ const App: React.FC = () => {
                     element={
                         <ProtectedRoute>
                             <ServerPage />
+                        </ProtectedRoute>
+                    }
+                />
+
+                {/* Profile Page */}
+                <Route
+                    path="/profile"
+                    element={
+                        <ProtectedRoute>
+                            <Suspense fallback={<LoadingSpinner />}>
+                                <ProfilePage />
+                            </Suspense>
                         </ProtectedRoute>
                     }
                 />

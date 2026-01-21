@@ -3,8 +3,8 @@ import { useTranslation } from '../../i18n/context';
 import UploaderBox from './UploaderBox';
 
 interface MultiImageUploaderProps {
-  onPrimarySelect: (file: File, dataUrl: string) => void;
-  onSecondarySelect: (file: File, dataUrl: string) => void;
+  onPrimarySelect: (file: File | null, dataUrl: string) => void;
+  onSecondarySelect: (file: File | null, dataUrl: string) => void;
   primaryImageUrl: string | null;
   secondaryImageUrl: string | null;
   onClearPrimary: () => void;
@@ -13,6 +13,9 @@ interface MultiImageUploaderProps {
   primaryDescription?: string;
   secondaryTitle?: string;
   secondaryDescription?: string;
+  enableHostUpload?: boolean;
+  onPrimaryHostedUrlChange?: (url: string) => void;
+  onSecondaryHostedUrlChange?: (url: string) => void;
 }
 
 const MultiImageUploader: React.FC<MultiImageUploaderProps> = ({
@@ -26,6 +29,9 @@ const MultiImageUploader: React.FC<MultiImageUploaderProps> = ({
   primaryDescription,
   secondaryTitle,
   secondaryDescription,
+  enableHostUpload = true,
+  onPrimaryHostedUrlChange,
+  onSecondaryHostedUrlChange,
 }) => {
   const { t } = useTranslation();
   return (
@@ -36,6 +42,8 @@ const MultiImageUploader: React.FC<MultiImageUploaderProps> = ({
         imageUrl={primaryImageUrl}
         onImageSelect={onPrimarySelect}
         onClear={onClearPrimary}
+        enableHostUpload={enableHostUpload}
+        onHostedUrlChange={onPrimaryHostedUrlChange}
       />
       <UploaderBox
         title={secondaryTitle ?? t('transformations.effects.pose.uploader2Title')}
@@ -43,6 +51,8 @@ const MultiImageUploader: React.FC<MultiImageUploaderProps> = ({
         imageUrl={secondaryImageUrl}
         onImageSelect={onSecondarySelect}
         onClear={onClearSecondary}
+        enableHostUpload={enableHostUpload}
+        onHostedUrlChange={onSecondaryHostedUrlChange}
       />
     </div>
   );

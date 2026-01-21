@@ -178,6 +178,14 @@ export interface UserProfile {
   skills: string[];
   portfolioUrl?: string;
   avatar?: string;
+  birthDate?: string;
+  showBirthDate?: boolean;
+  location?: string;
+  socials?: {
+    linkedin?: string;
+    behance?: string;
+    github?: string;
+  };
 }
 
 export interface FeaturedStudent {

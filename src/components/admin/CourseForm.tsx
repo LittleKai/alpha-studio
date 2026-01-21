@@ -9,6 +9,7 @@ import {
     LearningOutcome
 } from '../../services/courseService';
 import ModuleEditor from './ModuleEditor';
+import { uploadToCloudinary } from '../../services/cloudinaryService';
 
 interface CourseFormProps {
     course: Course | null;
@@ -52,6 +53,49 @@ const CourseForm: React.FC<CourseFormProps> = ({ course, onClose, onSuccess }) =
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [activeSection, setActiveSection] = useState<'basic' | 'content' | 'pricing' | 'modules'>('basic');
+
+    // Upload state
+    const [uploadingThumbnail, setUploadingThumbnail] = useState(false);
+    const [uploadingAvatar, setUploadingAvatar] = useState(false);
+
+    // File upload handlers
+    const handleThumbnailUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        setUploadingThumbnail(true);
+        try {
+            const result = await uploadToCloudinary(file, 'courses/thumbnails');
+            if (result.success) {
+                setThumbnail(result.url);
+            } else {
+                setError(result.error || 'Failed to upload thumbnail');
+            }
+        } catch (err) {
+            setError('Failed to upload thumbnail');
+        } finally {
+            setUploadingThumbnail(false);
+        }
+    }, []);
+
+    const handleAvatarUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        setUploadingAvatar(true);
+        try {
+            const result = await uploadToCloudinary(file, 'courses/instructors');
+            if (result.success) {
+                setInstructorAvatar(result.url);
+            } else {
+                setError(result.error || 'Failed to upload avatar');
+            }
+        } catch (err) {
+            setError('Failed to upload avatar');
+        } finally {
+            setUploadingAvatar(false);
+        }
+    }, []);
 
     // Handlers
     const handleAddTag = useCallback(() => {
@@ -345,16 +389,52 @@ const CourseForm: React.FC<CourseFormProps> = ({ course, onClose, onSuccess }) =
                                     <label className="block text-sm font-medium text-[var(--text-secondary)] mb-2">
                                         {t('admin.courses.form.thumbnail')}
                                     </label>
-                                    <input
-                                        type="text"
-                                        value={thumbnail}
-                                        onChange={(e) => setThumbnail(e.target.value)}
-                                        placeholder={t('admin.courses.form.thumbnailPlaceholder')}
-                                        className="w-full px-4 py-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-xl text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent-primary)]"
-                                    />
+                                    <div className="flex gap-3">
+                                        <input
+                                            type="text"
+                                            value={thumbnail}
+                                            onChange={(e) => setThumbnail(e.target.value)}
+                                            placeholder={t('admin.courses.form.thumbnailPlaceholder')}
+                                            className="flex-1 px-4 py-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-xl text-[var(--text-primary)] placeholder:text-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent-primary)]"
+                                        />
+                                        <label className={`px-4 py-3 bg-[var(--accent-primary)] text-white font-medium rounded-xl cursor-pointer hover:opacity-90 transition-opacity flex items-center gap-2 ${uploadingThumbnail ? 'opacity-50 cursor-not-allowed' : ''}`}>
+                                            {uploadingThumbnail ? (
+                                                <>
+                                                    <svg className="w-5 h-5 animate-spin" viewBox="0 0 24 24">
+                                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
+                                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                                                    </svg>
+                                                    Uploading...
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                                    </svg>
+                                                    Upload
+                                                </>
+                                            )}
+                                            <input
+                                                type="file"
+                                                accept="image/*"
+                                                onChange={handleThumbnailUpload}
+                                                disabled={uploadingThumbnail}
+                                                className="hidden"
+                                            />
+                                        </label>
+                                    </div>
                                     {thumbnail && (
-                                        <div className="mt-3 w-40 h-24 rounded-lg overflow-hidden bg-[var(--bg-secondary)]">
+                                        <div className="mt-3 relative w-40 h-24 rounded-lg overflow-hidden bg-[var(--bg-secondary)]">
                                             <img src={thumbnail} alt="Thumbnail" className="w-full h-full object-cover" />
+                                            <button
+                                                type="button"
+                                                onClick={() => setThumbnail('')}
+                                                className="absolute top-1 right-1 p-1 bg-black/50 rounded-full text-white hover:bg-red-500 transition-colors"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                                                </svg>
+                                            </button>
                                         </div>
                                     )}
                                 </div>
@@ -400,13 +480,48 @@ const CourseForm: React.FC<CourseFormProps> = ({ course, onClose, onSuccess }) =
                                                 <label className="block text-sm font-medium text-[var(--text-secondary)] mb-2">
                                                     {t('admin.courses.form.instructorAvatar')}
                                                 </label>
-                                                <input
-                                                    type="text"
-                                                    value={instructorAvatar}
-                                                    onChange={(e) => setInstructorAvatar(e.target.value)}
-                                                    placeholder="URL"
-                                                    className="w-full px-4 py-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-xl text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)]"
-                                                />
+                                                <div className="flex gap-2">
+                                                    <input
+                                                        type="text"
+                                                        value={instructorAvatar}
+                                                        onChange={(e) => setInstructorAvatar(e.target.value)}
+                                                        placeholder="URL"
+                                                        className="flex-1 px-4 py-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-xl text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)]"
+                                                    />
+                                                    <label className={`px-3 py-3 bg-[var(--accent-primary)] text-white rounded-xl cursor-pointer hover:opacity-90 transition-opacity flex items-center ${uploadingAvatar ? 'opacity-50 cursor-not-allowed' : ''}`}>
+                                                        {uploadingAvatar ? (
+                                                            <svg className="w-5 h-5 animate-spin" viewBox="0 0 24 24">
+                                                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
+                                                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                                                            </svg>
+                                                        ) : (
+                                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                                            </svg>
+                                                        )}
+                                                        <input
+                                                            type="file"
+                                                            accept="image/*"
+                                                            onChange={handleAvatarUpload}
+                                                            disabled={uploadingAvatar}
+                                                            className="hidden"
+                                                        />
+                                                    </label>
+                                                </div>
+                                                {instructorAvatar && (
+                                                    <div className="mt-2 relative w-12 h-12 rounded-full overflow-hidden bg-[var(--bg-secondary)]">
+                                                        <img src={instructorAvatar} alt="Avatar" className="w-full h-full object-cover" />
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => setInstructorAvatar('')}
+                                                            className="absolute -top-1 -right-1 p-0.5 bg-red-500 rounded-full text-white"
+                                                        >
+                                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                                                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                )}
                                             </div>
                                         </div>
                                         <div>

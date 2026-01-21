@@ -1,22 +1,35 @@
 {
   "permissions": {
     "allow": [
+      "Edit(*)",
+      "Write(*)",
+      "Read(*)",
       "Bash(tree:*)",
       "Bash(npm run build:*)",
-      "Bash(powershell -Command:*)",
+      "Bash(npm run dev:*)",
       "Bash(npm install:*)",
+      "Bash(npm test:*)",
       "Bash(npx tsc:*)",
       "Bash(node:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(git checkout:*)",
+      "Bash(git branch:*)",
+      "Bash(git reset:*)",
+      "Bash(powershell -Command:*)",
       "Bash(xcopy:*)",
       "Bash(robocopy:*)",
       "Bash(dir /B:*)",
-      "WebFetch(domain:alpha-studio-backend.onrender.com)",
-      "Bash(git reset:*)",
-      "Bash(git commit:*)",
-      "Bash(tree:*)",
-      "Edit(.claude/*)",
-      "Edit(.claude/**/*)",
-      "Edit(*)"
+      "Bash(mkdir:*)",
+      "Bash(rm:*)",
+      "Bash(mv:*)",
+      "Bash(cp:*)",
+      "WebFetch(domain:alpha-studio-backend.onrender.com)"
     ],
     "autoApprove": true
   }

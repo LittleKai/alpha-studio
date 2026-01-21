@@ -1,5 +1,5 @@
 # Project Summary
-**Last Updated:** 2026-01-20 (Remove Chinese language support)
+**Last Updated:** 2026-01-21 (Profile Edit, Image Compression, i18n Modular)
 **Updated By:** Claude Code
 
 ---
@@ -31,7 +31,8 @@ src/
 │   ├── CoursesPage.tsx        # Courses catalog with filters/pagination
 │   ├── CoursePage.tsx         # Single course detail page
 │   ├── StudentPage.tsx        # Student profile page
-│   └── PartnerPage.tsx        # Partner profile page
+│   ├── PartnerPage.tsx        # Partner profile page
+│   └── ProfilePage.tsx        # User profile edit page (avatar, bio, skills, works)
 ├── index.css                  # Global styles, animations, utilities
 ├── types.ts                   # TypeScript interfaces/types
 ├── constants.ts               # TRANSFORMATIONS array for AI tools
@@ -42,8 +43,22 @@ src/
 │
 ├── i18n/
 │   ├── context.tsx            # LanguageProvider, useTranslation hook
-│   ├── en.ts                  # English translations
-│   └── vi.ts                  # Vietnamese translations (default)
+│   ├── en.ts                  # English translations (imports from locales/en)
+│   ├── vi.ts                  # Vietnamese translations (imports from locales/vi)
+│   └── locales/               # Modular translation files
+│       ├── en/                # English modules
+│       │   ├── index.ts       # Combines all modules
+│       │   ├── app.ts         # App, history, imageEditor, studio
+│       │   ├── auth.ts        # Account, login
+│       │   ├── common.ts      # Common, profile
+│       │   ├── entities.ts    # Server, imagePreview, student, partner, job
+│       │   ├── course.ts      # Course, courseCatalog
+│       │   ├── result.ts      # ResultDisplay, transformationSelector
+│       │   ├── transformations.ts  # AI transformations
+│       │   ├── workflow.ts    # Workflow dashboard
+│       │   ├── landing.ts     # Landing page
+│       │   └── admin.ts       # Admin panel
+│       └── vi/                # Vietnamese modules (same structure)
 │
 ├── theme/
 │   └── context.tsx            # ThemeProvider, useTheme hook
@@ -52,7 +67,9 @@ src/
 │   ├── geminiService.ts       # Gemini API integration (editImage function)
 │   ├── jobService.ts          # Job management API service
 │   ├── partnerService.ts      # Partner management API service
-│   └── courseService.ts       # Course management API service
+│   ├── courseService.ts       # Course management API service
+│   ├── cloudinaryService.ts   # Cloudinary upload service with compression
+│   └── imageCompression.ts    # Image compression utility (avatar, featured_work, logo, attachment)
 │
 ├── utils/
 │   └── fileUtils.ts           # File utilities (downloadImage, etc.)
@@ -93,7 +110,8 @@ src/
 │       ├── StudentProfileModal.tsx
 │       ├── PartnerRegistrationModal.tsx
 │       ├── PartnerEditModal.tsx       # Partner edit modal with skills
-│       └── JobManagementModal.tsx     # Job create/edit modal
+│       ├── JobManagementModal.tsx     # Job create/edit modal
+│       └── ProfileEditModal.tsx       # Profile view modal (view-only, links to ProfilePage)
 ```
 
 ### Component Dependencies
@@ -186,6 +204,9 @@ App.tsx
 | Jobs CRUD | ✅ Complete | JobsView.tsx, JobManagementModal.tsx | Full job management with admin controls |
 | Partners CRUD | ✅ Complete | PartnersView.tsx, PartnerEditModal.tsx | Full partner management with edit/publish |
 | Course Management | ✅ Complete | CourseManagement.tsx | Admin course route at /admin/courses |
+| Profile Edit | ✅ Complete | ProfilePage.tsx, ProfileEditModal.tsx | Full profile editing with avatar, bio, skills, works, attachments |
+| Image Compression | ✅ Complete | imageCompression.ts, cloudinaryService.ts | Auto-compress based on upload type (avatar, featured_work, logo, attachment) |
+| Modular i18n | ✅ Complete | i18n/locales/* | Split translations into 10 modules per language |
 
 ---
 
@@ -232,6 +253,8 @@ App.tsx
 ### Environment Variables:
 - `VITE_GEMINI_API_KEY` - Required for AI features
 - `VITE_API_URL` - Backend API URL
+- `VITE_CLOUDINARY_CLOUD_NAME` - Cloudinary cloud name for image upload
+- `VITE_CLOUDINARY_UPLOAD_PRESET` - Cloudinary upload preset (unsigned)
 
 ### Production URLs:
 - **Frontend:** https://alphastudio.vercel.app
@@ -241,7 +264,22 @@ App.tsx
 
 ## 7. Recent Changes (Last 3 Sessions)
 
-1. **2026-01-20** - Course Management Integration & Remove Chinese
+1. **2026-01-21** - Profile Edit Page, Image Compression, Modular i18n
+   - Created ProfilePage.tsx - full profile edit page with avatar upload, bio, phone, location, birth date (with visibility toggle), skills, social links (LinkedIn, Behance, GitHub), featured works (with image upload), attachments (max 3 files)
+   - Created ProfileEditModal.tsx - view-only modal displaying user profile, links to ProfilePage for editing
+   - Added route /profile in App.tsx
+   - Created imageCompression.ts service with compression presets:
+     - avatar: 400x400px, 150KB max
+     - featured_work: 1200x800px, 500KB max
+     - logo: 600x600px, 300KB max
+     - attachment: 1920x1080px, 800KB max
+   - Updated cloudinaryService.ts to integrate compression before upload
+   - Modularized i18n: split vi.ts and en.ts into 10 modules each:
+     - locales/[lang]/app.ts, auth.ts, common.ts, entities.ts, course.ts, result.ts, transformations.ts, workflow.ts, landing.ts, admin.ts
+   - Extended User interface in auth/context.tsx with profile fields (bio, skills, phone, location, birthDate, showBirthDate, socials, featuredWorks, attachments)
+   - Updated WorkflowDashboard avatar to show actual image when available
+
+2. **2026-01-20** - Course Management Integration & Remove Chinese
    - Integrated Course Management API into frontend Landing Page
    - Replaced hardcoded "Training Programs" section with dynamic "Featured Courses" from API
    - Created CoursesPage.tsx - full courses catalog with filters (category, level), search, sort, pagination
@@ -252,7 +290,7 @@ App.tsx
    - Course cards display: thumbnail, title (multilang), level badge, price/finalPrice, duration, lessons, enrollment count
    - Removed Chinese language support: deleted zh.ts, updated context.tsx and PROJECT_SUMMARY.md
 
-2. **2026-01-19** - Jobs & Partners CRUD, Card Redesign
+3. **2026-01-19** - Jobs & Partners CRUD, Card Redesign
    - Fixed /admin/courses 404 error by adding route and AdminCoursesPage component
    - Fixed job creation experienceLevel enum mismatch ('entry' → 'fresher')
    - Fixed partner creation userId duplicate key error (added index cleanup in backend)
@@ -263,13 +301,6 @@ App.tsx
    - Created PartnerEditModal.tsx for editing partners with skills input
    - Added skills field to Partner model in backend
    - Added getExperienceLabel and getExperienceColor helper functions for job cards
-
-3. **2026-01-19** - UI Improvements & Translations
-   - Migrated from state-based routing to React Router v6
-   - Enhanced account dropdown with better account info section
-   - Fixed search input theme colors in WorkflowDashboard
-   - Added missing translations (account.*, workflow.jobs.noJobs, workflow.partners.noPartners)
-   - Fixed token key mismatch in jobService.ts and partnerService.ts
 
 ---
 
