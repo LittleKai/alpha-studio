@@ -4,6 +4,7 @@ import { useAuth } from '../../../auth/context';
 import {
   createPaymentRequest,
   cancelTransaction,
+  confirmPayment,
   getPaymentHistory,
   formatCurrency,
   formatDate,
@@ -12,13 +13,22 @@ import {
   type BankInfo
 } from '../../../services/paymentService';
 
+// SVG Icons for packages
+const PackageIcons: Record<string, JSX.Element> = {
+  pkg0: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="8" strokeWidth={2} /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v8m-2-6h4" /></svg>,
+  pkg1: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>,
+  pkg2: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+  pkg3: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/></svg>,
+  pkg4: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>,
+};
+
 // Credit packages with display info
-const CREDIT_PACKAGES: (CreditPackage & { priceLabel: string; color: string; icon: string })[] = [
-  { id: 'pkg0', credits: 10, price: 10000, label: '10 Credits', priceLabel: '10.000đ', color: 'from-gray-500 to-slate-500', icon: '🪙' },
-  { id: 'pkg1', credits: 100, price: 100000, label: '100 Credits', priceLabel: '100.000đ', color: 'from-blue-500 to-cyan-500', icon: '💎' },
-  { id: 'pkg2', credits: 210, price: 200000, label: '210 Credits', priceLabel: '200.000đ', bonus: '+10%', color: 'from-green-500 to-emerald-500', icon: '💰' },
-  { id: 'pkg3', credits: 550, price: 500000, label: '550 Credits', priceLabel: '500.000đ', bonus: '+10%', popular: true, color: 'from-purple-500 to-pink-500', icon: '👑' },
-  { id: 'pkg4', credits: 1200, price: 1000000, label: '1.200 Credits', priceLabel: '1.000.000đ', bonus: '+20%', color: 'from-orange-500 to-red-500', icon: '🚀' },
+const CREDIT_PACKAGES: (CreditPackage & { priceLabel: string; color: string })[] = [
+  { id: 'pkg0', credits: 10, price: 10000, label: '10 Credits', priceLabel: '10.000đ', color: 'from-gray-500 to-slate-500' },
+  { id: 'pkg1', credits: 100, price: 100000, label: '100 Credits', priceLabel: '100.000đ', color: 'from-blue-500 to-cyan-500' },
+  { id: 'pkg2', credits: 210, price: 200000, label: '210 Credits', priceLabel: '200.000đ', bonus: '+5%', color: 'from-green-500 to-emerald-500' },
+  { id: 'pkg3', credits: 550, price: 500000, label: '550 Credits', priceLabel: '500.000đ', bonus: '+10%', popular: true, color: 'from-purple-500 to-pink-500' },
+  { id: 'pkg4', credits: 1120, price: 1000000, label: '1.120 Credits', priceLabel: '1.000.000đ', bonus: '+12%', color: 'from-orange-500 to-red-500' },
 ];
 
 export default function WalletView() {
@@ -137,9 +147,18 @@ export default function WalletView() {
   };
 
   // Confirm payment (user has transferred)
-  const handleConfirmPayment = () => {
+  const handleConfirmPayment = async () => {
     if (countdownRef.current) {
       clearInterval(countdownRef.current);
+    }
+
+    // Call API to set confirmedAt timestamp
+    if (currentTransactionId) {
+      try {
+        await confirmPayment(currentTransactionId);
+      } catch (error) {
+        console.error('Failed to confirm payment:', error);
+      }
     }
 
     setQrModalOpen(false);
@@ -196,6 +215,8 @@ export default function WalletView() {
         return 'bg-red-500/10 text-red-500';
       case 'cancelled':
         return 'bg-gray-500/10 text-gray-500';
+      case 'timeout':
+        return 'bg-orange-500/10 text-orange-500';
       default:
         return 'bg-gray-500/10 text-gray-500';
     }
@@ -207,6 +228,7 @@ export default function WalletView() {
       case 'pending': return 'Đang chờ';
       case 'failed': return 'Thất bại';
       case 'cancelled': return 'Đã hủy';
+      case 'timeout': return 'Hết hạn';
       default: return status;
     }
   };
@@ -292,8 +314,8 @@ export default function WalletView() {
                 {pkg.bonus}
               </div>
             )}
-            <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${pkg.color} flex items-center justify-center text-white font-bold text-xl mb-4 mt-2`}>
-              {pkg.icon}
+            <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${pkg.color} flex items-center justify-center text-white mb-4 mt-2`}>
+              {PackageIcons[pkg.id]}
             </div>
             <h4 className="text-lg font-bold text-[var(--text-primary)]">{pkg.label}</h4>
             <div className="text-3xl font-black text-[var(--text-primary)] my-2">{pkg.priceLabel}</div>

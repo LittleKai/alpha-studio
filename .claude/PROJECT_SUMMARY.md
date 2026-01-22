@@ -1,5 +1,5 @@
 # Project Summary
-**Last Updated:** 2026-01-21 (Profile Edit, Image Compression, i18n Modular)
+**Last Updated:** 2026-01-22 (Payment System, Wallet View, Admin Page)
 **Updated By:** Claude Code
 
 ---
@@ -32,7 +32,8 @@ src/
 │   ├── CoursePage.tsx         # Single course detail page
 │   ├── StudentPage.tsx        # Student profile page
 │   ├── PartnerPage.tsx        # Partner profile page
-│   └── ProfilePage.tsx        # User profile edit page (avatar, bio, skills, works)
+│   ├── ProfilePage.tsx        # User profile edit page (avatar, bio, skills, works)
+│   └── AdminPage.tsx          # Admin management (users, transactions, webhooks)
 ├── index.css                  # Global styles, animations, utilities
 ├── types.ts                   # TypeScript interfaces/types
 ├── constants.ts               # TRANSFORMATIONS array for AI tools
@@ -69,7 +70,9 @@ src/
 │   ├── partnerService.ts      # Partner management API service
 │   ├── courseService.ts       # Course management API service
 │   ├── cloudinaryService.ts   # Cloudinary upload service with compression
-│   └── imageCompression.ts    # Image compression utility (avatar, featured_work, logo, attachment)
+│   ├── imageCompression.ts    # Image compression utility (avatar, featured_work, logo, attachment)
+│   ├── paymentService.ts      # Payment API service (create, confirm, cancel, history)
+│   └── adminService.ts        # Admin API service (users, transactions, webhooks)
 │
 ├── utils/
 │   └── fileUtils.ts           # File utilities (downloadImage, etc.)
@@ -98,7 +101,9 @@ src/
 │   │
 │   ├── dashboard/             # Workflow/Dashboard components
 │   │   ├── WorkflowDashboard.tsx    # Large feature (project management)
-│   │   └── AIServerConnect.tsx      # GPU server connection UI
+│   │   ├── AIServerConnect.tsx      # GPU server connection UI
+│   │   └── views/
+│   │       └── WalletView.tsx       # Credit wallet with VietQR payment
 │   │
 │   ├── viewers/               # Detail view components
 │   │   ├── CourseViewer.tsx
@@ -207,6 +212,9 @@ App.tsx
 | Profile Edit | ✅ Complete | ProfilePage.tsx, ProfileEditModal.tsx | Full profile editing with avatar, bio, skills, works, attachments |
 | Image Compression | ✅ Complete | imageCompression.ts, cloudinaryService.ts | Auto-compress based on upload type (avatar, featured_work, logo, attachment) |
 | Modular i18n | ✅ Complete | i18n/locales/* | Split translations into 10 modules per language |
+| Wallet View | ✅ Complete | WalletView.tsx, paymentService.ts | Credit packages, VietQR, payment history |
+| Admin Page | ✅ Complete | AdminPage.tsx, adminService.ts | Users, transactions, webhook management |
+| Payment System | ✅ Complete | paymentService.ts | Create, confirm, cancel payments with Casso webhook |
 
 ---
 
@@ -264,43 +272,31 @@ App.tsx
 
 ## 7. Recent Changes (Last 3 Sessions)
 
-1. **2026-01-21** - Profile Edit Page, Image Compression, Modular i18n
+1. **2026-01-22** - Payment System, Wallet View, Admin Page
+   - Created WalletView.tsx - credit packages with VietQR payment, QR code modal, payment history
+   - Credit packages: 10k=10, 100k=100, 200k=210(+5%), 500k=550(+10%), 1M=1120(+12%)
+   - Bank: OCB, Account: CASS55252503, Holder: NGUYEN ANH DUC
+   - Created paymentService.ts - API service for create, confirm, cancel, history, status
+   - Created AdminPage.tsx - admin management with 3 tabs: Users, Transactions, Webhooks
+   - Created adminService.ts - API service for admin operations
+   - Admin can: search users, view transaction history, manual top-up, assign webhooks to users
+   - Transaction statuses: pending, completed, failed, cancelled, timeout
+   - Webhook assignment: admin can assign unmatched webhooks to users (auto-credits)
+   - Replaced emoji icons with SVG icons in WalletView and WorkflowDashboard sidebar
+   - Added /admin route in App.tsx
+
+2. **2026-01-21** - Profile Edit Page, Image Compression, Modular i18n
    - Created ProfilePage.tsx - full profile edit page with avatar upload, bio, phone, location, birth date (with visibility toggle), skills, social links (LinkedIn, Behance, GitHub), featured works (with image upload), attachments (max 3 files)
    - Created ProfileEditModal.tsx - view-only modal displaying user profile, links to ProfilePage for editing
    - Added route /profile in App.tsx
-   - Created imageCompression.ts service with compression presets:
-     - avatar: 400x400px, 150KB max
-     - featured_work: 1200x800px, 500KB max
-     - logo: 600x600px, 300KB max
-     - attachment: 1920x1080px, 800KB max
-   - Updated cloudinaryService.ts to integrate compression before upload
-   - Modularized i18n: split vi.ts and en.ts into 10 modules each:
-     - locales/[lang]/app.ts, auth.ts, common.ts, entities.ts, course.ts, result.ts, transformations.ts, workflow.ts, landing.ts, admin.ts
-   - Extended User interface in auth/context.tsx with profile fields (bio, skills, phone, location, birthDate, showBirthDate, socials, featuredWorks, attachments)
-   - Updated WorkflowDashboard avatar to show actual image when available
+   - Created imageCompression.ts service with compression presets
+   - Modularized i18n: split vi.ts and en.ts into 10 modules each
 
-2. **2026-01-20** - Course Management Integration & Remove Chinese
+3. **2026-01-20** - Course Management Integration & Remove Chinese
    - Integrated Course Management API into frontend Landing Page
-   - Replaced hardcoded "Training Programs" section with dynamic "Featured Courses" from API
-   - Created CoursesPage.tsx - full courses catalog with filters (category, level), search, sort, pagination
-   - Updated CoursePage.tsx to fetch course details from API (was using hardcoded data)
-   - Added /courses route in App.tsx with Layout wrapper
-   - Added i18n translations for courses section in en.ts, vi.ts (landing.courses.*, courseCatalog.*)
-   - Landing page now fetches 6 featured courses sorted by enrollment count
-   - Course cards display: thumbnail, title (multilang), level badge, price/finalPrice, duration, lessons, enrollment count
-   - Removed Chinese language support: deleted zh.ts, updated context.tsx and PROJECT_SUMMARY.md
-
-3. **2026-01-19** - Jobs & Partners CRUD, Card Redesign
-   - Fixed /admin/courses 404 error by adding route and AdminCoursesPage component
-   - Fixed job creation experienceLevel enum mismatch ('entry' → 'fresher')
-   - Fixed partner creation userId duplicate key error (added index cleanup in backend)
-   - Fixed jobs/partners not appearing after creation (admin sees all statuses, users see published)
-   - Fixed job/partner update "Route not found" error (changed PATCH to PUT in services)
-   - Redesigned job cards with new layout: job type badge, experience level badge, time ago, salary in green, skill tags with #, deadline, applicants count
-   - Redesigned partner cards with new layout: logo, verified badge, location, description, skill tags, contact/website buttons
-   - Created PartnerEditModal.tsx for editing partners with skills input
-   - Added skills field to Partner model in backend
-   - Added getExperienceLabel and getExperienceColor helper functions for job cards
+   - Created CoursesPage.tsx - full courses catalog with filters, search, pagination
+   - Updated CoursePage.tsx to fetch course details from API
+   - Removed Chinese language support
 
 ---
 

@@ -50,10 +50,12 @@ Use template from `.claude/templates/change-log-template.md`
 - NEVER hardcode colors - use `var(--bg-primary)`, etc.
 - Use `glass-card` class for card effects
 
-### i18n
-- Add translations to ALL 3 files: `en.ts`, `vi.ts`, `zh.ts`
+### i18n (IMPORTANT - Multilingual)
+- Add translations to BOTH language files: `en.ts`, `vi.ts`
+- Translations are modular: add to appropriate file in `i18n/locales/[lang]/`
 - Use `t('section.key')` pattern
 - Vietnamese is the primary language
+- ALL user-facing text MUST have both Vietnamese and English translations
 
 ### Components
 - Keep under 500 lines

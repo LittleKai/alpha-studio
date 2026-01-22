@@ -36,7 +36,7 @@ export interface AdminTransaction {
     type: 'topup' | 'spend' | 'refund' | 'manual_topup' | 'bonus';
     amount: number;
     credits: number;
-    status: 'pending' | 'completed' | 'failed' | 'cancelled';
+    status: 'pending' | 'completed' | 'failed' | 'cancelled' | 'timeout';
     transactionCode: string;
     paymentMethod: string;
     serviceType: string | null;
@@ -294,6 +294,57 @@ export const reprocessWebhook = async (logId: string): Promise<{
     if (!response.ok) {
         const error = await response.json();
         throw new Error(error.message || 'Failed to reprocess webhook');
+    }
+
+    return response.json();
+};
+
+/**
+ * Assign a user to an unmatched webhook (credits will be added automatically)
+ */
+export const assignWebhookToUser = async (
+    logId: string,
+    userId: string,
+    note?: string
+): Promise<{
+    success: boolean;
+    message: string;
+    data: { log: WebhookLog; transaction: AdminTransaction; newBalance: number };
+}> => {
+    const response = await fetch(`${API_URL}/admin/webhook-logs/${logId}/assign-user`, {
+        method: 'POST',
+        headers: getHeaders(),
+        body: JSON.stringify({ userId, note }),
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to assign webhook to user');
+    }
+
+    return response.json();
+};
+
+/**
+ * Ignore (cancel) an unmatched webhook
+ */
+export const ignoreWebhook = async (
+    logId: string,
+    note?: string
+): Promise<{
+    success: boolean;
+    message: string;
+    data: WebhookLog;
+}> => {
+    const response = await fetch(`${API_URL}/admin/webhook-logs/${logId}/ignore`, {
+        method: 'POST',
+        headers: getHeaders(),
+        body: JSON.stringify({ note }),
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to ignore webhook');
     }
 
     return response.json();

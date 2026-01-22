@@ -15,13 +15,14 @@ export interface Transaction {
     userId: string;
     amount: number;
     credits: number;
-    status: 'pending' | 'completed' | 'failed' | 'cancelled';
+    status: 'pending' | 'completed' | 'failed' | 'cancelled' | 'timeout';
     transactionCode: string;
     paymentMethod: 'bank_transfer' | 'momo' | 'vnpay';
     description: string;
     processedAt: string | null;
     failedReason: string | null;
     expiresAt: string | null;
+    confirmedAt: string | null;
     createdAt: string;
     updatedAt: string;
 }
@@ -132,6 +133,26 @@ export const cancelTransaction = async (transactionId: string): Promise<void> =>
         const error = await response.json();
         throw new Error(error.message || 'Failed to cancel transaction');
     }
+};
+
+/**
+ * Confirm payment (user has transferred money)
+ * Sets confirmedAt timestamp for timeout tracking
+ */
+export const confirmPayment = async (transactionId: string): Promise<Transaction> => {
+    const response = await fetch(`${API_URL}/payment/confirm/${transactionId}`, {
+        method: 'POST',
+        headers: getHeaders(),
+        credentials: 'include',
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to confirm payment');
+    }
+
+    const result = await response.json();
+    return result.data;
 };
 
 /**

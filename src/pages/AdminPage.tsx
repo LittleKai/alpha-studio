@@ -8,9 +8,10 @@ import {
     getUserTransactions,
     manualTopup,
     getAllTransactions,
-    processTransaction,
     getWebhookLogs,
     reprocessWebhook,
+    assignWebhookToUser,
+    ignoreWebhook,
     formatCurrency,
     formatDate,
     type AdminUser,
@@ -339,16 +340,25 @@ function TransactionsTab() {
         return () => clearTimeout(debounce);
     }, [loadTransactions]);
 
-    const handleProcess = async (txId: string, action: 'approve' | 'reject') => {
-        const note = prompt(`Ghi chú cho ${action === 'approve' ? 'duyệt' : 'từ chối'}:`);
-        if (note === null) return;
+    const getStatusStyle = (status: string) => {
+        switch (status) {
+            case 'completed': return 'bg-green-500/10 text-green-500';
+            case 'pending': return 'bg-yellow-500/10 text-yellow-500';
+            case 'timeout': return 'bg-orange-500/10 text-orange-500';
+            case 'failed': return 'bg-red-500/10 text-red-500';
+            case 'cancelled': return 'bg-gray-500/10 text-gray-500';
+            default: return 'bg-gray-500/10 text-gray-500';
+        }
+    };
 
-        try {
-            const result = await processTransaction(txId, action, note);
-            alert(result.message);
-            loadTransactions();
-        } catch (error: any) {
-            alert(error.message || 'Lỗi xử lý');
+    const getStatusText = (status: string) => {
+        switch (status) {
+            case 'completed': return 'Hoàn thành';
+            case 'pending': return 'Đang chờ';
+            case 'timeout': return 'Hết hạn';
+            case 'failed': return 'Thất bại';
+            case 'cancelled': return 'Đã hủy';
+            default: return status;
         }
     };
 
@@ -380,9 +390,11 @@ function TransactionsTab() {
                     className="px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] text-sm"
                 >
                     <option value="">Tất cả trạng thái</option>
-                    <option value="pending">Pending</option>
-                    <option value="completed">Completed</option>
-                    <option value="failed">Failed</option>
+                    <option value="pending">Đang chờ</option>
+                    <option value="completed">Hoàn thành</option>
+                    <option value="timeout">Hết hạn</option>
+                    <option value="failed">Thất bại</option>
+                    <option value="cancelled">Đã hủy</option>
                 </select>
             </div>
 
@@ -401,7 +413,7 @@ function TransactionsTab() {
                                 <th className="p-3 text-right">Số tiền</th>
                                 <th className="p-3 text-right">Credits</th>
                                 <th className="p-3 text-center">Trạng thái</th>
-                                <th className="p-3 text-center">Hành động</th>
+                                <th className="p-3 text-left">Ghi chú</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-[var(--border-primary)]">
@@ -434,31 +446,12 @@ function TransactionsTab() {
                                         {tx.credits >= 0 ? '+' : ''}{tx.credits}
                                     </td>
                                     <td className="p-3 text-center">
-                                        <span className={`px-2 py-0.5 rounded text-xs ${
-                                            tx.status === 'completed' ? 'bg-green-500/10 text-green-500' :
-                                            tx.status === 'pending' ? 'bg-yellow-500/10 text-yellow-500' :
-                                            'bg-red-500/10 text-red-500'
-                                        }`}>
-                                            {tx.status}
+                                        <span className={`px-2 py-0.5 rounded text-xs ${getStatusStyle(tx.status)}`}>
+                                            {getStatusText(tx.status)}
                                         </span>
                                     </td>
-                                    <td className="p-3 text-center">
-                                        {tx.status === 'pending' && (
-                                            <div className="flex gap-1 justify-center">
-                                                <button
-                                                    onClick={() => handleProcess(tx._id, 'approve')}
-                                                    className="px-2 py-1 bg-green-500/10 text-green-500 rounded text-xs hover:bg-green-500/20"
-                                                >
-                                                    Duyệt
-                                                </button>
-                                                <button
-                                                    onClick={() => handleProcess(tx._id, 'reject')}
-                                                    className="px-2 py-1 bg-red-500/10 text-red-500 rounded text-xs hover:bg-red-500/20"
-                                                >
-                                                    Từ chối
-                                                </button>
-                                            </div>
-                                        )}
+                                    <td className="p-3 text-[var(--text-tertiary)] text-xs max-w-[200px] truncate">
+                                        {tx.description || '-'}
                                     </td>
                                 </tr>
                             ))}
@@ -477,6 +470,14 @@ function WebhooksTab() {
     const [selectedLog, setSelectedLog] = useState<WebhookLog | null>(null);
     const [statusFilter, setStatusFilter] = useState('');
 
+    // User assignment state
+    const [users, setUsers] = useState<AdminUser[]>([]);
+    const [userSearch, setUserSearch] = useState('');
+    const [selectedUserId, setSelectedUserId] = useState<string>('');
+    const [assignNote, setAssignNote] = useState('');
+    const [assignLoading, setAssignLoading] = useState(false);
+    const [showUserDropdown, setShowUserDropdown] = useState(false);
+
     const loadLogs = useCallback(async () => {
         try {
             setLoading(true);
@@ -493,6 +494,26 @@ function WebhooksTab() {
         loadLogs();
     }, [loadLogs]);
 
+    // Load users for assignment dropdown
+    const loadUsers = useCallback(async () => {
+        if (!userSearch) {
+            setUsers([]);
+            return;
+        }
+        try {
+            const response = await getUsers(1, 10, userSearch);
+            setUsers(response.data);
+            setShowUserDropdown(true);
+        } catch (error) {
+            console.error('Failed to load users:', error);
+        }
+    }, [userSearch]);
+
+    useEffect(() => {
+        const debounce = setTimeout(loadUsers, 300);
+        return () => clearTimeout(debounce);
+    }, [loadUsers]);
+
     const handleReprocess = async (logId: string) => {
         if (!confirm('Xử lý lại webhook này?')) return;
 
@@ -500,9 +521,53 @@ function WebhooksTab() {
             const result = await reprocessWebhook(logId);
             alert(result.message);
             loadLogs();
+            setSelectedLog(null);
         } catch (error: any) {
             alert(error.message || 'Lỗi xử lý');
         }
+    };
+
+    const handleAssignUser = async () => {
+        if (!selectedLog || !selectedUserId) {
+            alert('Vui lòng chọn user để gán');
+            return;
+        }
+
+        try {
+            setAssignLoading(true);
+            const result = await assignWebhookToUser(selectedLog._id, selectedUserId, assignNote);
+            alert(result.message);
+            loadLogs();
+            setSelectedLog(null);
+            setSelectedUserId('');
+            setUserSearch('');
+            setAssignNote('');
+        } catch (error: any) {
+            alert(error.message || 'Lỗi gán user');
+        } finally {
+            setAssignLoading(false);
+        }
+    };
+
+    const handleIgnore = async () => {
+        if (!selectedLog) return;
+        const note = prompt('Lý do bỏ qua (tùy chọn):');
+        if (note === null) return;
+
+        try {
+            const result = await ignoreWebhook(selectedLog._id, note);
+            alert(result.message);
+            loadLogs();
+            setSelectedLog(null);
+        } catch (error: any) {
+            alert(error.message || 'Lỗi bỏ qua webhook');
+        }
+    };
+
+    const handleSelectUser = (user: AdminUser) => {
+        setSelectedUserId(user._id);
+        setUserSearch(user.name + ' (' + user.email + ')');
+        setShowUserDropdown(false);
     };
 
     const getStatusColor = (status: string) => {
@@ -511,7 +576,19 @@ function WebhooksTab() {
             case 'unmatched': return 'bg-yellow-500/10 text-yellow-500';
             case 'error': return 'bg-red-500/10 text-red-500';
             case 'processing': return 'bg-blue-500/10 text-blue-500';
+            case 'ignored': return 'bg-gray-500/10 text-gray-500';
             default: return 'bg-gray-500/10 text-gray-500';
+        }
+    };
+
+    const getStatusText = (status: string) => {
+        switch (status) {
+            case 'matched': return 'Đã khớp';
+            case 'unmatched': return 'Chưa khớp';
+            case 'error': return 'Lỗi';
+            case 'processing': return 'Đang xử lý';
+            case 'ignored': return 'Đã bỏ qua';
+            default: return status;
         }
     };
 
@@ -527,9 +604,10 @@ function WebhooksTab() {
                         className="px-3 py-1 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] text-sm"
                     >
                         <option value="">Tất cả</option>
-                        <option value="matched">Matched</option>
-                        <option value="unmatched">Unmatched</option>
-                        <option value="error">Error</option>
+                        <option value="matched">Đã khớp</option>
+                        <option value="unmatched">Chưa khớp</option>
+                        <option value="error">Lỗi</option>
+                        <option value="ignored">Đã bỏ qua</option>
                     </select>
                 </div>
 
@@ -537,31 +615,40 @@ function WebhooksTab() {
                     <p className="text-center text-[var(--text-secondary)] py-8">Loading...</p>
                 ) : (
                     <div className="divide-y divide-[var(--border-primary)] max-h-[600px] overflow-y-auto">
-                        {logs.map((log) => (
-                            <div
-                                key={log._id}
-                                onClick={() => setSelectedLog(log)}
-                                className={`p-4 cursor-pointer hover:bg-[var(--bg-secondary)]/50 ${
-                                    selectedLog?._id === log._id ? 'bg-[var(--accent-primary)]/5' : ''
-                                }`}
-                            >
-                                <div className="flex justify-between items-start mb-2">
-                                    <span className={`px-2 py-0.5 rounded text-xs ${getStatusColor(log.status)}`}>
-                                        {log.status}
-                                    </span>
-                                    <span className="text-xs text-[var(--text-tertiary)]">{formatDate(log.createdAt)}</span>
+                        {logs.length === 0 ? (
+                            <p className="text-center text-[var(--text-tertiary)] py-8">Không có webhook nào</p>
+                        ) : (
+                            logs.map((log) => (
+                                <div
+                                    key={log._id}
+                                    onClick={() => {
+                                        setSelectedLog(log);
+                                        setSelectedUserId('');
+                                        setUserSearch('');
+                                        setAssignNote('');
+                                    }}
+                                    className={`p-4 cursor-pointer hover:bg-[var(--bg-secondary)]/50 ${
+                                        selectedLog?._id === log._id ? 'bg-[var(--accent-primary)]/5' : ''
+                                    }`}
+                                >
+                                    <div className="flex justify-between items-start mb-2">
+                                        <span className={`px-2 py-0.5 rounded text-xs ${getStatusColor(log.status)}`}>
+                                            {getStatusText(log.status)}
+                                        </span>
+                                        <span className="text-xs text-[var(--text-tertiary)]">{formatDate(log.createdAt)}</span>
+                                    </div>
+                                    <p className="text-sm font-mono text-[var(--text-primary)] truncate">
+                                        {log.parsedData?.transactionCode || 'No code'}
+                                    </p>
+                                    <p className="text-xs text-[var(--text-secondary)] truncate">
+                                        {log.parsedData?.description || '-'}
+                                    </p>
+                                    {log.parsedData?.amount && (
+                                        <p className="text-xs text-green-500 mt-1">{formatCurrency(log.parsedData.amount)}</p>
+                                    )}
                                 </div>
-                                <p className="text-sm font-mono text-[var(--text-primary)] truncate">
-                                    {log.parsedData?.transactionCode || 'No code'}
-                                </p>
-                                <p className="text-xs text-[var(--text-secondary)] truncate">
-                                    {log.parsedData?.description || '-'}
-                                </p>
-                                {log.parsedData?.amount && (
-                                    <p className="text-xs text-green-500 mt-1">{formatCurrency(log.parsedData.amount)}</p>
-                                )}
-                            </div>
-                        ))}
+                            ))
+                        )}
                     </div>
                 )}
             </div>
@@ -572,63 +659,123 @@ function WebhooksTab() {
                     <div className="p-4">
                         <div className="flex justify-between items-start mb-4">
                             <h3 className="font-medium text-[var(--text-primary)]">Chi tiết Webhook</h3>
-                            {(selectedLog.status === 'unmatched' || selectedLog.status === 'error') && (
-                                <button
-                                    onClick={() => handleReprocess(selectedLog._id)}
-                                    className="px-3 py-1 bg-[var(--accent-primary)] text-black rounded text-sm font-medium hover:opacity-90"
-                                >
-                                    Xử lý lại
-                                </button>
-                            )}
+                            <span className={`px-2 py-0.5 rounded text-xs ${getStatusColor(selectedLog.status)}`}>
+                                {getStatusText(selectedLog.status)}
+                            </span>
                         </div>
 
                         <div className="space-y-4">
-                            <div>
-                                <p className="text-xs text-[var(--text-tertiary)] mb-1">Status</p>
-                                <span className={`px-2 py-0.5 rounded text-xs ${getStatusColor(selectedLog.status)}`}>
-                                    {selectedLog.status}
-                                </span>
+                            <div className="grid grid-cols-2 gap-4">
+                                <div>
+                                    <p className="text-xs text-[var(--text-tertiary)] mb-1">Mã giao dịch</p>
+                                    <p className="font-mono text-[var(--text-primary)]">{selectedLog.parsedData?.transactionCode || '-'}</p>
+                                </div>
+                                <div>
+                                    <p className="text-xs text-[var(--text-tertiary)] mb-1">Số tiền</p>
+                                    <p className="text-[var(--text-primary)] font-bold text-green-500">
+                                        {selectedLog.parsedData?.amount ? formatCurrency(selectedLog.parsedData.amount) : '-'}
+                                    </p>
+                                </div>
                             </div>
 
                             <div>
-                                <p className="text-xs text-[var(--text-tertiary)] mb-1">Mã giao dịch</p>
-                                <p className="font-mono text-[var(--text-primary)]">{selectedLog.parsedData?.transactionCode || '-'}</p>
-                            </div>
-
-                            <div>
-                                <p className="text-xs text-[var(--text-tertiary)] mb-1">Số tiền</p>
-                                <p className="text-[var(--text-primary)]">{selectedLog.parsedData?.amount ? formatCurrency(selectedLog.parsedData.amount) : '-'}</p>
-                            </div>
-
-                            <div>
-                                <p className="text-xs text-[var(--text-tertiary)] mb-1">Nội dung</p>
-                                <p className="text-[var(--text-primary)]">{selectedLog.parsedData?.description || '-'}</p>
+                                <p className="text-xs text-[var(--text-tertiary)] mb-1">Nội dung chuyển khoản</p>
+                                <p className="text-[var(--text-primary)] text-sm">{selectedLog.parsedData?.description || '-'}</p>
                             </div>
 
                             {selectedLog.matchedUserId && (
-                                <div>
-                                    <p className="text-xs text-[var(--text-tertiary)] mb-1">Matched User</p>
-                                    <p className="text-[var(--text-primary)]">{selectedLog.matchedUserId.name} ({selectedLog.matchedUserId.email})</p>
+                                <div className="p-3 bg-green-500/10 rounded-lg">
+                                    <p className="text-xs text-green-500 mb-1">Đã khớp với user</p>
+                                    <p className="text-[var(--text-primary)] font-medium">
+                                        {selectedLog.matchedUserId.name} ({selectedLog.matchedUserId.email})
+                                    </p>
                                 </div>
                             )}
 
                             {selectedLog.errorMessage && (
-                                <div>
-                                    <p className="text-xs text-[var(--text-tertiary)] mb-1">Error</p>
-                                    <p className="text-red-500 text-sm">{selectedLog.errorMessage}</p>
+                                <div className="p-3 bg-red-500/10 rounded-lg">
+                                    <p className="text-xs text-red-500 mb-1">Lỗi</p>
+                                    <p className="text-red-400 text-sm">{selectedLog.errorMessage}</p>
                                 </div>
                             )}
 
                             {selectedLog.processingNotes && (
                                 <div>
-                                    <p className="text-xs text-[var(--text-tertiary)] mb-1">Notes</p>
+                                    <p className="text-xs text-[var(--text-tertiary)] mb-1">Ghi chú xử lý</p>
                                     <p className="text-[var(--text-secondary)] text-sm">{selectedLog.processingNotes}</p>
                                 </div>
                             )}
 
-                            <div>
-                                <p className="text-xs text-[var(--text-tertiary)] mb-1">Raw Payload</p>
-                                <pre className="bg-[var(--bg-secondary)] p-3 rounded-lg text-xs text-[var(--text-primary)] overflow-x-auto max-h-[200px]">
+                            {/* Action buttons for unmatched/error webhooks */}
+                            {(selectedLog.status === 'unmatched' || selectedLog.status === 'error') && (
+                                <div className="border-t border-[var(--border-primary)] pt-4 space-y-3">
+                                    <p className="text-sm font-medium text-[var(--text-primary)]">Gán cho user</p>
+
+                                    {/* User search */}
+                                    <div className="relative">
+                                        <input
+                                            type="text"
+                                            placeholder="Tìm user (tên hoặc email)..."
+                                            value={userSearch}
+                                            onChange={(e) => {
+                                                setUserSearch(e.target.value);
+                                                setSelectedUserId('');
+                                            }}
+                                            onFocus={() => userSearch && setShowUserDropdown(true)}
+                                            className="w-full px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] text-sm"
+                                        />
+                                        {showUserDropdown && users.length > 0 && (
+                                            <div className="absolute z-10 w-full mt-1 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg shadow-lg max-h-[200px] overflow-y-auto">
+                                                {users.map((user) => (
+                                                    <div
+                                                        key={user._id}
+                                                        onClick={() => handleSelectUser(user)}
+                                                        className="p-2 hover:bg-[var(--bg-secondary)] cursor-pointer"
+                                                    >
+                                                        <p className="text-sm text-[var(--text-primary)]">{user.name}</p>
+                                                        <p className="text-xs text-[var(--text-tertiary)]">{user.email} • {user.balance} credits</p>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    <input
+                                        type="text"
+                                        placeholder="Ghi chú (tùy chọn)"
+                                        value={assignNote}
+                                        onChange={(e) => setAssignNote(e.target.value)}
+                                        className="w-full px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] text-sm"
+                                    />
+
+                                    <div className="flex gap-2">
+                                        <button
+                                            onClick={handleAssignUser}
+                                            disabled={!selectedUserId || assignLoading}
+                                            className="flex-1 px-3 py-2 bg-green-500 text-white rounded-lg text-sm font-medium hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        >
+                                            {assignLoading ? 'Đang xử lý...' : 'Gán & Cộng credits'}
+                                        </button>
+                                        <button
+                                            onClick={() => handleReprocess(selectedLog._id)}
+                                            className="px-3 py-2 bg-blue-500 text-white rounded-lg text-sm font-medium hover:bg-blue-600"
+                                        >
+                                            Xử lý lại
+                                        </button>
+                                        <button
+                                            onClick={handleIgnore}
+                                            className="px-3 py-2 bg-gray-500 text-white rounded-lg text-sm font-medium hover:bg-gray-600"
+                                        >
+                                            Bỏ qua
+                                        </button>
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Raw payload */}
+                            <div className="border-t border-[var(--border-primary)] pt-4">
+                                <p className="text-xs text-[var(--text-tertiary)] mb-2">Raw Payload</p>
+                                <pre className="bg-[var(--bg-secondary)] p-3 rounded-lg text-xs text-[var(--text-primary)] overflow-x-auto max-h-[150px]">
                                     {JSON.stringify(selectedLog.payload, null, 2)}
                                 </pre>
                             </div>
@@ -636,7 +783,7 @@ function WebhooksTab() {
                     </div>
                 ) : (
                     <div className="p-8 text-center text-[var(--text-secondary)]">
-                        Chọn một log để xem chi tiết
+                        Chọn một webhook để xem chi tiết
                     </div>
                 )}
             </div>
