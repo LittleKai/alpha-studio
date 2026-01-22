@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, JSX } from 'react';
 import { useTranslation } from '../../../i18n/context';
 import { useAuth } from '../../../auth/context';
 import {
