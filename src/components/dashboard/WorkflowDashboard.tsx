@@ -6,7 +6,7 @@ import type { WorkflowDocument, DepartmentType, Transaction, AutomationRule, Aff
 // StudentProfileModal and PartnerRegistrationModal not used - moved to separate view components
 import LanguageSwitcher from '../ui/LanguageSwitcher';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
-import { JobsView, PartnersView } from './views';
+import { JobsView, PartnersView, WalletView } from './views';
 import ProfileEditModal from '../modals/ProfileEditModal';
 
 interface WorkflowDashboardProps {
@@ -82,14 +82,9 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
     portfolioUrl: ''
   };
 
-  // Wallet State
-  const [balance, setBalance] = useState(1250);
-  const [transactions, setTransactions] = useState<Transaction[]>([
-    { id: 't1', type: 'deposit', amount: 500, description: 'Nạp tiền qua MOMO', date: '2024-06-20', status: 'completed' },
-    { id: 't2', type: 'spend', amount: -50, description: 'Thuê Server GPU (2h)', date: '2024-06-21', status: 'completed' },
-    { id: 't3', type: 'spend', amount: -100, description: 'Mua khóa học nâng cao', date: '2024-06-22', status: 'completed' },
-    { id: 't4', type: 'earning', amount: 50, description: 'Hoa hồng Affiliate (User #882)', date: '2024-06-23', status: 'completed' },
-  ]);
+  // Local balance state for reward/spending features (main wallet moved to WalletView)
+  const [balance, setBalance] = useState(user?.balance || 0);
+  const [_transactions, setTransactions] = useState<Transaction[]>([]);
 
   const [automations, setAutomations] = useState<AutomationRule[]>([
     { id: 'a1', name: 'Gửi file Thiết kế cho Art Director', trigger: 'file_upload', action: 'send_telegram', target: '@ArtDirectorGroup', isActive: true, lastRun: '2 phút trước' },
@@ -197,43 +192,6 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       alert(t('workflow.dashboard.project.success'));
   };
 
-  const handleBuyCredit = (amount: number, packageName: string) => {
-      if(confirm(`Xác nhận mua ${packageName} với giá tương ứng?`)) {
-          setBalance(prev => prev + amount);
-          const newTransaction: Transaction = {
-              id: `t${Date.now()}`,
-              type: 'deposit',
-              amount: amount,
-              description: `Mua ${packageName}`,
-              date: new Date().toISOString().split('T')[0],
-              status: 'completed'
-          };
-          setTransactions(prev => [newTransaction, ...prev]);
-          alert(t('workflow.wallet.success'));
-      }
-  };
-
-  const handleWithdraw = () => {
-      if (balance < 1000) {
-          alert(t('workflow.wallet.withdrawMin'));
-          return;
-      }
-      if (confirm(`Bạn có chắc muốn quy đổi ${balance} Coins thành tiền mặt?`)) {
-          const amount = balance;
-          setBalance(0);
-          const newTransaction: Transaction = {
-              id: `w${Date.now()}`,
-              type: 'withdrawal',
-              amount: -amount,
-              description: `Quy đổi tiền mặt (${amount} Coins)`,
-              date: new Date().toISOString().split('T')[0],
-              status: 'pending'
-          };
-          setTransactions(prev => [newTransaction, ...prev]);
-          alert(t('workflow.wallet.withdrawSuccess'));
-      }
-  };
-
   const handleCreateAsset = (e: React.FormEvent) => {
       e.preventDefault();
       const asset: CreativeAsset = {
@@ -248,8 +206,8 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       };
       setCreativeAssets(prev => [asset, ...prev]);
       setShowCreativeModal(false);
-      setBalance(prev => prev + 100);
-      setTransactions(prev => [{ id: `r-${Date.now()}`, type: 'reward', amount: 100, description: 'Thưởng đóng góp dữ liệu sáng tạo', date: new Date().toISOString().split('T')[0], status: 'completed' }, ...prev]);
+      setBalance((prev: number) => prev + 100);
+      setTransactions((prev: Transaction[]) => [{ id: `r-${Date.now()}`, type: 'reward', amount: 100, description: 'Thưởng đóng góp dữ liệu sáng tạo', date: new Date().toISOString().split('T')[0], status: 'completed' }, ...prev]);
       alert(t('workflow.creative.success'));
       setNewAssetData({ title: '', type: 'prompt', content: '', tags: '' });
   };
@@ -269,8 +227,8 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       };
       setResources(prev => [resource, ...prev]);
       setShowResourceModal(false);
-      setBalance(prev => prev + 300);
-      setTransactions(prev => [{ id: `rr-${Date.now()}`, type: 'reward', amount: 300, description: 'Thưởng chia sẻ tài nguyên', date: new Date().toISOString().split('T')[0], status: 'completed' }, ...prev]);
+      setBalance((prev: number) => prev + 300);
+      setTransactions((prev: Transaction[]) => [{ id: `rr-${Date.now()}`, type: 'reward', amount: 300, description: 'Thưởng chia sẻ tài nguyên', date: new Date().toISOString().split('T')[0], status: 'completed' }, ...prev]);
       alert(t('workflow.resources.success'));
       setNewResourceData({ title: '', type: 'project_file', format: '', description: '' });
   };
@@ -295,8 +253,8 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
               return;
           }
           if (confirm(`${t('workflow.collaboration.feeNotice')} (${MEMBER_COST} Coins)`)) {
-              setBalance(prev => prev - MEMBER_COST);
-              setTransactions(prev => [{ id: `fee-${Date.now()}`, type: 'spend', amount: -MEMBER_COST, description: `Phí thêm thành viên dự án: ${user.name}`, date: new Date().toISOString().split('T')[0], status: 'completed' }, ...prev]);
+              setBalance((prev: number) => prev - MEMBER_COST);
+              setTransactions((prev: Transaction[]) => [{ id: `fee-${Date.now()}`, type: 'spend', amount: -MEMBER_COST, description: `Phí thêm thành viên dự án: ${user.name}`, date: new Date().toISOString().split('T')[0], status: 'completed' }, ...prev]);
 
               updateProjectTeamAndFinance(user, MEMBER_COST);
           }
@@ -740,15 +698,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
             <div className="space-y-4 mb-8">{affiliateData.links.map(link => (<div key={link.id} className="bg-[var(--bg-secondary)] border border-[var(--border-primary)] p-4 rounded-xl flex flex-col md:flex-row items-center justify-between gap-4"><div className="flex-1"><h4 className="font-bold text-[var(--text-primary)]">{link.name}</h4><p className="text-xs text-[var(--accent-primary)] mt-1">{t('workflow.affiliate.commission')}: {link.commission}</p></div><div className="flex items-center gap-3 w-full md:w-auto"><code className="bg-black/30 px-3 py-2 rounded text-xs text-[var(--text-secondary)] flex-1 md:flex-none truncate max-w-[200px]">{link.url}</code><button onClick={() => copyToClipboard(link.url)} className="bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] hover:bg-[var(--accent-primary)] hover:text-black px-4 py-2 rounded-lg text-xs font-bold transition-colors">{t('workflow.affiliate.copyLink')}</button></div></div>))}</div>
         </div>
       );
-      case 'wallet': return (
-        <div className="p-6 md:p-8 overflow-y-auto flex-1 animate-fade-in">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10"><div className="bg-gradient-to-r from-yellow-600 to-amber-600 rounded-2xl p-8 text-white shadow-xl relative overflow-hidden"><div className="absolute top-0 right-0 p-8 opacity-20 transform translate-x-10 -translate-y-10"><svg className="w-48 h-48" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05 1.18 1.91 2.53 1.91 1.29 0 2.13-.72 2.13-1.55 0-.8-.68-1.38-2.26-1.75-2.03-.49-3.08-1.5-3.08-2.81 0-1.74 1.35-2.88 3.2-3.21V6h2.67v1.95c1.47.33 2.65 1.28 2.87 2.9h-1.99c-.15-.99-1.09-1.63-2.16-1.63-1.15 0-1.92.7-1.92 1.5 0 .75.64 1.29 2.16 1.65 2.12.51 3.19 1.57 3.19 2.92 0 1.91-1.54 3.03-3.36 3.35z"/></svg></div><div className="relative z-10"><h2 className="text-sm font-bold uppercase tracking-widest opacity-80 mb-2">{t('workflow.wallet.balance')}</h2><div className="text-6xl font-black mb-4 flex items-end gap-2">{balance.toLocaleString()}<span className="text-2xl font-bold mb-2">Coins</span></div><p className="text-sm opacity-90 max-w-md">Sử dụng Alpha Coin để thuê máy chủ GPU tốc độ cao, đăng ký khóa học chuyên sâu.</p></div></div><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-8 flex flex-col justify-center shadow-xl"><h2 className="text-xl font-bold text-[var(--text-primary)] mb-2">{t('workflow.wallet.withdraw')}</h2><p className="text-sm text-[var(--text-secondary)] mb-6">{t('workflow.wallet.withdrawDesc')}</p><div className="mt-auto"><button onClick={handleWithdraw} disabled={balance < 1000} className={`w-full py-4 rounded-xl font-bold transition-all shadow-lg ${balance >= 1000 ? 'bg-green-600 hover:bg-green-500 text-white' : 'bg-[var(--bg-secondary)] text-[var(--text-disabled)] cursor-not-allowed'}`}>{t('workflow.wallet.withdrawBtn')}</button>{balance < 1000 && <p className="text-xs text-red-400 mt-2 text-center">{t('workflow.wallet.withdrawMin')}</p>}</div></div></div>
-            <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-6">{t('workflow.wallet.buy')}</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">{[{ id: 'p1', name: t('workflow.wallet.packages.starter'), amount: 100, price: '100.000đ', color: 'from-blue-500 to-cyan-500' }, { id: 'p2', name: t('workflow.wallet.packages.pro'), amount: 500, price: '450.000đ', color: 'from-purple-500 to-pink-500', popular: true }, { id: 'p3', name: t('workflow.wallet.packages.biz'), amount: 1200, price: '1.000.000đ', color: 'from-orange-500 to-red-500' },].map(pkg => (<div key={pkg.id} className={`bg-[var(--bg-card)] border ${pkg.popular ? 'border-[var(--accent-primary)]' : 'border-[var(--border-primary)]'} rounded-2xl p-6 relative overflow-hidden group hover:-translate-y-1 transition-transform`}>{pkg.popular && (<div className="absolute top-0 right-0 bg-[var(--accent-primary)] text-black text-[10px] font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider">{t('workflow.wallet.popular')}</div>)}<div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${pkg.color} flex items-center justify-center text-white font-bold text-xl mb-4`}>💎</div><h4 className="text-lg font-bold text-[var(--text-primary)]">{pkg.name}</h4><div className="text-3xl font-black text-[var(--text-primary)] my-2">{pkg.amount} Coins</div><div className="text-sm text-[var(--text-secondary)] mb-6">{pkg.price}</div><ul className="space-y-2 mb-6 text-sm text-[var(--text-secondary)]"><li className="flex items-center gap-2"><span className="text-green-500">✓</span> {t('workflow.wallet.benefits.server')}</li><li className="flex items-center gap-2"><span className="text-green-500">✓</span> {t('workflow.wallet.benefits.course')}</li><li className="flex items-center gap-2"><span className="text-green-500">✓</span> {t('workflow.wallet.benefits.job')}</li></ul><button onClick={() => handleBuyCredit(pkg.amount, pkg.name)} className={`w-full py-3 rounded-lg font-bold text-white transition-all ${pkg.popular ? 'bg-[var(--accent-primary)] text-black hover:opacity-90' : 'bg-white/10 hover:bg-white/20'}`}>Mua ngay</button></div>))}</div>
-            <h3 className="text-xl font-bold text-[var(--text-primary)] mb-4">{t('workflow.wallet.history')}</h3>
-            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl overflow-hidden"><table className="w-full text-left border-collapse"><thead><tr className="bg-[var(--bg-secondary)] text-xs uppercase text-[var(--text-secondary)]"><th className="p-4">Thời gian</th><th className="p-4">Nội dung</th><th className="p-4 text-right">Thay đổi</th><th className="p-4 text-right">Trạng thái</th></tr></thead><tbody className="divide-y divide-[var(--border-primary)]">{transactions.map(tx => (<tr key={tx.id} className="text-sm"><td className="p-4 text-[var(--text-secondary)]">{tx.date}</td><td className="p-4 font-medium text-[var(--text-primary)]">{tx.description}</td><td className={`p-4 text-right font-bold ${tx.type === 'deposit' || tx.type === 'earning' || tx.type === 'reward' ? 'text-green-500' : 'text-red-500'}`}>{tx.type === 'deposit' || tx.type === 'earning' || tx.type === 'reward' ? '+' : ''}{tx.amount}</td><td className="p-4 text-right"><span className="px-2 py-1 bg-green-500/10 text-green-500 rounded text-xs font-bold uppercase">{tx.status}</span></td></tr>))}</tbody></table></div>
-        </div>
-      );
+      case 'wallet': return <WalletView />;
       case 'jobs': return <JobsView searchQuery={searchQuery} />;
       case 'partners': return <PartnersView searchQuery={searchQuery} />;
       default: return (

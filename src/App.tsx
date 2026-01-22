@@ -19,7 +19,6 @@ const WorkflowDashboard = lazy(() => import('./components/dashboard/WorkflowDash
 const AIServerConnect = lazy(() => import('./components/dashboard/AIServerConnect'));
 const CourseManagement = lazy(() => import('./components/admin/CourseManagement'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage'));
-const TopUpPage = lazy(() => import('./pages/TopUpPage'));
 
 // Loading spinner component
 const LoadingSpinner: React.FC = () => (
@@ -193,18 +192,6 @@ const App: React.FC = () => {
                         <ProtectedRoute>
                             <Suspense fallback={<LoadingSpinner />}>
                                 <ProfilePage />
-                            </Suspense>
-                        </ProtectedRoute>
-                    }
-                />
-
-                {/* Top Up Page */}
-                <Route
-                    path="/topup"
-                    element={
-                        <ProtectedRoute>
-                            <Suspense fallback={<LoadingSpinner />}>
-                                <TopUpPage />
                             </Suspense>
                         </ProtectedRoute>
                     }

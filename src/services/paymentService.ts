@@ -1,57 +1,63 @@
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
 // Types
+export interface CreditPackage {
+    id: string;
+    credits: number;
+    price: number;
+    label: string;
+    bonus?: string;
+    popular?: boolean;
+}
+
 export interface Transaction {
     _id: string;
     userId: string;
     amount: number;
-    status: 'pending' | 'completed' | 'failed';
+    credits: number;
+    status: 'pending' | 'completed' | 'failed' | 'cancelled';
     transactionCode: string;
     paymentMethod: 'bank_transfer' | 'momo' | 'vnpay';
     description: string;
     processedAt: string | null;
     failedReason: string | null;
-    formattedAmount: string;
+    expiresAt: string | null;
     createdAt: string;
     updatedAt: string;
 }
 
 export interface BankInfo {
+    bankId: string;
     bankName: string;
     accountNumber: string;
     accountHolder: string;
-    branch: string;
 }
 
-export interface PaymentRequest {
+export interface CreatePaymentResponse {
     transaction: {
         _id: string;
         transactionCode: string;
         amount: number;
+        credits: number;
         status: string;
-        paymentMethod: string;
+        expiresAt: string;
         createdAt: string;
     };
     bankInfo: BankInfo;
+    qrCodeUrl: string;
     transferContent: string;
-    expiresIn: string;
 }
 
 export interface TransactionListResponse {
     success: boolean;
     data: Transaction[];
+    pendingCount: number;
     pagination: {
         total: number;
         page: number;
         limit: number;
         pages: number;
     };
-}
-
-export interface PaymentResponse<T> {
-    success: boolean;
-    message?: string;
-    data: T;
 }
 
 // Helper function to get auth token
@@ -76,12 +82,65 @@ const getHeaders = (includeAuth: boolean = true): HeadersInit => {
 };
 
 /**
+ * Get available credit packages
+ */
+export const getCreditPackages = async (): Promise<CreditPackage[]> => {
+    const response = await fetch(`${API_URL}/payment/pricing`, {
+        method: 'GET',
+        headers: getHeaders(false),
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to fetch credit packages');
+    }
+
+    const result = await response.json();
+    return result.data;
+};
+
+/**
+ * Create a new payment request
+ */
+export const createPaymentRequest = async (packageId: string): Promise<CreatePaymentResponse> => {
+    const response = await fetch(`${API_URL}/payment/create`, {
+        method: 'POST',
+        headers: getHeaders(),
+        credentials: 'include',
+        body: JSON.stringify({ packageId }),
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to create payment request');
+    }
+
+    const result = await response.json();
+    return result.data;
+};
+
+/**
+ * Cancel a pending transaction
+ */
+export const cancelTransaction = async (transactionId: string): Promise<void> => {
+    const response = await fetch(`${API_URL}/payment/cancel/${transactionId}`, {
+        method: 'DELETE',
+        headers: getHeaders(),
+        credentials: 'include',
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to cancel transaction');
+    }
+};
+
+/**
  * Get payment history for current user
  */
 export const getPaymentHistory = async (
     page: number = 1,
     limit: number = 20,
-    status?: 'pending' | 'completed' | 'failed'
+    status?: 'pending' | 'completed' | 'failed' | 'cancelled'
 ): Promise<TransactionListResponse> => {
     const params = new URLSearchParams({
         page: page.toString(),
@@ -107,22 +166,17 @@ export const getPaymentHistory = async (
 };
 
 /**
- * Create a new payment request (top-up)
+ * Get pending transactions
  */
-export const createPaymentRequest = async (
-    amount: number,
-    paymentMethod: 'bank_transfer' | 'momo' | 'vnpay' = 'bank_transfer'
-): Promise<PaymentRequest> => {
-    const response = await fetch(`${API_URL}/payment/create`, {
-        method: 'POST',
+export const getPendingTransactions = async (): Promise<Transaction[]> => {
+    const response = await fetch(`${API_URL}/payment/pending`, {
+        method: 'GET',
         headers: getHeaders(),
         credentials: 'include',
-        body: JSON.stringify({ amount, paymentMethod }),
     });
 
     if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Failed to create payment request');
+        throw new Error('Failed to fetch pending transactions');
     }
 
     const result = await response.json();
@@ -154,13 +208,11 @@ export const checkTransactionStatus = async (transactionId: string): Promise<Tra
 export const getBankInfo = async (): Promise<BankInfo> => {
     const response = await fetch(`${API_URL}/payment/bank-info`, {
         method: 'GET',
-        headers: getHeaders(),
-        credentials: 'include',
+        headers: getHeaders(false),
     });
 
     if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Failed to get bank info');
+        throw new Error('Failed to get bank info');
     }
 
     const result = await response.json();
@@ -171,10 +223,7 @@ export const getBankInfo = async (): Promise<BankInfo> => {
  * Format amount as VND currency
  */
 export const formatCurrency = (amount: number): string => {
-    return new Intl.NumberFormat('vi-VN', {
-        style: 'currency',
-        currency: 'VND',
-    }).format(amount);
+    return new Intl.NumberFormat('vi-VN').format(amount) + 'đ';
 };
 
 /**

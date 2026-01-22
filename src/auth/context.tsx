@@ -7,6 +7,7 @@ export interface User {
     name: string;
     role: 'student' | 'partner' | 'mod' | 'admin';
     avatar: string | null;
+    balance: number;
     subscription: {
         plan: 'free' | 'basic' | 'pro' | 'enterprise';
         apiQuota: number;
