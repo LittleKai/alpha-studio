@@ -1,0 +1,645 @@
+import { useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../auth/context';
+import { Layout } from '../components/layout';
+import {
+    getUsers,
+    getUserDetails,
+    getUserTransactions,
+    manualTopup,
+    getAllTransactions,
+    processTransaction,
+    getWebhookLogs,
+    reprocessWebhook,
+    formatCurrency,
+    formatDate,
+    type AdminUser,
+    type AdminTransaction,
+    type WebhookLog,
+} from '../services/adminService';
+
+type TabType = 'users' | 'transactions' | 'webhooks';
+
+export default function AdminPage() {
+    const navigate = useNavigate();
+    const { user } = useAuth();
+    const [activeTab, setActiveTab] = useState<TabType>('users');
+
+    // Check admin access
+    useEffect(() => {
+        if (user && user.role !== 'admin') {
+            navigate('/');
+        }
+    }, [user, navigate]);
+
+    if (!user || user.role !== 'admin') {
+        return (
+            <Layout>
+                <div className="min-h-screen flex items-center justify-center">
+                    <p className="text-[var(--text-secondary)]">Checking access...</p>
+                </div>
+            </Layout>
+        );
+    }
+
+    return (
+        <Layout>
+            <div className="min-h-screen bg-[var(--bg-primary)] p-6">
+                <div className="max-w-7xl mx-auto">
+                    {/* Header */}
+                    <div className="mb-6">
+                        <h1 className="text-2xl font-bold text-[var(--text-primary)]">Admin Management</h1>
+                        <p className="text-sm text-[var(--text-secondary)]">Quản lý người dùng, giao dịch và webhook</p>
+                    </div>
+
+                    {/* Tabs */}
+                    <div className="flex gap-2 mb-6 border-b border-[var(--border-primary)]">
+                        {[
+                            { id: 'users', label: 'Quản lý User' },
+                            { id: 'transactions', label: 'Giao dịch' },
+                            { id: 'webhooks', label: 'Webhook Logs' },
+                        ].map((tab) => (
+                            <button
+                                key={tab.id}
+                                onClick={() => setActiveTab(tab.id as TabType)}
+                                className={`px-4 py-2 font-medium transition-colors ${
+                                    activeTab === tab.id
+                                        ? 'text-[var(--accent-primary)] border-b-2 border-[var(--accent-primary)]'
+                                        : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                                }`}
+                            >
+                                {tab.label}
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* Tab Content */}
+                    {activeTab === 'users' && <UsersTab />}
+                    {activeTab === 'transactions' && <TransactionsTab />}
+                    {activeTab === 'webhooks' && <WebhooksTab />}
+                </div>
+            </div>
+        </Layout>
+    );
+}
+
+// Users Tab Component
+function UsersTab() {
+    const [users, setUsers] = useState<AdminUser[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [search, setSearch] = useState('');
+    const [selectedUser, setSelectedUser] = useState<AdminUser | null>(null);
+    const [userStats, setUserStats] = useState<any>(null);
+    const [userTransactions, setUserTransactions] = useState<AdminTransaction[]>([]);
+    const [topupAmount, setTopupAmount] = useState('');
+    const [topupNote, setTopupNote] = useState('');
+    const [topupLoading, setTopupLoading] = useState(false);
+
+    const loadUsers = useCallback(async () => {
+        try {
+            setLoading(true);
+            const response = await getUsers(1, 50, search);
+            setUsers(response.data);
+        } catch (error) {
+            console.error('Failed to load users:', error);
+        } finally {
+            setLoading(false);
+        }
+    }, [search]);
+
+    useEffect(() => {
+        const debounce = setTimeout(loadUsers, 300);
+        return () => clearTimeout(debounce);
+    }, [loadUsers]);
+
+    const handleSelectUser = async (user: AdminUser) => {
+        setSelectedUser(user);
+        try {
+            const [detailsRes, txRes] = await Promise.all([
+                getUserDetails(user._id),
+                getUserTransactions(user._id, 1, 20),
+            ]);
+            setUserStats(detailsRes.data.stats);
+            setUserTransactions(txRes.data);
+        } catch (error) {
+            console.error('Failed to load user details:', error);
+        }
+    };
+
+    const handleTopup = async () => {
+        if (!selectedUser || !topupAmount) return;
+        const credits = parseInt(topupAmount);
+        if (isNaN(credits) || credits <= 0) {
+            alert('Số credits không hợp lệ');
+            return;
+        }
+
+        try {
+            setTopupLoading(true);
+            const result = await manualTopup(selectedUser._id, credits, topupNote);
+            alert(result.message);
+            setTopupAmount('');
+            setTopupNote('');
+            // Reload user data
+            handleSelectUser(selectedUser);
+            loadUsers();
+        } catch (error: any) {
+            alert(error.message || 'Lỗi top-up');
+        } finally {
+            setTopupLoading(false);
+        }
+    };
+
+    return (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* User List */}
+            <div className="lg:col-span-1 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-4">
+                <input
+                    type="text"
+                    placeholder="Tìm user (tên, email)..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    className="w-full px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] mb-4"
+                />
+
+                {loading ? (
+                    <p className="text-center text-[var(--text-secondary)]">Loading...</p>
+                ) : (
+                    <div className="space-y-2 max-h-[600px] overflow-y-auto">
+                        {users.map((u) => (
+                            <div
+                                key={u._id}
+                                onClick={() => handleSelectUser(u)}
+                                className={`p-3 rounded-lg cursor-pointer transition-colors ${
+                                    selectedUser?._id === u._id
+                                        ? 'bg-[var(--accent-primary)]/10 border border-[var(--accent-primary)]'
+                                        : 'bg-[var(--bg-secondary)] hover:bg-[var(--border-primary)]'
+                                }`}
+                            >
+                                <p className="font-medium text-[var(--text-primary)]">{u.name}</p>
+                                <p className="text-xs text-[var(--text-secondary)]">{u.email}</p>
+                                <div className="flex items-center justify-between mt-1">
+                                    <span className={`text-xs px-2 py-0.5 rounded ${
+                                        u.role === 'admin' ? 'bg-red-500/10 text-red-500' :
+                                        u.role === 'partner' ? 'bg-blue-500/10 text-blue-500' :
+                                        'bg-gray-500/10 text-gray-500'
+                                    }`}>
+                                        {u.role}
+                                    </span>
+                                    <span className="text-xs text-yellow-500 font-medium">{u.balance} credits</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
+
+            {/* User Details */}
+            <div className="lg:col-span-2 space-y-4">
+                {selectedUser ? (
+                    <>
+                        {/* User Info Card */}
+                        <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-6">
+                            <div className="flex items-start justify-between mb-4">
+                                <div>
+                                    <h3 className="text-xl font-bold text-[var(--text-primary)]">{selectedUser.name}</h3>
+                                    <p className="text-sm text-[var(--text-secondary)]">{selectedUser.email}</p>
+                                </div>
+                                <span className={`px-3 py-1 rounded-lg text-sm font-medium ${
+                                    selectedUser.role === 'admin' ? 'bg-red-500/10 text-red-500' :
+                                    selectedUser.role === 'partner' ? 'bg-blue-500/10 text-blue-500' :
+                                    'bg-gray-500/10 text-gray-500'
+                                }`}>
+                                    {selectedUser.role}
+                                </span>
+                            </div>
+
+                            {userStats && (
+                                <div className="grid grid-cols-3 gap-4 mb-4">
+                                    <div className="bg-[var(--bg-secondary)] p-3 rounded-lg">
+                                        <p className="text-xs text-[var(--text-tertiary)]">Balance</p>
+                                        <p className="text-lg font-bold text-yellow-500">{selectedUser.balance}</p>
+                                    </div>
+                                    <div className="bg-[var(--bg-secondary)] p-3 rounded-lg">
+                                        <p className="text-xs text-[var(--text-tertiary)]">Total Top-up</p>
+                                        <p className="text-lg font-bold text-green-500">{userStats.totalTopup}</p>
+                                    </div>
+                                    <div className="bg-[var(--bg-secondary)] p-3 rounded-lg">
+                                        <p className="text-xs text-[var(--text-tertiary)]">Total Spent</p>
+                                        <p className="text-lg font-bold text-red-500">{userStats.totalSpent}</p>
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Manual Top-up */}
+                            <div className="border-t border-[var(--border-primary)] pt-4">
+                                <h4 className="font-medium text-[var(--text-primary)] mb-3">Top-up thủ công</h4>
+                                <div className="flex gap-2">
+                                    <input
+                                        type="number"
+                                        placeholder="Số credits"
+                                        value={topupAmount}
+                                        onChange={(e) => setTopupAmount(e.target.value)}
+                                        className="flex-1 px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)]"
+                                    />
+                                    <input
+                                        type="text"
+                                        placeholder="Ghi chú (lý do)"
+                                        value={topupNote}
+                                        onChange={(e) => setTopupNote(e.target.value)}
+                                        className="flex-1 px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)]"
+                                    />
+                                    <button
+                                        onClick={handleTopup}
+                                        disabled={topupLoading || !topupAmount}
+                                        className="px-4 py-2 bg-[var(--accent-primary)] text-black font-medium rounded-lg hover:opacity-90 disabled:opacity-50"
+                                    >
+                                        {topupLoading ? '...' : 'Top-up'}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* User Transactions */}
+                        <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-4">
+                            <h4 className="font-medium text-[var(--text-primary)] mb-3">Lịch sử giao dịch</h4>
+                            <div className="space-y-2 max-h-[400px] overflow-y-auto">
+                                {userTransactions.length === 0 ? (
+                                    <p className="text-center text-[var(--text-secondary)] py-4">Chưa có giao dịch</p>
+                                ) : (
+                                    userTransactions.map((tx) => (
+                                        <div key={tx._id} className="flex items-center justify-between p-3 bg-[var(--bg-secondary)] rounded-lg">
+                                            <div>
+                                                <p className="text-sm font-medium text-[var(--text-primary)]">{tx.description}</p>
+                                                <p className="text-xs text-[var(--text-tertiary)]">
+                                                    {formatDate(tx.createdAt)} • {tx.transactionCode}
+                                                </p>
+                                                {tx.processedBy && (
+                                                    <p className="text-xs text-blue-400">By: {tx.processedBy.name}</p>
+                                                )}
+                                            </div>
+                                            <div className="text-right">
+                                                <p className={`font-bold ${tx.credits >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+                                                    {tx.credits >= 0 ? '+' : ''}{tx.credits}
+                                                </p>
+                                                <span className={`text-xs px-2 py-0.5 rounded ${
+                                                    tx.status === 'completed' ? 'bg-green-500/10 text-green-500' :
+                                                    tx.status === 'pending' ? 'bg-yellow-500/10 text-yellow-500' :
+                                                    'bg-red-500/10 text-red-500'
+                                                }`}>
+                                                    {tx.status}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    ))
+                                )}
+                            </div>
+                        </div>
+                    </>
+                ) : (
+                    <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-8 text-center">
+                        <p className="text-[var(--text-secondary)]">Chọn một user để xem chi tiết</p>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+}
+
+// Transactions Tab Component
+function TransactionsTab() {
+    const [transactions, setTransactions] = useState<AdminTransaction[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [filters, setFilters] = useState({
+        type: '',
+        status: '',
+        search: '',
+    });
+
+    const loadTransactions = useCallback(async () => {
+        try {
+            setLoading(true);
+            const response = await getAllTransactions({
+                page: 1,
+                limit: 100,
+                type: filters.type || undefined,
+                status: filters.status || undefined,
+                search: filters.search || undefined,
+            });
+            setTransactions(response.data);
+        } catch (error) {
+            console.error('Failed to load transactions:', error);
+        } finally {
+            setLoading(false);
+        }
+    }, [filters]);
+
+    useEffect(() => {
+        const debounce = setTimeout(loadTransactions, 300);
+        return () => clearTimeout(debounce);
+    }, [loadTransactions]);
+
+    const handleProcess = async (txId: string, action: 'approve' | 'reject') => {
+        const note = prompt(`Ghi chú cho ${action === 'approve' ? 'duyệt' : 'từ chối'}:`);
+        if (note === null) return;
+
+        try {
+            const result = await processTransaction(txId, action, note);
+            alert(result.message);
+            loadTransactions();
+        } catch (error: any) {
+            alert(error.message || 'Lỗi xử lý');
+        }
+    };
+
+    return (
+        <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl">
+            {/* Filters */}
+            <div className="p-4 border-b border-[var(--border-primary)] flex flex-wrap gap-3">
+                <input
+                    type="text"
+                    placeholder="Tìm kiếm mã GD..."
+                    value={filters.search}
+                    onChange={(e) => setFilters((f) => ({ ...f, search: e.target.value }))}
+                    className="px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] text-sm"
+                />
+                <select
+                    value={filters.type}
+                    onChange={(e) => setFilters((f) => ({ ...f, type: e.target.value }))}
+                    className="px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] text-sm"
+                >
+                    <option value="">Tất cả loại</option>
+                    <option value="topup">Top-up</option>
+                    <option value="manual_topup">Manual Top-up</option>
+                    <option value="spend">Spend</option>
+                    <option value="refund">Refund</option>
+                </select>
+                <select
+                    value={filters.status}
+                    onChange={(e) => setFilters((f) => ({ ...f, status: e.target.value }))}
+                    className="px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] text-sm"
+                >
+                    <option value="">Tất cả trạng thái</option>
+                    <option value="pending">Pending</option>
+                    <option value="completed">Completed</option>
+                    <option value="failed">Failed</option>
+                </select>
+            </div>
+
+            {/* Transaction List */}
+            <div className="overflow-x-auto">
+                {loading ? (
+                    <p className="text-center text-[var(--text-secondary)] py-8">Loading...</p>
+                ) : (
+                    <table className="w-full text-sm">
+                        <thead>
+                            <tr className="bg-[var(--bg-secondary)] text-[var(--text-tertiary)] text-xs uppercase">
+                                <th className="p-3 text-left">Thời gian</th>
+                                <th className="p-3 text-left">User</th>
+                                <th className="p-3 text-left">Mã GD</th>
+                                <th className="p-3 text-left">Loại</th>
+                                <th className="p-3 text-right">Số tiền</th>
+                                <th className="p-3 text-right">Credits</th>
+                                <th className="p-3 text-center">Trạng thái</th>
+                                <th className="p-3 text-center">Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y divide-[var(--border-primary)]">
+                            {transactions.map((tx) => (
+                                <tr key={tx._id} className="hover:bg-[var(--bg-secondary)]/50">
+                                    <td className="p-3 text-[var(--text-secondary)]">{formatDate(tx.createdAt)}</td>
+                                    <td className="p-3">
+                                        {tx.userId ? (
+                                            <div>
+                                                <p className="font-medium text-[var(--text-primary)]">{tx.userId.name}</p>
+                                                <p className="text-xs text-[var(--text-tertiary)]">{tx.userId.email}</p>
+                                            </div>
+                                        ) : (
+                                            <span className="text-[var(--text-tertiary)]">-</span>
+                                        )}
+                                    </td>
+                                    <td className="p-3 font-mono text-xs text-[var(--text-primary)]">{tx.transactionCode}</td>
+                                    <td className="p-3">
+                                        <span className={`px-2 py-0.5 rounded text-xs ${
+                                            tx.type === 'topup' ? 'bg-green-500/10 text-green-500' :
+                                            tx.type === 'manual_topup' ? 'bg-blue-500/10 text-blue-500' :
+                                            tx.type === 'spend' ? 'bg-orange-500/10 text-orange-500' :
+                                            'bg-gray-500/10 text-gray-500'
+                                        }`}>
+                                            {tx.type}
+                                        </span>
+                                    </td>
+                                    <td className="p-3 text-right text-[var(--text-primary)]">{formatCurrency(tx.amount)}</td>
+                                    <td className={`p-3 text-right font-bold ${tx.credits >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+                                        {tx.credits >= 0 ? '+' : ''}{tx.credits}
+                                    </td>
+                                    <td className="p-3 text-center">
+                                        <span className={`px-2 py-0.5 rounded text-xs ${
+                                            tx.status === 'completed' ? 'bg-green-500/10 text-green-500' :
+                                            tx.status === 'pending' ? 'bg-yellow-500/10 text-yellow-500' :
+                                            'bg-red-500/10 text-red-500'
+                                        }`}>
+                                            {tx.status}
+                                        </span>
+                                    </td>
+                                    <td className="p-3 text-center">
+                                        {tx.status === 'pending' && (
+                                            <div className="flex gap-1 justify-center">
+                                                <button
+                                                    onClick={() => handleProcess(tx._id, 'approve')}
+                                                    className="px-2 py-1 bg-green-500/10 text-green-500 rounded text-xs hover:bg-green-500/20"
+                                                >
+                                                    Duyệt
+                                                </button>
+                                                <button
+                                                    onClick={() => handleProcess(tx._id, 'reject')}
+                                                    className="px-2 py-1 bg-red-500/10 text-red-500 rounded text-xs hover:bg-red-500/20"
+                                                >
+                                                    Từ chối
+                                                </button>
+                                            </div>
+                                        )}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                )}
+            </div>
+        </div>
+    );
+}
+
+// Webhooks Tab Component
+function WebhooksTab() {
+    const [logs, setLogs] = useState<WebhookLog[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [selectedLog, setSelectedLog] = useState<WebhookLog | null>(null);
+    const [statusFilter, setStatusFilter] = useState('');
+
+    const loadLogs = useCallback(async () => {
+        try {
+            setLoading(true);
+            const response = await getWebhookLogs(1, 100, undefined, statusFilter || undefined);
+            setLogs(response.data);
+        } catch (error) {
+            console.error('Failed to load logs:', error);
+        } finally {
+            setLoading(false);
+        }
+    }, [statusFilter]);
+
+    useEffect(() => {
+        loadLogs();
+    }, [loadLogs]);
+
+    const handleReprocess = async (logId: string) => {
+        if (!confirm('Xử lý lại webhook này?')) return;
+
+        try {
+            const result = await reprocessWebhook(logId);
+            alert(result.message);
+            loadLogs();
+        } catch (error: any) {
+            alert(error.message || 'Lỗi xử lý');
+        }
+    };
+
+    const getStatusColor = (status: string) => {
+        switch (status) {
+            case 'matched': return 'bg-green-500/10 text-green-500';
+            case 'unmatched': return 'bg-yellow-500/10 text-yellow-500';
+            case 'error': return 'bg-red-500/10 text-red-500';
+            case 'processing': return 'bg-blue-500/10 text-blue-500';
+            default: return 'bg-gray-500/10 text-gray-500';
+        }
+    };
+
+    return (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Log List */}
+            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl">
+                <div className="p-4 border-b border-[var(--border-primary)] flex justify-between items-center">
+                    <h3 className="font-medium text-[var(--text-primary)]">Webhook Logs</h3>
+                    <select
+                        value={statusFilter}
+                        onChange={(e) => setStatusFilter(e.target.value)}
+                        className="px-3 py-1 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] text-sm"
+                    >
+                        <option value="">Tất cả</option>
+                        <option value="matched">Matched</option>
+                        <option value="unmatched">Unmatched</option>
+                        <option value="error">Error</option>
+                    </select>
+                </div>
+
+                {loading ? (
+                    <p className="text-center text-[var(--text-secondary)] py-8">Loading...</p>
+                ) : (
+                    <div className="divide-y divide-[var(--border-primary)] max-h-[600px] overflow-y-auto">
+                        {logs.map((log) => (
+                            <div
+                                key={log._id}
+                                onClick={() => setSelectedLog(log)}
+                                className={`p-4 cursor-pointer hover:bg-[var(--bg-secondary)]/50 ${
+                                    selectedLog?._id === log._id ? 'bg-[var(--accent-primary)]/5' : ''
+                                }`}
+                            >
+                                <div className="flex justify-between items-start mb-2">
+                                    <span className={`px-2 py-0.5 rounded text-xs ${getStatusColor(log.status)}`}>
+                                        {log.status}
+                                    </span>
+                                    <span className="text-xs text-[var(--text-tertiary)]">{formatDate(log.createdAt)}</span>
+                                </div>
+                                <p className="text-sm font-mono text-[var(--text-primary)] truncate">
+                                    {log.parsedData?.transactionCode || 'No code'}
+                                </p>
+                                <p className="text-xs text-[var(--text-secondary)] truncate">
+                                    {log.parsedData?.description || '-'}
+                                </p>
+                                {log.parsedData?.amount && (
+                                    <p className="text-xs text-green-500 mt-1">{formatCurrency(log.parsedData.amount)}</p>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
+
+            {/* Log Detail */}
+            <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl">
+                {selectedLog ? (
+                    <div className="p-4">
+                        <div className="flex justify-between items-start mb-4">
+                            <h3 className="font-medium text-[var(--text-primary)]">Chi tiết Webhook</h3>
+                            {(selectedLog.status === 'unmatched' || selectedLog.status === 'error') && (
+                                <button
+                                    onClick={() => handleReprocess(selectedLog._id)}
+                                    className="px-3 py-1 bg-[var(--accent-primary)] text-black rounded text-sm font-medium hover:opacity-90"
+                                >
+                                    Xử lý lại
+                                </button>
+                            )}
+                        </div>
+
+                        <div className="space-y-4">
+                            <div>
+                                <p className="text-xs text-[var(--text-tertiary)] mb-1">Status</p>
+                                <span className={`px-2 py-0.5 rounded text-xs ${getStatusColor(selectedLog.status)}`}>
+                                    {selectedLog.status}
+                                </span>
+                            </div>
+
+                            <div>
+                                <p className="text-xs text-[var(--text-tertiary)] mb-1">Mã giao dịch</p>
+                                <p className="font-mono text-[var(--text-primary)]">{selectedLog.parsedData?.transactionCode || '-'}</p>
+                            </div>
+
+                            <div>
+                                <p className="text-xs text-[var(--text-tertiary)] mb-1">Số tiền</p>
+                                <p className="text-[var(--text-primary)]">{selectedLog.parsedData?.amount ? formatCurrency(selectedLog.parsedData.amount) : '-'}</p>
+                            </div>
+
+                            <div>
+                                <p className="text-xs text-[var(--text-tertiary)] mb-1">Nội dung</p>
+                                <p className="text-[var(--text-primary)]">{selectedLog.parsedData?.description || '-'}</p>
+                            </div>
+
+                            {selectedLog.matchedUserId && (
+                                <div>
+                                    <p className="text-xs text-[var(--text-tertiary)] mb-1">Matched User</p>
+                                    <p className="text-[var(--text-primary)]">{selectedLog.matchedUserId.name} ({selectedLog.matchedUserId.email})</p>
+                                </div>
+                            )}
+
+                            {selectedLog.errorMessage && (
+                                <div>
+                                    <p className="text-xs text-[var(--text-tertiary)] mb-1">Error</p>
+                                    <p className="text-red-500 text-sm">{selectedLog.errorMessage}</p>
+                                </div>
+                            )}
+
+                            {selectedLog.processingNotes && (
+                                <div>
+                                    <p className="text-xs text-[var(--text-tertiary)] mb-1">Notes</p>
+                                    <p className="text-[var(--text-secondary)] text-sm">{selectedLog.processingNotes}</p>
+                                </div>
+                            )}
+
+                            <div>
+                                <p className="text-xs text-[var(--text-tertiary)] mb-1">Raw Payload</p>
+                                <pre className="bg-[var(--bg-secondary)] p-3 rounded-lg text-xs text-[var(--text-primary)] overflow-x-auto max-h-[200px]">
+                                    {JSON.stringify(selectedLog.payload, null, 2)}
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                ) : (
+                    <div className="p-8 text-center text-[var(--text-secondary)]">
+                        Chọn một log để xem chi tiết
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+}

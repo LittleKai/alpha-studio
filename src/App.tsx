@@ -19,6 +19,7 @@ const WorkflowDashboard = lazy(() => import('./components/dashboard/WorkflowDash
 const AIServerConnect = lazy(() => import('./components/dashboard/AIServerConnect'));
 const CourseManagement = lazy(() => import('./components/admin/CourseManagement'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage'));
+const AdminPage = lazy(() => import('./pages/AdminPage'));
 
 // Loading spinner component
 const LoadingSpinner: React.FC = () => (
@@ -203,6 +204,17 @@ const App: React.FC = () => {
                     element={
                         <ProtectedRoute>
                             <AdminCoursesPage />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path="/admin"
+                    element={
+                        <ProtectedRoute>
+                            <Suspense fallback={<LoadingSpinner />}>
+                                <AdminPage />
+                            </Suspense>
                         </ProtectedRoute>
                     }
                 />
