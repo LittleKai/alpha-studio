@@ -252,6 +252,216 @@ export default {
       program: "Chương trình",
       history: "Lịch sử"
     },
+    prompts: {
+      title: "Chia sẻ Prompt",
+      subtitle: "Chia sẻ & khám phá AI prompt từ cộng đồng",
+      create: "Chia sẻ Prompt",
+      noPrompts: "Không tìm thấy prompt",
+      search: "Tìm kiếm prompt...",
+      filters: {
+        all: "Tất cả",
+        category: "Danh mục",
+        platform: "Nền tảng",
+        sortBy: "Sắp xếp theo"
+      },
+      categories: {
+        "image-generation": "Tạo ảnh",
+        "text-generation": "Tạo văn bản",
+        "code": "Code",
+        "workflow": "Workflow",
+        "other": "Khác"
+      },
+      platforms: {
+        "midjourney": "Midjourney",
+        "stable-diffusion": "Stable Diffusion",
+        "dalle": "DALL-E",
+        "comfyui": "ComfyUI",
+        "chatgpt": "ChatGPT",
+        "claude": "Claude",
+        "other": "Khác"
+      },
+      sort: {
+        latest: "Mới nhất",
+        popular: "Phổ biến nhất",
+        "top-rated": "Đánh giá cao",
+        "most-downloaded": "Tải nhiều nhất"
+      },
+      form: {
+        createTitle: "Chia sẻ Prompt mới",
+        editTitle: "Chỉnh sửa Prompt",
+        titleEn: "Tiêu đề (Tiếng Anh)",
+        titleVi: "Tiêu đề (Tiếng Việt)",
+        descEn: "Mô tả (Tiếng Anh)",
+        descVi: "Mô tả (Tiếng Việt)",
+        promptContent: "Nội dung Prompt",
+        promptContentPlaceholder: "Nhập prompt của bạn...",
+        category: "Danh mục",
+        platform: "Nền tảng",
+        tags: "Tags",
+        tagsPlaceholder: "Thêm tags...",
+        exampleImages: "Ảnh mẫu",
+        addInput: "Thêm ảnh Input",
+        addOutput: "Thêm ảnh Output",
+        submit: "Chia sẻ Prompt",
+        update: "Cập nhật Prompt",
+        cancel: "Hủy"
+      },
+      detail: {
+        by: "bởi",
+        copyPrompt: "Sao chép Prompt",
+        copied: "Đã sao chép!",
+        downloads: "Lượt tải",
+        views: "Lượt xem",
+        rating: "Đánh giá",
+        rateThis: "Đánh giá prompt này",
+        comments: "Bình luận",
+        noComments: "Chưa có bình luận",
+        exampleImages: "Ảnh mẫu",
+        input: "Input",
+        output: "Output",
+        relatedPrompts: "Prompt liên quan"
+      },
+      actions: {
+        like: "Thích",
+        bookmark: "Lưu",
+        download: "Tải về",
+        share: "Chia sẻ",
+        report: "Báo cáo",
+        edit: "Chỉnh sửa",
+        delete: "Xóa",
+        hide: "Ẩn",
+        unhide: "Hiện",
+        feature: "Đánh dấu nổi bật",
+        unfeature: "Bỏ nổi bật"
+      },
+      success: {
+        created: "Chia sẻ prompt thành công!",
+        updated: "Cập nhật prompt thành công!",
+        deleted: "Xóa prompt thành công!",
+        copied: "Đã sao chép prompt!"
+      },
+      error: {
+        loadFailed: "Không thể tải prompt",
+        createFailed: "Không thể tạo prompt",
+        updateFailed: "Không thể cập nhật prompt",
+        deleteFailed: "Không thể xóa prompt"
+      },
+      featured: "Nổi bật",
+      myPrompts: "Prompt của tôi",
+      bookmarked: "Đã lưu"
+    },
+    resources: {
+      title: "Kho Tài Nguyên",
+      subtitle: "Chia sẻ & tải template, dataset và tài sản",
+      upload: "Chia sẻ Tài nguyên",
+      noResources: "Không tìm thấy tài nguyên",
+      search: "Tìm kiếm tài nguyên...",
+      filters: {
+        all: "Tất cả",
+        type: "Loại",
+        sortBy: "Sắp xếp theo"
+      },
+      types: {
+        "template": "Template",
+        "dataset": "Dataset",
+        "design-asset": "Tài sản thiết kế",
+        "project-file": "File dự án",
+        "3d-model": "Mô hình 3D",
+        "font": "Font chữ",
+        "other": "Khác"
+      },
+      sort: {
+        latest: "Mới nhất",
+        popular: "Phổ biến nhất",
+        "top-rated": "Đánh giá cao",
+        "most-downloaded": "Tải nhiều nhất"
+      },
+      form: {
+        createTitle: "Chia sẻ Tài nguyên mới",
+        editTitle: "Chỉnh sửa Tài nguyên",
+        titleEn: "Tiêu đề (Tiếng Anh)",
+        titleVi: "Tiêu đề (Tiếng Việt)",
+        descEn: "Mô tả (Tiếng Anh)",
+        descVi: "Mô tả (Tiếng Việt)",
+        resourceType: "Loại tài nguyên",
+        file: "File",
+        fileUpload: "Tải lên File",
+        fileDrop: "Kéo thả file vào đây hoặc nhấp để tải lên",
+        maxSize: "Kích thước tối đa: 50MB",
+        thumbnail: "Ảnh đại diện",
+        previewImages: "Ảnh xem trước",
+        tags: "Tags",
+        tagsPlaceholder: "Thêm tags...",
+        compatibleSoftware: "Phần mềm tương thích",
+        compatiblePlaceholder: "VD: Photoshop, Blender, After Effects",
+        submit: "Chia sẻ Tài nguyên",
+        update: "Cập nhật Tài nguyên",
+        cancel: "Hủy",
+        uploading: "Đang tải lên..."
+      },
+      detail: {
+        by: "bởi",
+        download: "Tải về",
+        downloads: "Lượt tải",
+        views: "Lượt xem",
+        rating: "Đánh giá",
+        rateThis: "Đánh giá tài nguyên này",
+        comments: "Bình luận",
+        noComments: "Chưa có bình luận",
+        fileInfo: "Thông tin File",
+        format: "Định dạng",
+        size: "Kích thước",
+        compatibleWith: "Tương thích với",
+        previewImages: "Ảnh xem trước",
+        relatedResources: "Tài nguyên liên quan"
+      },
+      actions: {
+        like: "Thích",
+        bookmark: "Lưu",
+        download: "Tải về",
+        share: "Chia sẻ",
+        report: "Báo cáo",
+        edit: "Chỉnh sửa",
+        delete: "Xóa",
+        hide: "Ẩn",
+        unhide: "Hiện",
+        feature: "Đánh dấu nổi bật",
+        unfeature: "Bỏ nổi bật"
+      },
+      success: {
+        created: "Chia sẻ tài nguyên thành công!",
+        updated: "Cập nhật tài nguyên thành công!",
+        deleted: "Xóa tài nguyên thành công!",
+        downloaded: "Bắt đầu tải về!"
+      },
+      error: {
+        loadFailed: "Không thể tải tài nguyên",
+        createFailed: "Không thể tạo tài nguyên",
+        updateFailed: "Không thể cập nhật tài nguyên",
+        deleteFailed: "Không thể xóa tài nguyên",
+        fileTooLarge: "File quá lớn. Kích thước tối đa là 50MB.",
+        uploadFailed: "Không thể tải lên file"
+      },
+      featured: "Nổi bật",
+      myResources: "Tài nguyên của tôi",
+      bookmarked: "Đã lưu"
+    },
+    comments: {
+      title: "Bình luận",
+      placeholder: "Viết bình luận...",
+      submit: "Đăng",
+      reply: "Trả lời",
+      replyTo: "Trả lời",
+      edit: "Chỉnh sửa",
+      delete: "Xóa",
+      report: "Báo cáo",
+      edited: "(đã sửa)",
+      noComments: "Chưa có bình luận. Hãy là người đầu tiên bình luận!",
+      loadMore: "Tải thêm bình luận",
+      showReplies: "Hiện trả lời",
+      hideReplies: "Ẩn trả lời",
+      deleteConfirm: "Bạn có chắc chắn muốn xóa bình luận này?"
+    },
     creative: {
       title: "Tài sản sáng tạo",
       subtitle: "Chia sẻ Prompt & Workflow. Nhận 100 Coin mỗi đóng góp!",
@@ -267,26 +477,6 @@ export default {
         submit: "Gửi & Nhận 100 Coin"
       },
       success: "Đã gửi! Bạn nhận được 100 Coin."
-    },
-    resources: {
-      title: "Kho tài nguyên",
-      subtitle: "Chia sẻ file & dữ liệu. Nhận 300 Coin mỗi upload!",
-      upload: "Chia sẻ tài nguyên",
-      types: {
-        project_file: "File dự án (SKP, Blend)",
-        design_asset: "Tài sản thiết kế (PSD, AI)",
-        industry_data: "Dữ liệu ngành",
-        template: "Template"
-      },
-      form: {
-        title: "Tải lên tài nguyên",
-        name: "Tên tài nguyên",
-        type: "Loại",
-        desc: "Mô tả",
-        format: "Định dạng file",
-        submit: "Tải lên & Nhận 300 Coin"
-      },
-      success: "Tải lên thành công! Bạn nhận được 300 Coin."
     },
     collaboration: {
       title: "Chat dự án",

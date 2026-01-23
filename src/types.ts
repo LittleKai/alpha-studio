@@ -227,6 +227,140 @@ export interface AffiliateStats {
   }[];
 }
 
+// ===== Prompt Sharing Types =====
+export type PromptCategory = 'image-generation' | 'text-generation' | 'code' | 'workflow' | 'other';
+export type PromptPlatform = 'midjourney' | 'stable-diffusion' | 'dalle' | 'comfyui' | 'chatgpt' | 'claude' | 'other';
+
+export interface PromptExampleImage {
+  type: 'input' | 'output';
+  url: string;
+  caption?: string;
+}
+
+export interface PromptRating {
+  user: string;
+  score: number;
+  ratedAt: string;
+}
+
+export interface Prompt {
+  _id: string;
+  slug: string;
+  title: { vi: string; en: string };
+  description: { vi: string; en: string };
+  promptContent: string;
+  category: PromptCategory;
+  platform: PromptPlatform;
+  exampleImages: PromptExampleImage[];
+  tags: string[];
+  author: {
+    _id: string;
+    name: string;
+    avatar?: string;
+  };
+  likesCount: number;
+  likes: string[];
+  bookmarksCount: number;
+  bookmarks: string[];
+  downloadsCount: number;
+  viewsCount: number;
+  commentsCount: number;
+  rating: {
+    average: number;
+    count: number;
+  };
+  ratings: PromptRating[];
+  status: 'published' | 'hidden' | 'archived';
+  isFeatured: boolean;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt?: string;
+}
+
+// ===== Resource Repository Types =====
+export type ResourceType = 'template' | 'dataset' | 'design-asset' | 'project-file' | '3d-model' | 'font' | 'other';
+
+export interface ResourceFile {
+  url: string;
+  publicId: string;
+  filename: string;
+  format: string;
+  size: number;
+  mimeType: string;
+}
+
+export interface ResourcePreviewImage {
+  url: string;
+  publicId?: string;
+  caption?: string;
+}
+
+export interface ResourceRating {
+  user: string;
+  score: number;
+  ratedAt: string;
+}
+
+export interface Resource {
+  _id: string;
+  slug: string;
+  title: { vi: string; en: string };
+  description: { vi: string; en: string };
+  resourceType: ResourceType;
+  file: ResourceFile;
+  thumbnail?: { url: string; publicId?: string };
+  previewImages: ResourcePreviewImage[];
+  tags: string[];
+  compatibleSoftware: string[];
+  author: {
+    _id: string;
+    name: string;
+    avatar?: string;
+  };
+  likesCount: number;
+  likes: string[];
+  bookmarksCount: number;
+  bookmarks: string[];
+  downloadsCount: number;
+  viewsCount: number;
+  commentsCount: number;
+  rating: {
+    average: number;
+    count: number;
+  };
+  ratings: ResourceRating[];
+  status: 'published' | 'hidden' | 'archived';
+  isFeatured: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+// ===== Comment Types =====
+export type CommentTargetType = 'prompt' | 'resource';
+
+export interface CommentAuthor {
+  _id: string;
+  name: string;
+  avatar?: string;
+}
+
+export interface CommentData {
+  _id: string;
+  targetType: CommentTargetType;
+  targetId: string;
+  author: CommentAuthor;
+  content: string;
+  parentComment?: string;
+  likes: string[];
+  likesCount: number;
+  status: 'visible' | 'hidden' | 'flagged';
+  isEdited: boolean;
+  replies?: CommentData[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+// Legacy types for backwards compatibility
 export interface CreativeAsset {
   id: string;
   title: string;

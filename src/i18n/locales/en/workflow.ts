@@ -252,6 +252,216 @@ export default {
       program: "Program",
       history: "History"
     },
+    prompts: {
+      title: "Prompt Sharing",
+      subtitle: "Share & discover AI prompts from the community",
+      create: "Share Prompt",
+      noPrompts: "No prompts found",
+      search: "Search prompts...",
+      filters: {
+        all: "All",
+        category: "Category",
+        platform: "Platform",
+        sortBy: "Sort by"
+      },
+      categories: {
+        "image-generation": "Image Generation",
+        "text-generation": "Text Generation",
+        "code": "Code",
+        "workflow": "Workflow",
+        "other": "Other"
+      },
+      platforms: {
+        "midjourney": "Midjourney",
+        "stable-diffusion": "Stable Diffusion",
+        "dalle": "DALL-E",
+        "comfyui": "ComfyUI",
+        "chatgpt": "ChatGPT",
+        "claude": "Claude",
+        "other": "Other"
+      },
+      sort: {
+        latest: "Latest",
+        popular: "Most Popular",
+        "top-rated": "Top Rated",
+        "most-downloaded": "Most Downloaded"
+      },
+      form: {
+        createTitle: "Share New Prompt",
+        editTitle: "Edit Prompt",
+        titleEn: "Title (English)",
+        titleVi: "Title (Vietnamese)",
+        descEn: "Description (English)",
+        descVi: "Description (Vietnamese)",
+        promptContent: "Prompt Content",
+        promptContentPlaceholder: "Enter your prompt here...",
+        category: "Category",
+        platform: "Platform",
+        tags: "Tags",
+        tagsPlaceholder: "Add tags...",
+        exampleImages: "Example Images",
+        addInput: "Add Input Image",
+        addOutput: "Add Output Image",
+        submit: "Share Prompt",
+        update: "Update Prompt",
+        cancel: "Cancel"
+      },
+      detail: {
+        by: "by",
+        copyPrompt: "Copy Prompt",
+        copied: "Copied!",
+        downloads: "Downloads",
+        views: "Views",
+        rating: "Rating",
+        rateThis: "Rate this prompt",
+        comments: "Comments",
+        noComments: "No comments yet",
+        exampleImages: "Example Images",
+        input: "Input",
+        output: "Output",
+        relatedPrompts: "Related Prompts"
+      },
+      actions: {
+        like: "Like",
+        bookmark: "Bookmark",
+        download: "Download",
+        share: "Share",
+        report: "Report",
+        edit: "Edit",
+        delete: "Delete",
+        hide: "Hide",
+        unhide: "Unhide",
+        feature: "Feature",
+        unfeature: "Unfeature"
+      },
+      success: {
+        created: "Prompt shared successfully!",
+        updated: "Prompt updated successfully!",
+        deleted: "Prompt deleted successfully!",
+        copied: "Prompt copied to clipboard!"
+      },
+      error: {
+        loadFailed: "Failed to load prompts",
+        createFailed: "Failed to create prompt",
+        updateFailed: "Failed to update prompt",
+        deleteFailed: "Failed to delete prompt"
+      },
+      featured: "Featured",
+      myPrompts: "My Prompts",
+      bookmarked: "Bookmarked"
+    },
+    resources: {
+      title: "Resource Hub",
+      subtitle: "Share & download templates, datasets, and assets",
+      upload: "Share Resource",
+      noResources: "No resources found",
+      search: "Search resources...",
+      filters: {
+        all: "All",
+        type: "Type",
+        sortBy: "Sort by"
+      },
+      types: {
+        "template": "Template",
+        "dataset": "Dataset",
+        "design-asset": "Design Asset",
+        "project-file": "Project File",
+        "3d-model": "3D Model",
+        "font": "Font",
+        "other": "Other"
+      },
+      sort: {
+        latest: "Latest",
+        popular: "Most Popular",
+        "top-rated": "Top Rated",
+        "most-downloaded": "Most Downloaded"
+      },
+      form: {
+        createTitle: "Share New Resource",
+        editTitle: "Edit Resource",
+        titleEn: "Title (English)",
+        titleVi: "Title (Vietnamese)",
+        descEn: "Description (English)",
+        descVi: "Description (Vietnamese)",
+        resourceType: "Resource Type",
+        file: "File",
+        fileUpload: "Upload File",
+        fileDrop: "Drop file here or click to upload",
+        maxSize: "Max file size: 50MB",
+        thumbnail: "Thumbnail",
+        previewImages: "Preview Images",
+        tags: "Tags",
+        tagsPlaceholder: "Add tags...",
+        compatibleSoftware: "Compatible Software",
+        compatiblePlaceholder: "e.g. Photoshop, Blender, After Effects",
+        submit: "Share Resource",
+        update: "Update Resource",
+        cancel: "Cancel",
+        uploading: "Uploading..."
+      },
+      detail: {
+        by: "by",
+        download: "Download",
+        downloads: "Downloads",
+        views: "Views",
+        rating: "Rating",
+        rateThis: "Rate this resource",
+        comments: "Comments",
+        noComments: "No comments yet",
+        fileInfo: "File Info",
+        format: "Format",
+        size: "Size",
+        compatibleWith: "Compatible with",
+        previewImages: "Preview Images",
+        relatedResources: "Related Resources"
+      },
+      actions: {
+        like: "Like",
+        bookmark: "Bookmark",
+        download: "Download",
+        share: "Share",
+        report: "Report",
+        edit: "Edit",
+        delete: "Delete",
+        hide: "Hide",
+        unhide: "Unhide",
+        feature: "Feature",
+        unfeature: "Unfeature"
+      },
+      success: {
+        created: "Resource shared successfully!",
+        updated: "Resource updated successfully!",
+        deleted: "Resource deleted successfully!",
+        downloaded: "Download started!"
+      },
+      error: {
+        loadFailed: "Failed to load resources",
+        createFailed: "Failed to create resource",
+        updateFailed: "Failed to update resource",
+        deleteFailed: "Failed to delete resource",
+        fileTooLarge: "File is too large. Maximum size is 50MB.",
+        uploadFailed: "Failed to upload file"
+      },
+      featured: "Featured",
+      myResources: "My Resources",
+      bookmarked: "Bookmarked"
+    },
+    comments: {
+      title: "Comments",
+      placeholder: "Write a comment...",
+      submit: "Post",
+      reply: "Reply",
+      replyTo: "Reply to",
+      edit: "Edit",
+      delete: "Delete",
+      report: "Report",
+      edited: "(edited)",
+      noComments: "No comments yet. Be the first to comment!",
+      loadMore: "Load more comments",
+      showReplies: "Show replies",
+      hideReplies: "Hide replies",
+      deleteConfirm: "Are you sure you want to delete this comment?"
+    },
     creative: {
       title: "Creative Assets",
       subtitle: "Share Prompts & Workflows. Earn 100 Coins per contribution!",
@@ -267,26 +477,6 @@ export default {
         submit: "Submit & Earn 100 Coins"
       },
       success: "Submitted! You earned 100 Coins."
-    },
-    resources: {
-      title: "Resource Hub",
-      subtitle: "Share files & data. Earn 300 Coins per upload!",
-      upload: "Share Resource",
-      types: {
-        project_file: "Project File (SKP, Blend)",
-        design_asset: "Design Asset (PSD, AI)",
-        industry_data: "Industry Data",
-        template: "Template"
-      },
-      form: {
-        title: "Upload Resource",
-        name: "Resource Name",
-        type: "Type",
-        desc: "Description",
-        format: "File Format",
-        submit: "Upload & Earn 300 Coins"
-      },
-      success: "Upload successful! You earned 300 Coins."
     },
     collaboration: {
       title: "Project Chat",

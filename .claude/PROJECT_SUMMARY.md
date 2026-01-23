@@ -1,5 +1,5 @@
 # Project Summary
-**Last Updated:** 2026-01-22 (Payment System, Wallet View, Admin Page)
+**Last Updated:** 2026-01-23 (Share Prompts & Resource Hub)
 **Updated By:** Claude Code
 
 ---
@@ -72,7 +72,9 @@ src/
 │   ├── cloudinaryService.ts   # Cloudinary upload service with compression
 │   ├── imageCompression.ts    # Image compression utility (avatar, featured_work, logo, attachment)
 │   ├── paymentService.ts      # Payment API service (create, confirm, cancel, history)
-│   └── adminService.ts        # Admin API service (users, transactions, webhooks)
+│   ├── adminService.ts        # Admin API service (users, transactions, webhooks)
+│   ├── promptService.ts       # Prompt sharing API service (CRUD, like, bookmark, rate)
+│   └── resourceService.ts     # Resource hub API service (CRUD, like, bookmark, download)
 │
 ├── utils/
 │   └── fileUtils.ts           # File utilities (downloadImage, etc.)
@@ -103,7 +105,15 @@ src/
 │   │   ├── WorkflowDashboard.tsx    # Large feature (project management)
 │   │   ├── AIServerConnect.tsx      # GPU server connection UI
 │   │   └── views/
-│   │       └── WalletView.tsx       # Credit wallet with VietQR payment
+│   │       ├── WalletView.tsx       # Credit wallet with VietQR payment
+│   │       ├── PromptsView.tsx      # Share Prompts listing with filters
+│   │       ├── ResourcesView.tsx    # Resource Hub listing with filters
+│   │       ├── JobsView.tsx         # Jobs listing
+│   │       └── PartnersView.tsx     # Partners listing
+│   │
+│   ├── cards/                 # Card components for listings
+│   │   ├── PromptCard.tsx           # Prompt card with like, bookmark, rating
+│   │   └── ResourceCard.tsx         # Resource card with download, rating
 │   │
 │   ├── viewers/               # Detail view components
 │   │   ├── CourseViewer.tsx
@@ -116,7 +126,11 @@ src/
 │       ├── PartnerRegistrationModal.tsx
 │       ├── PartnerEditModal.tsx       # Partner edit modal with skills
 │       ├── JobManagementModal.tsx     # Job create/edit modal
-│       └── ProfileEditModal.tsx       # Profile view modal (view-only, links to ProfilePage)
+│       ├── ProfileEditModal.tsx       # Profile view modal (view-only, links to ProfilePage)
+│       ├── PromptFormModal.tsx        # Create/edit prompt with multiple contents
+│       ├── PromptDetailModal.tsx      # Prompt detail view with comments
+│       ├── ResourceFormModal.tsx      # Create/edit resource with file upload
+│       └── ResourceDetailModal.tsx    # Resource detail view with download
 ```
 
 ### Component Dependencies
@@ -215,6 +229,8 @@ App.tsx
 | Wallet View | ✅ Complete | WalletView.tsx, paymentService.ts | Credit packages, VietQR, payment history |
 | Admin Page | ✅ Complete | AdminPage.tsx, adminService.ts | Users, transactions, webhook management |
 | Payment System | ✅ Complete | paymentService.ts | Create, confirm, cancel payments with Casso webhook |
+| Share Prompts | ✅ Complete | PromptsView.tsx, PromptCard.tsx, PromptFormModal.tsx, PromptDetailModal.tsx, promptService.ts | Multi-prompt support, like, bookmark, rate, comments |
+| Resource Hub | ✅ Complete | ResourcesView.tsx, ResourceCard.tsx, ResourceFormModal.tsx, ResourceDetailModal.tsx, resourceService.ts | File upload (50MB), download, like, bookmark, rate |
 
 ---
 
@@ -272,7 +288,25 @@ App.tsx
 
 ## 7. Recent Changes (Last 3 Sessions)
 
-1. **2026-01-22** - Payment System, Wallet View, Admin Page
+1. **2026-01-23** - Share Prompts & Resource Hub
+   - Created Share Prompts system in WorkflowDashboard
+     - PromptsView.tsx - listing with filters (category, platform), search, pagination
+     - PromptCard.tsx - card with thumbnail, rating, like/bookmark buttons
+     - PromptFormModal.tsx - create/edit with multiple prompt contents support
+     - PromptDetailModal.tsx - detail view with copy, comments, rating
+     - promptService.ts - full API service (CRUD, like, bookmark, download, rate)
+   - Created Resource Hub system
+     - ResourcesView.tsx - listing with filters (resource type), search, pagination
+     - ResourceCard.tsx - card with file info, download button
+     - ResourceFormModal.tsx - create/edit with file upload (50MB limit)
+     - ResourceDetailModal.tsx - detail view with download, comments
+     - resourceService.ts - full API service (CRUD, like, bookmark, download, rate)
+   - Features: Categories (image-gen, text-gen, code, workflow), Platforms (Midjourney, SD, DALLE, ComfyUI, ChatGPT, Claude)
+   - Resource types: template, dataset, design-asset, project-file, 3d-model, font
+   - Shared components: LikeButton, BookmarkButton, RatingStars, CommentSection, ImageLightbox
+   - Fixed: whitespace-pre-line for description newlines display
+
+2. **2026-01-22** - Payment System, Wallet View, Admin Page
    - Created WalletView.tsx - credit packages with VietQR payment, QR code modal, payment history
    - Credit packages: 10k=10, 100k=100, 200k=210(+5%), 500k=550(+10%), 1M=1120(+12%)
    - Bank: OCB, Account: CASS55252503, Holder: NGUYEN ANH DUC

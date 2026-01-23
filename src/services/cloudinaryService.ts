@@ -161,6 +161,82 @@ export async function uploadMultipleToCloudinary(
 export type { ImageUploadType } from './imageCompression';
 
 /**
+ * Upload an image file (simplified wrapper)
+ * @param file - Image file to upload
+ * @returns Promise with url and publicId
+ */
+export async function uploadImage(
+  file: File
+): Promise<{ url: string; publicId: string }> {
+  const result = await uploadToCloudinary(file, 'prompts');
+  if (!result.success) {
+    throw new Error(result.error || 'Failed to upload image');
+  }
+  return { url: result.url, publicId: result.publicId };
+}
+
+/**
+ * Upload a generic file to Cloudinary (raw upload)
+ * @param file - File to upload
+ * @param onProgress - Progress callback (optional)
+ * @returns Promise with url and publicId
+ */
+export async function uploadFile(
+  file: File,
+  onProgress?: (progress: number) => void
+): Promise<{ url: string; publicId: string }> {
+  if (!CLOUD_NAME) {
+    throw new Error('Cloudinary cloud name not configured');
+  }
+
+  try {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', UPLOAD_PRESET);
+    formData.append('folder', 'resources');
+
+    // Use XMLHttpRequest for progress tracking
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+
+      xhr.upload.addEventListener('progress', (event) => {
+        if (event.lengthComputable && onProgress) {
+          const progress = Math.round((event.loaded / event.total) * 100);
+          onProgress(progress);
+        }
+      });
+
+      xhr.addEventListener('load', () => {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          const data = JSON.parse(xhr.responseText);
+          if (data.error) {
+            reject(new Error(data.error.message));
+          } else {
+            resolve({
+              url: data.secure_url,
+              publicId: data.public_id
+            });
+          }
+        } else {
+          reject(new Error('Upload failed'));
+        }
+      });
+
+      xhr.addEventListener('error', () => {
+        reject(new Error('Upload failed'));
+      });
+
+      // Use auto resource type to handle any file type
+      xhr.open('POST', `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`);
+      xhr.send(formData);
+    });
+  } catch (error) {
+    console.error('File upload error:', error);
+    throw error;
+  }
+}
+
+/**
  * Tạo URL với transformation cho Cloudinary
  * @param url - URL gốc của ảnh
  * @param options - Các tùy chọn transformation

@@ -2,11 +2,11 @@
 import React, { useState } from 'react';
 import { useTranslation } from '../../i18n/context';
 import { useAuth } from '../../auth/context';
-import type { WorkflowDocument, DepartmentType, Transaction, AutomationRule, AffiliateStats, CreativeAsset, SharedResource, TeamMember, Comment, Project, Task } from '../../types';
+import type { WorkflowDocument, DepartmentType, Transaction, AutomationRule, AffiliateStats, TeamMember, Comment, Project, Task } from '../../types';
 // StudentProfileModal and PartnerRegistrationModal not used - moved to separate view components
 import LanguageSwitcher from '../ui/LanguageSwitcher';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
-import { JobsView, PartnersView, WalletView } from './views';
+import { JobsView, PartnersView, WalletView, PromptsView, ResourcesView } from './views';
 import ProfileEditModal from '../modals/ProfileEditModal';
 
 interface WorkflowDashboardProps {
@@ -55,8 +55,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
   // Modal States
   const [showProfileModal, setShowProfileModal] = useState(false);
   // showPartnerModal moved to PartnersView component
-  const [showCreativeModal, setShowCreativeModal] = useState(false);
-  const [showResourceModal, setShowResourceModal] = useState(false);
+  // showCreativeModal and showResourceModal moved to PromptsView and ResourcesView components
   const [showProjectModal, setShowProjectModal] = useState(false);
 
   // New Project Data
@@ -103,19 +102,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
     ]
   });
 
-  const [creativeAssets, setCreativeAssets] = useState<CreativeAsset[]>([
-    { id: 'c1', title: 'Cyberpunk Stage Prompt', type: 'prompt', content: 'Futuristic stage, neon lights, holographic screens...', tags: ['stage', 'cyberpunk', 'midjourney'], author: 'Admin', likes: 15, downloads: 4 },
-    { id: 'c2', title: 'Logo 3D Workflow', type: 'workflow', content: 'ComfyUI JSON for turning 2D logo to 3D metallic.', tags: ['logo', '3d', 'comfyui'], author: 'ProUser', likes: 28, downloads: 12 },
-  ]);
-  const [newAssetData, setNewAssetData] = useState({ title: '', type: 'prompt', content: '', tags: '' });
-
-  const [resources, setResources] = useState<SharedResource[]>([
-    { id: 'r1', title: 'Stage Design 3D Model (SketchUp)', type: 'project_file', format: 'SKP', size: '150 MB', author: 'Minh Thu', downloads: 25, uploadDate: '2024-06-24', description: 'Full 3D model for outdoor music festival stage.' },
-    { id: 'r2', title: 'Event Budget Template 2024', type: 'industry_data', format: 'XLSX', size: '2 MB', author: 'Admin', downloads: 120, uploadDate: '2024-06-20', description: 'Comprehensive Excel template for event budgeting.' },
-    { id: 'r3', title: 'Luxury Texture Pack', type: 'design_asset', format: 'ZIP', size: '500 MB', author: 'Quang Huy', downloads: 45, uploadDate: '2024-06-22', description: 'High-res textures for luxury event mapping.' },
-  ]);
-  const [newResourceData, setNewResourceData] = useState({ title: '', type: 'project_file', format: '', description: '' });
-
+  // creativeAssets and resources state moved to PromptsView and ResourcesView components
   // Partners state moved to PartnersView component with database integration
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -192,47 +179,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       alert(t('workflow.dashboard.project.success'));
   };
 
-  const handleCreateAsset = (e: React.FormEvent) => {
-      e.preventDefault();
-      const asset: CreativeAsset = {
-          id: `c-${Date.now()}`,
-          title: newAssetData.title,
-          type: newAssetData.type as 'prompt' | 'workflow' | 'dataset',
-          content: newAssetData.content,
-          tags: newAssetData.tags.split(',').map(t => t.trim()),
-          author: userProfile.name,
-          likes: 0,
-          downloads: 0
-      };
-      setCreativeAssets(prev => [asset, ...prev]);
-      setShowCreativeModal(false);
-      setBalance((prev: number) => prev + 100);
-      setTransactions((prev: Transaction[]) => [{ id: `r-${Date.now()}`, type: 'reward', amount: 100, description: 'Thưởng đóng góp dữ liệu sáng tạo', date: new Date().toISOString().split('T')[0], status: 'completed' }, ...prev]);
-      alert(t('workflow.creative.success'));
-      setNewAssetData({ title: '', type: 'prompt', content: '', tags: '' });
-  };
-
-  const handleUploadResource = (e: React.FormEvent) => {
-      e.preventDefault();
-      const resource: SharedResource = {
-          id: `r-${Date.now()}`,
-          title: newResourceData.title,
-          type: newResourceData.type as any,
-          format: newResourceData.format || 'ZIP',
-          size: '10 MB',
-          author: userProfile.name,
-          downloads: 0,
-          uploadDate: new Date().toISOString().split('T')[0],
-          description: newResourceData.description
-      };
-      setResources(prev => [resource, ...prev]);
-      setShowResourceModal(false);
-      setBalance((prev: number) => prev + 300);
-      setTransactions((prev: Transaction[]) => [{ id: `rr-${Date.now()}`, type: 'reward', amount: 300, description: 'Thưởng chia sẻ tài nguyên', date: new Date().toISOString().split('T')[0], status: 'completed' }, ...prev]);
-      alert(t('workflow.resources.success'));
-      setNewResourceData({ title: '', type: 'project_file', format: '', description: '' });
-  };
-
+  // handleCreateAsset and handleUploadResource moved to PromptsView and ResourcesView components
   // handleAddPartner moved to PartnersView component
 
   const toggleAutomation = (id: string) => { setAutomations(prev => prev.map(a => a.id === id ? { ...a, isActive: !a.isActive } : a)); };
@@ -659,31 +606,8 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
 
     switch (activeView) {
       case 'projects': return renderProjectList();
-      case 'resources': return (
-        <div className="p-6 md:p-8 overflow-y-auto flex-1 animate-fade-in">
-            <div className="flex justify-between items-center mb-8">
-                <div><h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-400 mb-2">{t('workflow.resources.title')}</h1><p className="text-[var(--text-secondary)]">{t('workflow.resources.subtitle')}</p></div>
-                <button onClick={() => setShowResourceModal(true)} className="bg-[var(--accent-primary)] text-black font-bold px-6 py-2.5 rounded-lg shadow-lg hover:opacity-90 transition-all flex items-center gap-2"><span>+</span> {t('workflow.resources.upload')}</button>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {resources.map(res => (
-                    <div key={res.id} className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-6 rounded-xl hover:border-[var(--accent-primary)] transition-all flex flex-col h-full group">
-                        <div className="flex justify-between items-start mb-4"><span className={`px-2 py-1 rounded text-xs font-bold uppercase ${res.type === 'project_file' ? 'bg-blue-500/20 text-blue-400' : res.type === 'design_asset' ? 'bg-purple-500/20 text-purple-400' : 'bg-green-500/20 text-green-400'}`}>{t(`workflow.resources.types.${res.type}`)}</span><div className="text-xs text-[var(--text-tertiary)] bg-[var(--bg-secondary)] px-2 py-1 rounded">{res.format}</div></div>
-                        <h3 className="text-lg font-bold text-[var(--text-primary)] mb-2 group-hover:text-[var(--accent-primary)] transition-colors">{res.title}</h3>
-                        <p className="text-sm text-[var(--text-secondary)] mb-4 flex-grow line-clamp-3">{res.description}</p>
-                        <div className="flex justify-between items-center text-xs text-[var(--text-tertiary)] border-t border-[var(--border-primary)] pt-4 mt-auto"><span>{res.size} • {res.uploadDate}</span><div className="flex items-center gap-2"><span>⬇️ {res.downloads}</span><span>👤 {res.author}</span></div></div>
-                        <button className="w-full mt-4 py-2 rounded-lg bg-[var(--bg-secondary)] hover:bg-[var(--accent-primary)] hover:text-black font-bold text-sm transition-all border border-[var(--border-primary)]">Download</button>
-                    </div>
-                ))}
-            </div>
-        </div>
-      );
-      case 'creative': return (
-        <div className="p-6 md:p-8 overflow-y-auto flex-1 animate-fade-in">
-            <div className="flex justify-between items-center mb-8"><div><h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400 mb-2">{t('workflow.creative.title')}</h1><p className="text-[var(--text-secondary)]">{t('workflow.creative.subtitle')}</p></div><button onClick={() => setShowCreativeModal(true)} className="bg-[var(--accent-primary)] text-black font-bold px-6 py-2.5 rounded-lg shadow-lg hover:opacity-90 transition-all flex items-center gap-2"><span>+</span> {t('workflow.creative.create')}</button></div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">{creativeAssets.map(asset => (<div key={asset.id} className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-6 rounded-xl hover:border-[var(--accent-primary)] transition-all"><div className="flex justify-between items-start mb-4"><span className={`px-2 py-1 rounded text-xs font-bold uppercase ${asset.type === 'prompt' ? 'bg-blue-500/20 text-blue-400' : 'bg-purple-500/20 text-purple-400'}`}>{asset.type}</span><div className="text-xs text-[var(--text-tertiary)] flex gap-3"><span>❤️ {asset.likes}</span><span>⬇️ {asset.downloads}</span></div></div><h3 className="text-lg font-bold text-[var(--text-primary)] mb-2">{asset.title}</h3><p className="text-sm text-[var(--text-secondary)] line-clamp-3 mb-4 font-mono bg-black/20 p-2 rounded">{asset.content}</p><div className="flex flex-wrap gap-2 mb-4">{asset.tags.map(tag => (<span key={tag} className="text-[10px] bg-[var(--bg-secondary)] text-[var(--text-tertiary)] px-2 py-1 rounded">#{tag}</span>))}</div><div className="text-xs text-[var(--text-tertiary)] text-right">By {asset.author}</div></div>))}</div>
-        </div>
-      );
+      case 'resources': return <ResourcesView searchQuery={searchQuery} />;
+      case 'creative': return <PromptsView searchQuery={searchQuery} />;
       case 'automation': return (
         <div className="p-6 md:p-8 overflow-y-auto flex-1 animate-fade-in">
             <div className="flex justify-between items-center mb-8"><h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">{t('workflow.automation.title')}</h1><button className="bg-[var(--accent-primary)] text-black font-bold px-6 py-2.5 rounded-lg shadow-lg hover:opacity-90 transition-all flex items-center gap-2"><span>+</span> {t('workflow.automation.create')}</button></div>
@@ -787,9 +711,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
 
         {showProjectModal && (<div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6"><h2 className="text-2xl font-bold mb-4">{t('workflow.dashboard.project.modalTitle')}</h2><form onSubmit={handleCreateProject} className="space-y-4"><input placeholder={t('workflow.dashboard.project.nameLabel')} value={newProjectData.name} onChange={e => setNewProjectData({...newProjectData, name: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input placeholder={t('workflow.dashboard.project.descLabel')} value={newProjectData.description} onChange={e => setNewProjectData({...newProjectData, description: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input placeholder="Client" value={newProjectData.client} onChange={e => setNewProjectData({...newProjectData, client: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input type="number" placeholder="Budget (Coins)" value={newProjectData.budget || ''} onChange={e => setNewProjectData({...newProjectData, budget: parseInt(e.target.value)})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><select value={newProjectData.department} onChange={e => setNewProjectData({...newProjectData, department: e.target.value as any})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"><option value="event_planner">Event Planner</option><option value="creative">Creative</option><option value="operation">Operation</option></select><div className="flex gap-2 justify-end mt-4"><button type="button" onClick={() => setShowProjectModal(false)} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">Cancel</button><button type="submit" className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.dashboard.project.createBtn')}</button></div></form></div></div>)}
 
-        {showCreativeModal && (<div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6"><h2 className="text-2xl font-bold mb-4">{t('workflow.creative.form.title')}</h2><form onSubmit={handleCreateAsset} className="space-y-4"><input placeholder={t('workflow.creative.form.assetTitle')} value={newAssetData.title} onChange={e => setNewAssetData({...newAssetData, title: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><select value={newAssetData.type} onChange={e => setNewAssetData({...newAssetData, type: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"><option value="prompt">Prompt</option><option value="workflow">Workflow</option><option value="dataset">Dataset</option></select><textarea placeholder={t('workflow.creative.form.content')} value={newAssetData.content} onChange={e => setNewAssetData({...newAssetData, content: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg h-32" required /><input placeholder={t('workflow.creative.form.tags')} value={newAssetData.tags} onChange={e => setNewAssetData({...newAssetData, tags: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" /><div className="flex gap-2 justify-end mt-4"><button type="button" onClick={() => setShowCreativeModal(false)} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">Cancel</button><button type="submit" className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.creative.form.submit')}</button></div></form></div></div>)}
-
-        {showResourceModal && (<div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6"><h2 className="text-2xl font-bold mb-4">{t('workflow.resources.form.title')}</h2><form onSubmit={handleUploadResource} className="space-y-4"><input placeholder={t('workflow.resources.form.name')} value={newResourceData.title} onChange={e => setNewResourceData({...newResourceData, title: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><select value={newResourceData.type} onChange={e => setNewResourceData({...newResourceData, type: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"><option value="project_file">Project File</option><option value="design_asset">Design Asset</option><option value="industry_data">Industry Data</option><option value="template">Template</option></select><input placeholder={t('workflow.resources.form.format')} value={newResourceData.format} onChange={e => setNewResourceData({...newResourceData, format: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><textarea placeholder={t('workflow.resources.form.desc')} value={newResourceData.description} onChange={e => setNewResourceData({...newResourceData, description: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg h-32" required /><div className="flex gap-2 justify-end mt-4"><button type="button" onClick={() => setShowResourceModal(false)} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">Cancel</button><button type="submit" className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.resources.form.submit')}</button></div></form></div></div>)}
+        {/* Creative and Resource modals moved to PromptsView and ResourcesView components */}
 
         {showTaskModal && (<div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6"><h2 className="text-2xl font-bold mb-4">{t('workflow.dashboard.project.tasks.modal.title')}</h2><div className="space-y-4"><input placeholder={t('workflow.dashboard.project.tasks.modal.titleLabel')} value={newTaskData.title} onChange={e => setNewTaskData({...newTaskData, title: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" /><select value={newTaskData.assigneeId} onChange={e => setNewTaskData({...newTaskData, assigneeId: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"><option value="">Select Assignee</option>{availableUsers.map(u => (<option key={u.id} value={u.id}>{u.name} ({u.role})</option>))}</select><input type="date" value={newTaskData.dueDate} onChange={e => setNewTaskData({...newTaskData, dueDate: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" />{selectedFileForTask && (<div className="text-sm bg-[var(--bg-secondary)] p-2 rounded">Attached: {selectedFileForTask.name}</div>)}<div className="flex gap-2 justify-end mt-4"><button onClick={() => { setShowTaskModal(false); setSelectedFileForTask(null); }} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">Cancel</button><button onClick={handleCreateTask} className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.dashboard.project.tasks.modal.submit')}</button></div></div></div></div>)}
     </div>
