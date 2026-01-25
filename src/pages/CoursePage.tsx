@@ -11,7 +11,6 @@ import {
     getEnrollmentProgress,
     updateLessonProgress,
     EnrollmentProgress,
-    LessonProgress,
     getCourseReviews,
     createReview,
     Review,
@@ -82,7 +81,7 @@ const CoursePage: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
     const navigate = useNavigate();
     const { t, language } = useTranslation();
-    const { isAuthenticated, user } = useAuth();
+    const { isAuthenticated } = useAuth();
     const videoRef = useRef<HTMLVideoElement>(null);
     const youtubePlayerRef = useRef<YTPlayer | null>(null);
     const youtubeContainerRef = useRef<HTMLDivElement>(null);
@@ -138,12 +137,6 @@ const CoursePage: React.FC = () => {
     const isLessonCompleted = useCallback((lessonId: string) => {
         if (!enrollmentProgress) return false;
         return enrollmentProgress.completedLessons.some(l => l.lessonId === lessonId && l.completed);
-    }, [enrollmentProgress]);
-
-    // Get lesson progress
-    const getLessonProgress = useCallback((lessonId: string): LessonProgress | undefined => {
-        if (!enrollmentProgress) return undefined;
-        return enrollmentProgress.completedLessons.find(l => l.lessonId === lessonId);
     }, [enrollmentProgress]);
 
     // Fetch course data
