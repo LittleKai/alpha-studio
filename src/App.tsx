@@ -20,6 +20,7 @@ const AIServerConnect = lazy(() => import('./components/dashboard/AIServerConnec
 const CourseManagement = lazy(() => import('./components/admin/CourseManagement'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage'));
 const AdminPage = lazy(() => import('./pages/AdminPage'));
+const MyCoursesPage = lazy(() => import('./pages/MyCoursesPage'));
 
 // Loading spinner component
 const LoadingSpinner: React.FC = () => (
@@ -120,6 +121,17 @@ const AdminCoursesPage: React.FC = () => {
     );
 };
 
+// My Courses Page
+const MyCoursesDetailPage: React.FC = () => {
+    return (
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <MyCoursesPage />
+            </Suspense>
+        </Layout>
+    );
+};
+
 // 404 Not Found Page
 const NotFoundPage: React.FC = () => {
     const navigate = useNavigate();
@@ -194,6 +206,16 @@ const App: React.FC = () => {
                             <Suspense fallback={<LoadingSpinner />}>
                                 <ProfilePage />
                             </Suspense>
+                        </ProtectedRoute>
+                    }
+                />
+
+                {/* My Courses Page */}
+                <Route
+                    path="/my-courses"
+                    element={
+                        <ProtectedRoute>
+                            <MyCoursesDetailPage />
                         </ProtectedRoute>
                     }
                 />

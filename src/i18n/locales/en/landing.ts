@@ -8,7 +8,8 @@ export default {
       about: "About",
       academy: "Academy",
       aiCloud: "AI Cloud Server",
-      enterStudio: "Enter AI Studio"
+      enterStudio: "Enter AI Studio",
+      profile: "Profile"
     },
     cta: {
       launch: "Launch Studio",

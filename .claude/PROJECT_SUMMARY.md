@@ -1,5 +1,5 @@
 # Project Summary
-**Last Updated:** 2026-01-23 (Share Prompts & Resource Hub)
+**Last Updated:** 2026-01-24 (Course Learning System & Video Player)
 **Updated By:** Claude Code
 
 ---
@@ -29,7 +29,8 @@ src/
 ├── pages/
 │   ├── LandingPage.tsx        # Landing page component with featured courses
 │   ├── CoursesPage.tsx        # Courses catalog with filters/pagination
-│   ├── CoursePage.tsx         # Single course detail page
+│   ├── CoursePage.tsx         # Single course detail with video player, enrollment, reviews
+│   ├── MyCoursesPage.tsx      # User's enrolled courses with progress tracking
 │   ├── StudentPage.tsx        # Student profile page
 │   ├── PartnerPage.tsx        # Partner profile page
 │   ├── ProfilePage.tsx        # User profile edit page (avatar, bio, skills, works)
@@ -189,8 +190,8 @@ App.tsx
 
 ### Routing
 - **Pattern:** React Router v6 with `<BrowserRouter>`
-- **Routes:** `/`, `/courses`, `/courses/:slug`, `/studio`, `/workflow`, `/server`, `/students/:id`, `/partners/:id`, `/admin/courses`
-- **Protected Routes:** Login dialog for studio/workflow/server/admin
+- **Routes:** `/`, `/courses`, `/courses/:slug`, `/my-courses`, `/studio`, `/workflow`, `/server`, `/students/:id`, `/partners/:id`, `/admin/courses`, `/profile`
+- **Protected Routes:** Login dialog for studio/workflow/server/admin/my-courses
 - **Layout:** Shared Layout component with navigation header
 
 ### i18n Pattern
@@ -231,6 +232,12 @@ App.tsx
 | Payment System | ✅ Complete | paymentService.ts | Create, confirm, cancel payments with Casso webhook |
 | Share Prompts | ✅ Complete | PromptsView.tsx, PromptCard.tsx, PromptFormModal.tsx, PromptDetailModal.tsx, promptService.ts | Multi-prompt support, like, bookmark, rate, comments |
 | Resource Hub | ✅ Complete | ResourcesView.tsx, ResourceCard.tsx, ResourceFormModal.tsx, ResourceDetailModal.tsx, resourceService.ts | File upload (50MB), download, like, bookmark, rate |
+| Course Enrollment | ✅ Complete | CoursePage.tsx, courseService.ts | Enroll, track progress, resume learning |
+| My Courses Page | ✅ Complete | MyCoursesPage.tsx | Enrolled courses list with progress, filters |
+| Video Player | ✅ Complete | CoursePage.tsx | Native video + YouTube IFrame API, skip ±10s |
+| Lesson Progress | ✅ Complete | CoursePage.tsx | Mark complete, auto-track video progress |
+| Course Reviews | ✅ Complete | CoursePage.tsx, courseService.ts | Rating 1-5, comments, helpful votes |
+| Lesson Documents | ✅ Complete | ModuleEditor.tsx, CoursePage.tsx | Upload/download lesson documents |
 
 ---
 
@@ -288,7 +295,30 @@ App.tsx
 
 ## 7. Recent Changes (Last 3 Sessions)
 
-1. **2026-01-23** - Share Prompts & Resource Hub
+1. **2026-01-24** - Course Learning System & Video Player
+   - Created MyCoursesPage.tsx - enrolled courses list with progress, filters (all/active/completed), stats
+   - Major CoursePage.tsx rewrite:
+     - Course enrollment system with API integration
+     - Video player supporting native video, YouTube (IFrame API), Vimeo
+     - Lesson selection with progress tracking
+     - Completed lesson indicators (checkmark)
+     - Auto-select last accessed lesson on return
+     - Documents section per lesson with download
+     - Reviews system with rating distribution, write/view reviews
+     - +10s/-10s skip buttons (floating overlay + control bar) for native & YouTube
+   - Updated ModuleEditor.tsx:
+     - Video URL input OR Cloudinary upload per lesson
+     - Document upload per lesson (multiple files)
+   - Updated courseService.ts:
+     - Added enrollment APIs (check, enroll, progress, update)
+     - Added review APIs (list, create, my-review, helpful)
+     - Added LessonDocument, Enrollment, Review types
+   - Updated translations (vi/en): course.viewReviews, myCourses.*
+   - Updated Layout.tsx: Added My Courses link in user dropdown
+   - Fixed YouTube video seek: implemented YouTube IFrame Player API for skip controls
+   - Fixed review statistics: proper ObjectId conversion in MongoDB aggregation
+
+2. **2026-01-23** - Share Prompts & Resource Hub
    - Created Share Prompts system in WorkflowDashboard
      - PromptsView.tsx - listing with filters (category, platform), search, pagination
      - PromptCard.tsx - card with thumbnail, rating, like/bookmark buttons
@@ -306,7 +336,7 @@ App.tsx
    - Shared components: LikeButton, BookmarkButton, RatingStars, CommentSection, ImageLightbox
    - Fixed: whitespace-pre-line for description newlines display
 
-2. **2026-01-22** - Payment System, Wallet View, Admin Page
+3. **2026-01-22** - Payment System, Wallet View, Admin Page
    - Created WalletView.tsx - credit packages with VietQR payment, QR code modal, payment history
    - Credit packages: 10k=10, 100k=100, 200k=210(+5%), 500k=550(+10%), 1M=1120(+12%)
    - Bank: OCB, Account: CASS55252503, Holder: NGUYEN ANH DUC
@@ -318,19 +348,6 @@ App.tsx
    - Webhook assignment: admin can assign unmatched webhooks to users (auto-credits)
    - Replaced emoji icons with SVG icons in WalletView and WorkflowDashboard sidebar
    - Added /admin route in App.tsx
-
-2. **2026-01-21** - Profile Edit Page, Image Compression, Modular i18n
-   - Created ProfilePage.tsx - full profile edit page with avatar upload, bio, phone, location, birth date (with visibility toggle), skills, social links (LinkedIn, Behance, GitHub), featured works (with image upload), attachments (max 3 files)
-   - Created ProfileEditModal.tsx - view-only modal displaying user profile, links to ProfilePage for editing
-   - Added route /profile in App.tsx
-   - Created imageCompression.ts service with compression presets
-   - Modularized i18n: split vi.ts and en.ts into 10 modules each
-
-3. **2026-01-20** - Course Management Integration & Remove Chinese
-   - Integrated Course Management API into frontend Landing Page
-   - Created CoursesPage.tsx - full courses catalog with filters, search, pagination
-   - Updated CoursePage.tsx to fetch course details from API
-   - Removed Chinese language support
 
 ---
 

@@ -1,6 +1,7 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useTranslation } from '../../i18n/context';
-import { Module, Lesson } from '../../services/courseService';
+import { Module, Lesson, LessonDocument } from '../../services/courseService';
+import { uploadToCloudinary } from '../../services/cloudinaryService';
 
 interface ModuleEditorProps {
     modules: Module[];
@@ -9,6 +10,8 @@ interface ModuleEditorProps {
 
 const ModuleEditor: React.FC<ModuleEditorProps> = ({ modules, onChange }) => {
     const { t } = useTranslation();
+    const [uploadingVideo, setUploadingVideo] = useState<string | null>(null);
+    const [uploadingDoc, setUploadingDoc] = useState<string | null>(null);
 
     // Generate simple unique ID
     const generateId = () => {
@@ -56,6 +59,8 @@ const ModuleEditor: React.FC<ModuleEditorProps> = ({ modules, onChange }) => {
             duration: 0,
             type: 'video',
             content: '',
+            videoUrl: '',
+            documents: [],
             order: updated[moduleIndex].lessons.length
         };
         updated[moduleIndex] = {
@@ -69,7 +74,7 @@ const ModuleEditor: React.FC<ModuleEditorProps> = ({ modules, onChange }) => {
         moduleIndex: number,
         lessonIndex: number,
         field: keyof Lesson | 'title.vi' | 'title.en',
-        value: string | number
+        value: string | number | LessonDocument[]
     ) => {
         const updated = [...modules];
         const lesson = { ...updated[moduleIndex].lessons[lessonIndex] };
@@ -109,6 +114,75 @@ const ModuleEditor: React.FC<ModuleEditorProps> = ({ modules, onChange }) => {
         updated[moduleIndex] = { ...updated[moduleIndex], lessons: updatedLessons };
         onChange(updated);
     }, [modules, onChange]);
+
+    // Video upload handler
+    const handleVideoUpload = useCallback(async (
+        moduleIndex: number,
+        lessonIndex: number,
+        e: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        const lessonId = modules[moduleIndex].lessons[lessonIndex].lessonId;
+        setUploadingVideo(lessonId);
+
+        try {
+            const result = await uploadToCloudinary(file, 'courses/videos');
+            if (result.success) {
+                handleUpdateLesson(moduleIndex, lessonIndex, 'videoUrl', result.url);
+            }
+        } catch (error) {
+            console.error('Video upload error:', error);
+        } finally {
+            setUploadingVideo(null);
+        }
+    }, [modules, handleUpdateLesson]);
+
+    // Document upload handler
+    const handleDocumentUpload = useCallback(async (
+        moduleIndex: number,
+        lessonIndex: number,
+        e: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        const lessonId = modules[moduleIndex].lessons[lessonIndex].lessonId;
+        setUploadingDoc(lessonId);
+
+        try {
+            const result = await uploadToCloudinary(file, 'courses/documents');
+            if (result.success) {
+                const currentDocs = modules[moduleIndex].lessons[lessonIndex].documents || [];
+                const newDoc: LessonDocument = {
+                    name: file.name,
+                    url: result.url,
+                    type: file.name.split('.').pop() || 'file',
+                    size: file.size
+                };
+                handleUpdateLesson(moduleIndex, lessonIndex, 'documents', [...currentDocs, newDoc]);
+            }
+        } catch (error) {
+            console.error('Document upload error:', error);
+        } finally {
+            setUploadingDoc(null);
+        }
+    }, [modules, handleUpdateLesson]);
+
+    // Remove document
+    const handleRemoveDocument = useCallback((moduleIndex: number, lessonIndex: number, docIndex: number) => {
+        const currentDocs = modules[moduleIndex].lessons[lessonIndex].documents || [];
+        const newDocs = currentDocs.filter((_, i) => i !== docIndex);
+        handleUpdateLesson(moduleIndex, lessonIndex, 'documents', newDocs);
+    }, [modules, handleUpdateLesson]);
+
+    // Format file size
+    const formatFileSize = (bytes: number) => {
+        if (bytes < 1024) return `${bytes} B`;
+        if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+        return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+    };
 
     return (
         <div className="space-y-6">
@@ -207,7 +281,8 @@ const ModuleEditor: React.FC<ModuleEditorProps> = ({ modules, onChange }) => {
                             {/* Lessons */}
                             <div className="p-4 space-y-3">
                                 {module.lessons.map((lesson, lessonIndex) => (
-                                    <div key={lesson.lessonId} className="p-3 bg-[var(--bg-secondary)] rounded-xl">
+                                    <div key={lesson.lessonId} className="p-4 bg-[var(--bg-secondary)] rounded-xl space-y-3">
+                                        {/* Lesson Header */}
                                         <div className="flex items-start gap-3">
                                             {/* Reorder */}
                                             <div className="flex flex-col gap-1 pt-2">
@@ -237,7 +312,7 @@ const ModuleEditor: React.FC<ModuleEditorProps> = ({ modules, onChange }) => {
                                             </div>
 
                                             {/* Lesson Fields */}
-                                            <div className="flex-1 space-y-2">
+                                            <div className="flex-1 space-y-3">
                                                 {/* Titles */}
                                                 <div className="grid grid-cols-2 gap-2">
                                                     <input
@@ -256,8 +331,8 @@ const ModuleEditor: React.FC<ModuleEditorProps> = ({ modules, onChange }) => {
                                                     />
                                                 </div>
 
-                                                {/* Type, Duration, Content */}
-                                                <div className="grid grid-cols-3 gap-2">
+                                                {/* Type & Duration */}
+                                                <div className="grid grid-cols-2 gap-2">
                                                     <select
                                                         value={lesson.type}
                                                         onChange={(e) => handleUpdateLesson(moduleIndex, lessonIndex, 'type', e.target.value)}
@@ -281,13 +356,120 @@ const ModuleEditor: React.FC<ModuleEditorProps> = ({ modules, onChange }) => {
                                                             min
                                                         </span>
                                                     </div>
-                                                    <input
-                                                        type="text"
-                                                        value={lesson.content}
-                                                        onChange={(e) => handleUpdateLesson(moduleIndex, lessonIndex, 'content', e.target.value)}
-                                                        placeholder={t('admin.courses.form.contentUrl')}
-                                                        className="px-3 py-1.5 bg-[var(--bg-tertiary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] text-sm focus:outline-none focus:border-[var(--accent-primary)]"
-                                                    />
+                                                </div>
+
+                                                {/* Video URL & Upload */}
+                                                {lesson.type === 'video' && (
+                                                    <div className="space-y-2">
+                                                        <label className="block text-xs font-medium text-[var(--text-secondary)]">
+                                                            Video URL
+                                                        </label>
+                                                        <div className="flex gap-2">
+                                                            <input
+                                                                type="text"
+                                                                value={lesson.videoUrl || ''}
+                                                                onChange={(e) => handleUpdateLesson(moduleIndex, lessonIndex, 'videoUrl', e.target.value)}
+                                                                placeholder="https://... hoặc upload video"
+                                                                className="flex-1 px-3 py-1.5 bg-[var(--bg-tertiary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] text-sm focus:outline-none focus:border-[var(--accent-primary)]"
+                                                            />
+                                                            <label className={`px-3 py-1.5 bg-[var(--accent-primary)] text-white rounded-lg cursor-pointer hover:opacity-90 transition-opacity flex items-center gap-1 text-sm ${uploadingVideo === lesson.lessonId ? 'opacity-50 cursor-not-allowed' : ''}`}>
+                                                                {uploadingVideo === lesson.lessonId ? (
+                                                                    <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24">
+                                                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
+                                                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+                                                                    </svg>
+                                                                ) : (
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                                                    </svg>
+                                                                )}
+                                                                Upload
+                                                                <input
+                                                                    type="file"
+                                                                    accept="video/*"
+                                                                    onChange={(e) => handleVideoUpload(moduleIndex, lessonIndex, e)}
+                                                                    disabled={uploadingVideo === lesson.lessonId}
+                                                                    className="hidden"
+                                                                />
+                                                            </label>
+                                                        </div>
+                                                        {lesson.videoUrl && (
+                                                            <div className="flex items-center gap-2 text-xs text-green-500">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                                                </svg>
+                                                                Video đã được thêm
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                )}
+
+                                                {/* Content URL (for non-video lessons) */}
+                                                {lesson.type !== 'video' && (
+                                                    <div>
+                                                        <label className="block text-xs font-medium text-[var(--text-secondary)] mb-1">
+                                                            Content URL
+                                                        </label>
+                                                        <input
+                                                            type="text"
+                                                            value={lesson.content}
+                                                            onChange={(e) => handleUpdateLesson(moduleIndex, lessonIndex, 'content', e.target.value)}
+                                                            placeholder={t('admin.courses.form.contentUrl')}
+                                                            className="w-full px-3 py-1.5 bg-[var(--bg-tertiary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] text-sm focus:outline-none focus:border-[var(--accent-primary)]"
+                                                        />
+                                                    </div>
+                                                )}
+
+                                                {/* Documents */}
+                                                <div className="space-y-2">
+                                                    <div className="flex items-center justify-between">
+                                                        <label className="text-xs font-medium text-[var(--text-secondary)]">
+                                                            Tài liệu đính kèm
+                                                        </label>
+                                                        <label className={`px-2 py-1 bg-[var(--bg-tertiary)] text-[var(--text-secondary)] rounded cursor-pointer hover:bg-[var(--accent-primary)] hover:text-white transition-colors flex items-center gap-1 text-xs ${uploadingDoc === lesson.lessonId ? 'opacity-50 cursor-not-allowed' : ''}`}>
+                                                            {uploadingDoc === lesson.lessonId ? (
+                                                                <svg className="w-3 h-3 animate-spin" viewBox="0 0 24 24">
+                                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
+                                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+                                                                </svg>
+                                                            ) : (
+                                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                                                    <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
+                                                                </svg>
+                                                            )}
+                                                            Thêm tài liệu
+                                                            <input
+                                                                type="file"
+                                                                accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.zip,.rar"
+                                                                onChange={(e) => handleDocumentUpload(moduleIndex, lessonIndex, e)}
+                                                                disabled={uploadingDoc === lesson.lessonId}
+                                                                className="hidden"
+                                                            />
+                                                        </label>
+                                                    </div>
+                                                    {lesson.documents && lesson.documents.length > 0 && (
+                                                        <div className="space-y-1">
+                                                            {lesson.documents.map((doc, docIndex) => (
+                                                                <div key={docIndex} className="flex items-center justify-between p-2 bg-[var(--bg-tertiary)] rounded-lg">
+                                                                    <div className="flex items-center gap-2">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-[var(--accent-primary)]" viewBox="0 0 20 20" fill="currentColor">
+                                                                            <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clipRule="evenodd" />
+                                                                        </svg>
+                                                                        <span className="text-xs text-[var(--text-primary)] truncate max-w-[150px]">{doc.name}</span>
+                                                                        <span className="text-xs text-[var(--text-tertiary)]">({formatFileSize(doc.size)})</span>
+                                                                    </div>
+                                                                    <button
+                                                                        onClick={() => handleRemoveDocument(moduleIndex, lessonIndex, docIndex)}
+                                                                        className="p-1 text-[var(--text-tertiary)] hover:text-red-400 transition-colors"
+                                                                    >
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                                                            <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                                                                        </svg>
+                                                                    </button>
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                    )}
                                                 </div>
                                             </div>
 

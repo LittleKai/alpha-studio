@@ -463,18 +463,25 @@ const PromptFormModal: React.FC<PromptFormModalProps> = ({
                     >
                         {language === 'vi' ? 'Hủy' : 'Cancel'}
                     </button>
-                    <button
-                        onClick={handleSubmit}
-                        disabled={isSubmitting}
-                        className="px-6 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg hover:opacity-90 disabled:opacity-50 transition-all"
-                    >
-                        {isSubmitting
-                            ? (language === 'vi' ? 'Đang lưu...' : 'Saving...')
-                            : editingPrompt
-                                ? (language === 'vi' ? 'Cập nhật' : 'Update')
-                                : (language === 'vi' ? 'Tạo mới' : 'Create')
-                        }
-                    </button>
+                    {uploadingImage ? (
+                        <div className="flex items-center gap-2 px-6 py-2 text-[var(--text-secondary)]">
+                            <div className="w-4 h-4 border-2 border-[var(--accent-primary)]/30 border-t-[var(--accent-primary)] rounded-full animate-spin" />
+                            <span className="text-sm">{language === 'vi' ? 'Đang tải ảnh...' : 'Uploading image...'}</span>
+                        </div>
+                    ) : (
+                        <button
+                            onClick={handleSubmit}
+                            disabled={isSubmitting}
+                            className="px-6 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg hover:opacity-90 disabled:opacity-50 transition-all"
+                        >
+                            {isSubmitting
+                                ? (language === 'vi' ? 'Đang lưu...' : 'Saving...')
+                                : editingPrompt
+                                    ? (language === 'vi' ? 'Cập nhật' : 'Update')
+                                    : (language === 'vi' ? 'Tạo mới' : 'Create')
+                            }
+                        </button>
+                    )}
                 </div>
             </div>
         </div>

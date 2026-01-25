@@ -6,12 +6,21 @@ export interface LocalizedString {
     en: string;
 }
 
+export interface LessonDocument {
+    name: string;
+    url: string;
+    type: string;
+    size: number;
+}
+
 export interface Lesson {
     lessonId: string;
     title: LocalizedString;
     duration: number;
     type: 'video' | 'text' | 'quiz' | 'assignment';
     content: string;
+    videoUrl: string;
+    documents: LessonDocument[];
     order: number;
 }
 
@@ -317,4 +326,295 @@ export const getFeaturedCourses = async (limit: number = 6): Promise<CourseListR
         limit,
         sort: '-enrolledCount' // Sort by most enrolled
     });
+};
+
+// ================== ENROLLMENT TYPES & API ==================
+
+export interface LessonProgress {
+    lessonId: string;
+    completed: boolean;
+    completedAt: string | null;
+    watchedDuration: number;
+    lastPosition: number;
+}
+
+export interface CurrentLesson {
+    moduleId: string;
+    lessonId: string;
+}
+
+export interface Enrollment {
+    _id: string;
+    user: string;
+    course: Course;
+    enrolledAt: string;
+    progress: number;
+    completedLessons: LessonProgress[];
+    currentLesson: CurrentLesson;
+    status: 'active' | 'completed' | 'expired';
+    completedAt: string | null;
+    lastAccessedAt: string;
+    paymentStatus: 'pending' | 'paid' | 'free';
+}
+
+export interface EnrollmentProgress {
+    progress: number;
+    completedLessons: LessonProgress[];
+    currentLesson: CurrentLesson;
+    status: string;
+    lastAccessedAt: string;
+}
+
+// Get my enrolled courses
+export const getMyEnrolledCourses = async (): Promise<Enrollment[]> => {
+    const response = await fetch(`${API_URL}/enrollments/my-courses`, {
+        method: 'GET',
+        headers: getHeaders(true),
+        credentials: 'include',
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to fetch enrolled courses');
+    }
+
+    const result = await response.json();
+    return result.data;
+};
+
+// Check if enrolled in a course
+export const checkEnrollment = async (courseId: string): Promise<{ enrolled: boolean; data: Enrollment | null }> => {
+    const response = await fetch(`${API_URL}/enrollments/check/${courseId}`, {
+        method: 'GET',
+        headers: getHeaders(true),
+        credentials: 'include',
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to check enrollment');
+    }
+
+    return response.json();
+};
+
+// Enroll in a course
+export const enrollInCourse = async (courseId: string): Promise<Enrollment> => {
+    const response = await fetch(`${API_URL}/enrollments/${courseId}`, {
+        method: 'POST',
+        headers: getHeaders(true),
+        credentials: 'include',
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to enroll in course');
+    }
+
+    const result = await response.json();
+    return result.data;
+};
+
+// Get enrollment progress
+export const getEnrollmentProgress = async (courseId: string): Promise<EnrollmentProgress> => {
+    const response = await fetch(`${API_URL}/enrollments/${courseId}/progress`, {
+        method: 'GET',
+        headers: getHeaders(true),
+        credentials: 'include',
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to fetch progress');
+    }
+
+    const result = await response.json();
+    return result.data;
+};
+
+// Update lesson progress
+export const updateLessonProgress = async (
+    courseId: string,
+    data: {
+        lessonId: string;
+        moduleId?: string;
+        completed?: boolean;
+        watchedDuration?: number;
+        lastPosition?: number;
+    }
+): Promise<EnrollmentProgress> => {
+    const response = await fetch(`${API_URL}/enrollments/${courseId}/progress`, {
+        method: 'PUT',
+        headers: getHeaders(true),
+        credentials: 'include',
+        body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to update progress');
+    }
+
+    const result = await response.json();
+    return result.data;
+};
+
+// Unenroll from a course
+export const unenrollFromCourse = async (courseId: string): Promise<void> => {
+    const response = await fetch(`${API_URL}/enrollments/${courseId}`, {
+        method: 'DELETE',
+        headers: getHeaders(true),
+        credentials: 'include',
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to unenroll');
+    }
+};
+
+// ================== REVIEW TYPES & API ==================
+
+export interface ReviewUser {
+    _id: string;
+    name: string;
+    avatar?: string;
+}
+
+export interface Review {
+    _id: string;
+    user: ReviewUser;
+    course: string;
+    rating: number;
+    comment: string;
+    reply?: {
+        content: string;
+        repliedAt: string;
+        repliedBy?: ReviewUser;
+    };
+    isVerifiedPurchase: boolean;
+    helpful: {
+        count: number;
+        users: string[];
+    };
+    status: 'pending' | 'approved' | 'rejected';
+    createdAt: string;
+    updatedAt: string;
+}
+
+export interface ReviewsResponse {
+    success: boolean;
+    data: Review[];
+    ratingDistribution: Record<number, number>;
+    pagination: PaginationInfo;
+}
+
+// Get reviews for a course
+export const getCourseReviews = async (
+    courseId: string,
+    params?: { page?: number; limit?: number; sort?: string }
+): Promise<ReviewsResponse> => {
+    const queryParams = new URLSearchParams();
+    if (params?.page) queryParams.append('page', params.page.toString());
+    if (params?.limit) queryParams.append('limit', params.limit.toString());
+    if (params?.sort) queryParams.append('sort', params.sort);
+
+    const url = `${API_URL}/reviews/course/${courseId}${queryParams.toString() ? `?${queryParams.toString()}` : ''}`;
+
+    const response = await fetch(url, {
+        method: 'GET',
+        headers: getHeaders(),
+        credentials: 'include',
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to fetch reviews');
+    }
+
+    return response.json();
+};
+
+// Get my review for a course
+export const getMyReview = async (courseId: string): Promise<Review | null> => {
+    const response = await fetch(`${API_URL}/reviews/my-review/${courseId}`, {
+        method: 'GET',
+        headers: getHeaders(true),
+        credentials: 'include',
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to fetch review');
+    }
+
+    const result = await response.json();
+    return result.data;
+};
+
+// Create a review
+export const createReview = async (courseId: string, data: { rating: number; comment: string }): Promise<Review> => {
+    const response = await fetch(`${API_URL}/reviews/${courseId}`, {
+        method: 'POST',
+        headers: getHeaders(true),
+        credentials: 'include',
+        body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to create review');
+    }
+
+    const result = await response.json();
+    return result.data;
+};
+
+// Update a review
+export const updateReview = async (reviewId: string, data: { rating?: number; comment?: string }): Promise<Review> => {
+    const response = await fetch(`${API_URL}/reviews/${reviewId}`, {
+        method: 'PUT',
+        headers: getHeaders(true),
+        credentials: 'include',
+        body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to update review');
+    }
+
+    const result = await response.json();
+    return result.data;
+};
+
+// Delete a review
+export const deleteReview = async (reviewId: string): Promise<void> => {
+    const response = await fetch(`${API_URL}/reviews/${reviewId}`, {
+        method: 'DELETE',
+        headers: getHeaders(true),
+        credentials: 'include',
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to delete review');
+    }
+};
+
+// Mark review as helpful
+export const markReviewHelpful = async (reviewId: string): Promise<{ helpfulCount: number; isHelpful: boolean }> => {
+    const response = await fetch(`${API_URL}/reviews/${reviewId}/helpful`, {
+        method: 'POST',
+        headers: getHeaders(true),
+        credentials: 'include',
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to mark review');
+    }
+
+    const result = await response.json();
+    return result.data;
 };

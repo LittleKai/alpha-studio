@@ -551,18 +551,30 @@ const ResourceFormModal: React.FC<ResourceFormModalProps> = ({
                     >
                         {language === 'vi' ? 'Hủy' : 'Cancel'}
                     </button>
-                    <button
-                        onClick={handleSubmit}
-                        disabled={isSubmitting || uploadingFile}
-                        className="px-6 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg hover:opacity-90 disabled:opacity-50 transition-all"
-                    >
-                        {isSubmitting
-                            ? (language === 'vi' ? 'Đang lưu...' : 'Saving...')
-                            : editingResource
-                                ? (language === 'vi' ? 'Cập nhật' : 'Update')
-                                : (language === 'vi' ? 'Tải lên' : 'Upload')
-                        }
-                    </button>
+                    {(uploadingFile || uploadingImage) ? (
+                        <div className="flex items-center gap-2 px-6 py-2 text-[var(--text-secondary)]">
+                            <div className="w-4 h-4 border-2 border-[var(--accent-primary)]/30 border-t-[var(--accent-primary)] rounded-full animate-spin" />
+                            <span className="text-sm">
+                                {uploadingFile
+                                    ? (language === 'vi' ? `Đang tải file... ${uploadProgress}%` : `Uploading file... ${uploadProgress}%`)
+                                    : (language === 'vi' ? 'Đang tải ảnh...' : 'Uploading image...')
+                                }
+                            </span>
+                        </div>
+                    ) : (
+                        <button
+                            onClick={handleSubmit}
+                            disabled={isSubmitting}
+                            className="px-6 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg hover:opacity-90 disabled:opacity-50 transition-all"
+                        >
+                            {isSubmitting
+                                ? (language === 'vi' ? 'Đang lưu...' : 'Saving...')
+                                : editingResource
+                                    ? (language === 'vi' ? 'Cập nhật' : 'Update')
+                                    : (language === 'vi' ? 'Tải lên' : 'Upload')
+                            }
+                        </button>
+                    )}
                 </div>
             </div>
         </div>
