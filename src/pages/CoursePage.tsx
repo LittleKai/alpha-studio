@@ -86,6 +86,7 @@ const CoursePage: React.FC = () => {
     const youtubePlayerRef = useRef<YTPlayer | null>(null);
     const youtubeContainerRef = useRef<HTMLDivElement>(null);
     const [ytApiReady, setYtApiReady] = useState(false);
+    const [ytPlayerReady, setYtPlayerReady] = useState(false);
 
     // Course state
     const [course, setCourse] = useState<Course | null>(null);
@@ -262,6 +263,7 @@ const CoursePage: React.FC = () => {
                 console.error('Error destroying YouTube player:', e);
             }
             youtubePlayerRef.current = null;
+            setYtPlayerReady(false);
         }
 
         if (!ytApiReady || !selectedLesson?.videoUrl) return;
@@ -286,8 +288,12 @@ const CoursePage: React.FC = () => {
                         controls: 1,
                         rel: 0,
                         modestbranding: 1,
+                        origin: window.location.origin,
                     },
                     events: {
+                        onReady: () => {
+                            setYtPlayerReady(true);
+                        },
                         onStateChange: (event) => {
                             if (event.data === window.YT.PlayerState.ENDED) {
                                 handleVideoEnded();
@@ -308,13 +314,14 @@ const CoursePage: React.FC = () => {
                     console.error('Error destroying YouTube player:', e);
                 }
                 youtubePlayerRef.current = null;
+                setYtPlayerReady(false);
             }
         };
     }, [ytApiReady, selectedLesson?.videoUrl, selectedLesson?.lessonId, handleVideoEnded]);
 
     // Skip forward/backward functions
     const handleSkipYouTube = useCallback((seconds: number) => {
-        if (!youtubePlayerRef.current) return;
+        if (!youtubePlayerRef.current || !ytPlayerReady) return;
         try {
             const currentTime = youtubePlayerRef.current.getCurrentTime();
             const duration = youtubePlayerRef.current.getDuration();
@@ -323,7 +330,7 @@ const CoursePage: React.FC = () => {
         } catch (e) {
             console.error('Error seeking YouTube video:', e);
         }
-    }, []);
+    }, [ytPlayerReady]);
 
     const handleSkipVideo = useCallback((seconds: number) => {
         if (videoRef.current) {

@@ -8,7 +8,7 @@ export default {
       about: "Giới thiệu",
       academy: "Học viện",
       aiCloud: "AI Cloud Server",
-      enterStudio: "Vào AI Studio",
+      enterStudio: "AI Studio",
       profile: "Hồ sơ cá nhân"
     },
     cta: {
