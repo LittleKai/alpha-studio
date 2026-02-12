@@ -3,7 +3,7 @@ export default {
     actions: {
       download: "Download",
       useAsInput: "Continue Editing",
-      savedToWorkflow: "Saved to Alpha Connect!",
+      savedToWorkflow: "Saved to ALPHA CONNECT!",
       saveToWorkflow: "Save to Workflow"
     },
     resultView: "Result",

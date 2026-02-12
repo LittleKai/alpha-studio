@@ -1,5 +1,56 @@
 export default {
   admin: {
+    management: {
+      title: "Quản Lý Admin",
+      subtitle: "Quản lý bài viết, dịch vụ và giao dịch"
+    },
+    tabs: {
+      about: "Quản Lý Giới Thiệu",
+      services: "Quản Lý Dịch Vụ",
+      transactions: "Quản Lý Giao Dịch",
+      users: "Quản lý User",
+      transactionsList: "Giao dịch",
+      webhooks: "Webhook Logs"
+    },
+    articles: {
+      title: "Tiêu đề",
+      excerpt: "Tóm tắt",
+      content: "Nội dung",
+      thumbnail: "Ảnh đại diện URL",
+      order: "Thứ tự",
+      featured: "Nổi bật",
+      tags: "Tags",
+      addTag: "Thêm tag...",
+      vietnamese: "Tiếng Việt",
+      english: "Tiếng Anh",
+      titlePlaceholder: "Nhập tiêu đề...",
+      excerptPlaceholder: "Nhập tóm tắt ngắn...",
+      contentPlaceholder: "Nhập nội dung đầy đủ...",
+      create: "Tạo bài viết",
+      edit: "Chỉnh sửa bài viết",
+      editBtn: "Sửa",
+      update: "Cập nhật",
+      delete: "Xóa",
+      publish: "Xuất bản",
+      unpublish: "Hủy xuất bản",
+      cancel: "Hủy",
+      saving: "Đang lưu...",
+      loading: "Đang tải...",
+      searchPlaceholder: "Tìm kiếm bài viết...",
+      allStatus: "Tất cả trạng thái",
+      noArticles: "Chưa có bài viết nào",
+      noExcerpt: "Chưa có tóm tắt",
+      createFirst: "Tạo bài viết đầu tiên",
+      deleteConfirm: "Bạn có chắc muốn xóa bài viết này?",
+      status: {
+        draft: "Bản nháp",
+        published: "Đã xuất bản",
+        archived: "Đã lưu trữ"
+      },
+      errors: {
+        titleRequired: "Cần tiêu đề cả tiếng Việt và tiếng Anh"
+      }
+    },
     courses: {
       title: "Quản lý khóa học",
       subtitle: "Quản lý các khóa học và nội dung đào tạo",
@@ -73,7 +124,7 @@ export default {
         addPrerequisite: "Thêm yêu cầu...",
         learningOutcomes: "Kết quả học tập",
         addOutcome: "Thêm kết quả",
-        price: "Giá (VND)",
+        price: "Giá (Credits)",
         discount: "Giảm giá (%)",
         pricePreview: "Xem trước giá cuối",
         saveDraft: "Lưu nháp",

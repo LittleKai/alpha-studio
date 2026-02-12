@@ -4,10 +4,11 @@ export default {
       features: "Học viện AI",
       showcase: "Tài sản",
       utilities: "Công cụ",
-      connect: "Alpha Connect",
+      connect: "ALPHA CONNECT",
       about: "Giới thiệu",
       academy: "Học viện",
       aiCloud: "AI Cloud Server",
+      services: "Dịch Vụ Sản Phẩm",
       enterStudio: "AI Studio",
       profile: "Hồ sơ cá nhân"
     },
@@ -36,7 +37,7 @@ export default {
     },
     features: {
       title: "Kết nối không giới hạn với",
-      highlight: "Alpha Connect",
+      highlight: "ALPHA CONNECT",
       description: "Đồng bộ dữ liệu trực tiếp giữa AI Studio và hệ thống quản lý tập trung. Nộp file thiết kế, quản lý tài sản số và kết nối với cộng đồng Alpha chỉ với một chạm.",
       item1: "Quản lý file thiết kế tập trung",
       item2: "Giao tiếp nhân viên và khách hàng",
@@ -75,6 +76,22 @@ export default {
       title: "Đối tác chiến lược",
       subtitle: "Chúng tôi kết nối bạn với các Agency & Nhà cung cấp hàng đầu. Nhận cơ hội việc làm thực tế ngay sau khi hoàn thành khóa học.",
       join: "Tham gia mạng lưới đối tác"
+    },
+    about: {
+      heroTitle: "Giới Thiệu Alpha Studio",
+      heroDescription: "Tìm hiểu về sứ mệnh, tầm nhìn và đội ngũ đứng sau nền tảng đào tạo AI hàng đầu cho ngành sự kiện.",
+      noArticles: "Chưa có bài viết nào",
+      readMore: "Đọc thêm",
+      notFound: "Không tìm thấy bài viết",
+      backToList: "Quay lại danh sách"
+    },
+    services: {
+      heroTitle: "Dịch Vụ & Sản Phẩm",
+      heroDescription: "Khám phá các dịch vụ và sản phẩm AI tiên tiến của Alpha Studio, được thiết kế cho ngành sự kiện và sáng tạo.",
+      noArticles: "Chưa có dịch vụ nào",
+      readMore: "Xem chi tiết",
+      notFound: "Không tìm thấy dịch vụ",
+      backToList: "Quay lại danh sách"
     },
     footer: {
       copyright: "NỀN TẢNG ĐÀO TẠO AI CHUYÊN NGHIỆP. TẤT CẢ QUYỀN ĐƯỢC BẢO LƯU."

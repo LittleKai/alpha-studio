@@ -125,10 +125,8 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess, onClose }) => {
           </button>
 
           <div className="text-center mb-8">
-            <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[var(--accent-primary)] to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
-              <span className="text-3xl font-black text-white">A</span>
-            </div>
-            <h1 className="text-2xl font-bold text-[var(--text-primary)]">Alpha Connect</h1>
+            <img src="/alpha-logo.png" alt="Alpha Studio" className="w-16 h-16 mx-auto mb-4 rounded-2xl object-contain shadow-lg" />
+            <h1 className="text-2xl font-bold text-[var(--text-primary)]">ALPHA CONNECT</h1>
             <p className="text-[var(--text-secondary)] mt-1">
               {mode === 'login'
                 ? (t('login.subtitle') || 'Sign in to continue')

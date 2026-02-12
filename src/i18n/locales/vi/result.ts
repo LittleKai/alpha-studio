@@ -3,7 +3,7 @@ export default {
     actions: {
       download: "Tải xuống",
       useAsInput: "Tiếp tục chỉnh sửa",
-      savedToWorkflow: "Đã lưu vào Alpha Connect!",
+      savedToWorkflow: "Đã lưu vào ALPHA CONNECT!",
       saveToWorkflow: "Lưu vào Workflow"
     },
     resultView: "Kết quả",

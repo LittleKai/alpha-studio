@@ -688,7 +688,7 @@ const CourseForm: React.FC<CourseFormProps> = ({ course, onClose, onSuccess }) =
                                                 className="w-full px-4 py-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-xl text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)] pr-16"
                                             />
                                             <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[var(--text-tertiary)]">
-                                                VND
+                                                Credits
                                             </span>
                                         </div>
                                     </div>
@@ -721,10 +721,10 @@ const CourseForm: React.FC<CourseFormProps> = ({ course, onClose, onSuccess }) =
                                         {discount > 0 ? (
                                             <>
                                                 <span className="text-2xl font-bold text-[var(--accent-primary)]">
-                                                    {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND', maximumFractionDigits: 0 }).format(Math.round(price * (1 - discount / 100)))}
+                                                    {Math.round(price * (1 - discount / 100)).toLocaleString()} Credits
                                                 </span>
                                                 <span className="text-lg text-[var(--text-tertiary)] line-through">
-                                                    {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND', maximumFractionDigits: 0 }).format(price)}
+                                                    {price.toLocaleString()} Credits
                                                 </span>
                                                 <span className="px-2 py-1 bg-red-500/20 text-red-400 text-sm font-bold rounded">
                                                     -{discount}%
@@ -733,7 +733,7 @@ const CourseForm: React.FC<CourseFormProps> = ({ course, onClose, onSuccess }) =
                                         ) : (
                                             <span className="text-2xl font-bold text-[var(--text-primary)]">
                                                 {price > 0
-                                                    ? new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND', maximumFractionDigits: 0 }).format(price)
+                                                    ? `${price.toLocaleString()} Credits`
                                                     : t('admin.courses.free')
                                                 }
                                             </span>

@@ -116,10 +116,10 @@ const CoursesPage: React.FC = () => {
         return language === 'vi' ? text.vi : text.en;
     };
 
-    // Format price
+    // Format price in credits
     const formatPrice = (price: number) => {
         if (price === 0) return t('courseCatalog.free');
-        return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+        return `${price.toLocaleString()} Credits`;
     };
 
     // Handle filter changes

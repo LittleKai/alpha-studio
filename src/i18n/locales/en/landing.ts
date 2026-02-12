@@ -4,10 +4,11 @@ export default {
       features: "AI Academy",
       showcase: "Assets",
       utilities: "Tools",
-      connect: "Alpha Connect",
+      connect: "ALPHA CONNECT",
       about: "About",
       academy: "Academy",
       aiCloud: "AI Cloud Server",
+      services: "Services",
       enterStudio: "AI Studio",
       profile: "Profile"
     },
@@ -36,7 +37,7 @@ export default {
     },
     features: {
       title: "Unlimited connection with",
-      highlight: "Alpha Connect",
+      highlight: "ALPHA CONNECT",
       description: "Sync data directly between AI Studio and centralized management system. Submit design files, manage digital assets and connect with Alpha community in one tap.",
       item1: "Centralized design file management",
       item2: "Staff and client communication",
@@ -75,6 +76,22 @@ export default {
       title: "Strategic Partners",
       subtitle: "We connect you with top Agencies & Suppliers. Get real job opportunities right after completing the course.",
       join: "Join Partner Network"
+    },
+    about: {
+      heroTitle: "About Alpha Studio",
+      heroDescription: "Learn about the mission, vision and team behind the leading AI training platform for the event industry.",
+      noArticles: "No articles yet",
+      readMore: "Read more",
+      notFound: "Article not found",
+      backToList: "Back to list"
+    },
+    services: {
+      heroTitle: "Services & Products",
+      heroDescription: "Discover Alpha Studio's advanced AI services and products, designed for the event and creative industry.",
+      noArticles: "No services yet",
+      readMore: "View details",
+      notFound: "Service not found",
+      backToList: "Back to list"
     },
     footer: {
       copyright: "PROFESSIONAL AI TRAINING PLATFORM. ALL RIGHTS RESERVED."

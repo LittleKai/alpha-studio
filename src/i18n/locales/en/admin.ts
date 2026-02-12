@@ -1,5 +1,56 @@
 export default {
   admin: {
+    management: {
+      title: "Admin Management",
+      subtitle: "Manage articles, services and transactions"
+    },
+    tabs: {
+      about: "About Management",
+      services: "Services Management",
+      transactions: "Transaction Management",
+      users: "User Management",
+      transactionsList: "Transactions",
+      webhooks: "Webhook Logs"
+    },
+    articles: {
+      title: "Title",
+      excerpt: "Excerpt",
+      content: "Content",
+      thumbnail: "Thumbnail URL",
+      order: "Order",
+      featured: "Featured",
+      tags: "Tags",
+      addTag: "Add tag...",
+      vietnamese: "Vietnamese",
+      english: "English",
+      titlePlaceholder: "Enter title...",
+      excerptPlaceholder: "Enter short summary...",
+      contentPlaceholder: "Enter full content...",
+      create: "Create Article",
+      edit: "Edit Article",
+      editBtn: "Edit",
+      update: "Update",
+      delete: "Delete",
+      publish: "Publish",
+      unpublish: "Unpublish",
+      cancel: "Cancel",
+      saving: "Saving...",
+      loading: "Loading...",
+      searchPlaceholder: "Search articles...",
+      allStatus: "All Status",
+      noArticles: "No articles yet",
+      noExcerpt: "No excerpt",
+      createFirst: "Create Your First Article",
+      deleteConfirm: "Are you sure you want to delete this article?",
+      status: {
+        draft: "Draft",
+        published: "Published",
+        archived: "Archived"
+      },
+      errors: {
+        titleRequired: "Title in both Vietnamese and English is required"
+      }
+    },
     courses: {
       title: "Course Management",
       subtitle: "Manage training courses and content",
@@ -73,7 +124,7 @@ export default {
         addPrerequisite: "Add prerequisite...",
         learningOutcomes: "Learning Outcomes",
         addOutcome: "Add Outcome",
-        price: "Price (VND)",
+        price: "Price (Credits)",
         discount: "Discount (%)",
         pricePreview: "Final Price Preview",
         saveDraft: "Save as Draft",

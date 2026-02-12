@@ -46,11 +46,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         <div className="bg-[var(--bg-secondary)]/80 backdrop-blur-xl rounded-2xl shadow-2xl border border-[var(--border-primary)] p-8">
           {/* Logo */}
           <div className="text-center mb-8">
-            <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[var(--accent-primary)] to-orange-600 rounded-2xl flex items-center justify-center shadow-lg shadow-orange-500/25">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-              </svg>
-            </div>
+            <img src="/alpha-logo.png" alt="Alpha Studio" className="w-16 h-16 mx-auto mb-4 rounded-2xl object-contain shadow-lg" />
             <h1 className="text-2xl font-bold text-[var(--text-primary)]">Alpha Studio</h1>
             <p className="text-[var(--text-secondary)] mt-1">{t('login.subtitle')}</p>
           </div>

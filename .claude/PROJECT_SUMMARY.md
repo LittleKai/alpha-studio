@@ -1,5 +1,5 @@
 # Project Summary
-**Last Updated:** 2026-01-24 (Course Learning System & Video Player)
+**Last Updated:** 2026-02-12 (TinyMCE Integration + About/Services Updates)
 **Updated By:** Claude Code
 
 ---
@@ -12,6 +12,7 @@
   - Vite 6.2 (Build tool)
   - CSS (Pure CSS with CSS Custom Properties for theming)
   - Google Generative AI (@google/genai) - Gemini 2.5 Flash API
+  - TinyMCE 8.3 (self-hosted, GPL) - Rich text editor for article content
 - **i18n:** Custom React Context solution (supports: en, vi)
 - **Theming:** Light/Dark mode via CSS Custom Properties + data-theme attribute
 - **Deployment:** Vercel
@@ -34,7 +35,11 @@ src/
 │   ├── StudentPage.tsx        # Student profile page
 │   ├── PartnerPage.tsx        # Partner profile page
 │   ├── ProfilePage.tsx        # User profile edit page (avatar, bio, skills, works)
-│   └── AdminPage.tsx          # Admin management (users, transactions, webhooks)
+│   ├── AdminPage.tsx          # Admin management (articles, services, transactions)
+│   ├── AboutPage.tsx          # About page with articles grid
+│   ├── AboutDetailPage.tsx    # About article detail
+│   ├── ServicesPage.tsx       # Services page with articles grid
+│   └── ServicesDetailPage.tsx # Services article detail
 ├── index.css                  # Global styles, animations, utilities
 ├── types.ts                   # TypeScript interfaces/types
 ├── constants.ts               # TRANSFORMATIONS array for AI tools
@@ -74,6 +79,7 @@ src/
 │   ├── imageCompression.ts    # Image compression utility (avatar, featured_work, logo, attachment)
 │   ├── paymentService.ts      # Payment API service (create, confirm, cancel, history)
 │   ├── adminService.ts        # Admin API service (users, transactions, webhooks)
+│   ├── articleService.ts      # Article API service (CRUD, publish, public + admin)
 │   ├── promptService.ts       # Prompt sharing API service (CRUD, like, bookmark, rate)
 │   └── resourceService.ts     # Resource hub API service (CRUD, like, bookmark, download)
 │
@@ -295,7 +301,18 @@ App.tsx
 
 ## 7. Recent Changes (Last 3 Sessions)
 
-1. **2026-01-24** - Course Learning System & Video Player
+1. **2026-02-12** - About & Services Pages + Admin Restructure + TinyMCE
+   - Created AboutPage.tsx, AboutDetailPage.tsx for /about route
+   - Created ServicesPage.tsx, ServicesDetailPage.tsx for /services route
+   - Created articleService.ts for Article CRUD API calls
+   - Created ArticlesAdminTab.tsx - reusable admin component with TinyMCE rich text editor
+   - Updated Layout.tsx + LandingPage.tsx: Added "Giới Thiệu" and "Dịch Vụ Sản Phẩm" nav items
+   - Restructured AdminPage.tsx: 3 top-level tabs with sub-tabs
+   - Integrated TinyMCE (self-hosted, GPL) for article content editing with Cloudinary image upload
+   - Detail pages render HTML content via dangerouslySetInnerHTML with styled prose
+   - Updated i18n: landing.ts, admin.ts (both vi + en)
+
+2. **2026-01-24** - Course Learning System & Video Player
    - Created MyCoursesPage.tsx - enrolled courses list with progress, filters (all/active/completed), stats
    - Major CoursePage.tsx rewrite:
      - Course enrollment system with API integration
@@ -337,16 +354,6 @@ App.tsx
    - Fixed: whitespace-pre-line for description newlines display
 
 3. **2026-01-22** - Payment System, Wallet View, Admin Page
-   - Created WalletView.tsx - credit packages with VietQR payment, QR code modal, payment history
-   - Credit packages: 10k=10, 100k=100, 200k=210(+5%), 500k=550(+10%), 1M=1120(+12%)
-   - Bank: OCB, Account: CASS55252503, Holder: NGUYEN ANH DUC
-   - Created paymentService.ts - API service for create, confirm, cancel, history, status
-   - Created AdminPage.tsx - admin management with 3 tabs: Users, Transactions, Webhooks
-   - Created adminService.ts - API service for admin operations
-   - Admin can: search users, view transaction history, manual top-up, assign webhooks to users
-   - Transaction statuses: pending, completed, failed, cancelled, timeout
-   - Webhook assignment: admin can assign unmatched webhooks to users (auto-credits)
-   - Replaced emoji icons with SVG icons in WalletView and WorkflowDashboard sidebar
    - Added /admin route in App.tsx
 
 ---

@@ -1,7 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/context';
+import { useTranslation } from '../i18n/context';
 import { Layout } from '../components/layout';
+import ArticlesAdminTab from '../components/admin/ArticlesAdminTab';
 import {
     getUsers,
     getUserDetails,
@@ -19,29 +21,44 @@ import {
     type WebhookLog,
 } from '../services/adminService';
 
-type TabType = 'users' | 'transactions' | 'webhooks';
+type TopTabType = 'about' | 'services' | 'transactions';
+type SubTabType = 'users' | 'transactionsList' | 'webhooks';
 
 export default function AdminPage() {
     const navigate = useNavigate();
     const { user } = useAuth();
-    const [activeTab, setActiveTab] = useState<TabType>('users');
+    const { t } = useTranslation();
+    const [activeTopTab, setActiveTopTab] = useState<TopTabType>('about');
+    const [activeSubTab, setActiveSubTab] = useState<SubTabType>('users');
 
-    // Check admin access
+    // Check admin/mod access
     useEffect(() => {
-        if (user && user.role !== 'admin') {
+        if (user && user.role !== 'admin' && user.role !== 'mod') {
             navigate('/');
         }
     }, [user, navigate]);
 
-    if (!user || user.role !== 'admin') {
+    if (!user || (user.role !== 'admin' && user.role !== 'mod')) {
         return (
             <Layout>
                 <div className="min-h-screen flex items-center justify-center">
-                    <p className="text-[var(--text-secondary)]">Checking access...</p>
+                    <p className="text-[var(--text-secondary)]">{t('admin.articles.loading')}</p>
                 </div>
             </Layout>
         );
     }
+
+    const topTabs = [
+        { id: 'about' as TopTabType, label: t('admin.tabs.about') },
+        { id: 'services' as TopTabType, label: t('admin.tabs.services') },
+        { id: 'transactions' as TopTabType, label: t('admin.tabs.transactions') },
+    ];
+
+    const subTabs = [
+        { id: 'users' as SubTabType, label: t('admin.tabs.users') },
+        { id: 'transactionsList' as SubTabType, label: t('admin.tabs.transactionsList') },
+        { id: 'webhooks' as SubTabType, label: t('admin.tabs.webhooks') },
+    ];
 
     return (
         <Layout>
@@ -49,22 +66,18 @@ export default function AdminPage() {
                 <div className="max-w-7xl mx-auto">
                     {/* Header */}
                     <div className="mb-6">
-                        <h1 className="text-2xl font-bold text-[var(--text-primary)]">Admin Management</h1>
-                        <p className="text-sm text-[var(--text-secondary)]">Quản lý người dùng, giao dịch và webhook</p>
+                        <h1 className="text-2xl font-bold text-[var(--text-primary)]">{t('admin.management.title')}</h1>
+                        <p className="text-sm text-[var(--text-secondary)]">{t('admin.management.subtitle')}</p>
                     </div>
 
-                    {/* Tabs */}
+                    {/* Top-Level Tabs */}
                     <div className="flex gap-2 mb-6 border-b border-[var(--border-primary)]">
-                        {[
-                            { id: 'users', label: 'Quản lý User' },
-                            { id: 'transactions', label: 'Giao dịch' },
-                            { id: 'webhooks', label: 'Webhook Logs' },
-                        ].map((tab) => (
+                        {topTabs.map((tab) => (
                             <button
                                 key={tab.id}
-                                onClick={() => setActiveTab(tab.id as TabType)}
+                                onClick={() => setActiveTopTab(tab.id)}
                                 className={`px-4 py-2 font-medium transition-colors ${
-                                    activeTab === tab.id
+                                    activeTopTab === tab.id
                                         ? 'text-[var(--accent-primary)] border-b-2 border-[var(--accent-primary)]'
                                         : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                                 }`}
@@ -75,9 +88,32 @@ export default function AdminPage() {
                     </div>
 
                     {/* Tab Content */}
-                    {activeTab === 'users' && <UsersTab />}
-                    {activeTab === 'transactions' && <TransactionsTab />}
-                    {activeTab === 'webhooks' && <WebhooksTab />}
+                    {activeTopTab === 'about' && <ArticlesAdminTab category="about" />}
+                    {activeTopTab === 'services' && <ArticlesAdminTab category="services" />}
+                    {activeTopTab === 'transactions' && (
+                        <div>
+                            {/* Sub-Tabs */}
+                            <div className="flex gap-2 mb-6">
+                                {subTabs.map((tab) => (
+                                    <button
+                                        key={tab.id}
+                                        onClick={() => setActiveSubTab(tab.id)}
+                                        className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
+                                            activeSubTab === tab.id
+                                                ? 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]'
+                                                : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
+                                        }`}
+                                    >
+                                        {tab.label}
+                                    </button>
+                                ))}
+                            </div>
+
+                            {activeSubTab === 'users' && <UsersTab />}
+                            {activeSubTab === 'transactionsList' && <TransactionsTab />}
+                            {activeSubTab === 'webhooks' && <WebhooksTab />}
+                        </div>
+                    )}
                 </div>
             </div>
         </Layout>
@@ -141,7 +177,6 @@ function UsersTab() {
             alert(result.message);
             setTopupAmount('');
             setTopupNote('');
-            // Reload user data
             handleSelectUser(selectedUser);
             loadUsers();
         } catch (error: any) {

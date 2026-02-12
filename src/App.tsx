@@ -21,6 +21,10 @@ const CourseManagement = lazy(() => import('./components/admin/CourseManagement'
 const ProfilePage = lazy(() => import('./pages/ProfilePage'));
 const AdminPage = lazy(() => import('./pages/AdminPage'));
 const MyCoursesPage = lazy(() => import('./pages/MyCoursesPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const AboutDetailPage = lazy(() => import('./pages/AboutDetailPage'));
+const ServicesPage = lazy(() => import('./pages/ServicesPage'));
+const ServicesDetailPage = lazy(() => import('./pages/ServicesDetailPage'));
 
 // Loading spinner component
 const LoadingSpinner: React.FC = () => (
@@ -132,6 +136,50 @@ const MyCoursesDetailPage: React.FC = () => {
     );
 };
 
+// About Page with layout
+const AboutPageWrapper: React.FC = () => {
+    return (
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <AboutPage />
+            </Suspense>
+        </Layout>
+    );
+};
+
+// About Detail Page with layout
+const AboutDetailPageWrapper: React.FC = () => {
+    return (
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <AboutDetailPage />
+            </Suspense>
+        </Layout>
+    );
+};
+
+// Services Page with layout
+const ServicesPageWrapper: React.FC = () => {
+    return (
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <ServicesPage />
+            </Suspense>
+        </Layout>
+    );
+};
+
+// Services Detail Page with layout
+const ServicesDetailPageWrapper: React.FC = () => {
+    return (
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <ServicesDetailPage />
+            </Suspense>
+        </Layout>
+    );
+};
+
 // 404 Not Found Page
 const NotFoundPage: React.FC = () => {
     const navigate = useNavigate();
@@ -171,6 +219,10 @@ const App: React.FC = () => {
                 <Route path="/courses/:slug" element={<CourseDetailPage />} />
                 <Route path="/students/:id" element={<StudentDetailPage />} />
                 <Route path="/partners/:id" element={<PartnerDetailPage />} />
+                <Route path="/about" element={<AboutPageWrapper />} />
+                <Route path="/about/:slug" element={<AboutDetailPageWrapper />} />
+                <Route path="/services" element={<ServicesPageWrapper />} />
+                <Route path="/services/:slug" element={<ServicesDetailPageWrapper />} />
 
                 {/* Protected Routes (require login) */}
                 <Route

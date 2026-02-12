@@ -663,7 +663,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
         <div className="w-20 md:w-64 bg-[var(--bg-card)] border-r border-[var(--border-primary)] flex flex-col flex-shrink-0">
             <div className="p-6 border-b border-[var(--border-primary)] flex items-center gap-3">
                 <button onClick={onBack} className="p-2 rounded-lg hover:bg-[var(--bg-secondary)] transition-colors"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" /></svg></button>
-                <span className="font-black text-lg hidden md:block tracking-tight text-white">Alpha Connect</span>
+                <span className="font-black text-lg hidden md:block tracking-tight text-white">ALPHA CONNECT</span>
             </div>
             <div className="flex-1 overflow-y-auto py-6 space-y-6 px-3">
                 <div><p className="px-4 text-[10px] font-bold text-[var(--text-tertiary)] uppercase tracking-wider mb-2">{t('workflow.sidebar.fileManagement')}</p>
