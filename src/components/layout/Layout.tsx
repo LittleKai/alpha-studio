@@ -38,11 +38,11 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
         <div className="min-h-screen flex flex-col bg-[var(--bg-primary)]">
             {/* Global Navigation */}
             <nav className="sticky top-0 z-50 glass-card border-b border-[var(--border-primary)]">
-                <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+                <div className="container mx-auto px-4 py-2 md:px-6 md:py-4 flex justify-between items-center">
                     <Link to="/" className="flex items-center gap-2 cursor-pointer group">
-                        <img src="/alpha-logo.png" alt="Alpha Studio" className="h-10 w-10 rounded-xl object-contain group-hover:rotate-12 transition-transform" />
+                        <img src="/alpha-logo.png" alt="Alpha Studio" className="h-8 w-8 md:h-10 md:w-10 rounded-xl object-contain group-hover:rotate-12 transition-transform" />
                         <div className="flex flex-col">
-                            <span className="text-xl font-bold tracking-tight text-[var(--text-primary)] leading-none">ALPHA STUDIO</span>
+                            <span className="text-lg md:text-xl font-bold tracking-tight text-[var(--text-primary)] leading-none">ALPHA STUDIO</span>
                             <span className="text-[10px] text-[var(--accent-primary)] font-bold tracking-widest uppercase">AI Academy</span>
                         </div>
                     </Link>

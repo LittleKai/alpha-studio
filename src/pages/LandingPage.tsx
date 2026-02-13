@@ -231,11 +231,11 @@ const LandingPage: React.FC = () => {
         <div className="min-h-screen flex flex-col">
             {/* Navigation */}
             <nav className="sticky top-0 z-50 glass-card border-b border-[var(--border-primary)]">
-                <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+                <div className="container mx-auto px-4 py-2 md:px-6 md:py-4 flex justify-between items-center">
                     <Link to="/" className="flex items-center gap-2 cursor-pointer group">
-                        <img src="/alpha-logo.png" alt="Alpha Studio" className="h-10 w-10 rounded-xl object-contain group-hover:rotate-12 transition-transform" />
+                        <img src="/alpha-logo.png" alt="Alpha Studio" className="h-8 w-8 md:h-10 md:w-10 rounded-xl object-contain group-hover:rotate-12 transition-transform" />
                         <div className="flex flex-col">
-                            <span className="text-xl font-bold tracking-tight text-[var(--text-primary)] leading-none">ALPHA STUDIO</span>
+                            <span className="text-lg md:text-xl font-bold tracking-tight text-[var(--text-primary)] leading-none">ALPHA STUDIO</span>
                             <span className="text-[10px] text-[var(--accent-primary)] font-bold tracking-widest uppercase">AI Academy</span>
                         </div>
                     </Link>
@@ -623,17 +623,17 @@ const LandingPage: React.FC = () => {
             {/* Strategic Partners Section */}
             <section className="py-10 bg-[var(--bg-secondary)]/50 border-y border-[var(--border-primary)]">
                 <div className="container mx-auto px-6">
-                    <div className="flex flex-col md:flex-row items-center justify-between gap-12 mb-16">
-                        <div className="md:w-1/3 space-y-4">
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+                        <div className="w-full md:w-1/3 space-y-4 text-center md:text-left">
                             <h2 className="text-3xl font-black text-[var(--text-primary)]">{t('landing.partners.title')}</h2>
                             <p className="text-[var(--text-secondary)] text-sm leading-relaxed">
                                 {t('landing.partners.subtitle')}
                             </p>
-                            <button onClick={() => navigateToProtectedPage('/workflow')} className="text-[var(--accent-primary)] text-sm font-bold flex items-center gap-2 hover:underline">
+                            <button onClick={() => navigateToProtectedPage('/workflow')} className="text-[var(--accent-primary)] text-sm font-bold inline-flex items-center gap-2 hover:underline">
                                 {t('landing.partners.join')} →
                             </button>
                         </div>
-                        <div className="md:w-2/3">
+                        <div className="w-full md:w-2/3">
                             {partnersLoading ? (
                                 <div className="flex items-center justify-center py-12">
                                     <div className="w-8 h-8 border-4 border-[var(--accent-primary)]/30 border-t-[var(--accent-primary)] rounded-full animate-spin"></div>
