@@ -1,5 +1,5 @@
 # Project Summary
-**Last Updated:** 2026-02-13 (Change Password Modal + Email Verification)
+**Last Updated:** 2026-02-13 (Admin Reset Password + Simplified Change Password)
 **Updated By:** Claude Code
 
 ---
@@ -302,14 +302,13 @@ App.tsx
 
 ## 7. Recent Changes (Last 3 Sessions)
 
-1. **2026-02-13** - Change Password Modal + Email Verification + Social Links + Partner Detail
-   - Created ChangePasswordModal.tsx: multi-step dialog (enter passwords → send verification code → enter code → confirm)
-   - Backend: Added nodemailer, email utility (server/utils/email.js), send-password-code route, verification code fields in User model
-   - ProfilePage.tsx: replaced collapsible password section with button that opens modal
-   - Social links: custom links support (max 3), removed TikTok/Behance, added Facebook
-   - Rewrote PartnerPage.tsx + PartnerProfileViewer.tsx for API-powered partner detail
-   - Added i18n: `profile.password.*` (vi+en) with verification code flow keys
-   - Fixed whitespace-pre-line for description rendering in 7 components
+1. **2026-02-13** - Admin Reset Password + Simplified Change Password
+   - Added admin reset password: POST /api/admin/users/:id/reset-password generates random 8-digit password
+   - Added resetUserPassword() to adminService.ts + Reset Password button in AdminPage UsersTab
+   - Simplified ChangePasswordModal.tsx: removed 2-step email verification flow, now single-step (current + new password)
+   - Simplified PUT /api/auth/password: removed verification code requirement
+   - Updated i18n: removed verification-related keys from common.ts (vi+en), added admin.resetPassword.* (vi+en)
+   - Previous: Created ChangePasswordModal, social links, partner detail, whitespace fixes
 
 2. **2026-02-12** - About & Services Pages + Admin Restructure + TinyMCE
    - Created AboutPage.tsx, AboutDetailPage.tsx for /about route

@@ -182,6 +182,25 @@ export const manualTopup = async (
 };
 
 /**
+ * Reset user's password to a random 8-digit number
+ */
+export const resetUserPassword = async (
+    userId: string
+): Promise<{ success: boolean; message: string; data: { newPassword: string } }> => {
+    const response = await fetch(`${API_URL}/admin/users/${userId}/reset-password`, {
+        method: 'POST',
+        headers: getHeaders(),
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || 'Failed to reset password');
+    }
+
+    return response.json();
+};
+
+/**
  * Get all transactions with filters
  */
 export const getAllTransactions = async (params: {

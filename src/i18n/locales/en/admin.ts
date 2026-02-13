@@ -326,6 +326,16 @@ export default {
         next: "Next"
       }
     },
+    resetPassword: {
+      title: "Reset Password",
+      description: "Generate a random 8-digit password for this user",
+      button: "Reset Password",
+      confirmPrefix: "Are you sure you want to reset the password for ",
+      confirmSuffix: "?",
+      successPrefix: "New password: ",
+      successSuffix: "\n\nPlease share this password with the user.",
+      error: "Failed to reset password"
+    },
     accessDenied: "Access Denied",
     backToHome: "Back to Home",
     dismiss: "Dismiss"

@@ -326,6 +326,16 @@ export default {
         next: "Sau"
       }
     },
+    resetPassword: {
+      title: "Reset mật khẩu",
+      description: "Tạo mật khẩu ngẫu nhiên 8 chữ số cho user",
+      button: "Reset mật khẩu",
+      confirmPrefix: "Bạn có chắc muốn reset mật khẩu cho ",
+      confirmSuffix: "?",
+      successPrefix: "Mật khẩu mới: ",
+      successSuffix: "\n\nHãy gửi mật khẩu này cho user.",
+      error: "Không thể reset mật khẩu"
+    },
     accessDenied: "Truy cập bị từ chối",
     backToHome: "Quay lại trang chủ",
     dismiss: "Bỏ qua"

@@ -9,6 +9,7 @@ import {
     getUserDetails,
     getUserTransactions,
     manualTopup,
+    resetUserPassword,
     getAllTransactions,
     getWebhookLogs,
     reprocessWebhook,
@@ -122,6 +123,7 @@ export default function AdminPage() {
 
 // Users Tab Component
 function UsersTab() {
+    const { t } = useTranslation();
     const [users, setUsers] = useState<AdminUser[]>([]);
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState('');
@@ -131,6 +133,7 @@ function UsersTab() {
     const [topupAmount, setTopupAmount] = useState('');
     const [topupNote, setTopupNote] = useState('');
     const [topupLoading, setTopupLoading] = useState(false);
+    const [resetPwLoading, setResetPwLoading] = useState(false);
 
     const loadUsers = useCallback(async () => {
         try {
@@ -183,6 +186,21 @@ function UsersTab() {
             alert(error.message || 'Lỗi top-up');
         } finally {
             setTopupLoading(false);
+        }
+    };
+
+    const handleResetPassword = async () => {
+        if (!selectedUser) return;
+        if (!confirm(t('admin.resetPassword.confirmPrefix') + selectedUser.name + t('admin.resetPassword.confirmSuffix'))) return;
+
+        try {
+            setResetPwLoading(true);
+            const result = await resetUserPassword(selectedUser._id);
+            alert(t('admin.resetPassword.successPrefix') + result.data.newPassword + t('admin.resetPassword.successSuffix'));
+        } catch (error: any) {
+            alert(error.message || t('admin.resetPassword.error'));
+        } finally {
+            setResetPwLoading(false);
         }
     };
 
@@ -291,6 +309,23 @@ function UsersTab() {
                                         className="px-4 py-2 bg-[var(--accent-primary)] text-black font-medium rounded-lg hover:opacity-90 disabled:opacity-50"
                                     >
                                         {topupLoading ? '...' : 'Top-up'}
+                                    </button>
+                                </div>
+                            </div>
+
+                            {/* Reset Password */}
+                            <div className="border-t border-[var(--border-primary)] pt-4">
+                                <div className="flex items-center justify-between">
+                                    <div>
+                                        <h4 className="font-medium text-[var(--text-primary)]">{t('admin.resetPassword.title')}</h4>
+                                        <p className="text-xs text-[var(--text-tertiary)]">{t('admin.resetPassword.description')}</p>
+                                    </div>
+                                    <button
+                                        onClick={handleResetPassword}
+                                        disabled={resetPwLoading}
+                                        className="px-4 py-2 bg-orange-500 text-white font-medium rounded-lg hover:bg-orange-600 disabled:opacity-50"
+                                    >
+                                        {resetPwLoading ? '...' : t('admin.resetPassword.button')}
                                     </button>
                                 </div>
                             </div>
