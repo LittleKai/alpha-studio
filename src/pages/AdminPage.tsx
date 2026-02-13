@@ -123,7 +123,9 @@ export default function AdminPage() {
 
 // Users Tab Component
 function UsersTab() {
+    const { user: currentUser } = useAuth();
     const { t } = useTranslation();
+    const isSuperAdmin = currentUser?.role === 'admin' && currentUser?.email === 'aduc5525@gmail.com';
     const [users, setUsers] = useState<AdminUser[]>([]);
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState('');
@@ -313,7 +315,8 @@ function UsersTab() {
                                 </div>
                             </div>
 
-                            {/* Reset Password */}
+                            {/* Reset Password - only for super admin */}
+                            {isSuperAdmin && (
                             <div className="border-t border-[var(--border-primary)] pt-4">
                                 <div className="flex items-center justify-between">
                                     <div>
@@ -329,6 +332,7 @@ function UsersTab() {
                                     </button>
                                 </div>
                             </div>
+                            )}
                         </div>
 
                         {/* User Transactions */}
