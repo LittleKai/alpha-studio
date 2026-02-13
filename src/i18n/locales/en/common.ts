@@ -77,6 +77,9 @@ export default {
     noWorks: "No works yet. Add your first featured work!",
     attachments: "Attachments",
     uploadFile: "Upload File",
-    noAttachments: "No attachments yet. You can upload up to 3 files."
+    noAttachments: "No attachments yet. You can upload up to 3 files.",
+    backgroundImage: "Cover Image",
+    uploadBackground: "Upload cover image",
+    changeImage: "Change image"
   }
 };

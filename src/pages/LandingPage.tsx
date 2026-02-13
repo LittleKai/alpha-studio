@@ -323,9 +323,13 @@ const LandingPage: React.FC = () => {
                                 </button>
                                 <div className="relative group">
                                     <button className="flex items-center gap-2 py-2 px-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-colors">
-                                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-purple-600 flex items-center justify-center text-white text-sm font-bold">
-                                            {user?.name?.charAt(0).toUpperCase() || 'U'}
-                                        </div>
+                                        {user?.avatar ? (
+                                            <img src={user.avatar} alt={user.name} className="w-8 h-8 rounded-full object-cover" />
+                                        ) : (
+                                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-purple-600 flex items-center justify-center text-white text-sm font-bold">
+                                                {user?.name?.charAt(0).toUpperCase() || 'U'}
+                                            </div>
+                                        )}
                                         <span className="text-sm font-medium text-[var(--text-primary)] max-w-[100px] truncate">{user?.name || 'User'}</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-[var(--text-secondary)]" viewBox="0 0 20 20" fill="currentColor">
                                             <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -334,9 +338,13 @@ const LandingPage: React.FC = () => {
                                     <div className="absolute right-0 mt-2 w-56 py-2 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
                                         <div className="px-4 py-3 border-b border-[var(--border-primary)]">
                                             <div className="flex items-center gap-3">
-                                                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-purple-600 flex items-center justify-center text-white text-sm font-bold">
-                                                    {user?.name?.charAt(0).toUpperCase() || 'U'}
-                                                </div>
+                                                {user?.avatar ? (
+                                                    <img src={user.avatar} alt={user.name} className="w-10 h-10 rounded-full object-cover" />
+                                                ) : (
+                                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-purple-600 flex items-center justify-center text-white text-sm font-bold">
+                                                        {user?.name?.charAt(0).toUpperCase() || 'U'}
+                                                    </div>
+                                                )}
                                                 <div className="flex-1 min-w-0">
                                                     <p className="text-sm font-medium text-[var(--text-primary)] truncate">{user?.name || 'User'}</p>
                                                     <p className="text-xs text-[var(--text-secondary)] truncate">{user?.email}</p>
@@ -427,9 +435,13 @@ const LandingPage: React.FC = () => {
                             {isAuthenticated ? (
                                 <div className="space-y-1">
                                     <div className="flex items-center gap-3 px-4 py-3 mb-2">
-                                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-purple-600 flex items-center justify-center text-white text-sm font-bold">
-                                            {user?.name?.charAt(0).toUpperCase() || 'U'}
-                                        </div>
+                                        {user?.avatar ? (
+                                            <img src={user.avatar} alt={user.name} className="w-10 h-10 rounded-full object-cover" />
+                                        ) : (
+                                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-purple-600 flex items-center justify-center text-white text-sm font-bold">
+                                                {user?.name?.charAt(0).toUpperCase() || 'U'}
+                                            </div>
+                                        )}
                                         <div className="flex-1 min-w-0">
                                             <p className="text-sm font-medium text-[var(--text-primary)] truncate">{user?.name || 'User'}</p>
                                             <p className="text-xs text-[var(--text-secondary)] truncate">{user?.email}</p>

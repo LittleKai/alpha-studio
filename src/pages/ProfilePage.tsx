@@ -149,6 +149,7 @@ const ProfilePage: React.FC = () => {
     const navigate = useNavigate();
     const { user, updateProfile } = useAuth();
     const avatarInputRef = useRef<HTMLInputElement>(null);
+    const backgroundInputRef = useRef<HTMLInputElement>(null);
     const workImageInputRef = useRef<HTMLInputElement>(null);
     const attachmentInputRef = useRef<HTMLInputElement>(null);
 
@@ -156,6 +157,7 @@ const ProfilePage: React.FC = () => {
     const [formData, setFormData] = useState({
         name: user?.name || '',
         avatar: user?.avatar || '',
+        backgroundImage: user?.backgroundImage || '',
         bio: user?.bio || '',
         phone: user?.phone || '',
         location: user?.location || '',
@@ -179,6 +181,7 @@ const ProfilePage: React.FC = () => {
     const [newSkill, setNewSkill] = useState('');
     const [isSaving, setIsSaving] = useState(false);
     const [uploadingAvatar, setUploadingAvatar] = useState(false);
+    const [uploadingBackground, setUploadingBackground] = useState(false);
     const [uploadingWorkImage, setUploadingWorkImage] = useState(false);
     const [uploadingAttachment, setUploadingAttachment] = useState(false);
 
@@ -205,6 +208,24 @@ const ProfilePage: React.FC = () => {
             console.error('Avatar upload failed:', error);
         } finally {
             setUploadingAvatar(false);
+        }
+    }, []);
+
+    // Handle background image upload
+    const handleBackgroundUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        setUploadingBackground(true);
+        try {
+            const result = await uploadToCloudinary(file, 'backgrounds', 'general');
+            if (result.success) {
+                setFormData(prev => ({ ...prev, backgroundImage: result.url }));
+            }
+        } catch (error) {
+            console.error('Background upload failed:', error);
+        } finally {
+            setUploadingBackground(false);
         }
     }, []);
 
@@ -293,6 +314,7 @@ const ProfilePage: React.FC = () => {
         try {
             const result = await updateProfile({
                 ...formData,
+                backgroundImage: formData.backgroundImage || undefined,
                 featuredWorks,
                 attachments
             } as any);
@@ -393,6 +415,68 @@ const ProfilePage: React.FC = () => {
                                 {user?.role === 'student' ? 'Student' : user?.role === 'partner' ? 'Partner' : 'Admin'}
                             </p>
                         </div>
+                    </div>
+                </div>
+
+                {/* Background Image Section */}
+                <div className="bg-gray-800/50 rounded-2xl p-6 border border-gray-700">
+                    <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                        <span className="text-purple-400"><ImageIcon /></span>
+                        {t('profile.backgroundImage', 'Ảnh bìa')}
+                    </h2>
+                    <div className="relative">
+                        {formData.backgroundImage ? (
+                            <div className="relative aspect-[3/1] rounded-xl overflow-hidden">
+                                <img
+                                    src={formData.backgroundImage}
+                                    alt="Background"
+                                    className="w-full h-full object-cover"
+                                />
+                                <div className="absolute inset-0 bg-black/30 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
+                                    <button
+                                        onClick={() => backgroundInputRef.current?.click()}
+                                        disabled={uploadingBackground}
+                                        className="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-lg text-white hover:bg-white/30 transition-colors flex items-center gap-2"
+                                    >
+                                        {uploadingBackground ? (
+                                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                        ) : (
+                                            <CameraIcon />
+                                        )}
+                                        <span>{t('profile.changeImage', 'Đổi ảnh')}</span>
+                                    </button>
+                                    <button
+                                        onClick={() => setFormData(prev => ({ ...prev, backgroundImage: '' }))}
+                                        className="px-4 py-2 bg-red-500/50 backdrop-blur-sm rounded-lg text-white hover:bg-red-500/70 transition-colors flex items-center gap-2"
+                                    >
+                                        <TrashIcon />
+                                        <span>{t('common.delete', 'Xóa')}</span>
+                                    </button>
+                                </div>
+                            </div>
+                        ) : (
+                            <button
+                                onClick={() => backgroundInputRef.current?.click()}
+                                disabled={uploadingBackground}
+                                className="w-full aspect-[3/1] border-2 border-dashed border-gray-600 rounded-xl flex flex-col items-center justify-center gap-3 hover:border-purple-500 transition-colors text-gray-500"
+                            >
+                                {uploadingBackground ? (
+                                    <div className="w-10 h-10 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
+                                ) : (
+                                    <>
+                                        <UploadIcon />
+                                        <span className="text-sm">{t('profile.uploadBackground', 'Tải ảnh bìa lên')}</span>
+                                    </>
+                                )}
+                            </button>
+                        )}
+                        <input
+                            ref={backgroundInputRef}
+                            type="file"
+                            accept="image/*"
+                            onChange={handleBackgroundUpload}
+                            className="hidden"
+                        />
                     </div>
                 </div>
 

@@ -7,6 +7,7 @@ export interface User {
     name: string;
     role: 'student' | 'partner' | 'mod' | 'admin';
     avatar: string | null;
+    backgroundImage: string | null;
     balance: number;
     subscription: {
         plan: 'free' | 'basic' | 'pro' | 'enterprise';
@@ -63,6 +64,7 @@ interface RegisterData {
 interface ProfileUpdateData {
     name?: string;
     avatar?: string;
+    backgroundImage?: string;
     bio?: string;
     skills?: string[];
     phone?: string;

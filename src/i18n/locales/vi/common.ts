@@ -77,6 +77,9 @@ export default {
     noWorks: "Chưa có tác phẩm nào. Thêm tác phẩm đầu tiên của bạn!",
     attachments: "File đính kèm",
     uploadFile: "Tải file",
-    noAttachments: "Chưa có file đính kèm. Bạn có thể tải lên tối đa 3 file."
+    noAttachments: "Chưa có file đính kèm. Bạn có thể tải lên tối đa 3 file.",
+    backgroundImage: "Ảnh bìa",
+    uploadBackground: "Tải ảnh bìa lên",
+    changeImage: "Đổi ảnh"
   }
 };
