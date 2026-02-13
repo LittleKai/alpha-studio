@@ -27,7 +27,12 @@ export interface Partner {
     featured: boolean;
     order: number;
     socialLinks: SocialLinks;
-    skills: string[];
+    services: string[];
+    backgroundImage: string;
+    keyProjects: Array<{
+        image: string;
+        description: LocalizedString;
+    }>;
     createdBy?: {
         _id: string;
         name: string;
@@ -51,7 +56,12 @@ export interface PartnerInput {
     featured?: boolean;
     order?: number;
     socialLinks?: SocialLinks;
-    skills?: string[];
+    services?: string[];
+    backgroundImage?: string;
+    keyProjects?: Array<{
+        image: string;
+        description: LocalizedString;
+    }>;
 }
 
 export interface PaginationInfo {

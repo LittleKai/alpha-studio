@@ -90,7 +90,7 @@ const CourseViewer: React.FC<CourseViewerProps> = ({ course, onBack }) => {
                  </div>
              ) : (
                  <div className="prose prose-invert max-w-none">
-                     <p className="text-[var(--text-secondary)] leading-relaxed">{course.description}</p>
+                     <p className="text-[var(--text-secondary)] leading-relaxed whitespace-pre-line">{course.description}</p>
                      <h3 className="text-[var(--text-primary)] font-bold mt-4">{t('landing.course.whatYouLearn')}</h3>
                      <ul className="list-disc pl-5 text-[var(--text-secondary)] space-y-2">
                         <li>{t('landing.course.point1')}</li>

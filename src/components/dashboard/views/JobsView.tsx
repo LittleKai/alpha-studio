@@ -330,7 +330,7 @@ const JobsView: React.FC<JobsViewProps> = ({ searchQuery }) => {
                                     </div>
 
                                     {/* Description */}
-                                    <p className="text-sm text-[var(--text-secondary)] mb-6 line-clamp-3 flex-grow">
+                                    <p className="text-sm text-[var(--text-secondary)] mb-6 line-clamp-3 flex-grow whitespace-pre-line">
                                         {getLocalizedText(job.description)}
                                     </p>
 

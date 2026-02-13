@@ -55,7 +55,13 @@ export default {
     enterprise: "Enterprise",
     startup: "Startup",
     government: "Government",
-    other: "Other"
+    other: "Other",
+    services: "Services (comma separated)",
+    backgroundImage: "Background Image",
+    keyProjects: "Key Projects",
+    addKeyProject: "Add Project",
+    projectDescription: "Project Description",
+    maxProjects: "Maximum 6 projects"
   },
   job: {
     title: "Job Title",

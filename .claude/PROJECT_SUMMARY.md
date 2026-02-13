@@ -1,5 +1,5 @@
 # Project Summary
-**Last Updated:** 2026-02-12 (TinyMCE Integration + About/Services Updates)
+**Last Updated:** 2026-02-13 (Dynamic Partner Detail Page - API-powered)
 **Updated By:** Claude Code
 
 ---
@@ -262,7 +262,8 @@ App.tsx
 ### Low Priority
 - [x] ~~State-based routing~~ (Migrated to React Router v6)
 - [x] ~~Hardcoded courses in LandingPage.tsx~~ (Now fetches from API)
-- [ ] Some hardcoded data in LandingPage.tsx (students, partners still static)
+- [ ] Some hardcoded data in LandingPage.tsx (students still static)
+- [x] ~~Partner detail page uses static data~~ (Now fetches from API via slug)
 - [ ] No loading states for language switching
 - [ ] Consider extracting landing page sections into components
 - [ ] Email verification not implemented
@@ -301,7 +302,16 @@ App.tsx
 
 ## 7. Recent Changes (Last 3 Sessions)
 
-1. **2026-02-12** - About & Services Pages + Admin Restructure + TinyMCE
+1. **2026-02-13** - Dynamic Partner Detail Page (API-powered)
+   - Rewrote PartnerPage.tsx: removed static data, fetches from API via `getPartnerBySlug()`
+   - Rewrote PartnerProfileViewer.tsx: uses API `Partner` type from partnerService.ts
+   - Field mapping: companyName, backgroundImage, services, keyProjects, socialLinks, localized description
+   - New sections: Key Projects with localized captions, Social Links (Facebook/LinkedIn/Twitter)
+   - Logo now supports image URLs (shows `<img>`) or emoji fallback
+   - Added i18n keys: `workflow.partners.types.*` (6 partner types), `details.socialLinks`, `details.noProjects`
+   - Updated both vi/workflow.ts and en/workflow.ts
+
+2. **2026-02-12** - About & Services Pages + Admin Restructure + TinyMCE
    - Created AboutPage.tsx, AboutDetailPage.tsx for /about route
    - Created ServicesPage.tsx, ServicesDetailPage.tsx for /services route
    - Created articleService.ts for Article CRUD API calls
@@ -312,7 +322,7 @@ App.tsx
    - Detail pages render HTML content via dangerouslySetInnerHTML with styled prose
    - Updated i18n: landing.ts, admin.ts (both vi + en)
 
-2. **2026-01-24** - Course Learning System & Video Player
+3. **2026-01-24** - Course Learning System & Video Player
    - Created MyCoursesPage.tsx - enrolled courses list with progress, filters (all/active/completed), stats
    - Major CoursePage.tsx rewrite:
      - Course enrollment system with API integration
@@ -352,9 +362,6 @@ App.tsx
    - Resource types: template, dataset, design-asset, project-file, 3d-model, font
    - Shared components: LikeButton, BookmarkButton, RatingStars, CommentSection, ImageLightbox
    - Fixed: whitespace-pre-line for description newlines display
-
-3. **2026-01-22** - Payment System, Wallet View, Admin Page
-   - Added /admin route in App.tsx
 
 ---
 

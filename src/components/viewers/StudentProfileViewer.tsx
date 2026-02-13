@@ -73,7 +73,7 @@ const StudentProfileViewer: React.FC<StudentProfileViewerProps> = ({ student, on
                             <span className="w-1 h-6 bg-[var(--accent-primary)] rounded-full"></span>
                             {t('workflow.profile.bio')}
                         </h2>
-                        <p className="text-[var(--text-secondary)] leading-relaxed">
+                        <p className="text-[var(--text-secondary)] leading-relaxed whitespace-pre-line">
                             {student.bio || "No bio available."}
                         </p>
                     </section>

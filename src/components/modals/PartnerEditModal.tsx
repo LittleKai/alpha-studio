@@ -32,34 +32,80 @@ const PartnerEditModal: React.FC<PartnerEditModalProps> = ({
         descriptionVi: '',
         descriptionEn: '',
         logo: '',
+        backgroundImage: '',
         website: '',
         email: '',
         phone: '',
         address: '',
         partnerType: 'technology',
         featured: false,
-        skills: '',
+        services: '',
+        keyProjects: [] as Array<{ image: string; description: { vi: string; en: string } }>,
     });
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [uploadingLogo, setUploadingLogo] = useState(false);
+    const [uploadingBg, setUploadingBg] = useState(false);
+    const [uploadingProjectImage, setUploadingProjectImage] = useState<number | null>(null);
 
-    // Logo upload handler
-    const handleLogoUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Generic image upload handler
+    const handleImageUpload = useCallback(async (
+        e: React.ChangeEvent<HTMLInputElement>,
+        field: string,
+        folder: string,
+        setUploading: (v: boolean | number | null) => void,
+        onSuccess: (url: string) => void
+    ) => {
         const file = e.target.files?.[0];
         if (!file) return;
 
-        setUploadingLogo(true);
+        setUploading(true as any);
         try {
-            const result = await uploadToCloudinary(file, 'partners/logos');
+            const result = await uploadToCloudinary(file, folder);
             if (result.success) {
-                setFormData(prev => ({ ...prev, logo: result.url }));
+                onSuccess(result.url);
             } else {
-                setErrors(prev => ({ ...prev, logo: result.error || 'Upload failed' }));
+                setErrors(prev => ({ ...prev, [field]: result.error || 'Upload failed' }));
             }
         } catch (err) {
-            setErrors(prev => ({ ...prev, logo: 'Upload failed' }));
+            setErrors(prev => ({ ...prev, [field]: 'Upload failed' }));
         } finally {
-            setUploadingLogo(false);
+            setUploading(false as any);
+        }
+    }, []);
+
+    // Logo upload handler
+    const handleLogoUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
+        handleImageUpload(e, 'logo', 'partners/logos', (v) => setUploadingLogo(v as boolean), (url) => {
+            setFormData(prev => ({ ...prev, logo: url }));
+        });
+    }, [handleImageUpload]);
+
+    // Background image upload handler
+    const handleBgUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
+        handleImageUpload(e, 'backgroundImage', 'partners/backgrounds', (v) => setUploadingBg(v as boolean), (url) => {
+            setFormData(prev => ({ ...prev, backgroundImage: url }));
+        });
+    }, [handleImageUpload]);
+
+    // Key project image upload handler
+    const handleProjectImageUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        setUploadingProjectImage(index);
+        try {
+            const result = await uploadToCloudinary(file, 'partners/projects');
+            if (result.success) {
+                setFormData(prev => {
+                    const updated = [...prev.keyProjects];
+                    updated[index] = { ...updated[index], image: result.url };
+                    return { ...prev, keyProjects: updated };
+                });
+            }
+        } catch (err) {
+            // silent fail
+        } finally {
+            setUploadingProjectImage(null);
         }
     }, []);
 
@@ -71,13 +117,15 @@ const PartnerEditModal: React.FC<PartnerEditModalProps> = ({
                 descriptionVi: partner.description?.vi || '',
                 descriptionEn: partner.description?.en || '',
                 logo: partner.logo || '',
+                backgroundImage: partner.backgroundImage || '',
                 website: partner.website || '',
                 email: partner.email || '',
                 phone: partner.phone || '',
                 address: partner.address || '',
                 partnerType: partner.partnerType || 'technology',
                 featured: partner.featured || false,
-                skills: partner.skills?.join(', ') || '',
+                services: partner.services?.join(', ') || '',
+                keyProjects: partner.keyProjects || [],
             });
         }
     }, [partner]);
@@ -132,13 +180,15 @@ const PartnerEditModal: React.FC<PartnerEditModalProps> = ({
                     en: formData.descriptionEn || formData.descriptionVi,
                 },
                 logo: formData.logo,
+                backgroundImage: formData.backgroundImage,
                 website: formData.website,
                 email: formData.email,
                 phone: formData.phone,
                 address: formData.address,
                 partnerType: formData.partnerType,
                 featured: formData.featured,
-                skills: formData.skills.split(',').map(s => s.trim()).filter(s => s),
+                services: formData.services.split(',').map(s => s.trim()).filter(s => s),
+                keyProjects: formData.keyProjects,
             };
 
             await onSubmit(partnerData);
@@ -367,19 +417,194 @@ const PartnerEditModal: React.FC<PartnerEditModalProps> = ({
                             </div>
                         </div>
 
-                        {/* Skills */}
+                        {/* Services */}
                         <div>
                             <label className="block text-sm font-medium text-[var(--text-primary)] mb-1">
-                                {language === 'vi' ? 'Kỹ năng (phân cách bằng dấu phẩy)' : 'Skills (comma separated)'}
+                                {language === 'vi' ? 'Dịch vụ (phân cách bằng dấu phẩy)' : 'Services (comma separated)'}
                             </label>
                             <input
                                 type="text"
-                                name="skills"
-                                value={formData.skills}
+                                name="services"
+                                value={formData.services}
                                 onChange={handleChange}
                                 placeholder={language === 'vi' ? 'VD: Concept, Luxury, Fashion' : 'e.g., Concept, Luxury, Fashion'}
                                 className="w-full px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)]"
                             />
+                        </div>
+
+                        {/* Background Image */}
+                        <div>
+                            <label className="block text-sm font-medium text-[var(--text-primary)] mb-1">
+                                {language === 'vi' ? 'Ảnh bìa' : 'Background Image'}
+                            </label>
+                            <div className="flex gap-2">
+                                <input
+                                    type="url"
+                                    name="backgroundImage"
+                                    value={formData.backgroundImage}
+                                    onChange={handleChange}
+                                    placeholder="https://... or upload"
+                                    className="flex-1 px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)]"
+                                />
+                                <label className={`px-4 py-2 bg-[var(--accent-primary)] text-white font-medium rounded-lg cursor-pointer hover:opacity-90 transition-opacity flex items-center gap-2 ${uploadingBg ? 'opacity-50 cursor-not-allowed' : ''}`}>
+                                    {uploadingBg ? (
+                                        <svg className="w-5 h-5 animate-spin" viewBox="0 0 24 24">
+                                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
+                                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                                        </svg>
+                                    ) : (
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                        </svg>
+                                    )}
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        onChange={handleBgUpload}
+                                        disabled={uploadingBg}
+                                        className="hidden"
+                                    />
+                                </label>
+                            </div>
+                            {formData.backgroundImage && (
+                                <div className="mt-2 relative inline-block">
+                                    <div className="w-32 h-20 rounded-lg overflow-hidden bg-[var(--bg-secondary)] border border-[var(--border-primary)]">
+                                        <img src={formData.backgroundImage} alt="Background preview" className="w-full h-full object-cover" />
+                                    </div>
+                                    <button
+                                        type="button"
+                                        onClick={() => setFormData(prev => ({ ...prev, backgroundImage: '' }))}
+                                        className="absolute -top-2 -right-2 p-1 bg-red-500 rounded-full text-white hover:bg-red-600"
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Key Projects */}
+                        <div>
+                            <div className="flex items-center justify-between mb-2">
+                                <label className="block text-sm font-medium text-[var(--text-primary)]">
+                                    {language === 'vi' ? 'Dự án tiêu biểu' : 'Key Projects'}
+                                </label>
+                                <span className="text-xs text-[var(--text-tertiary)]">
+                                    {formData.keyProjects.length}/6
+                                </span>
+                            </div>
+                            <div className="flex flex-col gap-3">
+                                {formData.keyProjects.map((project, idx) => (
+                                    <div key={idx} className="p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg">
+                                        <div className="flex items-start gap-3">
+                                            {/* Project image */}
+                                            <div className="flex-shrink-0">
+                                                {project.image ? (
+                                                    <div className="relative">
+                                                        <div className="w-20 h-20 rounded-lg overflow-hidden border border-[var(--border-primary)]">
+                                                            <img src={project.image} alt="" className="w-full h-full object-cover" />
+                                                        </div>
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => {
+                                                                setFormData(prev => {
+                                                                    const updated = [...prev.keyProjects];
+                                                                    updated[idx] = { ...updated[idx], image: '' };
+                                                                    return { ...prev, keyProjects: updated };
+                                                                });
+                                                            }}
+                                                            className="absolute -top-1 -right-1 p-0.5 bg-red-500 rounded-full text-white hover:bg-red-600"
+                                                        >
+                                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                                                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                ) : (
+                                                    <label className={`w-20 h-20 rounded-lg border-2 border-dashed border-[var(--border-primary)] flex items-center justify-center cursor-pointer hover:border-[var(--accent-primary)] transition-colors ${uploadingProjectImage === idx ? 'opacity-50' : ''}`}>
+                                                        {uploadingProjectImage === idx ? (
+                                                            <svg className="w-5 h-5 animate-spin text-[var(--text-tertiary)]" viewBox="0 0 24 24">
+                                                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
+                                                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                                                            </svg>
+                                                        ) : (
+                                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[var(--text-tertiary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                                            </svg>
+                                                        )}
+                                                        <input
+                                                            type="file"
+                                                            accept="image/*"
+                                                            onChange={(e) => handleProjectImageUpload(e, idx)}
+                                                            disabled={uploadingProjectImage === idx}
+                                                            className="hidden"
+                                                        />
+                                                    </label>
+                                                )}
+                                            </div>
+                                            {/* Project description */}
+                                            <div className="flex-1 space-y-2">
+                                                <input
+                                                    type="text"
+                                                    value={project.description.vi}
+                                                    onChange={(e) => {
+                                                        setFormData(prev => {
+                                                            const updated = [...prev.keyProjects];
+                                                            updated[idx] = { ...updated[idx], description: { ...updated[idx].description, vi: e.target.value } };
+                                                            return { ...prev, keyProjects: updated };
+                                                        });
+                                                    }}
+                                                    placeholder="Mô tả (Tiếng Việt)"
+                                                    className="w-full px-2 py-1.5 text-sm bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)]"
+                                                />
+                                                <input
+                                                    type="text"
+                                                    value={project.description.en}
+                                                    onChange={(e) => {
+                                                        setFormData(prev => {
+                                                            const updated = [...prev.keyProjects];
+                                                            updated[idx] = { ...updated[idx], description: { ...updated[idx].description, en: e.target.value } };
+                                                            return { ...prev, keyProjects: updated };
+                                                        });
+                                                    }}
+                                                    placeholder="Description (English)"
+                                                    className="w-full px-2 py-1.5 text-sm bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)]"
+                                                />
+                                            </div>
+                                            {/* Remove button */}
+                                            <button
+                                                type="button"
+                                                onClick={() => {
+                                                    setFormData(prev => ({
+                                                        ...prev,
+                                                        keyProjects: prev.keyProjects.filter((_, i) => i !== idx)
+                                                    }));
+                                                }}
+                                                className="p-1.5 text-red-400 hover:bg-red-500/10 rounded transition-colors flex-shrink-0"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
+                                {formData.keyProjects.length < 6 && (
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            setFormData(prev => ({
+                                                ...prev,
+                                                keyProjects: [...prev.keyProjects, { image: '', description: { vi: '', en: '' } }]
+                                            }));
+                                        }}
+                                        className="w-full py-2 border-2 border-dashed border-[var(--border-primary)] rounded-lg text-sm text-[var(--text-secondary)] hover:border-[var(--accent-primary)] hover:text-[var(--accent-primary)] transition-colors flex items-center justify-center gap-2"
+                                    >
+                                        <span>+</span> {language === 'vi' ? 'Thêm dự án' : 'Add Project'}
+                                    </button>
+                                )}
+                            </div>
                         </div>
                     </div>
 

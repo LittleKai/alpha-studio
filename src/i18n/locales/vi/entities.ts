@@ -55,7 +55,13 @@ export default {
     enterprise: "Doanh nghiệp",
     startup: "Startup",
     government: "Chính phủ",
-    other: "Khác"
+    other: "Khác",
+    services: "Dịch vụ (phân cách bằng dấu phẩy)",
+    backgroundImage: "Ảnh bìa",
+    keyProjects: "Dự án tiêu biểu",
+    addKeyProject: "Thêm dự án",
+    projectDescription: "Mô tả dự án",
+    maxProjects: "Tối đa 6 dự án"
   },
   job: {
     title: "Tiêu đề công việc",

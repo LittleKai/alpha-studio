@@ -200,11 +200,21 @@ export default {
         submit: "Gửi",
         success: "Đăng ký đã gửi! Chúng tôi sẽ liên hệ sớm."
       },
+      types: {
+        technology: "Công nghệ",
+        education: "Giáo dục",
+        enterprise: "Doanh nghiệp",
+        startup: "Startup",
+        government: "Chính phủ",
+        other: "Khác"
+      },
       details: {
         about: "Giới thiệu",
         services: "Dịch vụ",
         projects: "Dự án tiêu biểu",
-        connect: "Kết nối"
+        connect: "Kết nối",
+        socialLinks: "Mạng xã hội",
+        noProjects: "Chưa có dự án nào được cập nhật."
       }
     },
     profile: {

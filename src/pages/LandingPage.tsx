@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import { useAuth } from '../auth/context';
-import type { FeaturedStudent, PartnerCompany } from '../types';
+import type { FeaturedStudent } from '../types';
 import ThemeSwitcher from '../components/ui/ThemeSwitcher';
 import LanguageSwitcher from '../components/ui/LanguageSwitcher';
 import Login from '../components/ui/Login';
 import { getFeaturedCourses, Course } from '../services/courseService';
+import { getPartners } from '../services/partnerService';
+import type { Partner } from '../services/partnerService';
 
 // Category to gradient color mapping
 const categoryGradients: Record<string, string> = {
@@ -134,93 +136,6 @@ const featuredStudents: FeaturedStudent[] = [
     }
 ];
 
-// Partners data
-const partners: PartnerCompany[] = [
-    {
-        id: "p1",
-        name: "Visionary Events",
-        logo: "✨",
-        type: 'agency',
-        location: 'Hanoi',
-        description: 'Visionary Events is a pioneer in premium event organization in Vietnam. We specialize in fashion shows, product launches and large-scale corporate events.',
-        contact: { email: 'contact@visionary.vn', phone: '0901234567', website: 'visionary.vn' },
-        specialties: ['Luxury Event', 'Fashion Show', 'Brand Launch'],
-        isVerified: true,
-        coverImage: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=1600&h=900&fit=crop",
-        projects: [
-            "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=600&fit=crop"
-        ]
-    },
-    {
-        id: "p2",
-        name: "TechStage Pro",
-        logo: "🔊",
-        type: 'supplier',
-        location: 'Ho Chi Minh City',
-        description: 'TechStage Pro provides comprehensive solutions for audio, lighting and LED screens. We own the most modern equipment system.',
-        contact: { email: 'sales@techstage.com', phone: '0912345678', website: 'techstage.com' },
-        specialties: ['Audio System', 'Lighting', 'LED Matrix', '3D Mapping'],
-        isVerified: true,
-        coverImage: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1600&h=900&fit=crop",
-        projects: [
-            "https://images.unsplash.com/photo-1514525253440-b393452e8d26?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1533174072545-e8d4aa97edf9?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1506157786151-b8491531f43e?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1459749411177-287ce3794512?w=800&h=600&fit=crop"
-        ]
-    },
-    {
-        id: "p3",
-        name: "Alpha Creative",
-        logo: "🧬",
-        type: 'agency',
-        location: 'Da Nang',
-        description: 'Creative Hub focused on Art & Tech. We create interactive experiences, Immersive Art for events and exhibitions.',
-        contact: { email: 'hello@alpha.vn', phone: '0987654321', website: 'alphacreative.vn' },
-        specialties: ['Interactive Art', 'Exhibition', 'AR/VR'],
-        isVerified: true,
-        coverImage: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1600&h=900&fit=crop",
-        projects: [
-            "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop"
-        ]
-    },
-    {
-        id: "p4",
-        name: "Viet Cons",
-        logo: "🔨",
-        type: 'supplier',
-        location: 'Hanoi',
-        description: 'Booth & Stage production workshop. Skilled craftsmen, modern CNC machinery.',
-        contact: { email: 'info@vietcons.vn', phone: '0998877665', website: 'vietcons.vn' },
-        specialties: ['Construction', 'Booth', 'Stage'],
-        isVerified: false,
-        coverImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1600&h=900&fit=crop",
-        projects: [
-            "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&h=600&fit=crop"
-        ]
-    },
-    {
-        id: "p5",
-        name: "Showbiz 360",
-        logo: "🎭",
-        type: 'agency',
-        location: 'Ho Chi Minh City',
-        description: 'Agency specializing in Talent Booking & Performance. Providing professional singers, dance groups, MCs.',
-        contact: { email: 'booking@showbiz360.vn', phone: '0966554433', website: 'showbiz360.vn' },
-        specialties: ['Talent Booking', 'Performance'],
-        isVerified: true,
-        coverImage: "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=1600&h=900&fit=crop",
-        projects: [
-            "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1514525253440-b393452e8d26?w=800&h=600&fit=crop"
-        ]
-    },
-];
 
 const LandingPage: React.FC = () => {
     const { t, language } = useTranslation();
@@ -236,6 +151,10 @@ const LandingPage: React.FC = () => {
     const [courses, setCourses] = useState<Course[]>([]);
     const [coursesLoading, setCoursesLoading] = useState(true);
     const [coursesError, setCoursesError] = useState<string | null>(null);
+
+    // Partners state
+    const [partners, setPartners] = useState<Partner[]>([]);
+    const [partnersLoading, setPartnersLoading] = useState(true);
 
     // Fetch featured courses
     useEffect(() => {
@@ -253,6 +172,22 @@ const LandingPage: React.FC = () => {
             }
         };
         loadCourses();
+    }, []);
+
+    // Fetch featured partners
+    useEffect(() => {
+        const loadPartners = async () => {
+            try {
+                setPartnersLoading(true);
+                const response = await getPartners({ featured: true, status: 'published', limit: 10, sort: 'order' });
+                setPartners(response.data);
+            } catch (err) {
+                console.error('Failed to fetch partners:', err);
+            } finally {
+                setPartnersLoading(false);
+            }
+        };
+        loadPartners();
     }, []);
 
     // Helper to get localized text
@@ -699,26 +634,40 @@ const LandingPage: React.FC = () => {
                             </button>
                         </div>
                         <div className="md:w-2/3">
-                            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                                {partners.map((partner, idx) => (
-                                    <Link
-                                        key={idx}
-                                        to={`/partners/${partner.id}`}
-                                        className="relative group cursor-pointer aspect-square rounded-2xl overflow-hidden border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-all duration-300"
-                                    >
-                                        <div className="absolute inset-0">
-                                            <img src={partner.coverImage || "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=400&fit=crop"} alt={partner.name} className="w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent"></div>
-                                        </div>
-                                        <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center z-10">
-                                            <div className="w-12 h-12 rounded-xl bg-[var(--bg-tertiary)]/50 backdrop-blur-md flex items-center justify-center text-2xl mb-2 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                                {partner.logo}
+                            {partnersLoading ? (
+                                <div className="flex items-center justify-center py-12">
+                                    <div className="w-8 h-8 border-4 border-[var(--accent-primary)]/30 border-t-[var(--accent-primary)] rounded-full animate-spin"></div>
+                                </div>
+                            ) : partners.length === 0 ? (
+                                <div className="text-center py-12 text-[var(--text-tertiary)] text-sm">
+                                    {language === 'vi' ? 'Chưa có đối tác nào' : 'No partners yet'}
+                                </div>
+                            ) : (
+                                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                                    {partners.map((partner) => (
+                                        <Link
+                                            key={partner._id}
+                                            to={`/partners/${partner.slug}`}
+                                            className="relative group cursor-pointer aspect-square rounded-2xl overflow-hidden border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-all duration-300"
+                                        >
+                                            <div className="absolute inset-0">
+                                                <img src={partner.backgroundImage || partner.logo || "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=400&fit=crop"} alt={partner.companyName} className="w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent"></div>
                                             </div>
-                                            <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors line-clamp-2">{partner.name}</span>
-                                        </div>
-                                    </Link>
-                                ))}
-                            </div>
+                                            <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center z-10">
+                                                <div className="w-12 h-12 rounded-xl bg-[var(--bg-tertiary)]/50 backdrop-blur-md flex items-center justify-center mb-2 shadow-lg group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+                                                    {partner.logo && partner.logo.startsWith('http') ? (
+                                                        <img src={partner.logo} alt={partner.companyName} className="w-full h-full object-contain p-1" />
+                                                    ) : (
+                                                        <span className="text-2xl">{partner.logo || '🤝'}</span>
+                                                    )}
+                                                </div>
+                                                <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors line-clamp-2">{partner.companyName}</span>
+                                            </div>
+                                        </Link>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

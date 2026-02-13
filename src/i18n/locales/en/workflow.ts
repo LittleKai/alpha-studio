@@ -200,11 +200,21 @@ export default {
         submit: "Submit",
         success: "Registration sent! We will contact you soon."
       },
+      types: {
+        technology: "Technology",
+        education: "Education",
+        enterprise: "Enterprise",
+        startup: "Startup",
+        government: "Government",
+        other: "Other"
+      },
       details: {
         about: "About",
         services: "Services",
         projects: "Key Projects",
-        connect: "Connect"
+        connect: "Connect",
+        socialLinks: "Social Links",
+        noProjects: "No projects have been updated yet."
       }
     },
     profile: {

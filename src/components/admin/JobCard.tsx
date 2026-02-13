@@ -90,7 +90,7 @@ const JobCard: React.FC<JobCardProps> = ({
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm text-[var(--text-secondary)] line-clamp-2 mb-4">
+                <p className="text-sm text-[var(--text-secondary)] line-clamp-2 mb-4 whitespace-pre-line">
                     {description || t('admin.jobs.noDescription')}
                 </p>
 

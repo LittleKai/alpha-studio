@@ -269,8 +269,16 @@ const PartnersView: React.FC<PartnersViewProps> = ({ searchQuery }) => {
                             return (
                                 <div
                                     key={partner._id}
-                                    className="bg-[var(--bg-card)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] rounded-2xl p-6 transition-all shadow-lg hover:shadow-[0_0_20px_rgba(0,0,0,0.3)] group relative overflow-hidden flex flex-col"
+                                    className="bg-[var(--bg-card)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] rounded-2xl transition-all shadow-lg hover:shadow-[0_0_20px_rgba(0,0,0,0.3)] group relative overflow-hidden flex flex-col"
                                 >
+                                    {/* Background Image */}
+                                    {partner.backgroundImage && (
+                                        <div className="h-32 w-full overflow-hidden relative">
+                                            <img src={partner.backgroundImage} alt="" className="w-full h-full object-cover" />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card)] to-transparent"></div>
+                                        </div>
+                                    )}
+                                    <div className={`p-6 flex flex-col flex-1 ${partner.backgroundImage ? '-mt-8 relative z-10' : ''}`}>
                                     {/* Header */}
                                     <div className="flex justify-between items-start mb-4">
                                         <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[var(--bg-secondary)] to-[var(--bg-primary)] flex items-center justify-center text-4xl shadow-inner border border-[var(--border-primary)] overflow-hidden">
@@ -311,19 +319,19 @@ const PartnersView: React.FC<PartnersViewProps> = ({ searchQuery }) => {
                                     </p>
 
                                     {/* Description */}
-                                    <p className="text-sm text-[var(--text-secondary)] mb-4 line-clamp-3 flex-grow">
+                                    <p className="text-sm text-[var(--text-secondary)] mb-4 line-clamp-3 flex-grow whitespace-pre-line">
                                         {getLocalizedText(partner.description)}
                                     </p>
 
-                                    {/* Skills Tags */}
+                                    {/* Services Tags */}
                                     <div className="flex flex-wrap gap-2 mb-6">
-                                        {partner.skills && partner.skills.length > 0 ? (
-                                            partner.skills.slice(0, 4).map((skill) => (
+                                        {partner.services && partner.services.length > 0 ? (
+                                            partner.services.slice(0, 4).map((service) => (
                                                 <span
-                                                    key={skill}
+                                                    key={service}
                                                     className="text-[10px] bg-[var(--bg-secondary)] text-[var(--text-secondary)] px-2 py-1 rounded border border-[var(--border-primary)]"
                                                 >
-                                                    #{skill}
+                                                    #{service}
                                                 </span>
                                             ))
                                         ) : (
@@ -331,9 +339,9 @@ const PartnersView: React.FC<PartnersViewProps> = ({ searchQuery }) => {
                                                 #{partner.partnerType}
                                             </span>
                                         )}
-                                        {partner.skills && partner.skills.length > 4 && (
+                                        {partner.services && partner.services.length > 4 && (
                                             <span className="text-[10px] text-[var(--text-tertiary)] px-2 py-1">
-                                                +{partner.skills.length - 4}
+                                                +{partner.services.length - 4}
                                             </span>
                                         )}
                                     </div>
@@ -412,6 +420,7 @@ const PartnersView: React.FC<PartnersViewProps> = ({ searchQuery }) => {
                                             </button>
                                         </div>
                                     )}
+                                    </div>
                                 </div>
                             );
                         })
