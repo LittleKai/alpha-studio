@@ -290,15 +290,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess, onClose }) => {
             </button>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-[var(--border-primary)]">
-            <p className="text-center text-xs text-[var(--text-tertiary)]">
-              {t('login.demoCredentials') || 'Demo credentials:'}
-            </p>
-            <div className="mt-2 text-center text-xs text-[var(--text-tertiary)] space-y-1">
-              <p>Admin: admin@alphastudio.com / admin123456</p>
-              <p>Student: student@example.com / student123</p>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>

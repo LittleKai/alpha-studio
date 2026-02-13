@@ -1,45 +1,40 @@
-# 2026-02-13: Dynamic Partner Detail Page (API-powered)
+# 2026-02-13: Dynamic Partner Detail Page + Change Password + Social Links
 
 ## Summary
-Rewrote the partner detail page to fetch data from the API instead of using static hardcoded data. Updated the viewer component to display all new API fields including localized descriptions, key projects with captions, and social links.
+1. Rewrote partner detail page to fetch from API instead of static data
+2. Added Change Password section to ProfilePage
+3. Replaced Behance with TikTok, added Facebook to social links across all components
+4. Fixed whitespace-pre-line for description rendering in 7 components
 
 ## Files Modified
 
-### `src/pages/PartnerPage.tsx`
-- Removed static `staticPartners` array and `PartnerCompany` import
-- Imported `getPartnerBySlug` from `partnerService` and `Partner` type
-- Fetches partner dynamically via `getPartnerBySlug(id)` in a `useEffect`
-- Handles loading, error, and not-found states
+### Partner Detail Page
+- **`src/pages/PartnerPage.tsx`** - Removed static data, fetches via `getPartnerBySlug()`
+- **`src/components/viewers/PartnerProfileViewer.tsx`** - Uses API `Partner` type with localized descriptions, keyProjects, socialLinks
 
-### `src/components/viewers/PartnerProfileViewer.tsx`
-- Changed props from `PartnerCompany` to API `Partner` type
-- Field mapping changes:
-  - `partner.name` → `partner.companyName`
-  - `partner.coverImage` → `partner.backgroundImage`
-  - `partner.description` (string) → `partner.description[language]` (localized)
-  - `partner.type` → `partner.partnerType` (with i18n label lookup)
-  - `partner.location` → `partner.address`
-  - `partner.specialties` → `partner.services`
-  - `partner.isVerified` → `partner.featured`
-  - `partner.contact.email/phone/website` → `partner.email`, `partner.phone`, `partner.website`
-  - `partner.projects` (string[]) → `partner.keyProjects` (array with image + localized description)
-- Logo now supports image URLs (`<img>`) or emoji/text fallback
-- New Key Projects section: shows project image + localized description caption
-- New Social Links section: Facebook, LinkedIn, Twitter icons
-- Uses `language` from `useTranslation()` to pick localized content
+### Change Password
+- **`src/pages/ProfilePage.tsx`** - Added collapsible Change Password section with current/new/confirm fields, calls `PUT /auth/password`
 
-### `src/i18n/locales/en/workflow.ts`
-- Added `partners.types.*`: technology, education, enterprise, startup, government, other
-- Added `partners.details.socialLinks` and `partners.details.noProjects`
+### Social Links (Behance → TikTok + Facebook added)
+- **`alpha-studio-backend/server/models/User.js`** - socials: `{facebook, linkedin, tiktok, github}`
+- **`src/auth/context.tsx`** - Updated User and ProfileUpdateData types
+- **`src/types.ts`** - Updated UserProfile and FeaturedStudent socials types
+- **`src/pages/ProfilePage.tsx`** - Social links inputs: Facebook, LinkedIn, TikTok, GitHub
+- **`src/components/modals/ProfileEditModal.tsx`** - Social links display: Facebook, LinkedIn, TikTok, GitHub
+- **`src/components/viewers/StudentProfileViewer.tsx`** - Social icons: Fb, in, Tk
+- **`src/components/modals/StudentProfileModal.tsx`** - Social link buttons
+- **`src/pages/LandingPage.tsx`** - Static student data updated
+- **`src/pages/StudentPage.tsx`** - Static student data updated
 
-### `src/i18n/locales/vi/workflow.ts`
-- Added `partners.types.*`: Corresponding Vietnamese translations
-- Added `partners.details.socialLinks` ("Mạng xã hội") and `partners.details.noProjects`
+### Whitespace fix
+- Added `whitespace-pre-line` to description rendering in: PartnerProfileViewer, PartnersView, JobsView, JobCard (admin), StudentProfileViewer, CourseViewer
+
+### i18n
+- **`src/i18n/locales/en/common.ts`** - Added `profile.password.*` translations
+- **`src/i18n/locales/vi/common.ts`** - Added `profile.password.*` translations
+- **`src/i18n/locales/en/workflow.ts`** - Added `partners.types.*`, `details.socialLinks`, `details.noProjects`
+- **`src/i18n/locales/vi/workflow.ts`** - Same keys in Vietnamese
 
 ## Breaking Changes
-- `PartnerProfileViewer` no longer accepts `PartnerCompany` type — now requires API `Partner` type
-- `PartnerPage` no longer has static data — requires backend API to be running
-
-## Notes
-- The route param is still called `id` but accepts slugs (e.g., `/partners/visionary-events`)
-- The old `PartnerCompany` type in `types.ts` is no longer used by these files but kept for potential other references
+- `PartnerProfileViewer` now requires API `Partner` type (not `PartnerCompany`)
+- User socials schema changed: `behance` removed, `facebook` and `tiktok` added

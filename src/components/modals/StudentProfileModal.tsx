@@ -135,15 +135,15 @@ const StudentProfileModal: React.FC<StudentProfileModalProps> = ({ student, onCl
 
             {/* Social Links */}
             {student.socials && (
-              <div className="mt-6 flex gap-3">
-                {student.socials.behance && (
+              <div className="mt-6 flex flex-wrap gap-3">
+                {student.socials.facebook && (
                   <a
-                    href={student.socials.behance}
+                    href={student.socials.facebook}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 bg-[#1769ff]/20 text-[#1769ff] rounded-lg hover:bg-[#1769ff]/30 transition-colors text-sm font-medium"
+                    className="px-4 py-2 bg-[#1877f2]/20 text-[#1877f2] rounded-lg hover:bg-[#1877f2]/30 transition-colors text-sm font-medium"
                   >
-                    Behance
+                    Facebook
                   </a>
                 )}
                 {student.socials.linkedin && (
@@ -156,6 +156,17 @@ const StudentProfileModal: React.FC<StudentProfileModalProps> = ({ student, onCl
                     LinkedIn
                   </a>
                 )}
+                {student.socials.custom?.map((link, idx) => (
+                  <a
+                    key={idx}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 bg-purple-500/20 text-purple-400 rounded-lg hover:bg-purple-500/30 transition-colors text-sm font-medium"
+                  >
+                    {link.label}
+                  </a>
+                ))}
               </div>
             )}
           </div>

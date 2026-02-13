@@ -182,9 +182,10 @@ export interface UserProfile {
   showBirthDate?: boolean;
   location?: string;
   socials?: {
+    facebook?: string;
     linkedin?: string;
-    behance?: string;
     github?: string;
+    custom?: { label: string; url: string }[];
   };
 }
 
@@ -199,8 +200,9 @@ export interface FeaturedStudent {
   skills?: string[];
   gallery?: string[];
   socials?: {
-    behance?: string;
+    facebook?: string;
     linkedin?: string;
+    custom?: { label: string; url: string }[];
   }
 }
 

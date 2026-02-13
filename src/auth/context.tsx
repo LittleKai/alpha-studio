@@ -26,9 +26,10 @@ export interface User {
     birthDate?: string;
     showBirthDate?: boolean;
     socials?: {
+        facebook?: string;
         linkedin?: string;
-        behance?: string;
         github?: string;
+        custom?: { label: string; url: string }[];
     };
     featuredWorks?: {
         image: string;
@@ -72,9 +73,10 @@ interface ProfileUpdateData {
     birthDate?: string;
     showBirthDate?: boolean;
     socials?: {
+        facebook?: string;
         linkedin?: string;
-        behance?: string;
         github?: string;
+        custom?: { label: string; url: string }[];
     };
     featuredWorks?: {
         image: string;

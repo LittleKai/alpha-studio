@@ -20,7 +20,7 @@ const staticStudents: FeaturedStudent[] = [
             "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=600&fit=crop",
             "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800&h=600&fit=crop"
         ],
-        socials: { behance: "#", linkedin: "#" }
+        socials: { facebook: "#", linkedin: "#" }
     },
     {
         id: "s2",
@@ -37,7 +37,7 @@ const staticStudents: FeaturedStudent[] = [
             "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&h=600&fit=crop",
             "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop"
         ],
-        socials: { behance: "#" }
+        socials: { facebook: "#" }
     },
     {
         id: "s3",
@@ -86,7 +86,7 @@ const staticStudents: FeaturedStudent[] = [
             "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&h=600&fit=crop",
             "https://images.unsplash.com/photo-1490481651871-32d2e76f897d?w=800&h=600&fit=crop"
         ],
-        socials: { behance: "#" }
+        socials: { facebook: "#" }
     },
     {
         id: "s6",

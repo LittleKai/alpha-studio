@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import { useAuth } from '../auth/context';
 import { uploadToCloudinary } from '../services/cloudinaryService';
+import ChangePasswordModal from '../components/modals/ChangePasswordModal';
 
 interface FeaturedWork {
     image: string;
@@ -165,9 +166,10 @@ const ProfilePage: React.FC = () => {
         showBirthDate: user?.showBirthDate || false,
         skills: user?.skills || [],
         socials: {
+            facebook: user?.socials?.facebook || '',
             linkedin: user?.socials?.linkedin || '',
-            behance: user?.socials?.behance || '',
-            github: user?.socials?.github || ''
+            github: user?.socials?.github || '',
+            custom: (user?.socials?.custom || []) as { label: string; url: string }[]
         }
     });
 
@@ -180,6 +182,9 @@ const ProfilePage: React.FC = () => {
 
     const [newSkill, setNewSkill] = useState('');
     const [isSaving, setIsSaving] = useState(false);
+
+    // Change password modal
+    const [showPasswordModal, setShowPasswordModal] = useState(false);
     const [uploadingAvatar, setUploadingAvatar] = useState(false);
     const [uploadingBackground, setUploadingBackground] = useState(false);
     const [uploadingWorkImage, setUploadingWorkImage] = useState(false);
@@ -414,6 +419,16 @@ const ProfilePage: React.FC = () => {
                                 <BriefcaseIcon />
                                 {user?.role === 'student' ? 'Student' : user?.role === 'partner' ? 'Partner' : 'Admin'}
                             </p>
+                            <button
+                                onClick={() => setShowPasswordModal(true)}
+                                className="mt-3 flex items-center gap-2 px-3 py-1.5 bg-gray-700/50 border border-gray-600 rounded-lg text-gray-300 hover:border-purple-500 hover:text-purple-400 transition-colors text-sm group"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400 group-hover:text-purple-400 transition-colors">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                                {t('profile.password.title')}
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -612,6 +627,19 @@ const ProfilePage: React.FC = () => {
                     </h2>
                     <div className="space-y-4">
                         <div>
+                            <label className="block text-sm text-gray-400 mb-2">Facebook</label>
+                            <input
+                                type="url"
+                                value={formData.socials.facebook}
+                                onChange={(e) => setFormData(prev => ({
+                                    ...prev,
+                                    socials: { ...prev.socials, facebook: e.target.value }
+                                }))}
+                                placeholder="https://facebook.com/username"
+                                className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:border-purple-500 outline-none"
+                            />
+                        </div>
+                        <div>
                             <label className="block text-sm text-gray-400 mb-2">LinkedIn</label>
                             <input
                                 type="url"
@@ -621,19 +649,6 @@ const ProfilePage: React.FC = () => {
                                     socials: { ...prev.socials, linkedin: e.target.value }
                                 }))}
                                 placeholder="https://linkedin.com/in/username"
-                                className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:border-purple-500 outline-none"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm text-gray-400 mb-2">Behance</label>
-                            <input
-                                type="url"
-                                value={formData.socials.behance}
-                                onChange={(e) => setFormData(prev => ({
-                                    ...prev,
-                                    socials: { ...prev.socials, behance: e.target.value }
-                                }))}
-                                placeholder="https://behance.net/username"
                                 className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:border-purple-500 outline-none"
                             />
                         </div>
@@ -650,8 +665,88 @@ const ProfilePage: React.FC = () => {
                                 className="w-full bg-gray-700/50 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:border-purple-500 outline-none"
                             />
                         </div>
+
+                        {/* Custom Social Links */}
+                        <div className="border-t border-gray-700 pt-4">
+                            <div className="flex items-center justify-between mb-3">
+                                <label className="block text-sm text-gray-400">
+                                    {t('profile.customLinks', 'Liên kết khác')}
+                                    <span className="text-gray-500 ml-1">({formData.socials.custom.length}/3)</span>
+                                </label>
+                                {formData.socials.custom.length < 3 && (
+                                    <button
+                                        type="button"
+                                        onClick={() => setFormData(prev => ({
+                                            ...prev,
+                                            socials: {
+                                                ...prev.socials,
+                                                custom: [...prev.socials.custom, { label: '', url: '' }]
+                                            }
+                                        }))}
+                                        className="flex items-center gap-1.5 px-3 py-1.5 text-sm bg-purple-600/20 border border-purple-500/30 rounded-lg text-purple-400 hover:bg-purple-600/30 transition-colors"
+                                    >
+                                        <PlusIcon />
+                                        {t('profile.addLink', 'Thêm liên kết')}
+                                    </button>
+                                )}
+                            </div>
+                            <div className="space-y-3">
+                                {formData.socials.custom.map((link, idx) => (
+                                    <div key={idx} className="flex gap-2 items-start">
+                                        <input
+                                            type="text"
+                                            value={link.label}
+                                            onChange={(e) => {
+                                                const updated = [...formData.socials.custom];
+                                                updated[idx] = { ...updated[idx], label: e.target.value };
+                                                setFormData(prev => ({
+                                                    ...prev,
+                                                    socials: { ...prev.socials, custom: updated }
+                                                }));
+                                            }}
+                                            placeholder={t('profile.linkLabel', 'Tên (VD: TikTok, Behance...)')}
+                                            className="w-1/3 bg-gray-700/50 border border-gray-600 rounded-lg px-3 py-2.5 text-white placeholder-gray-500 focus:border-purple-500 outline-none text-sm"
+                                        />
+                                        <input
+                                            type="url"
+                                            value={link.url}
+                                            onChange={(e) => {
+                                                const updated = [...formData.socials.custom];
+                                                updated[idx] = { ...updated[idx], url: e.target.value };
+                                                setFormData(prev => ({
+                                                    ...prev,
+                                                    socials: { ...prev.socials, custom: updated }
+                                                }));
+                                            }}
+                                            placeholder="https://..."
+                                            className="flex-1 bg-gray-700/50 border border-gray-600 rounded-lg px-3 py-2.5 text-white placeholder-gray-500 focus:border-purple-500 outline-none text-sm"
+                                        />
+                                        <button
+                                            type="button"
+                                            onClick={() => {
+                                                setFormData(prev => ({
+                                                    ...prev,
+                                                    socials: {
+                                                        ...prev.socials,
+                                                        custom: prev.socials.custom.filter((_, i) => i !== idx)
+                                                    }
+                                                }));
+                                            }}
+                                            className="p-2.5 text-gray-500 hover:text-red-400 transition-colors flex-shrink-0"
+                                        >
+                                            <TrashIcon />
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                {/* Change Password Modal */}
+                {showPasswordModal && (
+                    <ChangePasswordModal onClose={() => setShowPasswordModal(false)} />
+                )}
 
                 {/* Featured Works */}
                 <div className="bg-gray-800/50 rounded-2xl p-6 border border-gray-700">

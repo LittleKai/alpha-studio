@@ -1,5 +1,5 @@
 # Project Summary
-**Last Updated:** 2026-02-13 (Dynamic Partner Detail Page - API-powered)
+**Last Updated:** 2026-02-13 (Change Password Modal + Email Verification)
 **Updated By:** Claude Code
 
 ---
@@ -302,14 +302,14 @@ App.tsx
 
 ## 7. Recent Changes (Last 3 Sessions)
 
-1. **2026-02-13** - Dynamic Partner Detail Page (API-powered)
-   - Rewrote PartnerPage.tsx: removed static data, fetches from API via `getPartnerBySlug()`
-   - Rewrote PartnerProfileViewer.tsx: uses API `Partner` type from partnerService.ts
-   - Field mapping: companyName, backgroundImage, services, keyProjects, socialLinks, localized description
-   - New sections: Key Projects with localized captions, Social Links (Facebook/LinkedIn/Twitter)
-   - Logo now supports image URLs (shows `<img>`) or emoji fallback
-   - Added i18n keys: `workflow.partners.types.*` (6 partner types), `details.socialLinks`, `details.noProjects`
-   - Updated both vi/workflow.ts and en/workflow.ts
+1. **2026-02-13** - Change Password Modal + Email Verification + Social Links + Partner Detail
+   - Created ChangePasswordModal.tsx: multi-step dialog (enter passwords → send verification code → enter code → confirm)
+   - Backend: Added nodemailer, email utility (server/utils/email.js), send-password-code route, verification code fields in User model
+   - ProfilePage.tsx: replaced collapsible password section with button that opens modal
+   - Social links: custom links support (max 3), removed TikTok/Behance, added Facebook
+   - Rewrote PartnerPage.tsx + PartnerProfileViewer.tsx for API-powered partner detail
+   - Added i18n: `profile.password.*` (vi+en) with verification code flow keys
+   - Fixed whitespace-pre-line for description rendering in 7 components
 
 2. **2026-02-12** - About & Services Pages + Admin Restructure + TinyMCE
    - Created AboutPage.tsx, AboutDetailPage.tsx for /about route

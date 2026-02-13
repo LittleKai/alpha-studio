@@ -51,9 +51,9 @@ const StudentProfileViewer: React.FC<StudentProfileViewerProps> = ({ student, on
                                 {t('workflow.profile.hire')}
                             </button>
                             <div className="flex justify-center gap-4 pt-2">
-                                {student.socials?.behance && (
-                                    <a href={student.socials.behance} target="_blank" rel="noreferrer" className="p-2 bg-[var(--bg-secondary)] rounded-full hover:bg-[var(--accent-primary)] hover:text-black transition-colors">
-                                        <span className="font-bold text-xs">Be</span>
+                                {student.socials?.facebook && (
+                                    <a href={student.socials.facebook} target="_blank" rel="noreferrer" className="p-2 bg-[var(--bg-secondary)] rounded-full hover:bg-[var(--accent-primary)] hover:text-black transition-colors">
+                                        <span className="font-bold text-xs">Fb</span>
                                     </a>
                                 )}
                                 {student.socials?.linkedin && (
@@ -61,6 +61,11 @@ const StudentProfileViewer: React.FC<StudentProfileViewerProps> = ({ student, on
                                         <span className="font-bold text-xs">in</span>
                                     </a>
                                 )}
+                                {student.socials?.custom?.map((link, idx) => (
+                                    <a key={idx} href={link.url} target="_blank" rel="noreferrer" className="p-2 bg-[var(--bg-secondary)] rounded-full hover:bg-[var(--accent-primary)] hover:text-black transition-colors">
+                                        <span className="font-bold text-xs">{link.label.slice(0, 2)}</span>
+                                    </a>
+                                ))}
                             </div>
                         </div>
                     </div>

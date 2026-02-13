@@ -347,12 +347,25 @@ const ProfileEditModal: React.FC<ProfileEditModalProps> = ({ isOpen, onClose }) 
                     )}
 
                     {/* Social Links */}
-                    {user?.socials && (user.socials.linkedin || user.socials.behance || user.socials.github) && (
+                    {user?.socials && (user.socials.facebook || user.socials.linkedin || user.socials.github || (user.socials.custom && user.socials.custom.length > 0)) && (
                         <div className="mb-6">
                             <h3 className="text-sm font-semibold text-gray-400 mb-3 uppercase tracking-wider">
                                 {language === 'vi' ? 'Liên kết' : 'Links'}
                             </h3>
                             <div className="flex flex-wrap gap-2">
+                                {user.socials.facebook && (
+                                    <a
+                                        href={user.socials.facebook}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-2 px-4 py-2 bg-[#1877f2]/20 text-[#1877f2] rounded-lg hover:bg-[#1877f2]/30 transition-colors text-sm font-medium"
+                                    >
+                                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                        </svg>
+                                        Facebook
+                                    </a>
+                                )}
                                 {user.socials.linkedin && (
                                     <a
                                         href={user.socials.linkedin}
@@ -364,19 +377,6 @@ const ProfileEditModal: React.FC<ProfileEditModalProps> = ({ isOpen, onClose }) 
                                             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                                         </svg>
                                         LinkedIn
-                                    </a>
-                                )}
-                                {user.socials.behance && (
-                                    <a
-                                        href={user.socials.behance}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center gap-2 px-4 py-2 bg-[#1769ff]/20 text-[#1769ff] rounded-lg hover:bg-[#1769ff]/30 transition-colors text-sm font-medium"
-                                    >
-                                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M6.938 4.503c.702 0 1.34.06 1.92.188.577.13 1.07.33 1.485.61.41.28.733.65.96 1.12.225.47.34 1.05.34 1.73 0 .74-.17 1.36-.507 1.86-.338.5-.837.9-1.502 1.22.906.26 1.576.72 2.022 1.37.448.66.665 1.45.665 2.36 0 .75-.13 1.39-.41 1.93-.28.55-.67 1-1.16 1.35-.48.348-1.05.6-1.67.767-.61.165-1.252.254-1.91.254H0V4.51h6.938v-.007zM6.545 10.51c.6 0 1.09-.15 1.47-.45.38-.3.56-.73.56-1.29 0-.31-.05-.57-.16-.78-.11-.21-.26-.38-.46-.52-.2-.14-.432-.24-.692-.3-.26-.058-.55-.09-.868-.09H3.41v3.44h3.135zm.162 5.394c.35 0 .68-.033 1-.1.314-.067.59-.18.825-.34.236-.16.423-.38.56-.66.14-.28.21-.64.21-1.08 0-.83-.23-1.43-.697-1.8-.465-.37-1.084-.55-1.86-.55H3.41v4.53h3.296zM16.3 17.9c-.51.47-1.26.71-2.23.71-.64 0-1.19-.12-1.65-.36-.46-.24-.82-.56-1.08-.95-.26-.39-.44-.83-.55-1.31-.1-.47-.15-.97-.15-1.48s.055-.99.166-1.46c.11-.47.295-.9.54-1.28.248-.38.564-.68.95-.9.39-.22.86-.33 1.42-.33.68 0 1.24.14 1.68.44.44.29.795.67 1.06 1.13.266.46.45.99.55 1.59.1.6.125 1.22.08 1.86h-5.74c-.02.66.164 1.18.55 1.55.387.37.89.55 1.51.55.47 0 .86-.12 1.17-.36.31-.24.52-.55.63-.93h2.36c-.22.9-.65 1.59-1.28 2.06zm-1.94-6.7c-.29-.3-.72-.45-1.28-.45-.38 0-.69.06-.94.19-.24.13-.44.3-.58.5-.14.21-.24.44-.3.69-.05.25-.08.5-.09.75h4.13c-.05-.59-.23-1.06-.52-1.37l-.42-.31zM15.47 6.1h4.42v1.52h-4.42V6.1z"/>
-                                        </svg>
-                                        Behance
                                     </a>
                                 )}
                                 {user.socials.github && (
@@ -392,6 +392,18 @@ const ProfileEditModal: React.FC<ProfileEditModalProps> = ({ isOpen, onClose }) 
                                         GitHub
                                     </a>
                                 )}
+                                {user.socials.custom?.map((link, idx) => (
+                                    <a
+                                        key={idx}
+                                        href={link.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-2 px-4 py-2 bg-purple-500/20 text-purple-400 rounded-lg hover:bg-purple-500/30 transition-colors text-sm font-medium"
+                                    >
+                                        <ExternalLinkIcon />
+                                        {link.label}
+                                    </a>
+                                ))}
                             </div>
                         </div>
                     )}
