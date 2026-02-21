@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from '../../i18n/context';
 import { useAuth } from '../../auth/context';
 import type { WorkflowDocument, DepartmentType, Transaction, AutomationRule, AffiliateStats, TeamMember, Comment, Project, Task } from '../../types';
@@ -38,8 +38,8 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
   // partnerFilter moved to PartnersView component
 
   // Collaboration State
-  const [_activeDocForChat, setActiveDocForChat] = useState<WorkflowDocument | null>(null);
-  const [_chatMessage, _setChatMessage] = useState('');
+  const [activeDocForComment, setActiveDocForComment] = useState<WorkflowDocument | null>(null);
+  const [docComment, setDocComment] = useState('');
   const [showMemberSelect, setShowMemberSelect] = useState(false);
 
   // Project Hub State
@@ -59,7 +59,16 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
   const [showProjectModal, setShowProjectModal] = useState(false);
 
   // New Project Data
-  const [newProjectData, setNewProjectData] = useState({ name: '', description: '', department: 'event_planner' as DepartmentType, client: '', budget: 0 });
+  const [newProjectData, setNewProjectData] = useState({ name: '', description: '', department: 'event_planner' as DepartmentType, client: '', budget: 0, deadline: '' });
+
+  // Expense Form State
+  const [newExpense, setNewExpense] = useState({ name: '', amount: '' });
+
+  // Expense log per project: projectId → entries
+  const [expenseLog, setExpenseLog] = useState<Record<string, { id: string; name: string; amount: number; date: string }[]>>({});
+
+  // Chat auto-scroll
+  const chatEndRef = useRef<HTMLDivElement>(null);
 
   // Mock Available Users for Collaboration
   const availableUsers: TeamMember[] = [
@@ -147,7 +156,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
           department: newProjectData.department,
           status: 'planning',
           startDate: new Date().toISOString().split('T')[0],
-          deadline: 'TBD',
+          deadline: newProjectData.deadline || 'TBD',
           budget: Number(newProjectData.budget),
           expenses: 0,
           team: [{ id: 'me', name: userProfile.name, role: userProfile.role, avatar: 'https://ui-avatars.com/api/?name=Me', isExternal: false }],
@@ -175,7 +184,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       onAddDocument(projectDoc);
 
       setShowProjectModal(false);
-      setNewProjectData({ name: '', description: '', department: 'event_planner', client: '', budget: 0 });
+      setNewProjectData({ name: '', description: '', department: 'event_planner', client: '', budget: 0, deadline: '' });
       alert(t('workflow.dashboard.project.success'));
   };
 
@@ -185,7 +194,34 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
   const toggleAutomation = (id: string) => { setAutomations(prev => prev.map(a => a.id === id ? { ...a, isActive: !a.isActive } : a)); };
   const copyToClipboard = (text: string) => { navigator.clipboard.writeText(text); alert(t('workflow.affiliate.copied')); };
 
-  const handleOpenChat = (doc: WorkflowDocument) => { setActiveDocForChat(doc); };
+  const handleOpenChat = (doc: WorkflowDocument) => { setActiveDocForComment(doc); };
+
+  const handleChangeDocStatus = (docId: string, newStatus: 'approved' | 'rejected' | 'pending') => {
+      setInternalDocuments(prev => prev.map(d => d.id === docId ? { ...d, status: newStatus } : d));
+      setActiveDocForComment(prev => prev?.id === docId ? { ...prev, status: newStatus } : prev);
+  };
+
+  const handleDeleteDoc = (docId: string) => {
+      if (!confirm(t('workflow.dashboard.docPanel.confirmDelete'))) return;
+      setInternalDocuments(prev => prev.filter(d => d.id !== docId));
+      if (activeDocForComment?.id === docId) setActiveDocForComment(null);
+  };
+
+  const handleAddDocComment = (e: React.FormEvent) => {
+      e.preventDefault();
+      if (!docComment.trim() || !activeDocForComment) return;
+      const newComment: Comment = {
+          id: `cmt-${Date.now()}`,
+          author: userProfile.name,
+          text: docComment.trim(),
+          timestamp: new Date().toLocaleTimeString()
+      };
+      setInternalDocuments(prev => prev.map(d => d.id === activeDocForComment.id ? {
+          ...d, comments: [...(d.comments || []), newComment]
+      } : d));
+      setActiveDocForComment(prev => prev ? { ...prev, comments: [...(prev.comments || []), newComment] } : null);
+      setDocComment('');
+  };
 
   const handleAddMemberToProject = (user: TeamMember) => {
       if (!selectedProject) return;
@@ -278,7 +314,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
 
   const handleCreateTask = () => {
       if (!newTaskData.title || !newTaskData.assigneeId) {
-          alert("Vui lòng điền đủ thông tin nhiệm vụ.");
+          alert(t('workflow.dashboard.project.tasks.modal.fillRequired'));
           return;
       }
 
@@ -327,6 +363,61 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       setShowTaskModal(true);
   };
 
+  const handleAddExpense = () => {
+      if (!newExpense.name.trim() || !newExpense.amount || !selectedProject) return;
+      const cost = Number(newExpense.amount);
+      if (isNaN(cost) || cost <= 0) return;
+      const entry = { id: `exp-${Date.now()}`, name: newExpense.name.trim(), amount: cost, date: new Date().toISOString().split('T')[0] };
+      setExpenseLog(prev => ({ ...prev, [selectedProject.id]: [...(prev[selectedProject.id] || []), entry] }));
+      setProjects(prev => prev.map(p => p.id === selectedProject.id ? { ...p, expenses: p.expenses + cost } : p));
+      setSelectedProject(prev => prev ? { ...prev, expenses: prev.expenses + cost } : null);
+      setNewExpense({ name: '', amount: '' });
+  };
+
+  const cycleTaskStatus = (taskId: string) => {
+      const nextStatus = (s: string) => s === 'todo' ? 'in_progress' : s === 'in_progress' ? 'done' : 'todo';
+      const updateTasks = (tasks: Task[]) => tasks.map(t => t.id === taskId ? { ...t, status: nextStatus(t.status) as Task['status'] } : t);
+      setProjects(prev => prev.map(p => p.id === selectedProject?.id ? { ...p, tasks: updateTasks(p.tasks) } : p));
+      setSelectedProject(prev => prev ? { ...prev, tasks: updateTasks(prev.tasks) } : null);
+  };
+
+  const handleOpenFile = (doc: WorkflowDocument) => {
+      const url = (doc as any).url;
+      if (url) {
+          window.open(url, '_blank');
+      } else {
+          alert(`📄 ${doc.name}\n📦 ${doc.size}\n📅 ${doc.uploadDate}`);
+      }
+  };
+
+  // Auto-scroll chat to bottom when new message arrives
+  useEffect(() => {
+      if (chatEndRef.current) {
+          chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
+  }, [selectedProject?.chatHistory?.length]);
+
+  const handleRemoveMember = (memberId: string) => {
+      if (!selectedProject) return;
+      setProjects(prev => prev.map(p => p.id === selectedProject.id ? {
+          ...p, team: p.team.filter(m => m.id !== memberId)
+      } : p));
+      setSelectedProject(prev => prev ? { ...prev, team: prev.team.filter(m => m.id !== memberId) } : null);
+  };
+
+  const handleDeleteTask = (taskId: string, e: React.MouseEvent) => {
+      e.stopPropagation(); // prevent triggering cycleTaskStatus
+      setProjects(prev => prev.map(p => p.id === selectedProject?.id ? {
+          ...p, tasks: p.tasks.filter(t => t.id !== taskId)
+      } : p));
+      setSelectedProject(prev => prev ? { ...prev, tasks: prev.tasks.filter(t => t.id !== taskId) } : null);
+  };
+
+  const handleUpdateProgress = (value: number) => {
+      setProjects(prev => prev.map(p => p.id === selectedProject?.id ? { ...p, progress: value } : p));
+      setSelectedProject(prev => prev ? { ...prev, progress: value } : null);
+  };
+
   const filteredDocs = documents.filter(doc => {
     const matchesDept = selectedDept === 'all' || doc.department === selectedDept;
     const matchesSearch = doc.name.toLowerCase().includes(searchQuery.toLowerCase());
@@ -352,14 +443,14 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
               <div className="p-6 border-b border-[var(--border-primary)] bg-[var(--bg-card)] flex justify-between items-center sticky top-0 z-10">
                   <div>
                       <button onClick={() => setSelectedProject(null)} className="text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-1 flex items-center gap-1">
-                          ← Back to Projects
+                          {t('workflow.dashboard.project.backToProjects')}
                       </button>
                       <h1 className="text-2xl font-black text-[var(--text-primary)]">{selectedProject.name}</h1>
                       <div className="flex items-center gap-3 text-xs mt-1">
                           <span className="text-[var(--accent-primary)] font-bold">{selectedProject.client}</span>
                           <span className="text-[var(--text-tertiary)]">• {selectedProject.startDate} - {selectedProject.deadline}</span>
                           <span className={`px-2 py-0.5 rounded-full ${selectedProject.status === 'completed' ? 'bg-green-500/20 text-green-400' : 'bg-blue-500/20 text-blue-400'}`}>
-                              {selectedProject.status.toUpperCase()}
+                              {t(`workflow.status.${selectedProject.status}`).toUpperCase()}
                           </span>
                       </div>
                   </div>
@@ -386,22 +477,35 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                   {projectTab === 'overview' && (
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                           <div className="md:col-span-2 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-6">
-                              <h3 className="text-lg font-bold mb-4">Description</h3>
+                              <h3 className="text-lg font-bold mb-4">{t('workflow.description')}</h3>
                               <p className="text-[var(--text-secondary)]">{selectedProject.description}</p>
                               <div className="mt-6">
-                                  <h3 className="text-sm font-bold mb-2">Progress</h3>
-                                  <div className="w-full bg-[var(--bg-secondary)] rounded-full h-4">
-                                      <div className="bg-[var(--accent-primary)] h-4 rounded-full" style={{ width: `${selectedProject.progress}%` }}></div>
+                                  <div className="flex justify-between items-center mb-2">
+                                      <h3 className="text-sm font-bold">{t('workflow.progress')}</h3>
+                                      <span className="text-sm font-black text-[var(--accent-primary)]">{selectedProject.progress}%</span>
                                   </div>
-                                  <p className="text-right text-xs mt-1">{selectedProject.progress}%</p>
+                                  <div className="w-full bg-[var(--bg-secondary)] rounded-full h-4 mb-3">
+                                      <div className="bg-[var(--accent-primary)] h-4 rounded-full transition-all" style={{ width: `${selectedProject.progress}%` }}></div>
+                                  </div>
+                                  {selectedProject.status !== 'completed' && (
+                                      <div>
+                                          <p className="text-xs text-[var(--text-tertiary)] mb-1">{t('workflow.dashboard.project.overview.updateProgress')}</p>
+                                          <input
+                                              type="range" min="0" max="100" step="5"
+                                              value={selectedProject.progress}
+                                              onChange={e => handleUpdateProgress(Number(e.target.value))}
+                                              className="w-full accent-[var(--accent-primary)] cursor-pointer"
+                                          />
+                                      </div>
+                                  )}
                               </div>
                           </div>
                           <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-6">
-                              <h3 className="text-lg font-bold mb-4">Quick Stats</h3>
+                              <h3 className="text-lg font-bold mb-4">{t('workflow.dashboard.project.overview.quickStats')}</h3>
                               <div className="space-y-4">
-                                  <div className="flex justify-between"><span>Files</span> <span>{projectDocs.length}</span></div>
-                                  <div className="flex justify-between"><span>Members</span> <span>{selectedProject.team.length}</span></div>
-                                  <div className="flex justify-between text-yellow-400"><span>Budget</span> <span>{selectedProject.budget.toLocaleString()} Coins</span></div>
+                                  <div className="flex justify-between"><span>{t('workflow.dashboard.project.overview.files')}</span> <span>{projectDocs.length}</span></div>
+                                  <div className="flex justify-between"><span>{t('workflow.dashboard.project.overview.members')}</span> <span>{selectedProject.team.length}</span></div>
+                                  <div className="flex justify-between text-yellow-400"><span>{t('workflow.budget')}</span> <span>{selectedProject.budget.toLocaleString()} {t('workflow.affiliate.coins')}</span></div>
                               </div>
                           </div>
                       </div>
@@ -410,24 +514,29 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                   {projectTab === 'team' && (
                       <div className="space-y-6">
                           <div className="flex justify-between items-center">
-                              <h3 className="text-lg font-bold">Project Members</h3>
-                              <button onClick={() => setShowMemberSelect(true)} className="bg-[var(--accent-primary)] text-black px-4 py-2 rounded-lg font-bold text-sm">+ Add Member</button>
+                              <h3 className="text-lg font-bold">{t('workflow.dashboard.project.teamPanel.title')}</h3>
+                              <button onClick={() => setShowMemberSelect(true)} className="bg-[var(--accent-primary)] text-black px-4 py-2 rounded-lg font-bold text-sm">+ {t('workflow.addMember')}</button>
                           </div>
                           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                               {selectedProject.team.map(member => (
-                                  <div key={member.id} className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-4 rounded-xl flex items-center gap-4">
-                                      <img src={member.avatar} className="w-10 h-10 rounded-full" />
-                                      <div>
-                                          <p className="font-bold">{member.name}</p>
-                                          <p className="text-xs text-[var(--text-tertiary)]">{member.role}</p>
+                                  <div key={member.id} className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-4 rounded-xl flex items-center gap-3">
+                                      <img src={member.avatar} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
+                                      <div className="flex-1 min-w-0">
+                                          <p className="font-bold truncate">{member.name}</p>
+                                          <p className="text-xs text-[var(--text-tertiary)] truncate">{member.role}</p>
+                                          {member.isExternal && <span className="text-[10px] bg-yellow-500/20 text-yellow-500 px-1.5 py-0.5 rounded">{t('workflow.dashboard.project.teamPanel.external')}</span>}
                                       </div>
-                                      {member.isExternal && <span className="ml-auto text-[10px] bg-yellow-500/20 text-yellow-500 px-2 py-1 rounded">External (50c)</span>}
+                                      {member.id !== 'me' && selectedProject.status !== 'completed' && (
+                                          <button onClick={() => handleRemoveMember(member.id)} className="flex-shrink-0 p-1.5 rounded-lg hover:bg-red-500/20 text-[var(--text-tertiary)] hover:text-red-400 transition-colors" title={t('workflow.collaboration.removeMember')}>
+                                              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
+                                          </button>
+                                      )}
                                   </div>
                               ))}
                           </div>
                           {showMemberSelect && (
                             <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-4 rounded-xl mt-4">
-                                <h4 className="font-bold mb-2">Select to Add</h4>
+                                <h4 className="font-bold mb-2">{t('workflow.dashboard.project.teamPanel.selectToAdd')}</h4>
                                 <div className="space-y-2">
                                     {availableUsers.map(u => (
                                         <div key={u.id} onClick={() => handleAddMemberToProject(u)} className="flex justify-between items-center p-2 hover:bg-[var(--bg-secondary)] rounded cursor-pointer border border-transparent hover:border-[var(--border-primary)]">
@@ -435,11 +544,11 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                                                 <img src={u.avatar} className="w-6 h-6 rounded-full" />
                                                 <span>{u.name}</span>
                                             </div>
-                                            <span className="text-xs text-[var(--accent-primary)]">{u.isExternal ? '50 Coins' : 'Free'}</span>
+                                            <span className="text-xs text-[var(--accent-primary)]">{u.isExternal ? `50 ${t('workflow.affiliate.coins')}` : t('workflow.dashboard.project.teamPanel.free')}</span>
                                         </div>
                                     ))}
                                 </div>
-                                <button onClick={() => setShowMemberSelect(false)} className="mt-2 text-xs underline text-[var(--text-tertiary)]">Cancel</button>
+                                <button onClick={() => setShowMemberSelect(false)} className="mt-2 text-xs underline text-[var(--text-tertiary)]">{t('common.cancel')}</button>
                             </div>
                           )}
                       </div>
@@ -448,9 +557,9 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                   {projectTab === 'files' && (
                       <div className="space-y-4">
                           <div className="flex justify-between items-center">
-                              <h3 className="text-lg font-bold">Project Files</h3>
+                              <h3 className="text-lg font-bold">{t('workflow.dashboard.project.filesPanel.title')}</h3>
                               <label className="cursor-pointer bg-[var(--bg-secondary)] border border-[var(--border-primary)] px-4 py-2 rounded-lg font-bold text-sm hover:bg-[var(--border-primary)]">
-                                  Upload File <input type="file" className="hidden" onChange={handleFileUpload} />
+                                  {t('workflow.dashboard.project.filesPanel.upload')} <input type="file" className="hidden" onChange={handleFileUpload} />
                               </label>
                           </div>
                           <div className="grid grid-cols-1 gap-2">
@@ -464,11 +573,11 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                                           </div>
                                       </div>
                                       <div className="flex gap-2">
-                                          <button onClick={() => openTaskModalForFile(doc)} className="text-xs bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 px-3 py-1 rounded">Assign Task</button>
-                                          <button className="text-xs bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] px-3 py-1 rounded">Open</button>
+                                          <button onClick={() => openTaskModalForFile(doc)} className="text-xs bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 px-3 py-1 rounded">{t('workflow.dashboard.project.filesPanel.assignTask')}</button>
+                                          <button onClick={() => handleOpenFile(doc)} className="text-xs bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/20 px-3 py-1 rounded">{t('workflow.dashboard.project.filesPanel.open')}</button>
                                       </div>
                                   </div>
-                              )) : <p className="text-[var(--text-tertiary)] italic">No files in this project yet.</p>}
+                              )) : <p className="text-[var(--text-tertiary)] italic">{t('workflow.dashboard.project.filesPanel.noFiles')}</p>}
                           </div>
                       </div>
                   )}
@@ -499,11 +608,42 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                               </div>
                           </div>
                           <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-6">
-                              <h3 className="font-bold mb-4">Add Expense</h3>
-                              <div className="flex gap-2">
-                                  <input placeholder="Expense Name" className="flex-1 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg p-2 text-sm" />
-                                  <input placeholder="Amount (Coins)" type="number" className="w-32 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg p-2 text-sm" />
-                                  <button className="bg-[var(--accent-primary)] text-black px-4 py-2 rounded-lg font-bold text-sm">Add</button>
+                              <h3 className="font-bold mb-4">{t('workflow.dashboard.project.finance.addExpense')}</h3>
+                              <div className="flex gap-2 mb-6">
+                                  <input
+                                      placeholder={t('workflow.dashboard.project.finance.expenseName')}
+                                      value={newExpense.name}
+                                      onChange={e => setNewExpense(prev => ({ ...prev, name: e.target.value }))}
+                                      className="flex-1 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg p-2 text-sm"
+                                      onKeyDown={e => e.key === 'Enter' && handleAddExpense()}
+                                  />
+                                  <input
+                                      placeholder={t('workflow.dashboard.project.finance.amount')}
+                                      type="number"
+                                      value={newExpense.amount}
+                                      onChange={e => setNewExpense(prev => ({ ...prev, amount: e.target.value }))}
+                                      className="w-36 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg p-2 text-sm"
+                                      onKeyDown={e => e.key === 'Enter' && handleAddExpense()}
+                                  />
+                                  <button onClick={handleAddExpense} className="bg-[var(--accent-primary)] text-black px-4 py-2 rounded-lg font-bold text-sm">{t('workflow.dashboard.project.finance.add')}</button>
+                              </div>
+                              <div>
+                                  <h4 className="text-sm font-bold text-[var(--text-secondary)] mb-3">{t('workflow.dashboard.project.finance.expenseHistory')}</h4>
+                                  {(expenseLog[selectedProject.id] || []).length === 0 ? (
+                                      <p className="text-xs text-[var(--text-tertiary)] italic">{t('workflow.dashboard.project.finance.noExpenses')}</p>
+                                  ) : (
+                                      <div className="space-y-2">
+                                          {(expenseLog[selectedProject.id] || []).map(entry => (
+                                              <div key={entry.id} className="flex items-center justify-between py-2 border-b border-[var(--border-primary)] last:border-0">
+                                                  <div>
+                                                      <p className="text-sm font-medium">{entry.name}</p>
+                                                      <p className="text-xs text-[var(--text-tertiary)]">{entry.date}</p>
+                                                  </div>
+                                                  <span className="text-sm font-bold text-red-400">-{entry.amount.toLocaleString()} 🪙</span>
+                                              </div>
+                                          ))}
+                                      </div>
+                                  )}
                               </div>
                           </div>
                       </div>
@@ -511,7 +651,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
 
                   {projectTab === 'chat' && (
                       <div className="flex flex-col h-full">
-                          <div className="flex-1 overflow-y-auto space-y-4 mb-4 pr-2">
+                          <div className="flex-1 overflow-y-auto space-y-4 mb-4 pr-2 max-h-[calc(100vh-320px)]">
                               {selectedProject.chatHistory.map(msg => (
                                   <div key={msg.id} className={`flex flex-col ${msg.isSystem ? 'items-center' : (msg.author === userProfile.name ? 'items-end' : 'items-start')}`}>
                                       {msg.isSystem ? (
@@ -528,6 +668,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                                       )}
                                   </div>
                               ))}
+                              <div ref={chatEndRef} />
                           </div>
                           <form onSubmit={handleSendProjectMessage} className="pt-4 border-t border-[var(--border-primary)] flex gap-2">
                               <button type="button" onClick={() => setShowTaskModal(true)} className="p-2.5 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--accent-primary)] hover:bg-[var(--accent-primary)] hover:text-black transition-colors" title={t('workflow.dashboard.project.tasks.addTask')}>
@@ -548,16 +689,19 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                           <div className="space-y-3">
                               {selectedProject.tasks && selectedProject.tasks.length > 0 ? (
                                   selectedProject.tasks.map(task => (
-                                      <div key={task.id} className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-4 rounded-xl flex items-center justify-between hover:border-[var(--accent-primary)] transition-all">
+                                      <div key={task.id} onClick={() => cycleTaskStatus(task.id)} className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-4 rounded-xl flex items-center justify-between hover:border-[var(--accent-primary)] transition-all cursor-pointer">
                                           <div className="flex items-center gap-4">
                                               <div className={`w-3 h-3 rounded-full ${task.status === 'todo' ? 'bg-gray-500' : task.status === 'in_progress' ? 'bg-blue-500' : 'bg-green-500'}`}></div>
                                               <div>
                                                   <h4 className="font-bold">{task.title}</h4>
-                                                  <p className="text-xs text-[var(--text-tertiary)]">{t('workflow.dashboard.project.tasks.assigned')}: {task.assigneeName} • Due: {task.dueDate}</p>
+                                                  <p className="text-xs text-[var(--text-tertiary)]">{t('workflow.dashboard.project.tasks.assigned')}: {task.assigneeName} • {t('workflow.dashboard.project.tasks.dueLabel')}: {task.dueDate}</p>
                                               </div>
                                           </div>
                                           <div className="flex items-center gap-2">
-                                              <span className="text-xs uppercase font-bold tracking-wider px-2 py-1 rounded bg-[var(--bg-secondary)] text-[var(--text-secondary)]">{t(`workflow.dashboard.project.tasks.status.${task.status}`)}</span>
+                                              <span className={`text-xs uppercase font-bold tracking-wider px-2 py-1 rounded ${task.status === 'todo' ? 'bg-gray-500/20 text-gray-400' : task.status === 'in_progress' ? 'bg-blue-500/20 text-blue-400' : 'bg-green-500/20 text-green-400'}`}>{t(`workflow.dashboard.project.tasks.status.${task.status}`)}</span>
+                                              <button onClick={e => handleDeleteTask(task.id, e)} className="p-1.5 rounded-lg hover:bg-red-500/20 text-[var(--text-tertiary)] hover:text-red-400 transition-colors" title={t('common.delete')}>
+                                                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
+                                              </button>
                                           </div>
                                       </div>
                                   ))
@@ -578,17 +722,24 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
               <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-primary)] to-purple-500">{t('workflow.dashboard.project.hubTitle')}</h1>
               <button onClick={() => setShowProjectModal(true)} className="bg-[var(--accent-primary)] text-black font-bold px-6 py-2.5 rounded-lg shadow-lg hover:opacity-90 transition-all">+ {t('workflow.dashboard.createProject')}</button>
           </div>
+          {projects.length === 0 && (
+              <div className="col-span-3 text-center py-20">
+                  <div className="text-6xl mb-4">💼</div>
+                  <p className="text-[var(--text-secondary)] text-lg mb-6">{t('workflow.dashboard.project.noProjects')}</p>
+                  <button onClick={() => setShowProjectModal(true)} className="bg-[var(--accent-primary)] text-black font-bold px-8 py-3 rounded-xl hover:opacity-90 transition-all">+ {t('workflow.dashboard.createProject')}</button>
+              </div>
+          )}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {projects.map(project => (
                   <div key={project.id} onClick={() => setSelectedProject(project)} className="bg-[var(--bg-card)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] rounded-2xl p-6 cursor-pointer transition-all hover:-translate-y-1 shadow-lg group">
                       <div className="flex justify-between items-start mb-4">
                           <div className="w-12 h-12 rounded-lg bg-[var(--bg-secondary)] flex items-center justify-center text-2xl">{project.department === 'event_planner' ? '📅' : project.department === 'creative' ? '🎨' : '⚙️'}</div>
-                          <span className={`px-2 py-1 rounded text-[10px] font-bold uppercase ${project.status === 'active' ? 'bg-green-500/20 text-green-400' : 'bg-gray-500/20 text-gray-400'}`}>{project.status}</span>
+                          <span className={`px-2 py-1 rounded text-[10px] font-bold uppercase ${project.status === 'completed' ? 'bg-green-500/20 text-green-400' : project.status === 'active' ? 'bg-blue-500/20 text-blue-400' : 'bg-gray-500/20 text-gray-400'}`}>{t(`workflow.status.${project.status}`)}</span>
                       </div>
                       <h3 className="text-xl font-bold text-[var(--text-primary)] mb-1 group-hover:text-[var(--accent-primary)] transition-colors">{project.name}</h3>
                       <p className="text-xs text-[var(--text-tertiary)] mb-4">{project.client}</p>
                       <div className="space-y-3">
-                          <div className="flex justify-between text-xs font-medium"><span>Progress</span><span>{project.progress}%</span></div>
+                          <div className="flex justify-between text-xs font-medium"><span>{t('workflow.progress')}</span><span>{project.progress}%</span></div>
                           <div className="w-full h-1.5 bg-[var(--bg-secondary)] rounded-full overflow-hidden"><div className="h-full bg-[var(--accent-primary)] rounded-full" style={{ width: `${project.progress}%` }}></div></div>
                           <div className="flex justify-between items-center pt-2 border-t border-[var(--border-primary)]">
                               <div className="flex -space-x-2">{project.team.slice(0,3).map(m => (<img key={m.id} src={m.avatar} className="w-6 h-6 rounded-full border border-[var(--bg-card)]" />))}{project.team.length > 3 && <div className="w-6 h-6 rounded-full bg-[var(--bg-secondary)] flex items-center justify-center text-[8px] border border-[var(--bg-card)]">+{project.team.length-3}</div>}</div>
@@ -617,7 +768,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       case 'affiliate': return (
         <div className="p-6 md:p-8 overflow-y-auto flex-1 animate-fade-in">
             <div className="mb-8"><h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-400 mb-2">{t('workflow.affiliate.title')}</h1><p className="text-[var(--text-secondary)]">{t('workflow.affiliate.subtitle')}</p></div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-6 rounded-2xl"><p className="text-xs font-bold text-[var(--text-tertiary)] uppercase mb-2">{t('workflow.affiliate.totalEarned')}</p><p className="text-3xl font-black text-yellow-400">{affiliateData.totalEarned} <span className="text-sm text-[var(--text-secondary)]">Coins</span></p></div><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-6 rounded-2xl"><p className="text-xs font-bold text-[var(--text-tertiary)] uppercase mb-2">{t('workflow.affiliate.pending')}</p><p className="text-3xl font-black text-blue-400">{affiliateData.pending} <span className="text-sm text-[var(--text-secondary)]">Coins</span></p></div><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-6 rounded-2xl"><p className="text-xs font-bold text-[var(--text-tertiary)] uppercase mb-2">{t('workflow.affiliate.referrals')}</p><p className="text-3xl font-black text-green-400">{affiliateData.referrals}</p></div><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-6 rounded-2xl"><p className="text-xs font-bold text-[var(--text-tertiary)] uppercase mb-2">{t('workflow.affiliate.clicks')}</p><p className="text-3xl font-black text-purple-400">{affiliateData.clicks}</p></div></div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-6 rounded-2xl"><p className="text-xs font-bold text-[var(--text-tertiary)] uppercase mb-2">{t('workflow.affiliate.totalEarned')}</p><p className="text-3xl font-black text-yellow-400">{affiliateData.totalEarned} <span className="text-sm text-[var(--text-secondary)]">{t('workflow.affiliate.coins')}</span></p></div><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-6 rounded-2xl"><p className="text-xs font-bold text-[var(--text-tertiary)] uppercase mb-2">{t('workflow.affiliate.pending')}</p><p className="text-3xl font-black text-blue-400">{affiliateData.pending} <span className="text-sm text-[var(--text-secondary)]">{t('workflow.affiliate.coins')}</span></p></div><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-6 rounded-2xl"><p className="text-xs font-bold text-[var(--text-tertiary)] uppercase mb-2">{t('workflow.affiliate.referrals')}</p><p className="text-3xl font-black text-green-400">{affiliateData.referrals}</p></div><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-6 rounded-2xl"><p className="text-xs font-bold text-[var(--text-tertiary)] uppercase mb-2">{t('workflow.affiliate.clicks')}</p><p className="text-3xl font-black text-purple-400">{affiliateData.clicks}</p></div></div>
             <h3 className="text-xl font-bold text-[var(--text-primary)] mb-4">{t('workflow.affiliate.program')}</h3>
             <div className="space-y-4 mb-8">{affiliateData.links.map(link => (<div key={link.id} className="bg-[var(--bg-secondary)] border border-[var(--border-primary)] p-4 rounded-xl flex flex-col md:flex-row items-center justify-between gap-4"><div className="flex-1"><h4 className="font-bold text-[var(--text-primary)]">{link.name}</h4><p className="text-xs text-[var(--accent-primary)] mt-1">{t('workflow.affiliate.commission')}: {link.commission}</p></div><div className="flex items-center gap-3 w-full md:w-auto"><code className="bg-black/30 px-3 py-2 rounded text-xs text-[var(--text-secondary)] flex-1 md:flex-none truncate max-w-[200px]">{link.url}</code><button onClick={() => copyToClipboard(link.url)} className="bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] hover:bg-[var(--accent-primary)] hover:text-black px-4 py-2 rounded-lg text-xs font-bold transition-colors">{t('workflow.affiliate.copyLink')}</button></div></div>))}</div>
         </div>
@@ -628,7 +779,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       default: return (
         <div className="p-6 md:p-8 overflow-y-auto flex-1">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
-                <div><h1 className="text-2xl font-bold">{t(`workflow.depts.${selectedDept}`)}</h1><p className="text-[var(--text-secondary)]">{filteredDocs.length} documents found</p></div>
+                <div><h1 className="text-2xl font-bold">{t(`workflow.depts.${selectedDept}`)}</h1><p className="text-[var(--text-secondary)]">{filteredDocs.length} {t('workflow.dashboard.documentsFound')}</p></div>
                 <div className="flex gap-3">
                     <button onClick={onOpenStudio} className="py-2 px-4 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-[var(--text-on-accent)] font-bold rounded-lg hover:opacity-90 transition-opacity flex items-center gap-2 shadow-lg shadow-[var(--accent-shadow)]"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" /></svg>{t('workflow.dashboard.create')}</button>
                     <label className="cursor-pointer py-2 px-4 bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] font-bold rounded-lg hover:bg-[var(--border-primary)] transition-colors flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" /></svg>{t('workflow.dashboard.upload')}<input type="file" className="hidden" onChange={handleFileUpload} /></label>
@@ -645,7 +796,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                                     <td className="p-4 text-sm text-[var(--text-secondary)] capitalize">{t(`workflow.depts.${doc.department}`)}</td>
                                     <td className="p-4 text-sm text-[var(--text-secondary)] hidden md:table-cell">{doc.uploadDate}</td>
                                     <td className="p-4"><span className={`px-2 py-1 rounded text-xs font-bold uppercase border ${getStatusColor(doc.status)}`}>{t(`workflow.dashboard.status.${doc.status}`)}</span></td>
-                                    <td className="p-4 text-right"><div className="flex justify-end gap-2"><button onClick={() => doc.isProject ? setSelectedProject(projects.find(p => p.id === (doc.projectId || doc.id)) || null) : handleOpenChat(doc)} className="p-1 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" /></svg></button><button className="p-1 text-[var(--text-secondary)] hover:text-[var(--text-primary)]"><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" /></svg></button></div></td>
+                                    <td className="p-4 text-right"><div className="flex justify-end gap-1"><button onClick={() => doc.isProject ? setSelectedProject(projects.find(p => p.id === (doc.projectId || doc.id)) || null) : handleOpenChat(doc)} className="p-1.5 rounded-lg text-[var(--text-secondary)] hover:text-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-colors" title={t('workflow.dashboard.docPanel.comments')}><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" /></svg></button>{!doc.isProject && doc.status === 'pending' && (<><button onClick={() => handleChangeDocStatus(doc.id, 'approved')} className="p-1.5 rounded-lg text-green-400 hover:bg-green-500/20 transition-colors" title={t('workflow.dashboard.docPanel.approve')}><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg></button><button onClick={() => handleChangeDocStatus(doc.id, 'rejected')} className="p-1.5 rounded-lg text-red-400 hover:bg-red-500/20 transition-colors" title={t('workflow.dashboard.docPanel.reject')}><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" /></svg></button></>)}{!doc.isProject && doc.status !== 'pending' && (<button onClick={() => handleChangeDocStatus(doc.id, 'pending')} className="p-1.5 rounded-lg text-yellow-400 hover:bg-yellow-500/20 transition-colors" title={t('workflow.dashboard.docPanel.resetPending')}><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" /></svg></button>)}{!doc.isProject && (<button onClick={() => handleDeleteDoc(doc.id)} className="p-1.5 rounded-lg text-[var(--text-tertiary)] hover:text-red-400 hover:bg-red-500/20 transition-colors" title={t('workflow.dashboard.docPanel.delete')}><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" /></svg></button>)}</div></td>
                                 </tr>
                             )) : (<tr><td colSpan={5} className="p-8 text-center text-[var(--text-tertiary)]">{t('workflow.dashboard.noFiles')}</td></tr>)}
                         </tbody>
@@ -709,11 +860,60 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
         />
         {/* PartnerRegistrationModal moved to PartnersView component */}
 
-        {showProjectModal && (<div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6"><h2 className="text-2xl font-bold mb-4">{t('workflow.dashboard.project.modalTitle')}</h2><form onSubmit={handleCreateProject} className="space-y-4"><input placeholder={t('workflow.dashboard.project.nameLabel')} value={newProjectData.name} onChange={e => setNewProjectData({...newProjectData, name: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input placeholder={t('workflow.dashboard.project.descLabel')} value={newProjectData.description} onChange={e => setNewProjectData({...newProjectData, description: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input placeholder="Client" value={newProjectData.client} onChange={e => setNewProjectData({...newProjectData, client: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input type="number" placeholder="Budget (Coins)" value={newProjectData.budget || ''} onChange={e => setNewProjectData({...newProjectData, budget: parseInt(e.target.value)})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><select value={newProjectData.department} onChange={e => setNewProjectData({...newProjectData, department: e.target.value as any})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"><option value="event_planner">Event Planner</option><option value="creative">Creative</option><option value="operation">Operation</option></select><div className="flex gap-2 justify-end mt-4"><button type="button" onClick={() => setShowProjectModal(false)} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">Cancel</button><button type="submit" className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.dashboard.project.createBtn')}</button></div></form></div></div>)}
+        {showProjectModal && (<div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6"><h2 className="text-2xl font-bold mb-4">{t('workflow.dashboard.project.modalTitle')}</h2><form onSubmit={handleCreateProject} className="space-y-4"><input placeholder={t('workflow.dashboard.project.nameLabel')} value={newProjectData.name} onChange={e => setNewProjectData({...newProjectData, name: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input placeholder={t('workflow.dashboard.project.descLabel')} value={newProjectData.description} onChange={e => setNewProjectData({...newProjectData, description: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input placeholder={t('workflow.dashboard.project.modal.client')} value={newProjectData.client} onChange={e => setNewProjectData({...newProjectData, client: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input type="number" placeholder={t('workflow.dashboard.project.modal.budget')} value={newProjectData.budget || ''} onChange={e => setNewProjectData({...newProjectData, budget: parseInt(e.target.value)})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input type="date" placeholder={t('workflow.dashboard.project.modal.deadline')} value={newProjectData.deadline} onChange={e => setNewProjectData({...newProjectData, deadline: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" /><select value={newProjectData.department} onChange={e => setNewProjectData({...newProjectData, department: e.target.value as any})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"><option value="event_planner">{t('workflow.depts.event_planner')}</option><option value="creative">{t('workflow.depts.creative')}</option><option value="operation">{t('workflow.depts.operation')}</option></select><div className="flex gap-2 justify-end mt-4"><button type="button" onClick={() => setShowProjectModal(false)} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">{t('common.cancel')}</button><button type="submit" className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.dashboard.project.createBtn')}</button></div></form></div></div>)}
 
         {/* Creative and Resource modals moved to PromptsView and ResourcesView components */}
 
-        {showTaskModal && (<div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6"><h2 className="text-2xl font-bold mb-4">{t('workflow.dashboard.project.tasks.modal.title')}</h2><div className="space-y-4"><input placeholder={t('workflow.dashboard.project.tasks.modal.titleLabel')} value={newTaskData.title} onChange={e => setNewTaskData({...newTaskData, title: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" /><select value={newTaskData.assigneeId} onChange={e => setNewTaskData({...newTaskData, assigneeId: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"><option value="">Select Assignee</option>{availableUsers.map(u => (<option key={u.id} value={u.id}>{u.name} ({u.role})</option>))}</select><input type="date" value={newTaskData.dueDate} onChange={e => setNewTaskData({...newTaskData, dueDate: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" />{selectedFileForTask && (<div className="text-sm bg-[var(--bg-secondary)] p-2 rounded">Attached: {selectedFileForTask.name}</div>)}<div className="flex gap-2 justify-end mt-4"><button onClick={() => { setShowTaskModal(false); setSelectedFileForTask(null); }} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">Cancel</button><button onClick={handleCreateTask} className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.dashboard.project.tasks.modal.submit')}</button></div></div></div></div>)}
+        {showTaskModal && (<div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6"><h2 className="text-2xl font-bold mb-4">{t('workflow.dashboard.project.tasks.modal.title')}</h2><div className="space-y-4"><input placeholder={t('workflow.dashboard.project.tasks.modal.titleLabel')} value={newTaskData.title} onChange={e => setNewTaskData({...newTaskData, title: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" /><select value={newTaskData.assigneeId} onChange={e => setNewTaskData({...newTaskData, assigneeId: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"><option value="">{t('workflow.dashboard.project.tasks.modal.selectAssignee')}</option>{availableUsers.map(u => (<option key={u.id} value={u.id}>{u.name} ({u.role})</option>))}</select><input type="date" value={newTaskData.dueDate} onChange={e => setNewTaskData({...newTaskData, dueDate: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" />{selectedFileForTask && (<div className="text-sm bg-[var(--bg-secondary)] p-2 rounded">{t('workflow.dashboard.project.tasks.modal.attached')} {selectedFileForTask.name}</div>)}<div className="flex gap-2 justify-end mt-4"><button onClick={() => { setShowTaskModal(false); setSelectedFileForTask(null); }} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">{t('common.cancel')}</button><button onClick={handleCreateTask} className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.dashboard.project.tasks.modal.submit')}</button></div></div></div></div>)}
+
+        {/* File Comment Panel */}
+        {activeDocForComment && (
+            <div className="fixed inset-y-0 right-0 w-80 bg-[var(--bg-card)] border-l border-[var(--border-primary)] flex flex-col z-40 shadow-2xl">
+                <div className="p-4 border-b border-[var(--border-primary)] flex justify-between items-start gap-2">
+                    <div className="min-w-0 flex-1">
+                        <p className="font-bold truncate text-sm">{activeDocForComment.name}</p>
+                        <div className="flex items-center gap-2 mt-1">
+                            <span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${getStatusColor(activeDocForComment.status)}`}>{t(`workflow.dashboard.status.${activeDocForComment.status}`)}</span>
+                            <span className="text-[10px] text-[var(--text-tertiary)]">{activeDocForComment.size}</span>
+                        </div>
+                    </div>
+                    <button onClick={() => setActiveDocForComment(null)} className="p-1.5 rounded-lg hover:bg-[var(--bg-secondary)] text-[var(--text-secondary)] flex-shrink-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
+                    </button>
+                </div>
+                {activeDocForComment.status === 'pending' && (
+                    <div className="p-3 border-b border-[var(--border-primary)] flex gap-2">
+                        <button onClick={() => handleChangeDocStatus(activeDocForComment.id, 'approved')} className="flex-1 py-2 rounded-lg bg-green-500/20 text-green-400 hover:bg-green-500/30 text-sm font-bold transition-colors">✓ {t('workflow.dashboard.docPanel.approve')}</button>
+                        <button onClick={() => handleChangeDocStatus(activeDocForComment.id, 'rejected')} className="flex-1 py-2 rounded-lg bg-red-500/20 text-red-400 hover:bg-red-500/30 text-sm font-bold transition-colors">✗ {t('workflow.dashboard.docPanel.reject')}</button>
+                    </div>
+                )}
+                {activeDocForComment.status !== 'pending' && (
+                    <div className="p-3 border-b border-[var(--border-primary)]">
+                        <button onClick={() => handleChangeDocStatus(activeDocForComment.id, 'pending')} className="w-full py-2 rounded-lg bg-yellow-500/20 text-yellow-400 hover:bg-yellow-500/30 text-sm font-bold transition-colors">↺ {t('workflow.dashboard.docPanel.resetPending')}</button>
+                    </div>
+                )}
+                <div className="flex-1 overflow-y-auto p-4 space-y-3">
+                    <p className="text-[10px] font-bold text-[var(--text-tertiary)] uppercase tracking-wider">{t('workflow.dashboard.docPanel.comments')}</p>
+                    {(activeDocForComment.comments || []).length === 0 ? (
+                        <p className="text-xs text-[var(--text-tertiary)] italic">{t('workflow.dashboard.docPanel.noComments')}</p>
+                    ) : (
+                        (activeDocForComment.comments || []).map(cmt => (
+                            <div key={cmt.id} className="bg-[var(--bg-secondary)] rounded-lg p-3">
+                                <div className="flex justify-between items-center mb-1">
+                                    <span className="text-xs font-bold">{cmt.author}</span>
+                                    <span className="text-[10px] text-[var(--text-tertiary)]">{cmt.timestamp}</span>
+                                </div>
+                                <p className="text-sm text-[var(--text-primary)]">{cmt.text}</p>
+                            </div>
+                        ))
+                    )}
+                </div>
+                <form onSubmit={handleAddDocComment} className="p-4 border-t border-[var(--border-primary)] flex gap-2">
+                    <input value={docComment} onChange={e => setDocComment(e.target.value)} placeholder={t('workflow.dashboard.docPanel.placeholder')} className="flex-1 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[var(--accent-primary)]" />
+                    <button type="submit" disabled={!docComment.trim()} className="bg-[var(--accent-primary)] text-black px-3 py-2 rounded-lg font-bold text-sm disabled:opacity-50">{t('workflow.dashboard.docPanel.send')}</button>
+                </form>
+            </div>
+        )}
     </div>
   );
 }

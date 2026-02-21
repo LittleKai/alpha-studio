@@ -8,6 +8,7 @@ export default {
       about: "About Management",
       services: "Services Management",
       transactions: "Transaction Management",
+      cloud: "Cloud Desktop",
       users: "User Management",
       transactionsList: "Transactions",
       webhooks: "Webhook Logs"
@@ -335,6 +336,58 @@ export default {
       successPrefix: "New password: ",
       successSuffix: "\n\nPlease share this password with the user.",
       error: "Failed to reset password"
+    },
+    cloud: {
+      machines: {
+        title: "Machine Management",
+        name: "Name",
+        machineId: "Machine ID",
+        agentUrl: "Agent URL",
+        secret: "Secret Key",
+        status: "Status",
+        specs: "Specs",
+        cpu: "CPU",
+        ram: "RAM",
+        gpu: "GPU",
+        containers: "Containers",
+        maxContainers: "Max",
+        lastPing: "Last Ping",
+        enabled: "Enabled",
+        register: "Register Machine",
+        edit: "Edit",
+        save: "Save",
+        cancel: "Cancel",
+        noMachines: "No machines yet",
+        registerFirst: "Register your first machine",
+        available: "Available",
+        busy: "Busy",
+        offline: "Offline"
+      },
+      sessions: {
+        title: "Session Management",
+        user: "User",
+        machine: "Machine",
+        status: "Status",
+        startedAt: "Started At",
+        endedAt: "Ended At",
+        endReason: "End Reason",
+        active: "Active",
+        ended: "Ended",
+        all: "All",
+        forceEnd: "Force End",
+        forceEndConfirm: "Are you sure you want to force end this session?",
+        noSessions: "No sessions yet",
+        reasons: {
+          user_disconnect: "User disconnected",
+          admin_force: "Admin force ended",
+          machine_offline: "Machine went offline",
+          error: "Error"
+        }
+      },
+      tabs: {
+        machines: "Machines",
+        sessions: "Sessions"
+      }
     },
     accessDenied: "Access Denied",
     backToHome: "Back to Home",

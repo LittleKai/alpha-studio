@@ -17,6 +17,7 @@ import {
     getMyReview,
     markReviewHelpful
 } from '../services/courseService';
+import { isB2Url, getB2SignedUrl } from '../services/b2StorageService';
 
 // Declare YouTube Player types
 declare global {
@@ -81,7 +82,7 @@ const CoursePage: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
     const navigate = useNavigate();
     const { t, language } = useTranslation();
-    const { isAuthenticated } = useAuth();
+    const { isAuthenticated, token } = useAuth();
     const videoRef = useRef<HTMLVideoElement>(null);
     const youtubePlayerRef = useRef<YTPlayer | null>(null);
     const youtubeContainerRef = useRef<HTMLDivElement>(null);
@@ -102,6 +103,7 @@ const CoursePage: React.FC = () => {
     const [selectedModuleId, setSelectedModuleId] = useState<string>('');
     const [selectedLessonId, setSelectedLessonId] = useState<string>('');
     const [selectedLesson, setSelectedLesson] = useState<Lesson | null>(null);
+    const [resolvedVideoUrl, setResolvedVideoUrl] = useState<string>('');
 
     // UI state
     const [activeTab, setActiveTab] = useState<'syllabus' | 'overview' | 'reviews'>('syllabus');
@@ -237,6 +239,40 @@ const CoursePage: React.FC = () => {
             window.onYouTubeIframeAPIReady = () => {};
         };
     }, []);
+
+    // Resolve B2 presigned URL when lesson changes (B2 bucket is private)
+    useEffect(() => {
+        const rawUrl = selectedLesson?.videoUrl;
+        if (!rawUrl) { setResolvedVideoUrl(''); return; }
+
+        if (isB2Url(rawUrl) && token) {
+            getB2SignedUrl(rawUrl, token)
+                .then(signed => {
+                    console.log('[B2 video] signed URL ok:', signed.substring(0, 80));
+                    setResolvedVideoUrl(signed);
+                })
+                .catch((err) => {
+                    console.error('[B2 video] signed URL failed:', err?.message);
+                    setResolvedVideoUrl(rawUrl);
+                });
+        } else {
+            if (isB2Url(rawUrl) && !token) console.warn('[B2 video] token is null, using raw URL');
+            setResolvedVideoUrl(rawUrl);
+        }
+    }, [selectedLesson?.videoUrl, token]);
+
+    // Download a lesson document — get presigned URL if it's a private B2 file
+    const handleDocDownload = useCallback(async (docUrl: string) => {
+        try {
+            const url = (isB2Url(docUrl) && token)
+                ? await getB2SignedUrl(docUrl, token)
+                : docUrl;
+            window.open(url, '_blank');
+        } catch (err) {
+            console.error('Doc download failed:', err);
+            window.open(docUrl, '_blank');
+        }
+    }, [token]);
 
     // Handle video end - defined before YouTube player useEffect
     const handleVideoEnded = useCallback(async () => {
@@ -585,11 +621,11 @@ const CoursePage: React.FC = () => {
                                         allow="autoplay; fullscreen; picture-in-picture"
                                         allowFullScreen
                                     />
-                                ) : (
+                                ) : resolvedVideoUrl ? (
                                     <video
                                         ref={videoRef}
-                                        key={selectedLesson.videoUrl}
-                                        src={selectedLesson.videoUrl}
+                                        key={resolvedVideoUrl}
+                                        src={resolvedVideoUrl}
                                         controls
                                         controlsList="nodownload"
                                         playsInline
@@ -597,13 +633,16 @@ const CoursePage: React.FC = () => {
                                         className="w-full h-full object-contain relative z-10"
                                         onTimeUpdate={handleVideoTimeUpdate}
                                         onEnded={handleVideoEnded}
-                                        onError={(e) => console.error('Video error:', e)}
+                                        onError={(e) => {
+                                            const v = e.currentTarget as HTMLVideoElement;
+                                            console.error('[Video error] code:', v.error?.code, '| src:', v.currentSrc?.substring(0, 120));
+                                        }}
                                     >
-                                        <source src={selectedLesson.videoUrl} type="video/mp4" />
-                                        <source src={selectedLesson.videoUrl} type="video/webm" />
+                                        <source src={resolvedVideoUrl} type="video/mp4" />
+                                        <source src={resolvedVideoUrl} type="video/webm" />
                                         Your browser does not support the video tag.
                                     </video>
-                                )}
+                                ) : null}
                                 {/* Lesson info overlay - pointer-events-none to not block video controls */}
                                 <div className="absolute top-4 left-4 px-3 py-1.5 bg-black/60 backdrop-blur rounded-lg text-white text-sm pointer-events-none z-20">
                                     {getLocalizedText(selectedLesson.title)}
@@ -733,13 +772,10 @@ const CoursePage: React.FC = () => {
                             </h4>
                             <div className="space-y-2">
                                 {selectedLesson.documents.map((doc, idx) => (
-                                    <a
+                                    <button
                                         key={idx}
-                                        href={doc.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        download
-                                        className="flex items-center justify-between p-3 bg-[var(--bg-secondary)] rounded-lg hover:bg-[var(--bg-tertiary)] transition-colors group"
+                                        onClick={() => handleDocDownload(doc.url)}
+                                        className="w-full flex items-center justify-between p-3 bg-[var(--bg-secondary)] rounded-lg hover:bg-[var(--bg-tertiary)] transition-colors group text-left"
                                     >
                                         <div className="flex items-center gap-3">
                                             <div className="w-10 h-10 rounded-lg bg-[var(--accent-primary)]/20 flex items-center justify-center">
@@ -749,13 +785,13 @@ const CoursePage: React.FC = () => {
                                             </div>
                                             <div>
                                                 <p className="font-medium text-[var(--text-primary)]">{doc.name}</p>
-                                                <p className="text-xs text-[var(--text-tertiary)]">{doc.type.toUpperCase()} • {formatFileSize(doc.size)}</p>
+                                                <p className="text-xs text-[var(--text-tertiary)]">{doc.type?.toUpperCase()} • {formatFileSize(doc.size)}</p>
                                             </div>
                                         </div>
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[var(--text-tertiary)] group-hover:text-[var(--accent-primary)] transition-colors" viewBox="0 0 20 20" fill="currentColor">
                                             <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
                                         </svg>
-                                    </a>
+                                    </button>
                                 ))}
                             </div>
                         </div>

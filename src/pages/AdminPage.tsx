@@ -4,6 +4,7 @@ import { useAuth } from '../auth/context';
 import { useTranslation } from '../i18n/context';
 import { Layout } from '../components/layout';
 import ArticlesAdminTab from '../components/admin/ArticlesAdminTab';
+import CloudAdminTab from '../components/admin/CloudAdminTab';
 import {
     getUsers,
     getUserDetails,
@@ -22,7 +23,7 @@ import {
     type WebhookLog,
 } from '../services/adminService';
 
-type TopTabType = 'about' | 'services' | 'transactions';
+type TopTabType = 'about' | 'services' | 'transactions' | 'cloud';
 type SubTabType = 'users' | 'transactionsList' | 'webhooks';
 
 export default function AdminPage() {
@@ -53,6 +54,7 @@ export default function AdminPage() {
         { id: 'about' as TopTabType, label: t('admin.tabs.about') },
         { id: 'services' as TopTabType, label: t('admin.tabs.services') },
         { id: 'transactions' as TopTabType, label: t('admin.tabs.transactions') },
+        { id: 'cloud' as TopTabType, label: t('admin.tabs.cloud') },
     ];
 
     const subTabs = [
@@ -91,6 +93,7 @@ export default function AdminPage() {
                     {/* Tab Content */}
                     {activeTopTab === 'about' && <ArticlesAdminTab category="about" />}
                     {activeTopTab === 'services' && <ArticlesAdminTab category="services" />}
+                    {activeTopTab === 'cloud' && <CloudAdminTab />}
                     {activeTopTab === 'transactions' && (
                         <div>
                             {/* Sub-Tabs */}

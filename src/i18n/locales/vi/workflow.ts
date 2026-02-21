@@ -16,15 +16,15 @@ export default {
     sidebar: {
       fileManagement: "QUẢN LÝ FILE",
       allDocuments: "Tất cả tài liệu",
-      teamCreative: "Team Creative",
-      eventPlanner: "Event Planner",
-      account: "Account",
+      teamCreative: "Nhóm Sáng Tạo",
+      eventPlanner: "Kế Hoạch Sự Kiện",
+      account: "Quản Lý Dự Án",
       production: "Sản xuất",
       networkOpportunity: "MẠNG LƯỚI & CƠ HỘI",
       jobMarket: "Sàn việc làm",
       freelancer: "Freelancer",
       partners: "Đối tác liên kết",
-      affiliate: "Affiliate",
+      affiliate: "Liên Kết Giới Thiệu",
       creditWallet: "Ví Credit",
       communityResources: "CỘNG ĐỒNG & TÀI NGUYÊN",
       sharePrompts: "Chia sẻ Prompt",
@@ -38,10 +38,10 @@ export default {
     },
     dept: {
       all: "Tất cả phòng ban",
-      eventPlanner: "Event Planner",
-      eventplanner: "Event Planner",
-      creative: "Creative",
-      operation: "Operation"
+      eventPlanner: "Kế Hoạch Sự Kiện",
+      eventplanner: "Kế Hoạch Sự Kiện",
+      creative: "Nhóm Sáng Tạo",
+      operation: "Sản Xuất"
     },
     status: {
       planning: "Lập kế hoạch",
@@ -66,6 +66,18 @@ export default {
       search: "Tìm tài liệu...",
       filter: "Lọc phòng ban",
       noFiles: "Không tìm thấy file.",
+      documentsFound: "tài liệu",
+      docPanel: {
+        comments: "Bình luận",
+        noComments: "Chưa có bình luận nào.",
+        placeholder: "Thêm bình luận...",
+        send: "Gửi",
+        approve: "Duyệt",
+        reject: "Từ chối",
+        resetPending: "Đặt lại",
+        delete: "Xóa File",
+        confirmDelete: "Xóa file này vĩnh viễn?"
+      },
       table: {
         name: "Tên File / Dự án",
         dept: "Phòng ban",
@@ -87,6 +99,26 @@ export default {
         success: "Dự án mới đã được khởi tạo thành công!",
         hubTitle: "Project Hub",
         management: "Quản lý dự án",
+        backToProjects: "← Về danh sách",
+        overview: {
+          quickStats: "Thống kê nhanh",
+          files: "Tài liệu",
+          members: "Thành viên",
+          updateProgress: "Cập nhật tiến độ",
+        },
+        teamPanel: {
+          title: "Thành viên dự án",
+          selectToAdd: "Chọn để thêm",
+          external: "Ngoài (50c)",
+          free: "Miễn phí",
+        },
+        filesPanel: {
+          title: "Tài liệu dự án",
+          upload: "Tải lên File",
+          assignTask: "Giao việc",
+          open: "Mở",
+          noFiles: "Chưa có file nào trong dự án.",
+        },
         tabs: {
           overview: "Tổng quan",
           team: "Nhóm & Vai trò",
@@ -103,7 +135,10 @@ export default {
           expenseName: "Tên chi phí",
           amount: "Số tiền",
           date: "Ngày",
-          profit: "Lợi nhuận dự kiến"
+          profit: "Lợi nhuận dự kiến",
+          add: "Thêm",
+          expenseHistory: "Lịch sử chi phí",
+          noExpenses: "Chưa có chi phí nào."
         },
         package: {
           btn: "Đóng gói & Bàn giao",
@@ -111,6 +146,12 @@ export default {
           desc: "Dự án sẽ được đánh dấu hoàn thành. File sẽ được lưu trữ và báo cáo tài chính được khóa.",
           success: "Dự án đã đóng gói thành công!"
         },
+        modal: {
+          client: "Khách hàng",
+          budget: "Ngân sách (Coins)",
+          deadline: "Hạn chật (tùy chọn)",
+        },
+        noProjects: "Chưa có dự án nào. Hãy tạo dự án đầu tiên!",
         chat: {
           placeholder: "Nhập tin nhắn...",
           send: "Gửi"
@@ -130,17 +171,21 @@ export default {
             assigneeLabel: "Người thực hiện",
             dueDateLabel: "Hạn chót",
             fileLabel: "Đính kèm (Tùy chọn)",
-            submit: "Giao việc"
+            submit: "Giao việc",
+            selectAssignee: "Chọn người thực hiện",
+            attached: "Đính kèm:",
+            fillRequired: "Vui lòng điền đủ thông tin nhiệm vụ."
           },
+          dueLabel: "Hạn",
           assigned: "Đã giao nhiệm vụ"
         }
       }
     },
     depts: {
       all: "Tất cả tài liệu",
-      event_planner: "Event Planner",
-      creative: "Team Creative",
-      operation: "Team Operation"
+      event_planner: "Kế Hoạch Sự Kiện",
+      creative: "Nhóm Sáng Tạo",
+      operation: "Nhóm Sản Xuất"
     },
     jobs: {
       title: "Sàn Freelance",
@@ -260,7 +305,8 @@ export default {
       copied: "Đã sao chép!",
       commission: "Hoa hồng",
       program: "Chương trình",
-      history: "Lịch sử"
+      history: "Lịch sử",
+      coins: "Coin"
     },
     prompts: {
       title: "Chia sẻ Prompt",

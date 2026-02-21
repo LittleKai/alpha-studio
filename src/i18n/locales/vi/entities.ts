@@ -1,20 +1,33 @@
 export default {
   server: {
-    title: "Kết nối AI Server",
-    subtitle: "Kết nối máy chủ GPU hiệu suất cao",
-    loading: "Đang tải servers...",
-    online: "Trực tuyến",
-    busy: "Đang bận",
-    offline: "Ngoại tuyến",
-    connect: "Kết nối",
-    connecting: "Đang kết nối...",
-    connected: "Đã kết nối",
-    connectedTo: "Đã kết nối với",
-    disconnect: "Ngắt kết nối",
-    unavailable: "Không khả dụng",
-    perHour: "giờ",
-    infoTitle: "Về AI Servers",
-    infoDescription: "Máy chủ AI cung cấp tính toán GPU hiệu suất cao cho các tác vụ AI của bạn. Chọn server dựa trên nhu cầu và ngân sách."
+    title: "AI Cloud Desktop",
+    subtitle: "Môi trường desktop ảo trên đám mây",
+    idle: {
+      title: "Cloud Desktop",
+      description: "Kết nối đến môi trường desktop ảo Ubuntu với đầy đủ công cụ AI, trình duyệt và phần mềm chuyên dụng.",
+      connectBtn: "Kết nối Cloud Desktop"
+    },
+    connecting: {
+      title: "Đang chuẩn bị...",
+      description: "Đang khởi tạo môi trường desktop ảo cho bạn. Vui lòng đợi trong giây lát..."
+    },
+    connected: {
+      title: "Desktop đang hoạt động",
+      description: "Môi trường desktop ảo của bạn đã sẵn sàng sử dụng.",
+      openBtn: "Mở Desktop",
+      disconnectBtn: "Ngắt kết nối",
+      sessionInfo: "Thông tin phiên",
+      startedAt: "Bắt đầu lúc",
+      machine: "Máy chủ"
+    },
+    error: {
+      title: "Lỗi kết nối",
+      description: "Không thể kết nối đến cloud desktop. Vui lòng thử lại.",
+      retryBtn: "Thử lại",
+      noMachines: "Hiện không có máy chủ nào khả dụng. Vui lòng thử lại sau."
+    },
+    loading: "Đang tải...",
+    confirmDisconnect: "Bạn có chắc muốn ngắt kết nối khỏi cloud desktop?"
   },
   imagePreview: {
     download: "Tải xuống",

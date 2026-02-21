@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import { useAuth } from '../auth/context';
 import { uploadToCloudinary } from '../services/cloudinaryService';
+import { uploadToB2 } from '../services/b2StorageService';
 import ChangePasswordModal from '../components/modals/ChangePasswordModal';
 
 interface FeaturedWork {
@@ -148,7 +149,7 @@ const ImageIcon = () => (
 const ProfilePage: React.FC = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
-    const { user, updateProfile } = useAuth();
+    const { user, updateProfile, token } = useAuth();
     const avatarInputRef = useRef<HTMLInputElement>(null);
     const backgroundInputRef = useRef<HTMLInputElement>(null);
     const workImageInputRef = useRef<HTMLInputElement>(null);
@@ -252,28 +253,42 @@ const ProfilePage: React.FC = () => {
         }
     }, []);
 
-    // Handle attachment upload - compressed to 800KB max, 1920x1080px for images
+    // Handle attachment upload - documents only, stored on Backblaze B2
     const handleAttachmentUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
-        if (!file || attachments.length >= 3) return;
+        if (!file || attachments.length >= 3 || !token) return;
+
+        const ALLOWED = [
+            'application/pdf',
+            'application/msword',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            'application/vnd.ms-excel',
+            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            'application/vnd.ms-powerpoint',
+            'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+            'application/zip',
+            'application/x-rar-compressed',
+        ];
+        if (!ALLOWED.some(t => file.type === t || file.type.startsWith(t))) {
+            console.warn('Attachment type not allowed:', file.type);
+            return;
+        }
 
         setUploadingAttachment(true);
         try {
-            const result = await uploadToCloudinary(file, 'attachments', 'attachment');
-            if (result.success) {
-                setAttachments(prev => [...prev, {
-                    url: result.url,
-                    filename: file.name,
-                    type: file.type,
-                    size: file.size
-                }]);
-            }
+            const result = await uploadToB2(file, 'profile-attachments', token);
+            setAttachments(prev => [...prev, {
+                url: result.url,
+                filename: file.name,
+                type: file.type,
+                size: file.size
+            }]);
         } catch (error) {
             console.error('Attachment upload failed:', error);
         } finally {
             setUploadingAttachment(false);
         }
-    }, [attachments.length]);
+    }, [attachments.length, token]);
 
     // Add skill
     const handleAddSkill = () => {
@@ -922,6 +937,7 @@ const ProfilePage: React.FC = () => {
                         <input
                             ref={attachmentInputRef}
                             type="file"
+                            accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar"
                             onChange={handleAttachmentUpload}
                             className="hidden"
                         />

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from '../../i18n/context';
+import { useAuth } from '../../auth/context';
 import {
     Resource,
     ResourceInput,
@@ -10,7 +11,8 @@ import {
     PreviewImage
 } from '../../services/resourceService';
 import { TagsInput } from '../shared';
-import { uploadImage, uploadFile } from '../../services/cloudinaryService';
+import { uploadImage } from '../../services/cloudinaryService';
+import { uploadToB2 } from '../../services/b2StorageService';
 
 interface ResourceFormModalProps {
     isOpen: boolean;
@@ -26,6 +28,7 @@ const ResourceFormModal: React.FC<ResourceFormModalProps> = ({
     onSuccess
 }) => {
     const { language } = useTranslation();
+    const { token } = useAuth();
 
     const [formData, setFormData] = useState<ResourceInput>({
         title: { vi: '', en: '' },
@@ -84,6 +87,7 @@ const ResourceFormModal: React.FC<ResourceFormModalProps> = ({
 
     const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files || e.target.files.length === 0) return;
+        if (!token) return;
 
         const file = e.target.files[0];
 
@@ -101,7 +105,7 @@ const ResourceFormModal: React.FC<ResourceFormModalProps> = ({
         setError(null);
 
         try {
-            const result = await uploadFile(file, (progress) => {
+            const result = await uploadToB2(file, 'resources', token, (progress) => {
                 setUploadProgress(progress);
             });
 
@@ -109,7 +113,6 @@ const ResourceFormModal: React.FC<ResourceFormModalProps> = ({
                 ...prev,
                 file: {
                     url: result.url,
-                    publicId: result.publicId,
                     filename: file.name,
                     format: file.name.split('.').pop() || '',
                     size: file.size,

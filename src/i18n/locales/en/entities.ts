@@ -1,20 +1,33 @@
 export default {
   server: {
-    title: "AI Server Connect",
-    subtitle: "Connect to high-performance GPU servers",
-    loading: "Loading servers...",
-    online: "Online",
-    busy: "Busy",
-    offline: "Offline",
-    connect: "Connect",
-    connecting: "Connecting...",
-    connected: "Connected",
-    connectedTo: "Connected to",
-    disconnect: "Disconnect",
-    unavailable: "Unavailable",
-    perHour: "hour",
-    infoTitle: "About AI Servers",
-    infoDescription: "AI servers provide high-performance GPU computing for your AI tasks. Choose a server based on your needs and budget."
+    title: "AI Cloud Desktop",
+    subtitle: "Virtual desktop environment in the cloud",
+    idle: {
+      title: "Cloud Desktop",
+      description: "Connect to a virtual Ubuntu desktop environment with full AI tools, browsers, and specialized software.",
+      connectBtn: "Connect to Cloud Desktop"
+    },
+    connecting: {
+      title: "Preparing...",
+      description: "Setting up your virtual desktop environment. Please wait a moment..."
+    },
+    connected: {
+      title: "Desktop Active",
+      description: "Your virtual desktop environment is ready to use.",
+      openBtn: "Open Desktop",
+      disconnectBtn: "Disconnect",
+      sessionInfo: "Session Info",
+      startedAt: "Started at",
+      machine: "Machine"
+    },
+    error: {
+      title: "Connection Error",
+      description: "Failed to connect to cloud desktop. Please try again.",
+      retryBtn: "Retry",
+      noMachines: "No machines available at the moment. Please try again later."
+    },
+    loading: "Loading...",
+    confirmDisconnect: "Are you sure you want to disconnect from the cloud desktop?"
   },
   imagePreview: {
     download: "Download",

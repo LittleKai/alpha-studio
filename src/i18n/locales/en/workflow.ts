@@ -66,6 +66,18 @@ export default {
       search: "Find assets...",
       filter: "Dept Filter",
       noFiles: "No files found.",
+      documentsFound: "documents",
+      docPanel: {
+        comments: "Comments",
+        noComments: "No comments yet.",
+        placeholder: "Add a comment...",
+        send: "Post",
+        approve: "Approve",
+        reject: "Reject",
+        resetPending: "Reset",
+        delete: "Delete File",
+        confirmDelete: "Delete this file permanently?"
+      },
       table: {
         name: "File / Project Name",
         dept: "Dept",
@@ -87,6 +99,26 @@ export default {
         success: "New project initialized successfully!",
         hubTitle: "Project Hub",
         management: "Project Management",
+        backToProjects: "← Back to Projects",
+        overview: {
+          quickStats: "Quick Stats",
+          files: "Files",
+          members: "Members",
+          updateProgress: "Update Progress",
+        },
+        teamPanel: {
+          title: "Project Members",
+          selectToAdd: "Select to Add",
+          external: "External (50c)",
+          free: "Free",
+        },
+        filesPanel: {
+          title: "Project Files",
+          upload: "Upload File",
+          assignTask: "Assign Task",
+          open: "Open",
+          noFiles: "No files in this project yet.",
+        },
         tabs: {
           overview: "Overview",
           team: "Team & Roles",
@@ -103,7 +135,10 @@ export default {
           expenseName: "Expense Name",
           amount: "Amount",
           date: "Date",
-          profit: "Est. Profit"
+          profit: "Est. Profit",
+          add: "Add",
+          expenseHistory: "Expense History",
+          noExpenses: "No expenses recorded yet."
         },
         package: {
           btn: "Package & Handover",
@@ -111,6 +146,12 @@ export default {
           desc: "Project will be marked completed. Files archived and finance report locked.",
           success: "Project packaged successfully!"
         },
+        modal: {
+          client: "Client",
+          budget: "Budget (Coins)",
+          deadline: "Deadline (optional)",
+        },
+        noProjects: "No projects yet. Create your first project!",
         chat: {
           placeholder: "Type message...",
           send: "Send"
@@ -130,8 +171,12 @@ export default {
             assigneeLabel: "Assignee",
             dueDateLabel: "Due Date",
             fileLabel: "Attachment (Optional)",
-            submit: "Assign"
+            submit: "Assign",
+            selectAssignee: "Select Assignee",
+            attached: "Attached:",
+            fillRequired: "Please fill in all task details."
           },
+          dueLabel: "Due",
           assigned: "Task assigned"
         }
       }
@@ -260,7 +305,8 @@ export default {
       copied: "Copied!",
       commission: "Commission",
       program: "Program",
-      history: "History"
+      history: "History",
+      coins: "Coins"
     },
     prompts: {
       title: "Prompt Sharing",

@@ -1,7 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import { useTranslation } from '../../i18n/context';
+import { useAuth } from '../../auth/context';
 import { Module, Lesson, LessonDocument } from '../../services/courseService';
-import { uploadToCloudinary } from '../../services/cloudinaryService';
+import { uploadToB2 } from '../../services/b2StorageService';
 
 interface ModuleEditorProps {
     modules: Module[];
@@ -10,8 +11,11 @@ interface ModuleEditorProps {
 
 const ModuleEditor: React.FC<ModuleEditorProps> = ({ modules, onChange }) => {
     const { t } = useTranslation();
+    const { token } = useAuth();
     const [uploadingVideo, setUploadingVideo] = useState<string | null>(null);
     const [uploadingDoc, setUploadingDoc] = useState<string | null>(null);
+    const [videoProgress, setVideoProgress] = useState<number>(0);
+    const [docProgress, setDocProgress] = useState<number>(0);
 
     // Generate simple unique ID
     const generateId = () => {
@@ -122,22 +126,22 @@ const ModuleEditor: React.FC<ModuleEditorProps> = ({ modules, onChange }) => {
         e: React.ChangeEvent<HTMLInputElement>
     ) => {
         const file = e.target.files?.[0];
-        if (!file) return;
+        if (!file || !token) return;
 
         const lessonId = modules[moduleIndex].lessons[lessonIndex].lessonId;
         setUploadingVideo(lessonId);
+        setVideoProgress(0);
 
         try {
-            const result = await uploadToCloudinary(file, 'courses/videos');
-            if (result.success) {
-                handleUpdateLesson(moduleIndex, lessonIndex, 'videoUrl', result.url);
-            }
+            const result = await uploadToB2(file, 'courses/videos', token, setVideoProgress);
+            handleUpdateLesson(moduleIndex, lessonIndex, 'videoUrl', result.url);
         } catch (error) {
             console.error('Video upload error:', error);
         } finally {
             setUploadingVideo(null);
+            setVideoProgress(0);
         }
-    }, [modules, handleUpdateLesson]);
+    }, [modules, handleUpdateLesson, token]);
 
     // Document upload handler
     const handleDocumentUpload = useCallback(async (
@@ -146,29 +150,29 @@ const ModuleEditor: React.FC<ModuleEditorProps> = ({ modules, onChange }) => {
         e: React.ChangeEvent<HTMLInputElement>
     ) => {
         const file = e.target.files?.[0];
-        if (!file) return;
+        if (!file || !token) return;
 
         const lessonId = modules[moduleIndex].lessons[lessonIndex].lessonId;
         setUploadingDoc(lessonId);
+        setDocProgress(0);
 
         try {
-            const result = await uploadToCloudinary(file, 'courses/documents');
-            if (result.success) {
-                const currentDocs = modules[moduleIndex].lessons[lessonIndex].documents || [];
-                const newDoc: LessonDocument = {
-                    name: file.name,
-                    url: result.url,
-                    type: file.name.split('.').pop() || 'file',
-                    size: file.size
-                };
-                handleUpdateLesson(moduleIndex, lessonIndex, 'documents', [...currentDocs, newDoc]);
-            }
+            const result = await uploadToB2(file, 'courses/documents', token, setDocProgress);
+            const currentDocs = modules[moduleIndex].lessons[lessonIndex].documents || [];
+            const newDoc: LessonDocument = {
+                name: file.name,
+                url: result.url,
+                type: file.name.split('.').pop() || 'file',
+                size: file.size
+            };
+            handleUpdateLesson(moduleIndex, lessonIndex, 'documents', [...currentDocs, newDoc]);
         } catch (error) {
             console.error('Document upload error:', error);
         } finally {
             setUploadingDoc(null);
+            setDocProgress(0);
         }
-    }, [modules, handleUpdateLesson]);
+    }, [modules, handleUpdateLesson, token]);
 
     // Remove document
     const handleRemoveDocument = useCallback((moduleIndex: number, lessonIndex: number, docIndex: number) => {
@@ -393,7 +397,15 @@ const ModuleEditor: React.FC<ModuleEditorProps> = ({ modules, onChange }) => {
                                                                 />
                                                             </label>
                                                         </div>
-                                                        {lesson.videoUrl && (
+                                                        {uploadingVideo === lesson.lessonId && (
+                                                            <div className="w-full bg-[var(--bg-tertiary)] rounded-full h-1.5">
+                                                                <div
+                                                                    className="bg-[var(--accent-primary)] h-1.5 rounded-full transition-all duration-300"
+                                                                    style={{ width: `${videoProgress}%` }}
+                                                                />
+                                                            </div>
+                                                        )}
+                                                        {lesson.videoUrl && uploadingVideo !== lesson.lessonId && (
                                                             <div className="flex items-center gap-2 text-xs text-green-500">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                                                                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />

@@ -8,6 +8,7 @@ export default {
       about: "Quản Lý Giới Thiệu",
       services: "Quản Lý Dịch Vụ",
       transactions: "Quản Lý Giao Dịch",
+      cloud: "Cloud Desktop",
       users: "Quản lý User",
       transactionsList: "Giao dịch",
       webhooks: "Webhook Logs"
@@ -335,6 +336,58 @@ export default {
       successPrefix: "Mật khẩu mới: ",
       successSuffix: "\n\nHãy gửi mật khẩu này cho user.",
       error: "Không thể reset mật khẩu"
+    },
+    cloud: {
+      machines: {
+        title: "Quản lý Máy chủ",
+        name: "Tên máy",
+        machineId: "Machine ID",
+        agentUrl: "Agent URL",
+        secret: "Secret Key",
+        status: "Trạng thái",
+        specs: "Cấu hình",
+        cpu: "CPU",
+        ram: "RAM",
+        gpu: "GPU",
+        containers: "Container",
+        maxContainers: "Tối đa",
+        lastPing: "Ping cuối",
+        enabled: "Bật/Tắt",
+        register: "Đăng ký máy",
+        edit: "Sửa",
+        save: "Lưu",
+        cancel: "Hủy",
+        noMachines: "Chưa có máy chủ nào",
+        registerFirst: "Đăng ký máy chủ đầu tiên",
+        available: "Khả dụng",
+        busy: "Đang bận",
+        offline: "Ngoại tuyến"
+      },
+      sessions: {
+        title: "Quản lý Phiên",
+        user: "Người dùng",
+        machine: "Máy chủ",
+        status: "Trạng thái",
+        startedAt: "Bắt đầu",
+        endedAt: "Kết thúc",
+        endReason: "Lý do kết thúc",
+        active: "Đang hoạt động",
+        ended: "Đã kết thúc",
+        all: "Tất cả",
+        forceEnd: "Buộc kết thúc",
+        forceEndConfirm: "Bạn có chắc muốn buộc kết thúc phiên này?",
+        noSessions: "Chưa có phiên nào",
+        reasons: {
+          user_disconnect: "Người dùng ngắt",
+          admin_force: "Admin buộc kết thúc",
+          machine_offline: "Máy chủ mất kết nối",
+          error: "Lỗi"
+        }
+      },
+      tabs: {
+        machines: "Máy chủ",
+        sessions: "Phiên làm việc"
+      }
     },
     accessDenied: "Truy cập bị từ chối",
     backToHome: "Quay lại trang chủ",

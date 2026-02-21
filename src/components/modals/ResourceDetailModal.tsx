@@ -26,7 +26,7 @@ const ResourceDetailModal: React.FC<ResourceDetailModalProps> = ({
     onUpdate
 }) => {
     const { language } = useTranslation();
-    const { isAuthenticated } = useAuth();
+    const { isAuthenticated, token } = useAuth();
 
     const [resource, setResource] = useState<Resource | null>(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -90,13 +90,12 @@ const ResourceDetailModal: React.FC<ResourceDetailModalProps> = ({
     };
 
     const handleDownload = async () => {
-        if (!resource || !isAuthenticated) return;
+        if (!resource || !isAuthenticated || !token) return;
 
         setDownloading(true);
         try {
             const response = await downloadResource(resource._id);
 
-            // Open download link in new tab
             window.open(response.data.file.url, '_blank');
 
             const updated = { ...resource, downloadsCount: response.data.downloadsCount };
@@ -104,7 +103,6 @@ const ResourceDetailModal: React.FC<ResourceDetailModalProps> = ({
             onUpdate?.(updated);
         } catch (error) {
             console.error('Failed to download resource:', error);
-            // Fallback: try direct download
             if (resource.file?.url) {
                 window.open(resource.file.url, '_blank');
             }

@@ -61,11 +61,9 @@ const WorkflowPage: React.FC = () => {
 const ServerPage: React.FC = () => {
     const navigate = useNavigate();
     return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <AIServerConnect onBack={() => navigate('/')} />
-            </Suspense>
-        </Layout>
+        <Suspense fallback={<LoadingSpinner />}>
+            <AIServerConnect onBack={() => navigate('/')} />
+        </Suspense>
     );
 };
 

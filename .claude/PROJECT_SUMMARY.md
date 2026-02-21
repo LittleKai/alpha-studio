@@ -1,5 +1,5 @@
 # Project Summary
-**Last Updated:** 2026-02-13 (Admin Reset Password + Simplified Change Password)
+**Last Updated:** 2026-02-21 (WorkflowDashboard i18n + full functionality: Add Expense, task status toggle, Open file)
 **Updated By:** Claude Code
 
 ---
@@ -75,10 +75,12 @@ src/
 │   ├── jobService.ts          # Job management API service
 │   ├── partnerService.ts      # Partner management API service
 │   ├── courseService.ts       # Course management API service
-│   ├── cloudinaryService.ts   # Cloudinary upload service with compression
+│   ├── cloudinaryService.ts   # Cloudinary upload service with compression (images only)
+│   ├── b2StorageService.ts    # Backblaze B2 upload via presigned URL (videos & files)
 │   ├── imageCompression.ts    # Image compression utility (avatar, featured_work, logo, attachment)
 │   ├── paymentService.ts      # Payment API service (create, confirm, cancel, history)
 │   ├── adminService.ts        # Admin API service (users, transactions, webhooks)
+│   ├── cloudService.ts        # Cloud desktop API service (connect, disconnect, admin machines/sessions)
 │   ├── articleService.ts      # Article API service (CRUD, publish, public + admin)
 │   ├── promptService.ts       # Prompt sharing API service (CRUD, like, bookmark, rate)
 │   └── resourceService.ts     # Resource hub API service (CRUD, like, bookmark, download)
@@ -110,7 +112,7 @@ src/
 │   │
 │   ├── dashboard/             # Workflow/Dashboard components
 │   │   ├── WorkflowDashboard.tsx    # Large feature (project management)
-│   │   ├── AIServerConnect.tsx      # GPU server connection UI
+│   │   ├── AIServerConnect.tsx      # Cloud desktop connection (real API, 4 states)
 │   │   └── views/
 │   │       ├── WalletView.tsx       # Credit wallet with VietQR payment
 │   │       ├── PromptsView.tsx      # Share Prompts listing with filters
@@ -216,7 +218,7 @@ App.tsx
 | Course Detail | ✅ Complete | CoursePage.tsx | Single course view with curriculum |
 | AI Studio | ✅ Complete | components/studio/* | 20+ transformations, mask support |
 | Workflow Dashboard | ✅ Complete | WorkflowDashboard.tsx | Large component (~29k tokens) |
-| AI Server Connect | ✅ Complete | AIServerConnect.tsx | GPU server mock UI |
+| AI Cloud Desktop | ✅ Complete | AIServerConnect.tsx, cloudService.ts | Real cloud desktop connection (idle/connecting/connected/error states) |
 | Theme Switching | ✅ Complete | theme/context.tsx | Light/Dark with persistence |
 | i18n (EN/VI) | ✅ Complete | i18n/* | Full translations |
 | Authentication | ✅ Complete | auth/context.tsx, Login.tsx | JWT auth (backend separate) |
@@ -244,6 +246,8 @@ App.tsx
 | Lesson Progress | ✅ Complete | CoursePage.tsx | Mark complete, auto-track video progress |
 | Course Reviews | ✅ Complete | CoursePage.tsx, courseService.ts | Rating 1-5, comments, helpful votes |
 | Lesson Documents | ✅ Complete | ModuleEditor.tsx, CoursePage.tsx | Upload/download lesson documents |
+| Cloud Admin Tab | ✅ Complete | CloudAdminTab.tsx, AdminPage.tsx | Machine registry, session management, force-end |
+| B2 Video/File Upload | ✅ Complete | b2StorageService.ts, ModuleEditor.tsx, ResourceFormModal.tsx | Presigned URL upload with progress. Images still use Cloudinary |
 
 ---
 
@@ -302,15 +306,33 @@ App.tsx
 
 ## 7. Recent Changes (Last 3 Sessions)
 
-1. **2026-02-13** - Admin Reset Password + Simplified Change Password
-   - Added admin reset password: POST /api/admin/users/:id/reset-password generates random 8-digit password
-   - Added resetUserPassword() to adminService.ts + Reset Password button in AdminPage UsersTab
-   - Simplified ChangePasswordModal.tsx: removed 2-step email verification flow, now single-step (current + new password)
-   - Simplified PUT /api/auth/password: removed verification code requirement
-   - Updated i18n: removed verification-related keys from common.ts (vi+en), added admin.resetPassword.* (vi+en)
-   - Previous: Created ChangePasswordModal, social links, partner detail, whitespace fixes
+1. **2026-02-21** - WorkflowDashboard i18n + Functionality
+   - Added 20+ missing i18n keys to vi/workflow.ts and en/workflow.ts (backToProjects, overview.quickStats/files/members, teamPanel, filesPanel, finance.add, modal.client/budget, tasks.dueLabel/fillRequired, tasks.modal.selectAssignee/attached, dashboard.documentsFound, affiliate.coins)
+   - WorkflowDashboard.tsx: replaced all hardcoded English strings with t() calls
+   - Added `handleAddExpense`: connects expense form inputs to state, updates project.expenses total
+   - Added `cycleTaskStatus`: clicking task card cycles todo→in_progress→done→todo
+   - Added `handleOpenFile`: opens file URL in new tab, or shows file info if no URL
+   - Task cards now have colored status badges (gray/blue/green) and clickable for status cycling
+   - Project modal: Client/Budget placeholders and dept options now translated
 
-2. **2026-02-12** - About & Services Pages + Admin Restructure + TinyMCE
+2. **2026-02-21** - Backblaze B2 Video & File Upload
+   - Created `src/services/b2StorageService.ts`: `uploadToB2(file, folder, token, onProgress)` — requests presigned URL from backend, then XHR PUT directly to B2
+   - Updated `ModuleEditor.tsx`: video upload → B2 (`courses/videos`), document upload → B2 (`courses/documents`), added video progress bar UI
+   - Updated `ResourceFormModal.tsx`: file upload → B2 (`resources`), images (thumbnail/preview) still use Cloudinary
+   - Cloudinary unchanged: images (thumbnails, avatars, logos, TinyMCE)
+
+2. **2026-02-18** - Cloud Desktop Feature
+   - Rewrote AIServerConnect.tsx: removed simulation, real API with 4 states (idle/connecting/connected/error)
+   - Created cloudService.ts: connect, disconnect, getActiveSession, admin machine/session endpoints
+   - Created CloudAdminTab.tsx: machines table with register/edit/toggle, sessions table with filters/pagination/force-end
+   - Added 'cloud' tab to AdminPage.tsx TopTabType
+   - Updated i18n: entities.ts server.* (vi+en), admin.ts cloud.* (vi+en)
+   - Removed Layout wrapper from ServerPage in App.tsx (full-screen like WorkflowDashboard)
+
+2. **2026-02-13** - Admin Reset Password + Simplified Change Password
+   - Added admin reset password, simplified change password flow
+
+3. **2026-02-12** - About & Services Pages + Admin Restructure + TinyMCE
    - Created AboutPage.tsx, AboutDetailPage.tsx for /about route
    - Created ServicesPage.tsx, ServicesDetailPage.tsx for /services route
    - Created articleService.ts for Article CRUD API calls
