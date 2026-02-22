@@ -23,7 +23,11 @@ export default {
     verifiedPurchase: "Verified Purchase",
     instructorReply: "Instructor Reply",
     helpful: "Helpful",
-    freePreviewBadge: "Free Preview"
+    freePreviewBadge: "Free Preview",
+    instructor: "Instructor",
+    instructors: "Instructors",
+    addInstructor: "Add Instructor",
+    resumeFrom: "Resume from"
   },
   myCourses: {
     title: "My Courses",

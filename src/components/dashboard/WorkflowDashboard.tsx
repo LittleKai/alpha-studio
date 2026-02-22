@@ -13,7 +13,9 @@ import {
     createDocument as createDocumentAPI,
     updateDocument as updateDocumentAPI,
     deleteDocument as deleteDocumentAPI,
-    searchUsers
+    searchUsers,
+    getUserProfile,
+    type UserPublicProfile
 } from '../../services/workflowService';
 import { Editor } from '@tinymce/tinymce-react';
 import { uploadToCloudinary } from '../../services/cloudinaryService';
@@ -61,7 +63,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
 
   // Modal States
   const [showProfileModal, setShowProfileModal] = useState(false);
-  const [memberProfileModal, setMemberProfileModal] = useState<TeamMember | null>(null);
+  const [memberProfileModal, setMemberProfileModal] = useState<{ member: TeamMember; profile: UserPublicProfile | null; loading: boolean } | null>(null);
   // showPartnerModal moved to PartnersView component
   // showCreativeModal and showResourceModal moved to PromptsView and ResourcesView components
   const [showProjectModal, setShowProjectModal] = useState(false);
@@ -147,7 +149,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
         }
         // Personal file count limit (only applies when not uploading to a project)
         if (!selectedProject) {
-            const personalCount = documents.filter(d => !d.projectId && d.createdBy === user._id).length;
+            const personalCount = documents.filter(d => !d.projectId && d.createdBy === user?._id).length;
             if (personalCount >= 20) {
                 alert(t('workflow.dashboard.uploadFileLimit'));
                 return;
@@ -861,7 +863,12 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                                           <div className="flex-1 min-w-0">
                                               <div className="flex items-center gap-2 flex-wrap">
                                                   <button
-                                                      onClick={() => setMemberProfileModal(member)}
+                                                      onClick={() => {
+                                                          setMemberProfileModal({ member, profile: null, loading: true });
+                                                          getUserProfile(member.id)
+                                                              .then(res => setMemberProfileModal(prev => prev ? { ...prev, profile: res.data, loading: false } : null))
+                                                              .catch(() => setMemberProfileModal(prev => prev ? { ...prev, loading: false } : null));
+                                                      }}
                                                       className="font-bold text-base hover:text-[var(--accent-primary)] transition-colors text-left"
                                                   >
                                                       {member.name}
@@ -1470,45 +1477,109 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
         />
         {/* PartnerRegistrationModal moved to PartnersView component */}
 
-        {/* Member Profile Quick-View Modal */}
-        {memberProfileModal && (
-            <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setMemberProfileModal(null)}>
-                <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 w-full max-w-xs shadow-2xl" onClick={e => e.stopPropagation()}>
-                    <div className="flex flex-col items-center text-center gap-3">
-                        <img
-                            src={memberProfileModal.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(memberProfileModal.name)}&background=random&size=128`}
-                            className="w-20 h-20 rounded-full object-cover border-2 border-[var(--accent-primary)]/40"
-                        />
-                        <div>
-                            <h3 className="text-xl font-black text-[var(--text-primary)]">{memberProfileModal.name}</h3>
-                            {memberProfileModal.role && (
-                                <p className="text-sm text-[var(--text-secondary)] mt-0.5">{memberProfileModal.role}</p>
-                            )}
-                        </div>
-                        <div className="flex items-center gap-2 flex-wrap justify-center">
-                            {memberProfileModal.projectRole === 'creator' && (
-                                <span className="text-xs bg-purple-500/20 text-purple-400 px-2.5 py-1 rounded-full font-bold">👑 Creator</span>
-                            )}
-                            {memberProfileModal.projectRole === 'manager' && (
-                                <span className="text-xs bg-blue-500/20 text-blue-400 px-2.5 py-1 rounded-full font-bold">⭐ Manager</span>
-                            )}
-                            {!memberProfileModal.projectRole && (
-                                <span className="text-xs bg-[var(--bg-secondary)] text-[var(--text-secondary)] px-2.5 py-1 rounded-full font-bold border border-[var(--border-primary)]">👤 Member</span>
-                            )}
-                            {memberProfileModal.isExternal && (
-                                <span className="text-xs bg-yellow-500/20 text-yellow-500 px-2.5 py-1 rounded-full font-bold">🔗 External</span>
-                            )}
+        {/* Member Profile Modal */}
+        {memberProfileModal && (() => {
+            const { member, profile, loading } = memberProfileModal;
+            const avatarUrl = profile?.avatar || member.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=random&size=128`;
+            return (
+                <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setMemberProfileModal(null)}>
+                    <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-sm shadow-2xl overflow-hidden" onClick={e => e.stopPropagation()}>
+                        {/* Header band */}
+                        <div className="h-16 bg-gradient-to-r from-[var(--accent-primary)]/30 to-purple-500/20 relative" />
+                        <div className="px-6 pb-6 -mt-8">
+                            {/* Avatar */}
+                            <img
+                                src={avatarUrl}
+                                className="w-16 h-16 rounded-full object-cover border-4 border-[var(--bg-card)] shadow-lg mb-3"
+                            />
+                            {/* Name + badges */}
+                            <div className="flex items-start justify-between gap-2 mb-1">
+                                <h3 className="text-xl font-black text-[var(--text-primary)] leading-tight">{member.name}</h3>
+                                <div className="flex items-center gap-1.5 flex-wrap justify-end flex-shrink-0">
+                                    {member.projectRole === 'creator' && <span className="text-[10px] bg-purple-500/20 text-purple-400 px-2 py-0.5 rounded-full font-bold whitespace-nowrap">👑 Creator</span>}
+                                    {member.projectRole === 'manager' && <span className="text-[10px] bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full font-bold whitespace-nowrap">⭐ Manager</span>}
+                                    {!member.projectRole && <span className="text-[10px] bg-[var(--bg-secondary)] text-[var(--text-tertiary)] px-2 py-0.5 rounded-full font-bold border border-[var(--border-primary)] whitespace-nowrap">👤 Member</span>}
+                                    {member.isExternal && <span className="text-[10px] bg-yellow-500/20 text-yellow-500 px-2 py-0.5 rounded-full font-bold whitespace-nowrap">🔗 External</span>}
+                                </div>
+                            </div>
+
+                            {loading ? (
+                                <div className="flex items-center justify-center py-8">
+                                    <div className="w-6 h-6 border-2 border-[var(--accent-primary)]/30 border-t-[var(--accent-primary)] rounded-full animate-spin" />
+                                </div>
+                            ) : profile ? (
+                                <div className="space-y-3 mt-4">
+                                    {/* Basic info rows */}
+                                    <div className="space-y-2 text-sm">
+                                        <div className="flex items-center gap-2 text-[var(--text-secondary)]">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 flex-shrink-0 text-[var(--accent-primary)]" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                                            <span className="truncate">{profile.email || <span className="text-[var(--text-tertiary)] italic">{t('workflow.dashboard.project.memberProfile.noInfo')}</span>}</span>
+                                        </div>
+                                        <div className="flex items-center gap-2 text-[var(--text-secondary)]">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 flex-shrink-0 text-[var(--accent-primary)]" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                                            <span>{profile.phone || <span className="text-[var(--text-tertiary)] italic">{t('workflow.dashboard.project.memberProfile.noInfo')}</span>}</span>
+                                        </div>
+                                        {profile.location && (
+                                            <div className="flex items-center gap-2 text-[var(--text-secondary)]">
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 flex-shrink-0 text-[var(--accent-primary)]" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"/></svg>
+                                                <span>{profile.location}</span>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    {/* Bio */}
+                                    {profile.bio && (
+                                        <div className="border-t border-[var(--border-primary)] pt-3">
+                                            <p className="text-xs font-bold text-[var(--text-tertiary)] uppercase tracking-wider mb-1">{t('workflow.dashboard.project.memberProfile.bio')}</p>
+                                            <p className="text-sm text-[var(--text-secondary)] leading-relaxed line-clamp-3">{profile.bio}</p>
+                                        </div>
+                                    )}
+
+                                    {/* Skills */}
+                                    {profile.skills && profile.skills.length > 0 && (
+                                        <div className="border-t border-[var(--border-primary)] pt-3">
+                                            <p className="text-xs font-bold text-[var(--text-tertiary)] uppercase tracking-wider mb-2">{t('workflow.dashboard.project.memberProfile.skills')}</p>
+                                            <div className="flex flex-wrap gap-1.5">
+                                                {profile.skills.map((s, i) => (
+                                                    <span key={i} className="text-xs bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] px-2 py-0.5 rounded-full border border-[var(--accent-primary)]/20">{s}</span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Socials */}
+                                    {(profile.socials?.facebook || profile.socials?.linkedin || profile.socials?.github) && (
+                                        <div className="border-t border-[var(--border-primary)] pt-3 flex items-center gap-3">
+                                            {profile.socials.facebook && <a href={profile.socials.facebook} target="_blank" rel="noopener noreferrer" className="text-[var(--text-tertiary)] hover:text-blue-400 transition-colors" title="Facebook"><svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>}
+                                            {profile.socials.linkedin && <a href={profile.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-[var(--text-tertiary)] hover:text-blue-500 transition-colors" title="LinkedIn"><svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>}
+                                            {profile.socials.github && <a href={profile.socials.github} target="_blank" rel="noopener noreferrer" className="text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors" title="GitHub"><svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.929.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>}
+                                        </div>
+                                    )}
+                                </div>
+                            ) : null}
+
+                            {/* Actions */}
+                            <div className="flex gap-2 mt-5">
+                                <a
+                                    href={`/students/${member.id}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex-1 py-2 rounded-xl bg-[var(--accent-primary)]/10 hover:bg-[var(--accent-primary)]/20 text-[var(--accent-primary)] text-sm font-bold transition-colors text-center border border-[var(--accent-primary)]/30"
+                                >
+                                    {t('workflow.dashboard.project.memberProfile.viewProfile')} ↗
+                                </a>
+                                <button
+                                    onClick={() => setMemberProfileModal(null)}
+                                    className="flex-1 py-2 rounded-xl bg-[var(--bg-secondary)] hover:bg-[var(--border-primary)] text-[var(--text-secondary)] text-sm font-bold transition-colors"
+                                >
+                                    {t('workflow.dashboard.project.memberProfile.close')}
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    <button
-                        onClick={() => setMemberProfileModal(null)}
-                        className="mt-5 w-full py-2 rounded-xl bg-[var(--bg-secondary)] hover:bg-[var(--border-primary)] text-[var(--text-secondary)] text-sm font-bold transition-colors"
-                    >
-                        Close
-                    </button>
                 </div>
-            </div>
-        )}
+            );
+        })()}
 
         {showProjectModal && canCreateProject && (
             <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">

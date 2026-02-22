@@ -33,7 +33,7 @@ export interface Module {
 export interface Instructor {
     name: string;
     avatar: string;
-    bio: string;
+    bio: string | LocalizedString;
 }
 
 export interface LearningOutcome {
@@ -54,6 +54,7 @@ export interface Course {
     discount: number;
     status: 'draft' | 'published' | 'archived';
     instructor: Instructor;
+    instructors?: Instructor[];
     modules: Module[];
     enrolledCount: number;
     rating: number;
@@ -84,6 +85,7 @@ export interface CourseInput {
     discount?: number;
     status?: string;
     instructor?: Partial<Instructor>;
+    instructors?: Instructor[];
     modules?: Module[];
     tags?: string[];
     prerequisites?: string[];

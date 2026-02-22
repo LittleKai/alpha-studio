@@ -117,6 +117,17 @@ export default {
         deptFilter: "Filter by Dept",
         mineFilter: "My Projects",
         memberBadge: "Member",
+        memberProfile: {
+          email: "Email",
+          phone: "Phone",
+          location: "Location",
+          bio: "Bio",
+          skills: "Skills",
+          socials: "Socials",
+          viewProfile: "View Profile",
+          close: "Close",
+          noInfo: "Not provided"
+        },
         overview: {
           quickStats: "Quick Stats",
           files: "Files",

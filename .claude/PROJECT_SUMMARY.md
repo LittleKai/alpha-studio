@@ -1,5 +1,5 @@
 # Project Summary
-**Last Updated:** 2026-02-22 (WorkflowDashboard: project visibility, dept filter, TinyMCE, file notes, B2 upload with progress, UI improvements)
+**Last Updated:** 2026-02-22 (WorkflowDashboard: Mine filter + member profile modal; CloudAdminTab: Storage Cleanup tab; workflowService: getUserProfile; adminService: orphaned file API)
 **Updated By:** Claude Code
 
 ---
@@ -218,7 +218,7 @@ App.tsx
 | Courses Catalog | ✅ Complete | CoursesPage.tsx | Full catalog with filters, search, pagination |
 | Course Detail | ✅ Complete | CoursePage.tsx | Single course view with curriculum |
 | AI Studio | ✅ Complete | components/studio/* | 20+ transformations, mask support |
-| Workflow Dashboard | ✅ Complete | WorkflowDashboard.tsx, workflowService.ts | API-backed; dept filter + badges; TinyMCE description; file notes; B2 upload with progress bar; download buttons; isProjectCreator fix; project visibility control; admin delete completed projects |
+| Workflow Dashboard | ✅ Complete | WorkflowDashboard.tsx, workflowService.ts | API-backed; dept filter + badges; TinyMCE description; file notes; B2 upload with progress bar; download buttons; isProjectCreator fix; project visibility control; admin delete completed projects; Mine filter; member sort+badge; prominent back button; tab reset on project switch; personal file limit (20); member profile modal (full profile with email, phone, location, bio, skills, socials) |
 | AI Cloud Desktop | ✅ Complete | AIServerConnect.tsx, cloudService.ts | Real cloud desktop connection (idle/connecting/connected/error states) |
 | Theme Switching | ✅ Complete | theme/context.tsx | Light/Dark with persistence |
 | i18n (EN/VI) | ✅ Complete | i18n/* | Full translations |
@@ -247,7 +247,7 @@ App.tsx
 | Lesson Progress | ✅ Complete | CoursePage.tsx | Mark complete, auto-track video progress |
 | Course Reviews | ✅ Complete | CoursePage.tsx, courseService.ts | Rating 1-5, comments, helpful votes |
 | Lesson Documents | ✅ Complete | ModuleEditor.tsx, CoursePage.tsx | Upload/download lesson documents |
-| Cloud Admin Tab | ✅ Complete | CloudAdminTab.tsx, AdminPage.tsx | Machine registry, session management, force-end |
+| Cloud Admin Tab | ✅ Complete | CloudAdminTab.tsx, AdminPage.tsx | Machine registry, session management, force-end; Storage Cleanup sub-tab (super admin aduc5525@gmail.com only): scans B2 vs MongoDB, lists orphaned files, bulk/single delete |
 | B2 Video/File Upload | ✅ Complete | b2StorageService.ts, ModuleEditor.tsx, ResourceFormModal.tsx | Presigned URL upload with progress. Images still use Cloudinary |
 
 ---
@@ -307,6 +307,25 @@ App.tsx
 
 ## 7. Recent Changes (Last 3 Sessions)
 
+1. **2026-02-22** - WorkflowDashboard: Mine filter, member profile modal, Storage Cleanup tab
+   - `WorkflowDashboard.tsx`:
+     - **Mine filter**: purple toggle button above project grid; `projectMineFilter` state + `isUserMemberOf()` helper; member/creator projects sorted first with accent border + "✓ Member" badge
+     - **Back button**: prominent accent-colored button with SVG arrow replacing plain text link
+     - **Tab reset bug fix**: `setProjectTab('overview')` in URL-sync effect so switching projects always starts at Overview
+     - **Personal file limit**: max 20 files for non-admin; silent count, alert on exceed (`t('workflow.dashboard.uploadFileLimit')`)
+     - **Member profile modal**: clicking member name in Team tab fetches full profile via `getUserProfile()`; modal shows avatar, role badge, email, phone, location, bio (line-clamp), skills pills, social icons (FB/LI/GH), link to `/students/:id`, Close button
+   - `workflowService.ts`: Added `UserPublicProfile` interface + `getUserProfile(id)` → `GET /api/workflow/users/:id`
+   - `adminService.ts`: Added `OrphanedFile`, `OrphanedFilesResponse` interfaces; `listOrphanedFiles()` → `GET /api/admin/storage/orphaned`; `deleteOrphanedFile(key)` → `DELETE /api/admin/storage/orphaned`
+   - `CloudAdminTab.tsx`: Added `'storage'` to `SubTab` type; Storage Cleanup tab button visible only to `aduc5525@gmail.com`; full `StorageCleanupTab` component with scan, stats cards (total/referenced/orphaned), bulk checkbox select-all, per-row delete, empty states
+   - `i18n vi+en workflow.ts`: Added `uploadFileLimit`, `mineFilter`, `memberBadge`, `memberProfile` section (email, phone, location, bio, skills, socials.*, viewProfile, close, noInfo)
+
+1. **2026-02-22** - CoursePage: Instructor i18n + Multiple Instructors + Resume Video
+   - `courseService.ts`: `Instructor.bio` → `string | LocalizedString`; added `instructors?: Instructor[]` to Course & CourseInput
+   - `CoursePage.tsx`: Removed "Xem đánh giá" button (reviews tab already handles it); updated instructor card to display `instructors[]` with fallback to `instructor`; replaced hardcoded "Instructor" with `t('course.instructor')`; added `handleResumeVideo` + `currentLessonLastPosition` + `formatTime`; added resume-from-timestamp button in Video Controls Bar (shows only when enrolled + lastPosition > 5s)
+   - `CourseForm.tsx`: Replaced single instructor state with `instructors: InstructorFormState[]` array; added add/remove/update handlers; bio now has vi/en language tab support; per-instructor avatar upload; submit sends both `instructor` (first, for backward compat) and `instructors` array
+   - `i18n/vi/course.ts` + `i18n/en/course.ts`: Added `instructor`, `instructors`, `addInstructor`, `resumeFrom` keys
+   - **Backend note**: `instructors[]` field and `bio: {vi,en}` object format require backend schema update to persist fully
+
 1. **2026-02-22** - WorkflowDashboard: 7 Features + UI + B2 Upload (2nd pass)
    - `src/types.ts`: Added `createdBy?: string` to Project; `note?: string` to WorkflowDocument
    - `src/services/workflowService.ts`: Added `note?` to WorkflowDocumentInput
@@ -323,45 +342,6 @@ App.tsx
      - **Edit Project modal**: Wider (max-w-2xl), dept selector, TinyMCE for description
      - New useEffect: when `selectedProject?.id` changes → fetch all project docs → merge into state (members see each other's files)
    - i18n (vi+en workflow.ts): Added `confirmDelete`, `deptFilter`, `notePlaceholder`; removed `assignTask`, `open` from filesPanel
-
-2. **2026-02-22** - WorkflowDashboard → MongoDB Backend Integration
-   - Created `src/services/workflowService.ts`: getProjects, createProject, updateProject, getDocuments, createDocument, updateDocument, deleteDocument
-   - Updated `src/types.ts`: `expenseLog?` added to Project interface; `department?` made optional in WorkflowDocument
-   - Updated `WorkflowDashboard.tsx`:
-     - Removed internal state → replaced with API-backed `projects`, `documents`, `loading`
-     - Added `useEffect` to load data on mount via `Promise.all`
-     - Simplified sidebar: removed 3 dept-filter items (Creative Team, Event Planner, Production), FILE MANAGEMENT now has only All Documents + Account
-     - All handlers now fire API calls (optimistic update strategy)
-     - `expenseLog` migrated from separate state into `project.expenseLog`
-     - `filteredDocs` simplified to searchQuery-only filter
-     - Removed Studio AI button from document toolbar
-     - Added `LoadingSpinner` during initial data load
-
-2. **2026-02-21** - WorkflowDashboard i18n + Functionality
-   - Added 20+ missing i18n keys to vi/workflow.ts and en/workflow.ts (backToProjects, overview.quickStats/files/members, teamPanel, filesPanel, finance.add, modal.client/budget, tasks.dueLabel/fillRequired, tasks.modal.selectAssignee/attached, dashboard.documentsFound, affiliate.coins)
-   - WorkflowDashboard.tsx: replaced all hardcoded English strings with t() calls
-   - Added `handleAddExpense`: connects expense form inputs to state, updates project.expenses total
-   - Added `cycleTaskStatus`: clicking task card cycles todo→in_progress→done→todo
-   - Added `handleOpenFile`: opens file URL in new tab, or shows file info if no URL
-   - Task cards now have colored status badges (gray/blue/green) and clickable for status cycling
-   - Project modal: Client/Budget placeholders and dept options now translated
-
-2. **2026-02-21** - Backblaze B2 Video & File Upload
-   - Created `src/services/b2StorageService.ts`: `uploadToB2(file, folder, token, onProgress)` — requests presigned URL from backend, then XHR PUT directly to B2
-   - Updated `ModuleEditor.tsx`: video upload → B2 (`courses/videos`), document upload → B2 (`courses/documents`), added video progress bar UI
-   - Updated `ResourceFormModal.tsx`: file upload → B2 (`resources`), images (thumbnail/preview) still use Cloudinary
-   - Cloudinary unchanged: images (thumbnails, avatars, logos, TinyMCE)
-
-2. **2026-02-18** - Cloud Desktop Feature
-   - Rewrote AIServerConnect.tsx: removed simulation, real API with 4 states (idle/connecting/connected/error)
-   - Created cloudService.ts: connect, disconnect, getActiveSession, admin machine/session endpoints
-   - Created CloudAdminTab.tsx: machines table with register/edit/toggle, sessions table with filters/pagination/force-end
-   - Added 'cloud' tab to AdminPage.tsx TopTabType
-   - Updated i18n: entities.ts server.* (vi+en), admin.ts cloud.* (vi+en)
-   - Removed Layout wrapper from ServerPage in App.tsx (full-screen like WorkflowDashboard)
-
-2. **2026-02-13** - Admin Reset Password + Simplified Change Password
-   - Added admin reset password, simplified change password flow
 
 3. **2026-02-12** - About & Services Pages + Admin Restructure + TinyMCE
    - Created AboutPage.tsx, AboutDetailPage.tsx for /about route

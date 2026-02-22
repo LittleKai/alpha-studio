@@ -117,6 +117,17 @@ export default {
         deptFilter: "Lọc phòng ban",
         mineFilter: "Thành Viên",
         memberBadge: "Thành viên",
+        memberProfile: {
+          email: "Email",
+          phone: "Điện thoại",
+          location: "Địa điểm",
+          bio: "Giới thiệu",
+          skills: "Kỹ năng",
+          socials: "Mạng xã hội",
+          viewProfile: "Xem trang cá nhân",
+          close: "Đóng",
+          noInfo: "Chưa cập nhật"
+        },
         overview: {
           quickStats: "Thống kê nhanh",
           files: "Tài liệu",

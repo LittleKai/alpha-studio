@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import React, { useEffect, useState, useRef, useCallback, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import { useAuth } from '../auth/context';
@@ -251,6 +251,11 @@ const CoursePage: React.FC = () => {
         };
     }, []);
 
+    // Reset progress save ref when lesson changes
+    useEffect(() => {
+        lastSavedPositionRef.current = -1;
+    }, [selectedLessonId]);
+
     // Resolve B2 presigned URL when lesson changes (B2 bucket is private)
     useEffect(() => {
         const rawUrl = selectedLesson?.videoUrl;
@@ -392,6 +397,30 @@ const CoursePage: React.FC = () => {
         }
     }, []);
 
+    const formatTime = (seconds: number): string => {
+        const m = Math.floor(seconds / 60);
+        const s = Math.floor(seconds % 60);
+        return `${m}:${s.toString().padStart(2, '0')}`;
+    };
+
+    const currentLessonLastPosition = useMemo(() => {
+        if (!enrollmentProgress || !selectedLessonId) return 0;
+        const prog = enrollmentProgress.completedLessons.find(l => l.lessonId === selectedLessonId);
+        return prog?.lastPosition || 0;
+    }, [enrollmentProgress, selectedLessonId]);
+
+    const handleResumeVideo = useCallback(() => {
+        if (currentLessonLastPosition <= 0) return;
+        const isYt = selectedLesson?.videoUrl?.includes('youtube') || selectedLesson?.videoUrl?.includes('youtu.be');
+        if (isYt && youtubePlayerRef.current && ytPlayerReady) {
+            youtubePlayerRef.current.seekTo(currentLessonLastPosition, true);
+            youtubePlayerRef.current.playVideo();
+        } else if (videoRef.current) {
+            videoRef.current.currentTime = currentLessonLastPosition;
+            videoRef.current.play().catch(() => {});
+        }
+    }, [currentLessonLastPosition, selectedLesson, ytPlayerReady]);
+
     // Fetch reviews
     useEffect(() => {
         const fetchReviews = async () => {
@@ -490,25 +519,28 @@ const CoursePage: React.FC = () => {
         }
     };
 
-    // Handle video progress
+    // Track last time we saved progress (avoid saving too frequently)
+    const lastSavedPositionRef = useRef<number>(-1);
+
+    // Handle video progress — save every ~10 seconds of actual playback
     const handleVideoTimeUpdate = async () => {
         if (!videoRef.current || !course || !selectedLessonId) return;
 
-        const video = videoRef.current;
-        const watchedDuration = Math.floor(video.currentTime);
-        const lastPosition = Math.floor(video.currentTime);
+        const lastPosition = Math.floor(videoRef.current.currentTime);
 
-        // Only update every 10 seconds to avoid too many requests
-        if (watchedDuration % 10 === 0) {
-            try {
-                await updateLessonProgress(course._id, {
-                    lessonId: selectedLessonId,
-                    watchedDuration,
-                    lastPosition
-                });
-            } catch (err) {
-                console.error('Failed to update video progress:', err);
-            }
+        // Save only when position advanced at least 10s from last save
+        if (lastPosition - lastSavedPositionRef.current < 10) return;
+        lastSavedPositionRef.current = lastPosition;
+
+        try {
+            const progress = await updateLessonProgress(course._id, {
+                lessonId: selectedLessonId,
+                watchedDuration: lastPosition,
+                lastPosition
+            });
+            setEnrollmentProgress(progress);
+        } catch (err) {
+            console.error('Failed to update video progress:', err);
         }
     };
 
@@ -737,7 +769,7 @@ const CoursePage: React.FC = () => {
                             <div className="flex items-center gap-3">
                                 <span className="text-sm font-medium text-[var(--text-primary)]">{getLocalizedText(selectedLesson.title)}</span>
                                 {selectedLesson.type === 'video' && selectedLesson.videoUrl && !selectedLesson.videoUrl.includes('vimeo') && (
-                                    <div className="flex items-center gap-1">
+                                    <div className="flex items-center gap-1.5">
                                         <button
                                             onClick={() => {
                                                 if (selectedLesson.videoUrl?.includes('youtube') || selectedLesson.videoUrl?.includes('youtu.be')) {
@@ -746,7 +778,7 @@ const CoursePage: React.FC = () => {
                                                     handleSkipVideo(-10);
                                                 }
                                             }}
-                                            className="px-2 py-1 bg-[var(--bg-secondary)] hover:bg-[var(--bg-tertiary)] rounded text-xs text-[var(--text-secondary)] transition-colors"
+                                            className="px-3 py-1 bg-[var(--bg-secondary)] hover:bg-[var(--bg-tertiary)] rounded text-xs text-[var(--text-secondary)] transition-colors"
                                         >
                                             -10s
                                         </button>
@@ -758,10 +790,21 @@ const CoursePage: React.FC = () => {
                                                     handleSkipVideo(10);
                                                 }
                                             }}
-                                            className="px-2 py-1 bg-[var(--bg-secondary)] hover:bg-[var(--bg-tertiary)] rounded text-xs text-[var(--text-secondary)] transition-colors"
+                                            className="px-3 py-1 bg-[var(--bg-secondary)] hover:bg-[var(--bg-tertiary)] rounded text-xs text-[var(--text-secondary)] transition-colors"
                                         >
                                             +10s
                                         </button>
+                                        {isEnrolled && currentLessonLastPosition > 5 && (
+                                            <button
+                                                onClick={handleResumeVideo}
+                                                className="px-3 py-1.5 bg-[var(--accent-primary)] hover:opacity-90 rounded-lg text-xs font-semibold text-[var(--text-on-accent)] transition-opacity flex items-center gap-1.5 shadow-sm"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                                                </svg>
+                                                {t('course.resumeFrom')} {formatTime(currentLessonLastPosition)}
+                                            </button>
+                                        )}
                                     </div>
                                 )}
                             </div>
@@ -1230,39 +1273,43 @@ const CoursePage: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* View Reviews Button */}
-                        <button
-                            onClick={() => setShowReviewsDialog(true)}
-                            className="w-full mt-4 py-2.5 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] font-medium hover:bg-[var(--bg-tertiary)] hover:border-[var(--accent-primary)] transition-all flex items-center justify-center gap-2"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                            </svg>
-                            {t('course.viewReviews')} ({course.reviewCount})
-                        </button>
                     </div>
 
                     {/* Instructor Card */}
-                    {course.instructor?.name && (
-                        <div className="p-6 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-primary)]">
-                            <h3 className="text-sm font-bold text-[var(--text-tertiary)] uppercase tracking-wider mb-4">Instructor</h3>
-                            <div className="flex items-center gap-4">
-                                {course.instructor.avatar ? (
-                                    <img src={course.instructor.avatar} alt={course.instructor.name} className="w-14 h-14 rounded-full object-cover" />
-                                ) : (
-                                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-purple-600 flex items-center justify-center text-white text-xl font-bold">
-                                        {course.instructor.name.charAt(0)}
-                                    </div>
-                                )}
-                                <div>
-                                    <h4 className="font-bold text-[var(--text-primary)]">{course.instructor.name}</h4>
-                                    {course.instructor.bio && (
-                                        <p className="text-xs text-[var(--text-secondary)] line-clamp-2">{course.instructor.bio}</p>
-                                    )}
+                    {(() => {
+                        const instructorsToShow = (course.instructors?.filter(i => i.name).length
+                            ? course.instructors!.filter(i => i.name)
+                            : course.instructor?.name ? [course.instructor] : []);
+                        if (!instructorsToShow.length) return null;
+                        return (
+                            <div className="p-6 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-primary)]">
+                                <h3 className="text-sm font-bold text-[var(--text-tertiary)] uppercase tracking-wider mb-4">
+                                    {instructorsToShow.length === 1 ? t('course.instructor') : t('course.instructors')}
+                                </h3>
+                                <div className="space-y-4">
+                                    {instructorsToShow.map((ins, idx) => (
+                                        <div key={idx} className="flex items-center gap-4">
+                                            {ins.avatar ? (
+                                                <img src={ins.avatar} alt={ins.name} className="w-14 h-14 rounded-full object-cover flex-shrink-0" />
+                                            ) : (
+                                                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-purple-600 flex items-center justify-center text-white text-xl font-bold flex-shrink-0">
+                                                    {ins.name.charAt(0)}
+                                                </div>
+                                            )}
+                                            <div>
+                                                <h4 className="font-bold text-[var(--text-primary)]">{ins.name}</h4>
+                                                {ins.bio && (
+                                                    <p className="text-xs text-[var(--text-secondary)] line-clamp-2">
+                                                        {typeof ins.bio === 'string' ? ins.bio : getLocalizedText(ins.bio)}
+                                                    </p>
+                                                )}
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
-                        </div>
-                    )}
+                        );
+                    })()}
                 </div>
             </main>
 

@@ -6,8 +6,16 @@ import {
     Course,
     CourseInput,
     Module,
-    LearningOutcome
+    LearningOutcome,
+    LocalizedString
 } from '../../services/courseService';
+
+interface InstructorFormState {
+    name: string;
+    avatar: string;
+    bioVi: string;
+    bioEn: string;
+}
 import ModuleEditor from './ModuleEditor';
 import { uploadToCloudinary } from '../../services/cloudinaryService';
 
@@ -37,9 +45,27 @@ const CourseForm: React.FC<CourseFormProps> = ({ course, onClose, onSuccess }) =
     const [level, setLevel] = useState(course?.level || 'beginner');
     const [price, setPrice] = useState(course?.price || 0);
     const [discount, setDiscount] = useState(course?.discount || 0);
-    const [instructorName, setInstructorName] = useState(course?.instructor?.name || '');
-    const [instructorAvatar, setInstructorAvatar] = useState(course?.instructor?.avatar || '');
-    const [instructorBio, setInstructorBio] = useState(course?.instructor?.bio || '');
+    const [instructors, setInstructors] = useState<InstructorFormState[]>(() => {
+        if (course?.instructors?.filter(i => i.name).length) {
+            return course.instructors!.filter(i => i.name).map(i => ({
+                name: i.name || '',
+                avatar: i.avatar || '',
+                bioVi: typeof i.bio === 'string' ? i.bio : ((i.bio as LocalizedString)?.vi || ''),
+                bioEn: typeof i.bio === 'string' ? '' : ((i.bio as LocalizedString)?.en || ''),
+            }));
+        }
+        if (course?.instructor?.name) {
+            const b = course.instructor.bio;
+            return [{
+                name: course.instructor.name || '',
+                avatar: course.instructor.avatar || '',
+                bioVi: typeof b === 'string' ? b : ((b as LocalizedString)?.vi || ''),
+                bioEn: typeof b === 'string' ? '' : ((b as LocalizedString)?.en || ''),
+            }];
+        }
+        return [{ name: '', avatar: '', bioVi: '', bioEn: '' }];
+    });
+    const [uploadingAvatarIdx, setUploadingAvatarIdx] = useState<number | null>(null);
     const [tags, setTags] = useState<string[]>(course?.tags || []);
     const [tagInput, setTagInput] = useState('');
     const [prerequisites, setPrerequisites] = useState<string[]>(course?.prerequisites || []);
@@ -56,7 +82,6 @@ const CourseForm: React.FC<CourseFormProps> = ({ course, onClose, onSuccess }) =
 
     // Upload state
     const [uploadingThumbnail, setUploadingThumbnail] = useState(false);
-    const [uploadingAvatar, setUploadingAvatar] = useState(false);
 
     // File upload handlers
     const handleThumbnailUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -78,22 +103,33 @@ const CourseForm: React.FC<CourseFormProps> = ({ course, onClose, onSuccess }) =
         }
     }, []);
 
-    const handleAvatarUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleAddInstructor = useCallback(() => {
+        setInstructors(prev => [...prev, { name: '', avatar: '', bioVi: '', bioEn: '' }]);
+    }, []);
+
+    const handleRemoveInstructor = useCallback((idx: number) => {
+        setInstructors(prev => prev.filter((_, i) => i !== idx));
+    }, []);
+
+    const handleUpdateInstructor = useCallback((idx: number, field: keyof InstructorFormState, value: string) => {
+        setInstructors(prev => prev.map((ins, i) => i === idx ? { ...ins, [field]: value } : ins));
+    }, []);
+
+    const handleInstructorAvatarUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>, idx: number) => {
         const file = e.target.files?.[0];
         if (!file) return;
-
-        setUploadingAvatar(true);
+        setUploadingAvatarIdx(idx);
         try {
             const result = await uploadToCloudinary(file, 'courses/instructors');
             if (result.success) {
-                setInstructorAvatar(result.url);
+                setInstructors(prev => prev.map((ins, i) => i === idx ? { ...ins, avatar: result.url } : ins));
             } else {
                 setError(result.error || 'Failed to upload avatar');
             }
         } catch (err) {
             setError('Failed to upload avatar');
         } finally {
-            setUploadingAvatar(false);
+            setUploadingAvatarIdx(null);
         }
     }, []);
 
@@ -160,11 +196,18 @@ const CourseForm: React.FC<CourseFormProps> = ({ course, onClose, onSuccess }) =
                 price,
                 discount,
                 status,
-                instructor: {
-                    name: instructorName,
-                    avatar: instructorAvatar,
-                    bio: instructorBio
-                },
+                instructor: instructors[0] ? {
+                    name: instructors[0].name,
+                    avatar: instructors[0].avatar,
+                    bio: { vi: instructors[0].bioVi, en: instructors[0].bioEn } as LocalizedString
+                } : undefined,
+                instructors: instructors
+                    .filter(i => i.name.trim())
+                    .map(i => ({
+                        name: i.name,
+                        avatar: i.avatar,
+                        bio: { vi: i.bioVi, en: i.bioEn } as LocalizedString
+                    })),
                 modules,
                 tags,
                 prerequisites,
@@ -185,9 +228,8 @@ const CourseForm: React.FC<CourseFormProps> = ({ course, onClose, onSuccess }) =
         }
     }, [
         titleVi, titleEn, descriptionVi, descriptionEn, category, thumbnail,
-        duration, level, price, discount, instructorName, instructorAvatar,
-        instructorBio, modules, tags, prerequisites, learningOutcomes,
-        isEditing, course, onSuccess, t
+        duration, level, price, discount, instructors, modules, tags,
+        prerequisites, learningOutcomes, isEditing, course, onSuccess, t
     ]);
 
     const sections = [
@@ -458,83 +500,121 @@ const CourseForm: React.FC<CourseFormProps> = ({ course, onClose, onSuccess }) =
                         {/* Content Section */}
                         {activeSection === 'content' && (
                             <div className="space-y-6">
-                                {/* Instructor */}
+                                {/* Instructors */}
                                 <div className="glass-card rounded-2xl p-6">
-                                    <h2 className="text-xl font-bold text-[var(--text-primary)] mb-6">
-                                        {t('admin.courses.form.instructor')}
-                                    </h2>
-                                    <div className="space-y-4">
-                                        <div className="grid grid-cols-2 gap-4">
-                                            <div>
-                                                <label className="block text-sm font-medium text-[var(--text-secondary)] mb-2">
-                                                    {t('admin.courses.form.instructorName')}
-                                                </label>
-                                                <input
-                                                    type="text"
-                                                    value={instructorName}
-                                                    onChange={(e) => setInstructorName(e.target.value)}
-                                                    className="w-full px-4 py-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-xl text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)]"
-                                                />
-                                            </div>
-                                            <div>
-                                                <label className="block text-sm font-medium text-[var(--text-secondary)] mb-2">
-                                                    {t('admin.courses.form.instructorAvatar')}
-                                                </label>
-                                                <div className="flex gap-2">
-                                                    <input
-                                                        type="text"
-                                                        value={instructorAvatar}
-                                                        onChange={(e) => setInstructorAvatar(e.target.value)}
-                                                        placeholder="URL"
-                                                        className="flex-1 px-4 py-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-xl text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)]"
-                                                    />
-                                                    <label className={`px-3 py-3 bg-[var(--accent-primary)] text-white rounded-xl cursor-pointer hover:opacity-90 transition-opacity flex items-center ${uploadingAvatar ? 'opacity-50 cursor-not-allowed' : ''}`}>
-                                                        {uploadingAvatar ? (
-                                                            <svg className="w-5 h-5 animate-spin" viewBox="0 0 24 24">
-                                                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
-                                                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
-                                                            </svg>
-                                                        ) : (
-                                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                                                            </svg>
-                                                        )}
-                                                        <input
-                                                            type="file"
-                                                            accept="image/*"
-                                                            onChange={handleAvatarUpload}
-                                                            disabled={uploadingAvatar}
-                                                            className="hidden"
-                                                        />
-                                                    </label>
-                                                </div>
-                                                {instructorAvatar && (
-                                                    <div className="mt-2 relative w-12 h-12 rounded-full overflow-hidden bg-[var(--bg-secondary)]">
-                                                        <img src={instructorAvatar} alt="Avatar" className="w-full h-full object-cover" />
+                                    <div className="flex items-center justify-between mb-6">
+                                        <h2 className="text-xl font-bold text-[var(--text-primary)]">
+                                            {t('admin.courses.form.instructor')}
+                                        </h2>
+                                        <button
+                                            type="button"
+                                            onClick={handleAddInstructor}
+                                            className="px-4 py-2 bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] rounded-xl text-sm font-medium hover:bg-[var(--accent-primary)]/20 transition-colors"
+                                        >
+                                            + {t('course.addInstructor')}
+                                        </button>
+                                    </div>
+                                    <div className="space-y-6">
+                                        {instructors.map((ins, idx) => (
+                                            <div key={idx} className="p-4 bg-[var(--bg-secondary)] rounded-xl space-y-4">
+                                                <div className="flex items-center justify-between">
+                                                    <span className="text-sm font-semibold text-[var(--text-secondary)]">#{idx + 1}</span>
+                                                    {instructors.length > 1 && (
                                                         <button
                                                             type="button"
-                                                            onClick={() => setInstructorAvatar('')}
-                                                            className="absolute -top-1 -right-1 p-0.5 bg-red-500 rounded-full text-white"
+                                                            onClick={() => handleRemoveInstructor(idx)}
+                                                            className="text-[var(--text-tertiary)] hover:text-red-400 transition-colors"
                                                         >
-                                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                                                 <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
                                                             </svg>
                                                         </button>
+                                                    )}
+                                                </div>
+                                                <div className="grid grid-cols-2 gap-4">
+                                                    <div>
+                                                        <label className="block text-sm font-medium text-[var(--text-secondary)] mb-2">
+                                                            {t('admin.courses.form.instructorName')}
+                                                        </label>
+                                                        <input
+                                                            type="text"
+                                                            value={ins.name}
+                                                            onChange={(e) => handleUpdateInstructor(idx, 'name', e.target.value)}
+                                                            className="w-full px-4 py-3 bg-[var(--bg-tertiary)] border border-[var(--border-primary)] rounded-xl text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)]"
+                                                        />
                                                     </div>
-                                                )}
+                                                    <div>
+                                                        <label className="block text-sm font-medium text-[var(--text-secondary)] mb-2">
+                                                            {t('admin.courses.form.instructorAvatar')}
+                                                        </label>
+                                                        <div className="flex gap-2">
+                                                            <input
+                                                                type="text"
+                                                                value={ins.avatar}
+                                                                onChange={(e) => handleUpdateInstructor(idx, 'avatar', e.target.value)}
+                                                                placeholder="URL"
+                                                                className="flex-1 px-4 py-3 bg-[var(--bg-tertiary)] border border-[var(--border-primary)] rounded-xl text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)]"
+                                                            />
+                                                            <label className={`px-3 py-3 bg-[var(--accent-primary)] text-white rounded-xl cursor-pointer hover:opacity-90 transition-opacity flex items-center ${uploadingAvatarIdx === idx ? 'opacity-50 cursor-not-allowed' : ''}`}>
+                                                                {uploadingAvatarIdx === idx ? (
+                                                                    <svg className="w-5 h-5 animate-spin" viewBox="0 0 24 24">
+                                                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
+                                                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                                                                    </svg>
+                                                                ) : (
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                                                    </svg>
+                                                                )}
+                                                                <input
+                                                                    type="file"
+                                                                    accept="image/*"
+                                                                    onChange={(e) => handleInstructorAvatarUpload(e, idx)}
+                                                                    disabled={uploadingAvatarIdx !== null}
+                                                                    className="hidden"
+                                                                />
+                                                            </label>
+                                                        </div>
+                                                        {ins.avatar && (
+                                                            <div className="mt-2 relative w-12 h-12 rounded-full overflow-hidden bg-[var(--bg-secondary)]">
+                                                                <img src={ins.avatar} alt="Avatar" className="w-full h-full object-cover" />
+                                                                <button
+                                                                    type="button"
+                                                                    onClick={() => handleUpdateInstructor(idx, 'avatar', '')}
+                                                                    className="absolute -top-1 -right-1 p-0.5 bg-red-500 rounded-full text-white"
+                                                                >
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                                                        <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                                                                    </svg>
+                                                                </button>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <label className="block text-sm font-medium text-[var(--text-secondary)] mb-2">
+                                                        {t('admin.courses.form.instructorBio')}
+                                                    </label>
+                                                    {activeTab === 'vi' ? (
+                                                        <textarea
+                                                            value={ins.bioVi}
+                                                            onChange={(e) => handleUpdateInstructor(idx, 'bioVi', e.target.value)}
+                                                            rows={3}
+                                                            placeholder="Tiếng Việt"
+                                                            className="w-full px-4 py-3 bg-[var(--bg-tertiary)] border border-[var(--border-primary)] rounded-xl text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)] resize-none"
+                                                        />
+                                                    ) : (
+                                                        <textarea
+                                                            value={ins.bioEn}
+                                                            onChange={(e) => handleUpdateInstructor(idx, 'bioEn', e.target.value)}
+                                                            rows={3}
+                                                            placeholder="English"
+                                                            className="w-full px-4 py-3 bg-[var(--bg-tertiary)] border border-[var(--border-primary)] rounded-xl text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)] resize-none"
+                                                        />
+                                                    )}
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div>
-                                            <label className="block text-sm font-medium text-[var(--text-secondary)] mb-2">
-                                                {t('admin.courses.form.instructorBio')}
-                                            </label>
-                                            <textarea
-                                                value={instructorBio}
-                                                onChange={(e) => setInstructorBio(e.target.value)}
-                                                rows={3}
-                                                className="w-full px-4 py-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-xl text-[var(--text-primary)] focus:outline-none focus:border-[var(--accent-primary)] resize-none"
-                                            />
-                                        </div>
+                                        ))}
                                     </div>
                                 </div>
 

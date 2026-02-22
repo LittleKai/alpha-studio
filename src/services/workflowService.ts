@@ -40,11 +40,37 @@ export interface WorkflowUserResult {
     isExternal: boolean;
 }
 
+export interface UserPublicProfile {
+    id: string;
+    name: string;
+    avatar: string | null;
+    role: string;
+    email: string;
+    phone: string;
+    bio: string;
+    skills: string[];
+    location: string;
+    socials: {
+        facebook?: string;
+        linkedin?: string;
+        github?: string;
+        custom?: { label: string; url: string }[];
+    };
+}
+
 export const searchUsers = async (q: string): Promise<{ success: boolean; data: WorkflowUserResult[] }> => {
     const response = await fetch(`${API_URL}/workflow/users/search?q=${encodeURIComponent(q)}`, {
         headers: getAuthHeaders()
     });
     if (!response.ok) throw new Error('Failed to search users');
+    return response.json();
+};
+
+export const getUserProfile = async (id: string): Promise<{ success: boolean; data: UserPublicProfile }> => {
+    const response = await fetch(`${API_URL}/workflow/users/${id}`, {
+        headers: getAuthHeaders()
+    });
+    if (!response.ok) throw new Error('Failed to fetch user profile');
     return response.json();
 };
 

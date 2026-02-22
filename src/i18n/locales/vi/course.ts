@@ -23,7 +23,11 @@ export default {
     verifiedPurchase: "Đã mua",
     instructorReply: "Phản hồi từ giảng viên",
     helpful: "Hữu ích",
-    freePreviewBadge: "Xem thử"
+    freePreviewBadge: "Xem thử",
+    instructor: "Giảng viên",
+    instructors: "Giảng viên",
+    addInstructor: "Thêm giảng viên",
+    resumeFrom: "Tiếp tục từ"
   },
   myCourses: {
     title: "Khóa học của tôi",

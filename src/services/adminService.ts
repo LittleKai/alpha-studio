@@ -401,6 +401,38 @@ export const formatCurrency = (amount: number): string => {
     return new Intl.NumberFormat('vi-VN').format(amount) + 'đ';
 };
 
+// ─── Storage Cleanup ─────────────────────────────────────────────────────────
+
+export interface OrphanedFile {
+    key: string;
+    filename: string;
+    folder: string;
+    size: number;           // bytes
+    lastModified: string;   // ISO date string
+    uploader: string;
+    uploadedAt: string | null;
+}
+
+export interface OrphanedFilesResponse {
+    data: OrphanedFile[];
+    meta: { orphaned: number; totalB2: number; referenced: number };
+}
+
+export const listOrphanedFiles = async (): Promise<OrphanedFilesResponse> => {
+    const res = await fetch(`${API_URL}/admin/storage/orphaned`, { headers: getHeaders() });
+    if (!res.ok) throw new Error('Failed to list orphaned files');
+    return res.json();
+};
+
+export const deleteOrphanedFile = async (key: string): Promise<void> => {
+    const res = await fetch(`${API_URL}/admin/storage/orphaned`, {
+        method: 'DELETE',
+        headers: getHeaders(),
+        body: JSON.stringify({ key }),
+    });
+    if (!res.ok) throw new Error('Failed to delete file');
+};
+
 /**
  * Format date
  */
