@@ -240,6 +240,14 @@ const App: React.FC = () => {
                     }
                 />
                 <Route
+                    path="/workflow/projects/:id"
+                    element={
+                        <ProtectedRoute>
+                            <WorkflowPage />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
                     path="/server"
                     element={
                         <ProtectedRoute>

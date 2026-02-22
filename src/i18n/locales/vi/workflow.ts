@@ -10,7 +10,9 @@ export default {
     team: "Nhóm",
     teamMembers: "Thành viên nhóm",
     external: "Bên ngoài",
+    introduction: "Giới thiệu ngắn",
     description: "Mô tả",
+    requirements: "Yêu cầu",
     tasks: "Nhiệm vụ",
     addMember: "Thêm thành viên",
     sidebar: {
@@ -61,6 +63,7 @@ export default {
     },
     dashboard: {
       upload: "Tải lên tài liệu",
+      uploadSizeLimit: "File quá lớn. Người dùng thông thường chỉ được upload tối đa 10MB.",
       createProject: "Dự án mới",
       create: "Studio AI",
       search: "Tìm tài liệu...",
@@ -79,11 +82,17 @@ export default {
         confirmDelete: "Xóa file này vĩnh viễn?"
       },
       table: {
-        name: "Tên File / Dự án",
+        name: "Tên File",
         dept: "Phòng ban",
+        project: "Dự án",
         date: "Ngày",
         status: "Trạng thái",
         action: "Thao tác"
+      },
+      sourceFilter: {
+        all: "Tất cả",
+        personal: "Cá nhân",
+        project: "Dự án"
       },
       status: {
         pending: "Chờ",
@@ -93,7 +102,7 @@ export default {
       project: {
         modalTitle: "Khởi tạo dự án mới",
         nameLabel: "Tên dự án",
-        taglineLabel: "Giới thiệu ngắn (hiển thị trên card)",
+        taglineLabel: "Yêu cầu dự án",
         deptLabel: "Phòng ban phụ trách",
         descLabel: "Yêu cầu",
         createBtn: "Tạo dự án",
@@ -105,6 +114,8 @@ export default {
         editAvatar: "Ảnh đại diện dự án",
         confirmDelete: "Xóa dự án đã hoàn thành này vĩnh viễn?",
         deptFilter: "Lọc phòng ban",
+        mineFilter: "Thành Viên",
+        memberBadge: "Thành viên",
         overview: {
           quickStats: "Thống kê nhanh",
           files: "Tài liệu",

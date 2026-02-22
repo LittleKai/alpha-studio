@@ -10,7 +10,9 @@ export default {
     team: "Team",
     teamMembers: "Team Members",
     external: "External",
+    introduction: "Short Introduction",
     description: "Description",
+    requirements: "Requirements",
     tasks: "Tasks",
     addMember: "Add Member",
     sidebar: {
@@ -61,6 +63,7 @@ export default {
     },
     dashboard: {
       upload: "Upload Asset",
+      uploadSizeLimit: "File too large. Regular users can only upload up to 10MB.",
       createProject: "New Project",
       create: "Studio AI",
       search: "Find assets...",
@@ -79,11 +82,17 @@ export default {
         confirmDelete: "Delete this file permanently?"
       },
       table: {
-        name: "File / Project Name",
+        name: "File Name",
         dept: "Dept",
+        project: "Project",
         date: "Date",
         status: "Status",
-        action: "Opt"
+        action: "Action"
+      },
+      sourceFilter: {
+        all: "All",
+        personal: "Personal",
+        project: "Project"
       },
       status: {
         pending: "Wait",
@@ -93,7 +102,7 @@ export default {
       project: {
         modalTitle: "Initialize New Project",
         nameLabel: "Project Name",
-        taglineLabel: "Tagline (short intro shown on card)",
+        taglineLabel: "Project Requirements",
         deptLabel: "Lead Dept",
         descLabel: "Requirements",
         createBtn: "Create Project",
@@ -105,6 +114,8 @@ export default {
         editAvatar: "Project Avatar",
         confirmDelete: "Delete this completed project permanently?",
         deptFilter: "Filter by Dept",
+        mineFilter: "My Projects",
+        memberBadge: "Member",
         overview: {
           quickStats: "Quick Stats",
           files: "Files",

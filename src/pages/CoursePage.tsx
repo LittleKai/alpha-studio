@@ -263,11 +263,12 @@ const CoursePage: React.FC = () => {
                     setResolvedVideoUrl(signed);
                 })
                 .catch((err) => {
+                    // B2 bucket is private — DO NOT fall back to raw URL (will fail anyway)
                     console.error('[B2 video] signed URL failed:', err?.message);
-                    setResolvedVideoUrl(rawUrl);
+                    setResolvedVideoUrl('');
                 });
         } else {
-            if (isB2Url(rawUrl) && !token) console.warn('[B2 video] token is null, using raw URL');
+            // Non-B2 URL (YouTube, Vimeo, etc.) or public URL — use as-is
             setResolvedVideoUrl(rawUrl);
         }
     }, [selectedLesson?.videoUrl, token]);
@@ -657,11 +658,7 @@ const CoursePage: React.FC = () => {
                                             const v = e.currentTarget as HTMLVideoElement;
                                             console.error('[Video error] code:', v.error?.code, '| src:', v.currentSrc?.substring(0, 120));
                                         }}
-                                    >
-                                        <source src={resolvedVideoUrl} type="video/mp4" />
-                                        <source src={resolvedVideoUrl} type="video/webm" />
-                                        Your browser does not support the video tag.
-                                    </video>
+                                    />
                                 ) : null}
                                 {/* Lesson info overlay - pointer-events-none to not block video controls */}
                                 <div className="absolute top-4 left-4 px-3 py-1.5 bg-black/60 backdrop-blur rounded-lg text-white text-sm pointer-events-none z-20">

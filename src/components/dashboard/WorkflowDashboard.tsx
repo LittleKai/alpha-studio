@@ -1,5 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from '../../i18n/context';
 import { useAuth } from '../../auth/context';
 import type { WorkflowDocument, DepartmentType, Transaction, AutomationRule, AffiliateStats, TeamMember, Comment, Project, Task } from '../../types';
@@ -35,6 +36,8 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
 
   const { t } = useTranslation();
   const { user } = useAuth();
+  const navigate = useNavigate();
+  const { id: projectIdParam } = useParams<{ id: string }>();
 
   // Navigation State
   const [activeView, setActiveView] = useState<'documents' | 'projects' | 'jobs' | 'wallet' | 'partners' | 'automation' | 'affiliate' | 'creative' | 'resources'>('documents');
@@ -78,14 +81,21 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
 
   // Edit project modal
   const [showEditProjectModal, setShowEditProjectModal] = useState(false);
-  const [editProjectData, setEditProjectData] = useState({ name: '', tagline: '', description: '', avatar: '', department: 'event_planner' as DepartmentType, client: '', budget: 0, deadline: '' });
+  const [editProjectData, setEditProjectData] = useState({ name: '', tagline: '', requirements: '', description: '', avatar: '', department: 'event_planner' as DepartmentType, client: '', budget: 0, deadline: '' });
   const [editProjectUploading, setEditProjectUploading] = useState(false);
 
   // Project list department filter
   const [projectDeptFilter, setProjectDeptFilter] = useState<DepartmentType>('all');
+  // Project list "Mine" filter (projects the current user is a member of)
+  const [projectMineFilter, setProjectMineFilter] = useState(false);
 
   // Upload progress per tempId: 0–100
   const [uploadProgress, setUploadProgress] = useState<Record<string, number>>({});
+
+  // All Documents view — sort & filter
+  const [docSortField, setDocSortField] = useState<'name' | 'date' | 'project'>('date');
+  const [docSortDir, setDocSortDir] = useState<'asc' | 'desc'>('desc');
+  const [docSourceFilter, setDocSourceFilter] = useState<'all' | 'personal' | 'project'>('all');
 
   // User Profile - connected to authenticated user
   const userProfile = {
@@ -126,6 +136,15 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
     if (!e.target.files?.[0]) return;
     const file = e.target.files[0];
     e.target.value = '';
+
+    // Non-admin users are limited to 10 MB
+    if (user?.role !== 'admin') {
+        const MAX_MB = 10;
+        if (file.size > MAX_MB * 1024 * 1024) {
+            alert(t('workflow.dashboard.uploadSizeLimit'));
+            return;
+        }
+    }
 
     const token = localStorage.getItem('alpha_studio_token') || '';
     const uploadDate = new Date().toISOString().split('T')[0];
@@ -203,7 +222,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
           department: newProjectData.department,
           status: 'planning',
           startDate: new Date().toISOString().split('T')[0],
-          deadline: newProjectData.deadline || 'TBD',
+          deadline: newProjectData.deadline || '',
           budget: Number(newProjectData.budget),
           expenses: 0,
           expenseLog: [],
@@ -247,8 +266,6 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
 
   const toggleAutomation = (id: string) => { setAutomations(prev => prev.map(a => a.id === id ? { ...a, isActive: !a.isActive } : a)); };
   const copyToClipboard = (text: string) => { navigator.clipboard.writeText(text); alert(t('workflow.affiliate.copied')); };
-
-  const handleOpenChat = (doc: WorkflowDocument) => { setActiveDocForComment(doc); };
 
   const handleChangeDocStatus = (docId: string, newStatus: 'approved' | 'rejected' | 'pending') => {
       setDocuments(prev => prev.map(d => d.id === docId ? { ...d, status: newStatus } : d));
@@ -454,6 +471,25 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
           .finally(() => setLoading(false));
   }, []);
 
+  // Sync URL param → selectedProject (deep link support: /workflow/projects/:id)
+  useEffect(() => {
+      if (!projectIdParam) {
+          // URL has no project ID — clear any open project
+          setSelectedProject(null);
+          return;
+      }
+      if (projects.length === 0) return; // wait until projects are loaded
+      const found = projects.find(p => p.id === projectIdParam);
+      if (found) {
+          setSelectedProject(found);
+          setProjectTab('overview'); // always reset tab when switching projects
+          setActiveView('projects');
+      } else {
+          // Project not found (deleted or no access) — redirect to project list
+          navigate('/workflow', { replace: true });
+      }
+  }, [projectIdParam, projects]);
+
   // When entering a project, reload all its documents (so all members see each other's files)
   useEffect(() => {
       if (!selectedProject) return;
@@ -499,10 +535,9 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       };
       const updatedTeam = selectedProject.team.filter(m => m.id !== user._id);
       const updatedHistory = [...selectedProject.chatHistory, sysMsg];
-      // Update local state (project stays visible — non-completed projects are visible to all)
       setProjects(prev => prev.map(p => p.id === selectedProject.id ? { ...p, team: updatedTeam, chatHistory: updatedHistory } : p));
-      setSelectedProject(null);
       updateProjectAPI(selectedProject.id, { team: updatedTeam, chatHistory: updatedHistory }).catch(console.error);
+      navigate('/workflow');
   };
 
   const handleToggleManager = (memberId: string) => {
@@ -598,7 +633,8 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
   // Edit project (name, description, avatar, department)
   const handleOpenEditProject = () => {
       if (!selectedProject) return;
-      setEditProjectData({ name: selectedProject.name, tagline: selectedProject.tagline || '', description: selectedProject.description, avatar: selectedProject.avatar || '', department: selectedProject.department, client: selectedProject.client || '', budget: selectedProject.budget || 0, deadline: selectedProject.deadline || '' });
+      const rawDeadline = selectedProject.deadline;
+      setEditProjectData({ name: selectedProject.name, tagline: selectedProject.tagline || '', requirements: selectedProject.requirements || '', description: selectedProject.description, avatar: selectedProject.avatar || '', department: selectedProject.department, client: selectedProject.client || '', budget: selectedProject.budget || 0, deadline: (rawDeadline && rawDeadline !== 'TBD') ? rawDeadline : '' });
       setShowEditProjectModal(true);
   };
 
@@ -615,7 +651,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
 
   const handleSaveEditProject = () => {
       if (!selectedProject || !editProjectData.name.trim()) return;
-      const updated = { name: editProjectData.name.trim(), tagline: editProjectData.tagline, description: editProjectData.description, avatar: editProjectData.avatar, department: editProjectData.department, client: editProjectData.client, budget: editProjectData.budget, deadline: editProjectData.deadline };
+      const updated = { name: editProjectData.name.trim(), tagline: editProjectData.tagline, requirements: editProjectData.requirements, description: editProjectData.description, avatar: editProjectData.avatar, department: editProjectData.department, client: editProjectData.client, budget: editProjectData.budget, deadline: editProjectData.deadline };
       setProjects(prev => prev.map(p => p.id === selectedProject.id ? { ...p, ...updated } : p));
       setSelectedProject(prev => prev ? { ...prev, ...updated } : null);
       setShowEditProjectModal(false);
@@ -635,9 +671,34 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       updateDocumentAPI(docId, { note }).catch(console.error);
   };
 
-  const filteredDocs = documents.filter(doc =>
-    doc.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredDocs = documents
+    .filter(doc => doc.name.toLowerCase().includes(searchQuery.toLowerCase()))
+    .filter(doc => {
+      if (docSourceFilter === 'personal') return !doc.projectId;
+      if (docSourceFilter === 'project') return !!doc.projectId;
+      return true;
+    })
+    .sort((a, b) => {
+      let aVal = '';
+      let bVal = '';
+      if (docSortField === 'name') { aVal = a.name; bVal = b.name; }
+      else if (docSortField === 'date') { aVal = a.uploadDate; bVal = b.uploadDate; }
+      else if (docSortField === 'project') {
+        aVal = a.projectId ? (projects.find(p => p.id === a.projectId)?.name || '') : '';
+        bVal = b.projectId ? (projects.find(p => p.id === b.projectId)?.name || '') : '';
+      }
+      const cmp = aVal.localeCompare(bVal);
+      return docSortDir === 'asc' ? cmp : -cmp;
+    });
+
+  const toggleDocSort = (field: 'name' | 'date' | 'project') => {
+    if (docSortField === field) {
+      setDocSortDir(prev => prev === 'asc' ? 'desc' : 'asc');
+    } else {
+      setDocSortField(field);
+      setDocSortDir('asc');
+    }
+  };
 
   // Partners filtering moved to PartnersView component
 
@@ -657,6 +718,13 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
           <div className="flex flex-col h-full animate-fade-in">
               <div className="p-6 border-b border-[var(--border-primary)] bg-[var(--bg-card)] flex justify-between items-center sticky top-0 z-10">
                   <div className="flex items-center gap-4">
+                      <button
+                          onClick={() => navigate('/workflow')}
+                          className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[var(--accent-primary)]/10 hover:bg-[var(--accent-primary)]/20 text-[var(--accent-primary)] font-bold text-sm transition-all border border-[var(--accent-primary)]/30 hover:border-[var(--accent-primary)]/60 flex-shrink-0"
+                      >
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" /></svg>
+                          {t('workflow.dashboard.project.backToProjects')}
+                      </button>
                       {selectedProject.avatar ? (
                           <img src={selectedProject.avatar} className="w-12 h-12 rounded-xl object-cover border border-[var(--border-primary)]" />
                       ) : (
@@ -665,9 +733,6 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                           </div>
                       )}
                       <div>
-                          <button onClick={() => setSelectedProject(null)} className="text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-1 flex items-center gap-1">
-                              {t('workflow.dashboard.project.backToProjects')}
-                          </button>
                           <div className="flex items-center gap-2">
                               <h1 className="text-2xl font-black text-[var(--text-primary)]">{selectedProject.name}</h1>
                               {isProjectManagerOrCreator() && selectedProject.status !== 'completed' && (
@@ -712,10 +777,23 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                           <div className="md:col-span-2 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-6">
                               {selectedProject.tagline && (
-                                  <p className="text-sm text-[var(--accent-primary)] font-medium italic mb-4 border-l-2 border-[var(--accent-primary)] pl-3">{selectedProject.tagline}</p>
+                                  <div className="mb-5">
+                                      <h3 className="text-lg font-bold mb-2">{t('workflow.introduction')}</h3>
+                                      <p className="text-sm text-[var(--text-secondary)] leading-relaxed italic">{selectedProject.tagline}</p>
+                                  </div>
                               )}
-                              <h3 className="text-lg font-bold mb-4">{t('workflow.description')}</h3>
-                              <div className="text-[var(--text-secondary)] text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: selectedProject.description || '' }} />
+                              {selectedProject.description && (
+                                  <div className={`mb-5 ${selectedProject.tagline ? 'border-t border-[var(--border-primary)] pt-4' : ''}`}>
+                                      <h3 className="text-base font-bold mb-2">{t('workflow.description')}</h3>
+                                      <div className="text-[var(--text-secondary)] text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: selectedProject.description }} />
+                                  </div>
+                              )}
+                              {selectedProject.requirements && (
+                                  <div className="border-t border-[var(--border-primary)] pt-4">
+                                      <h3 className="text-base font-bold mb-2">{t('workflow.requirements')}</h3>
+                                      <p className="text-sm text-[var(--text-secondary)] leading-relaxed whitespace-pre-wrap">{selectedProject.requirements}</p>
+                                  </div>
+                              )}
                               <div className="mt-6">
                                   <div className="flex justify-between items-center mb-2">
                                       <h3 className="text-base font-bold">{t('workflow.progress')}</h3>
@@ -743,7 +821,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                               <div className="space-y-4">
                                   <div className="flex justify-between text-sm font-medium"><span className="text-[var(--text-secondary)]">{t('workflow.dashboard.project.overview.files')}</span> <span className="font-bold">{projectDocs.length}</span></div>
                                   <div className="flex justify-between text-sm font-medium"><span className="text-[var(--text-secondary)]">{t('workflow.dashboard.project.overview.members')}</span> <span className="font-bold">{selectedProject.team.length}</span></div>
-                                  <div className="flex justify-between text-sm font-medium text-yellow-400"><span>{t('workflow.budget')}</span> <span className="font-bold">{selectedProject.budget.toLocaleString()} 🪙</span></div>
+                                  <div className="flex justify-between text-sm font-medium text-yellow-400"><span>{t('workflow.budget')}</span> <span className="font-bold flex items-center gap-1">{selectedProject.budget.toLocaleString()} <span className="w-3.5 h-3.5 rounded-full bg-yellow-400 text-black flex items-center justify-center text-[8px] font-black flex-shrink-0">C</span></span></div>
                               </div>
                           </div>
                       </div>
@@ -1077,9 +1155,17 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       { value: 'operation', label: t('workflow.depts.operation'), icon: '⚙️' },
   ];
 
-  const filteredProjects = projects.filter(p =>
-      projectDeptFilter === 'all' || p.department === projectDeptFilter
-  );
+  const isUserMemberOf = (p: Project) =>
+      !!user && (p.team.some(m => m.id === user._id) || p.createdBy === user._id);
+
+  const filteredProjects = projects
+      .filter(p => projectDeptFilter === 'all' || p.department === projectDeptFilter)
+      .filter(p => !projectMineFilter || isUserMemberOf(p))
+      .sort((a, b) => {
+          const aIsMine = isUserMemberOf(a) ? 1 : 0;
+          const bIsMine = isUserMemberOf(b) ? 1 : 0;
+          return bIsMine - aIsMine; // member projects first
+      });
 
   const renderProjectList = () => (
       <div className="p-6 md:p-8 overflow-y-auto flex-1 animate-fade-in">
@@ -1090,7 +1176,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
               )}
           </div>
 
-          {/* Department filter */}
+          {/* Department filter + Mine filter */}
           <div className="flex gap-2 mb-6 flex-wrap">
               {DEPT_OPTIONS.map(opt => (
                   <button
@@ -1105,6 +1191,16 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                       <span>{opt.icon}</span><span>{opt.label}</span>
                   </button>
               ))}
+              <button
+                  onClick={() => setProjectMineFilter(v => !v)}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                      projectMineFilter
+                          ? 'bg-purple-500 text-white shadow'
+                          : 'bg-[var(--bg-secondary)] text-[var(--text-secondary)] hover:bg-[var(--border-primary)]'
+                  }`}
+              >
+                  <span>👤</span><span>{t('workflow.dashboard.project.mineFilter')}</span>
+              </button>
           </div>
 
           {filteredProjects.length === 0 && (
@@ -1118,7 +1214,13 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
           )}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredProjects.map(project => (
-                  <div key={project.id} className="relative bg-[var(--bg-card)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] rounded-2xl p-6 cursor-pointer transition-all hover:-translate-y-1 shadow-lg group" onClick={() => setSelectedProject(project)}>
+                  <div key={project.id} className={`relative bg-[var(--bg-card)] border rounded-2xl cursor-pointer transition-all hover:-translate-y-1 shadow-lg group ${isUserMemberOf(project) ? 'pt-8 px-6 pb-6 border-[var(--accent-primary)]/50 hover:border-[var(--accent-primary)] ring-1 ring-[var(--accent-primary)]/20' : 'p-6 border-[var(--border-primary)] hover:border-[var(--accent-primary)]'}`} onClick={() => navigate(`/workflow/projects/${project.id}`)}>
+                      {/* Member indicator badge */}
+                      {isUserMemberOf(project) && (
+                          <div className="absolute top-2.5 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold bg-[var(--accent-primary)]/20 text-[var(--accent-primary)] border border-[var(--accent-primary)]/30">
+                              ✓ {t('workflow.dashboard.project.memberBadge')}
+                          </div>
+                      )}
                       {/* Admin delete button for completed projects */}
                       {user?.role === 'admin' && project.status === 'completed' && (
                           <button
@@ -1148,7 +1250,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                           </div>
                       </div>
                       <div className="mb-3 space-y-0.5">
-                          <p className="text-sm font-medium text-[var(--text-secondary)] truncate">{project.client}</p>
+                          <p className="text-sm font-semibold text-sky-400 truncate">{project.client}</p>
                           {project.tagline && <p className="text-xs text-[var(--text-tertiary)] line-clamp-2 italic">{project.tagline}</p>}
                       </div>
                       <div className="space-y-2">
@@ -1198,7 +1300,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       case 'partners': return <PartnersView searchQuery={searchQuery} />;
       default: return (
         <div className="p-6 md:p-8 overflow-y-auto flex-1">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
                 <div>
                     <h1 className="text-3xl font-bold">{t('workflow.sidebar.allDocuments')}</h1>
                     <p className="text-[var(--text-secondary)] mt-1">{filteredDocs.length} {t('workflow.dashboard.documentsFound')}</p>
@@ -1206,89 +1308,89 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                 <label className="cursor-pointer py-2.5 px-5 bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] font-bold rounded-lg hover:bg-[var(--border-primary)] transition-colors flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
                     {t('workflow.dashboard.upload')}
+                    {user?.role !== 'admin' && <span className="text-[var(--text-tertiary)] text-xs font-normal">max 10MB</span>}
                     <input type="file" className="hidden" onChange={handleFileUpload} />
                 </label>
+            </div>
+            {/* Filter bar */}
+            <div className="flex flex-wrap gap-3 mb-4">
+                <div className="flex gap-1 bg-[var(--bg-secondary)] p-1 rounded-lg border border-[var(--border-primary)]">
+                    {(['all', 'personal', 'project'] as const).map(f => (
+                        <button key={f} onClick={() => setDocSourceFilter(f)} className={`px-3 py-1.5 rounded text-xs font-bold transition-colors ${docSourceFilter === f ? 'bg-[var(--accent-primary)] text-black' : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'}`}>
+                            {t(`workflow.dashboard.sourceFilter.${f}`)}
+                        </button>
+                    ))}
+                </div>
             </div>
             <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl overflow-hidden shadow-sm">
                 <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                         <thead>
                             <tr className="bg-[var(--bg-secondary)] border-b border-[var(--border-primary)] text-xs uppercase tracking-wider text-[var(--text-secondary)]">
-                                <th className="p-4 font-semibold">{t('workflow.dashboard.table.name')}</th>
-                                <th className="p-4 font-semibold hidden md:table-cell">{t('workflow.dashboard.table.dept')}</th>
-                                <th className="p-4 font-semibold hidden md:table-cell">{t('workflow.dashboard.table.date')}</th>
-                                <th className="p-4 font-semibold">{t('workflow.dashboard.table.status')}</th>
+                                <th className="p-4 font-semibold cursor-pointer hover:text-[var(--text-primary)] select-none" onClick={() => toggleDocSort('name')}>
+                                    <div className="flex items-center gap-1">{t('workflow.dashboard.table.name')}{docSortField === 'name' && <span className="text-[var(--accent-primary)]">{docSortDir === 'asc' ? ' ↑' : ' ↓'}</span>}</div>
+                                </th>
+                                <th className="p-4 font-semibold cursor-pointer hover:text-[var(--text-primary)] select-none hidden md:table-cell" onClick={() => toggleDocSort('project')}>
+                                    <div className="flex items-center gap-1">{t('workflow.dashboard.table.project')}{docSortField === 'project' && <span className="text-[var(--accent-primary)]">{docSortDir === 'asc' ? ' ↑' : ' ↓'}</span>}</div>
+                                </th>
+                                <th className="p-4 font-semibold cursor-pointer hover:text-[var(--text-primary)] select-none hidden md:table-cell" onClick={() => toggleDocSort('date')}>
+                                    <div className="flex items-center gap-1">{t('workflow.dashboard.table.date')}{docSortField === 'date' && <span className="text-[var(--accent-primary)]">{docSortDir === 'asc' ? ' ↑' : ' ↓'}</span>}</div>
+                                </th>
                                 <th className="p-4 font-semibold text-right">{t('workflow.dashboard.table.action')}</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-[var(--border-primary)]">
-                            {filteredDocs.length > 0 ? filteredDocs.map((doc) => (
-                                <tr key={doc.id} className="hover:bg-[var(--bg-secondary)]/50 transition-colors group">
-                                    <td className="p-4">
-                                        <div className="flex items-center gap-3">
-                                            <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-xs font-bold flex-shrink-0 ${doc.isProject ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30' : 'bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)]'}`}>{doc.isProject ? 'P' : doc.type}</div>
-                                            <div>
-                                                <p className={`font-semibold text-base ${doc.isProject ? 'text-[var(--accent-primary)]' : 'text-[var(--text-primary)]'}`}>{doc.name}</p>
-                                                <p className="text-sm text-[var(--text-tertiary)] mt-0.5">{doc.uploader} • {doc.size}</p>
+                            {filteredDocs.length > 0 ? filteredDocs.map((doc) => {
+                                const linkedProject = doc.projectId ? projects.find(p => p.id === doc.projectId) : null;
+                                return (
+                                    <tr key={doc.id} className="hover:bg-[var(--bg-secondary)]/50 transition-colors group">
+                                        <td className="p-4">
+                                            <div className="flex items-center gap-3">
+                                                <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-xs font-bold flex-shrink-0 ${linkedProject ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30' : 'bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)]'}`}>{doc.type}</div>
+                                                <div>
+                                                    <p className="font-semibold text-base text-[var(--text-primary)]">{doc.name}</p>
+                                                    <p className="text-sm text-[var(--text-tertiary)] mt-0.5">{doc.size}</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td className="p-4 text-sm text-[var(--text-secondary)] capitalize hidden md:table-cell">{t(`workflow.depts.${doc.department}`)}</td>
-                                    <td className="p-4 text-sm text-[var(--text-secondary)] hidden md:table-cell">{doc.uploadDate}</td>
-                                    <td className="p-4">
-                                        <span className={`px-2.5 py-1 rounded-full text-xs font-bold uppercase border ${getStatusColor(doc.status)}`}>{t(`workflow.dashboard.status.${doc.status}`)}</span>
-                                    </td>
-                                    <td className="p-4 text-right">
-                                        <div className="flex justify-end gap-1 items-center">
-                                            {/* Comment / open project */}
-                                            <button
-                                                onClick={() => doc.isProject ? setSelectedProject(projects.find(p => p.id === (doc.projectId || doc.id)) || null) : handleOpenChat(doc)}
-                                                className="p-2 rounded-lg text-[var(--text-secondary)] hover:text-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-colors"
-                                                title={t('workflow.dashboard.docPanel.comments')}
-                                            >
-                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" /></svg>
-                                            </button>
-                                            {/* Download — shown when URL is available */}
-                                            {doc.url && !doc.isProject && (
-                                                <a
-                                                    href={doc.url}
-                                                    download={doc.name}
-                                                    target="_blank"
-                                                    rel="noreferrer"
-                                                    className="p-2 rounded-lg text-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-colors"
-                                                    title={t('workflow.dashboard.project.teamPanel.download')}
-                                                >
-                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
-                                                </a>
+                                        </td>
+                                        <td className="p-4 text-sm hidden md:table-cell">
+                                            {linkedProject ? (
+                                                <div>
+                                                    <p className="text-[var(--text-primary)] font-medium">{linkedProject.name}</p>
+                                                    <p className="text-xs text-[var(--text-tertiary)] mt-0.5">{t(`workflow.depts.${linkedProject.department}`)}</p>
+                                                </div>
+                                            ) : (
+                                                <span className="text-[var(--text-tertiary)]">—</span>
                                             )}
-                                            {/* Approve / Reject (pending) */}
-                                            {!doc.isProject && doc.status === 'pending' && (
-                                                <>
-                                                    <button onClick={() => handleChangeDocStatus(doc.id, 'approved')} className="p-2 rounded-lg text-green-400 hover:bg-green-500/20 transition-colors" title={t('workflow.dashboard.docPanel.approve')}>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+                                        </td>
+                                        <td className="p-4 text-sm text-[var(--text-secondary)] hidden md:table-cell">{doc.uploadDate}</td>
+                                        <td className="p-4 text-right">
+                                            <div className="flex justify-end gap-1 items-center">
+                                                {/* Download — shown when URL is available */}
+                                                {doc.url && (
+                                                    <a
+                                                        href={doc.url}
+                                                        download={doc.name}
+                                                        target="_blank"
+                                                        rel="noreferrer"
+                                                        className="p-2 rounded-lg text-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-colors"
+                                                        title={t('workflow.dashboard.project.teamPanel.download')}
+                                                    >
+                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
+                                                    </a>
+                                                )}
+                                                {/* Delete — only for personal (non-project) files */}
+                                                {!doc.projectId && (
+                                                    <button onClick={() => handleDeleteDoc(doc.id)} className="p-2 rounded-lg text-[var(--text-tertiary)] hover:text-red-400 hover:bg-red-500/20 transition-colors" title={t('workflow.dashboard.docPanel.delete')}>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
                                                     </button>
-                                                    <button onClick={() => handleChangeDocStatus(doc.id, 'rejected')} className="p-2 rounded-lg text-red-400 hover:bg-red-500/20 transition-colors" title={t('workflow.dashboard.docPanel.reject')}>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
-                                                    </button>
-                                                </>
-                                            )}
-                                            {/* Reset to pending */}
-                                            {!doc.isProject && doc.status !== 'pending' && (
-                                                <button onClick={() => handleChangeDocStatus(doc.id, 'pending')} className="p-2 rounded-lg text-yellow-400 hover:bg-yellow-500/20 transition-colors" title={t('workflow.dashboard.docPanel.resetPending')}>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" /></svg>
-                                                </button>
-                                            )}
-                                            {/* Delete */}
-                                            {!doc.isProject && (
-                                                <button onClick={() => handleDeleteDoc(doc.id)} className="p-2 rounded-lg text-[var(--text-tertiary)] hover:text-red-400 hover:bg-red-500/20 transition-colors" title={t('workflow.dashboard.docPanel.delete')}>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
-                                                </button>
-                                            )}
-                                        </div>
-                                    </td>
-                                </tr>
-                            )) : (
-                                <tr><td colSpan={5} className="p-12 text-center text-[var(--text-tertiary)] text-base">{t('workflow.dashboard.noFiles')}</td></tr>
+                                                )}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                );
+                            }) : (
+                                <tr><td colSpan={4} className="p-12 text-center text-[var(--text-tertiary)] text-base">{t('workflow.dashboard.noFiles')}</td></tr>
                             )}
                         </tbody>
                     </table>
@@ -1316,8 +1418,8 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
             <div className="flex-1 overflow-y-auto py-6 space-y-6 px-3">
                 <div><p className="px-4 text-[10px] font-bold text-[var(--text-tertiary)] uppercase tracking-wider mb-2">{t('workflow.sidebar.fileManagement')}</p>
                     <div className="space-y-1">
-                        <button onClick={() => { setActiveView('documents'); setSelectedProject(null); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'documents' && !selectedProject ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">📂</span><span className="hidden md:block text-sm">{t('workflow.sidebar.allDocuments')}</span></button>
-                        <button onClick={() => { setActiveView('projects'); setSelectedProject(null); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'projects' || !!selectedProject ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">💼</span><span className="hidden md:block text-sm">{t('workflow.sidebar.account')}</span></button>
+                        <button onClick={() => { navigate('/workflow'); setActiveView('documents'); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${activeView === 'documents' && !selectedProject ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">📂</span><span className="hidden md:block text-sm">{t('workflow.sidebar.allDocuments')}</span></button>
+                        <button onClick={() => { navigate('/workflow'); setActiveView('projects'); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${activeView === 'projects' || !!selectedProject ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">💼</span><span className="hidden md:block text-sm">{t('workflow.sidebar.account')}</span></button>
                     </div>
                 </div>
                 <div><p className="px-4 text-[10px] font-bold text-[var(--text-tertiary)] uppercase tracking-wider mb-2">{t('workflow.sidebar.networkOpportunity')}</p>
@@ -1354,7 +1456,49 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
         />
         {/* PartnerRegistrationModal moved to PartnersView component */}
 
-        {showProjectModal && canCreateProject && (<div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6"><h2 className="text-2xl font-bold mb-4">{t('workflow.dashboard.project.modalTitle')}</h2><form onSubmit={handleCreateProject} className="space-y-4"><input placeholder={t('workflow.dashboard.project.nameLabel')} value={newProjectData.name} onChange={e => setNewProjectData({...newProjectData, name: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input placeholder={t('workflow.dashboard.project.taglineLabel')} value={newProjectData.tagline} onChange={e => setNewProjectData({...newProjectData, tagline: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" /><input placeholder={t('workflow.dashboard.project.descLabel')} value={newProjectData.description} onChange={e => setNewProjectData({...newProjectData, description: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" /><input placeholder={t('workflow.dashboard.project.modal.client')} value={newProjectData.client} onChange={e => setNewProjectData({...newProjectData, client: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input type="number" placeholder={t('workflow.dashboard.project.modal.budget')} value={newProjectData.budget || ''} onChange={e => setNewProjectData({...newProjectData, budget: parseInt(e.target.value)})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><div><label className="text-xs text-[var(--text-secondary)] block mb-1">{t('workflow.dashboard.project.modal.deadline')}</label><input type="date" value={newProjectData.deadline} onChange={e => setNewProjectData({...newProjectData, deadline: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" /></div><select value={newProjectData.department} onChange={e => setNewProjectData({...newProjectData, department: e.target.value as any})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"><option value="event_planner">{t('workflow.depts.event_planner')}</option><option value="creative">{t('workflow.depts.creative')}</option><option value="operation">{t('workflow.depts.operation')}</option></select><div className="flex gap-2 justify-end mt-4"><button type="button" onClick={() => setShowProjectModal(false)} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">{t('common.cancel')}</button><button type="submit" className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.dashboard.project.createBtn')}</button></div></form></div></div>)}
+        {showProjectModal && canCreateProject && (
+            <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+                <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6">
+                    <h2 className="text-2xl font-bold mb-6">{t('workflow.dashboard.project.modalTitle')}</h2>
+                    <form onSubmit={handleCreateProject} className="space-y-4">
+                        <div className="relative">
+                            <input placeholder=" " value={newProjectData.name} onChange={e => setNewProjectData({...newProjectData, name: e.target.value})} required className="peer w-full px-3 pt-5 pb-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-sm focus:outline-none focus:border-[var(--accent-primary)] transition-colors" />
+                            <label className="pointer-events-none absolute left-3 top-2 text-[10px] font-medium text-[var(--accent-primary)] transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-placeholder-shown:font-normal peer-placeholder-shown:text-[var(--text-secondary)] peer-focus:top-2 peer-focus:text-[10px] peer-focus:font-medium peer-focus:text-[var(--accent-primary)]">{t('workflow.dashboard.project.nameLabel')} *</label>
+                        </div>
+                        <div className="grid grid-cols-2 gap-3">
+                            <div className="relative">
+                                <input placeholder=" " value={newProjectData.client} onChange={e => setNewProjectData({...newProjectData, client: e.target.value})} required className="peer w-full px-3 pt-5 pb-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-sm focus:outline-none focus:border-[var(--accent-primary)] transition-colors" />
+                                <label className="pointer-events-none absolute left-3 top-2 text-[10px] font-medium text-[var(--accent-primary)] transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-placeholder-shown:font-normal peer-placeholder-shown:text-[var(--text-secondary)] peer-focus:top-2 peer-focus:text-[10px] peer-focus:font-medium peer-focus:text-[var(--accent-primary)]">{t('workflow.dashboard.project.modal.client')} *</label>
+                            </div>
+                            <div className="relative">
+                                <input type="number" placeholder=" " value={newProjectData.budget || ''} onChange={e => setNewProjectData({...newProjectData, budget: parseInt(e.target.value)})} required className="peer w-full px-3 pt-5 pb-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-sm focus:outline-none focus:border-[var(--accent-primary)] transition-colors" />
+                                <label className="pointer-events-none absolute left-3 top-2 text-[10px] font-medium text-[var(--accent-primary)] transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-placeholder-shown:font-normal peer-placeholder-shown:text-[var(--text-secondary)] peer-focus:top-2 peer-focus:text-[10px] peer-focus:font-medium peer-focus:text-[var(--accent-primary)]">{t('workflow.dashboard.project.modal.budget')} *</label>
+                            </div>
+                            <div className="relative">
+                                <select value={newProjectData.department} onChange={e => setNewProjectData({...newProjectData, department: e.target.value as any})} className="peer w-full px-3 pt-5 pb-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-sm focus:outline-none focus:border-[var(--accent-primary)] transition-colors appearance-none">
+                                    <option value="event_planner">{t('workflow.depts.event_planner')}</option>
+                                    <option value="creative">{t('workflow.depts.creative')}</option>
+                                    <option value="operation">{t('workflow.depts.operation')}</option>
+                                </select>
+                                <label className="pointer-events-none absolute left-3 top-2 text-[10px] font-medium text-[var(--text-secondary)] peer-focus:text-[var(--accent-primary)]">{t('workflow.dashboard.project.deptLabel')}</label>
+                            </div>
+                            <div className="relative">
+                                <input type="date" value={newProjectData.deadline} onChange={e => setNewProjectData({...newProjectData, deadline: e.target.value})} className="peer w-full px-3 pt-5 pb-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-sm focus:outline-none focus:border-[var(--accent-primary)] transition-colors" />
+                                <label className="pointer-events-none absolute left-3 top-2 text-[10px] font-medium text-[var(--text-secondary)] peer-focus:text-[var(--accent-primary)]">{t('workflow.dashboard.project.modal.deadline')}</label>
+                            </div>
+                        </div>
+                        <div className="relative">
+                            <input placeholder=" " value={newProjectData.tagline} onChange={e => setNewProjectData({...newProjectData, tagline: e.target.value})} className="peer w-full px-3 pt-5 pb-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-sm focus:outline-none focus:border-[var(--accent-primary)] transition-colors" />
+                            <label className="pointer-events-none absolute left-3 top-2 text-[10px] font-medium text-[var(--accent-primary)] transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-placeholder-shown:font-normal peer-placeholder-shown:text-[var(--text-secondary)] peer-focus:top-2 peer-focus:text-[10px] peer-focus:font-medium peer-focus:text-[var(--accent-primary)]">{t('workflow.introduction')}</label>
+                        </div>
+                        <div className="flex gap-2 justify-end mt-4">
+                            <button type="button" onClick={() => setShowProjectModal(false)} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">{t('common.cancel')}</button>
+                            <button type="submit" className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.dashboard.project.createBtn')}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        )}
 
         {/* Creative and Resource modals moved to PromptsView and ResourcesView components */}
 
@@ -1379,67 +1523,69 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                             </label>
                         </div>
                         <div className="grid grid-cols-2 gap-3">
-                            <input
-                                placeholder={t('workflow.dashboard.project.nameLabel')}
-                                value={editProjectData.name}
-                                onChange={e => setEditProjectData(prev => ({ ...prev, name: e.target.value }))}
-                                className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg col-span-2"
-                            />
-                            <input
-                                placeholder={t('workflow.dashboard.project.taglineLabel')}
-                                value={editProjectData.tagline}
-                                onChange={e => setEditProjectData(prev => ({ ...prev, tagline: e.target.value }))}
-                                className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg col-span-2"
-                            />
-                            <input
-                                placeholder={t('workflow.dashboard.project.modal.client')}
-                                value={editProjectData.client}
-                                onChange={e => setEditProjectData(prev => ({ ...prev, client: e.target.value }))}
-                                className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"
-                            />
-                            <input
-                                type="number"
-                                placeholder={t('workflow.dashboard.project.modal.budget')}
-                                value={editProjectData.budget || ''}
-                                onChange={e => setEditProjectData(prev => ({ ...prev, budget: parseInt(e.target.value) || 0 }))}
-                                className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"
-                            />
-                            <select
-                                value={editProjectData.department}
-                                onChange={e => setEditProjectData(prev => ({ ...prev, department: e.target.value as DepartmentType }))}
-                                className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"
-                            >
-                                <option value="event_planner">{t('workflow.depts.event_planner')}</option>
-                                <option value="creative">{t('workflow.depts.creative')}</option>
-                                <option value="operation">{t('workflow.depts.operation')}</option>
-                            </select>
-                            <div>
-                                <label className="text-xs text-[var(--text-secondary)] block mb-1">{t('workflow.dashboard.project.modal.deadline')}</label>
-                                <input
-                                    type="date"
-                                    value={editProjectData.deadline}
-                                    onChange={e => setEditProjectData(prev => ({ ...prev, deadline: e.target.value }))}
-                                    className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"
-                                />
+                            <div className="relative col-span-2">
+                                <input placeholder=" " value={editProjectData.name} onChange={e => setEditProjectData(prev => ({ ...prev, name: e.target.value }))} className="peer w-full px-3 pt-5 pb-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-sm focus:outline-none focus:border-[var(--accent-primary)] transition-colors" />
+                                <label className="pointer-events-none absolute left-3 top-2 text-[10px] font-medium text-[var(--accent-primary)] transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-placeholder-shown:font-normal peer-placeholder-shown:text-[var(--text-secondary)] peer-focus:top-2 peer-focus:text-[10px] peer-focus:font-medium peer-focus:text-[var(--accent-primary)]">{t('workflow.dashboard.project.nameLabel')}</label>
+                            </div>
+                            <div className="relative">
+                                <input placeholder=" " value={editProjectData.client} onChange={e => setEditProjectData(prev => ({ ...prev, client: e.target.value }))} className="peer w-full px-3 pt-5 pb-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-sm focus:outline-none focus:border-[var(--accent-primary)] transition-colors" />
+                                <label className="pointer-events-none absolute left-3 top-2 text-[10px] font-medium text-[var(--accent-primary)] transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-placeholder-shown:font-normal peer-placeholder-shown:text-[var(--text-secondary)] peer-focus:top-2 peer-focus:text-[10px] peer-focus:font-medium peer-focus:text-[var(--accent-primary)]">{t('workflow.dashboard.project.modal.client')}</label>
+                            </div>
+                            <div className="relative">
+                                <input type="number" placeholder=" " value={editProjectData.budget || ''} onChange={e => setEditProjectData(prev => ({ ...prev, budget: parseInt(e.target.value) || 0 }))} className="peer w-full px-3 pt-5 pb-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-sm focus:outline-none focus:border-[var(--accent-primary)] transition-colors" />
+                                <label className="pointer-events-none absolute left-3 top-2 text-[10px] font-medium text-[var(--accent-primary)] transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-placeholder-shown:font-normal peer-placeholder-shown:text-[var(--text-secondary)] peer-focus:top-2 peer-focus:text-[10px] peer-focus:font-medium peer-focus:text-[var(--accent-primary)]">{t('workflow.dashboard.project.modal.budget')}</label>
+                            </div>
+                            <div className="relative">
+                                <select value={editProjectData.department} onChange={e => setEditProjectData(prev => ({ ...prev, department: e.target.value as DepartmentType }))} className="peer w-full px-3 pt-5 pb-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-sm focus:outline-none focus:border-[var(--accent-primary)] transition-colors appearance-none">
+                                    <option value="event_planner">{t('workflow.depts.event_planner')}</option>
+                                    <option value="creative">{t('workflow.depts.creative')}</option>
+                                    <option value="operation">{t('workflow.depts.operation')}</option>
+                                </select>
+                                <label className="pointer-events-none absolute left-3 top-2 text-[10px] font-medium text-[var(--text-secondary)] peer-focus:text-[var(--accent-primary)]">{t('workflow.dashboard.project.deptLabel')}</label>
+                            </div>
+                            <div className="relative">
+                                <input type="date" value={editProjectData.deadline} onChange={e => setEditProjectData(prev => ({ ...prev, deadline: e.target.value }))} className="peer w-full px-3 pt-5 pb-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-sm focus:outline-none focus:border-[var(--accent-primary)] transition-colors" />
+                                <label className="pointer-events-none absolute left-3 top-2 text-[10px] font-medium text-[var(--text-secondary)] peer-focus:text-[var(--accent-primary)]">{t('workflow.dashboard.project.modal.deadline')}</label>
                             </div>
                         </div>
+                        <div className="relative">
+                            <textarea placeholder=" " value={editProjectData.tagline} onChange={e => setEditProjectData(prev => ({ ...prev, tagline: e.target.value }))} rows={2} className="peer w-full px-3 pt-5 pb-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-sm focus:outline-none focus:border-[var(--accent-primary)] transition-colors resize-none" />
+                            <label className="pointer-events-none absolute left-3 top-2 text-[10px] font-medium text-[var(--accent-primary)] transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-placeholder-shown:font-normal peer-placeholder-shown:text-[var(--text-secondary)] peer-focus:top-2 peer-focus:text-[10px] peer-focus:font-medium peer-focus:text-[var(--accent-primary)]">{t('workflow.introduction')}</label>
+                        </div>
+                        <div className="relative">
+                            <textarea placeholder=" " value={editProjectData.requirements} onChange={e => setEditProjectData(prev => ({ ...prev, requirements: e.target.value }))} rows={3} className="peer w-full px-3 pt-5 pb-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-sm focus:outline-none focus:border-[var(--accent-primary)] transition-colors resize-none" />
+                            <label className="pointer-events-none absolute left-3 top-2 text-[10px] font-medium text-[var(--accent-primary)] transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-placeholder-shown:font-normal peer-placeholder-shown:text-[var(--text-secondary)] peer-focus:top-2 peer-focus:text-[10px] peer-focus:font-medium peer-focus:text-[var(--accent-primary)]">{t('workflow.requirements')}</label>
+                        </div>
                         <div>
-                            <p className="text-xs text-[var(--text-secondary)] mb-1">{t('workflow.dashboard.project.descLabel')}</p>
+                            <p className="text-xs text-[var(--text-secondary)] mb-1">{t('workflow.description')}</p>
                             <Editor
                                 tinymceScriptSrc="/tinymce/tinymce.min.js"
                                 value={editProjectData.description}
                                 onEditorChange={(content: string) => setEditProjectData(prev => ({ ...prev, description: content }))}
                                 licenseKey="gpl"
                                 init={{
-                                    height: 200,
+                                    height: 220,
                                     menubar: false,
-                                    plugins: ['lists', 'link', 'autolink'],
-                                    toolbar: 'bold italic underline | bullist numlist | link | removeformat',
+                                    plugins: ['lists', 'link', 'autolink', 'image'],
+                                    toolbar: 'bold italic underline | bullist numlist | link image | removeformat',
                                     skin: 'oxide-dark',
                                     content_css: 'dark',
                                     branding: false,
                                     statusbar: false,
                                     content_style: 'body { font-family: sans-serif; font-size: 14px; }',
+                                    images_upload_handler: async (blobInfo: any) => {
+                                        const token = localStorage.getItem('alpha_studio_token');
+                                        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
+                                        const res = await fetch(`${apiUrl}/upload/presign`, {
+                                            method: 'POST',
+                                            headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+                                            body: JSON.stringify({ filename: blobInfo.filename() || 'image.png', contentType: blobInfo.blob().type || 'image/png', folder: 'project-descriptions' }),
+                                        });
+                                        if (!res.ok) throw new Error('Upload failed');
+                                        const { data } = await res.json();
+                                        await fetch(data.presignedUrl, { method: 'PUT', body: blobInfo.blob(), headers: { 'Content-Type': blobInfo.blob().type } });
+                                        return data.publicUrl;
+                                    },
                                 }}
                             />
                         </div>
