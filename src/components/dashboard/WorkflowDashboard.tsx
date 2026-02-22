@@ -1371,12 +1371,12 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                                 tinymceScriptSrc="/tinymce/tinymce.min.js"
                                 value={editProjectData.description}
                                 onEditorChange={(content: string) => setEditProjectData(prev => ({ ...prev, description: content }))}
+                                licenseKey="gpl"
                                 init={{
                                     height: 200,
                                     menubar: false,
                                     plugins: ['lists', 'link', 'autolink'],
                                     toolbar: 'bold italic underline | bullist numlist | link | removeformat',
-                                    license_key: 'gpl',
                                     skin: 'oxide-dark',
                                     content_css: 'dark',
                                     branding: false,
