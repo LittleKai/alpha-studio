@@ -1,5 +1,5 @@
 # Project Summary
-**Last Updated:** 2026-02-21 (WorkflowDashboard i18n + full functionality: Add Expense, task status toggle, Open file)
+**Last Updated:** 2026-02-22 (WorkflowDashboard: project visibility, dept filter, TinyMCE, file notes, B2 upload with progress, UI improvements)
 **Updated By:** Claude Code
 
 ---
@@ -75,6 +75,7 @@ src/
 │   ├── jobService.ts          # Job management API service
 │   ├── partnerService.ts      # Partner management API service
 │   ├── courseService.ts       # Course management API service
+│   ├── workflowService.ts     # Workflow API service (CRUD projects + documents)
 │   ├── cloudinaryService.ts   # Cloudinary upload service with compression (images only)
 │   ├── b2StorageService.ts    # Backblaze B2 upload via presigned URL (videos & files)
 │   ├── imageCompression.ts    # Image compression utility (avatar, featured_work, logo, attachment)
@@ -217,7 +218,7 @@ App.tsx
 | Courses Catalog | ✅ Complete | CoursesPage.tsx | Full catalog with filters, search, pagination |
 | Course Detail | ✅ Complete | CoursePage.tsx | Single course view with curriculum |
 | AI Studio | ✅ Complete | components/studio/* | 20+ transformations, mask support |
-| Workflow Dashboard | ✅ Complete | WorkflowDashboard.tsx | Large component (~29k tokens) |
+| Workflow Dashboard | ✅ Complete | WorkflowDashboard.tsx, workflowService.ts | API-backed; dept filter + badges; TinyMCE description; file notes; B2 upload with progress bar; download buttons; isProjectCreator fix; project visibility control; admin delete completed projects |
 | AI Cloud Desktop | ✅ Complete | AIServerConnect.tsx, cloudService.ts | Real cloud desktop connection (idle/connecting/connected/error states) |
 | Theme Switching | ✅ Complete | theme/context.tsx | Light/Dark with persistence |
 | i18n (EN/VI) | ✅ Complete | i18n/* | Full translations |
@@ -258,7 +259,7 @@ App.tsx
 - [ ] API key exposed via environment variable only
 
 ### Medium Priority
-- [ ] WorkflowDashboard.tsx is very large (~29k tokens) - consider splitting
+- [ ] WorkflowDashboard.tsx still large - consider splitting into sub-components
 - [ ] No testing framework configured
 - [ ] No ESLint/Prettier configuration visible
 - [ ] Forgot password / password reset not implemented
@@ -306,7 +307,37 @@ App.tsx
 
 ## 7. Recent Changes (Last 3 Sessions)
 
-1. **2026-02-21** - WorkflowDashboard i18n + Functionality
+1. **2026-02-22** - WorkflowDashboard: 7 Features + UI + B2 Upload (2nd pass)
+   - `src/types.ts`: Added `createdBy?: string` to Project; `note?: string` to WorkflowDocument
+   - `src/services/workflowService.ts`: Added `note?` to WorkflowDocumentInput
+   - `WorkflowDashboard.tsx` major changes:
+     - **isProjectCreator() fix**: `selectedProject.createdBy === user._id` fallback (fixes Make/Remove Manager + notifications for old projects)
+     - **Project visibility**: non-completed visible to all; Package button creator-only; admin delete button on completed cards (hover)
+     - **Dept filter**: `DEPT_OPTIONS` + `filteredProjects`, filter buttons above project grid; dept badge on each project card
+     - **TinyMCE editor**: Edit Project modal uses `<Editor tinymceScriptSrc="/tinymce/tinymce.min.js">` for description; Overview renders as HTML (`dangerouslySetInnerHTML`)
+     - **File notes**: Uploader sees editable border-bottom input; others see read-only italic text; saved via `handleUpdateDocNote` → PUT /documents
+     - **B2 upload with progress**: `handleFileUpload` async → `uploadToB2('workflow-docs', token, progressCb)` → progress bar UI per file; clears on complete
+     - **Download buttons**: Project files tab + All Documents table both show download `<a>` for docs with URL
+     - **UI improvements**: Larger fonts (text-base/sm), rounded-full status badges, larger team cards (p-5, w-14 h-14 avatar), improved task/chat/overview sizing
+     - **Remove Manager icon**: Changed from ⭐ to SVG minus-circle; Make Manager keeps ⭐
+     - **Edit Project modal**: Wider (max-w-2xl), dept selector, TinyMCE for description
+     - New useEffect: when `selectedProject?.id` changes → fetch all project docs → merge into state (members see each other's files)
+   - i18n (vi+en workflow.ts): Added `confirmDelete`, `deptFilter`, `notePlaceholder`; removed `assignTask`, `open` from filesPanel
+
+2. **2026-02-22** - WorkflowDashboard → MongoDB Backend Integration
+   - Created `src/services/workflowService.ts`: getProjects, createProject, updateProject, getDocuments, createDocument, updateDocument, deleteDocument
+   - Updated `src/types.ts`: `expenseLog?` added to Project interface; `department?` made optional in WorkflowDocument
+   - Updated `WorkflowDashboard.tsx`:
+     - Removed internal state → replaced with API-backed `projects`, `documents`, `loading`
+     - Added `useEffect` to load data on mount via `Promise.all`
+     - Simplified sidebar: removed 3 dept-filter items (Creative Team, Event Planner, Production), FILE MANAGEMENT now has only All Documents + Account
+     - All handlers now fire API calls (optimistic update strategy)
+     - `expenseLog` migrated from separate state into `project.expenseLog`
+     - `filteredDocs` simplified to searchQuery-only filter
+     - Removed Studio AI button from document toolbar
+     - Added `LoadingSpinner` during initial data load
+
+2. **2026-02-21** - WorkflowDashboard i18n + Functionality
    - Added 20+ missing i18n keys to vi/workflow.ts and en/workflow.ts (backToProjects, overview.quickStats/files/members, teamPanel, filesPanel, finance.add, modal.client/budget, tasks.dueLabel/fillRequired, tasks.modal.selectAssignee/attached, dashboard.documentsFound, affiliate.coins)
    - WorkflowDashboard.tsx: replaced all hardcoded English strings with t() calls
    - Added `handleAddExpense`: connects expense form inputs to state, updates project.expenses total

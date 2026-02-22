@@ -100,6 +100,10 @@ export default {
         hubTitle: "Project Hub",
         management: "Quản lý dự án",
         backToProjects: "← Về danh sách",
+        edit: "Chỉnh sửa dự án",
+        editAvatar: "Ảnh đại diện dự án",
+        confirmDelete: "Xóa dự án đã hoàn thành này vĩnh viễn?",
+        deptFilter: "Lọc phòng ban",
         overview: {
           quickStats: "Thống kê nhanh",
           files: "Tài liệu",
@@ -111,13 +115,17 @@ export default {
           selectToAdd: "Chọn để thêm",
           external: "Ngoài (50c)",
           free: "Miễn phí",
+          rolePlaceholder: "Nhãn vai trò (vd: Designer...)",
+          leave: "Rời dự án",
+          makeManager: "Thêm làm Quản lý",
+          removeManager: "Xóa quyền Quản lý",
+          download: "Tải xuống",
         },
         filesPanel: {
           title: "Tài liệu dự án",
           upload: "Tải lên File",
-          assignTask: "Giao việc",
-          open: "Mở",
           noFiles: "Chưa có file nào trong dự án.",
+          notePlaceholder: "Thêm ghi chú...",
         },
         tabs: {
           overview: "Tổng quan",
@@ -154,7 +162,17 @@ export default {
         noProjects: "Chưa có dự án nào. Hãy tạo dự án đầu tiên!",
         chat: {
           placeholder: "Nhập tin nhắn...",
-          send: "Gửi"
+          send: "Gửi",
+          sys: {
+            joined: "đã tham gia dự án.",
+            removed: "đã bị xóa khỏi dự án.",
+            left: "đã rời dự án.",
+            promotedManager: "đã được thêm làm Quản lý.",
+            demotedManager: "đã bị xóa khỏi vai trò Quản lý.",
+            uploadedFile: "đã tải lên tệp:",
+            projectInit: "đã được khởi tạo.",
+            taskAssigned: "Đã giao việc"
+          }
         },
         tasks: {
           title: "Danh sách nhiệm vụ",

@@ -22,7 +22,8 @@ export default {
     viewReviews: "View Reviews",
     verifiedPurchase: "Verified Purchase",
     instructorReply: "Instructor Reply",
-    helpful: "Helpful"
+    helpful: "Helpful",
+    freePreviewBadge: "Free Preview"
   },
   myCourses: {
     title: "My Courses",

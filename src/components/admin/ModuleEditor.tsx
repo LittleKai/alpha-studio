@@ -15,7 +15,7 @@ const ModuleEditor: React.FC<ModuleEditorProps> = ({ modules, onChange }) => {
     const [uploadingVideo, setUploadingVideo] = useState<string | null>(null);
     const [uploadingDoc, setUploadingDoc] = useState<string | null>(null);
     const [videoProgress, setVideoProgress] = useState<number>(0);
-    const [docProgress, setDocProgress] = useState<number>(0);
+    const [_docProgress, setDocProgress] = useState<number>(0);
 
     // Generate simple unique ID
     const generateId = () => {

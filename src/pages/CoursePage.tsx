@@ -136,6 +136,17 @@ const CoursePage: React.FC = () => {
         return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
     };
 
+    // First module is always free preview for everyone (including non-authenticated users)
+    const isModuleFreePreview = useCallback((moduleIdx: number) => {
+        return moduleIdx === 0;
+    }, []);
+
+    // Check if the currently selected lesson is in the first module (free preview)
+    const isSelectedLessonFreePreview = useCallback(() => {
+        if (!course?.modules?.length || !selectedModuleId) return false;
+        return selectedModuleId === course.modules[0].moduleId;
+    }, [course, selectedModuleId]);
+
     // Check if lesson is completed
     const isLessonCompleted = useCallback((lessonId: string) => {
         if (!enrollmentProgress) return false;
@@ -289,15 +300,20 @@ const CoursePage: React.FC = () => {
         }
     }, [course, selectedLessonId, selectedModuleId]);
 
+    // Stable ref so the YouTube onStateChange callback always calls the latest handleVideoEnded
+    // without adding it to the player useEffect dep array
+    const handleVideoEndedRef = useRef(handleVideoEnded);
+    useEffect(() => {
+        handleVideoEndedRef.current = handleVideoEnded;
+    });
+
     // Initialize YouTube player when lesson changes
     useEffect(() => {
         // Cleanup previous player
         if (youtubePlayerRef.current) {
             try {
                 youtubePlayerRef.current.destroy();
-            } catch (e) {
-                console.error('Error destroying YouTube player:', e);
-            }
+            } catch (e) {}
             youtubePlayerRef.current = null;
             setYtPlayerReady(false);
         }
@@ -312,8 +328,8 @@ const CoursePage: React.FC = () => {
         const videoId = getYouTubeVideoId(videoUrl);
         if (!videoId) return;
 
-        // Wait a bit for the container to be ready
-        setTimeout(() => {
+        // Wait a bit for the container to be ready in the DOM
+        const timerId = setTimeout(() => {
             if (!youtubeContainerRef.current) return;
 
             try {
@@ -332,7 +348,7 @@ const CoursePage: React.FC = () => {
                         },
                         onStateChange: (event) => {
                             if (event.data === window.YT.PlayerState.ENDED) {
-                                handleVideoEnded();
+                                handleVideoEndedRef.current();
                             }
                         },
                     },
@@ -343,17 +359,18 @@ const CoursePage: React.FC = () => {
         }, 100);
 
         return () => {
+            clearTimeout(timerId); // cancel pending player creation before it fires
             if (youtubePlayerRef.current) {
                 try {
                     youtubePlayerRef.current.destroy();
-                } catch (e) {
-                    console.error('Error destroying YouTube player:', e);
-                }
+                } catch (e) {}
                 youtubePlayerRef.current = null;
                 setYtPlayerReady(false);
             }
         };
-    }, [ytApiReady, selectedLesson?.videoUrl, selectedLesson?.lessonId, handleVideoEnded]);
+    // handleVideoEnded intentionally excluded — using ref to avoid spurious re-runs
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [ytApiReady, selectedLesson?.videoUrl, selectedLesson?.lessonId]);
 
     // Skip forward/backward functions
     const handleSkipYouTube = useCallback((seconds: number) => {
@@ -436,13 +453,15 @@ const CoursePage: React.FC = () => {
 
     // Handle lesson selection
     const handleSelectLesson = async (moduleId: string, lessonId: string) => {
-        if (!isEnrolled) return;
+        if (!course) return;
+        const isFirstModule = course.modules?.[0]?.moduleId === moduleId;
+        if (!isEnrolled && !isFirstModule) return;
 
         setSelectedModuleId(moduleId);
         setSelectedLessonId(lessonId);
 
-        // Update current lesson in backend
-        if (course) {
+        // Update current lesson in backend (only for enrolled users)
+        if (isEnrolled && course) {
             try {
                 await updateLessonProgress(course._id, {
                     lessonId,
@@ -607,7 +626,7 @@ const CoursePage: React.FC = () => {
                 <div className="flex-1 flex flex-col gap-6">
                     {/* Video Player / Thumbnail Area */}
                     <div className="relative aspect-video rounded-2xl overflow-hidden border border-[var(--border-primary)] shadow-2xl bg-black group">
-                        {isEnrolled && selectedLesson?.type === 'video' && selectedLesson?.videoUrl ? (
+                        {(isEnrolled || isSelectedLessonFreePreview()) && selectedLesson?.type === 'video' && selectedLesson?.videoUrl ? (
                             <>
                                 {/* Check if it's a YouTube/Vimeo URL */}
                                 {selectedLesson.videoUrl.includes('youtube.com') || selectedLesson.videoUrl.includes('youtu.be') ? (
@@ -616,6 +635,7 @@ const CoursePage: React.FC = () => {
                                     </div>
                                 ) : selectedLesson.videoUrl.includes('vimeo.com') ? (
                                     <iframe
+                                        key={selectedLessonId}
                                         src={selectedLesson.videoUrl.replace('vimeo.com', 'player.vimeo.com/video')}
                                         className="w-full h-full"
                                         allow="autoplay; fullscreen; picture-in-picture"
@@ -624,7 +644,7 @@ const CoursePage: React.FC = () => {
                                 ) : resolvedVideoUrl ? (
                                     <video
                                         ref={videoRef}
-                                        key={resolvedVideoUrl}
+                                        key={selectedLessonId}
                                         src={resolvedVideoUrl}
                                         controls
                                         controlsList="nodownload"
@@ -715,7 +735,7 @@ const CoursePage: React.FC = () => {
                     </div>
 
                     {/* Video Controls Bar - Outside video for better accessibility */}
-                    {isEnrolled && selectedLesson && (
+                    {(isEnrolled || isSelectedLessonFreePreview()) && selectedLesson && (
                         <div className="flex items-center justify-between glass-card rounded-xl px-4 py-3">
                             <div className="flex items-center gap-3">
                                 <span className="text-sm font-medium text-[var(--text-primary)]">{getLocalizedText(selectedLesson.title)}</span>
@@ -762,7 +782,7 @@ const CoursePage: React.FC = () => {
                     )}
 
                     {/* Documents for selected lesson */}
-                    {isEnrolled && selectedLesson && selectedLesson.documents && selectedLesson.documents.length > 0 && (
+                    {isEnrolled && selectedLesson && selectedLesson.documents && selectedLesson.documents.length > 0 && !isSelectedLessonFreePreview() && (
                         <div className="glass-card rounded-xl p-4">
                             <h4 className="font-medium text-[var(--text-primary)] mb-3 flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -822,7 +842,9 @@ const CoursePage: React.FC = () => {
                         {activeTab === 'syllabus' && (
                             <div className="space-y-4">
                                 {course.modules && course.modules.length > 0 ? (
-                                    course.modules.map((module, moduleIdx) => (
+                                    course.modules.map((module, moduleIdx) => {
+                                        const freePreview = isModuleFreePreview(moduleIdx);
+                                        return (
                                         <div key={module.moduleId} className="glass-card rounded-xl overflow-hidden">
                                             {/* Module Header */}
                                             <button
@@ -836,6 +858,11 @@ const CoursePage: React.FC = () => {
                                                     <span className="font-bold text-[var(--text-primary)]">
                                                         {getLocalizedText(module.title)}
                                                     </span>
+                                                    {freePreview && !isEnrolled && (
+                                                        <span className="px-2 py-0.5 rounded-full bg-green-500/15 text-green-400 text-xs font-medium border border-green-500/30">
+                                                            {t('course.freePreviewBadge')}
+                                                        </span>
+                                                    )}
                                                 </div>
                                                 <div className="flex items-center gap-2">
                                                     <span className="text-sm text-[var(--text-tertiary)]">
@@ -858,13 +885,14 @@ const CoursePage: React.FC = () => {
                                                     {module.lessons.map((lesson, lessonIdx) => {
                                                         const isSelected = selectedLessonId === lesson.lessonId;
                                                         const isCompleted = isLessonCompleted(lesson.lessonId);
+                                                        const canAccess = isEnrolled || freePreview;
 
                                                         return (
                                                             <div
                                                                 key={lesson.lessonId}
-                                                                onClick={() => isEnrolled && handleSelectLesson(module.moduleId, lesson.lessonId)}
+                                                                onClick={() => canAccess && handleSelectLesson(module.moduleId, lesson.lessonId)}
                                                                 className={`flex items-center justify-between p-4 border-b border-[var(--border-primary)] last:border-b-0 transition-colors ${
-                                                                    isEnrolled ? 'cursor-pointer hover:bg-[var(--bg-secondary)]' : 'cursor-not-allowed opacity-60'
+                                                                    canAccess ? 'cursor-pointer hover:bg-[var(--bg-secondary)]' : 'cursor-not-allowed opacity-60'
                                                                 } ${isSelected ? 'bg-[var(--accent-primary)]/10' : ''}`}
                                                             >
                                                                 <div className="flex items-center gap-4">
@@ -898,9 +926,13 @@ const CoursePage: React.FC = () => {
                                                                     </div>
                                                                 </div>
                                                                 {!isEnrolled && (
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[var(--text-tertiary)]" viewBox="0 0 20 20" fill="currentColor">
-                                                                        <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                                                                    </svg>
+                                                                    freePreview ? (
+                                                                        <span className="text-xs text-green-400 font-medium">▶</span>
+                                                                    ) : (
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[var(--text-tertiary)]" viewBox="0 0 20 20" fill="currentColor">
+                                                                            <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                                                                        </svg>
+                                                                    )
                                                                 )}
                                                             </div>
                                                         );
@@ -908,7 +940,8 @@ const CoursePage: React.FC = () => {
                                                 </div>
                                             )}
                                         </div>
-                                    ))
+                                        );
+                                    })
                                 ) : (
                                     <div className="text-center py-8 text-[var(--text-secondary)]">
                                         <p>{t('courseCatalog.noCourses')}</p>
@@ -1040,17 +1073,17 @@ const CoursePage: React.FC = () => {
                                         {reviews.map(review => (
                                             <div key={review._id} className="glass-card rounded-xl p-6">
                                                 <div className="flex items-start gap-4">
-                                                    {review.user.avatar ? (
+                                                    {review.user?.avatar ? (
                                                         <img src={review.user.avatar} alt={review.user.name} className="w-12 h-12 rounded-full object-cover" />
                                                     ) : (
                                                         <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--accent-primary)] to-purple-600 flex items-center justify-center text-white font-bold">
-                                                            {review.user.name.charAt(0)}
+                                                            {review.user?.name?.charAt(0) ?? '?'}
                                                         </div>
                                                     )}
                                                     <div className="flex-1">
                                                         <div className="flex items-center justify-between">
                                                             <div>
-                                                                <h5 className="font-medium text-[var(--text-primary)]">{review.user.name}</h5>
+                                                                <h5 className="font-medium text-[var(--text-primary)]">{review.user?.name ?? 'Unknown'}</h5>
                                                                 <div className="flex items-center gap-2 text-sm">
                                                                     <div className="flex">
                                                                         {[1, 2, 3, 4, 5].map(star => (

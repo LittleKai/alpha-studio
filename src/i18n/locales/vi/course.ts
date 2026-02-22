@@ -22,7 +22,8 @@ export default {
     viewReviews: "Xem đánh giá",
     verifiedPurchase: "Đã mua",
     instructorReply: "Phản hồi từ giảng viên",
-    helpful: "Hữu ích"
+    helpful: "Hữu ích",
+    freePreviewBadge: "Xem thử"
   },
   myCourses: {
     title: "Khóa học của tôi",

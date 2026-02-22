@@ -63,6 +63,7 @@ export interface TeamMember {
   role: string;
   avatar: string;
   isExternal?: boolean;
+  projectRole?: string;
 }
 
 export interface Comment {
@@ -94,11 +95,14 @@ export interface Project {
   deadline: string;
   budget: number;
   expenses: number;
+  expenseLog?: { id: string; name: string; amount: number; date: string }[];
   team: TeamMember[];
   files: string[];
   progress: number;
   chatHistory: Comment[];
   tasks: Task[];
+  avatar?: string;
+  createdBy?: string;
 }
 
 export interface WorkflowDocument {
@@ -108,7 +112,7 @@ export interface WorkflowDocument {
   size: string;
   uploadDate: string;
   uploader: string;
-  department: DepartmentType;
+  department?: DepartmentType;
   status: 'pending' | 'approved' | 'rejected';
   url?: string;
   team?: TeamMember[];
@@ -117,6 +121,8 @@ export interface WorkflowDocument {
   projectId?: string;
   description?: string;
   tasks?: Task[];
+  createdBy?: string;
+  note?: string;
 }
 
 export interface ServerApp {

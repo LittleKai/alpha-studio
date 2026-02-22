@@ -18,7 +18,7 @@ export default {
       allDocuments: "All Documents",
       teamCreative: "Creative Team",
       eventPlanner: "Event Planner",
-      account: "Account",
+      account: "Project Hub",
       production: "Production",
       networkOpportunity: "NETWORK & OPPORTUNITIES",
       jobMarket: "Job Market",
@@ -100,6 +100,10 @@ export default {
         hubTitle: "Project Hub",
         management: "Project Management",
         backToProjects: "← Back to Projects",
+        edit: "Edit Project",
+        editAvatar: "Project Avatar",
+        confirmDelete: "Delete this completed project permanently?",
+        deptFilter: "Filter by Dept",
         overview: {
           quickStats: "Quick Stats",
           files: "Files",
@@ -111,13 +115,17 @@ export default {
           selectToAdd: "Select to Add",
           external: "External (50c)",
           free: "Free",
+          rolePlaceholder: "Role label (e.g. Designer...)",
+          leave: "Leave Project",
+          makeManager: "Make Manager",
+          removeManager: "Remove Manager",
+          download: "Download",
         },
         filesPanel: {
           title: "Project Files",
           upload: "Upload File",
-          assignTask: "Assign Task",
-          open: "Open",
           noFiles: "No files in this project yet.",
+          notePlaceholder: "Add a note...",
         },
         tabs: {
           overview: "Overview",
@@ -154,7 +162,17 @@ export default {
         noProjects: "No projects yet. Create your first project!",
         chat: {
           placeholder: "Type message...",
-          send: "Send"
+          send: "Send",
+          sys: {
+            joined: "joined the project.",
+            removed: "was removed from the project.",
+            left: "left the project.",
+            promotedManager: "was promoted to Manager.",
+            demotedManager: "was removed as Manager.",
+            uploadedFile: "uploaded file:",
+            projectInit: "was initialized.",
+            taskAssigned: "Task assigned"
+          }
         },
         tasks: {
           title: "Task List",

@@ -3,6 +3,21 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from '../../i18n/context';
 import { useAuth } from '../../auth/context';
 import type { WorkflowDocument, DepartmentType, Transaction, AutomationRule, AffiliateStats, TeamMember, Comment, Project, Task } from '../../types';
+import {
+    getProjects,
+    createProject as createProjectAPI,
+    updateProject as updateProjectAPI,
+    deleteProject as deleteProjectAPI,
+    getDocuments,
+    createDocument as createDocumentAPI,
+    updateDocument as updateDocumentAPI,
+    deleteDocument as deleteDocumentAPI,
+    searchUsers
+} from '../../services/workflowService';
+import { Editor } from '@tinymce/tinymce-react';
+import { uploadToCloudinary } from '../../services/cloudinaryService';
+import { uploadToB2 } from '../../services/b2StorageService';
+import LoadingSpinner from '../ui/LoadingSpinner';
 // StudentProfileModal and PartnerRegistrationModal not used - moved to separate view components
 import LanguageSwitcher from '../ui/LanguageSwitcher';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
@@ -11,29 +26,18 @@ import ProfileEditModal from '../modals/ProfileEditModal';
 
 interface WorkflowDashboardProps {
   onBack: () => void;
-  documents?: WorkflowDocument[];
-  onAddDocument?: (doc: WorkflowDocument) => void;
-  onOpenStudio?: () => void;
-  projects?: Project[];
-  setProjects?: React.Dispatch<React.SetStateAction<Project[]>>;
 }
 
 export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
-  // Internal state for documents and projects when not provided as props
-  const [internalDocuments, setInternalDocuments] = useState<WorkflowDocument[]>([]);
-  const [internalProjects, setInternalProjects] = useState<Project[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [documents, setDocuments] = useState<WorkflowDocument[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const documents = internalDocuments;
-  const projects = internalProjects;
-  const setProjects = setInternalProjects;
-  const onAddDocument = (doc: WorkflowDocument) => setInternalDocuments(prev => [...prev, doc]);
-  const onOpenStudio = () => {};
   const { t } = useTranslation();
   const { user } = useAuth();
 
   // Navigation State
   const [activeView, setActiveView] = useState<'documents' | 'projects' | 'jobs' | 'wallet' | 'partners' | 'automation' | 'affiliate' | 'creative' | 'resources'>('documents');
-  const [selectedDept, setSelectedDept] = useState<DepartmentType>('all');
   const [searchQuery, setSearchQuery] = useState('');
   // partnerFilter moved to PartnersView component
 
@@ -64,20 +68,24 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
   // Expense Form State
   const [newExpense, setNewExpense] = useState({ name: '', amount: '' });
 
-  // Expense log per project: projectId → entries
-  const [expenseLog, setExpenseLog] = useState<Record<string, { id: string; name: string; amount: number; date: string }[]>>({});
-
   // Chat auto-scroll
   const chatEndRef = useRef<HTMLDivElement>(null);
 
-  // Mock Available Users for Collaboration
-  const availableUsers: TeamMember[] = [
-      { id: 'u1', name: 'Minh Thu', role: 'Event Director', avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop', isExternal: false },
-      { id: 'u2', name: 'Quang Huy', role: '3D Artist', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop', isExternal: false },
-      { id: 'u3', name: 'Hoàng Nam', role: 'VFX Lead (Expert)', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop', isExternal: true },
-      { id: 'u4', name: 'Thảo My', role: 'Concept Artist', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop', isExternal: false },
-      { id: 'u5', name: 'David Nguyen', role: 'Technical Director (Expert)', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop', isExternal: true },
-  ];
+  // User search for Add Member
+  const [userSearchQuery, setUserSearchQuery] = useState('');
+  const [userSearchResults, setUserSearchResults] = useState<TeamMember[]>([]);
+  const [userSearchLoading, setUserSearchLoading] = useState(false);
+
+  // Edit project modal
+  const [showEditProjectModal, setShowEditProjectModal] = useState(false);
+  const [editProjectData, setEditProjectData] = useState({ name: '', description: '', avatar: '', department: 'event_planner' as DepartmentType });
+  const [editProjectUploading, setEditProjectUploading] = useState(false);
+
+  // Project list department filter
+  const [projectDeptFilter, setProjectDeptFilter] = useState<DepartmentType>('all');
+
+  // Upload progress per tempId: 0–100
+  const [uploadProgress, setUploadProgress] = useState<Record<string, number>>({});
 
   // User Profile - connected to authenticated user
   const userProfile = {
@@ -114,42 +122,80 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
   // creativeAssets and resources state moved to PromptsView and ResourcesView components
   // Partners state moved to PartnersView component with database integration
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      const newDoc: WorkflowDocument = {
-        id: Date.now().toString(),
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files?.[0]) return;
+    const file = e.target.files[0];
+    e.target.value = '';
+
+    const token = localStorage.getItem('alpha_studio_token') || '';
+    const uploadDate = new Date().toISOString().split('T')[0];
+    const tempId = `temp-doc-${Date.now()}`;
+    const newDoc: WorkflowDocument = {
+        id: tempId,
         name: file.name,
         type: file.name.split('.').pop()?.toUpperCase() || 'FILE',
         size: `${(file.size / 1024 / 1024).toFixed(2)} MB`,
-        uploadDate: new Date().toISOString().split('T')[0],
-        uploader: `${userProfile.name} (User)`,
-        department: selectedDept === 'all' ? 'event_planner' : selectedDept,
+        uploadDate,
+        uploader: userProfile.name,
         status: 'pending',
-        team: [],
         comments: [],
         projectId: selectedProject?.id,
-        tasks: []
-      };
-      onAddDocument(newDoc);
+        url: '',
+    };
+    setDocuments(prev => [newDoc, ...prev]);
+    setUploadProgress(prev => ({ ...prev, [tempId]: 0 }));
 
-      if (selectedProject) {
-          const sysMsg: Comment = {
-              id: `sys-${Date.now()}`,
-              author: 'System',
-              text: `${userProfile.name} uploaded file: ${file.name}`,
-              timestamp: new Date().toLocaleTimeString(),
-              isSystem: true
-          };
-          updateProjectChat(selectedProject.id, sysMsg);
-      }
+    // Upload to Backblaze B2 with progress tracking
+    let uploadUrl = '';
+    let fileKey = '';
+    try {
+        const b2Result = await uploadToB2(file, 'workflow-docs', token, (p) => {
+            setUploadProgress(prev => ({ ...prev, [tempId]: p }));
+        });
+        uploadUrl = b2Result.url;
+        fileKey = b2Result.key;
+        setDocuments(prev => prev.map(d => d.id === tempId ? { ...d, url: uploadUrl } : d));
+    } catch { /* proceed without URL on error */ } finally {
+        setUploadProgress(prev => { const n = { ...prev }; delete n[tempId]; return n; });
+    }
+
+    // Persist to backend
+    createDocumentAPI({
+        name: newDoc.name,
+        type: newDoc.type,
+        size: newDoc.size,
+        uploadDate,
+        uploader: newDoc.uploader,
+        status: 'pending',
+        url: uploadUrl,
+        fileKey,
+        projectId: selectedProject?.id
+    }).then(res => {
+        if (res.success && res.data?.id) {
+            setDocuments(prev => prev.map(d => d.id === tempId ? { ...res.data } : d));
+        }
+    }).catch(console.error);
+
+    if (selectedProject) {
+        const sysMsg: Comment = {
+            id: `sys-${Date.now()}`,
+            author: 'System',
+            text: `${userProfile.name} ${t('workflow.dashboard.project.chat.sys.uploadedFile')} ${file.name}`,
+            timestamp: new Date().toLocaleTimeString(),
+            isSystem: true
+        };
+        const updatedHistory = [...selectedProject.chatHistory, sysMsg];
+        updateProjectChat(selectedProject.id, sysMsg);
+        updateProjectAPI(selectedProject.id, { chatHistory: updatedHistory }).catch(console.error);
     }
   };
 
   const handleCreateProject = (e: React.FormEvent) => {
       e.preventDefault();
+      const tempId = `proj-${Date.now()}`;
+      const initMsg: Comment = { id: 'sys-init', author: 'System', text: `"${newProjectData.name}" ${t('workflow.dashboard.project.chat.sys.projectInit')}`, timestamp: new Date().toLocaleTimeString(), isSystem: true };
       const newProject: Project = {
-          id: `proj-${Date.now()}`,
+          id: tempId,
           name: newProjectData.name,
           client: newProjectData.client,
           description: newProjectData.description,
@@ -159,33 +205,39 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
           deadline: newProjectData.deadline || 'TBD',
           budget: Number(newProjectData.budget),
           expenses: 0,
-          team: [{ id: 'me', name: userProfile.name, role: userProfile.role, avatar: 'https://ui-avatars.com/api/?name=Me', isExternal: false }],
+          expenseLog: [],
+          team: [{ id: user?._id || 'me', name: userProfile.name, role: userProfile.role, avatar: user?.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(userProfile.name)}`, isExternal: false, projectRole: 'creator' }],
           files: [],
           progress: 0,
-          chatHistory: [{ id: 'sys-init', author: 'System', text: `Project "${newProjectData.name}" initialized.`, timestamp: new Date().toLocaleTimeString(), isSystem: true }],
+          chatHistory: [initMsg],
           tasks: []
       };
       setProjects(prev => [newProject, ...prev]);
-
-      const projectDoc: WorkflowDocument = {
-          id: newProject.id,
-          name: newProject.name,
-          type: 'PROJECT',
-          size: 'N/A',
-          uploadDate: newProject.startDate,
-          uploader: userProfile.name,
-          department: newProject.department,
-          status: 'approved',
-          isProject: true,
-          team: newProject.team,
-          comments: [],
-          projectId: newProject.id
-      };
-      onAddDocument(projectDoc);
-
       setShowProjectModal(false);
       setNewProjectData({ name: '', description: '', department: 'event_planner', client: '', budget: 0, deadline: '' });
       alert(t('workflow.dashboard.project.success'));
+
+      // API call - replace temp ID with real MongoDB _id
+      createProjectAPI({
+          name: newProject.name,
+          client: newProject.client,
+          description: newProject.description,
+          department: newProject.department,
+          status: newProject.status,
+          startDate: newProject.startDate,
+          deadline: newProject.deadline,
+          budget: newProject.budget,
+          expenses: 0,
+          expenseLog: [],
+          team: newProject.team,
+          progress: 0,
+          chatHistory: newProject.chatHistory,
+          tasks: []
+      }).then(res => {
+          if (res.success && res.data?.id) {
+              setProjects(prev => prev.map(p => p.id === tempId ? { ...res.data } : p));
+          }
+      }).catch(console.error);
   };
 
   // handleCreateAsset and handleUploadResource moved to PromptsView and ResourcesView components
@@ -197,14 +249,16 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
   const handleOpenChat = (doc: WorkflowDocument) => { setActiveDocForComment(doc); };
 
   const handleChangeDocStatus = (docId: string, newStatus: 'approved' | 'rejected' | 'pending') => {
-      setInternalDocuments(prev => prev.map(d => d.id === docId ? { ...d, status: newStatus } : d));
+      setDocuments(prev => prev.map(d => d.id === docId ? { ...d, status: newStatus } : d));
       setActiveDocForComment(prev => prev?.id === docId ? { ...prev, status: newStatus } : prev);
+      updateDocumentAPI(docId, { status: newStatus }).catch(console.error);
   };
 
   const handleDeleteDoc = (docId: string) => {
       if (!confirm(t('workflow.dashboard.docPanel.confirmDelete'))) return;
-      setInternalDocuments(prev => prev.filter(d => d.id !== docId));
+      setDocuments(prev => prev.filter(d => d.id !== docId));
       if (activeDocForComment?.id === docId) setActiveDocForComment(null);
+      deleteDocumentAPI(docId).catch(console.error);
   };
 
   const handleAddDocComment = (e: React.FormEvent) => {
@@ -216,11 +270,13 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
           text: docComment.trim(),
           timestamp: new Date().toLocaleTimeString()
       };
-      setInternalDocuments(prev => prev.map(d => d.id === activeDocForComment.id ? {
-          ...d, comments: [...(d.comments || []), newComment]
+      const updatedComments = [...(activeDocForComment.comments || []), newComment];
+      setDocuments(prev => prev.map(d => d.id === activeDocForComment.id ? {
+          ...d, comments: updatedComments
       } : d));
-      setActiveDocForComment(prev => prev ? { ...prev, comments: [...(prev.comments || []), newComment] } : null);
+      setActiveDocForComment(prev => prev ? { ...prev, comments: updatedComments } : null);
       setDocComment('');
+      updateDocumentAPI(activeDocForComment.id, { comments: updatedComments }).catch(console.error);
   };
 
   const handleAddMemberToProject = (user: TeamMember) => {
@@ -248,30 +304,31 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       }
   };
 
-  const updateProjectTeamAndFinance = (user: TeamMember, cost: number) => {
+  const updateProjectTeamAndFinance = (member: TeamMember, cost: number) => {
+      if (!selectedProject) return;
       const sysMsg: Comment = {
           id: `sys-${Date.now()}`,
           author: 'System',
-          text: `${user.name} joined the project.`,
+          text: `${member.name} ${t('workflow.dashboard.project.chat.sys.joined')}`,
           timestamp: new Date().toLocaleTimeString(),
           isSystem: true
       };
+      // Clear system role — display label starts empty per-project
+      const updatedTeam = [...selectedProject.team, { ...member, role: '' }];
+      const updatedExpenses = selectedProject.expenses + cost;
+      const updatedHistory = [...selectedProject.chatHistory, sysMsg];
 
-      setProjects(prev => prev.map(p => p.id === selectedProject?.id ? {
-          ...p,
-          team: [...p.team, user],
-          expenses: p.expenses + cost,
-          chatHistory: [...p.chatHistory, sysMsg]
+      setProjects(prev => prev.map(p => p.id === selectedProject.id ? {
+          ...p, team: updatedTeam, expenses: updatedExpenses, chatHistory: updatedHistory
       } : p));
-
       setSelectedProject(prev => prev ? {
-          ...prev,
-          team: [...prev.team, user],
-          expenses: prev.expenses + cost,
-          chatHistory: [...prev.chatHistory, sysMsg]
+          ...prev, team: updatedTeam, expenses: updatedExpenses, chatHistory: updatedHistory
       } : null);
-
       setShowMemberSelect(false);
+      setUserSearchQuery('');
+      setUserSearchResults([]);
+
+      updateProjectAPI(selectedProject.id, { team: updatedTeam, expenses: updatedExpenses, chatHistory: updatedHistory }).catch(console.error);
   };
 
   const handleSendProjectMessage = (e: React.FormEvent) => {
@@ -284,9 +341,10 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
           text: projectChatMessage,
           timestamp: new Date().toLocaleTimeString()
       };
-
+      const updatedHistory = [...selectedProject.chatHistory, newMsg];
       updateProjectChat(selectedProject.id, newMsg);
       setProjectChatMessage('');
+      updateProjectAPI(selectedProject.id, { chatHistory: updatedHistory }).catch(console.error);
   };
 
   const updateProjectChat = (projectId: string, msg: Comment) => {
@@ -309,6 +367,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
           setProjects(prev => prev.map(p => p.id === selectedProject.id ? { ...p, status: 'completed' } : p));
           setSelectedProject(prev => prev ? { ...prev, status: 'completed' } : null);
           alert(t('workflow.dashboard.project.package.success'));
+          updateProjectAPI(selectedProject.id, { status: 'completed' }).catch(console.error);
       }
   };
 
@@ -318,7 +377,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
           return;
       }
 
-      const assignee = availableUsers.find(u => u.id === newTaskData.assigneeId);
+      const assignee = selectedProject?.team.find(u => u.id === newTaskData.assigneeId);
       const newTask: Task = {
           id: `task-${Date.now()}`,
           title: newTaskData.title,
@@ -333,22 +392,24 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
           const sysMsg: Comment = {
               id: `sys-task-${Date.now()}`,
               author: 'System',
-              text: `Assigned task: "${newTask.title}" to ${newTask.assigneeName}`,
+              text: `${t('workflow.dashboard.project.chat.sys.taskAssigned')}: "${newTask.title}" → ${newTask.assigneeName}`,
               timestamp: new Date().toLocaleTimeString(),
               isSystem: true
           };
+          const updatedTasks = [...selectedProject.tasks, newTask];
+          const updatedHistory = [...selectedProject.chatHistory, sysMsg];
 
           setProjects(prev => prev.map(p => p.id === selectedProject.id ? {
-              ...p,
-              tasks: [...p.tasks, newTask],
-              chatHistory: [...p.chatHistory, sysMsg]
+              ...p, tasks: updatedTasks, chatHistory: updatedHistory
           } : p));
 
           setSelectedProject(prev => prev ? {
               ...prev,
-              tasks: [...prev.tasks, newTask],
-              chatHistory: [...prev.chatHistory, sysMsg]
+              tasks: updatedTasks,
+              chatHistory: updatedHistory
           } : null);
+
+          updateProjectAPI(selectedProject.id, { tasks: updatedTasks, chatHistory: updatedHistory }).catch(console.error);
       } else if (selectedFileForTask) {
           alert(`Đã giao việc "${newTask.title}" cho file ${selectedFileForTask.name}`);
       }
@@ -358,37 +419,51 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       setSelectedFileForTask(null);
   };
 
-  const openTaskModalForFile = (doc: WorkflowDocument) => {
-      setSelectedFileForTask(doc);
-      setShowTaskModal(true);
-  };
-
   const handleAddExpense = () => {
       if (!newExpense.name.trim() || !newExpense.amount || !selectedProject) return;
       const cost = Number(newExpense.amount);
       if (isNaN(cost) || cost <= 0) return;
       const entry = { id: `exp-${Date.now()}`, name: newExpense.name.trim(), amount: cost, date: new Date().toISOString().split('T')[0] };
-      setExpenseLog(prev => ({ ...prev, [selectedProject.id]: [...(prev[selectedProject.id] || []), entry] }));
-      setProjects(prev => prev.map(p => p.id === selectedProject.id ? { ...p, expenses: p.expenses + cost } : p));
-      setSelectedProject(prev => prev ? { ...prev, expenses: prev.expenses + cost } : null);
+      const updatedLog = [...(selectedProject.expenseLog || []), entry];
+      const updatedExpenses = selectedProject.expenses + cost;
+      setProjects(prev => prev.map(p => p.id === selectedProject.id ? { ...p, expenses: updatedExpenses, expenseLog: updatedLog } : p));
+      setSelectedProject(prev => prev ? { ...prev, expenses: updatedExpenses, expenseLog: updatedLog } : null);
       setNewExpense({ name: '', amount: '' });
+      updateProjectAPI(selectedProject.id, { expenses: updatedExpenses, expenseLog: updatedLog }).catch(console.error);
   };
 
   const cycleTaskStatus = (taskId: string) => {
+      if (!selectedProject) return;
       const nextStatus = (s: string) => s === 'todo' ? 'in_progress' : s === 'in_progress' ? 'done' : 'todo';
-      const updateTasks = (tasks: Task[]) => tasks.map(t => t.id === taskId ? { ...t, status: nextStatus(t.status) as Task['status'] } : t);
-      setProjects(prev => prev.map(p => p.id === selectedProject?.id ? { ...p, tasks: updateTasks(p.tasks) } : p));
-      setSelectedProject(prev => prev ? { ...prev, tasks: updateTasks(prev.tasks) } : null);
+      const updatedTasks = selectedProject.tasks.map(t => t.id === taskId ? { ...t, status: nextStatus(t.status) as Task['status'] } : t);
+      setProjects(prev => prev.map(p => p.id === selectedProject.id ? { ...p, tasks: updatedTasks } : p));
+      setSelectedProject(prev => prev ? { ...prev, tasks: updatedTasks } : null);
+      updateProjectAPI(selectedProject.id, { tasks: updatedTasks }).catch(console.error);
   };
 
-  const handleOpenFile = (doc: WorkflowDocument) => {
-      const url = (doc as any).url;
-      if (url) {
-          window.open(url, '_blank');
-      } else {
-          alert(`📄 ${doc.name}\n📦 ${doc.size}\n📅 ${doc.uploadDate}`);
-      }
-  };
+  // Load projects and documents from API on mount
+  useEffect(() => {
+      Promise.all([getProjects(), getDocuments()])
+          .then(([p, d]) => {
+              setProjects(p.data || []);
+              setDocuments(d.data || []);
+          })
+          .catch(console.error)
+          .finally(() => setLoading(false));
+  }, []);
+
+  // When entering a project, reload all its documents (so all members see each other's files)
+  useEffect(() => {
+      if (!selectedProject) return;
+      getDocuments(selectedProject.id).then(res => {
+          if (res.success) {
+              setDocuments(prev => {
+                  const otherDocs = prev.filter(d => d.projectId !== selectedProject.id);
+                  return [...(res.data || []), ...otherDocs];
+              });
+          }
+      }).catch(console.error);
+  }, [selectedProject?.id]);
 
   // Auto-scroll chat to bottom when new message arrives
   useEffect(() => {
@@ -397,20 +472,62 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       }
   }, [selectedProject?.chatHistory?.length]);
 
-  const handleRemoveMember = (memberId: string) => {
+  const handleRemoveMember = (memberId: string, memberName: string) => {
       if (!selectedProject) return;
-      setProjects(prev => prev.map(p => p.id === selectedProject.id ? {
-          ...p, team: p.team.filter(m => m.id !== memberId)
-      } : p));
-      setSelectedProject(prev => prev ? { ...prev, team: prev.team.filter(m => m.id !== memberId) } : null);
+      if (!confirm(`Remove "${memberName}" from this project?`)) return;
+      const sysMsg: Comment = {
+          id: `sys-${Date.now()}`, author: 'System',
+          text: `${memberName} ${t('workflow.dashboard.project.chat.sys.removed')}`,
+          timestamp: new Date().toLocaleTimeString(), isSystem: true
+      };
+      const updatedTeam = selectedProject.team.filter(m => m.id !== memberId);
+      const updatedHistory = [...selectedProject.chatHistory, sysMsg];
+      setProjects(prev => prev.map(p => p.id === selectedProject.id ? { ...p, team: updatedTeam, chatHistory: updatedHistory } : p));
+      setSelectedProject(prev => prev ? { ...prev, team: updatedTeam, chatHistory: updatedHistory } : null);
+      updateProjectAPI(selectedProject.id, { team: updatedTeam, chatHistory: updatedHistory }).catch(console.error);
+  };
+
+  const handleLeaveProject = () => {
+      if (!selectedProject || !user) return;
+      if (!confirm(`Leave project "${selectedProject.name}"?`)) return;
+      const sysMsg: Comment = {
+          id: `sys-${Date.now()}`, author: 'System',
+          text: `${userProfile.name} ${t('workflow.dashboard.project.chat.sys.left')}`,
+          timestamp: new Date().toLocaleTimeString(), isSystem: true
+      };
+      const updatedTeam = selectedProject.team.filter(m => m.id !== user._id);
+      const updatedHistory = [...selectedProject.chatHistory, sysMsg];
+      // Persist, then navigate back (user is no longer a member)
+      updateProjectAPI(selectedProject.id, { team: updatedTeam, chatHistory: updatedHistory }).catch(console.error);
+      setProjects(prev => prev.filter(p => p.id !== selectedProject.id));
+      setSelectedProject(null);
+  };
+
+  const handleToggleManager = (memberId: string) => {
+      if (!selectedProject) return;
+      const member = selectedProject.team.find(m => m.id === memberId);
+      if (!member) return;
+      const isNowManager = member.projectRole === 'manager';
+      const newRole = isNowManager ? '' : 'manager';
+      const sysMsg: Comment = {
+          id: `sys-${Date.now()}`, author: 'System',
+          text: `${member.name} ${isNowManager ? t('workflow.dashboard.project.chat.sys.demotedManager') : t('workflow.dashboard.project.chat.sys.promotedManager')}`,
+          timestamp: new Date().toLocaleTimeString(), isSystem: true
+      };
+      const updatedTeam = selectedProject.team.map(m => m.id === memberId ? { ...m, projectRole: newRole } : m);
+      const updatedHistory = [...selectedProject.chatHistory, sysMsg];
+      setProjects(prev => prev.map(p => p.id === selectedProject.id ? { ...p, team: updatedTeam, chatHistory: updatedHistory } : p));
+      setSelectedProject(prev => prev ? { ...prev, team: updatedTeam, chatHistory: updatedHistory } : null);
+      updateProjectAPI(selectedProject.id, { team: updatedTeam, chatHistory: updatedHistory }).catch(console.error);
   };
 
   const handleDeleteTask = (taskId: string, e: React.MouseEvent) => {
       e.stopPropagation(); // prevent triggering cycleTaskStatus
-      setProjects(prev => prev.map(p => p.id === selectedProject?.id ? {
-          ...p, tasks: p.tasks.filter(t => t.id !== taskId)
-      } : p));
-      setSelectedProject(prev => prev ? { ...prev, tasks: prev.tasks.filter(t => t.id !== taskId) } : null);
+      if (!selectedProject) return;
+      const updatedTasks = selectedProject.tasks.filter(t => t.id !== taskId);
+      setProjects(prev => prev.map(p => p.id === selectedProject.id ? { ...p, tasks: updatedTasks } : p));
+      setSelectedProject(prev => prev ? { ...prev, tasks: updatedTasks } : null);
+      updateProjectAPI(selectedProject.id, { tasks: updatedTasks }).catch(console.error);
   };
 
   const handleUpdateProgress = (value: number) => {
@@ -418,11 +535,101 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       setSelectedProject(prev => prev ? { ...prev, progress: value } : null);
   };
 
-  const filteredDocs = documents.filter(doc => {
-    const matchesDept = selectedDept === 'all' || doc.department === selectedDept;
-    const matchesSearch = doc.name.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesDept && matchesSearch;
-  });
+  const handleProgressPointerUp = () => {
+      if (selectedProject) {
+          updateProjectAPI(selectedProject.id, { progress: selectedProject.progress }).catch(console.error);
+      }
+  };
+
+  // Permission helpers
+  const isProjectCreator = () => {
+      if (!selectedProject || !user) return false;
+      if (user.role === 'admin') return true; // admin treated as creator
+      // Check createdBy field (reliable for all projects, even pre-role ones)
+      if (selectedProject.createdBy && selectedProject.createdBy === user._id) return true;
+      const member = selectedProject.team.find(m => m.id === user._id);
+      return member?.projectRole === 'creator';
+  };
+
+  const isProjectManagerOrCreator = () => {
+      if (!selectedProject || !user) return false;
+      if (user.role === 'admin' || user.role === 'mod') return true;
+      const member = selectedProject.team.find(m => m.id === user._id);
+      return member?.projectRole === 'creator' || member?.projectRole === 'manager';
+  };
+
+  const canDeleteDoc = (doc: WorkflowDocument) => {
+      if (!user) return false;
+      if (user.role === 'admin' || user.role === 'mod') return true;
+      if (isProjectManagerOrCreator()) return true;
+      return doc.createdBy === user._id;
+  };
+
+  // User search for adding members
+  const handleUserSearch = async (q: string) => {
+      setUserSearchQuery(q);
+      if (!q || q.length < 2) { setUserSearchResults([]); return; }
+      setUserSearchLoading(true);
+      try {
+          const res = await searchUsers(q);
+          if (res.success) setUserSearchResults(res.data as TeamMember[]);
+      } catch { /* ignore */ } finally {
+          setUserSearchLoading(false);
+      }
+  };
+
+  // Update a team member's display role label (custom job title in this project)
+  const handleUpdateDisplayRole = (memberId: string, newRole: string) => {
+      if (!selectedProject) return;
+      const updatedTeam = selectedProject.team.map(m => m.id === memberId ? { ...m, role: newRole } : m);
+      setProjects(prev => prev.map(p => p.id === selectedProject.id ? { ...p, team: updatedTeam } : p));
+      setSelectedProject(prev => prev ? { ...prev, team: updatedTeam } : null);
+      updateProjectAPI(selectedProject.id, { team: updatedTeam }).catch(console.error);
+  };
+
+  // Edit project (name, description, avatar, department)
+  const handleOpenEditProject = () => {
+      if (!selectedProject) return;
+      setEditProjectData({ name: selectedProject.name, description: selectedProject.description, avatar: selectedProject.avatar || '', department: selectedProject.department });
+      setShowEditProjectModal(true);
+  };
+
+  const handleEditProjectAvatarUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (!e.target.files?.[0]) return;
+      setEditProjectUploading(true);
+      try {
+          const result = await uploadToCloudinary(e.target.files[0], 'projects', 'logo');
+          if (result.success && result.url) setEditProjectData(prev => ({ ...prev, avatar: result.url }));
+      } catch { /* ignore */ } finally {
+          setEditProjectUploading(false);
+      }
+  };
+
+  const handleSaveEditProject = () => {
+      if (!selectedProject || !editProjectData.name.trim()) return;
+      const updated = { name: editProjectData.name.trim(), description: editProjectData.description, avatar: editProjectData.avatar, department: editProjectData.department };
+      setProjects(prev => prev.map(p => p.id === selectedProject.id ? { ...p, ...updated } : p));
+      setSelectedProject(prev => prev ? { ...prev, ...updated } : null);
+      setShowEditProjectModal(false);
+      updateProjectAPI(selectedProject.id, updated).catch(console.error);
+  };
+
+  // Delete completed project (admin only)
+  const handleDeleteProject = (projectId: string) => {
+      if (!confirm(t('workflow.dashboard.project.confirmDelete'))) return;
+      setProjects(prev => prev.filter(p => p.id !== projectId));
+      deleteProjectAPI(projectId).catch(console.error);
+  };
+
+  // Update file note (uploader only)
+  const handleUpdateDocNote = (docId: string, note: string) => {
+      setDocuments(prev => prev.map(d => d.id === docId ? { ...d, note } : d));
+      updateDocumentAPI(docId, { note }).catch(console.error);
+  };
+
+  const filteredDocs = documents.filter(doc =>
+    doc.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   // Partners filtering moved to PartnersView component
 
@@ -441,20 +648,36 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       return (
           <div className="flex flex-col h-full animate-fade-in">
               <div className="p-6 border-b border-[var(--border-primary)] bg-[var(--bg-card)] flex justify-between items-center sticky top-0 z-10">
-                  <div>
-                      <button onClick={() => setSelectedProject(null)} className="text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-1 flex items-center gap-1">
-                          {t('workflow.dashboard.project.backToProjects')}
-                      </button>
-                      <h1 className="text-2xl font-black text-[var(--text-primary)]">{selectedProject.name}</h1>
-                      <div className="flex items-center gap-3 text-xs mt-1">
-                          <span className="text-[var(--accent-primary)] font-bold">{selectedProject.client}</span>
-                          <span className="text-[var(--text-tertiary)]">• {selectedProject.startDate} - {selectedProject.deadline}</span>
-                          <span className={`px-2 py-0.5 rounded-full ${selectedProject.status === 'completed' ? 'bg-green-500/20 text-green-400' : 'bg-blue-500/20 text-blue-400'}`}>
-                              {t(`workflow.status.${selectedProject.status}`).toUpperCase()}
-                          </span>
+                  <div className="flex items-center gap-4">
+                      {selectedProject.avatar ? (
+                          <img src={selectedProject.avatar} className="w-12 h-12 rounded-xl object-cover border border-[var(--border-primary)]" />
+                      ) : (
+                          <div className="w-12 h-12 rounded-xl bg-[var(--bg-secondary)] flex items-center justify-center text-2xl border border-[var(--border-primary)]">
+                              {selectedProject.department === 'event_planner' ? '📅' : selectedProject.department === 'creative' ? '🎨' : '⚙️'}
+                          </div>
+                      )}
+                      <div>
+                          <button onClick={() => setSelectedProject(null)} className="text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] mb-1 flex items-center gap-1">
+                              {t('workflow.dashboard.project.backToProjects')}
+                          </button>
+                          <div className="flex items-center gap-2">
+                              <h1 className="text-2xl font-black text-[var(--text-primary)]">{selectedProject.name}</h1>
+                              {isProjectManagerOrCreator() && selectedProject.status !== 'completed' && (
+                                  <button onClick={handleOpenEditProject} className="p-1 rounded-lg hover:bg-[var(--bg-secondary)] text-[var(--text-tertiary)] hover:text-[var(--accent-primary)] transition-colors" title={t('workflow.dashboard.project.edit')}>
+                                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" /></svg>
+                                  </button>
+                              )}
+                          </div>
+                          <div className="flex items-center gap-3 text-sm mt-1.5 flex-wrap">
+                              <span className="text-[var(--accent-primary)] font-semibold">{selectedProject.client}</span>
+                              <span className="text-[var(--text-tertiary)]">• {selectedProject.startDate} → {selectedProject.deadline}</span>
+                              <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${selectedProject.status === 'completed' ? 'bg-green-500/20 text-green-400' : 'bg-blue-500/20 text-blue-400'}`}>
+                                  {t(`workflow.status.${selectedProject.status}`).toUpperCase()}
+                              </span>
+                          </div>
                       </div>
                   </div>
-                  {selectedProject.status !== 'completed' && (
+                  {isProjectCreator() && selectedProject.status !== 'completed' && (
                       <button onClick={handlePackageProject} className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-2 rounded-lg font-bold shadow-lg hover:opacity-90">
                           📦 {t('workflow.dashboard.project.package.btn')}
                       </button>
@@ -478,11 +701,11 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                           <div className="md:col-span-2 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-6">
                               <h3 className="text-lg font-bold mb-4">{t('workflow.description')}</h3>
-                              <p className="text-[var(--text-secondary)]">{selectedProject.description}</p>
+                              <div className="text-[var(--text-secondary)] text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: selectedProject.description || '' }} />
                               <div className="mt-6">
                                   <div className="flex justify-between items-center mb-2">
-                                      <h3 className="text-sm font-bold">{t('workflow.progress')}</h3>
-                                      <span className="text-sm font-black text-[var(--accent-primary)]">{selectedProject.progress}%</span>
+                                      <h3 className="text-base font-bold">{t('workflow.progress')}</h3>
+                                      <span className="text-base font-black text-[var(--accent-primary)]">{selectedProject.progress}%</span>
                                   </div>
                                   <div className="w-full bg-[var(--bg-secondary)] rounded-full h-4 mb-3">
                                       <div className="bg-[var(--accent-primary)] h-4 rounded-full transition-all" style={{ width: `${selectedProject.progress}%` }}></div>
@@ -494,6 +717,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                                               type="range" min="0" max="100" step="5"
                                               value={selectedProject.progress}
                                               onChange={e => handleUpdateProgress(Number(e.target.value))}
+                                              onPointerUp={handleProgressPointerUp}
                                               className="w-full accent-[var(--accent-primary)] cursor-pointer"
                                           />
                                       </div>
@@ -503,9 +727,9 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                           <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-6">
                               <h3 className="text-lg font-bold mb-4">{t('workflow.dashboard.project.overview.quickStats')}</h3>
                               <div className="space-y-4">
-                                  <div className="flex justify-between"><span>{t('workflow.dashboard.project.overview.files')}</span> <span>{projectDocs.length}</span></div>
-                                  <div className="flex justify-between"><span>{t('workflow.dashboard.project.overview.members')}</span> <span>{selectedProject.team.length}</span></div>
-                                  <div className="flex justify-between text-yellow-400"><span>{t('workflow.budget')}</span> <span>{selectedProject.budget.toLocaleString()} {t('workflow.affiliate.coins')}</span></div>
+                                  <div className="flex justify-between text-sm font-medium"><span className="text-[var(--text-secondary)]">{t('workflow.dashboard.project.overview.files')}</span> <span className="font-bold">{projectDocs.length}</span></div>
+                                  <div className="flex justify-between text-sm font-medium"><span className="text-[var(--text-secondary)]">{t('workflow.dashboard.project.overview.members')}</span> <span className="font-bold">{selectedProject.team.length}</span></div>
+                                  <div className="flex justify-between text-sm font-medium text-yellow-400"><span>{t('workflow.budget')}</span> <span className="font-bold">{selectedProject.budget.toLocaleString()} 🪙</span></div>
                               </div>
                           </div>
                       </div>
@@ -515,40 +739,119 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                       <div className="space-y-6">
                           <div className="flex justify-between items-center">
                               <h3 className="text-lg font-bold">{t('workflow.dashboard.project.teamPanel.title')}</h3>
-                              <button onClick={() => setShowMemberSelect(true)} className="bg-[var(--accent-primary)] text-black px-4 py-2 rounded-lg font-bold text-sm">+ {t('workflow.addMember')}</button>
+                              {isProjectManagerOrCreator() && selectedProject.status !== 'completed' && (
+                                  <button onClick={() => { setShowMemberSelect(true); setUserSearchQuery(''); setUserSearchResults([]); }} className="bg-[var(--accent-primary)] text-black px-4 py-2 rounded-lg font-bold text-sm">+ {t('workflow.addMember')}</button>
+                              )}
                           </div>
                           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                              {selectedProject.team.map(member => (
-                                  <div key={member.id} className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-4 rounded-xl flex items-center gap-3">
-                                      <img src={member.avatar} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
-                                      <div className="flex-1 min-w-0">
-                                          <p className="font-bold truncate">{member.name}</p>
-                                          <p className="text-xs text-[var(--text-tertiary)] truncate">{member.role}</p>
-                                          {member.isExternal && <span className="text-[10px] bg-yellow-500/20 text-yellow-500 px-1.5 py-0.5 rounded">{t('workflow.dashboard.project.teamPanel.external')}</span>}
+                              {selectedProject.team.map(member => {
+                                  const isSelf = member.id === user?._id;
+                                  const isCreatorCard = member.projectRole === 'creator';
+                                  const isManagerCard = member.projectRole === 'manager';
+                                  // Creator can remove anyone except themselves; manager can remove non-creator/non-manager only
+                                  const canRemove = !isSelf && !isCreatorCard && selectedProject.status !== 'completed' &&
+                                      (isProjectCreator() || (isProjectManagerOrCreator() && !isManagerCard));
+                                  return (
+                                      <div key={member.id} className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-5 rounded-xl flex items-start gap-4">
+                                          <img
+                                              src={member.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=random`}
+                                              className="w-14 h-14 rounded-full object-cover flex-shrink-0 border-2 border-[var(--border-primary)]"
+                                          />
+                                          <div className="flex-1 min-w-0">
+                                              <div className="flex items-center gap-2 flex-wrap">
+                                                  <p className="font-bold text-base">{member.name}</p>
+                                                  {isSelf && <span className="text-[10px] bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] px-1.5 py-0.5 rounded font-bold">You</span>}
+                                              </div>
+                                              {/* Custom display label - editable by creator/manager */}
+                                              {isProjectManagerOrCreator() && !isCreatorCard && selectedProject.status !== 'completed' ? (
+                                                  <input
+                                                      key={member.id + '-role'}
+                                                      className="text-sm bg-transparent border-b border-dashed border-[var(--border-primary)] focus:outline-none focus:border-[var(--accent-primary)] text-[var(--text-tertiary)] w-full mt-1 placeholder-[var(--text-tertiary)]/50"
+                                                      placeholder={t('workflow.dashboard.project.teamPanel.rolePlaceholder')}
+                                                      defaultValue={member.role || ''}
+                                                      onBlur={e => { if (e.target.value.trim() !== (member.role || '')) handleUpdateDisplayRole(member.id, e.target.value.trim()); }}
+                                                      onKeyDown={e => { if (e.key === 'Enter') e.currentTarget.blur(); }}
+                                                  />
+                                              ) : (
+                                                  <p className="text-sm text-[var(--text-tertiary)] truncate mt-1">{member.role}</p>
+                                              )}
+                                              {/* Structural role badges */}
+                                              <div className="flex items-center gap-1.5 mt-2 flex-wrap">
+                                                  {isCreatorCard && <span className="text-xs bg-purple-500/20 text-purple-400 px-2 py-0.5 rounded-full font-bold">👑 Creator</span>}
+                                                  {isManagerCard && <span className="text-xs bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full font-bold">⭐ Manager</span>}
+                                                  {member.isExternal && <span className="text-xs bg-yellow-500/20 text-yellow-500 px-2 py-0.5 rounded-full">{t('workflow.dashboard.project.teamPanel.external')}</span>}
+                                              </div>
+                                              {/* Manager toggle — creator only, not for self */}
+                                              {isProjectCreator() && !isSelf && !isCreatorCard && selectedProject.status !== 'completed' && (
+                                                  isManagerCard ? (
+                                                      <button
+                                                          onClick={() => handleToggleManager(member.id)}
+                                                          className="mt-2 inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg font-medium bg-blue-500/15 text-blue-400 border border-blue-500/30 hover:bg-red-500/15 hover:text-red-400 hover:border-red-500/30 transition-all"
+                                                      >
+                                                          <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z" clipRule="evenodd" /></svg>
+                                                          {t('workflow.dashboard.project.teamPanel.removeManager')}
+                                                      </button>
+                                                  ) : (
+                                                      <button
+                                                          onClick={() => handleToggleManager(member.id)}
+                                                          className="mt-2 inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg font-medium bg-[var(--bg-secondary)] text-[var(--text-tertiary)] border border-dashed border-[var(--border-primary)] hover:bg-blue-500/15 hover:text-blue-400 hover:border-blue-500/30 transition-all"
+                                                      >
+                                                          <span>⭐</span> {t('workflow.dashboard.project.teamPanel.makeManager')}
+                                                      </button>
+                                                  )
+                                              )}
+                                              {/* Leave button — self only, non-creator */}
+                                              {isSelf && !isCreatorCard && selectedProject.status !== 'completed' && (
+                                                  <button onClick={handleLeaveProject} className="mt-2 text-xs text-red-400 hover:text-red-300 underline block font-medium">
+                                                      {t('workflow.dashboard.project.teamPanel.leave')}
+                                                  </button>
+                                              )}
+                                          </div>
+                                          {/* Remove button */}
+                                          {canRemove && (
+                                              <button
+                                                  onClick={() => handleRemoveMember(member.id, member.name)}
+                                                  className="flex-shrink-0 p-1.5 rounded-lg hover:bg-red-500/20 text-[var(--text-tertiary)] hover:text-red-400 transition-colors mt-0.5"
+                                                  title={t('workflow.collaboration.removeMember')}
+                                              >
+                                                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
+                                              </button>
+                                          )}
                                       </div>
-                                      {member.id !== 'me' && selectedProject.status !== 'completed' && (
-                                          <button onClick={() => handleRemoveMember(member.id)} className="flex-shrink-0 p-1.5 rounded-lg hover:bg-red-500/20 text-[var(--text-tertiary)] hover:text-red-400 transition-colors" title={t('workflow.collaboration.removeMember')}>
-                                              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
-                                          </button>
-                                      )}
-                                  </div>
-                              ))}
+                                  );
+                              })}
                           </div>
                           {showMemberSelect && (
                             <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-4 rounded-xl mt-4">
-                                <h4 className="font-bold mb-2">{t('workflow.dashboard.project.teamPanel.selectToAdd')}</h4>
-                                <div className="space-y-2">
-                                    {availableUsers.map(u => (
+                                <h4 className="font-bold mb-3">{t('workflow.dashboard.project.teamPanel.selectToAdd')}</h4>
+                                <input
+                                    autoFocus
+                                    placeholder="Search by name or email..."
+                                    value={userSearchQuery}
+                                    onChange={e => handleUserSearch(e.target.value)}
+                                    className="w-full mb-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[var(--accent-primary)]"
+                                />
+                                {userSearchLoading && <p className="text-xs text-[var(--text-tertiary)] text-center py-2">Searching...</p>}
+                                {!userSearchLoading && userSearchQuery.length >= 2 && userSearchResults.length === 0 && (
+                                    <p className="text-xs text-[var(--text-tertiary)] text-center py-2">No users found</p>
+                                )}
+                                <div className="space-y-2 max-h-52 overflow-y-auto">
+                                    {userSearchResults
+                                        .filter(u => !selectedProject.team.find(m => m.id === u.id))
+                                        .map(u => (
                                         <div key={u.id} onClick={() => handleAddMemberToProject(u)} className="flex justify-between items-center p-2 hover:bg-[var(--bg-secondary)] rounded cursor-pointer border border-transparent hover:border-[var(--border-primary)]">
                                             <div className="flex items-center gap-2">
-                                                <img src={u.avatar} className="w-6 h-6 rounded-full" />
-                                                <span>{u.name}</span>
+                                                <img src={u.avatar} className="w-8 h-8 rounded-full object-cover" />
+                                                <div>
+                                                    <p className="text-sm font-medium">{u.name}</p>
+                                                    <p className="text-xs text-[var(--text-tertiary)]">{u.role}</p>
+                                                </div>
                                             </div>
-                                            <span className="text-xs text-[var(--accent-primary)]">{u.isExternal ? `50 ${t('workflow.affiliate.coins')}` : t('workflow.dashboard.project.teamPanel.free')}</span>
+                                            <span className="text-xs text-[var(--accent-primary)] font-bold">{t('workflow.dashboard.project.teamPanel.free')}</span>
                                         </div>
                                     ))}
                                 </div>
-                                <button onClick={() => setShowMemberSelect(false)} className="mt-2 text-xs underline text-[var(--text-tertiary)]">{t('common.cancel')}</button>
+                                <button onClick={() => { setShowMemberSelect(false); setUserSearchQuery(''); setUserSearchResults([]); }} className="mt-3 text-xs underline text-[var(--text-tertiary)]">{t('common.cancel')}</button>
                             </div>
                           )}
                       </div>
@@ -564,17 +867,52 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                           </div>
                           <div className="grid grid-cols-1 gap-2">
                               {projectDocs.length > 0 ? projectDocs.map(doc => (
-                                  <div key={doc.id} className="flex items-center justify-between p-3 bg-[var(--bg-card)] rounded-lg border border-[var(--border-primary)]">
-                                      <div className="flex items-center gap-3">
-                                          <div className="w-8 h-8 bg-[var(--bg-secondary)] flex items-center justify-center rounded text-xs font-bold">{doc.type}</div>
-                                          <div>
-                                              <p className="font-medium text-sm">{doc.name}</p>
-                                              <p className="text-xs text-[var(--text-tertiary)]">{doc.size} • {doc.uploadDate}</p>
+                                  <div key={doc.id} className="p-3 bg-[var(--bg-card)] rounded-lg border border-[var(--border-primary)]">
+                                      <div className="flex items-start justify-between gap-3">
+                                          <div className="flex items-center gap-3 flex-1 min-w-0">
+                                              <div className="w-8 h-8 bg-[var(--bg-secondary)] flex items-center justify-center rounded text-xs font-bold flex-shrink-0">{doc.type}</div>
+                                              <div className="flex-1 min-w-0">
+                                                  <p className="font-medium text-sm truncate">{doc.name}</p>
+                                                  <p className="text-xs text-[var(--text-tertiary)]">{doc.uploader} • {doc.size} • {doc.uploadDate}</p>
+                                                  {/* Upload progress bar */}
+                                                  {uploadProgress[doc.id] !== undefined && (
+                                                      <div className="mt-1.5">
+                                                          <div className="flex justify-between text-[10px] text-[var(--text-tertiary)] mb-0.5">
+                                                              <span>Uploading to B2...</span>
+                                                              <span>{uploadProgress[doc.id]}%</span>
+                                                          </div>
+                                                          <div className="w-full h-1 bg-[var(--bg-secondary)] rounded-full overflow-hidden">
+                                                              <div className="h-full bg-[var(--accent-primary)] rounded-full transition-all" style={{ width: `${uploadProgress[doc.id]}%` }} />
+                                                          </div>
+                                                      </div>
+                                                  )}
+                                                  {/* Note field: editable by uploader, read-only for others */}
+                                                  {doc.createdBy === user?._id ? (
+                                                      <input
+                                                          key={doc.id + '-note'}
+                                                          className="mt-1 text-xs w-full bg-transparent border-b border-dashed border-[var(--border-primary)] focus:outline-none focus:border-[var(--accent-primary)] text-[var(--text-tertiary)] placeholder-[var(--text-tertiary)]/50 italic"
+                                                          placeholder={t('workflow.dashboard.project.filesPanel.notePlaceholder')}
+                                                          defaultValue={doc.note || ''}
+                                                          onBlur={e => { if (e.target.value !== (doc.note || '')) handleUpdateDocNote(doc.id, e.target.value); }}
+                                                          onKeyDown={e => { if (e.key === 'Enter') e.currentTarget.blur(); }}
+                                                      />
+                                                  ) : doc.note ? (
+                                                      <p className="mt-1 text-xs italic text-[var(--text-tertiary)]">📝 {doc.note}</p>
+                                                  ) : null}
+                                              </div>
                                           </div>
-                                      </div>
-                                      <div className="flex gap-2">
-                                          <button onClick={() => openTaskModalForFile(doc)} className="text-xs bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 px-3 py-1 rounded">{t('workflow.dashboard.project.filesPanel.assignTask')}</button>
-                                          <button onClick={() => handleOpenFile(doc)} className="text-xs bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/20 px-3 py-1 rounded">{t('workflow.dashboard.project.filesPanel.open')}</button>
+                                          <div className="flex gap-2 flex-shrink-0">
+                                              {doc.url ? (
+                                                  <a href={doc.url} download={doc.name} target="_blank" rel="noreferrer" className="text-xs bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/20 px-3 py-1 rounded flex items-center gap-1">
+                                                      ↓ {t('workflow.dashboard.project.teamPanel.download')}
+                                                  </a>
+                                              ) : (
+                                                  <span className="text-xs text-[var(--text-tertiary)] px-3 py-1">{doc.name.split('.').pop()?.toUpperCase()}</span>
+                                              )}
+                                              {canDeleteDoc(doc) && (
+                                                  <button onClick={() => handleDeleteDoc(doc.id)} className="text-xs bg-red-500/10 text-red-400 hover:bg-red-500/20 px-2 py-1 rounded" title={t('workflow.dashboard.docPanel.delete')}>✕</button>
+                                              )}
+                                          </div>
                                       </div>
                                   </div>
                               )) : <p className="text-[var(--text-tertiary)] italic">{t('workflow.dashboard.project.filesPanel.noFiles')}</p>}
@@ -629,11 +967,11 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                               </div>
                               <div>
                                   <h4 className="text-sm font-bold text-[var(--text-secondary)] mb-3">{t('workflow.dashboard.project.finance.expenseHistory')}</h4>
-                                  {(expenseLog[selectedProject.id] || []).length === 0 ? (
+                                  {(selectedProject.expenseLog || []).length === 0 ? (
                                       <p className="text-xs text-[var(--text-tertiary)] italic">{t('workflow.dashboard.project.finance.noExpenses')}</p>
                                   ) : (
                                       <div className="space-y-2">
-                                          {(expenseLog[selectedProject.id] || []).map(entry => (
+                                          {(selectedProject.expenseLog || []).map(entry => (
                                               <div key={entry.id} className="flex items-center justify-between py-2 border-b border-[var(--border-primary)] last:border-0">
                                                   <div>
                                                       <p className="text-sm font-medium">{entry.name}</p>
@@ -655,13 +993,13 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                               {selectedProject.chatHistory.map(msg => (
                                   <div key={msg.id} className={`flex flex-col ${msg.isSystem ? 'items-center' : (msg.author === userProfile.name ? 'items-end' : 'items-start')}`}>
                                       {msg.isSystem ? (
-                                          <span className="text-[10px] text-[var(--text-tertiary)] bg-[var(--bg-secondary)] px-2 py-0.5 rounded-full border border-[var(--border-primary)]">{msg.text}</span>
+                                          <span className="text-xs text-[var(--text-tertiary)] bg-[var(--bg-secondary)] px-3 py-1 rounded-full border border-[var(--border-primary)]">{msg.text}</span>
                                       ) : (
                                           <>
-                                              <div className={`max-w-[80%] p-3 rounded-xl text-sm ${msg.author === userProfile.name ? 'bg-[var(--accent-primary)] text-black rounded-tr-none' : 'bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-tl-none border border-[var(--border-primary)]'}`}>
+                                              <div className={`max-w-[80%] p-3.5 rounded-xl text-sm leading-relaxed ${msg.author === userProfile.name ? 'bg-[var(--accent-primary)] text-black rounded-tr-none' : 'bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-tl-none border border-[var(--border-primary)]'}`}>
                                                   {msg.text}
                                               </div>
-                                              <span className="text-[10px] text-[var(--text-tertiary)] mt-1 px-1">
+                                              <span className="text-xs text-[var(--text-tertiary)] mt-1 px-1">
                                                   {msg.author !== userProfile.name && `${msg.author} • `}{msg.timestamp}
                                               </span>
                                           </>
@@ -691,14 +1029,14 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                                   selectedProject.tasks.map(task => (
                                       <div key={task.id} onClick={() => cycleTaskStatus(task.id)} className="bg-[var(--bg-card)] border border-[var(--border-primary)] p-4 rounded-xl flex items-center justify-between hover:border-[var(--accent-primary)] transition-all cursor-pointer">
                                           <div className="flex items-center gap-4">
-                                              <div className={`w-3 h-3 rounded-full ${task.status === 'todo' ? 'bg-gray-500' : task.status === 'in_progress' ? 'bg-blue-500' : 'bg-green-500'}`}></div>
+                                              <div className={`w-4 h-4 rounded-full flex-shrink-0 ${task.status === 'todo' ? 'bg-gray-500' : task.status === 'in_progress' ? 'bg-blue-500' : 'bg-green-500'}`}></div>
                                               <div>
-                                                  <h4 className="font-bold">{task.title}</h4>
-                                                  <p className="text-xs text-[var(--text-tertiary)]">{t('workflow.dashboard.project.tasks.assigned')}: {task.assigneeName} • {t('workflow.dashboard.project.tasks.dueLabel')}: {task.dueDate}</p>
+                                                  <h4 className="font-bold text-base">{task.title}</h4>
+                                                  <p className="text-sm text-[var(--text-tertiary)] mt-0.5">{t('workflow.dashboard.project.tasks.assigned')}: {task.assigneeName} • {t('workflow.dashboard.project.tasks.dueLabel')}: {task.dueDate}</p>
                                               </div>
                                           </div>
                                           <div className="flex items-center gap-2">
-                                              <span className={`text-xs uppercase font-bold tracking-wider px-2 py-1 rounded ${task.status === 'todo' ? 'bg-gray-500/20 text-gray-400' : task.status === 'in_progress' ? 'bg-blue-500/20 text-blue-400' : 'bg-green-500/20 text-green-400'}`}>{t(`workflow.dashboard.project.tasks.status.${task.status}`)}</span>
+                                              <span className={`text-xs uppercase font-bold tracking-wider px-3 py-1 rounded-full ${task.status === 'todo' ? 'bg-gray-500/20 text-gray-400' : task.status === 'in_progress' ? 'bg-blue-500/20 text-blue-400' : 'bg-green-500/20 text-green-400'}`}>{t(`workflow.dashboard.project.tasks.status.${task.status}`)}</span>
                                               <button onClick={e => handleDeleteTask(task.id, e)} className="p-1.5 rounded-lg hover:bg-red-500/20 text-[var(--text-tertiary)] hover:text-red-400 transition-colors" title={t('common.delete')}>
                                                   <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
                                               </button>
@@ -716,25 +1054,77 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       );
   };
 
+  const canCreateProject = user?.role === 'admin' || user?.role === 'mod';
+
+  const DEPT_OPTIONS: { value: DepartmentType; label: string; icon: string }[] = [
+      { value: 'all', label: t('workflow.depts.all'), icon: '🗂️' },
+      { value: 'event_planner', label: t('workflow.depts.event_planner'), icon: '📅' },
+      { value: 'creative', label: t('workflow.depts.creative'), icon: '🎨' },
+      { value: 'operation', label: t('workflow.depts.operation'), icon: '⚙️' },
+  ];
+
+  const filteredProjects = projects.filter(p =>
+      projectDeptFilter === 'all' || p.department === projectDeptFilter
+  );
+
   const renderProjectList = () => (
       <div className="p-6 md:p-8 overflow-y-auto flex-1 animate-fade-in">
-          <div className="flex justify-between items-center mb-8">
+          <div className="flex justify-between items-center mb-6">
               <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-primary)] to-purple-500">{t('workflow.dashboard.project.hubTitle')}</h1>
-              <button onClick={() => setShowProjectModal(true)} className="bg-[var(--accent-primary)] text-black font-bold px-6 py-2.5 rounded-lg shadow-lg hover:opacity-90 transition-all">+ {t('workflow.dashboard.createProject')}</button>
+              {canCreateProject && (
+                  <button onClick={() => setShowProjectModal(true)} className="bg-[var(--accent-primary)] text-black font-bold px-6 py-2.5 rounded-lg shadow-lg hover:opacity-90 transition-all">+ {t('workflow.dashboard.createProject')}</button>
+              )}
           </div>
-          {projects.length === 0 && (
+
+          {/* Department filter */}
+          <div className="flex gap-2 mb-6 flex-wrap">
+              {DEPT_OPTIONS.map(opt => (
+                  <button
+                      key={opt.value}
+                      onClick={() => setProjectDeptFilter(opt.value)}
+                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                          projectDeptFilter === opt.value
+                              ? 'bg-[var(--accent-primary)] text-black shadow'
+                              : 'bg-[var(--bg-secondary)] text-[var(--text-secondary)] hover:bg-[var(--border-primary)]'
+                      }`}
+                  >
+                      <span>{opt.icon}</span><span>{opt.label}</span>
+                  </button>
+              ))}
+          </div>
+
+          {filteredProjects.length === 0 && (
               <div className="col-span-3 text-center py-20">
                   <div className="text-6xl mb-4">💼</div>
                   <p className="text-[var(--text-secondary)] text-lg mb-6">{t('workflow.dashboard.project.noProjects')}</p>
-                  <button onClick={() => setShowProjectModal(true)} className="bg-[var(--accent-primary)] text-black font-bold px-8 py-3 rounded-xl hover:opacity-90 transition-all">+ {t('workflow.dashboard.createProject')}</button>
+                  {canCreateProject && (
+                      <button onClick={() => setShowProjectModal(true)} className="bg-[var(--accent-primary)] text-black font-bold px-8 py-3 rounded-xl hover:opacity-90 transition-all">+ {t('workflow.dashboard.createProject')}</button>
+                  )}
               </div>
           )}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projects.map(project => (
-                  <div key={project.id} onClick={() => setSelectedProject(project)} className="bg-[var(--bg-card)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] rounded-2xl p-6 cursor-pointer transition-all hover:-translate-y-1 shadow-lg group">
+              {filteredProjects.map(project => (
+                  <div key={project.id} className="relative bg-[var(--bg-card)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] rounded-2xl p-6 cursor-pointer transition-all hover:-translate-y-1 shadow-lg group" onClick={() => setSelectedProject(project)}>
+                      {/* Admin delete button for completed projects */}
+                      {user?.role === 'admin' && project.status === 'completed' && (
+                          <button
+                              onClick={e => { e.stopPropagation(); handleDeleteProject(project.id); }}
+                              className="absolute top-3 right-3 p-1 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500/20 opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                              title={t('workflow.dashboard.project.confirmDelete')}
+                          >
+                              <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
+                          </button>
+                      )}
                       <div className="flex justify-between items-start mb-4">
-                          <div className="w-12 h-12 rounded-lg bg-[var(--bg-secondary)] flex items-center justify-center text-2xl">{project.department === 'event_planner' ? '📅' : project.department === 'creative' ? '🎨' : '⚙️'}</div>
-                          <span className={`px-2 py-1 rounded text-[10px] font-bold uppercase ${project.status === 'completed' ? 'bg-green-500/20 text-green-400' : project.status === 'active' ? 'bg-blue-500/20 text-blue-400' : 'bg-gray-500/20 text-gray-400'}`}>{t(`workflow.status.${project.status}`)}</span>
+                          <div className="w-12 h-12 rounded-lg bg-[var(--bg-secondary)] flex items-center justify-center text-2xl overflow-hidden">
+                              {project.avatar ? <img src={project.avatar} className="w-full h-full object-cover" /> : (project.department === 'event_planner' ? '📅' : project.department === 'creative' ? '🎨' : '⚙️')}
+                          </div>
+                          <div className="flex flex-col items-end gap-1">
+                              <span className={`px-2 py-1 rounded text-[10px] font-bold uppercase ${project.status === 'completed' ? 'bg-green-500/20 text-green-400' : project.status === 'active' ? 'bg-blue-500/20 text-blue-400' : 'bg-gray-500/20 text-gray-400'}`}>{t(`workflow.status.${project.status}`)}</span>
+                              <span className="px-2 py-0.5 rounded text-[9px] font-bold bg-[var(--bg-secondary)] text-[var(--text-tertiary)] border border-[var(--border-primary)]">
+                                  {project.department === 'event_planner' ? '📅' : project.department === 'creative' ? '🎨' : '⚙️'} {t(`workflow.depts.${project.department}`)}
+                              </span>
+                          </div>
                       </div>
                       <h3 className="text-xl font-bold text-[var(--text-primary)] mb-1 group-hover:text-[var(--accent-primary)] transition-colors">{project.name}</h3>
                       <p className="text-xs text-[var(--text-tertiary)] mb-4">{project.client}</p>
@@ -779,26 +1169,97 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       default: return (
         <div className="p-6 md:p-8 overflow-y-auto flex-1">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
-                <div><h1 className="text-2xl font-bold">{t(`workflow.depts.${selectedDept}`)}</h1><p className="text-[var(--text-secondary)]">{filteredDocs.length} {t('workflow.dashboard.documentsFound')}</p></div>
-                <div className="flex gap-3">
-                    <button onClick={onOpenStudio} className="py-2 px-4 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-[var(--text-on-accent)] font-bold rounded-lg hover:opacity-90 transition-opacity flex items-center gap-2 shadow-lg shadow-[var(--accent-shadow)]"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" /></svg>{t('workflow.dashboard.create')}</button>
-                    <label className="cursor-pointer py-2 px-4 bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] font-bold rounded-lg hover:bg-[var(--border-primary)] transition-colors flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" /></svg>{t('workflow.dashboard.upload')}<input type="file" className="hidden" onChange={handleFileUpload} /></label>
+                <div>
+                    <h1 className="text-3xl font-bold">{t('workflow.sidebar.allDocuments')}</h1>
+                    <p className="text-[var(--text-secondary)] mt-1">{filteredDocs.length} {t('workflow.dashboard.documentsFound')}</p>
                 </div>
+                <label className="cursor-pointer py-2.5 px-5 bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] font-bold rounded-lg hover:bg-[var(--border-primary)] transition-colors flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
+                    {t('workflow.dashboard.upload')}
+                    <input type="file" className="hidden" onChange={handleFileUpload} />
+                </label>
             </div>
             <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl overflow-hidden shadow-sm">
                 <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
-                        <thead><tr className="bg-[var(--bg-secondary)] border-b border-[var(--border-primary)] text-xs uppercase tracking-wider text-[var(--text-secondary)]"><th className="p-4 font-medium">{t('workflow.dashboard.table.name')}</th><th className="p-4 font-medium">{t('workflow.dashboard.table.dept')}</th><th className="p-4 font-medium hidden md:table-cell">{t('workflow.dashboard.table.date')}</th><th className="p-4 font-medium">{t('workflow.dashboard.table.status')}</th><th className="p-4 font-medium text-right">{t('workflow.dashboard.table.action')}</th></tr></thead>
+                        <thead>
+                            <tr className="bg-[var(--bg-secondary)] border-b border-[var(--border-primary)] text-xs uppercase tracking-wider text-[var(--text-secondary)]">
+                                <th className="p-4 font-semibold">{t('workflow.dashboard.table.name')}</th>
+                                <th className="p-4 font-semibold hidden md:table-cell">{t('workflow.dashboard.table.dept')}</th>
+                                <th className="p-4 font-semibold hidden md:table-cell">{t('workflow.dashboard.table.date')}</th>
+                                <th className="p-4 font-semibold">{t('workflow.dashboard.table.status')}</th>
+                                <th className="p-4 font-semibold text-right">{t('workflow.dashboard.table.action')}</th>
+                            </tr>
+                        </thead>
                         <tbody className="divide-y divide-[var(--border-primary)]">
                             {filteredDocs.length > 0 ? filteredDocs.map((doc) => (
                                 <tr key={doc.id} className="hover:bg-[var(--bg-secondary)]/50 transition-colors group">
-                                    <td className="p-4"><div className="flex items-center gap-3"><div className={`w-8 h-8 rounded flex items-center justify-center text-xs font-bold ${doc.isProject ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30' : 'bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)]'}`}>{doc.isProject ? 'P' : doc.type}</div><div><p className={`font-medium ${doc.isProject ? 'text-[var(--accent-primary)]' : 'text-[var(--text-primary)]'}`}>{doc.name}</p><p className="text-xs text-[var(--text-tertiary)]">{doc.uploader} • {doc.size}</p></div></div></td>
-                                    <td className="p-4 text-sm text-[var(--text-secondary)] capitalize">{t(`workflow.depts.${doc.department}`)}</td>
+                                    <td className="p-4">
+                                        <div className="flex items-center gap-3">
+                                            <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-xs font-bold flex-shrink-0 ${doc.isProject ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30' : 'bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-secondary)]'}`}>{doc.isProject ? 'P' : doc.type}</div>
+                                            <div>
+                                                <p className={`font-semibold text-base ${doc.isProject ? 'text-[var(--accent-primary)]' : 'text-[var(--text-primary)]'}`}>{doc.name}</p>
+                                                <p className="text-sm text-[var(--text-tertiary)] mt-0.5">{doc.uploader} • {doc.size}</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td className="p-4 text-sm text-[var(--text-secondary)] capitalize hidden md:table-cell">{t(`workflow.depts.${doc.department}`)}</td>
                                     <td className="p-4 text-sm text-[var(--text-secondary)] hidden md:table-cell">{doc.uploadDate}</td>
-                                    <td className="p-4"><span className={`px-2 py-1 rounded text-xs font-bold uppercase border ${getStatusColor(doc.status)}`}>{t(`workflow.dashboard.status.${doc.status}`)}</span></td>
-                                    <td className="p-4 text-right"><div className="flex justify-end gap-1"><button onClick={() => doc.isProject ? setSelectedProject(projects.find(p => p.id === (doc.projectId || doc.id)) || null) : handleOpenChat(doc)} className="p-1.5 rounded-lg text-[var(--text-secondary)] hover:text-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-colors" title={t('workflow.dashboard.docPanel.comments')}><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" /></svg></button>{!doc.isProject && doc.status === 'pending' && (<><button onClick={() => handleChangeDocStatus(doc.id, 'approved')} className="p-1.5 rounded-lg text-green-400 hover:bg-green-500/20 transition-colors" title={t('workflow.dashboard.docPanel.approve')}><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg></button><button onClick={() => handleChangeDocStatus(doc.id, 'rejected')} className="p-1.5 rounded-lg text-red-400 hover:bg-red-500/20 transition-colors" title={t('workflow.dashboard.docPanel.reject')}><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" /></svg></button></>)}{!doc.isProject && doc.status !== 'pending' && (<button onClick={() => handleChangeDocStatus(doc.id, 'pending')} className="p-1.5 rounded-lg text-yellow-400 hover:bg-yellow-500/20 transition-colors" title={t('workflow.dashboard.docPanel.resetPending')}><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" /></svg></button>)}{!doc.isProject && (<button onClick={() => handleDeleteDoc(doc.id)} className="p-1.5 rounded-lg text-[var(--text-tertiary)] hover:text-red-400 hover:bg-red-500/20 transition-colors" title={t('workflow.dashboard.docPanel.delete')}><svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" /></svg></button>)}</div></td>
+                                    <td className="p-4">
+                                        <span className={`px-2.5 py-1 rounded-full text-xs font-bold uppercase border ${getStatusColor(doc.status)}`}>{t(`workflow.dashboard.status.${doc.status}`)}</span>
+                                    </td>
+                                    <td className="p-4 text-right">
+                                        <div className="flex justify-end gap-1 items-center">
+                                            {/* Comment / open project */}
+                                            <button
+                                                onClick={() => doc.isProject ? setSelectedProject(projects.find(p => p.id === (doc.projectId || doc.id)) || null) : handleOpenChat(doc)}
+                                                className="p-2 rounded-lg text-[var(--text-secondary)] hover:text-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-colors"
+                                                title={t('workflow.dashboard.docPanel.comments')}
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" /></svg>
+                                            </button>
+                                            {/* Download — shown when URL is available */}
+                                            {doc.url && !doc.isProject && (
+                                                <a
+                                                    href={doc.url}
+                                                    download={doc.name}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    className="p-2 rounded-lg text-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-colors"
+                                                    title={t('workflow.dashboard.project.teamPanel.download')}
+                                                >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
+                                                </a>
+                                            )}
+                                            {/* Approve / Reject (pending) */}
+                                            {!doc.isProject && doc.status === 'pending' && (
+                                                <>
+                                                    <button onClick={() => handleChangeDocStatus(doc.id, 'approved')} className="p-2 rounded-lg text-green-400 hover:bg-green-500/20 transition-colors" title={t('workflow.dashboard.docPanel.approve')}>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+                                                    </button>
+                                                    <button onClick={() => handleChangeDocStatus(doc.id, 'rejected')} className="p-2 rounded-lg text-red-400 hover:bg-red-500/20 transition-colors" title={t('workflow.dashboard.docPanel.reject')}>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
+                                                    </button>
+                                                </>
+                                            )}
+                                            {/* Reset to pending */}
+                                            {!doc.isProject && doc.status !== 'pending' && (
+                                                <button onClick={() => handleChangeDocStatus(doc.id, 'pending')} className="p-2 rounded-lg text-yellow-400 hover:bg-yellow-500/20 transition-colors" title={t('workflow.dashboard.docPanel.resetPending')}>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" /></svg>
+                                                </button>
+                                            )}
+                                            {/* Delete */}
+                                            {!doc.isProject && (
+                                                <button onClick={() => handleDeleteDoc(doc.id)} className="p-2 rounded-lg text-[var(--text-tertiary)] hover:text-red-400 hover:bg-red-500/20 transition-colors" title={t('workflow.dashboard.docPanel.delete')}>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
+                                                </button>
+                                            )}
+                                        </div>
+                                    </td>
                                 </tr>
-                            )) : (<tr><td colSpan={5} className="p-8 text-center text-[var(--text-tertiary)]">{t('workflow.dashboard.noFiles')}</td></tr>)}
+                            )) : (
+                                <tr><td colSpan={5} className="p-12 text-center text-[var(--text-tertiary)] text-base">{t('workflow.dashboard.noFiles')}</td></tr>
+                            )}
                         </tbody>
                     </table>
                 </div>
@@ -807,6 +1268,12 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       );
     }
   };
+
+  if (loading) return (
+    <div className="min-h-screen bg-[var(--bg-primary)] flex items-center justify-center">
+        <LoadingSpinner />
+    </div>
+  );
 
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] font-sans flex">
@@ -819,11 +1286,8 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
             <div className="flex-1 overflow-y-auto py-6 space-y-6 px-3">
                 <div><p className="px-4 text-[10px] font-bold text-[var(--text-tertiary)] uppercase tracking-wider mb-2">{t('workflow.sidebar.fileManagement')}</p>
                     <div className="space-y-1">
-                        <button onClick={() => { setActiveView('documents'); setSelectedProject(null); setSelectedDept('all'); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'documents' && selectedDept === 'all' && !selectedProject ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">📂</span><span className="hidden md:block text-sm">{t('workflow.sidebar.allDocuments')}</span></button>
-                        <button onClick={() => { setActiveView('documents'); setSelectedProject(null); setSelectedDept('creative'); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'documents' && selectedDept === 'creative' && !selectedProject ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">🎨</span><span className="hidden md:block text-sm">{t('workflow.sidebar.teamCreative')}</span></button>
-                        <button onClick={() => { setActiveView('documents'); setSelectedProject(null); setSelectedDept('event_planner'); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'documents' && selectedDept === 'event_planner' && !selectedProject ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">📢</span><span className="hidden md:block text-sm">{t('workflow.sidebar.eventPlanner')}</span></button>
-                        <button onClick={() => { setActiveView('projects'); setSelectedProject(null); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'projects' && !selectedProject ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">💼</span><span className="hidden md:block text-sm">{t('workflow.sidebar.account')}</span></button>
-                        <button onClick={() => { setActiveView('documents'); setSelectedProject(null); setSelectedDept('operation'); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'documents' && selectedDept === 'operation' && !selectedProject ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">🏭</span><span className="hidden md:block text-sm">{t('workflow.sidebar.production')}</span></button>
+                        <button onClick={() => { setActiveView('documents'); setSelectedProject(null); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'documents' && !selectedProject ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">📂</span><span className="hidden md:block text-sm">{t('workflow.sidebar.allDocuments')}</span></button>
+                        <button onClick={() => { setActiveView('projects'); setSelectedProject(null); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'projects' || !!selectedProject ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">💼</span><span className="hidden md:block text-sm">{t('workflow.sidebar.account')}</span></button>
                     </div>
                 </div>
                 <div><p className="px-4 text-[10px] font-bold text-[var(--text-tertiary)] uppercase tracking-wider mb-2">{t('workflow.sidebar.networkOpportunity')}</p>
@@ -860,11 +1324,75 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
         />
         {/* PartnerRegistrationModal moved to PartnersView component */}
 
-        {showProjectModal && (<div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6"><h2 className="text-2xl font-bold mb-4">{t('workflow.dashboard.project.modalTitle')}</h2><form onSubmit={handleCreateProject} className="space-y-4"><input placeholder={t('workflow.dashboard.project.nameLabel')} value={newProjectData.name} onChange={e => setNewProjectData({...newProjectData, name: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input placeholder={t('workflow.dashboard.project.descLabel')} value={newProjectData.description} onChange={e => setNewProjectData({...newProjectData, description: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input placeholder={t('workflow.dashboard.project.modal.client')} value={newProjectData.client} onChange={e => setNewProjectData({...newProjectData, client: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input type="number" placeholder={t('workflow.dashboard.project.modal.budget')} value={newProjectData.budget || ''} onChange={e => setNewProjectData({...newProjectData, budget: parseInt(e.target.value)})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input type="date" placeholder={t('workflow.dashboard.project.modal.deadline')} value={newProjectData.deadline} onChange={e => setNewProjectData({...newProjectData, deadline: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" /><select value={newProjectData.department} onChange={e => setNewProjectData({...newProjectData, department: e.target.value as any})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"><option value="event_planner">{t('workflow.depts.event_planner')}</option><option value="creative">{t('workflow.depts.creative')}</option><option value="operation">{t('workflow.depts.operation')}</option></select><div className="flex gap-2 justify-end mt-4"><button type="button" onClick={() => setShowProjectModal(false)} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">{t('common.cancel')}</button><button type="submit" className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.dashboard.project.createBtn')}</button></div></form></div></div>)}
+        {showProjectModal && canCreateProject && (<div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6"><h2 className="text-2xl font-bold mb-4">{t('workflow.dashboard.project.modalTitle')}</h2><form onSubmit={handleCreateProject} className="space-y-4"><input placeholder={t('workflow.dashboard.project.nameLabel')} value={newProjectData.name} onChange={e => setNewProjectData({...newProjectData, name: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input placeholder={t('workflow.dashboard.project.descLabel')} value={newProjectData.description} onChange={e => setNewProjectData({...newProjectData, description: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input placeholder={t('workflow.dashboard.project.modal.client')} value={newProjectData.client} onChange={e => setNewProjectData({...newProjectData, client: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input type="number" placeholder={t('workflow.dashboard.project.modal.budget')} value={newProjectData.budget || ''} onChange={e => setNewProjectData({...newProjectData, budget: parseInt(e.target.value)})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input type="date" placeholder={t('workflow.dashboard.project.modal.deadline')} value={newProjectData.deadline} onChange={e => setNewProjectData({...newProjectData, deadline: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" /><select value={newProjectData.department} onChange={e => setNewProjectData({...newProjectData, department: e.target.value as any})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"><option value="event_planner">{t('workflow.depts.event_planner')}</option><option value="creative">{t('workflow.depts.creative')}</option><option value="operation">{t('workflow.depts.operation')}</option></select><div className="flex gap-2 justify-end mt-4"><button type="button" onClick={() => setShowProjectModal(false)} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">{t('common.cancel')}</button><button type="submit" className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.dashboard.project.createBtn')}</button></div></form></div></div>)}
 
         {/* Creative and Resource modals moved to PromptsView and ResourcesView components */}
 
-        {showTaskModal && (<div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6"><h2 className="text-2xl font-bold mb-4">{t('workflow.dashboard.project.tasks.modal.title')}</h2><div className="space-y-4"><input placeholder={t('workflow.dashboard.project.tasks.modal.titleLabel')} value={newTaskData.title} onChange={e => setNewTaskData({...newTaskData, title: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" /><select value={newTaskData.assigneeId} onChange={e => setNewTaskData({...newTaskData, assigneeId: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"><option value="">{t('workflow.dashboard.project.tasks.modal.selectAssignee')}</option>{availableUsers.map(u => (<option key={u.id} value={u.id}>{u.name} ({u.role})</option>))}</select><input type="date" value={newTaskData.dueDate} onChange={e => setNewTaskData({...newTaskData, dueDate: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" />{selectedFileForTask && (<div className="text-sm bg-[var(--bg-secondary)] p-2 rounded">{t('workflow.dashboard.project.tasks.modal.attached')} {selectedFileForTask.name}</div>)}<div className="flex gap-2 justify-end mt-4"><button onClick={() => { setShowTaskModal(false); setSelectedFileForTask(null); }} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">{t('common.cancel')}</button><button onClick={handleCreateTask} className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.dashboard.project.tasks.modal.submit')}</button></div></div></div></div>)}
+        {showTaskModal && (<div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6"><h2 className="text-2xl font-bold mb-4">{t('workflow.dashboard.project.tasks.modal.title')}</h2><div className="space-y-4"><input placeholder={t('workflow.dashboard.project.tasks.modal.titleLabel')} value={newTaskData.title} onChange={e => setNewTaskData({...newTaskData, title: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" /><select value={newTaskData.assigneeId} onChange={e => setNewTaskData({...newTaskData, assigneeId: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"><option value="">{t('workflow.dashboard.project.tasks.modal.selectAssignee')}</option>{(selectedProject?.team || []).map(u => (<option key={u.id} value={u.id}>{u.name} {u.projectRole ? `(${u.projectRole})` : ''}</option>))}</select><input type="date" value={newTaskData.dueDate} onChange={e => setNewTaskData({...newTaskData, dueDate: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" />{selectedFileForTask && (<div className="text-sm bg-[var(--bg-secondary)] p-2 rounded">{t('workflow.dashboard.project.tasks.modal.attached')} {selectedFileForTask.name}</div>)}<div className="flex gap-2 justify-end mt-4"><button onClick={() => { setShowTaskModal(false); setSelectedFileForTask(null); }} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">{t('common.cancel')}</button><button onClick={handleCreateTask} className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.dashboard.project.tasks.modal.submit')}</button></div></div></div></div>)}
+
+        {/* Edit Project Modal */}
+        {showEditProjectModal && (
+            <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+                <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-2xl p-6">
+                    <h2 className="text-xl font-bold mb-4">{t('workflow.dashboard.project.edit')}</h2>
+                    <div className="space-y-4">
+                        <div className="flex items-center gap-4">
+                            <div className="w-16 h-16 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-primary)] flex items-center justify-center overflow-hidden flex-shrink-0">
+                                {editProjectData.avatar ? <img src={editProjectData.avatar} className="w-full h-full object-cover" /> : <span className="text-2xl">📁</span>}
+                            </div>
+                            <label className="flex-1 cursor-pointer">
+                                <span className="text-xs text-[var(--text-secondary)] block mb-1">{t('workflow.dashboard.project.editAvatar')}</span>
+                                <div className="py-2 px-3 bg-[var(--bg-secondary)] border border-dashed border-[var(--border-primary)] rounded-lg text-center text-sm hover:border-[var(--accent-primary)] transition-colors">
+                                    {editProjectUploading ? 'Uploading...' : 'Click to upload image'}
+                                </div>
+                                <input type="file" accept="image/*" className="hidden" onChange={handleEditProjectAvatarUpload} disabled={editProjectUploading} />
+                            </label>
+                        </div>
+                        <div className="grid grid-cols-2 gap-3">
+                            <input
+                                placeholder={t('workflow.dashboard.project.nameLabel')}
+                                value={editProjectData.name}
+                                onChange={e => setEditProjectData(prev => ({ ...prev, name: e.target.value }))}
+                                className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg col-span-2"
+                            />
+                            <select
+                                value={editProjectData.department}
+                                onChange={e => setEditProjectData(prev => ({ ...prev, department: e.target.value as DepartmentType }))}
+                                className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg col-span-2"
+                            >
+                                <option value="event_planner">{t('workflow.depts.event_planner')}</option>
+                                <option value="creative">{t('workflow.depts.creative')}</option>
+                                <option value="operation">{t('workflow.depts.operation')}</option>
+                            </select>
+                        </div>
+                        <div>
+                            <p className="text-xs text-[var(--text-secondary)] mb-1">{t('workflow.dashboard.project.descLabel')}</p>
+                            <Editor
+                                tinymceScriptSrc="/tinymce/tinymce.min.js"
+                                value={editProjectData.description}
+                                onEditorChange={(content: string) => setEditProjectData(prev => ({ ...prev, description: content }))}
+                                init={{
+                                    height: 200,
+                                    menubar: false,
+                                    plugins: ['lists', 'link', 'autolink'],
+                                    toolbar: 'bold italic underline | bullist numlist | link | removeformat',
+                                    license_key: 'gpl',
+                                    skin: 'oxide-dark',
+                                    content_css: 'dark',
+                                    branding: false,
+                                    statusbar: false,
+                                    content_style: 'body { font-family: sans-serif; font-size: 14px; }',
+                                }}
+                            />
+                        </div>
+                        <div className="flex gap-2 justify-end">
+                            <button onClick={() => setShowEditProjectModal(false)} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">{t('common.cancel')}</button>
+                            <button onClick={handleSaveEditProject} disabled={!editProjectData.name.trim() || editProjectUploading} className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg disabled:opacity-50">{t('common.save')}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )}
 
         {/* File Comment Panel */}
         {activeDocForComment && (
