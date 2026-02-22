@@ -13,6 +13,7 @@ const getAuthHeaders = (): HeadersInit => {
 export interface WorkflowProjectInput {
     name: string;
     client?: string;
+    tagline?: string;
     description?: string;
     department?: string;
     status?: string;

@@ -63,7 +63,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
   const [showProjectModal, setShowProjectModal] = useState(false);
 
   // New Project Data
-  const [newProjectData, setNewProjectData] = useState({ name: '', description: '', department: 'event_planner' as DepartmentType, client: '', budget: 0, deadline: '' });
+  const [newProjectData, setNewProjectData] = useState({ name: '', tagline: '', description: '', department: 'event_planner' as DepartmentType, client: '', budget: 0, deadline: '' });
 
   // Expense Form State
   const [newExpense, setNewExpense] = useState({ name: '', amount: '' });
@@ -78,7 +78,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
 
   // Edit project modal
   const [showEditProjectModal, setShowEditProjectModal] = useState(false);
-  const [editProjectData, setEditProjectData] = useState({ name: '', description: '', avatar: '', department: 'event_planner' as DepartmentType });
+  const [editProjectData, setEditProjectData] = useState({ name: '', tagline: '', description: '', avatar: '', department: 'event_planner' as DepartmentType, client: '', budget: 0, deadline: '' });
   const [editProjectUploading, setEditProjectUploading] = useState(false);
 
   // Project list department filter
@@ -198,6 +198,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
           id: tempId,
           name: newProjectData.name,
           client: newProjectData.client,
+          tagline: newProjectData.tagline,
           description: newProjectData.description,
           department: newProjectData.department,
           status: 'planning',
@@ -214,13 +215,14 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       };
       setProjects(prev => [newProject, ...prev]);
       setShowProjectModal(false);
-      setNewProjectData({ name: '', description: '', department: 'event_planner', client: '', budget: 0, deadline: '' });
+      setNewProjectData({ name: '', tagline: '', description: '', department: 'event_planner', client: '', budget: 0, deadline: '' });
       alert(t('workflow.dashboard.project.success'));
 
       // API call - replace temp ID with real MongoDB _id
       createProjectAPI({
           name: newProject.name,
           client: newProject.client,
+          tagline: newProject.tagline,
           description: newProject.description,
           department: newProject.department,
           status: newProject.status,
@@ -497,10 +499,10 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       };
       const updatedTeam = selectedProject.team.filter(m => m.id !== user._id);
       const updatedHistory = [...selectedProject.chatHistory, sysMsg];
-      // Persist, then navigate back (user is no longer a member)
-      updateProjectAPI(selectedProject.id, { team: updatedTeam, chatHistory: updatedHistory }).catch(console.error);
-      setProjects(prev => prev.filter(p => p.id !== selectedProject.id));
+      // Update local state (project stays visible — non-completed projects are visible to all)
+      setProjects(prev => prev.map(p => p.id === selectedProject.id ? { ...p, team: updatedTeam, chatHistory: updatedHistory } : p));
       setSelectedProject(null);
+      updateProjectAPI(selectedProject.id, { team: updatedTeam, chatHistory: updatedHistory }).catch(console.error);
   };
 
   const handleToggleManager = (memberId: string) => {
@@ -558,6 +560,12 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       return member?.projectRole === 'creator' || member?.projectRole === 'manager';
   };
 
+  const isProjectMember = () => {
+      if (!selectedProject || !user) return false;
+      if (user.role === 'admin' || user.role === 'mod') return true;
+      return selectedProject.team.some(m => m.id === user._id);
+  };
+
   const canDeleteDoc = (doc: WorkflowDocument) => {
       if (!user) return false;
       if (user.role === 'admin' || user.role === 'mod') return true;
@@ -590,7 +598,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
   // Edit project (name, description, avatar, department)
   const handleOpenEditProject = () => {
       if (!selectedProject) return;
-      setEditProjectData({ name: selectedProject.name, description: selectedProject.description, avatar: selectedProject.avatar || '', department: selectedProject.department });
+      setEditProjectData({ name: selectedProject.name, tagline: selectedProject.tagline || '', description: selectedProject.description, avatar: selectedProject.avatar || '', department: selectedProject.department, client: selectedProject.client || '', budget: selectedProject.budget || 0, deadline: selectedProject.deadline || '' });
       setShowEditProjectModal(true);
   };
 
@@ -607,7 +615,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
 
   const handleSaveEditProject = () => {
       if (!selectedProject || !editProjectData.name.trim()) return;
-      const updated = { name: editProjectData.name.trim(), description: editProjectData.description, avatar: editProjectData.avatar, department: editProjectData.department };
+      const updated = { name: editProjectData.name.trim(), tagline: editProjectData.tagline, description: editProjectData.description, avatar: editProjectData.avatar, department: editProjectData.department, client: editProjectData.client, budget: editProjectData.budget, deadline: editProjectData.deadline };
       setProjects(prev => prev.map(p => p.id === selectedProject.id ? { ...p, ...updated } : p));
       setSelectedProject(prev => prev ? { ...prev, ...updated } : null);
       setShowEditProjectModal(false);
@@ -685,7 +693,10 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
               </div>
 
               <div className="flex border-b border-[var(--border-primary)] px-6 bg-[var(--bg-secondary)] overflow-x-auto">
-                  {['overview', 'team', 'files', 'finance', 'chat', 'tasks'].map(tab => (
+                  {(isProjectMember()
+                      ? ['overview', 'team', 'files', 'finance', 'chat', 'tasks']
+                      : ['overview', 'team']
+                  ).map(tab => (
                       <button
                         key={tab}
                         onClick={() => setProjectTab(tab as any)}
@@ -700,6 +711,9 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                   {projectTab === 'overview' && (
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                           <div className="md:col-span-2 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-6">
+                              {selectedProject.tagline && (
+                                  <p className="text-sm text-[var(--accent-primary)] font-medium italic mb-4 border-l-2 border-[var(--accent-primary)] pl-3">{selectedProject.tagline}</p>
+                              )}
                               <h3 className="text-lg font-bold mb-4">{t('workflow.description')}</h3>
                               <div className="text-[var(--text-secondary)] text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: selectedProject.description || '' }} />
                               <div className="mt-6">
@@ -1115,25 +1129,41 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                               <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
                           </button>
                       )}
-                      <div className="flex justify-between items-start mb-4">
-                          <div className="w-12 h-12 rounded-lg bg-[var(--bg-secondary)] flex items-center justify-center text-2xl overflow-hidden">
+                      <div className="flex items-start gap-3 mb-3">
+                          <div className="w-14 h-14 rounded-xl bg-[var(--bg-secondary)] flex items-center justify-center text-2xl overflow-hidden flex-shrink-0 border border-[var(--border-primary)]">
                               {project.avatar ? <img src={project.avatar} className="w-full h-full object-cover" /> : (project.department === 'event_planner' ? '📅' : project.department === 'creative' ? '🎨' : '⚙️')}
                           </div>
-                          <div className="flex flex-col items-end gap-1">
-                              <span className={`px-2 py-1 rounded text-[10px] font-bold uppercase ${project.status === 'completed' ? 'bg-green-500/20 text-green-400' : project.status === 'active' ? 'bg-blue-500/20 text-blue-400' : 'bg-gray-500/20 text-gray-400'}`}>{t(`workflow.status.${project.status}`)}</span>
-                              <span className="px-2 py-0.5 rounded text-[9px] font-bold bg-[var(--bg-secondary)] text-[var(--text-tertiary)] border border-[var(--border-primary)]">
-                                  {project.department === 'event_planner' ? '📅' : project.department === 'creative' ? '🎨' : '⚙️'} {t(`workflow.depts.${project.department}`)}
-                              </span>
+                          <div className="flex-1 min-w-0">
+                              <h3 className="text-lg font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors leading-tight">{project.name}</h3>
+                              <div className="flex items-center gap-1.5 flex-wrap mt-1.5">
+                                  <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase border ${
+                                      project.status === 'completed' ? 'bg-green-500/20 text-green-400 border-green-500/30' :
+                                      project.status === 'active' ? 'bg-blue-500/20 text-blue-400 border-blue-500/30' :
+                                      'bg-orange-500/20 text-orange-400 border-orange-500/30'
+                                  }`}>{t(`workflow.status.${project.status}`)}</span>
+                                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[var(--bg-secondary)] text-[var(--text-tertiary)] border border-[var(--border-primary)]">
+                                      {project.department === 'event_planner' ? '📅' : project.department === 'creative' ? '🎨' : '⚙️'} {t(`workflow.depts.${project.department}`)}
+                                  </span>
+                              </div>
                           </div>
                       </div>
-                      <h3 className="text-xl font-bold text-[var(--text-primary)] mb-1 group-hover:text-[var(--accent-primary)] transition-colors">{project.name}</h3>
-                      <p className="text-xs text-[var(--text-tertiary)] mb-4">{project.client}</p>
-                      <div className="space-y-3">
-                          <div className="flex justify-between text-xs font-medium"><span>{t('workflow.progress')}</span><span>{project.progress}%</span></div>
-                          <div className="w-full h-1.5 bg-[var(--bg-secondary)] rounded-full overflow-hidden"><div className="h-full bg-[var(--accent-primary)] rounded-full" style={{ width: `${project.progress}%` }}></div></div>
+                      <div className="mb-3 space-y-0.5">
+                          <p className="text-sm font-medium text-[var(--text-secondary)] truncate">{project.client}</p>
+                          {project.tagline && <p className="text-xs text-[var(--text-tertiary)] line-clamp-2 italic">{project.tagline}</p>}
+                      </div>
+                      <div className="space-y-2">
+                          <div className="flex justify-between text-sm font-medium"><span>{t('workflow.progress')}</span><span className="font-bold">{project.progress}%</span></div>
+                          <div className="w-full h-2 bg-[var(--bg-secondary)] rounded-full overflow-hidden"><div className="h-full bg-[var(--accent-primary)] rounded-full" style={{ width: `${project.progress}%` }}></div></div>
                           <div className="flex justify-between items-center pt-2 border-t border-[var(--border-primary)]">
-                              <div className="flex -space-x-2">{project.team.slice(0,3).map(m => (<img key={m.id} src={m.avatar} className="w-6 h-6 rounded-full border border-[var(--bg-card)]" />))}{project.team.length > 3 && <div className="w-6 h-6 rounded-full bg-[var(--bg-secondary)] flex items-center justify-center text-[8px] border border-[var(--bg-card)]">+{project.team.length-3}</div>}</div>
-                              <span className="text-xs text-[var(--text-secondary)]">{project.deadline}</span>
+                              <div className="flex -space-x-2">{project.team.slice(0,3).map(m => (<img key={m.id} src={m.avatar} className="w-7 h-7 rounded-full border-2 border-[var(--bg-card)]" />))}{project.team.length > 3 && <div className="w-7 h-7 rounded-full bg-[var(--bg-secondary)] flex items-center justify-center text-[9px] font-bold border-2 border-[var(--bg-card)]">+{project.team.length-3}</div>}</div>
+                              <div className="flex items-center gap-1.5">
+                                  <span className="flex items-center gap-1 text-xs font-bold text-yellow-400">
+                                      <span className="w-3.5 h-3.5 rounded-full bg-yellow-400 text-black flex items-center justify-center text-[8px] font-black flex-shrink-0">C</span>
+                                      {project.budget.toLocaleString()}
+                                  </span>
+                                  <span className="text-[var(--text-tertiary)] text-xs">•</span>
+                                  <span className="text-xs text-[var(--text-secondary)]">{project.deadline}</span>
+                              </div>
                           </div>
                       </div>
                   </div>
@@ -1324,7 +1354,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
         />
         {/* PartnerRegistrationModal moved to PartnersView component */}
 
-        {showProjectModal && canCreateProject && (<div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6"><h2 className="text-2xl font-bold mb-4">{t('workflow.dashboard.project.modalTitle')}</h2><form onSubmit={handleCreateProject} className="space-y-4"><input placeholder={t('workflow.dashboard.project.nameLabel')} value={newProjectData.name} onChange={e => setNewProjectData({...newProjectData, name: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input placeholder={t('workflow.dashboard.project.descLabel')} value={newProjectData.description} onChange={e => setNewProjectData({...newProjectData, description: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input placeholder={t('workflow.dashboard.project.modal.client')} value={newProjectData.client} onChange={e => setNewProjectData({...newProjectData, client: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input type="number" placeholder={t('workflow.dashboard.project.modal.budget')} value={newProjectData.budget || ''} onChange={e => setNewProjectData({...newProjectData, budget: parseInt(e.target.value)})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input type="date" placeholder={t('workflow.dashboard.project.modal.deadline')} value={newProjectData.deadline} onChange={e => setNewProjectData({...newProjectData, deadline: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" /><select value={newProjectData.department} onChange={e => setNewProjectData({...newProjectData, department: e.target.value as any})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"><option value="event_planner">{t('workflow.depts.event_planner')}</option><option value="creative">{t('workflow.depts.creative')}</option><option value="operation">{t('workflow.depts.operation')}</option></select><div className="flex gap-2 justify-end mt-4"><button type="button" onClick={() => setShowProjectModal(false)} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">{t('common.cancel')}</button><button type="submit" className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.dashboard.project.createBtn')}</button></div></form></div></div>)}
+        {showProjectModal && canCreateProject && (<div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"><div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-lg p-6"><h2 className="text-2xl font-bold mb-4">{t('workflow.dashboard.project.modalTitle')}</h2><form onSubmit={handleCreateProject} className="space-y-4"><input placeholder={t('workflow.dashboard.project.nameLabel')} value={newProjectData.name} onChange={e => setNewProjectData({...newProjectData, name: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input placeholder={t('workflow.dashboard.project.taglineLabel')} value={newProjectData.tagline} onChange={e => setNewProjectData({...newProjectData, tagline: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" /><input placeholder={t('workflow.dashboard.project.descLabel')} value={newProjectData.description} onChange={e => setNewProjectData({...newProjectData, description: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" /><input placeholder={t('workflow.dashboard.project.modal.client')} value={newProjectData.client} onChange={e => setNewProjectData({...newProjectData, client: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><input type="number" placeholder={t('workflow.dashboard.project.modal.budget')} value={newProjectData.budget || ''} onChange={e => setNewProjectData({...newProjectData, budget: parseInt(e.target.value)})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" required /><div><label className="text-xs text-[var(--text-secondary)] block mb-1">{t('workflow.dashboard.project.modal.deadline')}</label><input type="date" value={newProjectData.deadline} onChange={e => setNewProjectData({...newProjectData, deadline: e.target.value})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg" /></div><select value={newProjectData.department} onChange={e => setNewProjectData({...newProjectData, department: e.target.value as any})} className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"><option value="event_planner">{t('workflow.depts.event_planner')}</option><option value="creative">{t('workflow.depts.creative')}</option><option value="operation">{t('workflow.depts.operation')}</option></select><div className="flex gap-2 justify-end mt-4"><button type="button" onClick={() => setShowProjectModal(false)} className="px-4 py-2 rounded-lg text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">{t('common.cancel')}</button><button type="submit" className="px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg">{t('workflow.dashboard.project.createBtn')}</button></div></form></div></div>)}
 
         {/* Creative and Resource modals moved to PromptsView and ResourcesView components */}
 
@@ -1355,15 +1385,43 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                                 onChange={e => setEditProjectData(prev => ({ ...prev, name: e.target.value }))}
                                 className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg col-span-2"
                             />
+                            <input
+                                placeholder={t('workflow.dashboard.project.taglineLabel')}
+                                value={editProjectData.tagline}
+                                onChange={e => setEditProjectData(prev => ({ ...prev, tagline: e.target.value }))}
+                                className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg col-span-2"
+                            />
+                            <input
+                                placeholder={t('workflow.dashboard.project.modal.client')}
+                                value={editProjectData.client}
+                                onChange={e => setEditProjectData(prev => ({ ...prev, client: e.target.value }))}
+                                className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"
+                            />
+                            <input
+                                type="number"
+                                placeholder={t('workflow.dashboard.project.modal.budget')}
+                                value={editProjectData.budget || ''}
+                                onChange={e => setEditProjectData(prev => ({ ...prev, budget: parseInt(e.target.value) || 0 }))}
+                                className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"
+                            />
                             <select
                                 value={editProjectData.department}
                                 onChange={e => setEditProjectData(prev => ({ ...prev, department: e.target.value as DepartmentType }))}
-                                className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg col-span-2"
+                                className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"
                             >
                                 <option value="event_planner">{t('workflow.depts.event_planner')}</option>
                                 <option value="creative">{t('workflow.depts.creative')}</option>
                                 <option value="operation">{t('workflow.depts.operation')}</option>
                             </select>
+                            <div>
+                                <label className="text-xs text-[var(--text-secondary)] block mb-1">{t('workflow.dashboard.project.modal.deadline')}</label>
+                                <input
+                                    type="date"
+                                    value={editProjectData.deadline}
+                                    onChange={e => setEditProjectData(prev => ({ ...prev, deadline: e.target.value }))}
+                                    className="w-full p-3 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg"
+                                />
+                            </div>
                         </div>
                         <div>
                             <p className="text-xs text-[var(--text-secondary)] mb-1">{t('workflow.dashboard.project.descLabel')}</p>

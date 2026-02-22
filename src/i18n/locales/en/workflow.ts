@@ -93,6 +93,7 @@ export default {
       project: {
         modalTitle: "Initialize New Project",
         nameLabel: "Project Name",
+        taglineLabel: "Tagline (short intro shown on card)",
         deptLabel: "Lead Dept",
         descLabel: "Requirements",
         createBtn: "Create Project",

@@ -93,6 +93,7 @@ export default {
       project: {
         modalTitle: "Khởi tạo dự án mới",
         nameLabel: "Tên dự án",
+        taglineLabel: "Giới thiệu ngắn (hiển thị trên card)",
         deptLabel: "Phòng ban phụ trách",
         descLabel: "Yêu cầu",
         createBtn: "Tạo dự án",

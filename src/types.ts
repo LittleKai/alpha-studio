@@ -88,6 +88,7 @@ export interface Project {
   id: string;
   name: string;
   client: string;
+  tagline?: string;
   description: string;
   department: DepartmentType;
   status: 'planning' | 'active' | 'completed' | 'archived';
