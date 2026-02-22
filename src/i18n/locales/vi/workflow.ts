@@ -46,7 +46,7 @@ export default {
       operation: "Sản Xuất"
     },
     status: {
-      planning: "Lập kế hoạch",
+      planning: "Đang thực hiện",
       active: "Đang hoạt động",
       completed: "Hoàn thành",
       archived: "Lưu trữ",
@@ -64,6 +64,7 @@ export default {
     dashboard: {
       upload: "Tải lên tài liệu",
       uploadSizeLimit: "File quá lớn. Người dùng thông thường chỉ được upload tối đa 10MB.",
+      uploadFileLimit: "Bạn đã đạt giới hạn 20 file cá nhân.",
       createProject: "Dự án mới",
       create: "Studio AI",
       search: "Tìm tài liệu...",
@@ -109,7 +110,7 @@ export default {
         success: "Dự án mới đã được khởi tạo thành công!",
         hubTitle: "Project Hub",
         management: "Quản lý dự án",
-        backToProjects: "← Về danh sách",
+        backToProjects: "Về danh sách",
         edit: "Chỉnh sửa dự án",
         editAvatar: "Ảnh đại diện dự án",
         confirmDelete: "Xóa dự án đã hoàn thành này vĩnh viễn?",

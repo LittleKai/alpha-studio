@@ -46,7 +46,7 @@ export default {
       operation: "Operation"
     },
     status: {
-      planning: "Planning",
+      planning: "Ongoing",
       active: "Active",
       completed: "Completed",
       archived: "Archived",
@@ -64,6 +64,7 @@ export default {
     dashboard: {
       upload: "Upload Asset",
       uploadSizeLimit: "File too large. Regular users can only upload up to 10MB.",
+      uploadFileLimit: "Personal file limit reached (max 20 files).",
       createProject: "New Project",
       create: "Studio AI",
       search: "Find assets...",
@@ -109,7 +110,7 @@ export default {
         success: "New project initialized successfully!",
         hubTitle: "Project Hub",
         management: "Project Management",
-        backToProjects: "← Back to Projects",
+        backToProjects: "Back to Projects",
         edit: "Edit Project",
         editAvatar: "Project Avatar",
         confirmDelete: "Delete this completed project permanently?",

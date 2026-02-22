@@ -61,6 +61,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
 
   // Modal States
   const [showProfileModal, setShowProfileModal] = useState(false);
+  const [memberProfileModal, setMemberProfileModal] = useState<TeamMember | null>(null);
   // showPartnerModal moved to PartnersView component
   // showCreativeModal and showResourceModal moved to PromptsView and ResourcesView components
   const [showProjectModal, setShowProjectModal] = useState(false);
@@ -137,12 +138,20 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
     const file = e.target.files[0];
     e.target.value = '';
 
-    // Non-admin users are limited to 10 MB
+    // Non-admin users: file size limit (10 MB) and personal file count limit (20)
     if (user?.role !== 'admin') {
         const MAX_MB = 10;
         if (file.size > MAX_MB * 1024 * 1024) {
             alert(t('workflow.dashboard.uploadSizeLimit'));
             return;
+        }
+        // Personal file count limit (only applies when not uploading to a project)
+        if (!selectedProject) {
+            const personalCount = documents.filter(d => !d.projectId && d.createdBy === user._id).length;
+            if (personalCount >= 20) {
+                alert(t('workflow.dashboard.uploadFileLimit'));
+                return;
+            }
         }
     }
 
@@ -851,7 +860,12 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                                           />
                                           <div className="flex-1 min-w-0">
                                               <div className="flex items-center gap-2 flex-wrap">
-                                                  <p className="font-bold text-base">{member.name}</p>
+                                                  <button
+                                                      onClick={() => setMemberProfileModal(member)}
+                                                      className="font-bold text-base hover:text-[var(--accent-primary)] transition-colors text-left"
+                                                  >
+                                                      {member.name}
+                                                  </button>
                                                   {isSelf && <span className="text-[10px] bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] px-1.5 py-0.5 rounded font-bold">You</span>}
                                               </div>
                                               {/* Custom display label - editable by creator/manager */}
@@ -1455,6 +1469,46 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
             onClose={() => setShowProfileModal(false)}
         />
         {/* PartnerRegistrationModal moved to PartnersView component */}
+
+        {/* Member Profile Quick-View Modal */}
+        {memberProfileModal && (
+            <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setMemberProfileModal(null)}>
+                <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 w-full max-w-xs shadow-2xl" onClick={e => e.stopPropagation()}>
+                    <div className="flex flex-col items-center text-center gap-3">
+                        <img
+                            src={memberProfileModal.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(memberProfileModal.name)}&background=random&size=128`}
+                            className="w-20 h-20 rounded-full object-cover border-2 border-[var(--accent-primary)]/40"
+                        />
+                        <div>
+                            <h3 className="text-xl font-black text-[var(--text-primary)]">{memberProfileModal.name}</h3>
+                            {memberProfileModal.role && (
+                                <p className="text-sm text-[var(--text-secondary)] mt-0.5">{memberProfileModal.role}</p>
+                            )}
+                        </div>
+                        <div className="flex items-center gap-2 flex-wrap justify-center">
+                            {memberProfileModal.projectRole === 'creator' && (
+                                <span className="text-xs bg-purple-500/20 text-purple-400 px-2.5 py-1 rounded-full font-bold">👑 Creator</span>
+                            )}
+                            {memberProfileModal.projectRole === 'manager' && (
+                                <span className="text-xs bg-blue-500/20 text-blue-400 px-2.5 py-1 rounded-full font-bold">⭐ Manager</span>
+                            )}
+                            {!memberProfileModal.projectRole && (
+                                <span className="text-xs bg-[var(--bg-secondary)] text-[var(--text-secondary)] px-2.5 py-1 rounded-full font-bold border border-[var(--border-primary)]">👤 Member</span>
+                            )}
+                            {memberProfileModal.isExternal && (
+                                <span className="text-xs bg-yellow-500/20 text-yellow-500 px-2.5 py-1 rounded-full font-bold">🔗 External</span>
+                            )}
+                        </div>
+                    </div>
+                    <button
+                        onClick={() => setMemberProfileModal(null)}
+                        className="mt-5 w-full py-2 rounded-xl bg-[var(--bg-secondary)] hover:bg-[var(--border-primary)] text-[var(--text-secondary)] text-sm font-bold transition-colors"
+                    >
+                        Close
+                    </button>
+                </div>
+            </div>
+        )}
 
         {showProjectModal && canCreateProject && (
             <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
