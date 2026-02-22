@@ -70,7 +70,7 @@ export default {
     government: "Government",
     other: "Other",
     services: "Services (comma separated)",
-    backgroundImage: "Background Image",
+    backgroundImage: "Cover Image",
     keyProjects: "Key Projects",
     addKeyProject: "Add Project",
     projectDescription: "Project Description",

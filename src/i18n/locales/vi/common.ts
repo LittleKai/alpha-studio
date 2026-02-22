@@ -84,6 +84,10 @@ export default {
     customLinks: "Liên kết khác",
     addLink: "Thêm liên kết",
     linkLabel: "Tên (VD: TikTok, Behance...)",
+    viewProfile: "Xem hồ sơ",
+    memberSince: "Thành viên từ",
+    download: "Tải xuống",
+    noBio: "Chưa có giới thiệu bản thân",
     password: {
       title: "Đổi mật khẩu",
       description: "Nhập mật khẩu hiện tại và mật khẩu mới",

@@ -19,6 +19,8 @@ const WorkflowDashboard = lazy(() => import('./components/dashboard/WorkflowDash
 const AIServerConnect = lazy(() => import('./components/dashboard/AIServerConnect'));
 const CourseManagement = lazy(() => import('./components/admin/CourseManagement'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage'));
+const ProfileViewPage = lazy(() => import('./pages/ProfileViewPage'));
+const UserProfilePage = lazy(() => import('./pages/UserProfilePage'));
 const AdminPage = lazy(() => import('./pages/AdminPage'));
 const MyCoursesPage = lazy(() => import('./pages/MyCoursesPage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
@@ -256,13 +258,23 @@ const App: React.FC = () => {
                     }
                 />
 
-                {/* Profile Page */}
+                {/* Profile Pages */}
                 <Route
                     path="/profile"
                     element={
                         <ProtectedRoute>
                             <Suspense fallback={<LoadingSpinner />}>
                                 <ProfilePage />
+                            </Suspense>
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/profile/view"
+                    element={
+                        <ProtectedRoute>
+                            <Suspense fallback={<LoadingSpinner />}>
+                                <ProfileViewPage />
                             </Suspense>
                         </ProtectedRoute>
                     }
@@ -298,6 +310,13 @@ const App: React.FC = () => {
                         </ProtectedRoute>
                     }
                 />
+
+                {/* Public user profile */}
+                <Route path="/users/:id" element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                        <UserProfilePage />
+                    </Suspense>
+                } />
 
                 {/* 404 - Catch all */}
                 <Route path="*" element={<NotFoundPage />} />

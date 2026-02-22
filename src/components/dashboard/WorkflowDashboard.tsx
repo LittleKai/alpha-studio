@@ -1561,7 +1561,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                             {/* Actions */}
                             <div className="flex gap-2 mt-5">
                                 <a
-                                    href={`/students/${member.id}`}
+                                    href={`/users/${member.id}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex-1 py-2 rounded-xl bg-[var(--accent-primary)]/10 hover:bg-[var(--accent-primary)]/20 text-[var(--accent-primary)] text-sm font-bold transition-colors text-center border border-[var(--accent-primary)]/30"

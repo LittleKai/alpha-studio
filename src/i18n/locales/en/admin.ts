@@ -11,7 +11,17 @@ export default {
       cloud: "Cloud Desktop",
       users: "User Management",
       transactionsList: "Transactions",
-      webhooks: "Webhook Logs"
+      webhooks: "Webhook Logs",
+      community: "Community"
+    },
+    community: {
+      featuredStudents: "Featured Students",
+      featuredStudentsDesc: "Manage the featured students list displayed on the landing page",
+      searchUser: "Search user to add...",
+      noStudents: "No featured students yet",
+      dragToReorder: "Drag to reorder",
+      hired: "Hired",
+      labelPlaceholder: "Title (e.g. Event Director)"
     },
     articles: {
       title: "Title",

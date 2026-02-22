@@ -313,9 +313,43 @@ const CoursePage: React.FC = () => {
         handleVideoEndedRef.current = handleVideoEnded;
     });
 
+    // Stable ref for saving current video position — always has latest state via effect below
+    const saveVideoProgressRef = useRef<() => Promise<void>>(async () => {});
+    useEffect(() => {
+        saveVideoProgressRef.current = async () => {
+            if (!course || !isEnrolled || !selectedLessonId) return;
+            let pos = 0;
+            const url = selectedLesson?.videoUrl || '';
+            if (url.includes('youtube') || url.includes('youtu.be')) {
+                if (!youtubePlayerRef.current) return;
+                try { pos = Math.floor(youtubePlayerRef.current.getCurrentTime()); } catch { return; }
+            } else if (videoRef.current) {
+                pos = Math.floor(videoRef.current.currentTime);
+            }
+            if (pos <= 0) return;
+            try {
+                const progress = await updateLessonProgress(course._id, {
+                    lessonId: selectedLessonId,
+                    moduleId: selectedModuleId,
+                    watchedDuration: pos,
+                    lastPosition: pos
+                });
+                setEnrollmentProgress(progress);
+                lastSavedPositionRef.current = pos;
+            } catch { /* silent */ }
+        };
+    });
+
+    // Interval ref for YouTube periodic progress saving
+    const ytProgressIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
     // Initialize YouTube player when lesson changes
     useEffect(() => {
         // Cleanup previous player
+        if (ytProgressIntervalRef.current) {
+            clearInterval(ytProgressIntervalRef.current);
+            ytProgressIntervalRef.current = null;
+        }
         if (youtubePlayerRef.current) {
             try {
                 youtubePlayerRef.current.destroy();
@@ -355,6 +389,24 @@ const CoursePage: React.FC = () => {
                         onStateChange: (event) => {
                             if (event.data === window.YT.PlayerState.ENDED) {
                                 handleVideoEndedRef.current();
+                                if (ytProgressIntervalRef.current) {
+                                    clearInterval(ytProgressIntervalRef.current);
+                                    ytProgressIntervalRef.current = null;
+                                }
+                            } else if (event.data === window.YT.PlayerState.PLAYING) {
+                                // Start periodic save when playing
+                                if (!ytProgressIntervalRef.current) {
+                                    ytProgressIntervalRef.current = setInterval(() => {
+                                        saveVideoProgressRef.current();
+                                    }, 10000);
+                                }
+                            } else if (event.data === window.YT.PlayerState.PAUSED) {
+                                // Stop interval and save immediately on pause
+                                if (ytProgressIntervalRef.current) {
+                                    clearInterval(ytProgressIntervalRef.current);
+                                    ytProgressIntervalRef.current = null;
+                                }
+                                saveVideoProgressRef.current();
                             }
                         },
                     },
@@ -366,6 +418,10 @@ const CoursePage: React.FC = () => {
 
         return () => {
             clearTimeout(timerId); // cancel pending player creation before it fires
+            if (ytProgressIntervalRef.current) {
+                clearInterval(ytProgressIntervalRef.current);
+                ytProgressIntervalRef.current = null;
+            }
             if (youtubePlayerRef.current) {
                 try {
                     youtubePlayerRef.current.destroy();
@@ -487,6 +543,11 @@ const CoursePage: React.FC = () => {
         const isFirstModule = course.modules?.[0]?.moduleId === moduleId;
         if (!isEnrolled && !isFirstModule) return;
 
+        // Save current position before switching lessons
+        if (isEnrolled && selectedLessonId && selectedLessonId !== lessonId) {
+            await saveVideoProgressRef.current();
+        }
+
         setSelectedModuleId(moduleId);
         setSelectedLessonId(lessonId);
 
@@ -528,8 +589,8 @@ const CoursePage: React.FC = () => {
 
         const lastPosition = Math.floor(videoRef.current.currentTime);
 
-        // Save only when position advanced at least 10s from last save
-        if (lastPosition - lastSavedPositionRef.current < 10) return;
+        // Save only when position advanced at least 5s from last save
+        if (lastPosition - lastSavedPositionRef.current < 5) return;
         lastSavedPositionRef.current = lastPosition;
 
         try {
@@ -685,6 +746,7 @@ const CoursePage: React.FC = () => {
                                         preload="metadata"
                                         className="w-full h-full object-contain relative z-10"
                                         onTimeUpdate={handleVideoTimeUpdate}
+                                        onPause={() => { saveVideoProgressRef.current(); }}
                                         onEnded={handleVideoEnded}
                                         onError={(e) => {
                                             const v = e.currentTarget as HTMLVideoElement;

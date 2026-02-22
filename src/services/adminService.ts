@@ -411,10 +411,13 @@ export interface OrphanedFile {
     lastModified: string;   // ISO date string
     uploader: string;
     uploadedAt: string | null;
+    source: 'workflow' | 'resource' | 'course' | 'prompt' | null;
+    referenced: boolean;
 }
 
 export interface OrphanedFilesResponse {
     data: OrphanedFile[];
+    referencedFiles: OrphanedFile[];
     meta: { orphaned: number; totalB2: number; referenced: number };
 }
 

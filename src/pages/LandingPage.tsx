@@ -9,6 +9,7 @@ import Login from '../components/ui/Login';
 import { getFeaturedCourses, Course } from '../services/courseService';
 import { getPartners } from '../services/partnerService';
 import type { Partner } from '../services/partnerService';
+import { getFeaturedStudents } from '../services/featuredStudentsService';
 
 // Category to gradient color mapping
 const categoryGradients: Record<string, string> = {
@@ -33,109 +34,6 @@ const levelKeys: Record<string, string> = {
     'advanced': 'courseCatalog.levels.advanced'
 };
 
-// Featured students data
-const featuredStudents: FeaturedStudent[] = [
-    {
-        id: "s1",
-        name: "Minh Thu",
-        role: "Event Director",
-        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
-        work: "https://images.unsplash.com/photo-1519671482502-9759101d4561?w=800&h=600&fit=crop",
-        hired: true,
-        bio: "Minh Thu has 5 years of experience in the event industry. After the AI course, she applied Midjourney to reduce concept development time by 70%. Her style leans towards elegance, sophistication and natural lighting. Currently working at a Global Agency.",
-        skills: ["Midjourney", "Event Planning", "Concept Art", "Luxury Design"],
-        gallery: [
-            "https://images.unsplash.com/photo-1519671482502-9759101d4561?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800&h=600&fit=crop"
-        ],
-        socials: { facebook: "#", linkedin: "#" }
-    },
-    {
-        id: "s2",
-        name: "Quang Huy",
-        role: "3D Artist",
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
-        work: "https://images.unsplash.com/photo-1563089145-599997674d42?w=800&h=600&fit=crop",
-        hired: true,
-        bio: "Huy is a talented 3D Artist. He combines Blender and Stable Diffusion to create surreal virtual stages. His works are highly appreciated for feasibility and Futurist aesthetics. He specializes in EDM music stages and Tech Shows.",
-        skills: ["Blender", "Stable Diffusion", "Unreal Engine", "Cyberpunk Style"],
-        gallery: [
-            "https://images.unsplash.com/photo-1563089145-599997674d42?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1533174072545-e8d4aa97edf9?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=600&fit=crop"
-        ],
-        socials: { facebook: "#" }
-    },
-    {
-        id: "s3",
-        name: "Lan Anh",
-        role: "Concept Artist",
-        image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=400&fit=crop",
-        work: "https://images.unsplash.com/photo-1561489413-985b06da5bee?w=800&h=600&fit=crop",
-        hired: false,
-        bio: "Lan Anh is a final-year Graphic Design student. She joined Alpha Studio to enhance AI skills and is looking for internship opportunities at Creative Agencies. Her style is creative, artistic and colorful.",
-        skills: ["Photoshop", "AI Generative Fill", "Illustration", "Digital Painting"],
-        gallery: [
-            "https://images.unsplash.com/photo-1561489413-985b06da5bee?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1549490349-8643362247b5?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=800&h=600&fit=crop"
-        ],
-        socials: { linkedin: "#" }
-    },
-    {
-        id: "s4",
-        name: "Hoang Nam",
-        role: "VFX Supervisor",
-        image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop",
-        work: "https://images.unsplash.com/photo-1614726365723-49cfae92782f?w=800&h=600&fit=crop",
-        hired: true,
-        bio: "Nam specializes in cinematic VFX and video mapping. With extensive knowledge of Runway and Luma, he creates stunning background videos for events.",
-        skills: ["Runway Gen-2", "After Effects", "VFX", "Projection Mapping"],
-        gallery: [
-            "https://images.unsplash.com/photo-1614726365723-49cfae92782f?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop"
-        ],
-        socials: { linkedin: "#" }
-    },
-    {
-        id: "s5",
-        name: "Thao My",
-        role: "AI Fashion Design",
-        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop",
-        work: "https://images.unsplash.com/photo-1537832816519-0439d612e4e6?w=800&h=600&fit=crop",
-        hired: false,
-        bio: "My combines AI to design performance costumes and PG outfits for events. Her designs are always unique and aligned with event concepts.",
-        skills: ["Stable Diffusion", "Fashion Design", "Pattern Making"],
-        gallery: [
-            "https://images.unsplash.com/photo-1537832816519-0439d612e4e6?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1490481651871-32d2e76f897d?w=800&h=600&fit=crop"
-        ],
-        socials: { facebook: "#" }
-    },
-    {
-        id: "s6",
-        name: "Duc Anh",
-        role: "Game Environment",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
-        work: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=600&fit=crop",
-        hired: true,
-        bio: "Duc Anh transitioned from Game to Virtual Events. He uses Unreal Engine and AI to create Metaverse spaces for online events.",
-        skills: ["Unreal Engine", "Environment Design", "Metaverse"],
-        gallery: [
-            "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&h=600&fit=crop",
-            "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?w=800&h=600&fit=crop"
-        ],
-        socials: { linkedin: "#" }
-    }
-];
-
 
 const LandingPage: React.FC = () => {
     const { t, language } = useTranslation();
@@ -155,6 +53,10 @@ const LandingPage: React.FC = () => {
     // Partners state
     const [partners, setPartners] = useState<Partner[]>([]);
     const [partnersLoading, setPartnersLoading] = useState(true);
+
+    // Featured students state
+    const [featuredStudents, setFeaturedStudents] = useState<FeaturedStudent[]>([]);
+    const [studentsLoading, setStudentsLoading] = useState(true);
 
     // Fetch featured courses
     useEffect(() => {
@@ -188,6 +90,22 @@ const LandingPage: React.FC = () => {
             }
         };
         loadPartners();
+    }, []);
+
+    // Fetch featured students
+    useEffect(() => {
+        const loadStudents = async () => {
+            try {
+                setStudentsLoading(true);
+                const data = await getFeaturedStudents();
+                setFeaturedStudents(data);
+            } catch (err) {
+                console.error('Failed to fetch featured students:', err);
+            } finally {
+                setStudentsLoading(false);
+            }
+        };
+        loadStudents();
     }, []);
 
     // Helper to get localized text
@@ -587,30 +505,46 @@ const LandingPage: React.FC = () => {
                         <p className="text-[var(--text-secondary)]">{t('landing.showcase.subtitle')}</p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {featuredStudents.map((student, idx) => (
-                            <Link to={`/students/${student.id}`} key={idx} className="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-transform duration-500 cursor-pointer">
-                                <div className="relative aspect-[4/3] overflow-hidden">
-                                    <img src={student.work} alt="Work" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] to-transparent opacity-90"></div>
-                                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                                        <div className="flex items-center gap-3">
-                                            <img src={student.image} alt={student.name} className="w-10 h-10 rounded-full border-2 border-[var(--accent-primary)] object-cover" />
-                                            <div className="text-left">
-                                                <h4 className="text-[var(--text-primary)] font-bold text-sm">{student.name}</h4>
-                                                <p className="text-[10px] text-[var(--accent-primary)] uppercase tracking-wide">{student.role}</p>
-                                            </div>
-                                        </div>
-                                        {student.hired && (
-                                            <span className="bg-green-500/20 text-green-400 text-[9px] font-black px-2 py-1 rounded-full border border-green-500/30 uppercase tracking-wider">
-                                                {t('landing.showcase.hired')}
-                                            </span>
+                    {studentsLoading ? (
+                        <div className="flex justify-center py-16">
+                            <div className="w-10 h-10 border-3 border-[var(--accent-primary)]/30 border-t-[var(--accent-primary)] rounded-full animate-spin" />
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {featuredStudents.map((student, idx) => (
+                                <Link to={`/users/${student.id}`} key={idx} className="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-transform duration-500 cursor-pointer">
+                                    <div className="relative aspect-[4/3] overflow-hidden">
+                                        {(student.backgroundImage || student.work) ? (
+                                            <img src={student.backgroundImage || student.work} alt="Work" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                        ) : (
+                                            <div className="w-full h-full bg-gradient-to-br from-purple-900 to-indigo-900 transition-transform duration-700 group-hover:scale-110" />
                                         )}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] to-transparent opacity-90"></div>
+                                        <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                                            <div className="flex items-center gap-3">
+                                                {student.image ? (
+                                                    <img src={student.image} alt={student.name} className="w-10 h-10 rounded-full border-2 border-[var(--accent-primary)] object-cover" />
+                                                ) : (
+                                                    <div className="w-10 h-10 rounded-full border-2 border-[var(--accent-primary)] bg-[var(--accent-primary)]/20 flex items-center justify-center text-sm font-bold text-[var(--accent-primary)]">
+                                                        {student.name.charAt(0).toUpperCase()}
+                                                    </div>
+                                                )}
+                                                <div className="text-left">
+                                                    <h4 className="text-[var(--text-primary)] font-bold text-sm">{student.name}</h4>
+                                                    <p className="text-[10px] text-[var(--accent-primary)] uppercase tracking-wide">{student.role}</p>
+                                                </div>
+                                            </div>
+                                            {student.hired && (
+                                                <span className="bg-green-500/20 text-green-400 text-[9px] font-black px-2 py-1 rounded-full border border-green-500/30 uppercase tracking-wider">
+                                                    {t('landing.showcase.hired')}
+                                                </span>
+                                            )}
+                                        </div>
                                     </div>
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
+                                </Link>
+                            ))}
+                        </div>
+                    )}
 
                     <div className="mt-12 text-center">
                         <button onClick={() => navigateToProtectedPage('/workflow')} className="py-3 px-8 rounded-full border border-[var(--border-primary)] hover:border-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-all text-sm font-bold text-[var(--accent-primary)]">

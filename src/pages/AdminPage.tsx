@@ -5,6 +5,7 @@ import { useTranslation } from '../i18n/context';
 import { Layout } from '../components/layout';
 import ArticlesAdminTab from '../components/admin/ArticlesAdminTab';
 import CloudAdminTab from '../components/admin/CloudAdminTab';
+import FeaturedStudentsAdminTab from '../components/admin/FeaturedStudentsAdminTab';
 import {
     getUsers,
     getUserDetails,
@@ -23,7 +24,8 @@ import {
     type WebhookLog,
 } from '../services/adminService';
 
-type TopTabType = 'about' | 'services' | 'transactions' | 'cloud';
+type TopTabType = 'about' | 'services' | 'community' | 'transactions' | 'cloud';
+type CommunitySubTabType = 'featuredStudents';
 type SubTabType = 'users' | 'transactionsList' | 'webhooks';
 
 export default function AdminPage() {
@@ -32,6 +34,7 @@ export default function AdminPage() {
     const { t } = useTranslation();
     const [activeTopTab, setActiveTopTab] = useState<TopTabType>('about');
     const [activeSubTab, setActiveSubTab] = useState<SubTabType>('users');
+    const [activeCommunitySubTab, setActiveCommunitySubTab] = useState<CommunitySubTabType>('featuredStudents');
 
     // Check admin/mod access
     useEffect(() => {
@@ -53,8 +56,13 @@ export default function AdminPage() {
     const topTabs = [
         { id: 'about' as TopTabType, label: t('admin.tabs.about') },
         { id: 'services' as TopTabType, label: t('admin.tabs.services') },
+        { id: 'community' as TopTabType, label: t('admin.tabs.community') },
         { id: 'transactions' as TopTabType, label: t('admin.tabs.transactions') },
         { id: 'cloud' as TopTabType, label: t('admin.tabs.cloud') },
+    ];
+
+    const communitySubTabs = [
+        { id: 'featuredStudents' as CommunitySubTabType, label: t('admin.community.featuredStudents') },
     ];
 
     const subTabs = [
@@ -94,6 +102,26 @@ export default function AdminPage() {
                     {activeTopTab === 'about' && <ArticlesAdminTab category="about" />}
                     {activeTopTab === 'services' && <ArticlesAdminTab category="services" />}
                     {activeTopTab === 'cloud' && <CloudAdminTab />}
+                    {activeTopTab === 'community' && (
+                        <div>
+                            <div className="flex gap-2 mb-6">
+                                {communitySubTabs.map((tab) => (
+                                    <button
+                                        key={tab.id}
+                                        onClick={() => setActiveCommunitySubTab(tab.id)}
+                                        className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
+                                            activeCommunitySubTab === tab.id
+                                                ? 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]'
+                                                : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
+                                        }`}
+                                    >
+                                        {tab.label}
+                                    </button>
+                                ))}
+                            </div>
+                            {activeCommunitySubTab === 'featuredStudents' && <FeaturedStudentsAdminTab />}
+                        </div>
+                    )}
                     {activeTopTab === 'transactions' && (
                         <div>
                             {/* Sub-Tabs */}

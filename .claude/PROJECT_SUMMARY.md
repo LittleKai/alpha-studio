@@ -1,5 +1,5 @@
 # Project Summary
-**Last Updated:** 2026-02-22 (WorkflowDashboard: Mine filter + member profile modal; CloudAdminTab: Storage Cleanup tab; workflowService: getUserProfile; adminService: orphaned file API)
+**Last Updated:** 2026-02-23 (Featured Students: API-driven admin tab + landing page; UserProfilePage at /users/:id; ProfileViewPage; Cover Image rename)
 **Updated By:** Claude Code
 
 ---
@@ -35,7 +35,9 @@ src/
 │   ├── StudentPage.tsx        # Student profile page
 │   ├── PartnerPage.tsx        # Partner profile page
 │   ├── ProfilePage.tsx        # User profile edit page (avatar, bio, skills, works)
-│   ├── AdminPage.tsx          # Admin management (articles, services, transactions)
+│   ├── ProfileViewPage.tsx    # User profile VIEW page at /profile/view (current user)
+│   ├── UserProfilePage.tsx    # Public profile page at /users/:id (any user)
+│   ├── AdminPage.tsx          # Admin panel (5 top-tabs: About, Services, Community, Transactions, Cloud)
 │   ├── AboutPage.tsx          # About page with articles grid
 │   ├── AboutDetailPage.tsx    # About article detail
 │   ├── ServicesPage.tsx       # Services page with articles grid
@@ -247,7 +249,8 @@ App.tsx
 | Lesson Progress | ✅ Complete | CoursePage.tsx | Mark complete, auto-track video progress |
 | Course Reviews | ✅ Complete | CoursePage.tsx, courseService.ts | Rating 1-5, comments, helpful votes |
 | Lesson Documents | ✅ Complete | ModuleEditor.tsx, CoursePage.tsx | Upload/download lesson documents |
-| Cloud Admin Tab | ✅ Complete | CloudAdminTab.tsx, AdminPage.tsx | Machine registry, session management, force-end; Storage Cleanup sub-tab (super admin aduc5525@gmail.com only): scans B2 vs MongoDB, lists orphaned files, bulk/single delete |
+| Cloud Admin Tab | ✅ Complete | CloudAdminTab.tsx, AdminPage.tsx | Machine registry, session management, force-end; Storage Cleanup sub-tab (super admin only): scans B2 vs MongoDB; toggle "Orphaned" / "Tất cả" — all-files view adds Nguồn/Người upload/Trạng thái columns, referenced files read-only |
+| Profile View Page | ✅ Complete | ProfileViewPage.tsx | User profile view page at /profile/view |
 | B2 Video/File Upload | ✅ Complete | b2StorageService.ts, ModuleEditor.tsx, ResourceFormModal.tsx | Presigned URL upload with progress. Images still use Cloudinary |
 
 ---
@@ -306,6 +309,15 @@ App.tsx
 ---
 
 ## 7. Recent Changes (Last 3 Sessions)
+
+1. **2026-02-23** - Storage Cleanup: all-files view toggle + orphaned checker fixes; ProfileViewPage
+   - `CloudAdminTab.tsx` — `StorageCleanupTab`:
+     - Added `viewMode: 'orphaned' | 'all'` state + `referencedFiles` state
+     - Toggle buttons "🗑 Orphaned (n)" / "📂 Tất cả (n)" appear after scan (only when `meta` available)
+     - **Orphaned mode**: unchanged behaviour (checkboxes, bulk delete, per-row delete)
+     - **All-files mode**: combined list (orphaned + referenced), adds cols **Nguồn** (Workflow/Resource/Course/Prompt), **Người upload**, **Trạng thái** badge (✓ Đang dùng / ✗ Orphaned); no checkbox/delete for referenced files
+   - `adminService.ts`: `OrphanedFile` added `source` and `referenced` fields; `OrphanedFilesResponse` added `referencedFiles: OrphanedFile[]`
+   - `ProfileViewPage.tsx`: New page at `/profile/view` for viewing user profile
 
 1. **2026-02-22** - WorkflowDashboard: Mine filter, member profile modal, Storage Cleanup tab
    - `WorkflowDashboard.tsx`:

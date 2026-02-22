@@ -84,6 +84,10 @@ export default {
     customLinks: "Other Links",
     addLink: "Add Link",
     linkLabel: "Name (e.g. TikTok, Behance...)",
+    viewProfile: "View Profile",
+    memberSince: "Member since",
+    download: "Download",
+    noBio: "No bio available",
     password: {
       title: "Change Password",
       description: "Enter your current password and a new password",

@@ -44,6 +44,7 @@ export interface UserPublicProfile {
     id: string;
     name: string;
     avatar: string | null;
+    backgroundImage: string | null;
     role: string;
     email: string;
     phone: string;
@@ -58,8 +59,10 @@ export interface UserPublicProfile {
     };
 }
 
-export const searchUsers = async (q: string): Promise<{ success: boolean; data: WorkflowUserResult[] }> => {
-    const response = await fetch(`${API_URL}/workflow/users/search?q=${encodeURIComponent(q)}`, {
+export const searchUsers = async (q: string, includeSelf = false): Promise<{ success: boolean; data: WorkflowUserResult[] }> => {
+    const params = new URLSearchParams({ q });
+    if (includeSelf) params.set('includeSelf', 'true');
+    const response = await fetch(`${API_URL}/workflow/users/search?${params}`, {
         headers: getAuthHeaders()
     });
     if (!response.ok) throw new Error('Failed to search users');

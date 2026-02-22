@@ -515,12 +515,14 @@ function SessionsTab() {
 // ==================== STORAGE CLEANUP TAB ====================
 function StorageCleanupTab() {
     const [files, setFiles] = useState<OrphanedFile[]>([]);
+    const [referencedFiles, setReferencedFiles] = useState<OrphanedFile[]>([]);
     const [meta, setMeta] = useState<{ orphaned: number; totalB2: number; referenced: number } | null>(null);
     const [loading, setLoading] = useState(false);
     const [deletingKeys, setDeletingKeys] = useState<Set<string>>(new Set());
     const [error, setError] = useState<string | null>(null);
     const [selectedKeys, setSelectedKeys] = useState<Set<string>>(new Set());
     const [bulkDeleting, setBulkDeleting] = useState(false);
+    const [viewMode, setViewMode] = useState<'orphaned' | 'all'>('orphaned');
 
     const formatBytes = (bytes: number) => {
         if (bytes === 0) return '0 B';
@@ -537,6 +539,7 @@ function StorageCleanupTab() {
         try {
             const res = await listOrphanedFiles();
             setFiles(res.data);
+            setReferencedFiles(res.referencedFiles ?? []);
             setMeta(res.meta);
         } catch (e: any) {
             setError(e.message || 'Lỗi khi tải danh sách file');
@@ -587,9 +590,16 @@ function StorageCleanupTab() {
         setSelectedKeys(prev => prev.size === files.length ? new Set() : new Set(files.map(f => f.key)));
     };
 
+    const displayFiles = viewMode === 'orphaned' ? files : [...files, ...referencedFiles];
+
     const totalSelectedSize = files
         .filter(f => selectedKeys.has(f.key))
         .reduce((acc, f) => acc + f.size, 0);
+
+    const sourceLabel = (source: OrphanedFile['source']) => {
+        const map: Record<string, string> = { workflow: 'Workflow', resource: 'Resource', course: 'Course', prompt: 'Prompt' };
+        return source ? map[source] ?? source : '—';
+    };
 
     return (
         <div className="space-y-6">
@@ -601,16 +611,34 @@ function StorageCleanupTab() {
                         Tìm các file trong Backblaze B2 không được tham chiếu bởi bất kỳ collection nào trong MongoDB.
                     </p>
                 </div>
-                <button
-                    onClick={load}
-                    disabled={loading}
-                    className="flex items-center gap-2 px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg hover:opacity-90 disabled:opacity-50 transition-all"
-                >
-                    {loading
-                        ? <><div className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" /> Đang quét...</>
-                        : <><span>🔍</span> Quét B2</>
-                    }
-                </button>
+                <div className="flex items-center gap-2">
+                    {meta && (
+                        <div className="flex rounded-lg overflow-hidden border border-[var(--border-primary)] text-sm font-medium">
+                            <button
+                                onClick={() => setViewMode('orphaned')}
+                                className={`px-3 py-1.5 transition-colors ${viewMode === 'orphaned' ? 'bg-red-500/20 text-red-400' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'}`}
+                            >
+                                🗑 Orphaned ({meta.orphaned})
+                            </button>
+                            <button
+                                onClick={() => setViewMode('all')}
+                                className={`px-3 py-1.5 border-l border-[var(--border-primary)] transition-colors ${viewMode === 'all' ? 'bg-green-500/10 text-green-400' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'}`}
+                            >
+                                📂 Tất cả ({meta.totalB2})
+                            </button>
+                        </div>
+                    )}
+                    <button
+                        onClick={load}
+                        disabled={loading}
+                        className="flex items-center gap-2 px-4 py-2 bg-[var(--accent-primary)] text-black font-bold rounded-lg hover:opacity-90 disabled:opacity-50 transition-all"
+                    >
+                        {loading
+                            ? <><div className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" /> Đang quét...</>
+                            : <><span>🔍</span> Quét B2</>
+                        }
+                    </button>
+                </div>
             </div>
 
             {/* Error */}
@@ -634,8 +662,8 @@ function StorageCleanupTab() {
                 </div>
             )}
 
-            {/* Bulk actions bar */}
-            {files.length > 0 && !loading && (
+            {/* Bulk actions bar — orphaned mode only */}
+            {viewMode === 'orphaned' && files.length > 0 && !loading && (
                 <div className="flex items-center justify-between gap-3 p-3 bg-[var(--bg-secondary)] rounded-xl border border-[var(--border-primary)]">
                     <label className="flex items-center gap-2 cursor-pointer text-sm">
                         <input
@@ -663,30 +691,41 @@ function StorageCleanupTab() {
             )}
 
             {/* File list */}
-            {!loading && files.length > 0 && (
+            {!loading && displayFiles.length > 0 && (
                 <div className="rounded-xl border border-[var(--border-primary)] overflow-hidden">
                     <table className="w-full text-sm">
                         <thead className="bg-[var(--bg-secondary)] text-[var(--text-tertiary)] text-xs uppercase tracking-wider">
                             <tr>
-                                <th className="w-10 py-3 px-4"></th>
+                                {viewMode === 'orphaned' && <th className="w-10 py-3 px-4"></th>}
                                 <th className="py-3 px-4 text-left">File</th>
                                 <th className="py-3 px-4 text-left">Folder</th>
+                                {viewMode === 'all' && <th className="py-3 px-4 text-left">Nguồn</th>}
+                                {viewMode === 'all' && <th className="py-3 px-4 text-left">Người upload</th>}
                                 <th className="py-3 px-4 text-right">Dung lượng</th>
                                 <th className="py-3 px-4 text-left">Sửa lần cuối (B2)</th>
-                                <th className="py-3 px-4 text-center">Xóa</th>
+                                {viewMode === 'all'
+                                    ? <th className="py-3 px-4 text-center">Trạng thái</th>
+                                    : <th className="py-3 px-4 text-center">Xóa</th>
+                                }
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-[var(--border-primary)]">
-                            {files.map(f => (
-                                <tr key={f.key} className={`transition-colors ${selectedKeys.has(f.key) ? 'bg-red-500/5' : 'hover:bg-[var(--bg-secondary)]'}`}>
-                                    <td className="py-3 px-4">
-                                        <input
-                                            type="checkbox"
-                                            checked={selectedKeys.has(f.key)}
-                                            onChange={() => toggleSelect(f.key)}
-                                            className="accent-red-500 w-4 h-4 cursor-pointer"
-                                        />
-                                    </td>
+                            {displayFiles.map(f => (
+                                <tr key={f.key} className={`transition-colors ${
+                                    f.referenced
+                                        ? 'hover:bg-[var(--bg-secondary)]'
+                                        : selectedKeys.has(f.key) ? 'bg-red-500/5' : 'hover:bg-[var(--bg-secondary)]'
+                                }`}>
+                                    {viewMode === 'orphaned' && (
+                                        <td className="py-3 px-4">
+                                            <input
+                                                type="checkbox"
+                                                checked={selectedKeys.has(f.key)}
+                                                onChange={() => toggleSelect(f.key)}
+                                                className="accent-red-500 w-4 h-4 cursor-pointer"
+                                            />
+                                        </td>
+                                    )}
                                     <td className="py-3 px-4 max-w-xs">
                                         <p className="font-medium text-[var(--text-primary)] truncate" title={f.key}>{f.filename}</p>
                                         <p className="text-[10px] text-[var(--text-tertiary)] truncate font-mono">{f.key}</p>
@@ -696,25 +735,48 @@ function StorageCleanupTab() {
                                             {f.folder || 'root'}
                                         </span>
                                     </td>
+                                    {viewMode === 'all' && (
+                                        <td className="py-3 px-4">
+                                            {f.source ? (
+                                                <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] border border-[var(--accent-primary)]/20 whitespace-nowrap">
+                                                    {sourceLabel(f.source)}
+                                                </span>
+                                            ) : <span className="text-[var(--text-tertiary)]">—</span>}
+                                        </td>
+                                    )}
+                                    {viewMode === 'all' && (
+                                        <td className="py-3 px-4 text-[var(--text-secondary)] text-xs">
+                                            {f.uploader !== 'Unknown' ? f.uploader : <span className="text-[var(--text-tertiary)]">—</span>}
+                                        </td>
+                                    )}
                                     <td className="py-3 px-4 text-right font-mono text-[var(--text-secondary)] whitespace-nowrap">
                                         {formatBytes(f.size)}
                                     </td>
                                     <td className="py-3 px-4 text-[var(--text-secondary)] whitespace-nowrap">
                                         {f.lastModified ? formatDate(f.lastModified) : '—'}
                                     </td>
-                                    <td className="py-3 px-4 text-center">
-                                        <button
-                                            onClick={() => handleDelete(f.key)}
-                                            disabled={deletingKeys.has(f.key)}
-                                            className="p-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 transition-colors disabled:opacity-40"
-                                            title="Xóa file"
-                                        >
-                                            {deletingKeys.has(f.key)
-                                                ? <div className="w-4 h-4 border-2 border-red-400/30 border-t-red-400 rounded-full animate-spin" />
-                                                : <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
+                                    {viewMode === 'all' ? (
+                                        <td className="py-3 px-4 text-center">
+                                            {f.referenced
+                                                ? <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-green-500/10 text-green-400 border border-green-500/20 whitespace-nowrap">✓ Đang dùng</span>
+                                                : <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-red-500/10 text-red-400 border border-red-500/20 whitespace-nowrap">✗ Orphaned</span>
                                             }
-                                        </button>
-                                    </td>
+                                        </td>
+                                    ) : (
+                                        <td className="py-3 px-4 text-center">
+                                            <button
+                                                onClick={() => handleDelete(f.key)}
+                                                disabled={deletingKeys.has(f.key)}
+                                                className="p-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 transition-colors disabled:opacity-40"
+                                                title="Xóa file"
+                                            >
+                                                {deletingKeys.has(f.key)
+                                                    ? <div className="w-4 h-4 border-2 border-red-400/30 border-t-red-400 rounded-full animate-spin" />
+                                                    : <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
+                                                }
+                                            </button>
+                                        </td>
+                                    )}
                                 </tr>
                             ))}
                         </tbody>
@@ -723,7 +785,7 @@ function StorageCleanupTab() {
             )}
 
             {/* Empty states */}
-            {!loading && files.length === 0 && meta && (
+            {!loading && displayFiles.length === 0 && meta && (
                 <div className="text-center py-16 text-[var(--text-tertiary)]">
                     <div className="text-5xl mb-3">✅</div>
                     <p className="font-bold text-[var(--text-secondary)]">Không có file orphaned!</p>

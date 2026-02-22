@@ -370,14 +370,23 @@ const ProfilePage: React.FC = () => {
                     <h1 className="text-xl font-semibold text-white">
                         {t('profile.editProfile', 'Chỉnh sửa hồ sơ')}
                     </h1>
-                    <button
-                        onClick={handleSave}
-                        disabled={isSaving}
-                        className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors disabled:opacity-50"
-                    >
-                        <SaveIcon />
-                        <span>{isSaving ? t('common.saving', 'Đang lưu...') : t('common.save', 'Lưu')}</span>
-                    </button>
+                    <div className="flex items-center gap-2">
+                        <button
+                            onClick={() => navigate('/profile/view')}
+                            className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-gray-200 rounded-lg transition-colors"
+                        >
+                            <EyeIcon />
+                            <span className="hidden sm:inline">{t('profile.viewProfile', 'Xem hồ sơ')}</span>
+                        </button>
+                        <button
+                            onClick={handleSave}
+                            disabled={isSaving}
+                            className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors disabled:opacity-50"
+                        >
+                            <SaveIcon />
+                            <span>{isSaving ? t('common.saving', 'Đang lưu...') : t('common.save', 'Lưu')}</span>
+                        </button>
+                    </div>
                 </div>
             </div>
 

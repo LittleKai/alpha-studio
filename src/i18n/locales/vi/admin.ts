@@ -11,7 +11,17 @@ export default {
       cloud: "Cloud Desktop",
       users: "Quản lý User",
       transactionsList: "Giao dịch",
-      webhooks: "Webhook Logs"
+      webhooks: "Webhook Logs",
+      community: "Cộng đồng"
+    },
+    community: {
+      featuredStudents: "Học viên nổi bật",
+      featuredStudentsDesc: "Quản lý danh sách học viên nổi bật hiển thị trên trang chủ",
+      searchUser: "Tìm user để thêm...",
+      noStudents: "Chưa có học viên nổi bật nào",
+      dragToReorder: "Kéo để sắp xếp lại thứ tự",
+      hired: "Đã tuyển dụng",
+      labelPlaceholder: "Chức danh (VD: Event Director)"
     },
     articles: {
       title: "Tiêu đề",

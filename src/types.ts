@@ -202,6 +202,7 @@ export interface FeaturedStudent {
   name: string;
   role: string;
   image: string;
+  backgroundImage?: string | null;
   work: string;
   hired: boolean;
   bio?: string;
