@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback, useMemo } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import { useAuth } from '../auth/context';
 import {
@@ -1567,7 +1567,12 @@ const CoursePage: React.FC = () => {
                                 </span>
                             </div>
                             {(user?.balance || 0) < course.finalPrice && (
-                                <p className="text-sm text-red-400 bg-red-500/10 rounded-xl p-3">{t('course.insufficientCredits')}</p>
+                                <p className="text-sm text-red-400 bg-red-500/10 rounded-xl p-3">
+                                    {t('course.insufficientCredits')}{' '}
+                                    <Link to="/wallet" className="underline font-bold hover:no-underline">
+                                        {t('course.topUpLink')}
+                                    </Link>
+                                </p>
                             )}
                         </div>
                         <div className="flex gap-3">

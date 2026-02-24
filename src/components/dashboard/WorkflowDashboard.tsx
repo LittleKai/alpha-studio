@@ -24,7 +24,7 @@ import LoadingSpinner from '../ui/LoadingSpinner';
 // StudentProfileModal and PartnerRegistrationModal not used - moved to separate view components
 import LanguageSwitcher from '../ui/LanguageSwitcher';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
-import { JobsView, PartnersView, WalletView, PromptsView, ResourcesView } from './views';
+import { JobsView, PartnersView, PromptsView, ResourcesView } from './views';
 import ProfileEditModal from '../modals/ProfileEditModal';
 
 interface WorkflowDashboardProps {
@@ -42,7 +42,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
   const { id: projectIdParam } = useParams<{ id: string }>();
 
   // Navigation State
-  const [activeView, setActiveView] = useState<'documents' | 'projects' | 'jobs' | 'wallet' | 'partners' | 'automation' | 'affiliate' | 'creative' | 'resources'>('documents');
+  const [activeView, setActiveView] = useState<'documents' | 'projects' | 'jobs' | 'partners' | 'automation' | 'affiliate' | 'creative' | 'resources'>('documents');
   const [searchQuery, setSearchQuery] = useState('');
   // partnerFilter moved to PartnersView component
 
@@ -1316,7 +1316,6 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
             <div className="space-y-4 mb-8">{affiliateData.links.map(link => (<div key={link.id} className="bg-[var(--bg-secondary)] border border-[var(--border-primary)] p-4 rounded-xl flex flex-col md:flex-row items-center justify-between gap-4"><div className="flex-1"><h4 className="font-bold text-[var(--text-primary)]">{link.name}</h4><p className="text-xs text-[var(--accent-primary)] mt-1">{t('workflow.affiliate.commission')}: {link.commission}</p></div><div className="flex items-center gap-3 w-full md:w-auto"><code className="bg-black/30 px-3 py-2 rounded text-xs text-[var(--text-secondary)] flex-1 md:flex-none truncate max-w-[200px]">{link.url}</code><button onClick={() => copyToClipboard(link.url)} className="bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] hover:bg-[var(--accent-primary)] hover:text-black px-4 py-2 rounded-lg text-xs font-bold transition-colors">{t('workflow.affiliate.copyLink')}</button></div></div>))}</div>
         </div>
       );
-      case 'wallet': return <WalletView />;
       case 'jobs': return <JobsView searchQuery={searchQuery} />;
       case 'partners': return <PartnersView searchQuery={searchQuery} />;
       default: return (
@@ -1448,7 +1447,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                         <button onClick={() => { setActiveView('jobs'); setSelectedProject(null); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'jobs' ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">🚀</span><div className="hidden md:flex flex-col items-start"><span className="text-sm">{t('workflow.sidebar.jobMarket')}</span><span className="text-[10px] opacity-70">{t('workflow.sidebar.freelancer')}</span></div>{(activeView as string) !== 'jobs' && <span className="ml-auto bg-red-500 text-white text-[9px] px-1.5 py-0.5 rounded-full font-bold">New</span>}</button>
                         <button onClick={() => { setActiveView('partners'); setSelectedProject(null); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'partners' ? 'bg-[#1e293b] border border-[var(--border-primary)] shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">🤝</span><span className={`hidden md:block text-sm ${(activeView as string) === 'partners' ? 'text-[var(--accent-primary)] font-bold' : ''}`}>{t('workflow.sidebar.partners')}</span></button>
                         <button onClick={() => { setActiveView('affiliate'); setSelectedProject(null); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'affiliate' ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><span className="text-xl">💸</span><span className="hidden md:block text-sm">{t('workflow.sidebar.affiliate')}</span></button>
-                        <button onClick={() => { setActiveView('wallet'); setSelectedProject(null); }} className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all ${(activeView as string) === 'wallet' ? 'bg-[var(--accent-primary)] text-black font-bold shadow-lg' : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'}`}><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span className="hidden md:block text-sm">{t('workflow.sidebar.creditWallet')}</span></button>
+                        <button onClick={() => navigate('/wallet')} className="w-full flex items-center gap-3 p-3 rounded-xl transition-all text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]"><svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><span className="hidden md:block text-sm">{t('workflow.sidebar.creditWallet')}</span><svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5 ml-auto opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg></button>
                     </div>
                 </div>
                 <div><p className="px-4 text-[10px] font-bold text-[var(--text-tertiary)] uppercase tracking-wider mb-2">{t('workflow.sidebar.communityResources')}</p>

@@ -31,7 +31,8 @@ export default {
     purchaseTitle: "Confirm Purchase",
     yourBalance: "Your balance",
     afterPurchase: "Balance after purchase",
-    insufficientCredits: "Insufficient Credits. Please top up.",
+    insufficientCredits: "Insufficient Credits.",
+    topUpLink: "Top up here →",
     confirmPurchase: "Confirm Purchase",
     cancelPurchase: "Cancel"
   },

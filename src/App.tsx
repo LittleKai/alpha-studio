@@ -27,6 +27,7 @@ const AboutPage = lazy(() => import('./pages/AboutPage'));
 const AboutDetailPage = lazy(() => import('./pages/AboutDetailPage'));
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
 const ServicesDetailPage = lazy(() => import('./pages/ServicesDetailPage'));
+const WalletPage = lazy(() => import('./pages/WalletPage'));
 
 // Loading spinner component
 const LoadingSpinner: React.FC = () => (
@@ -181,6 +182,17 @@ const ServicesDetailPageWrapper: React.FC = () => {
     );
 };
 
+// Wallet Page
+const WalletPageWrapper: React.FC = () => {
+    return (
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <WalletPage />
+            </Suspense>
+        </Layout>
+    );
+};
+
 // 404 Not Found Page
 const NotFoundPage: React.FC = () => {
     const navigate = useNavigate();
@@ -287,6 +299,16 @@ const App: React.FC = () => {
                     element={
                         <ProtectedRoute>
                             <MyCoursesDetailPage />
+                        </ProtectedRoute>
+                    }
+                />
+
+                {/* Wallet Page */}
+                <Route
+                    path="/wallet"
+                    element={
+                        <ProtectedRoute>
+                            <WalletPageWrapper />
                         </ProtectedRoute>
                     }
                 />

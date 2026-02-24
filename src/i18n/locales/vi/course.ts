@@ -31,7 +31,8 @@ export default {
     purchaseTitle: "Xác nhận mua khóa học",
     yourBalance: "Số dư hiện tại",
     afterPurchase: "Còn lại sau khi mua",
-    insufficientCredits: "Không đủ Credits. Vui lòng nạp thêm.",
+    insufficientCredits: "Không đủ Credits.",
+    topUpLink: "Nạp thêm tại đây →",
     confirmPurchase: "Xác nhận mua",
     cancelPurchase: "Hủy"
   },

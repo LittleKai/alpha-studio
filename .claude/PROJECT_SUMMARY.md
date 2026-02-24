@@ -1,5 +1,5 @@
 # Project Summary
-**Last Updated:** 2026-02-24 (Mod permissions; Course purchase with credits; Credit balance in header; /server full header; Localized bio fix; withFallback for all LocalizedString fields)
+**Last Updated:** 2026-02-25 (Wallet standalone page at /wallet with Layout header; Credits chip → link to /wallet; Course insufficient credits with top-up link)
 **Updated By:** Claude Code
 
 ---
@@ -253,8 +253,9 @@ App.tsx
 | Profile View Page | ✅ Complete | ProfileViewPage.tsx | User profile view page at /profile/view |
 | B2 Video/File Upload | ✅ Complete | b2StorageService.ts, ModuleEditor.tsx, ResourceFormModal.tsx | Presigned URL upload with progress. Images still use Cloudinary |
 | Mod Role Permissions | ✅ Complete | AdminPage.tsx, CourseManagement.tsx, CourseCard.tsx | Mod: hide Community/Transactions/Cloud tabs; course access without delete/archive |
-| Credit Balance in Header | ✅ Complete | Layout.tsx | Shows balance chip (yellow) in account dropdown |
+| Credit Balance in Header | ✅ Complete | Layout.tsx | Credits chip (yellow) in account dropdown — now a clickable Link to /wallet |
 | /server Full Header | ✅ Complete | App.tsx, AIServerConnect.tsx | Uses Layout nav instead of custom header |
+| Wallet Standalone Page | ✅ Complete | WalletPage.tsx, App.tsx | Dedicated /wallet page with Layout header; Workflow sidebar navigates to /wallet |
 
 ---
 
@@ -312,6 +313,14 @@ App.tsx
 ---
 
 ## 7. Recent Changes (Last 3 Sessions)
+
+1. **2026-02-25** - Wallet standalone page; Course top-up link
+   - `WalletPage.tsx`: NEW page at `/wallet` with Layout header (page title + balance display) wrapping `WalletView`
+   - `App.tsx`: Lazy-imported `WalletPage`; added `WalletPageWrapper` component; `/wallet` protected route
+   - `Layout.tsx`: Credits chip in account dropdown → `<Link to="/wallet">` with active state; `isWalletPage` detection
+   - `WorkflowDashboard.tsx`: Wallet sidebar button now navigates to `/wallet`; removed 'wallet' from `activeView` union; removed `WalletView` import and render case
+   - `CoursePage.tsx`: Insufficient credits message now includes `<Link to="/wallet">` with `topUpLink` translation key
+   - `i18n vi+en course.ts`: Split `insufficientCredits` ("Không đủ Credits." / "Insufficient Credits."); added `topUpLink` ("Nạp thêm tại đây →" / "Top up here →")
 
 1. **2026-02-24** - Mod permissions; Course purchase; Credit header; /server Layout; LocalizedString fallback
    - `AdminPage.tsx`: Hide Community/Transaction Management/Cloud tabs for mod role (`isMod` flag + conditional spread)
