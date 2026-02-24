@@ -4,6 +4,7 @@ import { useTranslation } from '../../i18n/context';
 import { useAuth } from '../../auth/context';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
 import LanguageSwitcher from '../ui/LanguageSwitcher';
+import Login from '../ui/Login';
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -16,18 +17,41 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
     const navigate = useNavigate();
     const location = useLocation();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [showLoginDialog, setShowLoginDialog] = useState(false);
+    const [pendingNavigation, setPendingNavigation] = useState<string | null>(null);
 
     const handleLogout = async () => {
         await logout();
         navigate('/');
     };
 
+    const navigateToProtectedPage = (path: string) => {
+        if (isAuthenticated) {
+            navigate(path);
+        } else {
+            setPendingNavigation(path);
+            setShowLoginDialog(true);
+        }
+    };
+
+    const handleLoginSuccess = () => {
+        setShowLoginDialog(false);
+        if (pendingNavigation) {
+            navigate(pendingNavigation);
+            setPendingNavigation(null);
+        }
+    };
+
+    const handleCloseLogin = () => {
+        setShowLoginDialog(false);
+        setPendingNavigation(null);
+    };
+
     const isStudioPage = location.pathname === '/studio';
     const isServerPage = location.pathname === '/server';
-    const isWorkflowPage = location.pathname === '/workflow';
+    const isWorkflowPage = location.pathname.startsWith('/workflow');
     const isAboutPage = location.pathname.startsWith('/about');
     const isServicesPage = location.pathname.startsWith('/services');
-    const isWalletPage = location.pathname === '/wallet';
 
     if (!showNav || isWorkflowPage) {
         return <>{children}</>;
@@ -56,12 +80,12 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                         <Link to="/" className={`transition-colors ${location.pathname === '/' ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-primary)]'}`}>
                             {t('landing.nav.academy')}
                         </Link>
-                        <Link to="/workflow" className={`transition-colors ${isWorkflowPage ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-primary)]'}`}>
+                        <button onClick={() => navigateToProtectedPage('/workflow')} className={`transition-colors ${isWorkflowPage ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-primary)]'}`}>
                             {t('landing.nav.connect')}
-                        </Link>
-                        <Link to="/server" className={`border px-4 py-1.5 rounded-full transition-all ${isServerPage ? 'bg-[var(--accent-primary)] text-[var(--text-on-accent)] border-[var(--accent-primary)]' : 'text-[var(--accent-primary)] border-[var(--accent-primary)]/30 hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)]'}`}>
+                        </button>
+                        <button onClick={() => navigateToProtectedPage('/server')} className={`border px-4 py-1.5 rounded-full transition-all ${isServerPage ? 'bg-[var(--accent-primary)] text-[var(--text-on-accent)] border-[var(--accent-primary)]' : 'text-[var(--accent-primary)] border-[var(--accent-primary)]/30 hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)]'}`}>
                             {t('landing.nav.aiCloud')}
-                        </Link>
+                        </button>
                         <Link to="/services" className={`transition-colors ${isServicesPage ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-primary)]'}`}>
                             {t('landing.nav.services')}
                         </Link>
@@ -79,18 +103,6 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                                         {t('landing.nav.enterStudio')}
                                     </Link>
                                 )}
-                                {/* Credits chip in nav bar */}
-                                <Link
-                                    to="/wallet"
-                                    title={t('workflow.wallet.title')}
-                                    className={`flex items-center gap-1.5 py-2 px-3 rounded-xl border font-bold text-sm transition-all hover:scale-105 ${isWalletPage ? 'bg-yellow-500/20 border-yellow-500/40 text-yellow-300' : 'bg-yellow-500/10 border-yellow-500/20 text-yellow-400 hover:bg-yellow-500/20 hover:border-yellow-500/40'}`}
-                                >
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                        <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"/>
-                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clipRule="evenodd"/>
-                                    </svg>
-                                    {(user?.balance || 0).toLocaleString()}
-                                </Link>
                                 <div className="relative group">
                                     <button className="flex items-center gap-2 py-2 px-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-colors">
                                         {user?.avatar ? (
@@ -122,8 +134,8 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                                             </div>
                                             <div className="mt-2 flex items-center gap-2 flex-wrap">
                                                 <span className="px-2 py-0.5 rounded-full bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] text-[10px] font-bold uppercase">{user?.role}</span>
-                                                <Link to="/wallet" className={`flex items-center gap-1 px-2 py-0.5 rounded-full border text-[10px] font-bold transition-colors ${isWalletPage ? 'bg-yellow-500/20 border-yellow-500/40 text-yellow-300' : 'bg-yellow-500/10 border-yellow-500/20 text-yellow-400 hover:bg-yellow-500/20'}`}>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor"><path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"/><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clipRule="evenodd"/></svg>
+                                                <Link to="/wallet" className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-yellow-400/20 border border-yellow-400/60 text-yellow-600 text-xs font-bold hover:bg-yellow-400/30 transition-colors">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"><path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"/><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clipRule="evenodd"/></svg>
                                                     {(user?.balance || 0).toLocaleString()} Credits
                                                 </Link>
                                             </div>
@@ -160,9 +172,9 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                                 </div>
                             </div>
                         ) : (
-                            <Link to="/" className="hidden lg:block py-2.5 px-6 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-bold rounded-xl shadow-[var(--accent-shadow)] hover:scale-105 transition-all">
+                            <button onClick={() => setShowLoginDialog(true)} className="hidden lg:block py-2.5 px-6 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-bold rounded-xl shadow-[var(--accent-shadow)] hover:scale-105 transition-all">
                                 {t('login.button') || 'Sign In'}
-                            </Link>
+                            </button>
                         )}
 
                         {/* Mobile Hamburger */}
@@ -201,12 +213,12 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                             <Link onClick={closeMobile} to="/" className={`block px-4 py-3 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors ${location.pathname === '/' ? 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]' : 'text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]'}`}>
                                 {t('landing.nav.academy')}
                             </Link>
-                            <Link onClick={closeMobile} to="/workflow" className={`block px-4 py-3 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors ${isWorkflowPage ? 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]' : 'text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]'}`}>
+                            <button onClick={() => { navigateToProtectedPage('/workflow'); closeMobile(); }} className="block w-full text-left px-4 py-3 rounded-lg text-sm font-bold uppercase tracking-wider text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] transition-colors">
                                 {t('landing.nav.connect')}
-                            </Link>
-                            <Link onClick={closeMobile} to="/server" className={`block px-4 py-3 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors ${isServerPage ? 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]' : 'text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]'}`}>
+                            </button>
+                            <button onClick={() => { navigateToProtectedPage('/server'); closeMobile(); }} className="block w-full text-left px-4 py-3 rounded-lg text-sm font-bold uppercase tracking-wider text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] transition-colors">
                                 {t('landing.nav.aiCloud')}
-                            </Link>
+                            </button>
                             <Link onClick={closeMobile} to="/services" className={`block px-4 py-3 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors ${isServicesPage ? 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]' : 'text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]'}`}>
                                 {t('landing.nav.services')}
                             </Link>
@@ -235,6 +247,10 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                                     <Link onClick={closeMobile} to="/my-courses" className="block px-4 py-2.5 rounded-lg text-sm text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] transition-colors">
                                         {t('myCourses.title')}
                                     </Link>
+                                    <Link onClick={closeMobile} to="/wallet" className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm text-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"/><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clipRule="evenodd"/></svg>
+                                        {t('workflow.wallet.title')} · {(user?.balance || 0).toLocaleString()} Credits
+                                    </Link>
                                     <Link onClick={closeMobile} to="/profile" className="block px-4 py-2.5 rounded-lg text-sm text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] transition-colors">
                                         {t('landing.nav.profile') || 'Profile'}
                                     </Link>
@@ -253,9 +269,9 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                                     </button>
                                 </div>
                             ) : (
-                                <Link onClick={closeMobile} to="/" className="block w-full text-center py-2.5 px-6 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-bold rounded-xl">
+                                <button onClick={() => { setShowLoginDialog(true); closeMobile(); }} className="block w-full text-center py-2.5 px-6 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-bold rounded-xl">
                                     {t('login.button') || 'Sign In'}
-                                </Link>
+                                </button>
                             )}
                         </div>
                     </div>
@@ -266,6 +282,11 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
             <main className="flex-1">
                 {children}
             </main>
+
+            {/* Login Dialog */}
+            {showLoginDialog && (
+                <Login onLoginSuccess={handleLoginSuccess} onClose={handleCloseLogin} />
+            )}
         </div>
     );
 };

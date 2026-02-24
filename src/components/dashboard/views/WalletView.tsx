@@ -173,7 +173,7 @@ export default function WalletView() {
       loadHistory();
     }
 
-    alert('Giao dịch đã được ghi nhận. Vui lòng đợi hệ thống xác nhận (1-5 phút).');
+    alert(t('workflow.wallet.paySuccess'));
   };
 
   // Load payment history
@@ -201,7 +201,7 @@ export default function WalletView() {
   // Copy to clipboard
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
-    alert('Đã sao chép!');
+    alert(t('workflow.wallet.copied'));
   };
 
   // Get status badge style
@@ -224,11 +224,11 @@ export default function WalletView() {
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'completed': return 'Hoàn thành';
-      case 'pending': return 'Đang chờ';
-      case 'failed': return 'Thất bại';
-      case 'cancelled': return 'Đã hủy';
-      case 'timeout': return 'Hết hạn';
+      case 'completed': return t('workflow.wallet.statusCompleted');
+      case 'pending': return t('workflow.wallet.statusPending');
+      case 'failed': return t('workflow.wallet.statusFailed');
+      case 'cancelled': return t('workflow.wallet.statusCancelled');
+      case 'timeout': return t('workflow.wallet.statusTimeout');
       default: return status;
     }
   };
@@ -252,34 +252,20 @@ export default function WalletView() {
               <span className="text-2xl font-bold mb-2">Credits</span>
             </div>
             <p className="text-sm opacity-90 max-w-md">
-              Sử dụng Credits để thuê máy chủ GPU tốc độ cao, đăng ký khóa học chuyên sâu.
+              {t('workflow.wallet.balanceDesc')}
             </p>
           </div>
         </div>
 
         <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-8 flex flex-col justify-center shadow-xl">
-          <h2 className="text-xl font-bold text-[var(--text-primary)] mb-2">Hướng dẫn nạp tiền</h2>
+          <h2 className="text-xl font-bold text-[var(--text-primary)] mb-2">{t('workflow.wallet.guide.title')}</h2>
           <ul className="text-sm text-[var(--text-secondary)] space-y-2 mb-4">
-            <li className="flex items-start gap-2">
-              <span className="text-green-500">1.</span>
-              Chọn gói Credits bên dưới
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-green-500">2.</span>
-              Quét mã QR hoặc chuyển khoản thủ công
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-green-500">3.</span>
-              Nhập đúng nội dung chuyển khoản
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-green-500">4.</span>
-              Credits sẽ được cộng tự động trong 1-5 phút
-            </li>
+            <li className="flex items-start gap-2"><span className="text-green-500">1.</span>{t('workflow.wallet.guide.step1')}</li>
+            <li className="flex items-start gap-2"><span className="text-green-500">2.</span>{t('workflow.wallet.guide.step2')}</li>
+            <li className="flex items-start gap-2"><span className="text-green-500">3.</span>{t('workflow.wallet.guide.step3')}</li>
+            <li className="flex items-start gap-2"><span className="text-green-500">4.</span>{t('workflow.wallet.guide.step4')}</li>
           </ul>
-          <p className="text-xs text-[var(--text-tertiary)]">
-            Hỗ trợ: Momo, ZaloPay có thể quét mã QR ngân hàng
-          </p>
+          <p className="text-xs text-[var(--text-tertiary)]">{t('workflow.wallet.guide.support')}</p>
         </div>
       </div>
 
@@ -291,7 +277,7 @@ export default function WalletView() {
             onClick={() => setPaymentError(null)}
             className="ml-4 underline hover:no-underline"
           >
-            Đóng
+            {t('workflow.wallet.errorClose')}
           </button>
         </div>
       )}
@@ -306,7 +292,7 @@ export default function WalletView() {
           >
             {pkg.popular && (
               <div className="absolute top-0 right-0 bg-[var(--accent-primary)] text-black text-[10px] font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider">
-                Phổ biến
+                {t('workflow.wallet.popular')}
               </div>
             )}
             {pkg.bonus && (
@@ -320,29 +306,46 @@ export default function WalletView() {
             <h4 className="text-lg font-bold text-[var(--text-primary)]">{pkg.label}</h4>
             <div className="text-3xl font-black text-[var(--text-primary)] my-2">{pkg.priceLabel}</div>
             <ul className="space-y-2 mb-6 text-sm text-[var(--text-secondary)]">
-              <li className="flex items-center gap-2"><span className="text-green-500">✓</span> Thuê Server GPU</li>
-              <li className="flex items-center gap-2"><span className="text-green-500">✓</span> Mua khóa học</li>
-              <li className="flex items-center gap-2"><span className="text-green-500">✓</span> Đăng tuyển dụng</li>
+              <li className="flex items-center gap-2"><span className="text-green-500">✓</span> {t('workflow.wallet.pkgServer')}</li>
+              <li className="flex items-center gap-2"><span className="text-green-500">✓</span> {t('workflow.wallet.pkgCourse')}</li>
+              <li className="flex items-center gap-2"><span className="text-green-500">✓</span> {t('workflow.wallet.pkgJob')}</li>
             </ul>
             <button
               onClick={() => handleSelectPackage(pkg)}
               disabled={paymentLoading}
               className={`w-full py-3 rounded-lg font-bold transition-all disabled:opacity-50 ${pkg.popular ? 'bg-[var(--accent-primary)] text-black hover:opacity-90' : 'bg-[var(--bg-secondary)] hover:bg-[var(--border-primary)] text-[var(--text-primary)] border border-[var(--border-primary)]'}`}
             >
-              {paymentLoading && selectedPackage?.id === pkg.id ? 'Đang xử lý...' : 'Chọn gói này'}
+              {paymentLoading && selectedPackage?.id === pkg.id ? t('workflow.wallet.processing') : t('workflow.wallet.selectPkg')}
             </button>
           </div>
         ))}
       </div>
 
       {/* Transaction History Toggle */}
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-xl font-bold text-[var(--text-primary)]">{t('workflow.wallet.history')}</h3>
+      <div className="flex items-center justify-between py-4 border-t border-[var(--border-primary)] mb-4">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-xl bg-[var(--accent-primary)]/10 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[var(--accent-primary)]" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 0l-2 2a1 1 0 101.414 1.414L8 10.414l1.293 1.293a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+          </div>
+          <h3 className="text-2xl font-bold text-[var(--text-primary)]">{t('workflow.wallet.history')}</h3>
+        </div>
         <button
           onClick={handleToggleHistory}
-          className="text-sm text-[var(--accent-primary)] hover:underline"
+          className="flex items-center gap-2 px-4 py-2 text-sm font-bold rounded-full bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] border border-[var(--accent-primary)]/30 hover:bg-[var(--accent-primary)]/20 transition-all"
         >
-          {showHistory ? 'Ẩn lịch sử' : 'Xem lịch sử giao dịch'}
+          {showHistory ? (
+            <>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" /></svg>
+              {t('workflow.wallet.historyHide')}
+            </>
+          ) : (
+            <>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
+              {t('workflow.wallet.historyShow')}
+            </>
+          )}
         </button>
       </div>
 
@@ -350,18 +353,18 @@ export default function WalletView() {
       {showHistory && (
         <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl overflow-hidden">
           {historyLoading ? (
-            <div className="p-8 text-center text-[var(--text-secondary)]">Đang tải...</div>
+            <div className="p-8 text-center text-[var(--text-secondary)]">{t('workflow.wallet.historyLoading')}</div>
           ) : paymentHistory.length === 0 ? (
-            <div className="p-8 text-center text-[var(--text-tertiary)]">Chưa có giao dịch nào</div>
+            <div className="p-8 text-center text-[var(--text-tertiary)]">{t('workflow.wallet.historyEmpty')}</div>
           ) : (
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="bg-[var(--bg-secondary)] text-xs uppercase text-[var(--text-secondary)]">
-                  <th className="p-4">Mã GD</th>
-                  <th className="p-4">Thời gian</th>
-                  <th className="p-4 text-right">Số tiền</th>
+                  <th className="p-4">{t('workflow.wallet.colCode')}</th>
+                  <th className="p-4">{t('workflow.wallet.colTime')}</th>
+                  <th className="p-4 text-right">{t('workflow.wallet.colAmount')}</th>
                   <th className="p-4 text-right">Credits</th>
-                  <th className="p-4 text-right">Trạng thái</th>
+                  <th className="p-4 text-right">{t('workflow.wallet.colStatus')}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[var(--border-primary)]">
@@ -388,7 +391,7 @@ export default function WalletView() {
                 disabled={historyLoading}
                 className="text-sm text-[var(--accent-primary)] hover:underline disabled:opacity-50"
               >
-                {historyLoading ? 'Đang tải...' : 'Tải lại'}
+                {historyLoading ? t('workflow.wallet.historyLoading') : t('workflow.wallet.historyReload')}
               </button>
             </div>
           )}
@@ -401,7 +404,7 @@ export default function WalletView() {
           <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl w-full max-w-md" onClick={e => e.stopPropagation()}>
             {/* Header */}
             <div className="p-4 border-b border-[var(--border-primary)] flex items-center justify-between">
-              <span className="font-medium text-[var(--text-primary)]">Thanh toán {selectedPackage.priceLabel}</span>
+              <span className="font-medium text-[var(--text-primary)]">{t('workflow.wallet.payTitle')} {selectedPackage.priceLabel}</span>
               <span className={`text-sm font-mono ${countdown < 60 ? 'text-red-500' : 'text-[var(--text-secondary)]'}`}>
                 {formatCountdown(countdown)}
               </span>
@@ -417,19 +420,19 @@ export default function WalletView() {
               {/* Transfer Content */}
               <div className="w-full p-3 bg-[var(--bg-secondary)] rounded-lg flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-[var(--text-tertiary)]">Nội dung CK</p>
+                  <p className="text-xs text-[var(--text-tertiary)]">{t('workflow.wallet.transferContent')}</p>
                   <p className="font-mono font-bold text-[var(--text-primary)]">{transferContent}</p>
                 </div>
                 <button
                   onClick={() => copyToClipboard(transferContent)}
                   className="px-3 py-1.5 bg-[var(--accent-primary)] text-black rounded text-xs font-medium hover:opacity-90"
                 >
-                  Sao chép
+                  {t('workflow.wallet.copy')}
                 </button>
               </div>
 
               <p className="text-xs text-[var(--text-tertiary)] mt-3 text-center">
-                Nhập đúng nội dung CK để được cộng {selectedPackage.credits} Credits tự động
+                {t('workflow.wallet.autoCreditNote').replace('{credits}', String(selectedPackage.credits))}
               </p>
             </div>
 
@@ -439,13 +442,13 @@ export default function WalletView() {
                 onClick={handleCancelPayment}
                 className="flex-1 py-2.5 rounded-lg font-medium bg-[var(--bg-secondary)] text-[var(--text-secondary)] hover:bg-[var(--border-primary)]"
               >
-                Hủy
+                {t('workflow.wallet.cancelPay')}
               </button>
               <button
                 onClick={handleConfirmPayment}
                 className="flex-1 py-2.5 rounded-lg font-medium bg-[var(--accent-primary)] text-black hover:opacity-90"
               >
-                Đã chuyển khoản
+                {t('workflow.wallet.confirmedTransfer')}
               </button>
             </div>
           </div>

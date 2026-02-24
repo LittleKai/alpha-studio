@@ -227,7 +227,7 @@ const App: React.FC = () => {
         <Suspense fallback={<LoadingSpinner />}>
             <Routes>
                 {/* Public Routes */}
-                <Route path="/" element={<LandingPage />} />
+                <Route path="/" element={<Layout><Suspense fallback={<LoadingSpinner />}><LandingPage /></Suspense></Layout>} />
                 <Route path="/courses" element={<CoursesCatalogPage />} />
                 <Route path="/courses/:slug" element={<CourseDetailPage />} />
                 <Route path="/students/:id" element={<StudentDetailPage />} />
