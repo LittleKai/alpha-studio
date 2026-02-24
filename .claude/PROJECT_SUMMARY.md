@@ -252,6 +252,9 @@ App.tsx
 | Cloud Admin Tab | ✅ Complete | CloudAdminTab.tsx, AdminPage.tsx | Machine registry, session management, force-end; Storage Cleanup sub-tab (super admin only): scans B2 vs MongoDB; toggle "Orphaned" / "Tất cả" — all-files view adds Nguồn/Người upload/Trạng thái columns, referenced files read-only |
 | Profile View Page | ✅ Complete | ProfileViewPage.tsx | User profile view page at /profile/view |
 | B2 Video/File Upload | ✅ Complete | b2StorageService.ts, ModuleEditor.tsx, ResourceFormModal.tsx | Presigned URL upload with progress. Images still use Cloudinary |
+| Mod Role Permissions | ✅ Complete | AdminPage.tsx, CourseManagement.tsx, CourseCard.tsx | Mod: hide Community/Transactions/Cloud tabs; course access without delete/archive |
+| Credit Balance in Header | ✅ Complete | Layout.tsx | Shows balance chip (yellow) in account dropdown |
+| /server Full Header | ✅ Complete | App.tsx, AIServerConnect.tsx | Uses Layout nav instead of custom header |
 
 ---
 
@@ -309,6 +312,17 @@ App.tsx
 ---
 
 ## 7. Recent Changes (Last 3 Sessions)
+
+1. **2026-02-24** - Mod permissions; Course purchase; Credit header; /server Layout; LocalizedString fallback
+   - `AdminPage.tsx`: Hide Community/Transaction Management/Cloud tabs for mod role (`isMod` flag + conditional spread)
+   - `CourseManagement.tsx`: Allow mod access (`role !== 'admin' && role !== 'mod'` check); pass `canDelete={!isMod}` + `canArchive={!isMod}` to CourseCard
+   - `CourseCard.tsx`: Added `canDelete?` + `canArchive?` props (default `true`); `...` button hidden when dropdown is empty
+   - `CourseForm.tsx`: Added `withFallback(vi, en)` helper — if one lang is empty, use the other for both; applied to `description`, `instructor.bio`, `instructors[].bio`, `learningOutcomes`, module titles, lesson titles
+   - `CoursePage.tsx`: Added `showPurchaseModal` state; `handleEnroll` shows confirmation modal for paid courses; `doEnroll` calls `refreshUser()` after success; purchase modal shows price/balance/after-purchase with insufficient-credit guard
+   - `Layout.tsx`: Added yellow Credits chip in account dropdown (below role badge) showing `user.balance.toLocaleString()`
+   - `App.tsx`: `ServerPage` now wraps `AIServerConnect` in `<Layout>`
+   - `AIServerConnect.tsx`: Removed custom header, `onBack` prop, LanguageSwitcher/ThemeSwitcher imports; content uses `min-h-[calc(100vh-64px)]`
+   - `i18n vi+en course.ts`: Added `purchaseTitle`, `yourBalance`, `afterPurchase`, `insufficientCredits`, `confirmPurchase`, `cancelPurchase`
 
 1. **2026-02-23** - Storage Cleanup: all-files view toggle + orphaned checker fixes; ProfileViewPage
    - `CloudAdminTab.tsx` — `StorageCleanupTab`:

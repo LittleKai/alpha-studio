@@ -78,6 +78,12 @@ const levelKeys: Record<string, string> = {
     'advanced': 'courseCatalog.levels.advanced'
 };
 
+const levelBadgeClass: Record<string, string> = {
+    'beginner': 'bg-green-500/15 border-green-500/40 text-green-400',
+    'intermediate': 'bg-orange-500/15 border-orange-500/40 text-orange-400',
+    'advanced': 'bg-red-500/15 border-red-500/40 text-red-400'
+};
+
 const CoursePage: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
     const navigate = useNavigate();
@@ -86,6 +92,8 @@ const CoursePage: React.FC = () => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const youtubePlayerRef = useRef<YTPlayer | null>(null);
     const youtubeContainerRef = useRef<HTMLDivElement>(null);
+    const gracePeriodActiveRef = useRef(false);
+    const gracePeriodTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     const [ytApiReady, setYtApiReady] = useState(false);
     const [ytPlayerReady, setYtPlayerReady] = useState(false);
 
@@ -257,6 +265,17 @@ const CoursePage: React.FC = () => {
         lastSavedPositionRef.current = -1;
     }, [selectedLessonId]);
 
+    // Grace period: when switching to a lesson with saved position, block saves for 3 min until user clicks resume
+    useEffect(() => {
+        if (gracePeriodTimerRef.current) {
+            clearTimeout(gracePeriodTimerRef.current);
+            gracePeriodTimerRef.current = null;
+        }
+        // currentLessonLastPosition is fresh from this render (useMemo recalculated with new selectedLessonId)
+        gracePeriodActiveRef.current = currentLessonLastPosition > 5;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selectedLessonId]);
+
     // Resolve B2 presigned URL when lesson changes (B2 bucket is private)
     useEffect(() => {
         const rawUrl = selectedLesson?.videoUrl;
@@ -319,6 +338,7 @@ const CoursePage: React.FC = () => {
     useEffect(() => {
         saveVideoProgressRef.current = async () => {
             if (!course || !isEnrolled || !selectedLessonId) return;
+            if (gracePeriodActiveRef.current) return; // don't save during 3-min grace period
             let pos = 0;
             const url = selectedLesson?.videoUrl || '';
             if (url.includes('youtube') || url.includes('youtu.be')) {
@@ -395,11 +415,19 @@ const CoursePage: React.FC = () => {
                                     ytProgressIntervalRef.current = null;
                                 }
                             } else if (event.data === window.YT.PlayerState.PLAYING) {
+                                // Start 3-min grace period timer on first play if grace period is active
+                                if (gracePeriodActiveRef.current && !gracePeriodTimerRef.current) {
+                                    gracePeriodTimerRef.current = setTimeout(() => {
+                                        gracePeriodActiveRef.current = false;
+                                        gracePeriodTimerRef.current = null;
+                                        setHasResumed(true);
+                                    }, 180000);
+                                }
                                 // Start periodic save when playing
                                 if (!ytProgressIntervalRef.current) {
                                     ytProgressIntervalRef.current = setInterval(() => {
                                         saveVideoProgressRef.current();
-                                    }, 10000);
+                                    }, 60000);
                                 }
                             } else if (event.data === window.YT.PlayerState.PAUSED) {
                                 // Stop interval and save immediately on pause
@@ -466,8 +494,34 @@ const CoursePage: React.FC = () => {
         return prog?.lastPosition || 0;
     }, [enrollmentProgress, selectedLessonId]);
 
+    const handleNativeVideoPlay = useCallback(() => {
+        if (gracePeriodActiveRef.current && !gracePeriodTimerRef.current) {
+            gracePeriodTimerRef.current = setTimeout(() => {
+                gracePeriodActiveRef.current = false;
+                gracePeriodTimerRef.current = null;
+                setHasResumed(true);
+            }, 180000);
+        }
+    }, []);
+
+    const handlePlayPreview = useCallback(() => {
+        if (!course?.modules?.length) return;
+        const firstModule = course.modules[0];
+        if (!firstModule.lessons?.length) return;
+        setSelectedModuleId(firstModule.moduleId);
+        setSelectedLessonId(firstModule.lessons[0].lessonId);
+    }, [course]);
+
+    const [hasResumed, setHasResumed] = useState(false);
+
     const handleResumeVideo = useCallback(() => {
         if (currentLessonLastPosition <= 0) return;
+        // End grace period immediately so saving resumes from this point
+        if (gracePeriodTimerRef.current) {
+            clearTimeout(gracePeriodTimerRef.current);
+            gracePeriodTimerRef.current = null;
+        }
+        gracePeriodActiveRef.current = false;
         const isYt = selectedLesson?.videoUrl?.includes('youtube') || selectedLesson?.videoUrl?.includes('youtu.be');
         if (isYt && youtubePlayerRef.current && ytPlayerReady) {
             youtubePlayerRef.current.seekTo(currentLessonLastPosition, true);
@@ -476,6 +530,7 @@ const CoursePage: React.FC = () => {
             videoRef.current.currentTime = currentLessonLastPosition;
             videoRef.current.play().catch(() => {});
         }
+        setHasResumed(true);
     }, [currentLessonLastPosition, selectedLesson, ytPlayerReady]);
 
     // Fetch reviews
@@ -559,6 +614,7 @@ const CoursePage: React.FC = () => {
 
         setSelectedModuleId(moduleId);
         setSelectedLessonId(lessonId);
+        setHasResumed(false);
 
         // Update current lesson in backend (only for enrolled users)
         if (isEnrolled && course) {
@@ -592,14 +648,14 @@ const CoursePage: React.FC = () => {
     // Track last time we saved progress (avoid saving too frequently)
     const lastSavedPositionRef = useRef<number>(-1);
 
-    // Handle video progress — save every ~10 seconds of actual playback
+    // Handle video progress — save every ~60 seconds of actual playback
     const handleVideoTimeUpdate = async () => {
         if (!videoRef.current || !course || !selectedLessonId) return;
 
         const lastPosition = Math.floor(videoRef.current.currentTime);
 
-        // Save only when position advanced at least 5s from last save
-        if (lastPosition - lastSavedPositionRef.current < 5) return;
+        // Save only when position advanced at least 60s from last save
+        if (lastPosition - lastSavedPositionRef.current < 60) return;
         lastSavedPositionRef.current = lastPosition;
 
         try {
@@ -755,6 +811,7 @@ const CoursePage: React.FC = () => {
                                         preload="metadata"
                                         className="w-full h-full object-contain relative z-10"
                                         onTimeUpdate={handleVideoTimeUpdate}
+                                        onPlay={handleNativeVideoPlay}
                                         onPause={() => { saveVideoProgressRef.current(); }}
                                         onEnded={handleVideoEnded}
                                         onError={(e) => {
@@ -821,7 +878,7 @@ const CoursePage: React.FC = () => {
                                 {!isEnrolled && (
                                     <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
                                         <button
-                                            onClick={handleEnroll}
+                                            onClick={handlePlayPreview}
                                             className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center hover:scale-110 transition-transform"
                                         >
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-white" viewBox="0 0 24 24" fill="currentColor">
@@ -865,7 +922,7 @@ const CoursePage: React.FC = () => {
                                         >
                                             +10s
                                         </button>
-                                        {isEnrolled && currentLessonLastPosition > 5 && (
+                                        {isEnrolled && currentLessonLastPosition > 5 && !hasResumed && (
                                             <button
                                                 onClick={handleResumeVideo}
                                                 className="px-3 py-1.5 bg-[var(--accent-primary)] hover:opacity-90 rounded-lg text-xs font-semibold text-[var(--text-on-accent)] transition-opacity flex items-center gap-1.5 shadow-sm"
@@ -1255,49 +1312,46 @@ const CoursePage: React.FC = () => {
                             </div>
                         )}
 
-                        {/* Price */}
-                        <div className="flex justify-between items-center mb-4">
-                            <div>
-                                {course.discount > 0 ? (
-                                    <div className="flex items-center gap-2">
-                                        <span className="text-2xl font-bold text-[var(--accent-primary)]">{formatPrice(course.finalPrice)}</span>
-                                        <span className="text-sm text-[var(--text-tertiary)] line-through">{formatPrice(course.price)}</span>
-                                    </div>
-                                ) : (
-                                    <span className="text-2xl font-bold text-[var(--accent-primary)]">{formatPrice(course.price)}</span>
-                                )}
+                        {/* Course Title + Level inline */}
+                        <div className="mb-4">
+                            <div className="flex items-start gap-2 flex-wrap">
+                                <h2 className="text-lg font-bold text-[var(--accent-primary)] leading-tight">{getLocalizedText(course.title)}</h2>
+                                <span className={`flex-shrink-0 mt-0.5 px-2 py-0.5 text-xs font-bold rounded border ${levelBadgeClass[course.level] || levelBadgeClass['beginner']}`}>
+                                    {t(levelKeys[course.level] || 'courseCatalog.levels.beginner')}
+                                </span>
                             </div>
-                            <span className="px-2 py-1 text-xs font-bold bg-[var(--bg-secondary)] rounded border border-[var(--border-primary)]">
-                                {t(levelKeys[course.level] || 'courseCatalog.levels.beginner')}
-                            </span>
                         </div>
 
-                        {/* Enroll / Continue Button */}
-                        {isEnrolled ? (
-                            <div className="space-y-3">
-                                <div className="p-3 bg-[var(--bg-secondary)] rounded-xl">
-                                    <div className="flex items-center justify-between mb-2">
-                                        <span className="text-sm text-[var(--text-secondary)]">{t('course.progress')}</span>
-                                        <span className="font-bold text-[var(--accent-primary)]">{enrollmentProgress?.progress || 0}%</span>
-                                    </div>
-                                    <div className="w-full h-2 bg-[var(--bg-tertiary)] rounded-full overflow-hidden">
-                                        <div
-                                            className="h-full bg-[var(--accent-primary)] rounded-full transition-all"
-                                            style={{ width: `${enrollmentProgress?.progress || 0}%` }}
-                                        />
-                                    </div>
+                        {/* Progress (enrolled only) */}
+                        {isEnrolled && (
+                            <div className="p-3 bg-[var(--bg-secondary)] rounded-xl mb-4">
+                                <div className="flex items-center justify-between mb-2">
+                                    <span className="text-sm text-[var(--text-secondary)]">{t('course.progress')}</span>
+                                    <span className="font-bold text-[var(--accent-primary)]">{enrollmentProgress?.progress || 0}%</span>
                                 </div>
-                                <button
-                                    onClick={() => selectedLesson && handleSelectLesson(selectedModuleId, selectedLessonId)}
-                                    className="w-full py-3 rounded-xl bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-[var(--text-on-accent)] font-bold shadow-lg shadow-[var(--accent-shadow)] hover:scale-105 transition-transform flex items-center justify-center gap-2"
-                                >
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                                    </svg>
-                                    {t('course.continue')}
-                                </button>
+                                <div className="w-full h-2 bg-[var(--bg-tertiary)] rounded-full overflow-hidden">
+                                    <div
+                                        className="h-full bg-[var(--accent-primary)] rounded-full transition-all"
+                                        style={{ width: `${enrollmentProgress?.progress || 0}%` }}
+                                    />
+                                </div>
                             </div>
-                        ) : (
+                        )}
+
+                        {/* Price (shown where button was for enrolled; before enroll button for non-enrolled) */}
+                        <div className="mb-4">
+                            {course.discount > 0 ? (
+                                <div className="flex items-center gap-2">
+                                    <span className="text-2xl font-bold text-[var(--accent-primary)]">{formatPrice(course.finalPrice)}</span>
+                                    <span className="text-sm text-[var(--text-tertiary)] line-through">{formatPrice(course.price)}</span>
+                                </div>
+                            ) : (
+                                <span className="text-2xl font-bold text-[var(--accent-primary)]">{formatPrice(course.price)}</span>
+                            )}
+                        </div>
+
+                        {/* Enroll Button (non-enrolled only) */}
+                        {!isEnrolled && (
                             <button
                                 onClick={handleEnroll}
                                 disabled={enrolling}

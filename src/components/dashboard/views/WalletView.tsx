@@ -24,7 +24,7 @@ const PackageIcons: Record<string, JSX.Element> = {
 
 // Credit packages with display info
 const CREDIT_PACKAGES: (CreditPackage & { priceLabel: string; color: string })[] = [
-  { id: 'pkg0', credits: 10, price: 10000, label: '10 Credits', priceLabel: '10.000đ', color: 'from-gray-500 to-slate-500' },
+  { id: 'pkg0', credits: 500, price: 50000, label: '500 Credits', priceLabel: '50.000đ', color: 'from-gray-500 to-slate-500' },
   { id: 'pkg1', credits: 100, price: 100000, label: '100 Credits', priceLabel: '100.000đ', color: 'from-blue-500 to-cyan-500' },
   { id: 'pkg2', credits: 210, price: 200000, label: '210 Credits', priceLabel: '200.000đ', bonus: '+5%', color: 'from-green-500 to-emerald-500' },
   { id: 'pkg3', credits: 550, price: 500000, label: '550 Credits', priceLabel: '500.000đ', bonus: '+10%', popular: true, color: 'from-purple-500 to-pink-500' },

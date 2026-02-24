@@ -479,7 +479,17 @@ const LandingPage: React.FC = () => {
                                                 <span>⏱ {course.duration} {t('landing.course.hours')}</span>
                                                 <span>📚 {course.totalLessons} {t('landing.course.lessons')}</span>
                                             </div>
-                                            <span>👥 {course.enrolledCount} {t('landing.courses.enrolled')}</span>
+                                            <div className="flex items-center gap-3">
+                                                {course.rating > 0 ? (
+                                                    <span className="flex items-center gap-1 text-yellow-400">
+                                                        ⭐ {course.rating.toFixed(1)}
+                                                        <span className="text-[var(--text-tertiary)]">({course.reviewCount})</span>
+                                                    </span>
+                                                ) : (
+                                                    <span className="text-[var(--text-tertiary)]">⭐ —</span>
+                                                )}
+                                                <span>👥 {course.enrolledCount} {t('landing.courses.enrolled')}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </Link>
