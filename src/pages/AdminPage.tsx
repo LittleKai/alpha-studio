@@ -53,12 +53,16 @@ export default function AdminPage() {
         );
     }
 
+    const isMod = user.role === 'mod';
+
     const topTabs = [
         { id: 'about' as TopTabType, label: t('admin.tabs.about') },
         { id: 'services' as TopTabType, label: t('admin.tabs.services') },
-        { id: 'community' as TopTabType, label: t('admin.tabs.community') },
-        { id: 'transactions' as TopTabType, label: t('admin.tabs.transactions') },
-        { id: 'cloud' as TopTabType, label: t('admin.tabs.cloud') },
+        ...(!isMod ? [
+            { id: 'community' as TopTabType, label: t('admin.tabs.community') },
+            { id: 'transactions' as TopTabType, label: t('admin.tabs.transactions') },
+            { id: 'cloud' as TopTabType, label: t('admin.tabs.cloud') },
+        ] : []),
     ];
 
     const communitySubTabs = [
