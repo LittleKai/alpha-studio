@@ -1,16 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from '../../i18n/context';
 import { connectToCloud, disconnectFromCloud, getActiveSession, type CloudSession } from '../../services/cloudService';
-import LanguageSwitcher from '../ui/LanguageSwitcher';
-import ThemeSwitcher from '../ui/ThemeSwitcher';
-
-interface AIServerConnectProps {
-  onBack: () => void;
-}
 
 type ConnectionState = 'idle' | 'connecting' | 'connected' | 'error';
 
-export default function AIServerConnect({ onBack }: AIServerConnectProps) {
+export default function AIServerConnect() {
   const { t } = useTranslation();
   const [state, setState] = useState<ConnectionState>('idle');
   const [session, setSession] = useState<CloudSession | null>(null);
@@ -80,60 +74,22 @@ export default function AIServerConnect({ onBack }: AIServerConnectProps) {
     return new Date(session.startedAt).toLocaleString();
   };
 
-  // Header (shared across all states)
-  const header = (
-    <header className="sticky top-0 z-30 bg-[var(--bg-card-alpha)] backdrop-blur-lg border-b border-[var(--border-primary)] px-6 py-4">
-      <div className="container mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <button
-            onClick={onBack}
-            className="p-2 rounded-full hover:bg-[var(--bg-secondary)] transition-colors text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-          </button>
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--accent-primary)] to-blue-600 flex items-center justify-center">
-              <span className="text-white font-bold text-sm">A</span>
-            </div>
-            <span className="text-lg font-bold">{t('server.title')}</span>
-          </div>
-        </div>
-        <div className="flex items-center gap-4">
-          {state === 'connected' && (
-            <div className="flex items-center gap-2 text-green-500 text-sm font-medium">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              {t('server.connected.title')}
-            </div>
-          )}
-          <LanguageSwitcher />
-          <ThemeSwitcher />
-        </div>
-      </div>
-    </header>
-  );
-
   if (loading) {
     return (
-      <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] flex flex-col">
-        {header}
-        <div className="flex-1 flex items-center justify-center">
-          <div className="flex flex-col items-center gap-4">
-            <div className="w-12 h-12 border-4 border-[var(--accent-primary)]/30 border-t-[var(--accent-primary)] rounded-full animate-spin"></div>
-            <p className="text-[var(--text-secondary)]">{t('server.loading')}</p>
-          </div>
+      <div className="flex items-center justify-center py-20 text-[var(--text-primary)]">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-[var(--accent-primary)]/30 border-t-[var(--accent-primary)] rounded-full animate-spin"></div>
+          <p className="text-[var(--text-secondary)]">{t('server.loading')}</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] flex flex-col relative overflow-hidden">
-      <div className="absolute top-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,212,255,0.05)_0,transparent_70%)]"></div>
-      {header}
+    <div className="relative overflow-hidden text-[var(--text-primary)]">
+      <div className="absolute top-0 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,212,255,0.05)_0,transparent_70%)] pointer-events-none"></div>
 
-      <div className="flex-1 flex items-center justify-center p-6">
+      <div className="min-h-[calc(100vh-64px)] flex items-center justify-center p-6">
         <div className="max-w-md w-full text-center space-y-8 animate-fade-in relative z-10">
 
           {/* IDLE STATE */}

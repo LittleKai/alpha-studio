@@ -10,6 +10,7 @@ interface CourseCardProps {
     onUnpublish: (id: string) => void;
     onArchive: (id: string) => void;
     canDelete?: boolean;
+    canArchive?: boolean;
 }
 
 const CourseCard: React.FC<CourseCardProps> = ({
@@ -19,7 +20,8 @@ const CourseCard: React.FC<CourseCardProps> = ({
     onPublish,
     onUnpublish,
     onArchive,
-    canDelete = true
+    canDelete = true,
+    canArchive = true
 }) => {
     const { t, language } = useTranslation();
 
@@ -203,7 +205,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
                         </button>
                     )}
 
-                    {(course.status !== 'archived' || canDelete) && (
+                    {((course.status !== 'archived' && canArchive) || canDelete) && (
                         <div className="relative group/menu">
                             <button className="p-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] rounded-lg transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -211,7 +213,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
                                 </svg>
                             </button>
                             <div className="absolute right-0 bottom-full mb-2 w-40 py-1 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl shadow-xl opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all z-10">
-                                {course.status !== 'archived' && (
+                                {course.status !== 'archived' && canArchive && (
                                     <button
                                         onClick={() => onArchive(course._id)}
                                         className="w-full text-left px-4 py-2 text-sm text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] transition-colors"

@@ -82,7 +82,7 @@ const CoursePage: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
     const navigate = useNavigate();
     const { t, language } = useTranslation();
-    const { isAuthenticated, token } = useAuth();
+    const { isAuthenticated, token, user, refreshUser } = useAuth();
     const videoRef = useRef<HTMLVideoElement>(null);
     const youtubePlayerRef = useRef<YTPlayer | null>(null);
     const youtubeContainerRef = useRef<HTMLDivElement>(null);
@@ -98,6 +98,7 @@ const CoursePage: React.FC = () => {
     const [isEnrolled, setIsEnrolled] = useState(false);
     const [enrollmentProgress, setEnrollmentProgress] = useState<EnrollmentProgress | null>(null);
     const [enrolling, setEnrolling] = useState(false);
+    const [showPurchaseModal, setShowPurchaseModal] = useState(false);
 
     // Lesson state
     const [selectedModuleId, setSelectedModuleId] = useState<string>('');
@@ -506,22 +507,30 @@ const CoursePage: React.FC = () => {
 
     // Handle enrollment
     const handleEnroll = async () => {
-        if (!isAuthenticated) {
-            // Trigger login modal
+        if (!isAuthenticated) return;
+        if (!course) return;
+
+        // Show purchase confirmation for paid courses
+        if (course.finalPrice > 0) {
+            setShowPurchaseModal(true);
             return;
         }
 
-        if (!course) return;
+        await doEnroll();
+    };
 
+    const doEnroll = async () => {
+        if (!course) return;
         try {
             setEnrolling(true);
+            setShowPurchaseModal(false);
             await enrollInCourse(course._id);
             setIsEnrolled(true);
+            await refreshUser();
 
             const progress = await getEnrollmentProgress(course._id);
             setEnrollmentProgress(progress);
 
-            // Set first lesson
             if (course.modules && course.modules.length > 0) {
                 const firstModule = course.modules[0];
                 if (firstModule.lessons && firstModule.lessons.length > 0) {
@@ -1475,6 +1484,53 @@ const CoursePage: React.FC = () => {
                                 className="w-full py-2 bg-[var(--accent-primary)] text-[var(--text-on-accent)] rounded-xl font-medium hover:opacity-90 transition-opacity"
                             >
                                 {t('course.writeReview')}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Purchase Confirmation Modal */}
+            {showPurchaseModal && course && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+                    <div className="glass-card rounded-2xl p-6 max-w-sm w-full">
+                        <h3 className="text-xl font-bold text-[var(--text-primary)] mb-4">{t('course.purchaseTitle')}</h3>
+                        <div className="mb-5 space-y-3">
+                            <div className="flex justify-between items-center">
+                                <span className="text-sm text-[var(--text-secondary)]">{t('course.buyNow')}</span>
+                                <span className="font-bold text-[var(--accent-primary)]">{course.finalPrice.toLocaleString()} Credits</span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                                <span className="text-sm text-[var(--text-secondary)]">{t('course.yourBalance')}</span>
+                                <span className={`font-bold ${(user?.balance || 0) >= course.finalPrice ? 'text-green-400' : 'text-red-400'}`}>
+                                    {(user?.balance || 0).toLocaleString()} Credits
+                                </span>
+                            </div>
+                            <div className="border-t border-[var(--border-primary)] pt-3 flex justify-between items-center">
+                                <span className="text-sm text-[var(--text-secondary)]">{t('course.afterPurchase')}</span>
+                                <span className="font-bold text-[var(--text-primary)]">
+                                    {((user?.balance || 0) - course.finalPrice).toLocaleString()} Credits
+                                </span>
+                            </div>
+                            {(user?.balance || 0) < course.finalPrice && (
+                                <p className="text-sm text-red-400 bg-red-500/10 rounded-xl p-3">{t('course.insufficientCredits')}</p>
+                            )}
+                        </div>
+                        <div className="flex gap-3">
+                            <button
+                                onClick={() => setShowPurchaseModal(false)}
+                                className="flex-1 py-2.5 rounded-xl bg-[var(--bg-secondary)] text-[var(--text-primary)] font-medium hover:bg-[var(--bg-tertiary)] transition-colors"
+                            >
+                                {t('course.cancelPurchase')}
+                            </button>
+                            <button
+                                onClick={doEnroll}
+                                disabled={enrolling || (user?.balance || 0) < course.finalPrice}
+                                className="flex-1 py-2.5 rounded-xl bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-bold hover:opacity-90 transition-opacity disabled:opacity-50"
+                            >
+                                {enrolling ? (
+                                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mx-auto" />
+                                ) : t('course.confirmPurchase')}
                             </button>
                         </div>
                     </div>

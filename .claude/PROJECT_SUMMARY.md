@@ -1,5 +1,5 @@
 # Project Summary
-**Last Updated:** 2026-02-23 (Featured Students: API-driven admin tab + landing page; UserProfilePage at /users/:id; ProfileViewPage; Cover Image rename)
+**Last Updated:** 2026-02-24 (Mod permissions; Course purchase with credits; Credit balance in header; /server full header; Localized bio fix; withFallback for all LocalizedString fields)
 **Updated By:** Claude Code
 
 ---
@@ -234,7 +234,7 @@ App.tsx
 | Theme-aware Search | ✅ Complete | WorkflowDashboard.tsx | CSS variable-based theming |
 | Jobs CRUD | ✅ Complete | JobsView.tsx, JobManagementModal.tsx | Full job management with admin controls |
 | Partners CRUD | ✅ Complete | PartnersView.tsx, PartnerEditModal.tsx | Full partner management with edit/publish |
-| Course Management | ✅ Complete | CourseManagement.tsx | Admin course route at /admin/courses |
+| Course Management | ✅ Complete | CourseManagement.tsx, CourseCard.tsx | Admin course route at /admin/courses; mod: no delete/archive |
 | Profile Edit | ✅ Complete | ProfilePage.tsx, ProfileEditModal.tsx | Full profile editing with avatar, bio, skills, works, attachments |
 | Image Compression | ✅ Complete | imageCompression.ts, cloudinaryService.ts | Auto-compress based on upload type (avatar, featured_work, logo, attachment) |
 | Modular i18n | ✅ Complete | i18n/locales/* | Split translations into 10 modules per language |
@@ -243,7 +243,7 @@ App.tsx
 | Payment System | ✅ Complete | paymentService.ts | Create, confirm, cancel payments with Casso webhook |
 | Share Prompts | ✅ Complete | PromptsView.tsx, PromptCard.tsx, PromptFormModal.tsx, PromptDetailModal.tsx, promptService.ts | Multi-prompt support, like, bookmark, rate, comments |
 | Resource Hub | ✅ Complete | ResourcesView.tsx, ResourceCard.tsx, ResourceFormModal.tsx, ResourceDetailModal.tsx, resourceService.ts | File upload (50MB), download, like, bookmark, rate |
-| Course Enrollment | ✅ Complete | CoursePage.tsx, courseService.ts | Enroll, track progress, resume learning |
+| Course Enrollment | ✅ Complete | CoursePage.tsx, courseService.ts | Enroll, track progress, resume learning; paid courses deduct credits with confirmation modal |
 | My Courses Page | ✅ Complete | MyCoursesPage.tsx | Enrolled courses list with progress, filters |
 | Video Player | ✅ Complete | CoursePage.tsx | Native video + YouTube IFrame API, skip ±10s |
 | Lesson Progress | ✅ Complete | CoursePage.tsx | Mark complete, auto-track video progress |

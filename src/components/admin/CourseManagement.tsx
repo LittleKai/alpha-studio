@@ -361,6 +361,7 @@ const CourseManagement: React.FC<CourseManagementProps> = ({ onBack }) => {
                                     onUnpublish={handleUnpublish}
                                     onArchive={handleArchive}
                                     canDelete={!isMod}
+                                    canArchive={!isMod}
                                 />
                             ))}
                         </div>

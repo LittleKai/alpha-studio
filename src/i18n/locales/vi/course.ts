@@ -27,7 +27,13 @@ export default {
     instructor: "Giảng viên",
     instructors: "Giảng viên",
     addInstructor: "Thêm giảng viên",
-    resumeFrom: "Tiếp tục từ"
+    resumeFrom: "Tiếp tục từ",
+    purchaseTitle: "Xác nhận mua khóa học",
+    yourBalance: "Số dư hiện tại",
+    afterPurchase: "Còn lại sau khi mua",
+    insufficientCredits: "Không đủ Credits. Vui lòng nạp thêm.",
+    confirmPurchase: "Xác nhận mua",
+    cancelPurchase: "Hủy"
   },
   myCourses: {
     title: "Khóa học của tôi",

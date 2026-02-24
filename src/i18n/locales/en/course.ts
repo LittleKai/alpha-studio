@@ -27,7 +27,13 @@ export default {
     instructor: "Instructor",
     instructors: "Instructors",
     addInstructor: "Add Instructor",
-    resumeFrom: "Resume from"
+    resumeFrom: "Resume from",
+    purchaseTitle: "Confirm Purchase",
+    yourBalance: "Your balance",
+    afterPurchase: "Balance after purchase",
+    insufficientCredits: "Insufficient Credits. Please top up.",
+    confirmPurchase: "Confirm Purchase",
+    cancelPurchase: "Cancel"
   },
   myCourses: {
     title: "My Courses",
