@@ -9,6 +9,7 @@ interface CourseCardProps {
     onPublish: (id: string) => void;
     onUnpublish: (id: string) => void;
     onArchive: (id: string) => void;
+    canDelete?: boolean;
 }
 
 const CourseCard: React.FC<CourseCardProps> = ({
@@ -17,7 +18,8 @@ const CourseCard: React.FC<CourseCardProps> = ({
     onDelete,
     onPublish,
     onUnpublish,
-    onArchive
+    onArchive,
+    canDelete = true
 }) => {
     const { t, language } = useTranslation();
 
@@ -201,29 +203,33 @@ const CourseCard: React.FC<CourseCardProps> = ({
                         </button>
                     )}
 
-                    <div className="relative group/menu">
-                        <button className="p-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] rounded-lg transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
-                            </svg>
-                        </button>
-                        <div className="absolute right-0 bottom-full mb-2 w-40 py-1 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl shadow-xl opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all z-10">
-                            {course.status !== 'archived' && (
-                                <button
-                                    onClick={() => onArchive(course._id)}
-                                    className="w-full text-left px-4 py-2 text-sm text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] transition-colors"
-                                >
-                                    {t('admin.courses.archive')}
-                                </button>
-                            )}
-                            <button
-                                onClick={() => onDelete(course._id)}
-                                className="w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-red-500/10 transition-colors"
-                            >
-                                {t('admin.courses.deleteCourse')}
+                    {(course.status !== 'archived' || canDelete) && (
+                        <div className="relative group/menu">
+                            <button className="p-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] rounded-lg transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                                </svg>
                             </button>
+                            <div className="absolute right-0 bottom-full mb-2 w-40 py-1 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl shadow-xl opacity-0 invisible group-hover/menu:opacity-100 group-hover/menu:visible transition-all z-10">
+                                {course.status !== 'archived' && (
+                                    <button
+                                        onClick={() => onArchive(course._id)}
+                                        className="w-full text-left px-4 py-2 text-sm text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] transition-colors"
+                                    >
+                                        {t('admin.courses.archive')}
+                                    </button>
+                                )}
+                                {canDelete && (
+                                    <button
+                                        onClick={() => onDelete(course._id)}
+                                        className="w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-red-500/10 transition-colors"
+                                    >
+                                        {t('admin.courses.deleteCourse')}
+                                    </button>
+                                )}
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </div>
             </div>
         </div>

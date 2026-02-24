@@ -187,8 +187,10 @@ const CourseManagement: React.FC<CourseManagementProps> = ({ onBack }) => {
         setPagination(prev => ({ ...prev, page: newPage }));
     }, []);
 
-    // Check admin access
-    if (user?.role !== 'admin') {
+    const isMod = user?.role === 'mod';
+
+    // Check admin/mod access
+    if (user?.role !== 'admin' && user?.role !== 'mod') {
         return (
             <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)]">
                 <div className="text-center">
@@ -358,6 +360,7 @@ const CourseManagement: React.FC<CourseManagementProps> = ({ onBack }) => {
                                     onPublish={handlePublish}
                                     onUnpublish={handleUnpublish}
                                     onArchive={handleArchive}
+                                    canDelete={!isMod}
                                 />
                             ))}
                         </div>
