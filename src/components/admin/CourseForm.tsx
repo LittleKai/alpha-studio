@@ -170,6 +170,12 @@ const CourseForm: React.FC<CourseFormProps> = ({ course, onClose, onSuccess }) =
         setLearningOutcomes(learningOutcomes.filter((_, i) => i !== index));
     }, [learningOutcomes]);
 
+    const withFallback = (vi: string, en: string) => {
+        const v = vi.trim();
+        const e = en.trim();
+        return { vi: v || e, en: e || v };
+    };
+
     const handleSubmit = useCallback(async (status: 'draft' | 'published') => {
         // Validation
         if (!titleVi.trim() || !titleEn.trim()) {
@@ -188,7 +194,7 @@ const CourseForm: React.FC<CourseFormProps> = ({ course, onClose, onSuccess }) =
         try {
             const data: CourseInput = {
                 title: { vi: titleVi.trim(), en: titleEn.trim() },
-                description: { vi: descriptionVi.trim(), en: descriptionEn.trim() },
+                description: withFallback(descriptionVi, descriptionEn),
                 category,
                 thumbnail,
                 duration,
@@ -199,19 +205,28 @@ const CourseForm: React.FC<CourseFormProps> = ({ course, onClose, onSuccess }) =
                 instructor: instructors[0] ? {
                     name: instructors[0].name,
                     avatar: instructors[0].avatar,
-                    bio: { vi: instructors[0].bioVi, en: instructors[0].bioEn } as LocalizedString
+                    bio: withFallback(instructors[0].bioVi, instructors[0].bioEn) as LocalizedString
                 } : undefined,
                 instructors: instructors
                     .filter(i => i.name.trim())
                     .map(i => ({
                         name: i.name,
                         avatar: i.avatar,
-                        bio: { vi: i.bioVi, en: i.bioEn } as LocalizedString
+                        bio: withFallback(i.bioVi, i.bioEn) as LocalizedString
                     })),
-                modules,
+                modules: modules.map(m => ({
+                    ...m,
+                    title: withFallback(m.title.vi, m.title.en),
+                    lessons: m.lessons.map(l => ({
+                        ...l,
+                        title: withFallback(l.title.vi, l.title.en),
+                    }))
+                })),
                 tags,
                 prerequisites,
-                learningOutcomes: learningOutcomes.filter(lo => lo.vi || lo.en)
+                learningOutcomes: learningOutcomes
+                    .filter(lo => lo.vi || lo.en)
+                    .map(lo => withFallback(lo.vi, lo.en))
             };
 
             if (isEditing && course) {
