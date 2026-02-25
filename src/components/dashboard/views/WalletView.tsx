@@ -6,7 +6,6 @@ import {
   cancelTransaction,
   confirmPayment,
   getPaymentHistory,
-  formatCurrency,
   formatDate,
   type CreditPackage,
   type Transaction,
