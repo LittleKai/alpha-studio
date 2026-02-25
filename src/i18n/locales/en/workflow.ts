@@ -299,7 +299,11 @@ export default {
       errorClose: "Close",
       balanceDesc: "Use Credits to rent high-speed GPU servers and enroll in advanced courses.",
       autoCreditNote: "Enter the exact transfer note to auto-receive {credits} Credits",
-      popular: "Popular"
+      txContent: "Description",
+      txTopup: "Top-up",
+      txCourse: "Course Purchase",
+      txManual: "Manual Top-up (Admin)",
+      txDeduction: "Credit Deduction"
     },
     partners: {
       title: "Partner Network",

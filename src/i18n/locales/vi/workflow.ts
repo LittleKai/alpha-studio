@@ -299,7 +299,11 @@ export default {
       errorClose: "Đóng",
       balanceDesc: "Sử dụng Credits để thuê máy chủ GPU tốc độ cao, đăng ký khóa học chuyên sâu.",
       autoCreditNote: "Nhập đúng nội dung CK để được cộng {credits} Credits tự động",
-      popular: "Phổ biến"
+      txContent: "Nội dung",
+      txTopup: "Nạp tiền",
+      txCourse: "Mua khóa học",
+      txManual: "Nạp thủ công (Admin)",
+      txDeduction: "Trừ Credits"
     },
     partners: {
       title: "Mạng lưới đối tác",

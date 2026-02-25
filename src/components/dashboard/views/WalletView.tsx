@@ -222,6 +222,21 @@ export default function WalletView() {
     }
   };
 
+  // Derive a human-readable label from the transaction code / description
+  const getTransactionLabel = (tx: Transaction): string => {
+    const code = tx.transactionCode;
+    if (code.startsWith('COURSE-')) return t('workflow.wallet.txCourse');
+    if (code.startsWith('MANUAL') || code.startsWith('ADJ')) return t('workflow.wallet.txManual');
+    if (tx.credits < 0) return t('workflow.wallet.txDeduction');
+    return t('workflow.wallet.txTopup');
+  };
+
+  // Truncate long transaction code for display
+  const truncateTxCode = (code: string): string => {
+    if (code.length <= 24) return code;
+    return code.slice(0, 10) + '...' + code.slice(-8);
+  };
+
   const getStatusText = (status: string) => {
     switch (status) {
       case 'completed': return t('workflow.wallet.statusCompleted');
@@ -360,20 +375,28 @@ export default function WalletView() {
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="bg-[var(--bg-secondary)] text-xs uppercase text-[var(--text-secondary)]">
-                  <th className="p-4">{t('workflow.wallet.colCode')}</th>
+                  <th className="p-4">{t('workflow.wallet.txContent')}</th>
                   <th className="p-4">{t('workflow.wallet.colTime')}</th>
-                  <th className="p-4 text-right">{t('workflow.wallet.colAmount')}</th>
                   <th className="p-4 text-right">Credits</th>
                   <th className="p-4 text-right">{t('workflow.wallet.colStatus')}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[var(--border-primary)]">
                 {paymentHistory.map(tx => (
-                  <tr key={tx._id} className="text-sm">
-                    <td className="p-4 text-[var(--text-secondary)] font-mono text-xs">{tx.transactionCode}</td>
-                    <td className="p-4 text-[var(--text-secondary)]">{formatDate(tx.createdAt)}</td>
-                    <td className="p-4 text-right font-bold text-[var(--text-primary)]">{formatCurrency(tx.amount)}</td>
-                    <td className="p-4 text-right font-bold text-green-500">+{tx.credits}</td>
+                  <tr key={tx._id} className="text-sm hover:bg-[var(--bg-secondary)]/50 transition-colors">
+                    <td className="p-4">
+                      <p className="font-semibold text-[var(--text-primary)]">{getTransactionLabel(tx)}</p>
+                      {tx.description ? (
+                        <p className="text-xs text-[var(--text-secondary)] mt-0.5">{tx.description}</p>
+                      ) : null}
+                      <p className="font-mono text-[10px] text-[var(--text-tertiary)] mt-0.5" title={tx.transactionCode}>
+                        {truncateTxCode(tx.transactionCode)}
+                      </p>
+                    </td>
+                    <td className="p-4 text-[var(--text-secondary)] whitespace-nowrap">{formatDate(tx.createdAt)}</td>
+                    <td className={`p-4 text-right font-bold tabular-nums ${tx.credits >= 0 ? 'text-green-500' : 'text-red-400'}`}>
+                      {tx.credits >= 0 ? `+${tx.credits}` : tx.credits}
+                    </td>
                     <td className="p-4 text-right">
                       <span className={`px-2 py-1 rounded text-xs font-bold uppercase ${getStatusBadge(tx.status)}`}>
                         {getStatusText(tx.status)}
