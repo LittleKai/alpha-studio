@@ -18,6 +18,7 @@ import {
     markReviewHelpful
 } from '../services/courseService';
 import { isB2Url, getB2SignedUrl } from '../services/b2StorageService';
+import Login from '../components/ui/Login';
 
 // Declare YouTube Player types
 declare global {
@@ -107,6 +108,7 @@ const CoursePage: React.FC = () => {
     const [enrollmentProgress, setEnrollmentProgress] = useState<EnrollmentProgress | null>(null);
     const [enrolling, setEnrolling] = useState(false);
     const [showPurchaseModal, setShowPurchaseModal] = useState(false);
+    const [showLoginDialog, setShowLoginDialog] = useState(false);
 
     // Lesson state
     const [selectedModuleId, setSelectedModuleId] = useState<string>('');
@@ -562,7 +564,10 @@ const CoursePage: React.FC = () => {
 
     // Handle enrollment
     const handleEnroll = async () => {
-        if (!isAuthenticated) return;
+        if (!isAuthenticated) {
+            setShowLoginDialog(true);
+            return;
+        }
         if (!course) return;
 
         // Show purchase confirmation for paid courses
@@ -1594,6 +1599,14 @@ const CoursePage: React.FC = () => {
                         </div>
                     </div>
                 </div>
+            )}
+
+            {/* Login Dialog */}
+            {showLoginDialog && (
+                <Login
+                    onLoginSuccess={() => setShowLoginDialog(false)}
+                    onClose={() => setShowLoginDialog(false)}
+                />
             )}
         </div>
     );
