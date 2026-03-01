@@ -1,5 +1,5 @@
 # Project Summary
-**Last Updated:** 2026-02-25 (Wallet standalone page at /wallet with Layout header; Credits chip → link to /wallet; Course insufficient credits with top-up link)
+**Last Updated:** 2026-02-28 (Studio model selector: Gemini 2.5 Flash Image "Nano Banana" vs Gemini 3 Pro Image "Nano Banana Pro"; model param added to editImage)
 **Updated By:** Claude Code
 
 ---
@@ -256,6 +256,8 @@ App.tsx
 | Credit Balance in Header | ✅ Complete | Layout.tsx | Credits chip (yellow) in account dropdown — now a clickable Link to /wallet |
 | /server Full Header | ✅ Complete | App.tsx, AIServerConnect.tsx | Uses Layout nav instead of custom header |
 | Wallet Standalone Page | ✅ Complete | WalletPage.tsx, App.tsx | Dedicated /wallet page with Layout header; Workflow sidebar navigates to /wallet |
+| Studio Auth + Daily Limit | ✅ Complete | StudioTool.tsx, studioService.ts, App.tsx | /studio public; login modal on Generate; 3 free uses/day tracked via backend; usage counter UI; admin/mod unlimited |
+| Studio Model Selector | ✅ Complete | StudioTool.tsx, geminiService.ts | Per-tool model selector: Flash "Nano Banana" (default) vs Pro "Nano Banana Pro"; state persists across tool switches |
 
 ---
 

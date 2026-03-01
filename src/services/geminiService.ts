@@ -5,6 +5,10 @@ const apiKey = (import.meta as any).env?.VITE_GEMINI_API_KEY || process.env.API_
 
 if (!apiKey) {
   console.warn("API_KEY environment variable is not set. AI features will not work.");
+} else {
+  // Log masked key to verify correct key is loaded after env change
+  const maskedKey = `${apiKey.slice(0, 8)}...${apiKey.slice(-4)}`;
+  console.log(`[GeminiService] Loaded API key: ${maskedKey} (length: ${apiKey.length})`);
 }
 
 const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
@@ -34,10 +38,28 @@ const handleApiError = (error: unknown): Promise<any> => {
   return Promise.reject(new Error("An unknown error occurred while communicating with the API."));
 };
 
+export type StudioModel = 'gemini-2.5-flash-image' | 'gemini-3.0-pro-image';
+
+export const STUDIO_MODELS: { id: StudioModel; nameKey: string; descKey: string; badge: string }[] = [
+  {
+    id: 'gemini-2.5-flash-image',
+    nameKey: 'studio.model.flashName',
+    descKey: 'studio.model.flashDesc',
+    badge: 'Nano Banana',
+  },
+  {
+    id: 'gemini-3.0-pro-image',
+    nameKey: 'studio.model.proName',
+    descKey: 'studio.model.proDesc',
+    badge: 'Nano Banana Pro',
+  },
+];
+
 export async function editImage(
   prompt: string,
   imageParts: { base64: string; mimeType: string }[],
-  maskBase64: string | null
+  maskBase64: string | null,
+  model: StudioModel = 'gemini-2.5-flash-image'
 ): Promise<GeneratedContent> {
   if (!ai) {
     return Promise.reject(new Error("API key not configured. Please set VITE_GEMINI_API_KEY in .env.local"));
@@ -80,13 +102,21 @@ export async function editImage(
     // Add the text prompt as the last part of the request.
     parts.push({ text: fullPrompt });
 
+    console.log(`[GeminiService] Calling model: ${model} | images: ${imageParts.length} | mask: ${!!maskBase64}`);
+
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash-image',
+      model,
       contents: { parts },
       config: {
         responseModalities: [Modality.IMAGE],
       },
     });
+
+    // Log token usage
+    const usage = response.usageMetadata;
+    if (usage) {
+      console.log(`[GeminiService] Token usage — prompt: ${usage.promptTokenCount ?? '?'} | candidates: ${usage.candidatesTokenCount ?? '?'} | total: ${usage.totalTokenCount ?? '?'}`);
+    }
 
     const result: GeneratedContent = { imageUrl: null, text: null };
     const responseParts = response.candidates?.[0]?.content?.parts;

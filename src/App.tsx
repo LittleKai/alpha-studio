@@ -237,15 +237,10 @@ const App: React.FC = () => {
                 <Route path="/services" element={<ServicesPageWrapper />} />
                 <Route path="/services/:slug" element={<ServicesDetailPageWrapper />} />
 
+                {/* Studio - public, auth enforced per-use inside component */}
+                <Route path="/studio" element={<StudioPage />} />
+
                 {/* Protected Routes (require login) */}
-                <Route
-                    path="/studio"
-                    element={
-                        <ProtectedRoute>
-                            <StudioPage />
-                        </ProtectedRoute>
-                    }
-                />
                 <Route
                     path="/workflow"
                     element={

@@ -96,6 +96,19 @@ export default {
     secondImageRequired: "Vui lòng tải ảnh thứ hai",
     minImagesRequired: "Vui lòng tải ít nhất 2 ảnh",
     step1Failed: "Bước 1 thất bại",
-    unknownError: "Đã xảy ra lỗi không xác định"
+    unknownError: "Đã xảy ra lỗi không xác định",
+    loginRequired: "Đăng nhập để sử dụng công cụ AI",
+    loginRequiredDesc: "Bạn cần đăng nhập để sử dụng các công cụ trong AI Studio",
+    dailyLimitReached: "Hết lượt miễn phí hôm nay",
+    dailyLimitDesc: "Bạn đã dùng hết 3 lần miễn phí hôm nay. Quay lại vào ngày mai!",
+    usageCounter: "Đã dùng {{used}}/{{limit}} lần hôm nay",
+    newTransformation: "Công cụ mới",
+    model: {
+      label: "Model AI",
+      flashName: "Gemini 2.5 Flash Image",
+      flashDesc: "Nhanh hơn, tiết kiệm lượt dùng",
+      proName: "Gemini 3 Pro Image",
+      proDesc: "Chất lượng cao hơn, tốn 3 lượt"
+    }
   }
 };

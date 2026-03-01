@@ -96,6 +96,19 @@ export default {
     secondImageRequired: "Please upload a second image",
     minImagesRequired: "Please upload at least 2 images",
     step1Failed: "Step 1 failed",
-    unknownError: "An unknown error occurred"
+    unknownError: "An unknown error occurred",
+    loginRequired: "Sign in to use AI tools",
+    loginRequiredDesc: "You need to sign in to use the tools in AI Studio",
+    dailyLimitReached: "Daily free limit reached",
+    dailyLimitDesc: "You've used your 3 free uses today. Come back tomorrow!",
+    usageCounter: "Used {{used}}/{{limit}} today",
+    newTransformation: "New Tool",
+    model: {
+      label: "AI Model",
+      flashName: "Gemini 2.5 Flash Image",
+      flashDesc: "Faster, uses 1 free use",
+      proName: "Gemini 3 Pro Image",
+      proDesc: "Higher quality, uses 3 free uses"
+    }
   }
 };

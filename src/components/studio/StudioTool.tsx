@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { editImage } from '../../services/geminiService';
 import type { GeneratedContent, Transformation } from '../../types';
 import { TRANSFORMATIONS } from '../../constants';
@@ -13,6 +13,12 @@ import UploaderBox from '../upload/UploaderBox';
 import MultiImageUploader from '../upload/MultiImageUploader';
 import MultiImageGridUploader from '../upload/MultiImageGridUploader';
 import { useTranslation } from '../../i18n/context';
+import { useAuth } from '../../auth/context';
+import Login from '../ui/Login';
+import { getStudioUsage, consumeStudioUse } from '../../services/studioService';
+import type { StudioUsage } from '../../services/studioService';
+import { STUDIO_MODELS } from '../../services/geminiService';
+import type { StudioModel } from '../../services/geminiService';
 
 interface StudioToolProps {
   onBack: () => void;
@@ -22,6 +28,21 @@ type AppState = 'selecting' | 'configuring' | 'result';
 
 export default function StudioTool({ onBack }: StudioToolProps) {
   const { t } = useTranslation();
+  const { isAuthenticated } = useAuth();
+
+  // Auth / usage state
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [usage, setUsage] = useState<StudioUsage | null>(null);
+  const [limitError, setLimitError] = useState<string | null>(null);
+
+  // Model selection
+  const [selectedModel, setSelectedModel] = useState<StudioModel>('gemini-2.5-flash-image');
+
+  // Fetch usage on mount when authenticated
+  useEffect(() => {
+    if (!isAuthenticated) { setUsage(null); return; }
+    getStudioUsage().then(setUsage).catch(() => {});
+  }, [isAuthenticated]);
 
   // App State
   const [appState, setAppState] = useState<AppState>('selecting');
@@ -135,6 +156,24 @@ export default function StudioTool({ onBack }: StudioToolProps) {
   const handleGenerate = useCallback(async () => {
     if (!selectedTransformation) return;
 
+    // Auth check
+    if (!isAuthenticated) {
+      setShowLoginModal(true);
+      return;
+    }
+
+    // Daily limit check
+    setLimitError(null);
+    let updatedUsage: StudioUsage;
+    try {
+      updatedUsage = await consumeStudioUse();
+      setUsage(updatedUsage);
+    } catch (err: unknown) {
+      const e = err as Error & { limitReached?: boolean };
+      setLimitError(e.message || t('studio.dailyLimitDesc'));
+      return;
+    }
+
     setIsLoading(true);
     setError(null);
 
@@ -202,7 +241,7 @@ export default function StudioTool({ onBack }: StudioToolProps) {
       // Handle two-step transformations
       if (selectedTransformation.isTwoStep) {
         // Step 1: Generate line art
-        const step1Result = await editImage(promptToUse, imageParts, null);
+        const step1Result = await editImage(promptToUse, imageParts, null, selectedModel);
         const lineArtUrl = step1Result.imageUrl;
 
         if (!lineArtUrl) throw new Error('Step 1 failed');
@@ -213,7 +252,7 @@ export default function StudioTool({ onBack }: StudioToolProps) {
           ...(secondaryImageUrl ? [{ base64: secondaryImageUrl.split(',')[1], mimeType: secondaryImageUrl.split(';')[0].split(':')[1] ?? 'image/png' }] : [])
         ];
 
-        const step2Result = await editImage(selectedTransformation.stepTwoPrompt || '', step2Parts, null);
+        const step2Result = await editImage(selectedTransformation.stepTwoPrompt || '', step2Parts, null, selectedModel);
 
         const finalResult: GeneratedContent = {
           imageUrl: step2Result.imageUrl || '',
@@ -229,7 +268,8 @@ export default function StudioTool({ onBack }: StudioToolProps) {
         const result = await editImage(
           promptToUse,
           imageParts,
-          selectedTransformation.hasMask ? maskDataUrl : null
+          selectedTransformation.hasMask ? maskDataUrl : null,
+          selectedModel
         );
 
         const finalResult: GeneratedContent = {
@@ -249,7 +289,7 @@ export default function StudioTool({ onBack }: StudioToolProps) {
     } finally {
       setIsLoading(false);
     }
-  }, [selectedTransformation, buildPrompt, primaryImageUrl, secondaryImageUrl, backgroundImageUrl, characterImageUrls, referenceImageUrl, maskDataUrl, t]);
+  }, [selectedTransformation, buildPrompt, primaryImageUrl, secondaryImageUrl, backgroundImageUrl, characterImageUrls, referenceImageUrl, maskDataUrl, t, isAuthenticated, selectedModel]);
 
   // Use result as input for new transformation
   const handleUseAsInput = useCallback((imageUrl: string) => {
@@ -482,21 +522,101 @@ export default function StudioTool({ onBack }: StudioToolProps) {
           </div>
         )}
 
+        {/* Model Selector */}
+        <div className="space-y-2">
+          <p className="text-sm font-medium text-[var(--text-secondary)]">{t('studio.model.label')}</p>
+          <div className="grid grid-cols-2 gap-3">
+            {STUDIO_MODELS.map(model => (
+              <button
+                key={model.id}
+                onClick={() => setSelectedModel(model.id)}
+                className={`flex flex-col gap-1 p-3 rounded-xl border-2 text-left transition-all ${
+                  selectedModel === model.id
+                    ? 'border-[var(--accent-primary)] bg-[rgba(249,115,22,0.08)]'
+                    : 'border-[var(--border-primary)] hover:border-[var(--border-secondary)] bg-[var(--bg-secondary)]'
+                }`}
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-sm font-semibold text-[var(--text-primary)] leading-tight">{t(model.nameKey)}</span>
+                  <span className={`shrink-0 text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
+                    model.id === 'gemini-3.0-pro-image'
+                      ? 'bg-purple-500/20 text-purple-400'
+                      : 'bg-yellow-500/20 text-yellow-500'
+                  }`}>
+                    {model.badge}
+                  </span>
+                </div>
+                <span className="text-xs text-[var(--text-tertiary)]">{t(model.descKey)}</span>
+                {selectedModel === model.id && (
+                  <span className="mt-0.5 flex items-center gap-1 text-[10px] font-semibold text-[var(--accent-primary)]">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    Đang dùng
+                  </span>
+                )}
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Generate Button */}
-        <button
-          onClick={handleGenerate}
-          disabled={!canGenerate() || isLoading}
-          className="w-full py-4 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white font-bold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90 transition-opacity shadow-lg"
-        >
-          {isLoading ? (
-            <span className="flex items-center justify-center gap-2">
-              <LoadingSpinner size="sm" />
-              {t('studio.generating')}
-            </span>
-          ) : (
-            t('studio.generate')
+        <div className="space-y-3">
+          {/* Usage counter / auth prompt */}
+          {!isAuthenticated ? (
+            <div className="flex items-center gap-2 p-3 bg-[rgba(249,115,22,0.08)] border border-[var(--accent-primary)] rounded-xl text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-[var(--accent-primary)] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              <span className="text-[var(--text-secondary)]">{t('studio.loginRequiredDesc')}</span>
+              <button
+                onClick={() => setShowLoginModal(true)}
+                className="ml-auto shrink-0 text-[var(--accent-primary)] font-semibold hover:underline"
+              >
+                {t('studio.loginRequired')}
+              </button>
+            </div>
+          ) : usage && !usage.unlimited ? (
+            <div className={`flex items-center gap-2 p-3 rounded-xl text-sm border ${
+              usage.remaining === 0
+                ? 'bg-red-500/10 border-red-500/40 text-red-400'
+                : usage.remaining === 1
+                  ? 'bg-yellow-500/10 border-yellow-500/40 text-yellow-500'
+                  : 'bg-[var(--bg-secondary)] border-[var(--border-primary)] text-[var(--text-secondary)]'
+            }`}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>
+                {t('studio.usageCounter')
+                  .replace('{{used}}', String(usage.used))
+                  .replace('{{limit}}', String(usage.limit))}
+              </span>
+            </div>
+          ) : null}
+
+          {/* Limit error */}
+          {limitError && (
+            <div className="p-3 bg-red-500/10 border border-red-500/40 rounded-xl text-sm text-red-400">
+              {limitError}
+            </div>
           )}
-        </button>
+
+          <button
+            onClick={handleGenerate}
+            disabled={!canGenerate() || isLoading || (!!usage && !usage.unlimited && usage.remaining === 0)}
+            className="w-full py-4 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white font-bold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90 transition-opacity shadow-lg"
+          >
+            {isLoading ? (
+              <span className="flex items-center justify-center gap-2">
+                <LoadingSpinner size="sm" />
+                {t('studio.generating')}
+              </span>
+            ) : (
+              t('studio.generate')
+            )}
+          </button>
+        </div>
 
         {error && <ErrorMessage message={error} />}
       </div>
@@ -589,6 +709,17 @@ export default function StudioTool({ onBack }: StudioToolProps) {
         <ImagePreviewModal
           imageUrl={previewImageUrl}
           onClose={() => setPreviewImageUrl(null)}
+        />
+      )}
+
+      {/* Login Modal */}
+      {showLoginModal && (
+        <Login
+          onLoginSuccess={() => {
+            setShowLoginModal(false);
+            getStudioUsage().then(setUsage).catch(() => {});
+          }}
+          onClose={() => setShowLoginModal(false)}
         />
       )}
     </div>
