@@ -109,66 +109,57 @@ const AuthContext = createContext<AuthContextType | null>(null);
 const TOKEN_KEY = 'alpha_studio_token';
 const USER_KEY = 'alpha_studio_user';
 
+// Initialize state synchronously from localStorage (no loading delay)
+const getInitialState = (): AuthState => {
+    const storedToken = localStorage.getItem(TOKEN_KEY);
+    const storedUser = localStorage.getItem(USER_KEY);
+    if (storedToken && storedUser) {
+        try {
+            return {
+                user: JSON.parse(storedUser),
+                token: storedToken,
+                isAuthenticated: true,
+                isLoading: false
+            };
+        } catch {
+            // ignore parse error, fall through
+        }
+    }
+    return { user: null, token: null, isAuthenticated: false, isLoading: false };
+};
+
 // Provider
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [state, setState] = useState<AuthState>({
-        user: null,
-        token: null,
-        isAuthenticated: false,
-        isLoading: true
-    });
+    const [state, setState] = useState<AuthState>(getInitialState);
 
-    // Initialize auth state from localStorage
+    // Verify token in background (does NOT block render)
     useEffect(() => {
-        const initAuth = async () => {
-            const storedToken = localStorage.getItem(TOKEN_KEY);
-            const storedUser = localStorage.getItem(USER_KEY);
+        const storedToken = localStorage.getItem(TOKEN_KEY);
+        const storedUser = localStorage.getItem(USER_KEY);
+        if (!storedToken || !storedUser) return;
 
-            if (storedToken && storedUser) {
-                try {
-                    // Verify token is still valid
-                    const response = await fetch(`${API_URL}/auth/me`, {
-                        headers: {
-                            'Authorization': `Bearer ${storedToken}`
-                        }
-                    });
+        const verifyToken = async () => {
+            try {
+                const response = await fetch(`${API_URL}/auth/me`, {
+                    headers: { 'Authorization': `Bearer ${storedToken}` }
+                });
 
-                    if (response.ok) {
-                        const data = await response.json();
-                        setState({
-                            user: data.data.user,
-                            token: storedToken,
-                            isAuthenticated: true,
-                            isLoading: false
-                        });
-                        // Update stored user data
-                        localStorage.setItem(USER_KEY, JSON.stringify(data.data.user));
-                    } else {
-                        // Token invalid, clear storage
-                        localStorage.removeItem(TOKEN_KEY);
-                        localStorage.removeItem(USER_KEY);
-                        setState({
-                            user: null,
-                            token: null,
-                            isAuthenticated: false,
-                            isLoading: false
-                        });
-                    }
-                } catch {
-                    // Network error - use cached data
-                    setState({
-                        user: JSON.parse(storedUser),
-                        token: storedToken,
-                        isAuthenticated: true,
-                        isLoading: false
-                    });
+                if (response.ok) {
+                    const data = await response.json();
+                    localStorage.setItem(USER_KEY, JSON.stringify(data.data.user));
+                    setState(prev => ({ ...prev, user: data.data.user }));
+                } else {
+                    // Token expired/invalid — silent logout
+                    localStorage.removeItem(TOKEN_KEY);
+                    localStorage.removeItem(USER_KEY);
+                    setState({ user: null, token: null, isAuthenticated: false, isLoading: false });
                 }
-            } else {
-                setState(prev => ({ ...prev, isLoading: false }));
+            } catch {
+                // Network error — keep cached data, don't logout
             }
         };
 
-        initAuth();
+        verifyToken();
     }, []);
 
     // Login

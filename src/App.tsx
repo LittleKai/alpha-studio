@@ -1,7 +1,5 @@
 import React, { Suspense, lazy } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import { useAuth } from './auth/context';
-
 // Routing Components (keep these non-lazy as they're small and used everywhere)
 import { ProtectedRoute } from './components/routing';
 import { Layout } from './components/layout';
@@ -216,13 +214,6 @@ const NotFoundPage: React.FC = () => {
 };
 
 const App: React.FC = () => {
-    const { isLoading: authLoading } = useAuth();
-
-    // Show loading spinner while checking auth
-    if (authLoading) {
-        return <LoadingSpinner />;
-    }
-
     return (
         <Suspense fallback={<LoadingSpinner />}>
             <Routes>
