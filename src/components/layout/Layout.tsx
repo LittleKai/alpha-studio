@@ -63,48 +63,48 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
         <div className="min-h-screen flex flex-col bg-[var(--bg-primary)]">
             {/* Global Navigation */}
             <nav className="sticky top-0 z-50 glass-card border-b border-[var(--border-primary)]">
-                <div className="container mx-auto px-4 py-2 md:px-6 md:py-4 flex justify-between items-center">
+                <div className="w-full px-4 md:px-6 py-2 md:py-3 lg:py-4 flex justify-between items-center">
                     <Link to="/" className="flex items-center gap-2 cursor-pointer group">
-                        <img src="/alpha-logo.png" alt="Alpha Studio" className="h-8 w-8 md:h-10 md:w-10 rounded-xl object-contain group-hover:rotate-12 transition-transform" />
+                        <img src="/alpha-logo.png" alt="Alpha Studio" className="h-8 w-8 md:h-9 md:w-9 xl:h-10 xl:w-10 rounded-xl object-contain group-hover:rotate-12 transition-transform" />
                         <div className="flex flex-col">
-                            <span className="text-lg md:text-xl font-bold tracking-tight text-[var(--text-primary)] leading-none">ALPHA STUDIO</span>
-                            <span className="text-[10px] text-[var(--accent-primary)] font-bold tracking-widest uppercase">AI Academy</span>
+                            <span className="text-base md:text-lg xl:text-xl font-bold tracking-tight text-[var(--text-primary)] leading-none">ALPHA STUDIO</span>
+                            <span className="text-[9px] xl:text-[10px] text-[var(--accent-primary)] font-bold tracking-widest uppercase">AI Academy</span>
                         </div>
                     </Link>
 
                     {/* Desktop Nav */}
-                    <div className="hidden md:flex items-center gap-10 text-[14px] font-extrabold uppercase tracking-widest">
-                        <Link to="/about" className={`transition-colors ${isAboutPage ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-primary)]'}`}>
+                    <div className="hidden md:flex items-center md:gap-3 lg:gap-3 xl:gap-7 2xl:gap-10 md:text-[11px] lg:text-[12px] xl:text-[13px] 2xl:text-[14px] font-extrabold uppercase md:tracking-normal lg:tracking-wide xl:tracking-wider 2xl:tracking-widest">
+                        <Link to="/about" className={`whitespace-nowrap transition-colors ${isAboutPage ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-primary)]'}`}>
                             {t('landing.nav.about')}
                         </Link>
-                        <Link to="/" className={`transition-colors ${location.pathname === '/' ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-primary)]'}`}>
+                        <Link to="/" className={`whitespace-nowrap transition-colors ${location.pathname === '/' ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-primary)]'}`}>
                             {t('landing.nav.academy')}
                         </Link>
-                        <button onClick={() => navigateToProtectedPage('/workflow')} className={`transition-colors ${isWorkflowPage ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-primary)]'}`}>
+                        <button onClick={() => navigateToProtectedPage('/workflow')} className={`whitespace-nowrap transition-colors ${isWorkflowPage ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-primary)]'}`}>
                             {t('landing.nav.connect')}
                         </button>
-                        <button onClick={() => navigateToProtectedPage('/server')} className={`border px-4 py-1.5 rounded-full transition-all ${isServerPage ? 'bg-[var(--accent-primary)] text-[var(--text-on-accent)] border-[var(--accent-primary)]' : 'text-[var(--accent-primary)] border-[var(--accent-primary)]/30 hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)]'}`}>
+                        <button onClick={() => navigateToProtectedPage('/server')} className={`whitespace-nowrap border md:px-3 md:py-1 lg:px-4 lg:py-1.5 rounded-full transition-all ${isServerPage ? 'bg-[var(--accent-primary)] text-[var(--text-on-accent)] border-[var(--accent-primary)]' : 'text-[var(--accent-primary)] border-[var(--accent-primary)]/30 hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)]'}`}>
                             {t('landing.nav.aiCloud')}
                         </button>
-                        <Link to="/services" className={`transition-colors ${isServicesPage ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-primary)]'}`}>
+                        <Link to="/services" className={`whitespace-nowrap transition-colors ${isServicesPage ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-primary)]'}`}>
                             {t('landing.nav.services')}
                         </Link>
                     </div>
 
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center md:gap-2 lg:gap-3 xl:gap-4">
                         <LanguageSwitcher />
                         <ThemeSwitcher />
 
                         {/* Desktop Account */}
                         {isAuthenticated ? (
-                            <div className="hidden lg:flex items-center gap-3">
+                            <div className="hidden md:flex items-center gap-2 lg:gap-3">
                                 {!isStudioPage && (
-                                    <Link to="/studio" className="py-2.5 px-6 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-bold rounded-xl shadow-[var(--accent-shadow)] hover:scale-105 transition-all">
+                                    <Link to="/studio" className="hidden lg:block lg:py-1.5 lg:px-3 xl:py-2 xl:px-5 bg-[var(--accent-primary)] text-[var(--text-on-accent)] lg:text-xs xl:text-sm font-bold rounded-xl shadow-[var(--accent-shadow)] hover:scale-105 transition-all whitespace-nowrap">
                                         {t('landing.nav.enterStudio')}
                                     </Link>
                                 )}
                                 <div className="relative group">
-                                    <button className="flex items-center gap-2 py-2 px-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-colors">
+                                    <button className="flex items-center gap-2 py-2 md:px-2 lg:px-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-colors">
                                         {user?.avatar ? (
                                             <img src={user.avatar} alt={user.name} className="w-8 h-8 rounded-full object-cover" />
                                         ) : (
@@ -112,7 +112,7 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                                                 {user?.name?.charAt(0).toUpperCase() || 'U'}
                                             </div>
                                         )}
-                                        <span className="text-sm font-medium text-[var(--text-primary)] max-w-[100px] truncate">{user?.name || 'User'}</span>
+                                        <span className="hidden lg:block text-sm font-medium text-[var(--text-primary)] max-w-[100px] truncate">{user?.name || 'User'}</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-[var(--text-secondary)]" viewBox="0 0 20 20" fill="currentColor">
                                             <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                                         </svg>
@@ -172,7 +172,7 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                                 </div>
                             </div>
                         ) : (
-                            <button onClick={() => setShowLoginDialog(true)} className="hidden lg:block py-2.5 px-6 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-bold rounded-xl shadow-[var(--accent-shadow)] hover:scale-105 transition-all">
+                            <button onClick={() => setShowLoginDialog(true)} className="hidden md:block md:py-2 md:px-3 lg:py-2.5 lg:px-6 bg-[var(--accent-primary)] text-[var(--text-on-accent)] md:text-xs lg:text-sm font-bold rounded-xl shadow-[var(--accent-shadow)] hover:scale-105 transition-all whitespace-nowrap">
                                 {t('login.button') || 'Sign In'}
                             </button>
                         )}

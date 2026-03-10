@@ -12,10 +12,10 @@ const LanguageSwitcher: React.FC = () => {
   return (
     <button
       onClick={toggleLanguage}
-      className="p-2 rounded-lg hover:bg-[var(--bg-secondary)] transition-colors"
+      className="p-2 rounded-lg hover:bg-[var(--bg-secondary)] transition-colors text-sm font-bold text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
       aria-label="Switch language"
     >
-      {language === 'en' ? 'Tiếng Việt' : 'English'}
+      {language === 'en' ? 'VI' : 'EN'}
     </button>
   );
 };
