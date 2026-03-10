@@ -65,6 +65,8 @@ export default {
       upload: "Tải lên tài liệu",
       uploadSizeLimit: "File quá lớn. Người dùng thông thường chỉ được upload tối đa 10MB.",
       uploadFileLimit: "Bạn đã đạt giới hạn 20 file cá nhân.",
+      uploadFailed: "Upload thất bại. Vui lòng thử lại.",
+      downloadError: "Không thể tải file. Vui lòng thử lại.",
       createProject: "Dự án mới",
       create: "Studio AI",
       search: "Tìm tài liệu...",
@@ -80,7 +82,12 @@ export default {
         reject: "Từ chối",
         resetPending: "Đặt lại",
         delete: "Xóa File",
-        confirmDelete: "Xóa file này vĩnh viễn?"
+        confirmDelete: "Xóa file này vĩnh viễn?",
+        deleteConfirmTitle: "Xác nhận xóa file",
+        deleteConfirmMessage: "Nhập lại tên file để xác nhận xóa vĩnh viễn:",
+        deleteConfirmPlaceholder: "Nhập tên file...",
+        deleteConfirmBtn: "Xóa vĩnh viễn",
+        deleteConfirmCancel: "Hủy"
       },
       table: {
         name: "Tên File",

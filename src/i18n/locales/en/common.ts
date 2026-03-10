@@ -6,6 +6,13 @@ export default {
     create: "Create",
     retry: "Retry",
     delete: "Delete",
+    deleteConfirm: {
+      title: "Confirm Deletion",
+      message: "Type the name to confirm permanent deletion:",
+      placeholder: "Enter name...",
+      confirmBtn: "Delete permanently",
+      cancelBtn: "Cancel"
+    },
     edit: "Edit",
     save: "Save",
     close: "Close",

@@ -15,6 +15,7 @@ import {
 import CourseCard from './CourseCard';
 import CourseForm from './CourseForm';
 import CourseStats from './CourseStats';
+import DeleteConfirmModal from '../ui/DeleteConfirmModal';
 
 interface CourseManagementProps {
     onBack: () => void;
@@ -56,7 +57,7 @@ const CourseManagement: React.FC<CourseManagementProps> = ({ onBack }) => {
     const [editingCourse, setEditingCourse] = useState<Course | null>(null);
 
     // Delete confirmation
-    const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+    const [deleteConfirm, setDeleteConfirm] = useState<{ id: string; name: string } | null>(null);
 
     // Load courses
     const loadCourses = useCallback(async () => {
@@ -130,16 +131,17 @@ const CourseManagement: React.FC<CourseManagementProps> = ({ onBack }) => {
         setShowForm(true);
     }, []);
 
-    const handleDelete = useCallback(async (id: string) => {
+    const handleDelete = useCallback(async () => {
+        if (!deleteConfirm) return;
         try {
-            await deleteCourse(id);
+            await deleteCourse(deleteConfirm.id);
             setDeleteConfirm(null);
             loadCourses();
             loadStats();
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Failed to delete course');
         }
-    }, [loadCourses, loadStats]);
+    }, [deleteConfirm, loadCourses, loadStats]);
 
     const handlePublish = useCallback(async (id: string) => {
         try {
@@ -356,7 +358,7 @@ const CourseManagement: React.FC<CourseManagementProps> = ({ onBack }) => {
                                     key={course._id}
                                     course={course}
                                     onEdit={handleEdit}
-                                    onDelete={(id) => setDeleteConfirm(id)}
+                                    onDelete={(id, name) => setDeleteConfirm({ id, name })}
                                     onPublish={handlePublish}
                                     onUnpublish={handleUnpublish}
                                     onArchive={handleArchive}
@@ -410,30 +412,11 @@ const CourseManagement: React.FC<CourseManagementProps> = ({ onBack }) => {
 
             {/* Delete Confirmation Modal */}
             {deleteConfirm && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-                    <div className="glass-card rounded-2xl p-6 max-w-md w-full mx-4">
-                        <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">
-                            {t('admin.courses.deleteConfirmTitle')}
-                        </h3>
-                        <p className="text-[var(--text-secondary)] mb-6">
-                            {t('admin.courses.deleteConfirmMessage')}
-                        </p>
-                        <div className="flex gap-3 justify-end">
-                            <button
-                                onClick={() => setDeleteConfirm(null)}
-                                className="px-6 py-2 bg-[var(--bg-secondary)] text-[var(--text-primary)] rounded-xl hover:bg-[var(--bg-tertiary)] transition-colors"
-                            >
-                                {t('admin.courses.form.cancel')}
-                            </button>
-                            <button
-                                onClick={() => handleDelete(deleteConfirm)}
-                                className="px-6 py-2 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-colors"
-                            >
-                                {t('admin.courses.deleteCourse')}
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <DeleteConfirmModal
+                    itemName={deleteConfirm.name}
+                    onConfirm={handleDelete}
+                    onCancel={() => setDeleteConfirm(null)}
+                />
             )}
         </div>
     );

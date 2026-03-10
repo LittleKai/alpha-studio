@@ -4,6 +4,7 @@ import { useAuth } from '../../../auth/context';
 import { getJobs, createJob, updateJob, deleteJob, publishJob, closeJob } from '../../../services/jobService';
 import type { Job, JobInput } from '../../../services/jobService';
 import JobManagementModal from '../../modals/JobManagementModal';
+import DeleteConfirmModal from '../../ui/DeleteConfirmModal';
 
 interface JobsViewProps {
     searchQuery: string;
@@ -21,6 +22,7 @@ const JobsView: React.FC<JobsViewProps> = ({ searchQuery }) => {
     const [editingJob, setEditingJob] = useState<Job | null>(null);
     const [categoryFilter, setCategoryFilter] = useState<string>('all');
     const [jobTypeFilter, setJobTypeFilter] = useState<string>('all');
+    const [deleteTarget, setDeleteTarget] = useState<{ id: string; name: string } | null>(null);
 
     const fetchJobs = useCallback(async () => {
         setIsLoading(true);
@@ -73,10 +75,16 @@ const JobsView: React.FC<JobsViewProps> = ({ searchQuery }) => {
         }
     };
 
-    const handleDeleteJob = async (jobId: string) => {
-        if (!confirm(t('job.confirmDelete') || 'Are you sure you want to delete this job?')) return;
+    const handleDeleteJob = (job: Job) => {
+        const name = job.title[language as 'vi' | 'en'] || job.title.vi || job.title.en;
+        setDeleteTarget({ id: job._id, name });
+    };
+
+    const confirmDeleteJob = async () => {
+        if (!deleteTarget) return;
         try {
-            await deleteJob(jobId);
+            await deleteJob(deleteTarget.id);
+            setDeleteTarget(null);
             await fetchJobs();
         } catch (err) {
             console.error('Error deleting job:', err);
@@ -398,7 +406,7 @@ const JobsView: React.FC<JobsViewProps> = ({ searchQuery }) => {
                                                     </button>
                                                 )}
                                                 <button
-                                                    onClick={() => handleDeleteJob(job._id)}
+                                                    onClick={() => handleDeleteJob(job)}
                                                     className="p-2.5 rounded-xl text-red-400 hover:bg-red-500/10 transition-all"
                                                     title={language === 'vi' ? 'Xóa' : 'Delete'}
                                                 >
@@ -418,6 +426,14 @@ const JobsView: React.FC<JobsViewProps> = ({ searchQuery }) => {
                         })
                     )}
                 </div>
+            )}
+
+            {deleteTarget && (
+                <DeleteConfirmModal
+                    itemName={deleteTarget.name}
+                    onConfirm={confirmDeleteJob}
+                    onCancel={() => setDeleteTarget(null)}
+                />
             )}
 
             {/* Job Management Modal */}

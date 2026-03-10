@@ -19,7 +19,7 @@ import {
 } from '../../services/workflowService';
 import { Editor } from '@tinymce/tinymce-react';
 import { uploadToCloudinary } from '../../services/cloudinaryService';
-import { uploadToB2 } from '../../services/b2StorageService';
+import { uploadToB2, isB2Url, getB2SignedUrl } from '../../services/b2StorageService';
 import LoadingSpinner from '../ui/LoadingSpinner';
 // StudentProfileModal and PartnerRegistrationModal not used - moved to separate view components
 import LanguageSwitcher from '../ui/LanguageSwitcher';
@@ -99,6 +99,10 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
   const [docSortField, setDocSortField] = useState<'name' | 'date' | 'project'>('date');
   const [docSortDir, setDocSortDir] = useState<'asc' | 'desc'>('desc');
   const [docSourceFilter, setDocSourceFilter] = useState<'all' | 'personal' | 'project'>('all');
+
+  // Delete confirmation dialog
+  const [deleteConfirmDoc, setDeleteConfirmDoc] = useState<WorkflowDocument | null>(null);
+  const [deleteConfirmInput, setDeleteConfirmInput] = useState('');
 
   // User Profile - connected to authenticated user
   const userProfile = {
@@ -184,10 +188,14 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
         });
         uploadUrl = b2Result.url;
         fileKey = b2Result.key;
-        setDocuments(prev => prev.map(d => d.id === tempId ? { ...d, url: uploadUrl } : d));
-    } catch { /* proceed without URL on error */ } finally {
+        setDocuments(prev => prev.map(d => d.id === tempId ? { ...d, url: uploadUrl, fileKey: b2Result.key } : d));
+    } catch {
+        setDocuments(prev => prev.filter(d => d.id !== tempId));
         setUploadProgress(prev => { const n = { ...prev }; delete n[tempId]; return n; });
+        alert(t('workflow.dashboard.uploadFailed'));
+        return;
     }
+    setUploadProgress(prev => { const n = { ...prev }; delete n[tempId]; return n; });
 
     // Persist to backend
     createDocumentAPI({
@@ -284,11 +292,34 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       updateDocumentAPI(docId, { status: newStatus }).catch(console.error);
   };
 
-  const handleDeleteDoc = (docId: string) => {
-      if (!confirm(t('workflow.dashboard.docPanel.confirmDelete'))) return;
+  const handleDeleteDoc = (doc: WorkflowDocument) => {
+      setDeleteConfirmDoc(doc);
+      setDeleteConfirmInput('');
+  };
+
+  const confirmDeleteDoc = () => {
+      if (!deleteConfirmDoc || deleteConfirmInput !== deleteConfirmDoc.name) return;
+      const docId = deleteConfirmDoc.id;
       setDocuments(prev => prev.filter(d => d.id !== docId));
       if (activeDocForComment?.id === docId) setActiveDocForComment(null);
       deleteDocumentAPI(docId).catch(console.error);
+      setDeleteConfirmDoc(null);
+      setDeleteConfirmInput('');
+  };
+
+  const handleDownload = async (doc: WorkflowDocument) => {
+      if (!doc.url) return;
+      const token = localStorage.getItem('alpha_studio_token') || '';
+      if (isB2Url(doc.url)) {
+          try {
+              const signedUrl = await getB2SignedUrl(doc.url, token);
+              window.open(signedUrl, '_blank');
+          } catch {
+              alert(t('workflow.dashboard.downloadError'));
+          }
+      } else {
+          window.open(doc.url, '_blank');
+      }
   };
 
   const handleAddDocComment = (e: React.FormEvent) => {
@@ -1023,7 +1054,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                                                   <span className="text-xs text-[var(--text-tertiary)] px-3 py-1">{doc.name.split('.').pop()?.toUpperCase()}</span>
                                               )}
                                               {canDeleteDoc(doc) && (
-                                                  <button onClick={() => handleDeleteDoc(doc.id)} className="text-xs bg-red-500/10 text-red-400 hover:bg-red-500/20 px-2 py-1 rounded" title={t('workflow.dashboard.docPanel.delete')}>✕</button>
+                                                  <button onClick={() => handleDeleteDoc(doc)} className="text-xs bg-red-500/10 text-red-400 hover:bg-red-500/20 px-2 py-1 rounded" title={t('workflow.dashboard.docPanel.delete')}>✕</button>
                                               )}
                                           </div>
                                       </div>
@@ -1386,22 +1417,19 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                                         <td className="p-4 text-sm text-[var(--text-secondary)] hidden md:table-cell">{doc.uploadDate}</td>
                                         <td className="p-4 text-right">
                                             <div className="flex justify-end gap-1 items-center">
-                                                {/* Download — shown when URL is available */}
+                                                {/* Download — always shown, uses signed URL for B2 */}
                                                 {doc.url && (
-                                                    <a
-                                                        href={doc.url}
-                                                        download={doc.name}
-                                                        target="_blank"
-                                                        rel="noreferrer"
+                                                    <button
+                                                        onClick={() => handleDownload(doc)}
                                                         className="p-2 rounded-lg text-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-colors"
                                                         title={t('workflow.dashboard.project.teamPanel.download')}
                                                     >
                                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
-                                                    </a>
+                                                    </button>
                                                 )}
                                                 {/* Delete — only for personal (non-project) files */}
                                                 {!doc.projectId && (
-                                                    <button onClick={() => handleDeleteDoc(doc.id)} className="p-2 rounded-lg text-[var(--text-tertiary)] hover:text-red-400 hover:bg-red-500/20 transition-colors" title={t('workflow.dashboard.docPanel.delete')}>
+                                                    <button onClick={() => handleDeleteDoc(doc)} className="p-2 rounded-lg text-[var(--text-tertiary)] hover:text-red-400 hover:bg-red-500/20 transition-colors" title={t('workflow.dashboard.docPanel.delete')}>
                                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
                                                     </button>
                                                 )}
@@ -1579,6 +1607,50 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                 </div>
             );
         })()}
+
+        {/* Delete File Confirmation Modal */}
+        {deleteConfirmDoc && (
+            <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setDeleteConfirmDoc(null)}>
+                <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl w-full max-w-sm p-6 shadow-2xl" onClick={e => e.stopPropagation()}>
+                    <div className="flex items-center gap-3 mb-4">
+                        <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" /></svg>
+                        </div>
+                        <div>
+                            <h3 className="font-bold text-[var(--text-primary)]">{t('workflow.dashboard.docPanel.deleteConfirmTitle')}</h3>
+                            <p className="text-xs text-[var(--text-tertiary)] mt-0.5">{t('workflow.dashboard.docPanel.deleteConfirmMessage')}</p>
+                        </div>
+                    </div>
+                    <div className="bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg px-3 py-2 mb-4">
+                        <p className="text-sm font-mono text-[var(--text-primary)] break-all">{deleteConfirmDoc.name}</p>
+                    </div>
+                    <input
+                        type="text"
+                        placeholder={t('workflow.dashboard.docPanel.deleteConfirmPlaceholder')}
+                        value={deleteConfirmInput}
+                        onChange={e => setDeleteConfirmInput(e.target.value)}
+                        onKeyDown={e => e.key === 'Enter' && confirmDeleteDoc()}
+                        autoFocus
+                        className="w-full px-3 py-2.5 mb-4 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-sm text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:outline-none focus:border-red-400 transition-colors"
+                    />
+                    <div className="flex gap-2">
+                        <button
+                            onClick={confirmDeleteDoc}
+                            disabled={deleteConfirmInput !== deleteConfirmDoc.name}
+                            className="flex-1 py-2.5 rounded-xl bg-red-500 text-white font-bold text-sm transition-all disabled:opacity-30 disabled:cursor-not-allowed hover:bg-red-600"
+                        >
+                            {t('workflow.dashboard.docPanel.deleteConfirmBtn')}
+                        </button>
+                        <button
+                            onClick={() => setDeleteConfirmDoc(null)}
+                            className="flex-1 py-2.5 rounded-xl bg-[var(--bg-secondary)] text-[var(--text-secondary)] font-bold text-sm hover:bg-[var(--border-primary)] transition-colors"
+                        >
+                            {t('workflow.dashboard.docPanel.deleteConfirmCancel')}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        )}
 
         {showProjectModal && canCreateProject && (
             <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">

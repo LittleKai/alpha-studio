@@ -5,6 +5,7 @@ import { getPrompts, Prompt, deletePrompt, hidePrompt, unhidePrompt } from '../.
 import { PromptCard } from '../../cards';
 import PromptDetailModal from '../../modals/PromptDetailModal';
 import PromptFormModal from '../../modals/PromptFormModal';
+import DeleteConfirmModal from '../../ui/DeleteConfirmModal';
 
 interface PromptsViewProps {
     searchQuery: string;
@@ -34,6 +35,7 @@ const PromptsView: React.FC<PromptsViewProps> = ({ searchQuery }) => {
     const [showDetailModal, setShowDetailModal] = useState(false);
     const [showFormModal, setShowFormModal] = useState(false);
     const [editingPrompt, setEditingPrompt] = useState<Prompt | null>(null);
+    const [deleteTarget, setDeleteTarget] = useState<{ id: string; name: string } | null>(null);
 
     const categories = [
         { value: 'all', label: language === 'vi' ? 'Tất cả' : 'All Categories' },
@@ -113,14 +115,17 @@ const PromptsView: React.FC<PromptsViewProps> = ({ searchQuery }) => {
         setShowFormModal(true);
     };
 
-    const handleDelete = async (promptId: string) => {
-        if (!confirm(language === 'vi' ? 'Bạn có chắc muốn xóa prompt này?' : 'Are you sure you want to delete this prompt?')) {
-            return;
-        }
+    const handleDelete = (prompt: Prompt) => {
+        const name = prompt.title[language as 'vi' | 'en'] || prompt.title.vi || prompt.title.en;
+        setDeleteTarget({ id: prompt._id, name });
+    };
 
+    const confirmDelete = async () => {
+        if (!deleteTarget) return;
         try {
-            await deletePrompt(promptId);
-            setPrompts(prev => prev.filter(p => p._id !== promptId));
+            await deletePrompt(deleteTarget.id);
+            setPrompts(prev => prev.filter(p => p._id !== deleteTarget.id));
+            setDeleteTarget(null);
         } catch (err) {
             alert(err instanceof Error ? err.message : 'Failed to delete prompt');
         }
@@ -303,7 +308,7 @@ const PromptsView: React.FC<PromptsViewProps> = ({ searchQuery }) => {
                                             )}
                                             {user?._id === prompt.author._id && (
                                                 <button
-                                                    onClick={(e) => { e.stopPropagation(); handleDelete(prompt._id); }}
+                                                    onClick={(e) => { e.stopPropagation(); handleDelete(prompt); }}
                                                     className="p-1.5 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded text-[var(--text-secondary)] hover:text-red-400"
                                                     title={language === 'vi' ? 'Xóa' : 'Delete'}
                                                 >
@@ -342,6 +347,14 @@ const PromptsView: React.FC<PromptsViewProps> = ({ searchQuery }) => {
                         </div>
                     )}
                 </>
+            )}
+
+            {deleteTarget && (
+                <DeleteConfirmModal
+                    itemName={deleteTarget.name}
+                    onConfirm={confirmDelete}
+                    onCancel={() => setDeleteTarget(null)}
+                />
             )}
 
             {/* Detail Modal */}

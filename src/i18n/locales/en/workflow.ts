@@ -65,6 +65,8 @@ export default {
       upload: "Upload Asset",
       uploadSizeLimit: "File too large. Regular users can only upload up to 10MB.",
       uploadFileLimit: "Personal file limit reached (max 20 files).",
+      uploadFailed: "Upload failed. Please try again.",
+      downloadError: "Could not download file. Please try again.",
       createProject: "New Project",
       create: "Studio AI",
       search: "Find assets...",
@@ -80,7 +82,12 @@ export default {
         reject: "Reject",
         resetPending: "Reset",
         delete: "Delete File",
-        confirmDelete: "Delete this file permanently?"
+        confirmDelete: "Delete this file permanently?",
+        deleteConfirmTitle: "Confirm File Deletion",
+        deleteConfirmMessage: "Type the file name to confirm permanent deletion:",
+        deleteConfirmPlaceholder: "Enter file name...",
+        deleteConfirmBtn: "Delete permanently",
+        deleteConfirmCancel: "Cancel"
       },
       table: {
         name: "File Name",

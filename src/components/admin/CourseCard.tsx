@@ -5,7 +5,7 @@ import { Course } from '../../services/courseService';
 interface CourseCardProps {
     course: Course;
     onEdit: (course: Course) => void;
-    onDelete: (id: string) => void;
+    onDelete: (id: string, name: string) => void;
     onPublish: (id: string) => void;
     onUnpublish: (id: string) => void;
     onArchive: (id: string) => void;
@@ -223,7 +223,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
                                 )}
                                 {canDelete && (
                                     <button
-                                        onClick={() => onDelete(course._id)}
+                                        onClick={() => onDelete(course._id, title || course.title.vi || course.title.en)}
                                         className="w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-red-500/10 transition-colors"
                                     >
                                         {t('admin.courses.deleteCourse')}

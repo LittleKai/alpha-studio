@@ -5,6 +5,7 @@ import { getResources, Resource, deleteResource, hideResource, unhideResource } 
 import { ResourceCard } from '../../cards';
 import ResourceDetailModal from '../../modals/ResourceDetailModal';
 import ResourceFormModal from '../../modals/ResourceFormModal';
+import DeleteConfirmModal from '../../ui/DeleteConfirmModal';
 
 interface ResourcesViewProps {
     searchQuery: string;
@@ -33,6 +34,7 @@ const ResourcesView: React.FC<ResourcesViewProps> = ({ searchQuery }) => {
     const [showDetailModal, setShowDetailModal] = useState(false);
     const [showFormModal, setShowFormModal] = useState(false);
     const [editingResource, setEditingResource] = useState<Resource | null>(null);
+    const [deleteTarget, setDeleteTarget] = useState<{ id: string; name: string } | null>(null);
 
     const resourceTypes = [
         { value: 'all', label: language === 'vi' ? 'Tất cả' : 'All Types' },
@@ -102,14 +104,17 @@ const ResourcesView: React.FC<ResourcesViewProps> = ({ searchQuery }) => {
         setShowFormModal(true);
     };
 
-    const handleDelete = async (resourceId: string) => {
-        if (!confirm(language === 'vi' ? 'Bạn có chắc muốn xóa tài nguyên này?' : 'Are you sure you want to delete this resource?')) {
-            return;
-        }
+    const handleDelete = (resource: Resource) => {
+        const name = resource.title[language as 'vi' | 'en'] || resource.title.vi || resource.title.en;
+        setDeleteTarget({ id: resource._id, name });
+    };
 
+    const confirmDelete = async () => {
+        if (!deleteTarget) return;
         try {
-            await deleteResource(resourceId);
-            setResources(prev => prev.filter(r => r._id !== resourceId));
+            await deleteResource(deleteTarget.id);
+            setResources(prev => prev.filter(r => r._id !== deleteTarget.id));
+            setDeleteTarget(null);
         } catch (err) {
             alert(err instanceof Error ? err.message : 'Failed to delete resource');
         }
@@ -283,7 +288,7 @@ const ResourcesView: React.FC<ResourcesViewProps> = ({ searchQuery }) => {
                                             )}
                                             {user?._id === resource.author._id && (
                                                 <button
-                                                    onClick={(e) => { e.stopPropagation(); handleDelete(resource._id); }}
+                                                    onClick={(e) => { e.stopPropagation(); handleDelete(resource); }}
                                                     className="p-1.5 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded text-[var(--text-secondary)] hover:text-red-400"
                                                     title={language === 'vi' ? 'Xóa' : 'Delete'}
                                                 >
@@ -322,6 +327,14 @@ const ResourcesView: React.FC<ResourcesViewProps> = ({ searchQuery }) => {
                         </div>
                     )}
                 </>
+            )}
+
+            {deleteTarget && (
+                <DeleteConfirmModal
+                    itemName={deleteTarget.name}
+                    onConfirm={confirmDelete}
+                    onCancel={() => setDeleteTarget(null)}
+                />
             )}
 
             {/* Detail Modal */}

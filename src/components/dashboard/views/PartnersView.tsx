@@ -5,6 +5,7 @@ import { getPartners, createPartner, updatePartner, deletePartner, publishPartne
 import type { Partner, PartnerInput } from '../../../services/partnerService';
 import PartnerRegistrationModal from '../../modals/PartnerRegistrationModal';
 import PartnerEditModal from '../../modals/PartnerEditModal';
+import DeleteConfirmModal from '../../ui/DeleteConfirmModal';
 
 interface PartnersViewProps {
     searchQuery: string;
@@ -22,6 +23,7 @@ const PartnersView: React.FC<PartnersViewProps> = ({ searchQuery }) => {
     const [showEditModal, setShowEditModal] = useState(false);
     const [editingPartner, setEditingPartner] = useState<Partner | null>(null);
     const [partnerTypeFilter, setPartnerTypeFilter] = useState<string>('all');
+    const [deleteTarget, setDeleteTarget] = useState<{ id: string; name: string } | null>(null);
 
     const fetchPartners = useCallback(async () => {
         setIsLoading(true);
@@ -99,10 +101,15 @@ const PartnersView: React.FC<PartnersViewProps> = ({ searchQuery }) => {
         }
     };
 
-    const handleDeletePartner = async (partnerId: string) => {
-        if (!confirm(t('partner.confirmDelete') || 'Are you sure you want to delete this partner?')) return;
+    const handleDeletePartner = (partner: Partner) => {
+        setDeleteTarget({ id: partner._id, name: partner.companyName });
+    };
+
+    const confirmDeletePartner = async () => {
+        if (!deleteTarget) return;
         try {
-            await deletePartner(partnerId);
+            await deletePartner(deleteTarget.id);
+            setDeleteTarget(null);
             await fetchPartners();
         } catch (err) {
             console.error('Error deleting partner:', err);
@@ -410,7 +417,7 @@ const PartnersView: React.FC<PartnersViewProps> = ({ searchQuery }) => {
                                                 </button>
                                             )}
                                             <button
-                                                onClick={() => handleDeletePartner(partner._id)}
+                                                onClick={() => handleDeletePartner(partner)}
                                                 className="p-2.5 rounded-xl text-red-400 hover:bg-red-500/10 transition-all"
                                                 title={language === 'vi' ? 'Xóa' : 'Delete'}
                                             >
@@ -426,6 +433,14 @@ const PartnersView: React.FC<PartnersViewProps> = ({ searchQuery }) => {
                         })
                     )}
                 </div>
+            )}
+
+            {deleteTarget && (
+                <DeleteConfirmModal
+                    itemName={deleteTarget.name}
+                    onConfirm={confirmDeletePartner}
+                    onCancel={() => setDeleteTarget(null)}
+                />
             )}
 
             {/* Partner Registration Modal */}

@@ -117,6 +117,7 @@ export interface WorkflowDocument {
   department?: DepartmentType;
   status: 'pending' | 'approved' | 'rejected';
   url?: string;
+  fileKey?: string;
   team?: TeamMember[];
   comments?: Comment[];
   isProject?: boolean;

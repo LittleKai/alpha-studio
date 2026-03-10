@@ -6,6 +6,13 @@ export default {
     create: "Tạo mới",
     retry: "Thử lại",
     delete: "Xóa",
+    deleteConfirm: {
+      title: "Xác nhận xóa",
+      message: "Nhập lại tên để xác nhận xóa vĩnh viễn:",
+      placeholder: "Nhập tên...",
+      confirmBtn: "Xóa vĩnh viễn",
+      cancelBtn: "Hủy"
+    },
     edit: "Sửa",
     save: "Lưu",
     close: "Đóng",
