@@ -116,6 +116,7 @@ function MachinesTab() {
         agentUrl: '',
         secret: '',
         maxContainers: 5,
+        gpu: '',
     });
     const [currentSpecs, setCurrentSpecs] = useState<{ cpu: string; ram: string; gpu: string } | null>(null);
     const [refreshingSpecs, setRefreshingSpecs] = useState(false);
@@ -137,7 +138,7 @@ function MachinesTab() {
     }, [loadMachines]);
 
     const resetForm = () => {
-        setFormData({ name: '', machineId: '', agentUrl: '', secret: '', maxContainers: 5 });
+        setFormData({ name: '', machineId: '', agentUrl: '', secret: '', maxContainers: 5, gpu: '' });
         setEditingMachine(null);
         setCurrentSpecs(null);
         setShowForm(false);
@@ -151,6 +152,7 @@ function MachinesTab() {
             agentUrl: machine.agentUrl,
             secret: machine.secret,
             maxContainers: machine.maxContainers,
+            gpu: machine.specs?.gpu || '',
         });
         setCurrentSpecs(machine.specs);
         setShowForm(true);
@@ -162,7 +164,10 @@ function MachinesTab() {
         try {
             const response = await getCloudMachines();
             const updated = response.data.find((m: HostMachine) => m._id === editingMachine._id);
-            if (updated) setCurrentSpecs(updated.specs);
+            if (updated) {
+                setCurrentSpecs(updated.specs);
+                setFormData(f => ({ ...f, gpu: updated.specs?.gpu || f.gpu }));
+            }
         } catch {
             // ignore
         } finally {
@@ -172,7 +177,7 @@ function MachinesTab() {
 
     const handleSubmit = async () => {
         try {
-            const payload = {
+            const payload: any = {
                 name: formData.name,
                 machineId: formData.machineId,
                 agentUrl: formData.agentUrl,
@@ -181,6 +186,7 @@ function MachinesTab() {
             };
 
             if (editingMachine) {
+                payload.specs = { ...(currentSpecs || { cpu: '', ram: '' }), gpu: formData.gpu };
                 await updateMachine(editingMachine._id, payload);
             } else {
                 await registerMachine(payload);
@@ -270,6 +276,14 @@ function MachinesTab() {
                             value={formData.maxContainers}
                             onChange={(v) => setFormData(f => ({ ...f, maxContainers: parseInt(v) || 1 }))}
                         />
+                        {editingMachine && (
+                            <FloatInput
+                                id="m-gpu"
+                                label={t('admin.cloud.machines.gpu')}
+                                value={formData.gpu}
+                                onChange={(v) => setFormData(f => ({ ...f, gpu: v }))}
+                            />
+                        )}
 
                         {/* Specs display — Edit mode only */}
                         {editingMachine && (
