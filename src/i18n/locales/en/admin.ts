@@ -378,7 +378,11 @@ export default {
         registerFirst: "Register your first machine",
         available: "Available",
         busy: "Busy",
-        offline: "Offline"
+        offline: "Offline",
+        currentSpecs: "Current Specs",
+        refreshSpecs: "Refresh",
+        refreshing: "Refreshing...",
+        noSpecs: "No data yet (waiting for heartbeat)"
       },
       sessions: {
         title: "Session Management",

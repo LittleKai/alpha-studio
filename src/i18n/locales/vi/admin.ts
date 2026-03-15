@@ -378,7 +378,11 @@ export default {
         registerFirst: "Đăng ký máy chủ đầu tiên",
         available: "Khả dụng",
         busy: "Đang bận",
-        offline: "Ngoại tuyến"
+        offline: "Ngoại tuyến",
+        currentSpecs: "Thông số hiện tại",
+        refreshSpecs: "Làm mới",
+        refreshing: "Đang làm mới...",
+        noSpecs: "Chưa có dữ liệu (chờ heartbeat)"
       },
       sessions: {
         title: "Quản lý Phiên",

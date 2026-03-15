@@ -68,6 +68,41 @@ export default function CloudAdminTab() {
     );
 }
 
+// ==================== FLOAT LABEL INPUT ====================
+function FloatInput({
+    id, label, value, onChange, type = 'text', disabled = false,
+}: {
+    id: string;
+    label: string;
+    value: string | number;
+    onChange: (v: string) => void;
+    type?: string;
+    disabled?: boolean;
+}) {
+    return (
+        <div className="relative">
+            <input
+                id={id}
+                type={type}
+                placeholder=" "
+                value={value}
+                onChange={(e) => onChange(e.target.value)}
+                disabled={disabled}
+                className="peer w-full px-3 pt-6 pb-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] text-sm focus:outline-none focus:border-[var(--accent-primary)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            />
+            <label
+                htmlFor={id}
+                className="absolute left-3 text-[var(--text-tertiary)] transition-all duration-150 pointer-events-none
+                           top-1.5 text-[10px]
+                           peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm
+                           peer-focus:top-1.5 peer-focus:text-[10px] peer-focus:text-[var(--accent-primary)]"
+            >
+                {label}
+            </label>
+        </div>
+    );
+}
+
 // ==================== MACHINES TAB ====================
 function MachinesTab() {
     const { t } = useTranslation();
@@ -82,6 +117,8 @@ function MachinesTab() {
         secret: '',
         maxContainers: 5,
     });
+    const [currentSpecs, setCurrentSpecs] = useState<{ cpu: string; ram: string; gpu: string } | null>(null);
+    const [refreshingSpecs, setRefreshingSpecs] = useState(false);
 
     const loadMachines = useCallback(async () => {
         try {
@@ -102,6 +139,7 @@ function MachinesTab() {
     const resetForm = () => {
         setFormData({ name: '', machineId: '', agentUrl: '', secret: '', maxContainers: 5 });
         setEditingMachine(null);
+        setCurrentSpecs(null);
         setShowForm(false);
     };
 
@@ -114,7 +152,22 @@ function MachinesTab() {
             secret: machine.secret,
             maxContainers: machine.maxContainers,
         });
+        setCurrentSpecs(machine.specs);
         setShowForm(true);
+    };
+
+    const handleRefreshSpecs = async () => {
+        if (!editingMachine) return;
+        setRefreshingSpecs(true);
+        try {
+            const response = await getCloudMachines();
+            const updated = response.data.find((m: HostMachine) => m._id === editingMachine._id);
+            if (updated) setCurrentSpecs(updated.specs);
+        } catch {
+            // ignore
+        } finally {
+            setRefreshingSpecs(false);
+        }
     };
 
     const handleSubmit = async () => {
@@ -185,42 +238,79 @@ function MachinesTab() {
                         {editingMachine ? t('admin.cloud.machines.edit') : t('admin.cloud.machines.register')}
                     </h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <input
-                            type="text"
-                            placeholder={t('admin.cloud.machines.name')}
+                        <FloatInput
+                            id="m-name"
+                            label={t('admin.cloud.machines.name')}
                             value={formData.name}
-                            onChange={(e) => setFormData(f => ({ ...f, name: e.target.value }))}
-                            className="px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)]"
+                            onChange={(v) => setFormData(f => ({ ...f, name: v }))}
                         />
-                        <input
-                            type="text"
-                            placeholder={t('admin.cloud.machines.machineId')}
+                        <FloatInput
+                            id="m-machineId"
+                            label={t('admin.cloud.machines.machineId')}
                             value={formData.machineId}
-                            onChange={(e) => setFormData(f => ({ ...f, machineId: e.target.value }))}
+                            onChange={(v) => setFormData(f => ({ ...f, machineId: v }))}
                             disabled={!!editingMachine}
-                            className="px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)] disabled:opacity-50"
                         />
-                        <input
-                            type="text"
-                            placeholder={t('admin.cloud.machines.agentUrl')}
+                        <FloatInput
+                            id="m-agentUrl"
+                            label={t('admin.cloud.machines.agentUrl')}
                             value={formData.agentUrl}
-                            onChange={(e) => setFormData(f => ({ ...f, agentUrl: e.target.value }))}
-                            className="px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)]"
+                            onChange={(v) => setFormData(f => ({ ...f, agentUrl: v }))}
                         />
-                        <input
-                            type="text"
-                            placeholder={t('admin.cloud.machines.secret')}
+                        <FloatInput
+                            id="m-secret"
+                            label={t('admin.cloud.machines.secret')}
                             value={formData.secret}
-                            onChange={(e) => setFormData(f => ({ ...f, secret: e.target.value }))}
-                            className="px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)]"
+                            onChange={(v) => setFormData(f => ({ ...f, secret: v }))}
                         />
-                        <input
+                        <FloatInput
+                            id="m-maxContainers"
+                            label={t('admin.cloud.machines.maxContainers')}
                             type="number"
-                            placeholder={t('admin.cloud.machines.maxContainers')}
                             value={formData.maxContainers}
-                            onChange={(e) => setFormData(f => ({ ...f, maxContainers: parseInt(e.target.value) || 1 }))}
-                            className="px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)]"
+                            onChange={(v) => setFormData(f => ({ ...f, maxContainers: parseInt(v) || 1 }))}
                         />
+
+                        {/* Specs display — Edit mode only */}
+                        {editingMachine && (
+                            <div className="bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg px-3 pt-2 pb-3">
+                                <div className="flex justify-between items-center mb-2">
+                                    <span className="text-[10px] font-medium text-[var(--text-tertiary)] uppercase tracking-wider">
+                                        {t('admin.cloud.machines.currentSpecs')}
+                                    </span>
+                                    <button
+                                        onClick={handleRefreshSpecs}
+                                        disabled={refreshingSpecs}
+                                        className="flex items-center gap-1 px-2 py-0.5 text-[10px] font-medium text-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 rounded transition-colors disabled:opacity-50"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className={`w-3 h-3 ${refreshingSpecs ? 'animate-spin' : ''}`}
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                        >
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                        </svg>
+                                        {refreshingSpecs ? t('admin.cloud.machines.refreshing') : t('admin.cloud.machines.refreshSpecs')}
+                                    </button>
+                                </div>
+                                {currentSpecs && (currentSpecs.cpu || currentSpecs.ram || currentSpecs.gpu) ? (
+                                    <div className="grid grid-cols-3 gap-2">
+                                        {[
+                                            { label: 'CPU', value: currentSpecs.cpu },
+                                            { label: 'RAM', value: currentSpecs.ram },
+                                            { label: 'GPU', value: currentSpecs.gpu },
+                                        ].map(({ label, value }) => (
+                                            <div key={label} className="text-center">
+                                                <p className="text-[10px] text-[var(--text-tertiary)]">{label}</p>
+                                                <p className="text-xs font-medium text-[var(--text-primary)] truncate" title={value || '-'}>{value || '-'}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <p className="text-xs text-[var(--text-tertiary)] text-center py-1">{t('admin.cloud.machines.noSpecs')}</p>
+                                )}
+                            </div>
+                        )}
                     </div>
                     <div className="flex gap-2">
                         <button
