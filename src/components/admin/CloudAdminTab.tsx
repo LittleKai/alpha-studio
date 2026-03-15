@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from '../../i18n/context';
 import { useAuth } from '../../auth/context';
+import { useConfirm } from '../ui/ConfirmDialog';
 import {
     getCloudMachines,
     registerMachine,
@@ -318,6 +319,7 @@ function MachinesTab() {
 // ==================== SESSIONS TAB ====================
 function SessionsTab() {
     const { t } = useTranslation();
+    const { confirm: confirmDialog } = useConfirm();
     const [sessions, setSessions] = useState<CloudSession[]>([]);
     const [loading, setLoading] = useState(true);
     const [statusFilter, setStatusFilter] = useState('');
@@ -346,7 +348,7 @@ function SessionsTab() {
     }, [loadSessions]);
 
     const handleForceEnd = async (id: string) => {
-        if (!confirm(t('admin.cloud.sessions.forceEndConfirm'))) return;
+        if (!await confirmDialog({ message: t('admin.cloud.sessions.forceEndConfirm'), variant: 'danger' })) return;
         try {
             await forceEndSession(id);
             loadSessions();
@@ -486,6 +488,8 @@ function SessionsTab() {
 
 // ==================== STORAGE CLEANUP TAB ====================
 function StorageCleanupTab() {
+    const { t } = useTranslation();
+    const { confirm: confirmDialog } = useConfirm();
     const [files, setFiles] = useState<OrphanedFile[]>([]);
     const [referencedFiles, setReferencedFiles] = useState<OrphanedFile[]>([]);
     const [meta, setMeta] = useState<{ orphaned: number; totalB2: number; referenced: number } | null>(null);
@@ -521,7 +525,7 @@ function StorageCleanupTab() {
     };
 
     const handleDelete = async (key: string) => {
-        if (!confirm(`Xóa file này vĩnh viễn?\n${key}`)) return;
+        if (!await confirmDialog({ message: `${t('admin.storage.deleteFileConfirm')}\n${key}`, variant: 'danger' })) return;
         setDeletingKeys(prev => new Set(prev).add(key));
         try {
             await deleteOrphanedFile(key);
@@ -537,7 +541,7 @@ function StorageCleanupTab() {
 
     const handleBulkDelete = async () => {
         if (selectedKeys.size === 0) return;
-        if (!confirm(`Xóa ${selectedKeys.size} file đã chọn vĩnh viễn?`)) return;
+        if (!await confirmDialog({ message: t('admin.storage.deleteBulkConfirm').replace('{count}', String(selectedKeys.size)), variant: 'danger' })) return;
         setBulkDeleting(true);
         const keys = Array.from(selectedKeys);
         let deleted = 0;

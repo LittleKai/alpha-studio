@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { useTranslation } from '../../i18n/context';
+import { useConfirm } from '../ui/ConfirmDialog';
 import { Editor } from '@tinymce/tinymce-react';
 import { uploadToCloudinary } from '../../services/cloudinaryService';
 import {
@@ -30,6 +31,7 @@ const emptyForm: ArticleFormData = {
 
 export default function ArticlesAdminTab({ category }: ArticlesAdminTabProps) {
     const { t, language } = useTranslation();
+    const { confirm: confirmDialog } = useConfirm();
     const [articles, setArticles] = useState<Article[]>([]);
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState('');
@@ -120,7 +122,7 @@ export default function ArticlesAdminTab({ category }: ArticlesAdminTabProps) {
     };
 
     const handleDelete = async (id: string) => {
-        if (!confirm(t('admin.articles.deleteConfirm'))) return;
+        if (!await confirmDialog({ message: t('admin.articles.deleteConfirm'), variant: 'danger' })) return;
         try {
             await deleteArticle(id);
             loadArticles();

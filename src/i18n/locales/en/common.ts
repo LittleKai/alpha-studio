@@ -1,5 +1,13 @@
 export default {
   common: {
+    confirm: {
+      confirmBtn: "Confirm",
+      cancelBtn: "Cancel",
+    },
+    comment: {
+      deleteConfirm: "Are you sure you want to delete this comment?",
+      reportConfirm: "Report this comment as inappropriate?",
+    },
     cancel: "Cancel",
     saving: "Saving...",
     update: "Update",

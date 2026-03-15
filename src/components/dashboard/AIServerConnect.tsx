@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from '../../i18n/context';
+import { useConfirm } from '../ui/ConfirmDialog';
 import { connectToCloud, disconnectFromCloud, getActiveSession, type CloudSession } from '../../services/cloudService';
 
 type ConnectionState = 'idle' | 'connecting' | 'connected' | 'disconnecting' | 'disconnected' | 'error';
 
 export default function AIServerConnect() {
   const { t } = useTranslation();
+  const { confirm: confirmDialog } = useConfirm();
   const [state, setState] = useState<ConnectionState>('idle');
   const [session, setSession] = useState<CloudSession | null>(null);
   const [errorMessage, setErrorMessage] = useState('');
@@ -43,7 +45,7 @@ export default function AIServerConnect() {
   };
 
   const handleDisconnect = async () => {
-    if (!confirm(t('server.confirmDisconnect'))) return;
+    if (!await confirmDialog({ message: t('server.confirmDisconnect'), variant: 'danger' })) return;
     setState('disconnecting');
     try {
       await disconnectFromCloud();

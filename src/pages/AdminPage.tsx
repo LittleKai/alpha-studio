@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/context';
 import { useTranslation } from '../i18n/context';
+import { useConfirm } from '../components/ui/ConfirmDialog';
 import { Layout } from '../components/layout';
 import ArticlesAdminTab from '../components/admin/ArticlesAdminTab';
 import CloudAdminTab from '../components/admin/CloudAdminTab';
@@ -160,6 +161,7 @@ export default function AdminPage() {
 function UsersTab() {
     const { user: currentUser } = useAuth();
     const { t } = useTranslation();
+    const { confirm: confirmDialog } = useConfirm();
     const isSuperAdmin = currentUser?.role === 'admin' && currentUser?.email === 'aduc5525@gmail.com';
     const [users, setUsers] = useState<AdminUser[]>([]);
     const [loading, setLoading] = useState(true);
@@ -228,7 +230,7 @@ function UsersTab() {
 
     const handleResetPassword = async () => {
         if (!selectedUser) return;
-        if (!confirm(t('admin.resetPassword.confirmPrefix') + selectedUser.name + t('admin.resetPassword.confirmSuffix'))) return;
+        if (!await confirmDialog({ message: t('admin.resetPassword.confirmPrefix') + selectedUser.name + t('admin.resetPassword.confirmSuffix'), variant: 'warning' })) return;
 
         try {
             setResetPwLoading(true);
@@ -574,6 +576,8 @@ function TransactionsTab() {
 
 // Webhooks Tab Component
 function WebhooksTab() {
+    const { t } = useTranslation();
+    const { confirm: confirmDialog } = useConfirm();
     const [logs, setLogs] = useState<WebhookLog[]>([]);
     const [loading, setLoading] = useState(true);
     const [selectedLog, setSelectedLog] = useState<WebhookLog | null>(null);
@@ -624,7 +628,7 @@ function WebhooksTab() {
     }, [loadUsers]);
 
     const handleReprocess = async (logId: string) => {
-        if (!confirm('Xử lý lại webhook này?')) return;
+        if (!await confirmDialog({ message: t('admin.webhooks.reprocessConfirm'), variant: 'warning' })) return;
 
         try {
             const result = await reprocessWebhook(logId);

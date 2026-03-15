@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from '../../i18n/context';
 import { useAuth } from '../../auth/context';
+import { useConfirm } from '../ui/ConfirmDialog';
 import type { WorkflowDocument, DepartmentType, Transaction, AutomationRule, AffiliateStats, TeamMember, Comment, Project, Task } from '../../types';
 import {
     getProjects,
@@ -38,6 +39,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
 
   const { t } = useTranslation();
   const { user } = useAuth();
+  const { confirm: confirmDialog } = useConfirm();
   const navigate = useNavigate();
   const { id: projectIdParam } = useParams<{ id: string }>();
 
@@ -340,7 +342,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       updateDocumentAPI(activeDocForComment.id, { comments: updatedComments }).catch(console.error);
   };
 
-  const handleAddMemberToProject = (user: TeamMember) => {
+  const handleAddMemberToProject = async (user: TeamMember) => {
       if (!selectedProject) return;
       const currentTeam = selectedProject.team || [];
       if (currentTeam.find(m => m.id === user.id)) return;
@@ -352,14 +354,14 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
               alert(t('workflow.collaboration.insufficient'));
               return;
           }
-          if (confirm(`${t('workflow.collaboration.feeNotice')} (${MEMBER_COST} Coins)`)) {
+          if (await confirmDialog({ message: `${t('workflow.collaboration.feeNotice')} (${MEMBER_COST} Coins)`, variant: 'warning' })) {
               setBalance((prev: number) => prev - MEMBER_COST);
               setTransactions((prev: Transaction[]) => [{ id: `fee-${Date.now()}`, type: 'spend', amount: -MEMBER_COST, description: `Phí thêm thành viên dự án: ${user.name}`, date: new Date().toISOString().split('T')[0], status: 'completed' }, ...prev]);
 
               updateProjectTeamAndFinance(user, MEMBER_COST);
           }
       } else {
-          if(confirm(`${t('workflow.collaboration.freeNotice')} (${user.name})`)) {
+          if (await confirmDialog({ message: `${t('workflow.collaboration.freeNotice')} (${user.name})`, variant: 'info' })) {
               updateProjectTeamAndFinance(user, 0);
           }
       }
@@ -422,9 +424,9 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       }
   };
 
-  const handlePackageProject = () => {
+  const handlePackageProject = async () => {
       if (!selectedProject) return;
-      if (confirm(t('workflow.dashboard.project.package.confirm'))) {
+      if (await confirmDialog({ message: t('workflow.dashboard.project.package.confirm'), variant: 'warning' })) {
           setProjects(prev => prev.map(p => p.id === selectedProject.id ? { ...p, status: 'completed' } : p));
           setSelectedProject(prev => prev ? { ...prev, status: 'completed' } : null);
           alert(t('workflow.dashboard.project.package.success'));
@@ -552,9 +554,9 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       }
   }, [selectedProject?.chatHistory?.length]);
 
-  const handleRemoveMember = (memberId: string, memberName: string) => {
+  const handleRemoveMember = async (memberId: string, memberName: string) => {
       if (!selectedProject) return;
-      if (!confirm(`Remove "${memberName}" from this project?`)) return;
+      if (!await confirmDialog({ message: t('workflow.collaboration.removeConfirm').replace('{name}', memberName), variant: 'danger' })) return;
       const sysMsg: Comment = {
           id: `sys-${Date.now()}`, author: 'System',
           text: `${memberName} ${t('workflow.dashboard.project.chat.sys.removed')}`,
@@ -567,9 +569,9 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
       updateProjectAPI(selectedProject.id, { team: updatedTeam, chatHistory: updatedHistory }).catch(console.error);
   };
 
-  const handleLeaveProject = () => {
+  const handleLeaveProject = async () => {
       if (!selectedProject || !user) return;
-      if (!confirm(`Leave project "${selectedProject.name}"?`)) return;
+      if (!await confirmDialog({ message: t('workflow.collaboration.leaveConfirm').replace('{name}', selectedProject.name), variant: 'danger' })) return;
       const sysMsg: Comment = {
           id: `sys-${Date.now()}`, author: 'System',
           text: `${userProfile.name} ${t('workflow.dashboard.project.chat.sys.left')}`,
@@ -701,8 +703,8 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
   };
 
   // Delete completed project (admin only)
-  const handleDeleteProject = (projectId: string) => {
-      if (!confirm(t('workflow.dashboard.project.confirmDelete'))) return;
+  const handleDeleteProject = async (projectId: string) => {
+      if (!await confirmDialog({ message: t('workflow.dashboard.project.confirmDelete'), variant: 'danger' })) return;
       setProjects(prev => prev.filter(p => p.id !== projectId));
       deleteProjectAPI(projectId).catch(console.error);
   };

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from '../../i18n/context';
 import { useAuth } from '../../auth/context';
+import { useConfirm } from '../ui/ConfirmDialog';
 import {
     getComments,
     getReplies,
@@ -23,8 +24,9 @@ const CommentSection: React.FC<CommentSectionProps> = ({
     targetId,
     commentsCount = 0
 }) => {
-    const { language } = useTranslation();
+    const { language, t } = useTranslation();
     const { user, isAuthenticated } = useAuth();
+    const { confirm: confirmDialog } = useConfirm();
 
     const [comments, setComments] = useState<Comment[]>([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -174,7 +176,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({
     };
 
     const handleDeleteComment = async (commentId: string, parentId?: string) => {
-        if (!confirm(language === 'vi' ? 'Bạn có chắc muốn xóa bình luận này?' : 'Are you sure you want to delete this comment?')) {
+        if (!await confirmDialog({ message: t('common.comment.deleteConfirm'), variant: 'danger' })) {
             return;
         }
 
@@ -234,7 +236,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({
     };
 
     const handleFlagComment = async (commentId: string) => {
-        if (!confirm(language === 'vi' ? 'Báo cáo bình luận này vi phạm?' : 'Report this comment as inappropriate?')) {
+        if (!await confirmDialog({ message: t('common.comment.reportConfirm'), variant: 'warning' })) {
             return;
         }
 

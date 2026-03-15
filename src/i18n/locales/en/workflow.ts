@@ -630,6 +630,8 @@ export default {
       team: "Team Members",
       addMember: "Add Member",
       removeMember: "Remove",
+      removeConfirm: "Remove \"{name}\" from the project?",
+      leaveConfirm: "Leave project \"{name}\"?",
       chat: "Chat",
       placeholder: "Type message...",
       send: "Send",

@@ -5,6 +5,7 @@ import App from './App';
 import { LanguageProvider } from './i18n/context';
 import { ThemeProvider } from './theme/context';
 import { AuthProvider } from './auth/context';
+import { ConfirmProvider } from './components/ui/ConfirmDialog';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -13,7 +14,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <ThemeProvider>
         <LanguageProvider>
           <AuthProvider>
-            <App />
+            <ConfirmProvider>
+              <App />
+            </ConfirmProvider>
           </AuthProvider>
         </LanguageProvider>
       </ThemeProvider>

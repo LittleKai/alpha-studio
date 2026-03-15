@@ -347,6 +347,13 @@ export default {
       successSuffix: "\n\nHãy gửi mật khẩu này cho user.",
       error: "Không thể reset mật khẩu"
     },
+    storage: {
+      deleteFileConfirm: "Xóa file này vĩnh viễn?",
+      deleteBulkConfirm: "Xóa {count} file đã chọn vĩnh viễn?",
+    },
+    webhooks: {
+      reprocessConfirm: "Xử lý lại webhook này?",
+    },
     cloud: {
       machines: {
         title: "Quản lý Máy chủ",

@@ -1,5 +1,13 @@
 export default {
   common: {
+    confirm: {
+      confirmBtn: "Xác nhận",
+      cancelBtn: "Hủy",
+    },
+    comment: {
+      deleteConfirm: "Bạn có chắc muốn xóa bình luận này?",
+      reportConfirm: "Báo cáo bình luận này vi phạm nội dung?",
+    },
     cancel: "Hủy",
     saving: "Đang lưu...",
     update: "Cập nhật",

@@ -347,6 +347,13 @@ export default {
       successSuffix: "\n\nPlease share this password with the user.",
       error: "Failed to reset password"
     },
+    storage: {
+      deleteFileConfirm: "Delete this file permanently?",
+      deleteBulkConfirm: "Delete {count} selected files permanently?",
+    },
+    webhooks: {
+      reprocessConfirm: "Reprocess this webhook?",
+    },
     cloud: {
       machines: {
         title: "Machine Management",

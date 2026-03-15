@@ -630,6 +630,8 @@ export default {
       team: "Thành viên nhóm",
       addMember: "Thêm thành viên",
       removeMember: "Xóa",
+      removeConfirm: "Xóa \"{name}\" khỏi dự án?",
+      leaveConfirm: "Rời khỏi dự án \"{name}\"?",
       chat: "Chat",
       placeholder: "Nhập tin nhắn...",
       send: "Gửi",
