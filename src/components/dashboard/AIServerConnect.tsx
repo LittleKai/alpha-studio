@@ -129,7 +129,7 @@ export default function AIServerConnect() {
           )}
 
           {/* CONNECTED STATE */}
-          {state === 'connected' && session && (
+          {(state === 'connected' || state === 'disconnecting') && session && (
             <>
               <div className="w-32 h-32 bg-green-600/10 rounded-[40px] flex items-center justify-center mx-auto border border-green-500/30 shadow-[0_0_50px_rgba(34,197,94,0.2)]">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
