@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from '../../i18n/context';
 import { connectToCloud, disconnectFromCloud, getActiveSession, type CloudSession } from '../../services/cloudService';
 
-type ConnectionState = 'idle' | 'connecting' | 'connected' | 'disconnected' | 'error';
+type ConnectionState = 'idle' | 'connecting' | 'connected' | 'disconnecting' | 'disconnected' | 'error';
 
 export default function AIServerConnect() {
   const { t } = useTranslation();
@@ -44,12 +44,14 @@ export default function AIServerConnect() {
 
   const handleDisconnect = async () => {
     if (!confirm(t('server.confirmDisconnect'))) return;
+    setState('disconnecting');
     try {
       await disconnectFromCloud();
       setSession(null);
       setState('disconnected');
     } catch (error: any) {
       console.error('Disconnect error:', error);
+      setState('connected');
     }
   };
 
@@ -163,18 +165,30 @@ export default function AIServerConnect() {
               </div>
 
               <div className="space-y-3">
-                <button
-                  onClick={handleOpenDesktop}
-                  className="w-full py-4 bg-[var(--accent-primary)] text-black font-black rounded-2xl shadow-xl hover:scale-[1.02] active:scale-95 transition-all text-lg"
-                >
-                  {t('server.connected.openBtn')}
-                </button>
-                <button
-                  onClick={handleDisconnect}
-                  className="w-full py-3 bg-red-500/10 text-red-500 font-bold rounded-2xl hover:bg-red-500/20 transition-all"
-                >
-                  {t('server.connected.disconnectBtn')}
-                </button>
+                {state === 'disconnecting' ? (
+                  <button
+                    disabled
+                    className="w-full py-3 bg-red-500/10 text-red-400 font-bold rounded-2xl opacity-70 cursor-not-allowed flex items-center justify-center gap-2"
+                  >
+                    <div className="w-4 h-4 border-2 border-red-400/30 border-t-red-400 rounded-full animate-spin"></div>
+                    {t('server.connected.disconnecting')}
+                  </button>
+                ) : (
+                  <>
+                    <button
+                      onClick={handleOpenDesktop}
+                      className="w-full py-4 bg-[var(--accent-primary)] text-black font-black rounded-2xl shadow-xl hover:scale-[1.02] active:scale-95 transition-all text-lg"
+                    >
+                      {t('server.connected.openBtn')}
+                    </button>
+                    <button
+                      onClick={handleDisconnect}
+                      className="w-full py-3 bg-red-500/10 text-red-500 font-bold rounded-2xl hover:bg-red-500/20 transition-all"
+                    >
+                      {t('server.connected.disconnectBtn')}
+                    </button>
+                  </>
+                )}
               </div>
             </>
           )}

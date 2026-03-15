@@ -16,6 +16,7 @@ export default {
       description: "Môi trường desktop ảo của bạn đã sẵn sàng sử dụng.",
       openBtn: "Mở Desktop",
       disconnectBtn: "Ngắt kết nối",
+      disconnecting: "Đang ngắt kết nối...",
       sessionInfo: "Thông tin phiên",
       startedAt: "Bắt đầu lúc",
       machine: "Máy chủ"

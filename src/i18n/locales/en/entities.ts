@@ -16,6 +16,7 @@ export default {
       description: "Your virtual desktop environment is ready to use.",
       openBtn: "Open Desktop",
       disconnectBtn: "Disconnect",
+      disconnecting: "Disconnecting...",
       sessionInfo: "Session Info",
       startedAt: "Started at",
       machine: "Machine"
