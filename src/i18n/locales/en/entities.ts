@@ -26,6 +26,11 @@ export default {
       retryBtn: "Retry",
       noMachines: "No machines available at the moment. Please try again later."
     },
+    disconnected: {
+      title: "Disconnected",
+      description: "Your cloud desktop session has ended.",
+      reconnectBtn: "Reconnect"
+    },
     loading: "Loading...",
     confirmDisconnect: "Are you sure you want to disconnect from the cloud desktop?"
   },

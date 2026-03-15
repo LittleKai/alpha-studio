@@ -26,6 +26,11 @@ export default {
       retryBtn: "Thử lại",
       noMachines: "Hiện không có máy chủ nào khả dụng. Vui lòng thử lại sau."
     },
+    disconnected: {
+      title: "Đã ngắt kết nối",
+      description: "Phiên cloud desktop của bạn đã kết thúc.",
+      reconnectBtn: "Kết nối lại"
+    },
     loading: "Đang tải...",
     confirmDisconnect: "Bạn có chắc muốn ngắt kết nối khỏi cloud desktop?"
   },

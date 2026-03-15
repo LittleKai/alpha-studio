@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from '../../i18n/context';
 import { connectToCloud, disconnectFromCloud, getActiveSession, type CloudSession } from '../../services/cloudService';
 
-type ConnectionState = 'idle' | 'connecting' | 'connected' | 'error';
+type ConnectionState = 'idle' | 'connecting' | 'connected' | 'disconnected' | 'error';
 
 export default function AIServerConnect() {
   const { t } = useTranslation();
@@ -47,7 +47,7 @@ export default function AIServerConnect() {
     try {
       await disconnectFromCloud();
       setSession(null);
-      setState('idle');
+      setState('disconnected');
     } catch (error: any) {
       console.error('Disconnect error:', error);
     }
@@ -176,6 +176,27 @@ export default function AIServerConnect() {
                   {t('server.connected.disconnectBtn')}
                 </button>
               </div>
+            </>
+          )}
+
+          {/* DISCONNECTED STATE */}
+          {state === 'disconnected' && (
+            <>
+              <div className="w-32 h-32 bg-gray-600/10 rounded-[40px] flex items-center justify-center mx-auto border border-gray-500/30 shadow-[0_0_50px_rgba(107,114,128,0.2)]">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18.364 5.636a9 9 0 11-12.728 0M12 3v9" />
+                </svg>
+              </div>
+              <div className="space-y-3">
+                <h1 className="text-3xl font-black tracking-tight">{t('server.disconnected.title')}</h1>
+                <p className="text-[var(--text-secondary)] leading-relaxed">{t('server.disconnected.description')}</p>
+              </div>
+              <button
+                onClick={handleConnect}
+                className="w-full py-4 bg-[var(--accent-primary)] text-black font-black rounded-2xl shadow-xl hover:scale-[1.02] active:scale-95 transition-all text-lg"
+              >
+                {t('server.disconnected.reconnectBtn')}
+              </button>
             </>
           )}
 
