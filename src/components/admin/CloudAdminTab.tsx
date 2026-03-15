@@ -79,9 +79,6 @@ function MachinesTab() {
         machineId: '',
         agentUrl: '',
         secret: '',
-        cpu: '',
-        ram: '',
-        gpu: '',
         maxContainers: 5,
     });
 
@@ -102,7 +99,7 @@ function MachinesTab() {
     }, [loadMachines]);
 
     const resetForm = () => {
-        setFormData({ name: '', machineId: '', agentUrl: '', secret: '', cpu: '', ram: '', gpu: '', maxContainers: 5 });
+        setFormData({ name: '', machineId: '', agentUrl: '', secret: '', maxContainers: 5 });
         setEditingMachine(null);
         setShowForm(false);
     };
@@ -114,9 +111,6 @@ function MachinesTab() {
             machineId: machine.machineId,
             agentUrl: machine.agentUrl,
             secret: machine.secret,
-            cpu: machine.specs.cpu,
-            ram: machine.specs.ram,
-            gpu: machine.specs.gpu,
             maxContainers: machine.maxContainers,
         });
         setShowForm(true);
@@ -129,7 +123,6 @@ function MachinesTab() {
                 machineId: formData.machineId,
                 agentUrl: formData.agentUrl,
                 secret: formData.secret,
-                specs: { cpu: formData.cpu, ram: formData.ram, gpu: formData.gpu },
                 maxContainers: formData.maxContainers,
             };
 
@@ -218,27 +211,6 @@ function MachinesTab() {
                             placeholder={t('admin.cloud.machines.secret')}
                             value={formData.secret}
                             onChange={(e) => setFormData(f => ({ ...f, secret: e.target.value }))}
-                            className="px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)]"
-                        />
-                        <input
-                            type="text"
-                            placeholder={t('admin.cloud.machines.cpu')}
-                            value={formData.cpu}
-                            onChange={(e) => setFormData(f => ({ ...f, cpu: e.target.value }))}
-                            className="px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)]"
-                        />
-                        <input
-                            type="text"
-                            placeholder={t('admin.cloud.machines.ram')}
-                            value={formData.ram}
-                            onChange={(e) => setFormData(f => ({ ...f, ram: e.target.value }))}
-                            className="px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)]"
-                        />
-                        <input
-                            type="text"
-                            placeholder={t('admin.cloud.machines.gpu')}
-                            value={formData.gpu}
-                            onChange={(e) => setFormData(f => ({ ...f, gpu: e.target.value }))}
                             className="px-3 py-2 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)]"
                         />
                         <input
