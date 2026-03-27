@@ -94,8 +94,11 @@ export default function ArticlesAdminTab({ category }: ArticlesAdminTabProps) {
 
     const handleSave = async () => {
         // Sync editor content before saving
-        const viContent = editorViRef.current?.getContent() || form.content.vi;
-        const enContent = editorEnRef.current?.getContent() || form.content.en;
+        const viRaw = editorViRef.current?.getContent() || form.content.vi;
+        const enRaw = editorEnRef.current?.getContent() || form.content.en;
+        // Language fallback: if one side is empty, use the other
+        const viContent = viRaw || enRaw;
+        const enContent = enRaw || viRaw;
         const finalForm = {
             ...form,
             content: { vi: viContent, en: enContent },

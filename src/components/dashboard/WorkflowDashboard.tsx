@@ -829,7 +829,7 @@ export default function WorkflowDashboard({ onBack }: WorkflowDashboardProps) {
                               {selectedProject.description && (
                                   <div className={`mb-5 ${selectedProject.tagline ? 'border-t border-[var(--border-primary)] pt-4' : ''}`}>
                                       <h3 className="text-base font-bold mb-2">{t('workflow.description')}</h3>
-                                      <div className="text-[var(--text-secondary)] text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: selectedProject.description }} />
+                                      <div className="tinymce-content text-[var(--text-secondary)] text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: selectedProject.description }} />
                                   </div>
                               )}
                               {selectedProject.requirements && (

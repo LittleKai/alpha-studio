@@ -94,14 +94,8 @@ export default function ServicesDetailPage() {
 
                 {/* Content */}
                 <div
-                    className="prose prose-lg max-w-none text-[var(--text-primary)] leading-relaxed
-                        [&_img]:rounded-xl [&_img]:max-w-full [&_img]:h-auto
-                        [&_a]:text-[var(--accent-primary)] [&_a]:underline
-                        [&_h1]:text-[var(--text-primary)] [&_h2]:text-[var(--text-primary)] [&_h3]:text-[var(--text-primary)]
-                        [&_p]:text-[var(--text-primary)] [&_li]:text-[var(--text-primary)]
-                        [&_blockquote]:border-l-4 [&_blockquote]:border-[var(--accent-primary)] [&_blockquote]:pl-4 [&_blockquote]:italic
-                        [&_table]:w-full [&_th]:bg-[var(--bg-secondary)] [&_th]:p-2 [&_td]:p-2 [&_td]:border [&_td]:border-[var(--border-primary)]"
-                    dangerouslySetInnerHTML={{ __html: article.content[language] || '' }}
+                    className="tinymce-content max-w-none text-[var(--text-primary)] leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: article.content[language] || article.content[language === 'vi' ? 'en' : 'vi'] || '' }}
                 />
 
                 {/* Tags */}
