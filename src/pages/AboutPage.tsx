@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
+import SEOHead from '../components/ui/SEOHead';
 import { getArticles, type Article } from '../services/articleService';
 
 export default function AboutPage() {
@@ -25,6 +26,13 @@ export default function AboutPage() {
 
     return (
         <div className="min-h-screen bg-[var(--bg-primary)]">
+            <SEOHead
+                title={language === 'vi' ? 'Về Chúng Tôi — Alpha Studio' : 'About Us — Alpha Studio'}
+                description={language === 'vi'
+                    ? 'Tìm hiểu về Alpha Studio — nền tảng đào tạo AI hàng đầu Việt Nam, sứ mệnh, tầm nhìn và đội ngũ của chúng tôi.'
+                    : 'Learn about Alpha Studio — Vietnam\'s leading AI training platform, our mission, vision and team.'}
+                path="/about"
+            />
             {/* Hero Section */}
             <section className="relative py-20 px-6 text-center overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent-primary)]/10 via-transparent to-purple-600/10" />

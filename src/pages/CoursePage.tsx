@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback, useMemo } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
+import SEOHead from '../components/ui/SEOHead';
 import { useAuth } from '../auth/context';
 import {
     getCourseBySlug,
@@ -759,6 +760,46 @@ const CoursePage: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] font-sans flex flex-col">
+            <SEOHead
+                title={getLocalizedText(course.title)}
+                description={getLocalizedText(course.description).slice(0, 160)}
+                ogImage={course.thumbnail}
+                ogType="article"
+                path={`/courses/${slug}`}
+                jsonLd={{
+                    '@context': 'https://schema.org',
+                    '@type': 'Course',
+                    name: getLocalizedText(course.title),
+                    description: getLocalizedText(course.description),
+                    image: course.thumbnail,
+                    url: `https://giaiphapsangtao.com/courses/${slug}`,
+                    provider: {
+                        '@type': 'Organization',
+                        name: 'Alpha Studio',
+                        url: 'https://giaiphapsangtao.com'
+                    },
+                    courseMode: 'online',
+                    inLanguage: 'vi',
+                    ...(course.instructor?.name && {
+                        instructor: { '@type': 'Person', name: course.instructor.name }
+                    }),
+                    ...(course.reviewCount > 0 && {
+                        aggregateRating: {
+                            '@type': 'AggregateRating',
+                            ratingValue: course.rating.toFixed(1),
+                            reviewCount: course.reviewCount,
+                            bestRating: '5',
+                            worstRating: '1'
+                        }
+                    }),
+                    offers: {
+                        '@type': 'Offer',
+                        price: course.finalPrice ?? course.price,
+                        priceCurrency: 'VND',
+                        availability: 'https://schema.org/InStock'
+                    }
+                }}
+            />
             {/* Header - Always visible */}
             <header className="sticky top-0 z-40 glass-card border-b border-[var(--border-primary)]">
                 <div className="container mx-auto px-4 py-3 flex items-center gap-4">

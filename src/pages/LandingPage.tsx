@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
+import SEOHead from '../components/ui/SEOHead';
 import { useAuth } from '../auth/context';
 import type { FeaturedStudent } from '../types';
 import Login from '../components/ui/Login';
@@ -138,8 +139,46 @@ const LandingPage: React.FC = () => {
         }
     };
 
+    const desc = language === 'vi'
+        ? 'Học AI thực chiến cùng Alpha Studio. Khóa học AI sáng tạo, công cụ AI Studio chuyên nghiệp, và cộng đồng freelancer hàng đầu Việt Nam.'
+        : 'Master AI with Alpha Studio. Creative AI courses, professional AI Studio tools, and Vietnam\'s top freelancer community.';
+
+    const landingJsonLd = {
+        '@context': 'https://schema.org',
+        '@graph': [
+            {
+                '@type': 'Organization',
+                name: 'Alpha Studio',
+                url: 'https://giaiphapsangtao.com',
+                logo: {
+                    '@type': 'ImageObject',
+                    url: 'https://giaiphapsangtao.com/alpha-logo-2.png'
+                }
+            },
+            {
+                '@type': 'WebSite',
+                name: 'Alpha Studio',
+                url: 'https://giaiphapsangtao.com',
+                potentialAction: {
+                    '@type': 'SearchAction',
+                    target: {
+                        '@type': 'EntryPoint',
+                        urlTemplate: 'https://giaiphapsangtao.com/courses?search={search_term_string}'
+                    },
+                    'query-input': 'required name=search_term_string'
+                }
+            }
+        ]
+    };
+
     return (
         <>
+            <SEOHead
+                title="Alpha Studio — AI Academy & Training Hub"
+                description={desc}
+                path="/"
+                jsonLd={landingJsonLd}
+            />
             {/* Hero Section */}
             <section className="relative py-10 flex flex-col items-center justify-center text-center px-6 overflow-hidden">
                 <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[var(--accent-primary)]/10 rounded-full blur-[120px] -z-10"></div>

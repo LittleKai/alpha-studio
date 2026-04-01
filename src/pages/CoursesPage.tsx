@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
+import SEOHead from '../components/ui/SEOHead';
 import { getCourses, Course, CourseQueryParams, PaginationInfo } from '../services/courseService';
 
 // Category options
@@ -138,8 +139,17 @@ const CoursesPage: React.FC = () => {
         setCurrentPage(1);
     };
 
+    const desc = language === 'vi'
+        ? 'Khám phá các khóa học AI tại Alpha Studio. Từ AI cơ bản đến nâng cao, học thực chiến với dự án thực tế.'
+        : 'Explore AI courses at Alpha Studio. From beginner to advanced, learn with real-world projects.';
+
     return (
         <div className="min-h-screen bg-[var(--bg-primary)]">
+            <SEOHead
+                title={language === 'vi' ? 'Khóa Học AI — Alpha Studio' : 'AI Courses — Alpha Studio'}
+                description={desc}
+                path="/courses"
+            />
             {/* Header */}
             <div className="bg-[var(--bg-secondary)]/50 border-b border-[var(--border-primary)]">
                 <div className="container mx-auto px-6 py-12">

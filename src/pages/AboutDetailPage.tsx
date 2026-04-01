@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import { getArticleBySlug, type Article } from '../services/articleService';
+import SEOHead from '../components/ui/SEOHead';
 
 export default function AboutDetailPage() {
     const { slug } = useParams<{ slug: string }>();
@@ -52,6 +53,27 @@ export default function AboutDetailPage() {
 
     return (
         <div className="min-h-screen bg-[var(--bg-primary)]">
+            <SEOHead
+                title={article.title[language] || article.title.vi}
+                description={article.excerpt?.[language] || article.excerpt?.vi || ''}
+                ogImage={article.thumbnail}
+                ogType="article"
+                path={`/about/${slug}`}
+                jsonLd={{
+                    '@context': 'https://schema.org',
+                    '@type': 'Article',
+                    headline: article.title[language] || article.title.vi,
+                    description: article.excerpt?.[language] || article.excerpt?.vi || '',
+                    image: article.thumbnail || 'https://giaiphapsangtao.com/alpha-logo-2.png',
+                    url: `https://giaiphapsangtao.com/about/${slug}`,
+                    author: { '@type': 'Organization', name: 'Alpha Studio' },
+                    publisher: {
+                        '@type': 'Organization',
+                        name: 'Alpha Studio',
+                        logo: { '@type': 'ImageObject', url: 'https://giaiphapsangtao.com/alpha-logo-2.png' }
+                    }
+                }}
+            />
             <article className="max-w-4xl mx-auto px-6 py-12">
                 {/* Back button */}
                 <button

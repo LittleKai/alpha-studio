@@ -1,5 +1,8 @@
 {
+  "buildCommand": "npm run build:seo",
   "rewrites": [
+    { "source": "/sitemap.xml", "destination": "https://alpha-studio-backend.fly.dev/sitemap.xml" },
+    { "source": "/robots.txt", "destination": "/robots.txt" },
     { "source": "/(.*)", "destination": "/" }
   ]
 }
