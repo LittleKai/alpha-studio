@@ -8,6 +8,7 @@
  */
 
 import puppeteer from 'puppeteer';
+import puppeteerCore from 'puppeteer-core';
 import { preview } from 'vite';
 import path from 'path';
 import fs from 'fs';
@@ -83,11 +84,22 @@ async function main() {
     });
     console.log(`[prerender] Preview server started at http://localhost:${PREVIEW_PORT}`);
 
-    // 3. Launch Puppeteer
-    const browser = await puppeteer.launch({
-        headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
-    });
+    // 3. Launch Puppeteer — use @sparticuz/chromium on Vercel/CI, bundled Chrome locally
+    let browser;
+    if (process.env.VERCEL || process.env.CI) {
+        const chromium = await import('@sparticuz/chromium');
+        browser = await puppeteerCore.launch({
+            args: chromium.default.args,
+            defaultViewport: chromium.default.defaultViewport,
+            executablePath: await chromium.default.executablePath(),
+            headless: chromium.default.headless,
+        });
+    } else {
+        browser = await puppeteer.launch({
+            headless: true,
+            args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+        });
+    }
 
     let success = 0;
     let failed = 0;
