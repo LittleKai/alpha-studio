@@ -156,3 +156,81 @@ export const forceEndSession = async (id: string) => {
     if (!response.ok) throw new Error(data.message || 'Failed to force end session');
     return data;
 };
+
+// ─── Flow Server admin endpoints ────────────────────────────────────────────
+
+export interface FlowServer {
+    _id: string;
+    name: string;
+    machineId: string;
+    agentUrl: string;
+    secret: string;
+    status: 'available' | 'degraded' | 'offline';
+    tokenValid: boolean;
+    tokenExpiresAt: string | null;
+    projectId: string;
+    lastPingAt: string | null;
+    enabled: boolean;
+    createdAt: string;
+    updatedAt: string;
+}
+
+export const getFlowServers = async () => {
+    const response = await fetch(`${API_URL}/cloud/admin/flow-servers`, {
+        headers: getHeaders(),
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message || 'Failed to get flow servers');
+    return data;
+};
+
+export const registerFlowServer = async (input: {
+    name: string;
+    machineId: string;
+    agentUrl: string;
+    secret: string;
+    projectId?: string;
+}) => {
+    const response = await fetch(`${API_URL}/cloud/admin/flow-servers`, {
+        method: 'POST',
+        headers: getHeaders(),
+        body: JSON.stringify(input),
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message || 'Failed to register flow server');
+    return data;
+};
+
+export const updateFlowServer = async (
+    id: string,
+    input: Partial<{ name: string; agentUrl: string; secret: string; projectId: string }>,
+) => {
+    const response = await fetch(`${API_URL}/cloud/admin/flow-servers/${id}`, {
+        method: 'PUT',
+        headers: getHeaders(),
+        body: JSON.stringify(input),
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message || 'Failed to update flow server');
+    return data;
+};
+
+export const toggleFlowServer = async (id: string) => {
+    const response = await fetch(`${API_URL}/cloud/admin/flow-servers/${id}/toggle`, {
+        method: 'PATCH',
+        headers: getHeaders(),
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message || 'Failed to toggle flow server');
+    return data;
+};
+
+export const deleteFlowServer = async (id: string) => {
+    const response = await fetch(`${API_URL}/cloud/admin/flow-servers/${id}`, {
+        method: 'DELETE',
+        headers: getHeaders(),
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message || 'Failed to delete flow server');
+    return data;
+};

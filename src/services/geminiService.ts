@@ -1,41 +1,42 @@
-import { GoogleGenAI, Modality } from "@google/genai";
+import { GoogleGenAI, Modality } from '@google/genai';
 import type { GeneratedContent } from '../types';
 
-const apiKey = (import.meta as any).env?.VITE_GEMINI_API_KEY || process.env.API_KEY;
+// ─────────────────────────────────────────────────────────────────────
+// Gemini SDK — used by AI Studio → Edit tab for mask / multi-image /
+// storyboard editing. Regular Image/Video generation uses the Flow
+// pipeline via studioService instead.
+// ─────────────────────────────────────────────────────────────────────
+
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
 if (!apiKey) {
-  console.warn("API_KEY environment variable is not set. AI features will not work.");
-} else {
-  // Log masked key to verify correct key is loaded after env change
-  const maskedKey = `${apiKey.slice(0, 8)}...${apiKey.slice(-4)}`;
-  console.log(`[GeminiService] Loaded API key: ${maskedKey} (length: ${apiKey.length})`);
+  console.warn('[GeminiService] VITE_GEMINI_API_KEY not set — Edit tab will fail.');
 }
 
 const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
-const handleApiError = (error: unknown): Promise<any> => {
-  console.error("Error calling Gemini API:", error);
+const handleApiError = (error: unknown): Promise<never> => {
+  console.error('Error calling Gemini API:', error);
   if (error instanceof Error) {
-    let errorMessage = error.message;
+    let msg = error.message;
     try {
-      // Attempt to parse a potential JSON error message from the API
-      const potentialJson = errorMessage.substring(errorMessage.indexOf('{'));
-      const parsedError = JSON.parse(potentialJson);
-      if (parsedError.error && parsedError.error.message) {
-        if (parsedError.error.status === 'RESOURCE_EXHAUSTED') {
-          errorMessage = "You've likely exceeded the request limit. Please wait a moment before trying again.";
-        } else if (parsedError.error.code === 500 || parsedError.error.status === 'UNKNOWN') {
-          errorMessage = "An unexpected server error occurred. This might be a temporary issue. Please try again in a few moments.";
+      const maybeJson = msg.substring(msg.indexOf('{'));
+      const parsed = JSON.parse(maybeJson);
+      if (parsed.error?.message) {
+        if (parsed.error.status === 'RESOURCE_EXHAUSTED') {
+          msg = 'Đã vượt quota Gemini. Vui lòng đợi vài phút rồi thử lại.';
+        } else if (parsed.error.code === 500 || parsed.error.status === 'UNKNOWN') {
+          msg = 'Gemini gặp lỗi tạm thời. Thử lại sau ít phút.';
         } else {
-          errorMessage = parsedError.error.message;
+          msg = parsed.error.message;
         }
       }
     } catch {
-      // Not a JSON error, use original message
+      // not JSON — keep original
     }
-    return Promise.reject(new Error(errorMessage));
+    return Promise.reject(new Error(msg));
   }
-  return Promise.reject(new Error("An unknown error occurred while communicating with the API."));
+  return Promise.reject(new Error('Lỗi không xác định khi gọi Gemini API.'));
 };
 
 export type StudioModel = 'gemini-2.5-flash-image' | 'gemini-3.0-pro-image';
@@ -59,73 +60,53 @@ export async function editImage(
   prompt: string,
   imageParts: { base64: string; mimeType: string }[],
   maskBase64: string | null,
-  model: StudioModel = 'gemini-2.5-flash-image'
+  model: StudioModel = 'gemini-2.5-flash-image',
+  _onProgress?: (text: string) => void,
 ): Promise<GeneratedContent> {
   if (!ai) {
-    return Promise.reject(new Error("API key not configured. Please set VITE_GEMINI_API_KEY in .env.local"));
+    return Promise.reject(
+      new Error('VITE_GEMINI_API_KEY chưa cấu hình. Không thể dùng Edit tab.'),
+    );
   }
 
   try {
     let fullPrompt = prompt;
     const parts: any[] = [];
 
-    // If a mask is provided, the prompt needs to be modified to instruct the model
-    // on how to use it.
     if (maskBase64) {
       fullPrompt = `Apply the following instruction only to the masked area of the image: "${prompt}". Preserve the unmasked area.`;
     }
 
-    // Add image parts first, as this is a more robust order for image editing models.
-    // The primary image is always the first one.
+    // Primary image first
     if (imageParts.length > 0) {
       parts.push({
         inlineData: { data: imageParts[0].base64, mimeType: imageParts[0].mimeType },
       });
     }
-
-    // The mask, if it exists, must follow the image it applies to.
+    // Mask applies to primary image
     if (maskBase64) {
-      parts.push({
-        inlineData: { data: maskBase64, mimeType: 'image/png' },
-      });
+      parts.push({ inlineData: { data: maskBase64, mimeType: 'image/png' } });
     }
-
-    // Add any remaining images (secondary, tertiary, etc.)
+    // Remaining images
     if (imageParts.length > 1) {
-      imageParts.slice(1).forEach(img => {
-        parts.push({
-          inlineData: { data: img.base64, mimeType: img.mimeType },
-        });
-      });
+      for (const img of imageParts.slice(1)) {
+        parts.push({ inlineData: { data: img.base64, mimeType: img.mimeType } });
+      }
     }
-
-    // Add the text prompt as the last part of the request.
     parts.push({ text: fullPrompt });
-
-    console.log(`[GeminiService] Calling model: ${model} | images: ${imageParts.length} | mask: ${!!maskBase64}`);
 
     const response = await ai.models.generateContent({
       model,
       contents: { parts },
-      config: {
-        responseModalities: [Modality.IMAGE],
-      },
+      config: { responseModalities: [Modality.IMAGE] },
     });
-
-    // Log token usage
-    const usage = response.usageMetadata;
-    if (usage) {
-      console.log(`[GeminiService] Token usage — prompt: ${usage.promptTokenCount ?? '?'} | candidates: ${usage.candidatesTokenCount ?? '?'} | total: ${usage.totalTokenCount ?? '?'}`);
-    }
 
     const result: GeneratedContent = { imageUrl: null, text: null };
     const responseParts = response.candidates?.[0]?.content?.parts;
-
     if (responseParts) {
       for (const part of responseParts) {
-        if (part.text) {
-          result.text = (result.text ? result.text + "\n" : "") + part.text;
-        } else if (part.inlineData) {
+        if (part.text) result.text = (result.text ? result.text + '\n' : '') + part.text;
+        else if (part.inlineData) {
           result.imageUrl = `data:${part.inlineData.mimeType};base64,${part.inlineData.data}`;
         }
       }
@@ -134,17 +115,15 @@ export async function editImage(
     if (!result.imageUrl) {
       const finishReason = response.candidates?.[0]?.finishReason;
       const safetyRatings = response.candidates?.[0]?.safetyRatings;
-      let errorMessage = "The model did not return an image. It might have refused the request. Please try a different image or prompt.";
-
+      let errorMessage = 'Model không trả về ảnh. Thử prompt hoặc ảnh khác.';
       if (finishReason === 'SAFETY') {
-        const blockedCategories = safetyRatings?.filter(r => r.blocked).map(r => r.category).join(', ');
-        errorMessage = `The request was blocked for safety reasons. Categories: ${blockedCategories || 'Unknown'}. Please modify your prompt or image.`;
+        const blocked = safetyRatings?.filter((r) => r.blocked).map((r) => r.category).join(', ');
+        errorMessage = `Yêu cầu bị chặn bởi kiểm duyệt an toàn (${blocked || 'Unknown'}). Chỉnh lại prompt/ảnh.`;
       }
       throw new Error(errorMessage);
     }
 
     return result;
-
   } catch (error) {
     return handleApiError(error);
   }

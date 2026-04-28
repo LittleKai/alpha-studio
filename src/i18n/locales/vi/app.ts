@@ -76,14 +76,12 @@ export default {
     noImage: "Chưa tải ảnh"
   },
   studio: {
-    selectTransformation: "Chọn hiệu ứng",
-    selectPreset: "Chọn Preset",
-    customPrompt: "Prompt tùy chỉnh",
-    optional: "Tùy chọn",
-    enterPrompt: "Nhập hướng dẫn của bạn...",
-    uploadImages: "Tải ảnh lên",
-    generate: "Tạo ảnh",
+    title: "AI Studio",
+    subtitle: "Tạo ảnh và video với Google Nano Banana và Veo",
+    generate: "Tạo",
     generating: "Đang tạo...",
+    cancel: "Hủy",
+    progressLog: "Tiến trình",
     result: "Kết quả",
     resultPlaceholder: "Kết quả sẽ xuất hiện ở đây",
     download: "Tải xuống",
@@ -91,24 +89,143 @@ export default {
     history: "Lịch sử",
     clearHistory: "Xóa lịch sử",
     noHistory: "Chưa có lịch sử",
-    promptRequired: "Vui lòng nhập prompt",
+    newGeneration: "Tạo mới",
+    promptLabel: "Mô tả",
+    promptPlaceholder: "Mô tả hình ảnh hoặc video bạn muốn tạo (tiếng Anh cho kết quả tốt nhất)...",
+    promptRequired: "Vui lòng nhập mô tả",
+    loginRequired: "Đăng nhập để sử dụng công cụ AI",
+    loginRequiredDesc: "Bạn cần đăng nhập để sử dụng AI Studio",
+    unknownError: "Đã xảy ra lỗi không xác định",
+    tabs: {
+      image: "Ảnh",
+      video: "Video",
+      edit: "Chỉnh sửa"
+    },
+    // ─── Edit tab (Gemini) ──────────────────────────────────────────
+    selectTransformation: "Chọn hiệu ứng",
+    selectPreset: "Chọn Preset",
+    customPrompt: "Prompt tùy chỉnh",
+    enterPrompt: "Nhập hướng dẫn của bạn...",
+    dailyLimitReached: "Hết lượt miễn phí hôm nay",
+    dailyLimitDesc: "Bạn đã dùng hết 3 lần miễn phí hôm nay. Quay lại vào ngày mai!",
+    usageCounter: "Đã dùng {{used}}/{{limit}} lần hôm nay (Edit tab)",
+    step1Failed: "Bước 1 thất bại",
     presetRequired: "Vui lòng chọn preset",
     secondImageRequired: "Vui lòng tải ảnh thứ hai",
     minImagesRequired: "Vui lòng tải ít nhất 2 ảnh",
-    step1Failed: "Bước 1 thất bại",
-    unknownError: "Đã xảy ra lỗi không xác định",
-    loginRequired: "Đăng nhập để sử dụng công cụ AI",
-    loginRequiredDesc: "Bạn cần đăng nhập để sử dụng các công cụ trong AI Studio",
-    dailyLimitReached: "Hết lượt miễn phí hôm nay",
-    dailyLimitDesc: "Bạn đã dùng hết 3 lần miễn phí hôm nay. Quay lại vào ngày mai!",
-    usageCounter: "Đã dùng {{used}}/{{limit}} lần hôm nay",
     newTransformation: "Công cụ mới",
     model: {
       label: "Model AI",
+      imagen4: { name: "Imagen 4", desc: "Chất lượng cao, photorealistic (mặc định)" },
+      banana2: { name: "Nano Banana 2", desc: "Style & concept mạnh" },
+      bananaPro: { name: "Nano Banana Pro", desc: "Realism & material cao cấp" },
+      veoT2v: { name: "Veo 3.1", desc: "Text → Video" },
+      veoR2v: { name: "Veo 3.1 R2V", desc: "Ảnh → Video" },
+      veoFast: { name: "Veo 3.1 - Fast", desc: "Cân bằng tốc độ và chất lượng" },
+      veoQuality: { name: "Veo 3.1 - Quality", desc: "Chất lượng cao nhất, chậm hơn" },
+      veoLite: { name: "Veo 3.1 - Lite", desc: "Nhanh, tiết kiệm" },
+      veoFastLp: { name: "Veo 3.1 - Fast [Lower Priority]", desc: "Tiết kiệm quota, chậm hơn 1 chút" },
+      veoLiteLp: { name: "Veo 3.1 - Lite [Lower Priority]", desc: "Tiết kiệm quota tối đa" },
+      // Gemini SDK (Edit tab)
       flashName: "Gemini 2.5 Flash Image",
       flashDesc: "Nhanh hơn, tiết kiệm lượt dùng",
       proName: "Gemini 3 Pro Image",
       proDesc: "Chất lượng cao hơn, tốn 3 lượt"
+    },
+    aspect: {
+      label: "Tỷ lệ",
+      square: "Vuông 1:1",
+      landscape: "Ngang 16:9",
+      portrait: "Dọc 9:16",
+      landscape43: "Ngang 4:3",
+      portrait34: "Dọc 3:4"
+    },
+    count: {
+      label: "Số ảnh"
+    },
+    refImage: {
+      label: "Ảnh tham chiếu",
+      optional: "Tùy chọn",
+      required: "Bắt buộc",
+      upload: "Thêm ảnh tham chiếu",
+      replace: "Thay ảnh khác",
+      clear: "Xóa ảnh",
+      hint: "Kéo thả hoặc bấm để chọn file",
+      full: "Đã đạt giới hạn ảnh",
+      notAllowed: "Chế độ này không nhận ảnh tham chiếu",
+      startFrame: "Frame bắt đầu",
+      endFrame: "Frame kết thúc"
+    },
+    video: {
+      modeT2v: "Text → Video",
+      modeR2v: "Ảnh → Video",
+      waitingTitle: "Đang tạo video...",
+      waitingMsg: "Có thể mất 1-3 phút. Vui lòng không đóng tab.",
+      subtype: {
+        standard: "Chuẩn",
+        frames: "Frames",
+        ingredients: "Thành phần"
+      },
+      framesHint: "Frames mode: ảnh 1 = frame bắt đầu (bắt buộc), ảnh 2 = frame kết thúc (tùy chọn).",
+      lpWatermark: "Lưu ý: model Lower Priority sẽ tạo video có watermark."
+    },
+    progress: {
+      starting: "Đang khởi động...",
+    },
+    credits: {
+      note: "Mỗi lần tạo dùng 0 tín dụng",
+    },
+    log: {
+      uploadingRef: "Đang tải {n} ảnh tham chiếu lên...",
+      uploadingRefN: "Đang tải ảnh tham chiếu {i}/{n}...",
+      refUploaded: "Đã tải ảnh lên xong.",
+      pastingRef: "Đang gắn ảnh tham chiếu {i}/{n} vào model...",
+      cancelling: "Đang hủy...",
+      sendingRequest: "Đang gửi yêu cầu tạo ảnh...",
+      generating: "Đang xử lý: {pct}%",
+      retrying: "Flow từ chối kết quả ({error}). Đang thử lại {attempt}/{total}...",
+      done: "Hoàn tất!",
+      failed: "Lỗi khi tạo ảnh.",
+    },
+    save: {
+      cta: "Lưu vào thư viện",
+      saving: "Đang lưu...",
+      saved: "Đã lưu",
+      failed: "Lưu thất bại"
+    },
+    usage: {
+      imageRemaining: "Còn {{remaining}}/{{limit}} lượt ảnh hôm nay",
+      videoRemaining: "Còn {{remaining}}/{{limit}} lượt video hôm nay",
+      unlimited: "Không giới hạn (admin/mod)",
+      imageLimitReached: "Bạn đã dùng hết {{limit}} lượt ảnh hôm nay.",
+      videoLimitReached: "Bạn đã dùng hết {{limit}} lượt video hôm nay.",
+      cooldownMsg: "Quay lại vào ngày mai!"
+    },
+    mask: {
+      comingSoon: "Sắp có"
+    },
+    error: {
+      noServer: "Không có flow server khả dụng. Liên hệ admin.",
+      agentFailed: "Flow agent đang gặp sự cố. Thử lại sau.",
+      r2vNeedImage: "Chế độ Ảnh → Video cần ảnh tham chiếu.",
+      framesNeedStart: "Chế độ Frames cần ít nhất 1 ảnh (Frame bắt đầu).",
+      downloadFailed: "Không tải được file"
+    },
+    history: {
+      title: "Lịch sử",
+      subtitle: "Ảnh và video bạn đã tạo gần đây. File hết hạn sau 48 giờ nếu chưa lưu.",
+      filter: { all: "Tất cả", image: "Ảnh", video: "Video" },
+      refresh: "Làm mới",
+      loading: "Đang tải...",
+      empty: "Chưa có lượt tạo nào.",
+      preview: "Xem",
+      openPreview: "Mở xem trước",
+      id: "ID",
+      project: "Project",
+      expires: "Hết hạn",
+      expired: "Đã hết hạn",
+      expiresInHours: "còn {n}h",
+      expiresInDays: "còn {n}d"
     }
   }
 };

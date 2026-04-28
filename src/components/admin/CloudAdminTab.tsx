@@ -9,8 +9,14 @@ import {
     toggleMachine,
     getCloudSessions,
     forceEndSession,
+    getFlowServers,
+    registerFlowServer,
+    updateFlowServer,
+    toggleFlowServer,
+    deleteFlowServer,
     type HostMachine,
     type CloudSession,
+    type FlowServer,
 } from '../../services/cloudService';
 import {
     listOrphanedFiles,
@@ -21,7 +27,7 @@ import {
 
 const SUPER_ADMIN_EMAIL = 'aduc5525@gmail.com';
 
-type SubTab = 'machines' | 'sessions' | 'storage';
+type SubTab = 'machines' | 'flow-servers' | 'sessions' | 'storage';
 
 export default function CloudAdminTab() {
     const { t } = useTranslation();
@@ -33,8 +39,8 @@ export default function CloudAdminTab() {
     return (
         <div>
             {/* Sub-Tabs */}
-            <div className="flex gap-2 mb-6">
-                {(['machines', 'sessions'] as SubTab[]).map((tab) => (
+            <div className="flex gap-2 mb-6 flex-wrap">
+                {(['machines', 'flow-servers', 'sessions'] as SubTab[]).map((tab) => (
                     <button
                         key={tab}
                         onClick={() => setSubTab(tab)}
@@ -62,8 +68,184 @@ export default function CloudAdminTab() {
             </div>
 
             {subTab === 'machines' && <MachinesTab />}
+            {subTab === 'flow-servers' && <FlowServersTab />}
             {subTab === 'sessions' && <SessionsTab />}
             {subTab === 'storage' && isSuperAdmin && <StorageCleanupTab />}
+        </div>
+    );
+}
+
+// ==================== FLOW SERVERS TAB ====================
+function FlowServersTab() {
+    const { t } = useTranslation();
+    const { confirm } = useConfirm();
+    const [servers, setServers] = useState<FlowServer[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [err, setErr] = useState<string | null>(null);
+    const [showForm, setShowForm] = useState(false);
+    const [editing, setEditing] = useState<FlowServer | null>(null);
+    const [form, setForm] = useState({ name: '', machineId: '', agentUrl: '', secret: '', projectId: '' });
+
+    const load = useCallback(async () => {
+        setLoading(true);
+        try {
+            const res = await getFlowServers();
+            setServers(res.data || []);
+            setErr(null);
+        } catch (e) {
+            setErr(e instanceof Error ? e.message : 'Failed to load');
+        } finally {
+            setLoading(false);
+        }
+    }, []);
+
+    useEffect(() => { load(); const int = setInterval(load, 15000); return () => clearInterval(int); }, [load]);
+
+    const startCreate = () => {
+        setEditing(null);
+        setForm({ name: '', machineId: '', agentUrl: '', secret: '', projectId: '' });
+        setShowForm(true);
+    };
+    const startEdit = (s: FlowServer) => {
+        setEditing(s);
+        setForm({ name: s.name, machineId: s.machineId, agentUrl: s.agentUrl, secret: '', projectId: s.projectId });
+        setShowForm(true);
+    };
+
+    const submit = async () => {
+        try {
+            if (editing) {
+                await updateFlowServer(editing._id, {
+                    name: form.name,
+                    agentUrl: form.agentUrl,
+                    projectId: form.projectId,
+                    ...(form.secret ? { secret: form.secret } : {}),
+                });
+            } else {
+                await registerFlowServer({
+                    name: form.name,
+                    machineId: form.machineId,
+                    agentUrl: form.agentUrl,
+                    secret: form.secret,
+                    projectId: form.projectId || undefined,
+                });
+            }
+            setShowForm(false);
+            await load();
+        } catch (e) {
+            alert(e instanceof Error ? e.message : 'Save failed');
+        }
+    };
+
+    const onToggle = async (s: FlowServer) => {
+        try { await toggleFlowServer(s._id); await load(); } catch (e) { alert(String(e)); }
+    };
+
+    const onDelete = async (s: FlowServer) => {
+        const ok = await confirm({
+            message: t('admin.cloud.flowServers.confirmDelete').replace('{{name}}', s.name),
+            variant: 'danger',
+        });
+        if (!ok) return;
+        try { await deleteFlowServer(s._id); await load(); } catch (e) { alert(String(e)); }
+    };
+
+    return (
+        <div className="space-y-4">
+            <div className="flex items-center justify-between">
+                <p className="text-sm text-[var(--text-secondary)]">{t('admin.cloud.flowServers.desc')}</p>
+                <button
+                    onClick={startCreate}
+                    className="px-4 py-2 text-sm font-semibold bg-[var(--accent-primary)] text-black rounded-lg hover:opacity-90"
+                >
+                    + {t('admin.cloud.flowServers.register')}
+                </button>
+            </div>
+
+            {err && <div className="p-3 bg-red-500/10 border border-red-500/40 rounded-lg text-sm text-red-400">{err}</div>}
+
+            {loading ? (
+                <p className="text-sm text-[var(--text-tertiary)]">Loading...</p>
+            ) : servers.length === 0 ? (
+                <p className="text-sm text-[var(--text-tertiary)] py-8 text-center">{t('admin.cloud.flowServers.empty')}</p>
+            ) : (
+                <div className="overflow-x-auto">
+                    <table className="w-full text-sm">
+                        <thead className="text-xs text-[var(--text-tertiary)] border-b border-[var(--border-primary)]">
+                            <tr>
+                                <th className="text-left py-2 px-2">{t('admin.cloud.flowServers.name')}</th>
+                                <th className="text-left py-2 px-2">{t('admin.cloud.flowServers.machineId')}</th>
+                                <th className="text-left py-2 px-2">{t('admin.cloud.flowServers.status')}</th>
+                                <th className="text-left py-2 px-2">{t('admin.cloud.flowServers.token')}</th>
+                                <th className="text-left py-2 px-2">{t('admin.cloud.flowServers.projectId')}</th>
+                                <th className="text-left py-2 px-2">{t('admin.cloud.flowServers.lastPing')}</th>
+                                <th className="text-right py-2 px-2">{t('admin.cloud.flowServers.actions')}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {servers.map(s => (
+                                <tr key={s._id} className="border-b border-[var(--border-primary)]">
+                                    <td className="py-2 px-2 font-medium">{s.name}</td>
+                                    <td className="py-2 px-2 font-mono text-xs">{s.machineId}</td>
+                                    <td className="py-2 px-2">
+                                        <span className={`px-2 py-0.5 text-xs rounded-full ${
+                                            s.status === 'available' ? 'bg-green-500/20 text-green-400'
+                                            : s.status === 'degraded' ? 'bg-yellow-500/20 text-yellow-500'
+                                            : 'bg-red-500/20 text-red-400'
+                                        }`}>
+                                            {s.status}
+                                        </span>
+                                    </td>
+                                    <td className="py-2 px-2">
+                                        <span className={`text-xs ${s.tokenValid ? 'text-green-400' : 'text-red-400'}`}>
+                                            {s.tokenValid ? '✓ valid' : '✗ invalid'}
+                                        </span>
+                                    </td>
+                                    <td className="py-2 px-2 font-mono text-xs">{s.projectId ? s.projectId.slice(0, 8) + '…' : '—'}</td>
+                                    <td className="py-2 px-2 text-xs text-[var(--text-tertiary)]">
+                                        {s.lastPingAt ? new Date(s.lastPingAt).toLocaleString() : 'never'}
+                                    </td>
+                                    <td className="py-2 px-2">
+                                        <div className="flex gap-1 justify-end">
+                                            <button
+                                                onClick={() => startEdit(s)}
+                                                className="px-2 py-1 text-xs rounded hover:bg-[var(--bg-secondary)]"
+                                            >{t('admin.cloud.flowServers.edit')}</button>
+                                            <button
+                                                onClick={() => onToggle(s)}
+                                                className={`px-2 py-1 text-xs rounded ${s.enabled ? 'text-yellow-500' : 'text-green-400'} hover:bg-[var(--bg-secondary)]`}
+                                            >{s.enabled ? t('admin.cloud.flowServers.disable') : t('admin.cloud.flowServers.enable')}</button>
+                                            <button
+                                                onClick={() => onDelete(s)}
+                                                className="px-2 py-1 text-xs text-red-400 rounded hover:bg-red-500/10"
+                                            >{t('admin.cloud.flowServers.delete')}</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            )}
+
+            {showForm && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4" onClick={() => setShowForm(false)}>
+                    <div onClick={(e) => e.stopPropagation()} className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl p-6 w-full max-w-md space-y-4">
+                        <h3 className="text-lg font-bold text-[var(--text-primary)]">
+                            {editing ? t('admin.cloud.flowServers.editTitle') : t('admin.cloud.flowServers.registerTitle')}
+                        </h3>
+                        <FloatInput id="fs-name" label={t('admin.cloud.flowServers.name')} value={form.name} onChange={v => setForm(f => ({ ...f, name: v }))} />
+                        <FloatInput id="fs-mid" label={t('admin.cloud.flowServers.machineId')} value={form.machineId} onChange={v => setForm(f => ({ ...f, machineId: v }))} disabled={!!editing} />
+                        <FloatInput id="fs-url" label={t('admin.cloud.flowServers.agentUrl')} value={form.agentUrl} onChange={v => setForm(f => ({ ...f, agentUrl: v }))} />
+                        <FloatInput id="fs-secret" label={editing ? t('admin.cloud.flowServers.secretOptional') : t('admin.cloud.flowServers.secret')} value={form.secret} onChange={v => setForm(f => ({ ...f, secret: v }))} type="password" />
+                        <FloatInput id="fs-pid" label={t('admin.cloud.flowServers.projectId')} value={form.projectId} onChange={v => setForm(f => ({ ...f, projectId: v }))} />
+                        <div className="flex gap-2 justify-end">
+                            <button onClick={() => setShowForm(false)} className="px-4 py-2 text-sm rounded-lg border border-[var(--border-primary)]">{t('common.cancel')}</button>
+                            <button onClick={submit} className="px-4 py-2 text-sm rounded-lg bg-[var(--accent-primary)] text-black font-semibold">{t('common.save')}</button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

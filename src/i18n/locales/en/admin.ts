@@ -407,7 +407,30 @@ export default {
       },
       tabs: {
         machines: "Machines",
+        'flow-servers': "Flow Servers",
         sessions: "Sessions"
+      },
+      flowServers: {
+        desc: "Register and monitor flow agents (Google Labs Flow). Each agent needs a machineId, secret, and Google Flow project UUID.",
+        register: "Register agent",
+        registerTitle: "Register Flow Agent",
+        editTitle: "Update Flow Agent",
+        empty: "No flow servers yet. Start a flow-agent and click \"Register agent\".",
+        name: "Name",
+        machineId: "Machine ID",
+        agentUrl: "Agent URL",
+        secret: "Agent Secret",
+        secretOptional: "Secret (leave empty to keep current)",
+        projectId: "Project UUID",
+        status: "Status",
+        token: "Token",
+        lastPing: "Last ping",
+        actions: "Actions",
+        edit: "Edit",
+        enable: "Enable",
+        disable: "Disable",
+        delete: "Delete",
+        confirmDelete: "Delete flow server \"{{name}}\"?"
       }
     },
     accessDenied: "Access Denied",

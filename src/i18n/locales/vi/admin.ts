@@ -407,7 +407,30 @@ export default {
       },
       tabs: {
         machines: "Máy chủ",
+        'flow-servers': "Flow Server",
         sessions: "Phiên làm việc"
+      },
+      flowServers: {
+        desc: "Đăng ký và quản lý các flow-agent (Google Labs Flow). Mỗi agent cần machineId, secret và Google Flow project UUID.",
+        register: "Đăng ký agent",
+        registerTitle: "Đăng ký Flow Agent",
+        editTitle: "Cập nhật Flow Agent",
+        empty: "Chưa có flow server nào. Chạy flow-agent và click \"Đăng ký agent\".",
+        name: "Tên",
+        machineId: "Machine ID",
+        agentUrl: "Agent URL",
+        secret: "Agent Secret",
+        secretOptional: "Secret (để trống nếu không đổi)",
+        projectId: "Project UUID",
+        status: "Trạng thái",
+        token: "Token",
+        lastPing: "Ping gần nhất",
+        actions: "Hành động",
+        edit: "Sửa",
+        enable: "Bật",
+        disable: "Tắt",
+        delete: "Xóa",
+        confirmDelete: "Xóa flow server \"{{name}}\"?"
       }
     },
     accessDenied: "Truy cập bị từ chối",
