@@ -86,7 +86,6 @@ export default {
     resultPlaceholder: "Kết quả sẽ xuất hiện ở đây",
     download: "Tải xuống",
     useAsInput: "Dùng làm đầu vào",
-    history: "Lịch sử",
     clearHistory: "Xóa lịch sử",
     noHistory: "Chưa có lịch sử",
     newGeneration: "Tạo mới",

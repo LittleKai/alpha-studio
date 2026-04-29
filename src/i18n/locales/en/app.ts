@@ -86,7 +86,6 @@ export default {
     resultPlaceholder: "Your result will appear here",
     download: "Download",
     useAsInput: "Use as Input",
-    history: "History",
     clearHistory: "Clear History",
     noHistory: "No history yet",
     newGeneration: "New generation",
