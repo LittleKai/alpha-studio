@@ -7,6 +7,7 @@ import { Layout } from '../components/layout';
 import ArticlesAdminTab from '../components/admin/ArticlesAdminTab';
 import CloudAdminTab from '../components/admin/CloudAdminTab';
 import FeaturedStudentsAdminTab from '../components/admin/FeaturedStudentsAdminTab';
+import StudioAdminTab from '../components/admin/StudioAdminTab';
 import {
     getUsers,
     getUserDetails,
@@ -25,7 +26,7 @@ import {
     type WebhookLog,
 } from '../services/adminService';
 
-type TopTabType = 'about' | 'services' | 'community' | 'transactions' | 'cloud';
+type TopTabType = 'about' | 'services' | 'community' | 'transactions' | 'cloud' | 'studio';
 type CommunitySubTabType = 'featuredStudents';
 type SubTabType = 'users' | 'transactionsList' | 'webhooks';
 
@@ -63,6 +64,7 @@ export default function AdminPage() {
             { id: 'community' as TopTabType, label: t('admin.tabs.community') },
             { id: 'transactions' as TopTabType, label: t('admin.tabs.transactions') },
             { id: 'cloud' as TopTabType, label: t('admin.tabs.cloud') },
+            { id: 'studio' as TopTabType, label: t('admin.tabs.studio') || 'Studio API' },
         ] : []),
     ];
 
@@ -107,6 +109,7 @@ export default function AdminPage() {
                     {activeTopTab === 'about' && <ArticlesAdminTab category="about" />}
                     {activeTopTab === 'services' && <ArticlesAdminTab category="services" />}
                     {activeTopTab === 'cloud' && <CloudAdminTab />}
+                    {activeTopTab === 'studio' && <StudioAdminTab />}
                     {activeTopTab === 'community' && (
                         <div>
                             <div className="flex gap-2 mb-6">

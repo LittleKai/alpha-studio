@@ -4,7 +4,7 @@ const getAuthToken = (): string | null => {
     return localStorage.getItem('alpha_studio_token');
 };
 
-const getHeaders = (): HeadersInit => {
+export const getAuthHeaders = (): HeadersInit => {
     const headers: HeadersInit = {
         'Content-Type': 'application/json',
     };
@@ -54,7 +54,7 @@ export interface HostMachine {
 export const connectToCloud = async () => {
     const response = await fetch(`${API_URL}/cloud/connect`, {
         method: 'POST',
-        headers: getHeaders(),
+        headers: getAuthHeaders(),
     });
     const data = await response.json();
     if (!response.ok) throw new Error(data.message || 'Failed to connect');
@@ -64,7 +64,7 @@ export const connectToCloud = async () => {
 export const disconnectFromCloud = async () => {
     const response = await fetch(`${API_URL}/cloud/disconnect`, {
         method: 'POST',
-        headers: getHeaders(),
+        headers: getAuthHeaders(),
     });
     const data = await response.json();
     if (!response.ok) throw new Error(data.message || 'Failed to disconnect');
@@ -73,7 +73,7 @@ export const disconnectFromCloud = async () => {
 
 export const getActiveSession = async () => {
     const response = await fetch(`${API_URL}/cloud/session`, {
-        headers: getHeaders(),
+        headers: getAuthHeaders(),
     });
     const data = await response.json();
     if (!response.ok) throw new Error(data.message || 'Failed to get session');
@@ -83,7 +83,7 @@ export const getActiveSession = async () => {
 // Admin endpoints
 export const getCloudMachines = async () => {
     const response = await fetch(`${API_URL}/cloud/admin/machines`, {
-        headers: getHeaders(),
+        headers: getAuthHeaders(),
     });
     const data = await response.json();
     if (!response.ok) throw new Error(data.message || 'Failed to get machines');
@@ -100,7 +100,7 @@ export const registerMachine = async (machineData: {
 }) => {
     const response = await fetch(`${API_URL}/cloud/admin/machines`, {
         method: 'POST',
-        headers: getHeaders(),
+        headers: getAuthHeaders(),
         body: JSON.stringify(machineData),
     });
     const data = await response.json();
@@ -111,7 +111,7 @@ export const registerMachine = async (machineData: {
 export const updateMachine = async (id: string, machineData: Partial<HostMachine>) => {
     const response = await fetch(`${API_URL}/cloud/admin/machines/${id}`, {
         method: 'PUT',
-        headers: getHeaders(),
+        headers: getAuthHeaders(),
         body: JSON.stringify(machineData),
     });
     const data = await response.json();
@@ -122,7 +122,7 @@ export const updateMachine = async (id: string, machineData: Partial<HostMachine
 export const toggleMachine = async (id: string) => {
     const response = await fetch(`${API_URL}/cloud/admin/machines/${id}/toggle`, {
         method: 'PATCH',
-        headers: getHeaders(),
+        headers: getAuthHeaders(),
     });
     const data = await response.json();
     if (!response.ok) throw new Error(data.message || 'Failed to toggle machine');
@@ -140,7 +140,7 @@ export const getCloudSessions = async (params: {
     if (params.status) searchParams.set('status', params.status);
 
     const response = await fetch(`${API_URL}/cloud/admin/sessions?${searchParams}`, {
-        headers: getHeaders(),
+        headers: getAuthHeaders(),
     });
     const data = await response.json();
     if (!response.ok) throw new Error(data.message || 'Failed to get sessions');
@@ -150,7 +150,7 @@ export const getCloudSessions = async (params: {
 export const forceEndSession = async (id: string) => {
     const response = await fetch(`${API_URL}/cloud/admin/sessions/${id}/force-end`, {
         method: 'POST',
-        headers: getHeaders(),
+        headers: getAuthHeaders(),
     });
     const data = await response.json();
     if (!response.ok) throw new Error(data.message || 'Failed to force end session');
@@ -177,7 +177,7 @@ export interface FlowServer {
 
 export const getFlowServers = async () => {
     const response = await fetch(`${API_URL}/cloud/admin/flow-servers`, {
-        headers: getHeaders(),
+        headers: getAuthHeaders(),
     });
     const data = await response.json();
     if (!response.ok) throw new Error(data.message || 'Failed to get flow servers');
@@ -193,7 +193,7 @@ export const registerFlowServer = async (input: {
 }) => {
     const response = await fetch(`${API_URL}/cloud/admin/flow-servers`, {
         method: 'POST',
-        headers: getHeaders(),
+        headers: getAuthHeaders(),
         body: JSON.stringify(input),
     });
     const data = await response.json();
@@ -207,7 +207,7 @@ export const updateFlowServer = async (
 ) => {
     const response = await fetch(`${API_URL}/cloud/admin/flow-servers/${id}`, {
         method: 'PUT',
-        headers: getHeaders(),
+        headers: getAuthHeaders(),
         body: JSON.stringify(input),
     });
     const data = await response.json();
@@ -218,7 +218,7 @@ export const updateFlowServer = async (
 export const toggleFlowServer = async (id: string) => {
     const response = await fetch(`${API_URL}/cloud/admin/flow-servers/${id}/toggle`, {
         method: 'PATCH',
-        headers: getHeaders(),
+        headers: getAuthHeaders(),
     });
     const data = await response.json();
     if (!response.ok) throw new Error(data.message || 'Failed to toggle flow server');
@@ -228,7 +228,7 @@ export const toggleFlowServer = async (id: string) => {
 export const deleteFlowServer = async (id: string) => {
     const response = await fetch(`${API_URL}/cloud/admin/flow-servers/${id}`, {
         method: 'DELETE',
-        headers: getHeaders(),
+        headers: getAuthHeaders(),
     });
     const data = await response.json();
     if (!response.ok) throw new Error(data.message || 'Failed to delete flow server');

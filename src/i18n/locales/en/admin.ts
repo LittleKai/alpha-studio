@@ -12,7 +12,8 @@ export default {
       users: "User Management",
       transactionsList: "Transactions",
       webhooks: "Webhook Logs",
-      community: "Community"
+      community: "Community",
+      studio: "Studio Settings"
     },
     community: {
       featuredStudents: "Featured Students",

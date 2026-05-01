@@ -44,6 +44,20 @@ export default function StudioTool({ onBack }: StudioToolProps) {
     refImages: [],
   });
 
+  const [useApiSettings, setUseApiSettings] = useState<any>(null);
+
+  useState(() => {
+    import('../../services/studioService').then(({ getStudioSettings }) => {
+      getStudioSettings().then(setUseApiSettings);
+    });
+  });
+
+  // Filter tabs if API mode intercepts video for example
+  const availableTabs: Tab[] = ['image', 'video', 'edit'];
+  if (useApiSettings?.useApiForStudio && useApiSettings?.useApiForVideo && !useApiSettings?.videoApiKey) {
+     // If user configured to use API for video but no key given, maybe we don't hide but show error internally. Let's keep tabs visible and handled inside.
+  }
+
   return (
     <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
       {/* Back button */}

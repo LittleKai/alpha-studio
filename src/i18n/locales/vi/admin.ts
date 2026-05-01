@@ -12,7 +12,8 @@ export default {
       users: "Quản lý User",
       transactionsList: "Giao dịch",
       webhooks: "Webhook Logs",
-      community: "Cộng đồng"
+      community: "Cộng đồng",
+      studio: "Cài đặt Studio"
     },
     community: {
       featuredStudents: "Học viên nổi bật",

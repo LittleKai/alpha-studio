@@ -304,3 +304,36 @@ export async function getStudioHistory(
     if (!data.success) throw new Error(data.message || 'Failed to get history');
     return ((data.data || []) as StudioGeneration[]).map(absolutizePreview);
 }
+
+// Load Studio Settings
+export interface StudioSettings {
+    useApiForStudio: boolean;
+    useApiForImage: boolean;
+    useApiForVideo: boolean;
+    useApiForEdit: boolean;
+    geminiApiKey?: string;
+    videoApiKey?: string;
+}
+
+export async function getStudioSettings(): Promise<StudioSettings> {
+    const res = await fetch(`${API_URL}/settings/public`, {
+        headers: getAuthHeaders() // Cần token để lấy key (nếu trả thẳng về public keys trên BE. Wait, lúc nãy thêm geminiApiKey vào public keys)
+    });
+    const data = await res.json().catch(() => ({}));
+    if (data.success) {
+        return {
+            useApiForStudio: data.data.useApiForStudio || false,
+            useApiForImage: data.data.useApiForImage || false,
+            useApiForVideo: data.data.useApiForVideo || false,
+            useApiForEdit: data.data.useApiForEdit || false,
+            geminiApiKey: data.data.geminiApiKey,
+            videoApiKey: data.data.videoApiKey,
+        };
+    }
+    return {
+        useApiForStudio: false,
+        useApiForImage: false,
+        useApiForVideo: false,
+        useApiForEdit: false,
+    };
+}
