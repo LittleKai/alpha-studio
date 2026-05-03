@@ -33,7 +33,8 @@ type AppState = 'selecting' | 'configuring' | 'result';
 
 export default function StudioGeminiEdit({ onRequireLogin }: StudioGeminiEditProps) {
   const { t } = useTranslation();
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, user } = useAuth();
+  const isAdminOrMod = user?.role === 'admin' || user?.role === 'mod';
 
   const [usage, setUsage] = useState<StudioUsage | null>(null);
   const [limitError, setLimitError] = useState<string | null>(null);
@@ -118,13 +119,16 @@ export default function StudioGeminiEdit({ onRequireLogin }: StudioGeminiEditPro
 
     setLimitError(null);
     let updatedUsage: StudioUsage;
-    try {
-      updatedUsage = await consumeStudioUse();
-      setUsage(updatedUsage);
-    } catch (err: unknown) {
-      const e = err as Error & { limitReached?: boolean };
-      setLimitError(e.message || t('studio.dailyLimitDesc'));
-      return;
+
+    if (!isAdminOrMod) {
+      try {
+        updatedUsage = await consumeStudioUse();
+        setUsage(updatedUsage);
+      } catch (err: unknown) {
+        const e = err as Error & { limitReached?: boolean };
+        setLimitError(e.message || t('studio.dailyLimitDesc'));
+        return;
+      }
     }
 
     setIsLoading(true);
@@ -471,7 +475,7 @@ export default function StudioGeminiEdit({ onRequireLogin }: StudioGeminiEditPro
 
           <button
             onClick={handleGenerate}
-            disabled={!canGenerate() || isLoading || (!!usage && !usage.unlimited && usage.legacy.remaining === 0)}
+            disabled={!canGenerate() || isLoading || (!isAdminOrMod && !!usage && !usage.unlimited && usage.legacy.remaining === 0)}
             className="w-full py-4 bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-white font-bold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90 transition-opacity shadow-lg"
           >
             {isLoading ? (

@@ -147,7 +147,8 @@ export default function StudioFlowGen({
   setVideoCfg,
 }: StudioFlowGenProps) {
   const { t } = useTranslation();
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, user } = useAuth();
+  const isAdminOrMod = user?.role === 'admin' || user?.role === 'mod';
 
   const [usage, setUsage] = useState<StudioUsage | null>(null);
 
@@ -748,7 +749,7 @@ export default function StudioFlowGen({
                 onClick={handleGenerate}
                 disabled={
                   !prompt.trim()
-                  || remaining === 0
+                  || (!isAdminOrMod && remaining === 0)
                   || (mode === 'video' && videoCfg.subtype === 'Frames' && videoCfg.refImages.length === 0)
                 }
                 className="w-9 h-9 flex items-center justify-center rounded-full bg-[var(--accent-primary)] text-white disabled:opacity-50 disabled:cursor-not-allowed hover:opacity-90"
