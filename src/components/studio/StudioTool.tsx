@@ -53,7 +53,6 @@ export default function StudioTool({ onBack }: StudioToolProps) {
   });
 
   // Filter tabs if API mode intercepts video for example
-  const availableTabs: Tab[] = ['image', 'video', 'edit'];
   if (useApiSettings?.useApiForStudio && useApiSettings?.useApiForVideo && !useApiSettings?.videoApiKey) {
      // If user configured to use API for video but no key given, maybe we don't hide but show error internally. Let's keep tabs visible and handled inside.
   }

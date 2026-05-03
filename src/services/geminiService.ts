@@ -1,5 +1,4 @@
 import type { GeneratedContent } from '../types';
-import { getStudioSettings } from './studioService';
 
 // ─────────────────────────────────────────────────────────────────────
 // Gemini SDK Proxy — calls Backend to keep keys secure
