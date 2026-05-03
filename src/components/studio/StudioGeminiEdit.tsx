@@ -38,7 +38,7 @@ export default function StudioGeminiEdit({ onRequireLogin }: StudioGeminiEditPro
 
   const [usage, setUsage] = useState<StudioUsage | null>(null);
   const [limitError, setLimitError] = useState<string | null>(null);
-  const [selectedModel, setSelectedModel] = useState<StudioModel>('gemini-2.5-flash-image');
+  const selectedModel: StudioModel = 'gemini-2.5-flash-image';
 
   useEffect(() => {
     if (!isAuthenticated) { setUsage(null); return; }
@@ -414,33 +414,6 @@ export default function StudioGeminiEdit({ onRequireLogin }: StudioGeminiEditPro
             />
           </div>
         )}
-
-        <div className="space-y-2">
-          <p className="text-sm font-medium text-[var(--text-secondary)]">{t('studio.model.label')}</p>
-          <div className="grid grid-cols-2 gap-3">
-            {STUDIO_MODELS.map(model => (
-              <button
-                key={model.id}
-                onClick={() => setSelectedModel(model.id)}
-                className={`flex flex-col gap-1 p-3 rounded-xl border-2 text-left transition-all ${
-                  selectedModel === model.id
-                    ? 'border-[var(--accent-primary)] bg-[rgba(249,115,22,0.08)]'
-                    : 'border-[var(--border-primary)] hover:border-[var(--border-secondary)] bg-[var(--bg-secondary)]'
-                }`}
-              >
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-sm font-semibold text-[var(--text-primary)] leading-tight">{t(model.nameKey)}</span>
-                  <span className={`shrink-0 text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
-                    model.id === 'gemini-3.0-pro-image'
-                      ? 'bg-purple-500/20 text-purple-400'
-                      : 'bg-yellow-500/20 text-yellow-500'
-                  }`}>{model.badge}</span>
-                </div>
-                <span className="text-xs text-[var(--text-tertiary)]">{t(model.descKey)}</span>
-              </button>
-            ))}
-          </div>
-        </div>
 
         <div className="space-y-3">
           {!isAuthenticated ? (
