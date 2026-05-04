@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useAuth } from '../../auth/context';
 import { sendChatMessage, ChatMessage } from '../../services/chatService';
+import { marked } from 'marked';
+import DOMPurify from 'dompurify';
 
 export default function FloatingChat() {
   const { isAuthenticated } = useAuth();
@@ -96,7 +98,16 @@ export default function FloatingChat() {
                           : 'bg-[var(--bg-card)] border border-[var(--border-primary)] text-[var(--text-primary)] rounded-bl-sm shadow-sm'
                       }`}
                     >
-                      <p className="whitespace-pre-wrap leading-relaxed">{msg.content}</p>
+                      {msg.role === 'user' ? (
+                        <p className="whitespace-pre-wrap leading-relaxed">{msg.content}</p>
+                      ) : (
+                        <div
+                          className="tinymce-content break-words"
+                          dangerouslySetInnerHTML={{
+                            __html: DOMPurify.sanitize(marked.parse(msg.content) as string)
+                          }}
+                        />
+                      )}
                     </div>
                   </div>
                 ))}
