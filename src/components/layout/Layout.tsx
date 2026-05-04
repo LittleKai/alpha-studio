@@ -5,6 +5,7 @@ import { useAuth } from '../../auth/context';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
 import LanguageSwitcher from '../ui/LanguageSwitcher';
 import Login from '../ui/Login';
+import FloatingChat from '../chat/FloatingChat';
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -46,6 +47,13 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
         setShowLoginDialog(false);
         setPendingNavigation(null);
     };
+
+    // Event listener for opening login from other components
+    React.useEffect(() => {
+        const openLogin = () => setShowLoginDialog(true);
+        document.addEventListener('openLoginModal', openLogin);
+        return () => document.removeEventListener('openLoginModal', openLogin);
+    }, []);
 
     const isStudioPage = location.pathname === '/studio';
     const isServerPage = location.pathname === '/server';
@@ -289,6 +297,8 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
             {showLoginDialog && (
                 <Login onLoginSuccess={handleLoginSuccess} onClose={handleCloseLogin} />
             )}
+
+            <FloatingChat />
         </div>
     );
 };

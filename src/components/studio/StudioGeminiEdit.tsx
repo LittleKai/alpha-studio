@@ -6,7 +6,7 @@
  * Flow pipeline can't do. Uses /api/studio/use (legacy 3/day quota).
  */
 import { useCallback, useEffect, useState } from 'react';
-import { editImage, STUDIO_MODELS } from '../../services/geminiService';
+import { editImage } from '../../services/geminiService';
 import type { StudioModel } from '../../services/geminiService';
 import type { GeneratedContent, Transformation } from '../../types';
 import { TRANSFORMATIONS } from '../../constants';
