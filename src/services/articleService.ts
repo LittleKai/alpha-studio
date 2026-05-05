@@ -22,7 +22,7 @@ export interface Article {
     excerpt: { vi: string; en: string };
     content: { vi: string; en: string };
     thumbnail: string;
-    category: 'about' | 'services';
+    category: 'about' | 'services' | 'news';
     status: 'draft' | 'published' | 'archived';
     author: { _id: string; name: string; avatar: string | null } | null;
     order: number;
@@ -37,7 +37,7 @@ export interface ArticleFormData {
     excerpt: { vi: string; en: string };
     content: { vi: string; en: string };
     thumbnail: string;
-    category: 'about' | 'services';
+    category: 'about' | 'services' | 'news';
     tags: string[];
     order: number;
     isFeatured: boolean;

@@ -15,7 +15,7 @@ import {
 } from '../../services/articleService';
 
 interface ArticlesAdminTabProps {
-    category: 'about' | 'services';
+    category: 'about' | 'services' | 'news';
 }
 
 const emptyForm: ArticleFormData = {

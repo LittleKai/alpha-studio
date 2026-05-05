@@ -56,7 +56,7 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
     }, []);
 
     const isStudioPage = location.pathname === '/studio';
-    const isServerPage = location.pathname === '/server';
+    // const isServerPage = location.pathname === '/server';
     const isWorkflowPage = location.pathname.startsWith('/workflow');
     const isAboutPage = location.pathname.startsWith('/about');
     const isServicesPage = location.pathname.startsWith('/services');
