@@ -8,6 +8,7 @@ export default {
       about: "About",
       academy: "Academy",
       aiCloud: "AI Cloud Server",
+      news: "News",
       services: "Services",
       enterStudio: "AI Studio",
       profile: "Profile"
@@ -83,6 +84,14 @@ export default {
       noArticles: "No articles yet",
       readMore: "Read more",
       notFound: "Article not found",
+      backToList: "Back to list"
+    },
+    news: {
+      heroTitle: "News",
+      heroDescription: "Stay up to date with the latest news, events, and AI trends in the creative industry.",
+      noArticles: "No news yet",
+      readMore: "Read more",
+      notFound: "News not found",
       backToList: "Back to list"
     },
     services: {

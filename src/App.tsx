@@ -23,8 +23,9 @@ const AdminPage = lazy(() => import('./pages/AdminPage'));
 const MyCoursesPage = lazy(() => import('./pages/MyCoursesPage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const AboutDetailPage = lazy(() => import('./pages/AboutDetailPage'));
+const NewsPage = lazy(() => import('./pages/NewsPage'));
+const NewsDetailPage = lazy(() => import('./pages/NewsDetailPage'));
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
-const ServicesDetailPage = lazy(() => import('./pages/ServicesDetailPage'));
 const WalletPage = lazy(() => import('./pages/WalletPage'));
 
 // Loading spinner component
@@ -158,23 +159,34 @@ const AboutDetailPageWrapper: React.FC = () => {
     );
 };
 
+// News Page with layout
+const NewsPageWrapper: React.FC = () => {
+    return (
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <NewsPage />
+            </Suspense>
+        </Layout>
+    );
+};
+
+// News Detail Page with layout
+const NewsDetailPageWrapper: React.FC = () => {
+    return (
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <NewsDetailPage />
+            </Suspense>
+        </Layout>
+    );
+};
+
 // Services Page with layout
 const ServicesPageWrapper: React.FC = () => {
     return (
         <Layout>
             <Suspense fallback={<LoadingSpinner />}>
                 <ServicesPage />
-            </Suspense>
-        </Layout>
-    );
-};
-
-// Services Detail Page with layout
-const ServicesDetailPageWrapper: React.FC = () => {
-    return (
-        <Layout>
-            <Suspense fallback={<LoadingSpinner />}>
-                <ServicesDetailPage />
             </Suspense>
         </Layout>
     );
@@ -225,8 +237,9 @@ const App: React.FC = () => {
                 <Route path="/partners/:id" element={<PartnerDetailPage />} />
                 <Route path="/about" element={<AboutPageWrapper />} />
                 <Route path="/about/:slug" element={<AboutDetailPageWrapper />} />
+                <Route path="/news" element={<NewsPageWrapper />} />
+                <Route path="/news/:slug" element={<NewsDetailPageWrapper />} />
                 <Route path="/services" element={<ServicesPageWrapper />} />
-                <Route path="/services/:slug" element={<ServicesDetailPageWrapper />} />
 
                 {/* Studio - public, auth enforced per-use inside component */}
                 <Route path="/studio" element={<StudioPage />} />

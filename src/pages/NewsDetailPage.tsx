@@ -4,7 +4,7 @@ import { useTranslation } from '../i18n/context';
 import { getArticleBySlug, type Article } from '../services/articleService';
 import SEOHead from '../components/ui/SEOHead';
 
-export default function ServicesDetailPage() {
+export default function NewsDetailPage() {
     const { slug } = useParams<{ slug: string }>();
     const navigate = useNavigate();
     const { t, language } = useTranslation();
@@ -39,12 +39,12 @@ export default function ServicesDetailPage() {
         return (
             <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)]">
                 <div className="text-center space-y-4">
-                    <h2 className="text-2xl font-bold text-[var(--text-primary)]">{t('landing.services.notFound')}</h2>
+                    <h2 className="text-2xl font-bold text-[var(--text-primary)]">{t('landing.news.notFound')}</h2>
                     <button
-                        onClick={() => navigate('/services')}
+                        onClick={() => navigate('/news')}
                         className="py-2.5 px-6 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-bold rounded-xl hover:scale-105 transition-all"
                     >
-                        {t('landing.services.backToList')}
+                        {t('landing.news.backToList')}
                     </button>
                 </div>
             </div>
@@ -58,14 +58,14 @@ export default function ServicesDetailPage() {
                 description={article.excerpt?.[language] || article.excerpt?.vi || ''}
                 ogImage={article.thumbnail}
                 ogType="article"
-                path={`/services/${slug}`}
+                path={`/news/${slug}`}
                 jsonLd={{
                     '@context': 'https://schema.org',
                     '@type': 'Article',
                     headline: article.title[language] || article.title.vi,
                     description: article.excerpt?.[language] || article.excerpt?.vi || '',
                     image: article.thumbnail || 'https://giaiphapsangtao.com/alpha-logo-2.png',
-                    url: `https://giaiphapsangtao.com/services/${slug}`,
+                    url: `https://giaiphapsangtao.com/news/${slug}`,
                     author: { '@type': 'Organization', name: 'Alpha Studio' },
                     publisher: {
                         '@type': 'Organization',
@@ -77,13 +77,13 @@ export default function ServicesDetailPage() {
             <article className="max-w-4xl mx-auto px-6 py-12">
                 {/* Back button */}
                 <button
-                    onClick={() => navigate('/services')}
+                    onClick={() => navigate('/news')}
                     className="flex items-center gap-2 text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors mb-8"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
                     </svg>
-                    {t('landing.services.backToList')}
+                    {t('landing.news.backToList')}
                 </button>
 
                 {/* Thumbnail */}

@@ -26,7 +26,8 @@ import {
     type WebhookLog,
 } from '../services/adminService';
 
-type TopTabType = 'about' | 'services' | 'community' | 'transactions' | 'cloud' | 'studio';
+type TopTabType = 'articles' | 'community' | 'transactions' | 'cloud' | 'studio';
+type ArticlesSubTabType = 'about' | 'news' | 'services';
 type CommunitySubTabType = 'featuredStudents';
 type SubTabType = 'users' | 'transactionsList' | 'webhooks';
 
@@ -34,7 +35,8 @@ export default function AdminPage() {
     const navigate = useNavigate();
     const { user } = useAuth();
     const { t } = useTranslation();
-    const [activeTopTab, setActiveTopTab] = useState<TopTabType>('about');
+    const [activeTopTab, setActiveTopTab] = useState<TopTabType>('articles');
+    const [activeArticlesSubTab, setActiveArticlesSubTab] = useState<ArticlesSubTabType>('about');
     const [activeSubTab, setActiveSubTab] = useState<SubTabType>('users');
     const [activeCommunitySubTab, setActiveCommunitySubTab] = useState<CommunitySubTabType>('featuredStudents');
 
@@ -58,14 +60,19 @@ export default function AdminPage() {
     const isMod = user.role === 'mod';
 
     const topTabs = [
-        { id: 'about' as TopTabType, label: t('admin.tabs.about') },
-        { id: 'services' as TopTabType, label: t('admin.tabs.services') },
+        { id: 'articles' as TopTabType, label: t('admin.tabs.articles') || 'Bài Viết' },
         ...(!isMod ? [
             { id: 'community' as TopTabType, label: t('admin.tabs.community') },
             { id: 'transactions' as TopTabType, label: t('admin.tabs.transactions') },
             { id: 'cloud' as TopTabType, label: t('admin.tabs.cloud') },
             { id: 'studio' as TopTabType, label: t('admin.tabs.studio') || 'Studio API' },
         ] : []),
+    ];
+
+    const articlesSubTabs = [
+        { id: 'about' as ArticlesSubTabType, label: t('admin.tabs.about') || 'Giới Thiệu' },
+        { id: 'news' as ArticlesSubTabType, label: t('admin.tabs.news') || 'Tin Tức' },
+        { id: 'services' as ArticlesSubTabType, label: t('admin.tabs.services') || 'Dịch Vụ' },
     ];
 
     const communitySubTabs = [
@@ -106,8 +113,28 @@ export default function AdminPage() {
                     </div>
 
                     {/* Tab Content */}
-                    {activeTopTab === 'about' && <ArticlesAdminTab category="about" />}
-                    {activeTopTab === 'services' && <ArticlesAdminTab category="services" />}
+                    {activeTopTab === 'articles' && (
+                        <div>
+                            <div className="flex gap-2 mb-6">
+                                {articlesSubTabs.map((tab) => (
+                                    <button
+                                        key={tab.id}
+                                        onClick={() => setActiveArticlesSubTab(tab.id)}
+                                        className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
+                                            activeArticlesSubTab === tab.id
+                                                ? 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]'
+                                                : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
+                                        }`}
+                                    >
+                                        {tab.label}
+                                    </button>
+                                ))}
+                            </div>
+                            {activeArticlesSubTab === 'about' && <ArticlesAdminTab category="about" />}
+                            {activeArticlesSubTab === 'news' && <ArticlesAdminTab category="news" />}
+                            {activeArticlesSubTab === 'services' && <ArticlesAdminTab category="services" />}
+                        </div>
+                    )}
                     {activeTopTab === 'cloud' && <CloudAdminTab />}
                     {activeTopTab === 'studio' && <StudioAdminTab />}
                     {activeTopTab === 'community' && (

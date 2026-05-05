@@ -5,8 +5,10 @@ export default {
       subtitle: "Quản lý bài viết, dịch vụ và giao dịch"
     },
     tabs: {
-      about: "Quản Lý Giới Thiệu",
-      services: "Quản Lý Dịch Vụ",
+      articles: "Bài Viết",
+      about: "Giới Thiệu",
+      news: "Tin Tức",
+      services: "Dịch Vụ",
       transactions: "Quản Lý Giao Dịch",
       cloud: "Cloud Desktop",
       users: "Quản lý User",

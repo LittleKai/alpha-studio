@@ -8,6 +8,7 @@ export default {
       about: "Giới thiệu",
       academy: "Học viện",
       aiCloud: "AI Cloud Server",
+      news: "Tin Tức",
       services: "Dịch Vụ",
       enterStudio: "AI Studio",
       profile: "Hồ sơ cá nhân"
@@ -83,6 +84,14 @@ export default {
       noArticles: "Chưa có bài viết nào",
       readMore: "Đọc thêm",
       notFound: "Không tìm thấy bài viết",
+      backToList: "Quay lại danh sách"
+    },
+    news: {
+      heroTitle: "Tin Tức",
+      heroDescription: "Cập nhật những tin tức mới nhất về các khóa học, sự kiện và xu hướng AI trong ngành sáng tạo.",
+      noArticles: "Chưa có tin tức nào",
+      readMore: "Xem chi tiết",
+      notFound: "Không tìm thấy tin tức",
       backToList: "Quay lại danh sách"
     },
     services: {

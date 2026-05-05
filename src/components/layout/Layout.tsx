@@ -60,6 +60,7 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
     const isWorkflowPage = location.pathname.startsWith('/workflow');
     const isAboutPage = location.pathname.startsWith('/about');
     const isServicesPage = location.pathname.startsWith('/services');
+    const isNewsPage = location.pathname.startsWith('/news');
 
     if (!showNav || isWorkflowPage) {
         return <>{children}</>;
@@ -88,15 +89,20 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                         <Link to="/" className={`whitespace-nowrap transition-colors ${location.pathname === '/' ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-primary)]'}`}>
                             {t('landing.nav.academy')}
                         </Link>
+                        <Link to="/news" className={`whitespace-nowrap transition-colors ${isNewsPage ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-primary)]'}`}>
+                            {t('landing.nav.news')}
+                        </Link>
                         <Link to="/services" className={`whitespace-nowrap transition-colors ${isServicesPage ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-primary)]'}`}>
                             {t('landing.nav.services')}
                         </Link>
                         <button onClick={() => navigateToProtectedPage('/workflow')} className={`whitespace-nowrap border md:px-3 md:py-1 lg:px-4 lg:py-1.5 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-[0_0_14px_rgba(168,85,247,0.4)] ${isWorkflowPage ? 'bg-purple-500/15 text-purple-400 border-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.25)]' : 'text-purple-400 border-purple-400/30 hover:bg-purple-500/10 hover:border-purple-400/60'}`}>
                             {t('landing.nav.connect')}
                         </button>
+                        {/* Tạm ẩn theo yêu cầu
                         <button onClick={() => navigateToProtectedPage('/server')} className={`whitespace-nowrap border md:px-3 md:py-1 lg:px-4 lg:py-1.5 rounded-full transition-all duration-200 hover:scale-105 hover:shadow-[var(--accent-shadow)] ${isServerPage ? 'bg-[var(--accent-primary)] text-[var(--text-on-accent)] border-[var(--accent-primary)] shadow-[var(--accent-shadow)]' : 'text-[var(--accent-primary)] border-[var(--accent-primary)]/30 hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)]'}`}>
                             {t('landing.nav.aiCloud')}
                         </button>
+                        */}
                     </div>
 
                     <div className="flex items-center md:gap-2 lg:gap-3 xl:gap-4">
@@ -221,6 +227,9 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                             <Link onClick={closeMobile} to="/" className={`block px-4 py-3 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors ${location.pathname === '/' ? 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]' : 'text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]'}`}>
                                 {t('landing.nav.academy')}
                             </Link>
+                            <Link onClick={closeMobile} to="/news" className={`block px-4 py-3 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors ${isNewsPage ? 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]' : 'text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]'}`}>
+                                {t('landing.nav.news')}
+                            </Link>
                             <Link onClick={closeMobile} to="/services" className={`block px-4 py-3 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors ${isServicesPage ? 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]' : 'text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]'}`}>
                                 {t('landing.nav.services')}
                             </Link>
@@ -228,10 +237,12 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="currentColor"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/></svg>
                                 {t('landing.nav.connect')}
                             </button>
+                            {/* Tạm ẩn theo yêu cầu
                             <button onClick={() => { navigateToProtectedPage('/server'); closeMobile(); }} className={`flex items-center gap-3 w-full text-left px-4 py-3.5 rounded-xl text-sm font-bold uppercase tracking-wider transition-colors border ${isServerPage ? 'bg-[var(--accent-primary)]/15 text-[var(--accent-primary)] border-[var(--accent-primary)]/60' : 'text-[var(--accent-primary)] border-[var(--accent-primary)]/30 bg-[var(--accent-primary)]/5 hover:bg-[var(--accent-primary)]/12 hover:border-[var(--accent-primary)]/50'}`}>
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm14 1a1 1 0 11-2 0 1 1 0 012 0zM2 13a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2zm14 1a1 1 0 11-2 0 1 1 0 012 0z" clipRule="evenodd"/></svg>
                                 {t('landing.nav.aiCloud')}
                             </button>
+                            */}
                         </div>
 
                         {/* Mobile Account */}

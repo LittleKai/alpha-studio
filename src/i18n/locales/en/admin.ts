@@ -5,8 +5,10 @@ export default {
       subtitle: "Manage articles, services and transactions"
     },
     tabs: {
-      about: "About Management",
-      services: "Services Management",
+      articles: "Articles",
+      about: "About",
+      news: "News",
+      services: "Services",
       transactions: "Transaction Management",
       cloud: "Cloud Desktop",
       users: "User Management",
