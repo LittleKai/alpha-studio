@@ -168,7 +168,8 @@ export interface FlowServer {
     status: 'available' | 'degraded' | 'offline';
     tokenValid: boolean;
     tokenExpiresAt: string | null;
-    projectId: string;
+    projectIds: string[];
+    targetProjectCount: number;
     lastPingAt: string | null;
     enabled: boolean;
     createdAt: string;
@@ -189,7 +190,7 @@ export const registerFlowServer = async (input: {
     machineId: string;
     agentUrl: string;
     secret: string;
-    projectId?: string;
+    targetProjectCount?: number;
 }) => {
     const response = await fetch(`${API_URL}/cloud/admin/flow-servers`, {
         method: 'POST',
@@ -203,7 +204,7 @@ export const registerFlowServer = async (input: {
 
 export const updateFlowServer = async (
     id: string,
-    input: Partial<{ name: string; agentUrl: string; secret: string; projectId: string }>,
+    input: Partial<{ name: string; agentUrl: string; secret: string; targetProjectCount: number }>,
 ) => {
     const response = await fetch(`${API_URL}/cloud/admin/flow-servers/${id}`, {
         method: 'PUT',
@@ -232,5 +233,25 @@ export const deleteFlowServer = async (id: string) => {
     });
     const data = await response.json();
     if (!response.ok) throw new Error(data.message || 'Failed to delete flow server');
+    return data;
+};
+
+export const syncFlowServerProjects = async (id: string) => {
+    const response = await fetch(`${API_URL}/cloud/admin/flow-servers/${id}/sync`, {
+        method: 'POST',
+        headers: getAuthHeaders(),
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message || 'Failed to sync flow server projects');
+    return data;
+};
+
+export const deleteFlowServerProject = async (serverId: string, projectId: string) => {
+    const response = await fetch(`${API_URL}/cloud/admin/flow-servers/${serverId}/projects/${projectId}`, {
+        method: 'DELETE',
+        headers: getAuthHeaders(),
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message || 'Failed to delete project from flow server');
     return data;
 };

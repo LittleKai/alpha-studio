@@ -414,7 +414,7 @@ export default {
         sessions: "Sessions"
       },
       flowServers: {
-        desc: "Register and monitor flow agents (Google Labs Flow). Each agent needs a machineId, secret, and Google Flow project UUID.",
+        desc: "Register and monitor flow agents. Each agent needs a machineId, secret, and Target Project Count.",
         register: "Register agent",
         registerTitle: "Register Flow Agent",
         editTitle: "Update Flow Agent",
@@ -424,7 +424,10 @@ export default {
         agentUrl: "Agent URL",
         secret: "Agent Secret",
         secretOptional: "Secret (leave empty to keep current)",
-        projectId: "Project UUID",
+        targetProjectCount: "Target Project Count",
+        projectIds: "Project IDs",
+        syncPool: "Sync",
+        deleteProject: "Delete ID",
         status: "Status",
         token: "Token",
         lastPing: "Last ping",

@@ -414,7 +414,7 @@ export default {
         sessions: "Phiên làm việc"
       },
       flowServers: {
-        desc: "Đăng ký và quản lý các flow-agent (Google Labs Flow). Mỗi agent cần machineId, secret và Google Flow project UUID.",
+        desc: "Đăng ký và quản lý các flow-agent (Google Labs Flow). Mỗi agent cần machineId, secret và cấu hình số lượng Project đích.",
         register: "Đăng ký agent",
         registerTitle: "Đăng ký Flow Agent",
         editTitle: "Cập nhật Flow Agent",
@@ -424,7 +424,10 @@ export default {
         agentUrl: "Agent URL",
         secret: "Agent Secret",
         secretOptional: "Secret (để trống nếu không đổi)",
-        projectId: "Project UUID",
+        targetProjectCount: "Số lượng Project đích",
+        projectIds: "Danh sách Project ID",
+        syncPool: "Đồng bộ",
+        deleteProject: "Xóa ID",
         status: "Trạng thái",
         token: "Token",
         lastPing: "Ping gần nhất",

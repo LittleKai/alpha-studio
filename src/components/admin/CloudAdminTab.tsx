@@ -14,6 +14,8 @@ import {
     updateFlowServer,
     toggleFlowServer,
     deleteFlowServer,
+    syncFlowServerProjects,
+    deleteFlowServerProject,
     type HostMachine,
     type CloudSession,
     type FlowServer,
@@ -84,7 +86,7 @@ function FlowServersTab() {
     const [err, setErr] = useState<string | null>(null);
     const [showForm, setShowForm] = useState(false);
     const [editing, setEditing] = useState<FlowServer | null>(null);
-    const [form, setForm] = useState({ name: '', machineId: '', agentUrl: '', secret: '', projectId: '' });
+    const [form, setForm] = useState({ name: '', machineId: '', agentUrl: '', secret: '', targetProjectCount: 3 });
 
     const load = useCallback(async () => {
         setLoading(true);
@@ -103,12 +105,12 @@ function FlowServersTab() {
 
     const startCreate = () => {
         setEditing(null);
-        setForm({ name: '', machineId: '', agentUrl: '', secret: '', projectId: '' });
+        setForm({ name: '', machineId: '', agentUrl: '', secret: '', targetProjectCount: 3 });
         setShowForm(true);
     };
     const startEdit = (s: FlowServer) => {
         setEditing(s);
-        setForm({ name: s.name, machineId: s.machineId, agentUrl: s.agentUrl, secret: '', projectId: s.projectId });
+        setForm({ name: s.name, machineId: s.machineId, agentUrl: s.agentUrl, secret: '', targetProjectCount: s.targetProjectCount || 3 });
         setShowForm(true);
     };
 
@@ -118,7 +120,7 @@ function FlowServersTab() {
                 await updateFlowServer(editing._id, {
                     name: form.name,
                     agentUrl: form.agentUrl,
-                    projectId: form.projectId,
+                    targetProjectCount: form.targetProjectCount,
                     ...(form.secret ? { secret: form.secret } : {}),
                 });
             } else {
@@ -127,7 +129,7 @@ function FlowServersTab() {
                     machineId: form.machineId,
                     agentUrl: form.agentUrl,
                     secret: form.secret,
-                    projectId: form.projectId || undefined,
+                    targetProjectCount: form.targetProjectCount,
                 });
             }
             setShowForm(false);
@@ -148,6 +150,25 @@ function FlowServersTab() {
         });
         if (!ok) return;
         try { await deleteFlowServer(s._id); await load(); } catch (e) { alert(String(e)); }
+    };
+
+    const onSync = async (s: FlowServer) => {
+        try {
+            await syncFlowServerProjects(s._id);
+            await load();
+        } catch (e) { alert(String(e)); }
+    };
+
+    const onDeleteProject = async (s: FlowServer, pid: string) => {
+        const ok = await confirm({
+            message: `${t('admin.cloud.flowServers.deleteProject')} ${pid.slice(0, 8)}?`,
+            variant: 'danger',
+        });
+        if (!ok) return;
+        try {
+            await deleteFlowServerProject(s._id, pid);
+            await load();
+        } catch (e) { alert(String(e)); }
     };
 
     return (
@@ -177,7 +198,7 @@ function FlowServersTab() {
                                 <th className="text-left py-2 px-2">{t('admin.cloud.flowServers.machineId')}</th>
                                 <th className="text-left py-2 px-2">{t('admin.cloud.flowServers.status')}</th>
                                 <th className="text-left py-2 px-2">{t('admin.cloud.flowServers.token')}</th>
-                                <th className="text-left py-2 px-2">{t('admin.cloud.flowServers.projectId')}</th>
+                                <th className="text-left py-2 px-2">{t('admin.cloud.flowServers.projectIds')}</th>
                                 <th className="text-left py-2 px-2">{t('admin.cloud.flowServers.lastPing')}</th>
                                 <th className="text-right py-2 px-2">{t('admin.cloud.flowServers.actions')}</th>
                             </tr>
@@ -201,12 +222,33 @@ function FlowServersTab() {
                                             {s.tokenValid ? '✓ valid' : '✗ invalid'}
                                         </span>
                                     </td>
-                                    <td className="py-2 px-2 font-mono text-xs">{s.projectId ? s.projectId.slice(0, 8) + '…' : '—'}</td>
+                                    <td className="py-2 px-2 font-mono text-xs">
+                                        <div className="flex flex-col gap-1">
+                                            <span className="text-[var(--text-tertiary)] mb-1">
+                                                {s.projectIds?.length || 0} / {s.targetProjectCount || 3}
+                                            </span>
+                                            {s.projectIds?.map(pid => (
+                                                <div key={pid} className="flex items-center gap-2 group">
+                                                    <span title={pid}>{pid.slice(0, 8)}…</span>
+                                                    <button
+                                                        onClick={() => onDeleteProject(s, pid)}
+                                                        className="text-red-400 opacity-0 group-hover:opacity-100 hover:bg-red-500/20 rounded px-1"
+                                                        title={t('admin.cloud.flowServers.deleteProject')}
+                                                    >×</button>
+                                                </div>
+                                            ))}
+                                            {(!s.projectIds || s.projectIds.length === 0) && '—'}
+                                        </div>
+                                    </td>
                                     <td className="py-2 px-2 text-xs text-[var(--text-tertiary)]">
                                         {s.lastPingAt ? new Date(s.lastPingAt).toLocaleString() : 'never'}
                                     </td>
                                     <td className="py-2 px-2">
-                                        <div className="flex gap-1 justify-end">
+                                        <div className="flex gap-1 justify-end flex-wrap w-24">
+                                            <button
+                                                onClick={() => onSync(s)}
+                                                className="px-2 py-1 text-xs rounded text-[var(--accent-primary)] hover:bg-[var(--bg-secondary)]"
+                                            >{t('admin.cloud.flowServers.syncPool')}</button>
                                             <button
                                                 onClick={() => startEdit(s)}
                                                 className="px-2 py-1 text-xs rounded hover:bg-[var(--bg-secondary)]"
@@ -238,7 +280,7 @@ function FlowServersTab() {
                         <FloatInput id="fs-mid" label={t('admin.cloud.flowServers.machineId')} value={form.machineId} onChange={v => setForm(f => ({ ...f, machineId: v }))} disabled={!!editing} />
                         <FloatInput id="fs-url" label={t('admin.cloud.flowServers.agentUrl')} value={form.agentUrl} onChange={v => setForm(f => ({ ...f, agentUrl: v }))} />
                         <FloatInput id="fs-secret" label={editing ? t('admin.cloud.flowServers.secretOptional') : t('admin.cloud.flowServers.secret')} value={form.secret} onChange={v => setForm(f => ({ ...f, secret: v }))} type="password" />
-                        <FloatInput id="fs-pid" label={t('admin.cloud.flowServers.projectId')} value={form.projectId} onChange={v => setForm(f => ({ ...f, projectId: v }))} />
+                        <FloatInput id="fs-pid" label={t('admin.cloud.flowServers.targetProjectCount')} value={form.targetProjectCount} onChange={v => setForm(f => ({ ...f, targetProjectCount: Number(v) || 0 }))} type="number" />
                         <div className="flex gap-2 justify-end">
                             <button onClick={() => setShowForm(false)} className="px-4 py-2 text-sm rounded-lg border border-[var(--border-primary)]">{t('common.cancel')}</button>
                             <button onClick={submit} className="px-4 py-2 text-sm rounded-lg bg-[var(--accent-primary)] text-black font-semibold">{t('common.save')}</button>
