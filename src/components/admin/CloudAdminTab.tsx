@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, type ReactNode } from 'react';
 import { useTranslation } from '../../i18n/context';
 import { useAuth } from '../../auth/context';
 import { useConfirm } from '../ui/ConfirmDialog';
@@ -86,6 +86,7 @@ function FlowServersTab() {
     const [err, setErr] = useState<string | null>(null);
     const [showForm, setShowForm] = useState(false);
     const [editing, setEditing] = useState<FlowServer | null>(null);
+    const [syncingId, setSyncingId] = useState<string | null>(null);
     const [form, setForm] = useState({ name: '', machineId: '', agentUrl: '', secret: '', targetProjectCount: 3 });
 
     const load = useCallback(async () => {
@@ -153,10 +154,16 @@ function FlowServersTab() {
     };
 
     const onSync = async (s: FlowServer) => {
+        if (syncingId) return;
+        setSyncingId(s._id);
         try {
             await syncFlowServerProjects(s._id);
             await load();
-        } catch (e) { alert(String(e)); }
+        } catch (e) {
+            alert(String(e));
+        } finally {
+            setSyncingId(null);
+        }
     };
 
     const onDeleteProject = async (s: FlowServer, pid: string) => {
@@ -244,23 +251,56 @@ function FlowServersTab() {
                                         {s.lastPingAt ? new Date(s.lastPingAt).toLocaleString() : 'never'}
                                     </td>
                                     <td className="py-2 px-2">
-                                        <div className="flex gap-1 justify-end flex-wrap w-24">
-                                            <button
+                                        <div className="flex gap-1 justify-end items-center">
+                                            <IconButton
                                                 onClick={() => onSync(s)}
-                                                className="px-2 py-1 text-xs rounded text-[var(--accent-primary)] hover:bg-[var(--bg-secondary)]"
-                                            >{t('admin.cloud.flowServers.syncPool')}</button>
-                                            <button
+                                                disabled={syncingId === s._id}
+                                                title={t('admin.cloud.flowServers.syncPool')}
+                                                tone="accent"
+                                            >
+                                                {syncingId === s._id ? (
+                                                    <span className="block w-4 h-4 border-2 border-current/30 border-t-current rounded-full animate-spin" />
+                                                ) : (
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
+                                                    </svg>
+                                                )}
+                                            </IconButton>
+                                            <IconButton
                                                 onClick={() => startEdit(s)}
-                                                className="px-2 py-1 text-xs rounded hover:bg-[var(--bg-secondary)]"
-                                            >{t('admin.cloud.flowServers.edit')}</button>
-                                            <button
+                                                title={t('admin.cloud.flowServers.edit')}
+                                                tone="default"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                                                    <path fillRule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clipRule="evenodd" />
+                                                </svg>
+                                            </IconButton>
+                                            <IconButton
                                                 onClick={() => onToggle(s)}
-                                                className={`px-2 py-1 text-xs rounded ${s.enabled ? 'text-yellow-500' : 'text-green-400'} hover:bg-[var(--bg-secondary)]`}
-                                            >{s.enabled ? t('admin.cloud.flowServers.disable') : t('admin.cloud.flowServers.enable')}</button>
-                                            <button
+                                                title={s.enabled ? t('admin.cloud.flowServers.disable') : t('admin.cloud.flowServers.enable')}
+                                                tone={s.enabled ? 'warn' : 'success'}
+                                            >
+                                                {s.enabled ? (
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 10-2 0v4a1 1 0 102 0V6z" clipRule="evenodd" />
+                                                        <path d="M9 13h2v2H9z" />
+                                                    </svg>
+                                                ) : (
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                                    </svg>
+                                                )}
+                                            </IconButton>
+                                            <IconButton
                                                 onClick={() => onDelete(s)}
-                                                className="px-2 py-1 text-xs text-red-400 rounded hover:bg-red-500/10"
-                                            >{t('admin.cloud.flowServers.delete')}</button>
+                                                title={t('admin.cloud.flowServers.delete')}
+                                                tone="danger"
+                                            >
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
+                                                </svg>
+                                            </IconButton>
                                         </div>
                                     </td>
                                 </tr>
@@ -289,6 +329,37 @@ function FlowServersTab() {
                 </div>
             )}
         </div>
+    );
+}
+
+// ==================== ICON BUTTON ====================
+function IconButton({
+    children, onClick, title, tone = 'default', disabled = false,
+}: {
+    children: ReactNode;
+    onClick: () => void;
+    title: string;
+    tone?: 'default' | 'accent' | 'success' | 'warn' | 'danger';
+    disabled?: boolean;
+}) {
+    const tones: Record<string, string> = {
+        default: 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]',
+        accent: 'text-[var(--accent-primary)] hover:bg-[var(--bg-secondary)]',
+        success: 'text-green-400 hover:bg-green-500/10',
+        warn: 'text-yellow-500 hover:bg-yellow-500/10',
+        danger: 'text-red-400 hover:bg-red-500/10',
+    };
+    return (
+        <button
+            type="button"
+            onClick={onClick}
+            disabled={disabled}
+            title={title}
+            aria-label={title}
+            className={`p-1.5 rounded transition-colors ${tones[tone]} disabled:opacity-50 disabled:cursor-wait`}
+        >
+            {children}
+        </button>
     );
 }
 

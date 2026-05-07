@@ -10,35 +10,54 @@ function jsonHeaders(): Record<string, string> {
 }
 
 export interface ChatMessage {
-    role: 'user' | 'model' | 'system';
+    _id: string;
+    role: 'user' | 'assistant';
     content: string;
+    createdAt: string;
+    updatedAt?: string;
 }
 
-export interface ChatResponse {
+interface ApiResponse<T> {
     success: boolean;
     message?: string;
-    data?: {
-        text: string;
-    };
+    data?: T;
 }
 
-export async function sendChatMessage(messages: ChatMessage[]): Promise<string> {
-    try {
-        const response = await fetch(`${API_URL}/chat/generate`, {
-            method: 'POST',
-            headers: jsonHeaders(),
-            body: JSON.stringify({ messages }),
-        });
+export async function fetchChatHistory(limit = 50): Promise<ChatMessage[]> {
+    const response = await fetch(`${API_URL}/chat/history?limit=${limit}`, {
+        headers: getAuthHeaders(),
+    });
+    const data: ApiResponse<ChatMessage[]> = await response.json();
+    if (!response.ok || !data.success) {
+        throw new Error(data.message || 'Lỗi tải lịch sử chat');
+    }
+    return data.data || [];
+}
 
-        const data: ChatResponse = await response.json();
+export async function sendChatMessage(content: string): Promise<{
+    userMessage: ChatMessage;
+    assistantMessage: ChatMessage;
+}> {
+    const response = await fetch(`${API_URL}/chat/send`, {
+        method: 'POST',
+        headers: jsonHeaders(),
+        body: JSON.stringify({ content }),
+    });
+    const data: ApiResponse<{ userMessage: ChatMessage; assistantMessage: ChatMessage }> =
+        await response.json();
+    if (!response.ok || !data.success || !data.data?.assistantMessage) {
+        throw new Error(data.message || 'Lỗi gửi tin nhắn');
+    }
+    return data.data;
+}
 
-        if (!response.ok || !data.success) {
-            throw new Error(data.message || 'Lỗi giao tiếp với AI API');
-        }
-
-        return data.data?.text || '';
-    } catch (error: any) {
-        console.error('sendChatMessage Error:', error);
-        throw new Error(error.message || 'Lỗi không xác định khi kết nối với AI');
+export async function clearChatHistory(): Promise<void> {
+    const response = await fetch(`${API_URL}/chat/history`, {
+        method: 'DELETE',
+        headers: getAuthHeaders(),
+    });
+    const data: ApiResponse<unknown> = await response.json();
+    if (!response.ok || !data.success) {
+        throw new Error(data.message || 'Lỗi xóa lịch sử chat');
     }
 }

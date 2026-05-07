@@ -66,6 +66,18 @@ export default {
       createFailed: "Failed to create payment request"
     }
   },
+  chat: {
+    title: "AI Consultant",
+    greeting: "Hello! I'm your AI consultation assistant. How can I help you today?",
+    loginRequired: "You need to log in to chat with the AI assistant.",
+    loginBtn: "Log In",
+    inputPlaceholder: "Type your question...",
+    loadingHistory: "Loading history...",
+    errorGeneric: "Sorry, something went wrong. Please try again.",
+    clearBtn: "Clear chat history",
+    clearConfirm: "Clear all displayed chat history? Note: the AI assistant may still recall earlier context.",
+    clearError: "Failed to clear history. Please try again.",
+  },
   profile: {
     editProfile: "Edit Profile",
     name: "Your Name",

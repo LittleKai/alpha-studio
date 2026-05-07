@@ -66,6 +66,18 @@ export default {
       createFailed: "Không thể tạo yêu cầu nạp tiền"
     }
   },
+  chat: {
+    title: "AI Tư Vấn",
+    greeting: "Xin chào! Tôi là trợ lý AI chuyên gia tư vấn. Tôi có thể giúp gì cho bạn hôm nay?",
+    loginRequired: "Bạn cần đăng nhập để trò chuyện với trợ lý AI.",
+    loginBtn: "Đăng Nhập",
+    inputPlaceholder: "Nhập câu hỏi...",
+    loadingHistory: "Đang tải lịch sử...",
+    errorGeneric: "Xin lỗi, đã có lỗi xảy ra. Hãy thử lại sau.",
+    clearBtn: "Xóa lịch sử trò chuyện",
+    clearConfirm: "Xóa toàn bộ lịch sử chat hiển thị? Lưu ý: trợ lý AI vẫn có thể nhớ ngữ cảnh trước đó.",
+    clearError: "Không thể xóa lịch sử. Hãy thử lại sau.",
+  },
   profile: {
     editProfile: "Chỉnh sửa hồ sơ",
     name: "Tên của bạn",
