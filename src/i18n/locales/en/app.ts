@@ -85,6 +85,21 @@ export default {
     result: "Result",
     resultPlaceholder: "Your result will appear here",
     download: "Download",
+    downloadHQ: {
+      menuLabel: "Choose quality",
+      processing: "Downloading at higher quality…",
+      confirmCostTitle: "Confirm credit charge",
+      confirmCostBody: "Downloading {{quality}} {{type}} will cost {{cost}} credits. Continue?",
+      successInfo: "Downloaded at {{quality}}",
+      labelImage1k: "1K (default, fast)",
+      labelImage2k: "2K (~30s)",
+      labelImage4k: "4K (5 credits, ~60s)",
+      labelVideo270p: "270p (animated GIF)",
+      labelVideo720p: "720p (default, fast)",
+      labelVideo1080p: "1080p (~60s)",
+      labelVideo4k: "4K (50 credits, ~2 min)",
+      insufficientBalance: "Insufficient balance ({{balance}}/{{cost}} credits)",
+    },
     useAsInput: "Use as Input",
     clearHistory: "Clear History",
     noHistory: "No history yet",
@@ -165,8 +180,7 @@ export default {
         frames: "Frames",
         ingredients: "Ingredients"
       },
-      framesHint: "Frames mode: image 1 = start frame (required), image 2 = end frame (optional).",
-      lpWatermark: "Note: Lower Priority models produce videos with a watermark."
+      framesHint: "Frames mode: image 1 = start frame (required), image 2 = end frame (optional)."
     },
     progress: {
       starting: "Starting...",

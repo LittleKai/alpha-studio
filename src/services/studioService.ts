@@ -258,6 +258,34 @@ export async function saveGeneration(genId: string, itemIdx: number): Promise<Sa
     return data.data as SaveResult;
 }
 
+export interface HQDownloadResult {
+    url: string;
+    source: 'cdn' | 'wab';
+    quality: string;
+    costCharged: number;
+}
+
+export async function downloadAtQuality(
+    genId: string,
+    itemIdx: number,
+    quality: string,
+): Promise<HQDownloadResult> {
+    const res = await fetch(
+        `${API_URL}/studio/download/${genId}/${itemIdx}?quality=${encodeURIComponent(quality)}`,
+        { method: 'GET', headers: getAuthHeaders() },
+    );
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || !data.success) {
+        const msg = data.message || `Download failed (${res.status})`;
+        const err = new Error(msg) as Error & { status?: number; cost?: number; balance?: number };
+        err.status = res.status;
+        if (typeof data.cost === 'number') err.cost = data.cost;
+        if (typeof data.balance === 'number') err.balance = data.balance;
+        throw err;
+    }
+    return data.data as HQDownloadResult;
+}
+
 // ─── Reference image cleanup ────────────────────────────────────────────────
 
 // Best-effort cancel of an in-flight gen. The agent's WAB worker checks

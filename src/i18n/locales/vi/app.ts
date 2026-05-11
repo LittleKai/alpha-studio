@@ -85,6 +85,21 @@ export default {
     result: "Kết quả",
     resultPlaceholder: "Kết quả sẽ xuất hiện ở đây",
     download: "Tải xuống",
+    downloadHQ: {
+      menuLabel: "Chọn chất lượng",
+      processing: "Đang tải chất lượng cao…",
+      confirmCostTitle: "Xác nhận tốn credit",
+      confirmCostBody: "Tải {{quality}} {{type}} sẽ tốn {{cost}} credit. Tiếp tục?",
+      successInfo: "Đã tải {{quality}}",
+      labelImage1k: "1K (mặc định, nhanh)",
+      labelImage2k: "2K (~30s)",
+      labelImage4k: "4K (5 credit, ~60s)",
+      labelVideo270p: "270p (animated GIF)",
+      labelVideo720p: "720p (mặc định, nhanh)",
+      labelVideo1080p: "1080p (~60s)",
+      labelVideo4k: "4K (50 credit, ~2 phút)",
+      insufficientBalance: "Số dư không đủ ({{balance}}/{{cost}} credit)",
+    },
     useAsInput: "Dùng làm đầu vào",
     clearHistory: "Xóa lịch sử",
     noHistory: "Chưa có lịch sử",
@@ -165,8 +180,7 @@ export default {
         frames: "Frames",
         ingredients: "Thành phần"
       },
-      framesHint: "Frames mode: ảnh 1 = frame bắt đầu (bắt buộc), ảnh 2 = frame kết thúc (tùy chọn).",
-      lpWatermark: "Lưu ý: model Lower Priority sẽ tạo video có watermark."
+      framesHint: "Frames mode: ảnh 1 = frame bắt đầu (bắt buộc), ảnh 2 = frame kết thúc (tùy chọn)."
     },
     progress: {
       starting: "Đang khởi động...",

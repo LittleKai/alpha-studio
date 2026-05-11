@@ -27,6 +27,7 @@ const NewsPage = lazy(() => import('./pages/NewsPage'));
 const NewsDetailPage = lazy(() => import('./pages/NewsDetailPage'));
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
 const WalletPage = lazy(() => import('./pages/WalletPage'));
+const VocabPage = lazy(() => import('./pages/VocabPage'));
 
 // Loading spinner component
 const LoadingSpinner: React.FC = () => (
@@ -203,6 +204,17 @@ const WalletPageWrapper: React.FC = () => {
     );
 };
 
+// Vocab Page
+const VocabPageWrapper: React.FC = () => {
+    return (
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <VocabPage />
+            </Suspense>
+        </Layout>
+    );
+};
+
 // 404 Not Found Page
 const NotFoundPage: React.FC = () => {
     const navigate = useNavigate();
@@ -308,6 +320,16 @@ const App: React.FC = () => {
                     element={
                         <ProtectedRoute>
                             <WalletPageWrapper />
+                        </ProtectedRoute>
+                    }
+                />
+
+                {/* Vocab Page */}
+                <Route
+                    path="/vocab"
+                    element={
+                        <ProtectedRoute>
+                            <VocabPageWrapper />
                         </ProtectedRoute>
                     }
                 />

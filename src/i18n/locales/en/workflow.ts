@@ -641,6 +641,10 @@ export default {
       feeNotice: "Adding external member costs 50 Credits. Continue?",
       freeNotice: "Adding Alpha Student (Free).",
       insufficient: "Insufficient balance for external member (50 Credits needed)."
+    },
+    vocab: {
+      title: "Vocabulary",
+      description: "Visual vocabulary learning app powered by AI"
     }
   }
 };

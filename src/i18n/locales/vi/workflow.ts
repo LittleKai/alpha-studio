@@ -641,6 +641,10 @@ export default {
       feeNotice: "Thêm thành viên ngoài tốn 50 Credit. Tiếp tục?",
       freeNotice: "Thêm học viên Alpha (Miễn phí).",
       insufficient: "Không đủ số dư cho thành viên ngoài (cần 50 Credit)."
+    },
+    vocab: {
+      title: "Học Từ Vựng",
+      description: "Ứng dụng học từ vựng trực quan với AI"
     }
   }
 };

@@ -21,6 +21,7 @@ import {
   saveGeneration,
   StudioApiError,
   deleteRefImage,
+  downloadAtQuality,
 } from '../../services/studioService';
 import type { StudioProgress } from '../../services/studioService';
 import { uploadToB2 } from '../../services/b2StorageService';
@@ -29,6 +30,7 @@ import ImagePreviewModal from '../modals/ImagePreviewModal';
 import StudioHistoryDrawer from './StudioHistoryDrawer';
 import { useTranslation } from '../../i18n/context';
 import { useAuth } from '../../auth/context';
+import { useConfirm } from '../ui/ConfirmDialog';
 
 // Exported so the parent (StudioTool) can hold this state at its level —
 // keeps prompt + ref-image attachments alive when the user switches to the
@@ -547,6 +549,7 @@ export default function StudioFlowGen({
           {generation.items.map((item) => (
             <FlowResultItem
               key={item.index}
+              genId={generation.id}
               item={item}
               isVideo={isVideo}
               state={saveState[item.index] || 'idle'}
@@ -630,12 +633,6 @@ export default function StudioFlowGen({
         {mode === 'video' && videoCfg.subtype === 'Frames' && (
           <p className="mt-1 text-xs text-red-500 leading-snug font-medium">
             {t('studio.video.framesHint')}
-          </p>
-        )}
-
-        {mode === 'video' && (videoCfg.model === 'veo-fast-lp' || videoCfg.model === 'veo-lite-lp') && (
-          <p className="mt-1 text-xs text-yellow-500 leading-snug font-medium">
-            ⚠ {t('studio.video.lpWatermark')}
           </p>
         )}
 
@@ -875,6 +872,7 @@ export default function StudioFlowGen({
 // ─── Result item card (Flow variant) ───────────────────────────────────────
 
 interface FlowResultItemProps {
+  genId: string;
   item: StudioGenerationItem;
   isVideo: boolean;
   state: 'idle' | 'saving' | 'saved' | 'failed';
@@ -882,8 +880,23 @@ interface FlowResultItemProps {
   onPreview: (url: string) => void;
 }
 
-function FlowResultItem({ item, isVideo, state, onSave, onPreview }: FlowResultItemProps) {
+const IMAGE_QUALITY_OPTIONS: Array<{ q: string; labelKey: string; cost: number }> = [
+  { q: '1k', labelKey: 'studio.downloadHQ.labelImage1k', cost: 0 },
+  { q: '2k', labelKey: 'studio.downloadHQ.labelImage2k', cost: 0 },
+  { q: '4k', labelKey: 'studio.downloadHQ.labelImage4k', cost: 5 },
+];
+const VIDEO_QUALITY_OPTIONS: Array<{ q: string; labelKey: string; cost: number }> = [
+  { q: '270p', labelKey: 'studio.downloadHQ.labelVideo270p', cost: 0 },
+  { q: '720p', labelKey: 'studio.downloadHQ.labelVideo720p', cost: 0 },
+  { q: '1080p', labelKey: 'studio.downloadHQ.labelVideo1080p', cost: 0 },
+  { q: '4k', labelKey: 'studio.downloadHQ.labelVideo4k', cost: 50 },
+];
+
+function FlowResultItem({ genId, item, isVideo, state, onSave, onPreview }: FlowResultItemProps) {
   const { t } = useTranslation();
+  const { confirm } = useConfirm();
+  const [downloading, setDownloading] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   // Always use the backend's previewUrl. The backend's /media/:genId/:idx
   // route 302-redirects to either the public B2 CDN URL (when saved) or a
@@ -891,26 +904,62 @@ function FlowResultItem({ item, isVideo, state, onSave, onPreview }: FlowResultI
   // no client-side switch that breaks if B2 isn't reachable / CORS-friendly.
   const src = item.previewUrl;
 
-  const handleDownload = async () => {
-    // Cross-origin <a download> is often ignored by browsers (Google CDN strips
-    // Content-Disposition), so fetch the bytes into a blob and trigger download
-    // from a same-origin blob URL to preserve the filename.
+  const triggerBlobDownload = async (url: string) => {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`Download failed (${res.status})`);
+    const blob = await res.blob();
+    const blobUrl = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = blobUrl;
+    link.download = `alpha-studio-${item.index}-${Date.now()}.${item.ext || (isVideo ? 'mp4' : 'png')}`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(blobUrl);
+  };
+
+  // Default-quality download — same as the previous behaviour. Goes through
+  // the /media proxy which 302-redirects to the Google CDN signed URL.
+  const handleDefaultDownload = async () => {
+    if (downloading) return;
+    setDownloading(true);
     try {
-      const res = await fetch(src);
-      if (!res.ok) throw new Error(`Download failed (${res.status})`);
-      const blob = await res.blob();
-      const blobUrl = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = blobUrl;
-      link.download = `alpha-studio-${item.index}-${Date.now()}.${item.ext || (isVideo ? 'mp4' : 'png')}`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(blobUrl);
+      await triggerBlobDownload(src);
     } catch (err) {
       console.error('Download failed', err);
+    } finally {
+      setDownloading(false);
     }
   };
+
+  const handleQualityDownload = async (quality: string, cost: number) => {
+    setMenuOpen(false);
+    if (downloading) return;
+    if (cost > 0) {
+      const ok = await confirm({
+        title: t('studio.downloadHQ.confirmCostTitle'),
+        message: t('studio.downloadHQ.confirmCostBody')
+          .replace('{{quality}}', quality)
+          .replace('{{type}}', isVideo ? 'video' : 'image')
+          .replace('{{cost}}', String(cost)),
+        variant: 'warning',
+      });
+      if (!ok) return;
+    }
+    setDownloading(true);
+    try {
+      const result = await downloadAtQuality(genId, item.index, quality);
+      await triggerBlobDownload(result.url);
+    } catch (err) {
+      const e = err as Error & { status?: number };
+      console.error('HQ download failed', e);
+      alert(e.message || 'Download failed');
+    } finally {
+      setDownloading(false);
+    }
+  };
+
+  const qualityOptions = isVideo ? VIDEO_QUALITY_OPTIONS : IMAGE_QUALITY_OPTIONS;
 
   return (
     <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-2xl overflow-hidden shadow-lg">
@@ -928,12 +977,53 @@ function FlowResultItem({ item, isVideo, state, onSave, onPreview }: FlowResultI
       </div>
 
       <div className="p-3 flex gap-2">
-        <button
-          onClick={handleDownload}
-          className="flex-1 py-2 text-xs font-semibold rounded-lg border border-[var(--border-primary)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]"
-        >
-          {t('studio.download')}
-        </button>
+        <div className="flex-1 relative flex">
+          <button
+            onClick={handleDefaultDownload}
+            disabled={downloading}
+            className="flex-1 py-2 text-xs font-semibold rounded-l-lg border border-[var(--border-primary)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] disabled:opacity-50 disabled:cursor-wait flex items-center justify-center gap-1"
+          >
+            {downloading ? (
+              <>
+                <span className="inline-block w-3 h-3 border-2 border-current/30 border-t-current rounded-full animate-spin" />
+                <span>{t('studio.downloadHQ.processing')}</span>
+              </>
+            ) : (
+              t('studio.download')
+            )}
+          </button>
+          <button
+            onClick={() => setMenuOpen((o) => !o)}
+            disabled={downloading}
+            title={t('studio.downloadHQ.menuLabel')}
+            aria-label={t('studio.downloadHQ.menuLabel')}
+            className="px-2 py-2 text-xs rounded-r-lg border border-l-0 border-[var(--border-primary)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] disabled:opacity-50 disabled:cursor-wait"
+          >
+            <svg className="w-3 h-3" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.25 4.39a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clipRule="evenodd" />
+            </svg>
+          </button>
+          {menuOpen && (
+            <div
+              // Open upward (bottom-full mb-1): the parent card uses
+              // overflow-hidden, so a downward (top-full mt-1) menu would
+              // be clipped to invisible. Anchored to the bottom of the
+              // download buttons, the menu floats over the image area.
+              className="absolute z-20 left-0 right-0 bottom-full mb-1 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg shadow-xl overflow-hidden"
+              onMouseLeave={() => setMenuOpen(false)}
+            >
+              {qualityOptions.map(({ q, labelKey, cost }) => (
+                <button
+                  key={q}
+                  onClick={() => handleQualityDownload(q, cost)}
+                  className="block w-full text-left px-3 py-2 text-xs text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]"
+                >
+                  {t(labelKey)}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
         <button
           onClick={onSave}
           disabled={state === 'saving' || state === 'saved' || item.saved}
