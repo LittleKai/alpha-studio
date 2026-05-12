@@ -9,7 +9,7 @@ const ThemeSwitcher: React.FC = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-lg hover:bg-[var(--bg-secondary)] transition-colors"
+      className="p-2 rounded-xl bg-[var(--bg-card-alpha)] border border-[var(--border-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--accent-primary)] backdrop-blur-xl transition-all"
       aria-label={theme === 'light' ? t('app.theme.switchToDark') : t('app.theme.switchToLight')}
     >
       {theme === 'light' ? (

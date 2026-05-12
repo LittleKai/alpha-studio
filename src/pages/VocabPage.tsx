@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useAuth } from '../components/routing/AuthProvider';
+import { useTranslation } from '../i18n/context';
+import { useAuth } from '../auth/context';
 
 const VocabPage: React.FC = () => {
     const { t } = useTranslation();

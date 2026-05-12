@@ -26,21 +26,24 @@
     <style>
       /* Dark Theme (Default) */
       :root {
-        --bg-primary: #050a18;
-        --bg-secondary: #0c162d;
-        --bg-card: #121e3d;
-        --bg-card-alpha: rgba(18, 30, 61, 0.7);
+        --bg-primary: #07111f;
+        --bg-secondary: rgba(16, 31, 53, 0.72);
+        --bg-card: rgba(17, 34, 58, 0.58);
+        --bg-card-alpha: rgba(18, 35, 59, 0.46);
+        --glass-highlight: rgba(255, 255, 255, 0.2);
+        --glass-edge: rgba(255, 255, 255, 0.1);
+        --glass-shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
 
         --text-primary: #f8fafc;
-        --text-secondary: #94a3b8;
-        --text-tertiary: #64748b;
+        --text-secondary: #b7c6d8;
+        --text-tertiary: #7e8fa6;
 
-        --border-primary: rgba(30, 64, 175, 0.3);
+        --border-primary: rgba(205, 235, 255, 0.18);
 
-        --accent-primary: #00d4ff;
-        --accent-secondary: #3b82f6;
-        --accent-primary-hover: #00b4d8;
-        --accent-shadow: rgba(0, 212, 255, 0.25);
+        --accent-primary: #61e8ff;
+        --accent-secondary: #8b7dff;
+        --accent-primary-hover: #35d7f4;
+        --accent-shadow: rgba(97, 232, 255, 0.28);
 
         --text-on-accent: #050a18;
 
@@ -51,23 +54,26 @@
 
       /* Light Theme */
       html[data-theme="light"] {
-        --bg-primary: #f8fafc;
-        --bg-secondary: #e2e8f0;
-        --bg-tertiary: #cbd5e1;
-        --bg-card: #ffffff;
-        --bg-card-alpha: rgba(255, 255, 255, 0.9);
+        --bg-primary: #eef7fb;
+        --bg-secondary: rgba(255, 255, 255, 0.68);
+        --bg-tertiary: rgba(210, 228, 238, 0.76);
+        --bg-card: rgba(255, 255, 255, 0.68);
+        --bg-card-alpha: rgba(255, 255, 255, 0.52);
+        --glass-highlight: rgba(255, 255, 255, 0.9);
+        --glass-edge: rgba(255, 255, 255, 0.58);
+        --glass-shadow: 0 24px 70px rgba(29, 78, 116, 0.16);
 
         --text-primary: #0f172a;
         --text-secondary: #475569;
         --text-tertiary: #64748b;
 
-        --border-primary: rgba(15, 23, 42, 0.1);
-        --border-secondary: rgba(15, 23, 42, 0.15);
+        --border-primary: rgba(15, 75, 112, 0.16);
+        --border-secondary: rgba(15, 75, 112, 0.22);
 
-        --accent-primary: #0ea5e9;
-        --accent-secondary: #0284c7;
-        --accent-primary-hover: #0284c7;
-        --accent-shadow: rgba(14, 165, 233, 0.2);
+        --accent-primary: #0284c7;
+        --accent-secondary: #7c3aed;
+        --accent-primary-hover: #0369a1;
+        --accent-shadow: rgba(2, 132, 199, 0.22);
 
         --text-on-accent: #ffffff;
 
@@ -82,8 +88,8 @@
 
       /* Dark theme specific vars */
       :root {
-        --bg-tertiary: #1a2744;
-        --border-secondary: rgba(30, 64, 175, 0.5);
+        --bg-tertiary: rgba(27, 47, 75, 0.78);
+        --border-secondary: rgba(205, 235, 255, 0.28);
         --hero-text: #ffffff;
         --card-shadow: rgba(0, 0, 0, 0.3);
         --overlay-gradient: linear-gradient(to top, rgba(5, 10, 24, 0.95), transparent);
@@ -102,6 +108,27 @@
         font-family: 'Plus Jakarta Sans', sans-serif;
         transition: background-color 0.3s ease, color 0.3s ease;
         min-height: 100vh;
+      }
+
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background:
+          radial-gradient(circle at 12% 12%, rgba(97, 232, 255, 0.24), transparent 28rem),
+          radial-gradient(circle at 82% 6%, rgba(139, 125, 255, 0.22), transparent 26rem),
+          radial-gradient(circle at 72% 82%, rgba(20, 184, 166, 0.16), transparent 30rem),
+          linear-gradient(135deg, #07111f 0%, #0a1628 44%, #12133d 100%);
+      }
+
+      html[data-theme="light"] body::before {
+        background:
+          radial-gradient(circle at 10% 10%, rgba(125, 211, 252, 0.54), transparent 28rem),
+          radial-gradient(circle at 82% 8%, rgba(196, 181, 253, 0.48), transparent 26rem),
+          radial-gradient(circle at 70% 86%, rgba(153, 246, 228, 0.42), transparent 30rem),
+          linear-gradient(135deg, #eef7fb 0%, #f8fbff 48%, #eef2ff 100%);
       }
 
       /* TinyMCE Content Rendering Fix
@@ -153,9 +180,21 @@
       /* Glass Card Effect */
       .glass-card {
         background: var(--bg-card-alpha);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(26px) saturate(165%);
+        -webkit-backdrop-filter: blur(26px) saturate(165%);
         border: 1px solid var(--border-primary);
+        box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight), inset 0 -1px 0 rgba(255, 255, 255, 0.04);
+        position: relative;
+      }
+
+      .glass-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        background: linear-gradient(145deg, var(--glass-highlight), transparent 34%, transparent 68%, var(--glass-edge));
+        opacity: 0.45;
       }
 
       /* Text Gradient */
@@ -232,6 +271,7 @@
         transition: all 0.3s ease;
         border: none;
         cursor: pointer;
+        box-shadow: 0 12px 34px var(--accent-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.45);
       }
 
       .btn-primary:hover {
@@ -246,7 +286,7 @@
       }
 
       .btn-secondary {
-        background: var(--bg-card);
+        background: var(--bg-card-alpha);
         color: var(--text-primary);
         padding: 0.75rem 1.5rem;
         border-radius: 0.5rem;
@@ -254,6 +294,9 @@
         transition: all 0.3s ease;
         border: 1px solid var(--border-primary);
         cursor: pointer;
+        backdrop-filter: blur(18px) saturate(150%);
+        -webkit-backdrop-filter: blur(18px) saturate(150%);
+        box-shadow: inset 0 1px 0 var(--glass-highlight);
       }
 
       .btn-secondary:hover {
@@ -263,13 +306,15 @@
 
       /* Input Styles */
       .input-field {
-        background: var(--bg-card);
+        background: var(--bg-card-alpha);
         border: 1px solid var(--border-primary);
         color: var(--text-primary);
         padding: 0.75rem 1rem;
         border-radius: 0.5rem;
         width: 100%;
         transition: all 0.3s ease;
+        backdrop-filter: blur(18px) saturate(140%);
+        -webkit-backdrop-filter: blur(18px) saturate(140%);
       }
 
       .input-field:focus {
@@ -296,7 +341,12 @@
       html[data-theme="light"] .glass-card {
         background: var(--bg-card-alpha);
         border: 1px solid var(--border-primary);
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-highlight), inset 0 -1px 0 rgba(255, 255, 255, 0.3);
+      }
+
+      html[data-theme="light"] .bg-\[var\(--accent-primary\)\].text-black,
+      html[data-theme="light"] .hover\:bg-\[var\(--accent-primary\)\]:hover.hover\:text-black:hover {
+        color: #ffffff !important;
       }
 
       /* Light theme scrollbar */
