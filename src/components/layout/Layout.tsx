@@ -95,7 +95,7 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                         <Link to="/services" className={`whitespace-nowrap transition-colors ${isServicesPage ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-primary)]'}`}>
                             {t('landing.nav.services')}
                         </Link>
-                        <button onClick={() => navigateToProtectedPage('/workflow')} className={`whitespace-nowrap border md:px-3 md:py-1 lg:px-4 lg:py-1.5 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-[0_0_14px_rgba(168,85,247,0.4)] ${isWorkflowPage ? 'bg-purple-500/15 text-purple-400 border-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.25)]' : 'text-purple-400 border-purple-400/30 hover:bg-purple-500/10 hover:border-purple-400/60'}`}>
+                        <button onClick={() => navigateToProtectedPage('/workflow')} className={`whitespace-nowrap border md:px-3 md:py-1 lg:px-4 lg:py-1.5 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-[var(--accent-shadow)] ${isWorkflowPage ? 'bg-[var(--accent-primary)]/18 text-[var(--accent-primary)] border-[var(--accent-primary)] shadow-[var(--accent-shadow)]' : 'text-[var(--accent-primary)] border-[var(--accent-primary)]/35 hover:bg-[var(--accent-primary)]/14 hover:border-[var(--accent-primary)]'}`}>
                             {t('landing.nav.connect')}
                         </button>
                         {/* Tạm ẩn theo yêu cầu
@@ -233,7 +233,7 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                             <Link onClick={closeMobile} to="/services" className={`block px-4 py-3 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors ${isServicesPage ? 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]' : 'text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]'}`}>
                                 {t('landing.nav.services')}
                             </Link>
-                            <button onClick={() => { navigateToProtectedPage('/workflow'); closeMobile(); }} className={`flex items-center gap-3 w-full text-left px-4 py-3.5 rounded-xl text-sm font-bold uppercase tracking-wider transition-colors border ${isWorkflowPage ? 'bg-purple-500/15 text-purple-400 border-purple-400/60' : 'text-purple-400 border-purple-400/30 bg-purple-500/5 hover:bg-purple-500/12 hover:border-purple-400/50'}`}>
+                            <button onClick={() => { navigateToProtectedPage('/workflow'); closeMobile(); }} className={`flex items-center gap-3 w-full text-left px-4 py-3.5 rounded-xl text-sm font-bold uppercase tracking-wider transition-colors border ${isWorkflowPage ? 'bg-[var(--accent-primary)]/18 text-[var(--accent-primary)] border-[var(--accent-primary)]/70' : 'text-[var(--accent-primary)] border-[var(--accent-primary)]/35 bg-[var(--accent-primary)]/8 hover:bg-[var(--accent-primary)]/14 hover:border-[var(--accent-primary)]/60'}`}>
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 shrink-0" viewBox="0 0 20 20" fill="currentColor"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/></svg>
                                 {t('landing.nav.connect')}
                             </button>

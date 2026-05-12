@@ -203,10 +203,10 @@ const LandingPage: React.FC = () => {
                     </p>
 
                     <div className="flex flex-wrap justify-center gap-5 pt-6">
-                        <button onClick={() => navigateToProtectedPage('/studio')} className="py-4 px-12 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-black rounded-2xl shadow-xl hover:bg-[var(--accent-secondary)] transition-all">
+                        <button onClick={() => navigateToProtectedPage('/studio')} className="liquid-cta-hover py-4 px-12 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-black rounded-2xl shadow-xl hover:bg-[var(--accent-secondary)] transition-all duration-300">
                             {t('landing.hero.exploreStudio')}
                         </button>
-                        <button onClick={() => navigateToProtectedPage('/server')} className="py-4 px-12 glass-card text-[var(--text-primary)] font-black rounded-2xl hover:border-[var(--accent-primary)] transition-all">
+                        <button onClick={() => navigateToProtectedPage('/server')} className="liquid-cta-hover py-4 px-12 glass-card text-[var(--text-primary)] font-black rounded-2xl hover:border-[var(--accent-primary)] transition-all duration-300">
                             {t('landing.hero.gpuServer')}
                         </button>
                     </div>
@@ -403,7 +403,7 @@ const LandingPage: React.FC = () => {
                     )}
 
                     <div className="mt-12 text-center">
-                        <button onClick={() => navigateToProtectedPage('/workflow')} className="py-3 px-8 rounded-full border border-[var(--border-primary)] hover:border-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-all text-sm font-bold text-[var(--accent-primary)]">
+                        <button onClick={() => navigateToProtectedPage('/workflow')} className="liquid-cta-hover py-3 px-8 rounded-full border border-[var(--border-primary)] hover:border-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-all duration-300 text-sm font-bold text-[var(--accent-primary)]">
                             {t('landing.showcase.cta')}
                         </button>
                     </div>
@@ -486,7 +486,7 @@ const LandingPage: React.FC = () => {
                                 </li>
                             ))}
                         </ul>
-                        <button onClick={() => navigateToProtectedPage('/workflow')} className="py-4 px-10 glass-card rounded-2xl text-[var(--accent-primary)] font-black hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-all">
+                        <button onClick={() => navigateToProtectedPage('/workflow')} className="liquid-cta-hover py-4 px-10 glass-card rounded-2xl text-[var(--accent-primary)] font-black hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-all duration-300">
                             {t('landing.features.cta')}
                         </button>
                     </div>
