@@ -87,7 +87,7 @@ function FlowServersTab() {
     const [showForm, setShowForm] = useState(false);
     const [editing, setEditing] = useState<FlowServer | null>(null);
     const [syncingId, setSyncingId] = useState<string | null>(null);
-    const [form, setForm] = useState({ name: '', machineId: '', agentUrl: '', secret: '', targetProjectCount: 3 });
+    const [form, setForm] = useState({ name: '', machineId: '', agentUrl: '', secret: '', targetProjectCount: 3, initialProjectIds: '' });
 
     const load = useCallback(async () => {
         setLoading(true);
@@ -106,12 +106,12 @@ function FlowServersTab() {
 
     const startCreate = () => {
         setEditing(null);
-        setForm({ name: '', machineId: '', agentUrl: '', secret: '', targetProjectCount: 3 });
+        setForm({ name: '', machineId: '', agentUrl: '', secret: '', targetProjectCount: 3, initialProjectIds: '' });
         setShowForm(true);
     };
     const startEdit = (s: FlowServer) => {
         setEditing(s);
-        setForm({ name: s.name, machineId: s.machineId, agentUrl: s.agentUrl, secret: '', targetProjectCount: s.targetProjectCount || 3 });
+        setForm({ name: s.name, machineId: s.machineId, agentUrl: s.agentUrl, secret: '', targetProjectCount: s.targetProjectCount || 3, initialProjectIds: s.projectIds?.join(', ') || '' });
         setShowForm(true);
     };
 
@@ -122,6 +122,7 @@ function FlowServersTab() {
                     name: form.name,
                     agentUrl: form.agentUrl,
                     targetProjectCount: form.targetProjectCount,
+                    initialProjectIds: form.initialProjectIds,
                     ...(form.secret ? { secret: form.secret } : {}),
                 });
             } else {
@@ -131,6 +132,7 @@ function FlowServersTab() {
                     agentUrl: form.agentUrl,
                     secret: form.secret,
                     targetProjectCount: form.targetProjectCount,
+                    initialProjectIds: form.initialProjectIds,
                 });
             }
             setShowForm(false);
@@ -321,6 +323,7 @@ function FlowServersTab() {
                         <FloatInput id="fs-url" label={t('admin.cloud.flowServers.agentUrl')} value={form.agentUrl} onChange={v => setForm(f => ({ ...f, agentUrl: v }))} />
                         <FloatInput id="fs-secret" label={editing ? t('admin.cloud.flowServers.secretOptional') : t('admin.cloud.flowServers.secret')} value={form.secret} onChange={v => setForm(f => ({ ...f, secret: v }))} type="password" />
                         <FloatInput id="fs-pid" label={t('admin.cloud.flowServers.targetProjectCount')} value={form.targetProjectCount} onChange={v => setForm(f => ({ ...f, targetProjectCount: Number(v) || 0 }))} type="number" />
+                        <FloatInput id="fs-initids" label="Project IDs (comma separated)" value={form.initialProjectIds} onChange={v => setForm(f => ({ ...f, initialProjectIds: v }))} />
                         <div className="flex gap-2 justify-end">
                             <button onClick={() => setShowForm(false)} className="px-4 py-2 text-sm rounded-lg border border-[var(--border-primary)]">{t('common.cancel')}</button>
                             <button onClick={submit} className="px-4 py-2 text-sm rounded-lg bg-[var(--accent-primary)] text-black font-semibold">{t('common.save')}</button>

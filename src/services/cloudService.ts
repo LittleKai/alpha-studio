@@ -191,6 +191,7 @@ export const registerFlowServer = async (input: {
     agentUrl: string;
     secret: string;
     targetProjectCount?: number;
+    initialProjectIds?: string;
 }) => {
     const response = await fetch(`${API_URL}/cloud/admin/flow-servers`, {
         method: 'POST',
@@ -204,7 +205,7 @@ export const registerFlowServer = async (input: {
 
 export const updateFlowServer = async (
     id: string,
-    input: Partial<{ name: string; agentUrl: string; secret: string; targetProjectCount: number }>,
+    input: Partial<{ name: string; agentUrl: string; secret: string; targetProjectCount: number; initialProjectIds: string }>,
 ) => {
     const response = await fetch(`${API_URL}/cloud/admin/flow-servers/${id}`, {
         method: 'PUT',
