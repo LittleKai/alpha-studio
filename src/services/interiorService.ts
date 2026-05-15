@@ -27,9 +27,22 @@ export interface InteriorVersion {
 
 export type InteriorChatStage = 'proposal' | 'apply';
 
+export interface InteriorProposalQuestion {
+    question: string;
+    options: string[];
+}
+
+export interface InteriorProposalStructured {
+    observation: string;
+    understanding: string;
+    proposedChanges: string[];
+    questions: InteriorProposalQuestion[];
+}
+
 export interface InteriorProposalResult {
     stage: 'proposal';
     proposalText: string;
+    structured: InteriorProposalStructured;
     refImageUrls: string[];
     message: string;
     aiModel: string | null;

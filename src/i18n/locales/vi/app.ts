@@ -160,21 +160,38 @@ export default {
       chat: "Chat AI",
       creditNote: "Mỗi lần gọi AI tốn 1 credit.",
       creditNote2Step: "Đang bật xác nhận 2 bước: mỗi yêu cầu tốn 2 credit (1 phân tích + 1 áp dụng).",
+      creditNoteFirstMessage: "Yêu cầu đầu tiên của dự án sẽ tự động dùng 2 bước (2 credit). Các lần sau chỉ 1 credit nếu bạn không bật xác nhận trong cài đặt.",
       twoStep: {
         label: "Xác nhận trước khi áp dụng",
         desc: "AI phân tích ảnh và đề xuất trước, bạn xem rồi mới bấm áp dụng. Tốn thêm 1 credit/lần."
+      },
+      settings: {
+        title: "Cài đặt Interior AI",
+        close: "Đóng",
+        lockedDuringProposal: "Đang có đề xuất chờ xác nhận — không thể đổi cài đặt cho đến khi áp dụng hoặc hủy."
       },
       proposal: {
         title: "Đề xuất từ AI",
         applyHint: "Đọc kỹ trước khi áp dụng. Bấm áp dụng để AI sinh model JSON (+1 credit).",
         apply: "Áp dụng (+1 credit)",
-        cancel: "Hủy / Sửa prompt"
+        cancel: "Hủy / Sửa prompt",
+        pendingBanner: "Đang chờ bạn xác nhận đề xuất trong dialog...",
+        observation: "Quan sát ảnh",
+        understanding: "Hiểu yêu cầu",
+        proposedChanges: "Đề xuất thay đổi (chỉnh sửa nếu cần)",
+        proposedChangesHint: "Mỗi dòng là một thay đổi. Bạn có thể thêm/xóa/chỉnh trước khi áp dụng.",
+        questions: "Câu hỏi xác nhận",
+        answerNotePlaceholder: "Bổ sung thêm (tuỳ chọn)...",
+        generalNote: "Ghi chú thêm (tuỳ chọn)",
+        generalNotePlaceholder: "Ví dụ: vật liệu ưa thích, ngân sách, hạn chế kỹ thuật..."
       },
       promptLabel: "Yêu cầu thiết kế",
       promptPlaceholder: "Mô tả tủ hoặc thay đổi nội thất bạn muốn...",
       refImage: "Thêm ảnh tham chiếu",
       refImageCount: "Đã chọn {n}/{max} ảnh — bấm để thêm",
       clearRef: "Xóa ảnh tham chiếu",
+      restoredRef: "Ảnh khôi phục từ phiên bản trước",
+      restoredBadge: "Cũ",
       pasteHint: "Mẹo: Ctrl+V để dán ảnh trực tiếp vào ô chat.",
       send: "Gửi AI",
       sendProposal: "Gửi AI phân tích",
@@ -188,7 +205,7 @@ export default {
       backToCurrent: "Về bản hiện tại",
       rollback: "Khôi phục",
       rollbackTitle: "Khôi phục phiên bản",
-      rollbackMessage: "Tạo phiên bản mới từ {{version}}?",
+      rollbackMessage: "Quay về {{version}}? Lịch sử chat sẽ giảm theo. Các phiên bản mới hơn vẫn được giữ cho đến khi bạn gửi yêu cầu mới (lúc đó sẽ bị xóa).",
       rollbackConfirm: "Khôi phục",
       delete: "Xóa",
       deleteTitle: "Xóa dự án",

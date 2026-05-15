@@ -160,21 +160,38 @@ export default {
       chat: "AI chat",
       creditNote: "Each AI call costs 1 credit.",
       creditNote2Step: "Two-step confirm is ON: each request costs 2 credits (1 analyze + 1 apply).",
+      creditNoteFirstMessage: "The first request of a project always uses two-step (2 credits). Subsequent requests cost 1 credit unless you enable confirmation in settings.",
       twoStep: {
         label: "Confirm before applying",
         desc: "AI analyzes and proposes first, you review then click apply. Costs 1 extra credit per request."
+      },
+      settings: {
+        title: "Interior AI settings",
+        close: "Close",
+        lockedDuringProposal: "A proposal is awaiting confirmation — settings are locked until you apply or cancel."
       },
       proposal: {
         title: "AI proposal",
         applyHint: "Read carefully before applying. Click apply to generate the model JSON (+1 credit).",
         apply: "Apply (+1 credit)",
-        cancel: "Cancel / Refine prompt"
+        cancel: "Cancel / Refine prompt",
+        pendingBanner: "Waiting for you to confirm the proposal in the dialog...",
+        observation: "Image observation",
+        understanding: "Understanding",
+        proposedChanges: "Proposed changes (edit if needed)",
+        proposedChangesHint: "One change per line. You can add/remove/edit before applying.",
+        questions: "Clarifying questions",
+        answerNotePlaceholder: "Add more details (optional)...",
+        generalNote: "Additional notes (optional)",
+        generalNotePlaceholder: "e.g. preferred materials, budget, technical constraints..."
       },
       promptLabel: "Design request",
       promptPlaceholder: "Describe the cabinet or room change you want...",
       refImage: "Add reference image",
       refImageCount: "{n}/{max} images selected — click to add more",
       clearRef: "Remove reference image",
+      restoredRef: "Image restored from previous version",
+      restoredBadge: "Old",
       pasteHint: "Tip: paste an image with Ctrl+V right into the chat.",
       send: "Send to AI",
       sendProposal: "Send for analysis",
@@ -188,7 +205,7 @@ export default {
       backToCurrent: "Back to current",
       rollback: "Rollback",
       rollbackTitle: "Rollback version",
-      rollbackMessage: "Create a new version from {{version}}?",
+      rollbackMessage: "Go back to {{version}}? Chat history will shrink accordingly. Newer versions stay until you send a new request (they'll be discarded then).",
       rollbackConfirm: "Rollback",
       delete: "Delete",
       deleteTitle: "Delete project",

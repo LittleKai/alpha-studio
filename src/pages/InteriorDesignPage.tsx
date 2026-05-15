@@ -16,15 +16,21 @@ import {
     sendInteriorMessage,
     INTERIOR_MODELS,
     INTERIOR_DEFAULT_MODEL,
-    type InteriorModel
+    type InteriorModel,
+    type InteriorProposalStructured
 } from '../services/interiorService';
 
 interface PendingProposal {
-    proposalText: string;
     message: string;
     refImageUrls: string[];
+    structured: InteriorProposalStructured;
     aiModel: string | null;
     totalTokens: number | null;
+}
+
+interface ProposalAnswer {
+    selected: string | null;
+    note: string;
 }
 
 type MobileTab = 'projects' | 'preview' | 'chat';
@@ -63,6 +69,9 @@ const InteriorDesignPage: React.FC = () => {
     const [busy, setBusy] = useState(false);
     const [message, setMessage] = useState('');
     const [refFiles, setRefFiles] = useState<File[]>([]);
+    // URL của ảnh được khôi phục từ version rollback — đã upload sẵn lên B2,
+    // không cần upload lại khi gửi.
+    const [restoredRefImageUrls, setRestoredRefImageUrls] = useState<string[]>([]);
     const MAX_REF_IMAGES = 5;
     const [uploadProgress, setUploadProgress] = useState(0);
     const [error, setError] = useState('');
@@ -71,9 +80,20 @@ const InteriorDesignPage: React.FC = () => {
     const [mobileTab, setMobileTab] = useState<MobileTab>('preview');
     const [selectedModel, setSelectedModel] = useState<InteriorModel>(INTERIOR_DEFAULT_MODEL);
     const [pendingProposal, setPendingProposal] = useState<PendingProposal | null>(null);
+    const [editedChanges, setEditedChanges] = useState('');
+    const [proposalAnswers, setProposalAnswers] = useState<ProposalAnswer[]>([]);
+    const [generalNote, setGeneralNote] = useState('');
     const [togglingPref, setTogglingPref] = useState(false);
+    const [settingsOpen, setSettingsOpen] = useState(false);
 
     const twoStepConfirm = !!user?.preferences?.interiorTwoStepConfirm;
+
+    useEffect(() => {
+        if (!settingsOpen) return;
+        const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setSettingsOpen(false); };
+        window.addEventListener('keydown', onKey);
+        return () => window.removeEventListener('keydown', onKey);
+    }, [settingsOpen]);
 
     const activeVersion = useMemo(() => {
         if (!project) return null;
@@ -86,6 +106,16 @@ const InteriorDesignPage: React.FC = () => {
     const canUseAi = isAuthenticated && !!token && !!project && !busy;
     const needsCredit = user?.role !== 'admin' && user?.role !== 'mod';
     const hasCredit = !needsCredit || (user?.balance || 0) >= 1;
+
+    // First user message của dự án (xét theo branch hiện tại sau khi rollback) →
+    // luôn ép 2-step để user xác nhận baseline understanding.
+    const isFirstUserMessage = useMemo(() => {
+        if (!project) return false;
+        return !project.versions
+            .filter((v) => v.index <= project.currentVersionIndex)
+            .some((v) => v.userPrompt && v.userPrompt.trim());
+    }, [project]);
+    const effectiveTwoStep = twoStepConfirm || isFirstUserMessage;
 
     const postModel = useCallback((version: InteriorVersion | null) => {
         if (!version || !iframeRef.current?.contentWindow) return;
@@ -203,14 +233,9 @@ const InteriorDesignPage: React.FC = () => {
 
     const addRefFiles = (incoming: File[]) => {
         if (incoming.length === 0) return;
-        setRefFiles((prev) => {
-            const merged = [...prev];
-            for (const file of incoming) {
-                if (merged.length >= MAX_REF_IMAGES) break;
-                merged.push(file);
-            }
-            return merged;
-        });
+        const remaining = MAX_REF_IMAGES - refFiles.length - restoredRefImageUrls.length;
+        if (remaining <= 0) return;
+        setRefFiles((prev) => [...prev, ...incoming.slice(0, remaining)]);
     };
 
     const handlePickRefFiles = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -221,6 +246,10 @@ const InteriorDesignPage: React.FC = () => {
 
     const handleRemoveRefFile = (index: number) => {
         setRefFiles((prev) => prev.filter((_, i) => i !== index));
+    };
+
+    const handleRemoveRestoredUrl = (index: number) => {
+        setRestoredRefImageUrls((prev) => prev.filter((_, i) => i !== index));
     };
 
     const handlePasteInTextarea = (event: React.ClipboardEvent<HTMLTextAreaElement>) => {
@@ -259,7 +288,7 @@ const InteriorDesignPage: React.FC = () => {
         setError('');
         setUploadProgress(0);
         try {
-            const refImageUrls: string[] = [];
+            const newUrls: string[] = [];
             for (let i = 0; i < refFiles.length; i++) {
                 const uploaded = await uploadToB2(
                     refFiles[i],
@@ -267,10 +296,12 @@ const InteriorDesignPage: React.FC = () => {
                     token,
                     (pct) => setUploadProgress(Math.round(((i + pct / 100) / refFiles.length) * 100))
                 );
-                refImageUrls.push(uploaded.url);
+                newUrls.push(uploaded.url);
             }
+            // Kết hợp URL khôi phục từ rollback + URL mới upload, tôn trọng giới hạn 5 ảnh.
+            const refImageUrls = [...restoredRefImageUrls, ...newUrls].slice(0, MAX_REF_IMAGES);
 
-            const stage = twoStepConfirm ? 'proposal' : 'apply';
+            const stage = effectiveTwoStep ? 'proposal' : 'apply';
             const result = await sendInteriorMessage(token, project._id, {
                 message: message.trim(),
                 refImageUrls,
@@ -283,14 +314,19 @@ const InteriorDesignPage: React.FC = () => {
             refreshUser();
 
             if (result.stage === 'proposal') {
+                const structured = result.structured;
                 setPendingProposal({
-                    proposalText: result.proposalText,
                     message: message.trim(),
                     refImageUrls: result.refImageUrls,
+                    structured,
                     aiModel: result.aiModel,
                     totalTokens: result.usage?.totalTokens ?? null
                 });
+                setEditedChanges(structured.proposedChanges.join('\n'));
+                setProposalAnswers(structured.questions.map(() => ({ selected: null, note: '' })));
+                setGeneralNote('');
                 setRefFiles([]);
+                setRestoredRefImageUrls([]);
                 return;
             }
 
@@ -298,6 +334,7 @@ const InteriorDesignPage: React.FC = () => {
             setProjects((prev) => [result.project, ...prev.filter((item) => item._id !== result.project._id)]);
             setMessage('');
             setRefFiles([]);
+            setRestoredRefImageUrls([]);
             setPreviewVersionIndex(null);
             setMobileTab('preview');
         } catch (err) {
@@ -308,6 +345,32 @@ const InteriorDesignPage: React.FC = () => {
         } finally {
             setBusy(false);
         }
+    };
+
+    const buildEnrichedProposalContext = (): string => {
+        if (!pendingProposal) return '';
+        const { structured } = pendingProposal;
+        const lines: string[] = [];
+        if (structured.observation) lines.push(`Quan sát ảnh: ${structured.observation}`);
+        if (structured.understanding) lines.push(`Hiểu yêu cầu: ${structured.understanding}`);
+        const cleanedChanges = editedChanges.split('\n').map((s) => s.trim()).filter(Boolean);
+        if (cleanedChanges.length) {
+            lines.push('Đề xuất thay đổi (đã user xác nhận/chỉnh sửa):');
+            cleanedChanges.forEach((c, i) => lines.push(`${i + 1}. ${c}`));
+        }
+        if (structured.questions.length) {
+            lines.push('Trả lời câu hỏi:');
+            structured.questions.forEach((q, i) => {
+                const ans = proposalAnswers[i] || { selected: null, note: '' };
+                lines.push(`Q${i + 1}: ${q.question}`);
+                if (ans.selected) lines.push(`  Lựa chọn: ${ans.selected}`);
+                if (ans.note.trim()) lines.push(`  Ghi chú: ${ans.note.trim()}`);
+                if (!ans.selected && !ans.note.trim()) lines.push(`  (User để AI tự quyết)`);
+            });
+        }
+        const note = generalNote.trim();
+        if (note) lines.push(`Ghi chú thêm của user: ${note}`);
+        return lines.join('\n');
     };
 
     const handleApplyProposal = async () => {
@@ -325,7 +388,7 @@ const InteriorDesignPage: React.FC = () => {
                 expectedCurrentVersionIndex: project.currentVersionIndex,
                 model: selectedModel,
                 stage: 'apply',
-                proposalText: pendingProposal.proposalText
+                proposalText: buildEnrichedProposalContext()
             });
             refreshUser();
             if (result.stage !== 'apply') {
@@ -336,6 +399,9 @@ const InteriorDesignPage: React.FC = () => {
             setProjects((prev) => [result.project, ...prev.filter((item) => item._id !== result.project._id)]);
             setMessage('');
             setPendingProposal(null);
+            setProposalAnswers([]);
+            setEditedChanges('');
+            setGeneralNote('');
             setPreviewVersionIndex(null);
             setMobileTab('preview');
         } catch (err) {
@@ -351,7 +417,21 @@ const InteriorDesignPage: React.FC = () => {
     const handleCancelProposal = () => {
         if (!pendingProposal) return;
         setMessage(pendingProposal.message);
+        // Khôi phục ảnh đã upload vào ô input để user sửa lại prompt và gửi lại
+        // mà không cần upload lại.
+        setRestoredRefImageUrls(pendingProposal.refImageUrls || []);
         setPendingProposal(null);
+        setProposalAnswers([]);
+        setEditedChanges('');
+        setGeneralNote('');
+    };
+
+    const updateAnswerSelected = (index: number, value: string) => {
+        setProposalAnswers((prev) => prev.map((a, i) => (i === index ? { ...a, selected: value } : a)));
+    };
+
+    const updateAnswerNote = (index: number, value: string) => {
+        setProposalAnswers((prev) => prev.map((a, i) => (i === index ? { ...a, note: value } : a)));
     };
 
     const handleToggleTwoStep = async () => {
@@ -385,6 +465,15 @@ const InteriorDesignPage: React.FC = () => {
             setProject(result.project);
             setProjects((prev) => [result.project, ...prev.filter((item) => item._id !== result.project._id)]);
             setPreviewVersionIndex(null);
+            // Khôi phục prompt + ảnh đính kèm của version cũ vào ô chat để user
+            // có thể chỉnh sửa và gửi lại nhanh chóng.
+            setMessage(version.userPrompt || '');
+            setRestoredRefImageUrls(Array.isArray(version.refImageUrls) ? version.refImageUrls.slice(0, MAX_REF_IMAGES) : []);
+            setRefFiles([]);
+            setPendingProposal(null);
+            setEditedChanges('');
+            setProposalAnswers([]);
+            setGeneralNote('');
         } catch (err) {
             setError(err instanceof Error ? err.message : t('studio.interior.errors.rollbackFailed'));
         } finally {
@@ -557,35 +646,28 @@ const InteriorDesignPage: React.FC = () => {
                     <div className="border-b border-[var(--border-primary)] p-4">
                         <h2 className="font-bold">{t('studio.interior.chat')}</h2>
                         <p className="mt-1 text-xs text-[var(--text-tertiary)]">
-                            {twoStepConfirm ? t('studio.interior.creditNote2Step') : t('studio.interior.creditNote')}
+                            {twoStepConfirm
+                                ? t('studio.interior.creditNote2Step')
+                                : isFirstUserMessage
+                                    ? t('studio.interior.creditNoteFirstMessage')
+                                    : t('studio.interior.creditNote')}
                         </p>
-                        <label className="mt-3 flex items-start gap-2 text-xs text-[var(--text-secondary)]">
-                            <input
-                                type="checkbox"
-                                checked={twoStepConfirm}
-                                onChange={handleToggleTwoStep}
-                                disabled={togglingPref || busy || !!pendingProposal}
-                                className="mt-0.5 h-4 w-4 cursor-pointer accent-[var(--accent-primary)] disabled:cursor-not-allowed"
-                            />
-                            <span>
-                                <span className="font-semibold text-[var(--text-primary)]">{t('studio.interior.twoStep.label')}</span>
-                                <span className="block text-[var(--text-tertiary)]">{t('studio.interior.twoStep.desc')}</span>
-                            </span>
-                        </label>
                     </div>
 
                     <div className="max-h-[calc(100vh-520px)] min-h-[230px] overflow-y-auto p-4">
                         {!project && <p className="text-sm text-[var(--text-secondary)]">{t('studio.interior.createFirst')}</p>}
-                        {project?.versions.filter((version) => version.userPrompt || version.aiReply).map((version) => (
-                            <div key={version._id} className="mb-4 space-y-2">
+                        {project?.versions
+                            .filter((version) => version.index <= project.currentVersionIndex && (version.userPrompt || version.aiReply))
+                            .map((version) => (
+                            <div key={version._id} className="mb-5 space-y-3">
                                 {version.userPrompt && (
-                                    <div className="ml-8 rounded-lg bg-[var(--accent-primary)] px-3 py-2 text-sm text-[var(--text-on-accent)]">
-                                        <div>{version.userPrompt}</div>
+                                    <div className="ml-8 rounded-2xl bg-[var(--chat-user-bg)] px-4 py-2.5 text-sm leading-relaxed text-[var(--text-primary)] shadow-sm">
+                                        <div className="whitespace-pre-wrap">{version.userPrompt}</div>
                                         {version.refImageUrls && version.refImageUrls.length > 0 && (
                                             <div className="mt-2 flex flex-wrap gap-1">
                                                 {version.refImageUrls.map((url, idx) => (
                                                     <a key={idx} href={url} target="_blank" rel="noreferrer" className="block">
-                                                        <img src={url} alt={`ref-${idx}`} className="h-12 w-12 rounded border border-white/30 object-cover" />
+                                                        <img src={url} alt={`ref-${idx}`} className="h-12 w-12 rounded-lg border border-[var(--border-primary)] object-cover" />
                                                     </a>
                                                 ))}
                                             </div>
@@ -593,15 +675,15 @@ const InteriorDesignPage: React.FC = () => {
                                     </div>
                                 )}
                                 {version.aiReply && (
-                                    <div className="mr-8 rounded-lg border border-[var(--border-primary)] bg-[var(--bg-secondary)] px-3 py-2 text-sm text-[var(--text-secondary)]">
-                                        <div>{version.aiReply}</div>
+                                    <div className="mr-2 rounded-2xl bg-[var(--chat-assistant-bg)] px-1 py-1 text-sm leading-relaxed text-[var(--text-primary)]">
+                                        <div className="whitespace-pre-wrap">{version.aiReply}</div>
                                         <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-[var(--text-tertiary)]">
                                             <span>V{version.index} · {formatDateTime(version.createdAt)}</span>
                                             {version.aiModel && (
-                                                <span className="rounded bg-[var(--bg-card)] px-1.5 py-0.5">{version.aiModel}</span>
+                                                <span className="rounded-md bg-[var(--chat-meta-bg)] px-1.5 py-0.5">{version.aiModel}</span>
                                             )}
                                             {version.usage?.totalTokens != null && (
-                                                <span className="rounded bg-[var(--bg-card)] px-1.5 py-0.5">
+                                                <span className="rounded-md bg-[var(--chat-meta-bg)] px-1.5 py-0.5">
                                                     {t('studio.interior.tokens').replace('{n}', String(version.usage.totalTokens))}
                                                 </span>
                                             )}
@@ -613,45 +695,28 @@ const InteriorDesignPage: React.FC = () => {
                     </div>
 
                     {pendingProposal && (
-                        <div className="border-t border-[var(--border-primary)] bg-[var(--bg-secondary)]/40 p-4">
-                            <div className="mb-2 flex items-center justify-between gap-2">
-                                <h3 className="text-sm font-bold text-[var(--accent-primary)]">{t('studio.interior.proposal.title')}</h3>
-                                <span className="text-[10px] text-[var(--text-tertiary)]">
-                                    {pendingProposal.aiModel}
-                                    {pendingProposal.totalTokens != null
-                                        ? ` · ${t('studio.interior.tokens').replace('{n}', String(pendingProposal.totalTokens))}`
-                                        : ''}
-                                </span>
-                            </div>
-                            <div className="max-h-60 overflow-y-auto whitespace-pre-wrap rounded-lg border border-[var(--border-primary)] bg-[var(--bg-card)] p-3 text-sm text-[var(--text-secondary)]">
-                                {pendingProposal.proposalText}
-                            </div>
-                            <p className="mt-2 text-xs text-[var(--text-tertiary)]">{t('studio.interior.proposal.applyHint')}</p>
-                            <div className="mt-3 flex gap-2">
-                                <button
-                                    type="button"
-                                    onClick={handleApplyProposal}
-                                    disabled={busy || !hasCredit}
-                                    className="flex-1 rounded-lg bg-[var(--accent-primary)] px-4 py-2 text-sm font-bold text-[var(--text-on-accent)] hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
-                                >
-                                    {busy ? t('studio.interior.sending') : t('studio.interior.proposal.apply')}
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={handleCancelProposal}
-                                    disabled={busy}
-                                    className="rounded-lg border border-[var(--border-primary)] bg-[var(--bg-card)] px-4 py-2 text-sm font-semibold text-[var(--text-primary)] hover:border-[var(--accent-primary)] disabled:opacity-50"
-                                >
-                                    {t('studio.interior.proposal.cancel')}
-                                </button>
-                            </div>
+                        <div className="border-t border-[var(--border-primary)] bg-[var(--accent-primary)]/10 px-4 py-3 text-sm">
+                            <span className="font-semibold text-[var(--accent-primary)]">{t('studio.interior.proposal.pendingBanner')}</span>
                         </div>
                     )}
 
                     <form onSubmit={handleSend} className="border-t border-[var(--border-primary)] p-4">
-                        <label className="mb-2 block text-xs font-semibold uppercase tracking-wide text-[var(--text-tertiary)]">
-                            {t('studio.interior.promptLabel')}
-                        </label>
+                        <div className="mb-2 flex items-center justify-between gap-2">
+                            <label className="block text-xs font-semibold uppercase tracking-wide text-[var(--text-tertiary)]">
+                                {t('studio.interior.promptLabel')}
+                            </label>
+                            <button
+                                type="button"
+                                onClick={() => setSettingsOpen(true)}
+                                title={t('studio.interior.settings.title')}
+                                className="rounded-lg p-1.5 text-[var(--text-tertiary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--accent-primary)]"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <circle cx="12" cy="12" r="3" />
+                                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                                </svg>
+                            </button>
+                        </div>
                         <textarea
                             value={message}
                             onChange={(event) => setMessage(event.target.value)}
@@ -663,8 +728,29 @@ const InteriorDesignPage: React.FC = () => {
                         />
                         <p className="mt-1 text-xs text-[var(--text-tertiary)]">{t('studio.interior.pasteHint')}</p>
 
-                        {refFiles.length > 0 && (
+                        {(restoredRefImageUrls.length > 0 || refFiles.length > 0) && (
                             <div className="mt-3 flex flex-wrap gap-2">
+                                {restoredRefImageUrls.map((url, index) => (
+                                    <div key={`restored-${index}`} className="relative h-16 w-16 overflow-hidden rounded-lg border border-[var(--accent-primary)]/60 bg-[var(--bg-secondary)]" title={t('studio.interior.restoredRef')}>
+                                        <img
+                                            src={url}
+                                            alt={`restored-${index}`}
+                                            className="h-full w-full object-cover"
+                                        />
+                                        <span className="absolute bottom-0 left-0 right-0 bg-[var(--accent-primary)]/80 px-1 text-center text-[9px] font-bold text-[var(--text-on-accent)]">
+                                            {t('studio.interior.restoredBadge')}
+                                        </span>
+                                        <button
+                                            type="button"
+                                            onClick={() => handleRemoveRestoredUrl(index)}
+                                            disabled={busy}
+                                            title={t('studio.interior.clearRef')}
+                                            className="absolute right-0 top-0 flex h-5 w-5 items-center justify-center rounded-bl-lg bg-black/60 text-xs font-bold text-white hover:bg-red-500 disabled:opacity-50"
+                                        >
+                                            ×
+                                        </button>
+                                    </div>
+                                ))}
                                 {refFiles.map((file, index) => {
                                     const url = URL.createObjectURL(file);
                                     return (
@@ -692,8 +778,8 @@ const InteriorDesignPage: React.FC = () => {
 
                         <label className="mt-3 block cursor-pointer rounded-lg border border-dashed border-[var(--border-primary)] bg-[var(--bg-secondary)] px-3 py-3 text-center text-sm text-[var(--text-secondary)] hover:border-[var(--accent-primary)]">
                             <span className="font-semibold">
-                                {refFiles.length > 0
-                                    ? t('studio.interior.refImageCount').replace('{n}', String(refFiles.length)).replace('{max}', String(MAX_REF_IMAGES))
+                                {(restoredRefImageUrls.length + refFiles.length) > 0
+                                    ? t('studio.interior.refImageCount').replace('{n}', String(restoredRefImageUrls.length + refFiles.length)).replace('{max}', String(MAX_REF_IMAGES))
                                     : t('studio.interior.refImage')}
                             </span>
                             <input
@@ -701,7 +787,7 @@ const InteriorDesignPage: React.FC = () => {
                                 accept="image/*"
                                 multiple
                                 className="hidden"
-                                disabled={!project || busy || !!pendingProposal || refFiles.length >= MAX_REF_IMAGES}
+                                disabled={!project || busy || !!pendingProposal || (restoredRefImageUrls.length + refFiles.length) >= MAX_REF_IMAGES}
                                 onChange={handlePickRefFiles}
                             />
                         </label>
@@ -739,7 +825,7 @@ const InteriorDesignPage: React.FC = () => {
                         >
                             {busy
                                 ? t('studio.interior.sending')
-                                : (twoStepConfirm ? t('studio.interior.sendProposal') : t('studio.interior.send'))}
+                                : (effectiveTwoStep ? t('studio.interior.sendProposal') : t('studio.interior.send'))}
                         </button>
                     </form>
 
@@ -776,6 +862,174 @@ const InteriorDesignPage: React.FC = () => {
                     </div>
                 </aside>
             </div>
+
+            {pendingProposal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+                    <div className="flex max-h-[90vh] w-full max-w-2xl flex-col rounded-lg border border-[var(--border-primary)] bg-[var(--bg-card)] shadow-lg">
+                        <div className="flex items-center justify-between gap-2 border-b border-[var(--border-primary)] px-5 py-4">
+                            <div>
+                                <h3 className="text-lg font-bold text-[var(--text-primary)]">{t('studio.interior.proposal.title')}</h3>
+                                <p className="text-xs text-[var(--text-tertiary)]">
+                                    {pendingProposal.aiModel}
+                                    {pendingProposal.totalTokens != null
+                                        ? ` · ${t('studio.interior.tokens').replace('{n}', String(pendingProposal.totalTokens))}`
+                                        : ''}
+                                </p>
+                            </div>
+                            <button
+                                type="button"
+                                onClick={handleCancelProposal}
+                                disabled={busy}
+                                className="rounded-lg p-1.5 text-[var(--text-tertiary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)] disabled:opacity-50"
+                                title={t('studio.interior.proposal.cancel')}
+                            >
+                                ✕
+                            </button>
+                        </div>
+
+                        <div className="flex-1 overflow-y-auto px-5 py-4">
+                            {pendingProposal.structured.observation && (
+                                <section className="mb-4">
+                                    <h4 className="mb-1 text-xs font-bold uppercase tracking-wide text-[var(--text-tertiary)]">{t('studio.interior.proposal.observation')}</h4>
+                                    <p className="whitespace-pre-wrap rounded-lg border border-[var(--border-primary)] bg-[var(--bg-secondary)]/50 px-3 py-2 text-sm text-[var(--text-secondary)]">{pendingProposal.structured.observation}</p>
+                                </section>
+                            )}
+
+                            {pendingProposal.structured.understanding && (
+                                <section className="mb-4">
+                                    <h4 className="mb-1 text-xs font-bold uppercase tracking-wide text-[var(--text-tertiary)]">{t('studio.interior.proposal.understanding')}</h4>
+                                    <p className="whitespace-pre-wrap rounded-lg border border-[var(--border-primary)] bg-[var(--bg-secondary)]/50 px-3 py-2 text-sm text-[var(--text-secondary)]">{pendingProposal.structured.understanding}</p>
+                                </section>
+                            )}
+
+                            <section className="mb-4">
+                                <label className="mb-1 block text-xs font-bold uppercase tracking-wide text-[var(--text-tertiary)]">{t('studio.interior.proposal.proposedChanges')}</label>
+                                <textarea
+                                    value={editedChanges}
+                                    onChange={(event) => setEditedChanges(event.target.value)}
+                                    rows={Math.max(3, pendingProposal.structured.proposedChanges.length + 1)}
+                                    disabled={busy}
+                                    className="w-full resize-none rounded-lg border border-[var(--border-primary)] bg-[var(--bg-secondary)] px-3 py-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--accent-primary)]"
+                                />
+                                <p className="mt-1 text-xs text-[var(--text-tertiary)]">{t('studio.interior.proposal.proposedChangesHint')}</p>
+                            </section>
+
+                            {pendingProposal.structured.questions.length > 0 && (
+                                <section className="mb-4">
+                                    <h4 className="mb-2 text-xs font-bold uppercase tracking-wide text-[var(--text-tertiary)]">{t('studio.interior.proposal.questions')}</h4>
+                                    {pendingProposal.structured.questions.map((q, i) => (
+                                        <div key={i} className="mb-3 rounded-lg border border-[var(--border-primary)] bg-[var(--bg-secondary)]/50 p-3">
+                                            <p className="mb-2 text-sm font-semibold text-[var(--text-primary)]">{i + 1}. {q.question}</p>
+                                            {q.options.length > 0 && (
+                                                <div className="mb-2 space-y-1">
+                                                    {q.options.map((opt, j) => (
+                                                        <label key={j} className="flex cursor-pointer items-start gap-2 text-sm">
+                                                            <input
+                                                                type="radio"
+                                                                name={`proposal-q-${i}`}
+                                                                value={opt}
+                                                                checked={proposalAnswers[i]?.selected === opt}
+                                                                onChange={() => updateAnswerSelected(i, opt)}
+                                                                disabled={busy}
+                                                                className="mt-0.5 accent-[var(--accent-primary)]"
+                                                            />
+                                                            <span className="text-[var(--text-secondary)]">{opt}</span>
+                                                        </label>
+                                                    ))}
+                                                </div>
+                                            )}
+                                            <input
+                                                type="text"
+                                                value={proposalAnswers[i]?.note || ''}
+                                                onChange={(event) => updateAnswerNote(i, event.target.value)}
+                                                placeholder={t('studio.interior.proposal.answerNotePlaceholder')}
+                                                disabled={busy}
+                                                className="w-full rounded-lg border border-[var(--border-primary)] bg-[var(--bg-card)] px-3 py-1.5 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--accent-primary)]"
+                                            />
+                                        </div>
+                                    ))}
+                                </section>
+                            )}
+
+                            <section>
+                                <label className="mb-1 block text-xs font-bold uppercase tracking-wide text-[var(--text-tertiary)]">{t('studio.interior.proposal.generalNote')}</label>
+                                <textarea
+                                    value={generalNote}
+                                    onChange={(event) => setGeneralNote(event.target.value)}
+                                    placeholder={t('studio.interior.proposal.generalNotePlaceholder')}
+                                    rows={2}
+                                    disabled={busy}
+                                    className="w-full resize-none rounded-lg border border-[var(--border-primary)] bg-[var(--bg-secondary)] px-3 py-2 text-sm text-[var(--text-primary)] outline-none focus:border-[var(--accent-primary)]"
+                                />
+                            </section>
+                        </div>
+
+                        <div className="flex gap-2 border-t border-[var(--border-primary)] px-5 py-3">
+                            <button
+                                type="button"
+                                onClick={handleApplyProposal}
+                                disabled={busy || !hasCredit}
+                                className="flex-1 rounded-lg bg-[var(--accent-primary)] px-4 py-2 text-sm font-bold text-[var(--text-on-accent)] hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+                            >
+                                {busy ? t('studio.interior.sending') : t('studio.interior.proposal.apply')}
+                            </button>
+                            <button
+                                type="button"
+                                onClick={handleCancelProposal}
+                                disabled={busy}
+                                className="rounded-lg border border-[var(--border-primary)] bg-[var(--bg-card)] px-4 py-2 text-sm font-semibold text-[var(--text-primary)] hover:border-[var(--accent-primary)] disabled:opacity-50"
+                            >
+                                {t('studio.interior.proposal.cancel')}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {settingsOpen && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+                    onClick={() => setSettingsOpen(false)}
+                >
+                    <div
+                        className="w-full max-w-md rounded-lg border border-[var(--border-primary)] bg-[var(--bg-card)] p-5 shadow-lg"
+                        onClick={(event) => event.stopPropagation()}
+                    >
+                        <div className="mb-4 flex items-center justify-between gap-2">
+                            <h3 className="text-lg font-bold text-[var(--text-primary)]">{t('studio.interior.settings.title')}</h3>
+                            <button
+                                type="button"
+                                onClick={() => setSettingsOpen(false)}
+                                className="rounded-lg p-1.5 text-[var(--text-tertiary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]"
+                                title={t('studio.interior.settings.close')}
+                            >
+                                ✕
+                            </button>
+                        </div>
+                        <label className="flex cursor-pointer items-start gap-3">
+                            <input
+                                type="checkbox"
+                                checked={twoStepConfirm}
+                                onChange={handleToggleTwoStep}
+                                disabled={togglingPref || busy || !!pendingProposal}
+                                className="mt-1 h-4 w-4 cursor-pointer accent-[var(--accent-primary)] disabled:cursor-not-allowed"
+                            />
+                            <span className="flex-1">
+                                <span className="font-semibold text-[var(--text-primary)]">{t('studio.interior.twoStep.label')}</span>
+                                <span className="mt-1 block text-xs text-[var(--text-tertiary)]">{t('studio.interior.twoStep.desc')}</span>
+                            </span>
+                        </label>
+                        <p className="mt-4 rounded-lg border border-[var(--border-primary)] bg-[var(--bg-secondary)] px-3 py-2 text-xs text-[var(--text-secondary)]">
+                            {twoStepConfirm ? t('studio.interior.creditNote2Step') : t('studio.interior.creditNote')}
+                        </p>
+                        {pendingProposal && (
+                            <p className="mt-3 text-xs text-yellow-500">
+                                {t('studio.interior.settings.lockedDuringProposal')}
+                            </p>
+                        )}
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
