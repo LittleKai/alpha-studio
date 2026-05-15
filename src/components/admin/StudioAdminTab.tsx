@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from '../../i18n/context';
 import { getAuthHeaders } from '../../services/cloudService';
+import type { StudioAdminSettings } from '../../services/adminService';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
@@ -9,11 +10,13 @@ export default function StudioAdminTab() {
     const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
 
-    const [settings, setSettings] = useState({
+    const [settings, setSettings] = useState<StudioAdminSettings>({
         useApiForStudio: false,
         useApiForImage: false,
         useApiForVideo: false,
         useApiForEdit: false,
+        useOpenClawForChat: true,
+        gcliBotModel: 'gemini-3.1-flash-lite',
         geminiApiKey: '',
         videoApiKey: ''
     });
@@ -35,6 +38,8 @@ export default function StudioAdminTab() {
                     useApiForImage: data.data.useApiForImage || false,
                     useApiForVideo: data.data.useApiForVideo || false,
                     useApiForEdit: data.data.useApiForEdit || false,
+                    useOpenClawForChat: data.data.useOpenClawForChat ?? true,
+                    gcliBotModel: data.data.gcliBotModel || 'gemini-3.1-flash-lite',
                     geminiApiKey: data.data.geminiApiKey || '',
                     videoApiKey: data.data.videoApiKey || ''
                 });
@@ -59,13 +64,13 @@ export default function StudioAdminTab() {
             });
             const data = await res.json();
             if (data.success) {
-                alert(t('admin.studio.saveSuccess') || 'Lưu cài đặt thành công');
+                alert(t('admin.studio.saveSuccess'));
             } else {
-                alert(data.message || 'Lỗi khi lưu');
+                alert(data.message || t('admin.studio.saveError'));
             }
         } catch (error) {
             console.error('Failed to save settings:', error);
-            alert('Lỗi hệ thống khi lưu');
+            alert(t('admin.studio.systemError'));
         } finally {
             setSaving(false);
         }
@@ -73,12 +78,44 @@ export default function StudioAdminTab() {
 
     return (
         <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl p-6">
-            <h3 className="text-xl font-bold text-[var(--text-primary)] mb-6">Cài đặt API Studio</h3>
+            <h3 className="text-xl font-bold text-[var(--text-primary)] mb-6">{t('admin.studio.title')}</h3>
 
             {loading ? (
-                <p className="text-[var(--text-secondary)]">Loading...</p>
+                <p className="text-[var(--text-secondary)]">{t('admin.studio.loading')}</p>
             ) : (
                 <div className="space-y-6">
+                    <div className="p-4 bg-[var(--bg-secondary)] rounded-lg border border-[var(--border-primary)]">
+                        <label className="flex items-center gap-3 cursor-pointer">
+                            <input
+                                type="checkbox"
+                                checked={settings.useOpenClawForChat}
+                                onChange={(e) => setSettings({ ...settings, useOpenClawForChat: e.target.checked })}
+                                className="w-5 h-5 accent-[var(--accent-primary)]"
+                            />
+                            <div>
+                                <span className="font-bold text-[var(--text-primary)]">{t('admin.studio.chatProviderTitle')}</span>
+                                <p className="text-sm text-[var(--text-secondary)]">{t('admin.studio.chatProviderDesc')}</p>
+                            </div>
+                        </label>
+
+                        {!settings.useOpenClawForChat && (
+                            <div className="mt-4 pl-8">
+                                <label className="block text-sm font-medium text-[var(--text-primary)] mb-1">
+                                    {t('admin.studio.gcliBotModelLabel')}
+                                </label>
+                                <p className="text-xs text-[var(--text-secondary)] mb-2">{t('admin.studio.gcliBotModelDesc')}</p>
+                                <select
+                                    value={settings.gcliBotModel}
+                                    onChange={(e) => setSettings({ ...settings, gcliBotModel: e.target.value })}
+                                    className="px-3 py-2 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg text-[var(--text-primary)]"
+                                >
+                                    <option value="gemini-3.1-flash-lite">gemini-3.1-flash-lite ({t('admin.studio.modelDefault')})</option>
+                                    <option value="gemini-3-flash-preview">gemini-3-flash-preview</option>
+                                </select>
+                            </div>
+                        )}
+                    </div>
+
                     {/* Master toggle */}
                     <div className="p-4 bg-[var(--bg-secondary)] rounded-lg border border-[var(--border-primary)]">
                         <label className="flex items-center gap-3 cursor-pointer">
@@ -169,9 +206,9 @@ export default function StudioAdminTab() {
                     <button
                         onClick={handleSave}
                         disabled={saving}
-                        className="px-6 py-2 bg-[var(--accent-primary)] text-black font-medium rounded-lg hover:opacity-90 disabled:opacity-50"
+                        className="px-6 py-2 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-medium rounded-lg hover:opacity-90 disabled:opacity-50"
                     >
-                        {saving ? 'Đang lưu...' : 'Lưu lại'}
+                        {saving ? t('admin.studio.saving') : t('admin.studio.save')}
                     </button>
                 </div>
             )}

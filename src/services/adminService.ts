@@ -77,6 +77,17 @@ export interface PaginatedResponse<T> {
     };
 }
 
+export interface StudioAdminSettings {
+    useApiForStudio: boolean;
+    useApiForImage: boolean;
+    useApiForVideo: boolean;
+    useApiForEdit: boolean;
+    useOpenClawForChat: boolean;
+    gcliBotModel: string;
+    geminiApiKey: string;
+    videoApiKey: string;
+}
+
 // API Functions
 
 /**

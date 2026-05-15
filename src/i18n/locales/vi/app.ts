@@ -115,7 +115,95 @@ export default {
       video: "Video",
       edit: "Chỉnh sửa"
     },
+    hub: {
+      title: "Bộ công cụ AI Studio",
+      subtitle: "Chọn công cụ bạn muốn dùng",
+      open: "Mở",
+      backToStudio: "Quay lại Studio",
+      cards: {
+        generate: {
+          title: "Tạo ảnh & video",
+          desc: "Sinh ảnh và video bằng Google Nano Banana và Veo"
+        },
+        edit: {
+          title: "Chỉnh sửa ảnh",
+          desc: "Biến đổi, ghép, vẽ mặt nạ và remix ảnh bằng Gemini"
+        },
+        vocab: {
+          title: "VocabFlip",
+          desc: "Học từ vựng bằng flashcard tích hợp"
+        },
+        interior: {
+          title: "Thiết kế nội thất",
+          desc: "Công cụ vẽ tủ & nội thất tương tác"
+        }
+      }
+    },
     // ─── Edit tab (Gemini) ──────────────────────────────────────────
+    interior: {
+      title: "Thiết kế nội thất AI",
+      subtitle: "Chat AI, lưu model, quản lý phiên bản và khôi phục",
+      loginTitle: "Đăng nhập để dùng Thiết kế nội thất AI",
+      loginDesc: "Dự án, lịch sử chat, ảnh tham chiếu và phiên bản model sẽ được lưu vào tài khoản của bạn.",
+      signIn: "Đăng nhập",
+      tabs: { projects: "Dự án", preview: "Bản vẽ", chat: "Chat" },
+      balance: "Số dư",
+      unlimited: "Không giới hạn",
+      newProject: "Dự án mới",
+      newProjectName: "Dự án nội thất mới",
+      projects: "Dự án",
+      noProjects: "Chưa có dự án nội thất.",
+      noProjectSelected: "Chưa chọn dự án",
+      emptyState: "Tạo dự án để bắt đầu thiết kế bằng AI.",
+      createFirst: "Hãy tạo hoặc chọn một dự án trước.",
+      loading: "Đang tải...",
+      chat: "Chat AI",
+      creditNote: "Mỗi lần gọi AI tốn 1 credit.",
+      creditNote2Step: "Đang bật xác nhận 2 bước: mỗi yêu cầu tốn 2 credit (1 phân tích + 1 áp dụng).",
+      twoStep: {
+        label: "Xác nhận trước khi áp dụng",
+        desc: "AI phân tích ảnh và đề xuất trước, bạn xem rồi mới bấm áp dụng. Tốn thêm 1 credit/lần."
+      },
+      proposal: {
+        title: "Đề xuất từ AI",
+        applyHint: "Đọc kỹ trước khi áp dụng. Bấm áp dụng để AI sinh model JSON (+1 credit).",
+        apply: "Áp dụng (+1 credit)",
+        cancel: "Hủy / Sửa prompt"
+      },
+      promptLabel: "Yêu cầu thiết kế",
+      promptPlaceholder: "Mô tả tủ hoặc thay đổi nội thất bạn muốn...",
+      refImage: "Thêm ảnh tham chiếu",
+      refImageCount: "Đã chọn {n}/{max} ảnh — bấm để thêm",
+      clearRef: "Xóa ảnh tham chiếu",
+      pasteHint: "Mẹo: Ctrl+V để dán ảnh trực tiếp vào ô chat.",
+      send: "Gửi AI",
+      sendProposal: "Gửi AI phân tích",
+      sending: "Đang xử lý...",
+      modelLabel: "Model AI",
+      modelDefault: "mặc định",
+      tokens: "{n} tokens",
+      versions: "Phiên bản",
+      current: "Hiện tại",
+      previewing: "Đang xem",
+      backToCurrent: "Về bản hiện tại",
+      rollback: "Khôi phục",
+      rollbackTitle: "Khôi phục phiên bản",
+      rollbackMessage: "Tạo phiên bản mới từ {{version}}?",
+      rollbackConfirm: "Khôi phục",
+      delete: "Xóa",
+      deleteTitle: "Xóa dự án",
+      deleteMessage: "Xóa \"{{name}}\"?",
+      deleteConfirm: "Xóa",
+      errors: {
+        loadFailed: "Không thể tải dự án nội thất.",
+        createFailed: "Không thể tạo dự án.",
+        deleteFailed: "Không thể xóa dự án.",
+        sendFailed: "Không thể gửi yêu cầu.",
+        rollbackFailed: "Không thể khôi phục phiên bản.",
+        emptyPrompt: "Hãy nhập yêu cầu thiết kế trước.",
+        noCredit: "Bạn cần ít nhất 1 credit để gọi AI."
+      }
+    },
     selectTransformation: "Chọn hiệu ứng",
     selectPreset: "Chọn Preset",
     customPrompt: "Prompt tùy chỉnh",
@@ -231,6 +319,7 @@ export default {
       refresh: "Làm mới",
       loading: "Đang tải...",
       empty: "Chưa có lượt tạo nào.",
+      loginRequired: "Đăng nhập để xem lịch sử tạo của bạn.",
       preview: "Xem",
       openPreview: "Mở xem trước",
       id: "ID",

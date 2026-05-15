@@ -42,6 +42,9 @@ export interface User {
         type: string;
         size: number;
     }[];
+    preferences?: {
+        interiorTwoStepConfirm?: boolean;
+    };
 }
 
 interface AuthState {
@@ -89,6 +92,9 @@ interface ProfileUpdateData {
         type: string;
         size: number;
     }[];
+    preferences?: {
+        interiorTwoStepConfirm?: boolean;
+    };
 }
 
 interface AuthContextType extends AuthState {
@@ -108,6 +114,13 @@ const AuthContext = createContext<AuthContextType | null>(null);
 // Storage keys
 const TOKEN_KEY = 'alpha_studio_token';
 const USER_KEY = 'alpha_studio_user';
+const VOCAB_TOKEN_KEY = 'vocabflip_auth_token';
+
+const clearAuthStorage = () => {
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(USER_KEY);
+    localStorage.removeItem(VOCAB_TOKEN_KEY);
+};
 
 // Initialize state synchronously from localStorage (no loading delay)
 const getInitialState = (): AuthState => {
@@ -122,7 +135,7 @@ const getInitialState = (): AuthState => {
                 isLoading: false
             };
         } catch {
-            // ignore parse error, fall through
+            clearAuthStorage();
         }
     }
     return { user: null, token: null, isAuthenticated: false, isLoading: false };
@@ -146,12 +159,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
                 if (response.ok) {
                     const data = await response.json();
+                    if (localStorage.getItem(TOKEN_KEY) !== storedToken) return;
+
                     localStorage.setItem(USER_KEY, JSON.stringify(data.data.user));
-                    setState(prev => ({ ...prev, user: data.data.user }));
+                    setState(prev => (
+                        prev.token === storedToken
+                            ? { ...prev, user: data.data.user }
+                            : prev
+                    ));
                 } else {
                     // Token expired/invalid — silent logout
-                    localStorage.removeItem(TOKEN_KEY);
-                    localStorage.removeItem(USER_KEY);
+                    if (localStorage.getItem(TOKEN_KEY) !== storedToken) return;
+
+                    clearAuthStorage();
                     setState({ user: null, token: null, isAuthenticated: false, isLoading: false });
                 }
             } catch {
@@ -165,12 +185,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     // Login
     const login = useCallback(async (credentials: LoginCredentials) => {
         try {
+            clearAuthStorage();
+            setState({ user: null, token: null, isAuthenticated: false, isLoading: false });
+            const normalizedCredentials = {
+                ...credentials,
+                email: credentials.email.trim()
+            };
+
             const response = await fetch(`${API_URL}/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(credentials),
+                body: JSON.stringify(normalizedCredentials),
                 credentials: 'include'
             });
 
@@ -199,12 +226,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     // Register
     const register = useCallback(async (registerData: RegisterData) => {
         try {
+            clearAuthStorage();
+            setState({ user: null, token: null, isAuthenticated: false, isLoading: false });
+            const normalizedRegisterData = {
+                ...registerData,
+                email: registerData.email.trim()
+            };
+
             const response = await fetch(`${API_URL}/auth/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(registerData),
+                body: JSON.stringify(normalizedRegisterData),
                 credentials: 'include'
             });
 
@@ -245,8 +279,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         } catch {
             // Ignore logout API errors
         } finally {
-            localStorage.removeItem(TOKEN_KEY);
-            localStorage.removeItem(USER_KEY);
+            clearAuthStorage();
 
             setState({
                 user: null,

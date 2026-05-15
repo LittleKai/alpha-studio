@@ -26,6 +26,20 @@ export default {
       hired: "Hired",
       labelPlaceholder: "Title (e.g. Event Director)"
     },
+    studio: {
+      title: "Studio API Settings",
+      loading: "Loading...",
+      save: "Save",
+      saving: "Saving...",
+      saveSuccess: "Settings saved successfully",
+      saveError: "Failed to save",
+      systemError: "System error while saving",
+      chatProviderTitle: "Use OpenClaw for AI Chat",
+      chatProviderDesc: "Keep this on to preserve per-user context through OpenClaw. Turn it off to call gcli directly via GCLI_DIRECT_URL, which is simpler but does not keep session context.",
+      gcliBotModelLabel: "gcli model for AI Bot",
+      gcliBotModelDesc: "Pick the gcli model used when OpenClaw is off. Default is gemini-3.1-flash-lite.",
+      modelDefault: "default"
+    },
     articles: {
       title: "Title",
       excerpt: "Excerpt",

@@ -72,7 +72,7 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
         <div className="min-h-screen flex flex-col bg-[var(--bg-primary)]">
             {/* Global Navigation */}
             <nav className="sticky top-0 z-50 glass-card border-b border-[var(--border-primary)]">
-                <div className="w-full px-4 md:px-6 py-2 md:py-3 lg:py-4 flex justify-between items-center">
+                <div className="w-full px-4 md:px-6 py-1.5 md:py-2 lg:py-2.5 flex justify-between items-center">
                     <Link to="/" className="flex items-center gap-2 cursor-pointer group">
                         <img src="/alpha-logo.png" alt="Alpha Studio" className="h-8 w-8 md:h-9 md:w-9 xl:h-10 xl:w-10 rounded-xl object-contain group-hover:rotate-12 transition-transform" />
                         <div className="flex md:hidden lg:flex flex-col">

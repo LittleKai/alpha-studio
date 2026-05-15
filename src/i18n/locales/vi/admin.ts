@@ -26,6 +26,20 @@ export default {
       hired: "Đã tuyển dụng",
       labelPlaceholder: "Chức danh (VD: Event Director)"
     },
+    studio: {
+      title: "Cài đặt API Studio",
+      loading: "Đang tải...",
+      save: "Lưu lại",
+      saving: "Đang lưu...",
+      saveSuccess: "Lưu cài đặt thành công",
+      saveError: "Lỗi khi lưu",
+      systemError: "Lỗi hệ thống khi lưu",
+      chatProviderTitle: "Sử dụng OpenClaw cho AI Chat",
+      chatProviderDesc: "Bật để giữ context theo từng user qua OpenClaw. Tắt để gọi gcli trực tiếp qua GCLI_DIRECT_URL, nhanh hơn nhưng không giữ session context.",
+      gcliBotModelLabel: "Model gcli cho AI Bot",
+      gcliBotModelDesc: "Chọn model gcli khi OpenClaw tắt. Mặc định gemini-3.1-flash-lite.",
+      modelDefault: "mặc định"
+    },
     articles: {
       title: "Tiêu đề",
       excerpt: "Tóm tắt",

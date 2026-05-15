@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 // Routing Components (keep these non-lazy as they're small and used everywhere)
 import { ProtectedRoute } from './components/routing';
 import { Layout } from './components/layout';
@@ -13,6 +13,7 @@ const PartnerPage = lazy(() => import('./pages/PartnerPage'));
 
 // Lazy load heavy components
 const StudioTool = lazy(() => import('./components/studio/StudioTool'));
+const StudioHub = lazy(() => import('./components/studio/StudioHub'));
 const WorkflowDashboard = lazy(() => import('./components/dashboard/WorkflowDashboard'));
 const AIServerConnect = lazy(() => import('./components/dashboard/AIServerConnect'));
 const CourseManagement = lazy(() => import('./components/admin/CourseManagement'));
@@ -28,6 +29,7 @@ const NewsDetailPage = lazy(() => import('./pages/NewsDetailPage'));
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
 const WalletPage = lazy(() => import('./pages/WalletPage'));
 const VocabPage = lazy(() => import('./pages/VocabPage'));
+const InteriorDesignPage = lazy(() => import('./pages/InteriorDesignPage'));
 
 // Loading spinner component
 const LoadingSpinner: React.FC = () => (
@@ -40,12 +42,33 @@ const LoadingSpinner: React.FC = () => (
 );
 
 // Wrapper components that add navigation handlers and Layout
-const StudioPage: React.FC = () => {
+const StudioHubPage: React.FC = () => {
+    return (
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <StudioHub />
+            </Suspense>
+        </Layout>
+    );
+};
+
+const StudioGeneratePage: React.FC = () => {
     const navigate = useNavigate();
     return (
         <Layout>
             <Suspense fallback={<LoadingSpinner />}>
-                <StudioTool onBack={() => navigate('/')} />
+                <StudioTool mode="generate" onBack={() => navigate('/studio')} />
+            </Suspense>
+        </Layout>
+    );
+};
+
+const StudioEditPage: React.FC = () => {
+    const navigate = useNavigate();
+    return (
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <StudioTool mode="edit" onBack={() => navigate('/studio')} />
             </Suspense>
         </Layout>
     );
@@ -215,6 +238,17 @@ const VocabPageWrapper: React.FC = () => {
     );
 };
 
+// Interior Design Page
+const InteriorDesignPageWrapper: React.FC = () => {
+    return (
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <InteriorDesignPage />
+            </Suspense>
+        </Layout>
+    );
+};
+
 // 404 Not Found Page
 const NotFoundPage: React.FC = () => {
     const navigate = useNavigate();
@@ -253,8 +287,22 @@ const App: React.FC = () => {
                 <Route path="/news/:slug" element={<NewsDetailPageWrapper />} />
                 <Route path="/services" element={<ServicesPageWrapper />} />
 
-                {/* Studio - public, auth enforced per-use inside component */}
-                <Route path="/studio" element={<StudioPage />} />
+                {/* Studio hub + tool sub-routes — public, auth enforced per-use inside each tool */}
+                <Route path="/studio" element={<StudioHubPage />} />
+                <Route path="/studio/generate" element={<StudioGeneratePage />} />
+                <Route path="/studio/edit" element={<StudioEditPage />} />
+                <Route path="/studio/interior-design" element={<InteriorDesignPageWrapper />} />
+                <Route path="/studio/interior-design/:projectId" element={<InteriorDesignPageWrapper />} />
+                <Route
+                    path="/studio/vocab"
+                    element={
+                        <ProtectedRoute>
+                            <VocabPageWrapper />
+                        </ProtectedRoute>
+                    }
+                />
+                {/* Legacy /vocab → redirect to /studio/vocab */}
+                <Route path="/vocab" element={<Navigate to="/studio/vocab" replace />} />
 
                 {/* Protected Routes (require login) */}
                 <Route
@@ -320,16 +368,6 @@ const App: React.FC = () => {
                     element={
                         <ProtectedRoute>
                             <WalletPageWrapper />
-                        </ProtectedRoute>
-                    }
-                />
-
-                {/* Vocab Page */}
-                <Route
-                    path="/vocab"
-                    element={
-                        <ProtectedRoute>
-                            <VocabPageWrapper />
                         </ProtectedRoute>
                     }
                 />

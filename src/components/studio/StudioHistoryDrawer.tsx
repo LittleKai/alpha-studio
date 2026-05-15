@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useTranslation } from '../../i18n/context';
+import { useAuth } from '../../auth/context';
 import { getStudioHistory } from '../../services/studioService';
 import type { StudioGeneration, StudioGenerationItem } from '../../services/studioService';
 
@@ -16,6 +17,7 @@ interface PreviewTarget {
 
 const StudioHistoryDrawer: React.FC<StudioHistoryDrawerProps> = ({ open, onClose }) => {
   const { t, language } = useTranslation();
+  const { isAuthenticated } = useAuth();
   const [items, setItems] = useState<StudioGeneration[] | null>(null);
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState<string | null>(null);
@@ -23,6 +25,11 @@ const StudioHistoryDrawer: React.FC<StudioHistoryDrawerProps> = ({ open, onClose
   const [preview, setPreview] = useState<PreviewTarget | null>(null);
 
   const fetchHistory = useCallback(async () => {
+    if (!isAuthenticated) {
+      setItems([]);
+      setErr(null);
+      return;
+    }
     setLoading(true);
     setErr(null);
     try {
@@ -34,7 +41,7 @@ const StudioHistoryDrawer: React.FC<StudioHistoryDrawerProps> = ({ open, onClose
     } finally {
       setLoading(false);
     }
-  }, [filter]);
+  }, [filter, isAuthenticated]);
 
   useEffect(() => {
     if (open) fetchHistory();
@@ -148,7 +155,12 @@ const StudioHistoryDrawer: React.FC<StudioHistoryDrawerProps> = ({ open, onClose
                 {err}
               </div>
             )}
-            {!loading && items && items.length === 0 && (
+            {!isAuthenticated && (
+              <div className="text-sm text-[var(--text-tertiary)] text-center py-12">
+                {t('studio.history.loginRequired')}
+              </div>
+            )}
+            {isAuthenticated && !loading && items && items.length === 0 && (
               <div className="text-sm text-[var(--text-tertiary)] text-center py-12">
                 {t('studio.history.empty')}
               </div>

@@ -115,7 +115,95 @@ export default {
       video: "Video",
       edit: "Edit"
     },
+    hub: {
+      title: "AI Studio Toolkit",
+      subtitle: "Pick the tool you want to use",
+      open: "Open",
+      backToStudio: "Back to Studio",
+      cards: {
+        generate: {
+          title: "Generate Image & Video",
+          desc: "Create images and videos with Google Nano Banana and Veo"
+        },
+        edit: {
+          title: "Edit Image",
+          desc: "Transform, compose, mask and remix images with Gemini"
+        },
+        vocab: {
+          title: "VocabFlip",
+          desc: "Learn vocabulary with the integrated flashcard app"
+        },
+        interior: {
+          title: "Interior Design",
+          desc: "Interactive cabinet & interior layout tool"
+        }
+      }
+    },
     // ─── Edit tab (Gemini) ──────────────────────────────────────────
+    interior: {
+      title: "Interior Design AI",
+      subtitle: "AI-assisted cabinet model, chat, versions, and rollback",
+      loginTitle: "Sign in to use Interior Design AI",
+      loginDesc: "Projects, chat history, reference images, and model versions are stored in your account.",
+      signIn: "Sign In",
+      tabs: { projects: "Projects", preview: "Preview", chat: "Chat" },
+      balance: "Balance",
+      unlimited: "Unlimited",
+      newProject: "New project",
+      newProjectName: "New interior project",
+      projects: "Projects",
+      noProjects: "No interior projects yet.",
+      noProjectSelected: "No project selected",
+      emptyState: "Create a project to start designing with AI.",
+      createFirst: "Create or select a project first.",
+      loading: "Loading...",
+      chat: "AI chat",
+      creditNote: "Each AI call costs 1 credit.",
+      creditNote2Step: "Two-step confirm is ON: each request costs 2 credits (1 analyze + 1 apply).",
+      twoStep: {
+        label: "Confirm before applying",
+        desc: "AI analyzes and proposes first, you review then click apply. Costs 1 extra credit per request."
+      },
+      proposal: {
+        title: "AI proposal",
+        applyHint: "Read carefully before applying. Click apply to generate the model JSON (+1 credit).",
+        apply: "Apply (+1 credit)",
+        cancel: "Cancel / Refine prompt"
+      },
+      promptLabel: "Design request",
+      promptPlaceholder: "Describe the cabinet or room change you want...",
+      refImage: "Add reference image",
+      refImageCount: "{n}/{max} images selected — click to add more",
+      clearRef: "Remove reference image",
+      pasteHint: "Tip: paste an image with Ctrl+V right into the chat.",
+      send: "Send to AI",
+      sendProposal: "Send for analysis",
+      sending: "Processing...",
+      modelLabel: "AI model",
+      modelDefault: "default",
+      tokens: "{n} tokens",
+      versions: "Versions",
+      current: "Current",
+      previewing: "Previewing",
+      backToCurrent: "Back to current",
+      rollback: "Rollback",
+      rollbackTitle: "Rollback version",
+      rollbackMessage: "Create a new version from {{version}}?",
+      rollbackConfirm: "Rollback",
+      delete: "Delete",
+      deleteTitle: "Delete project",
+      deleteMessage: "Delete \"{{name}}\"?",
+      deleteConfirm: "Delete",
+      errors: {
+        loadFailed: "Could not load interior projects.",
+        createFailed: "Could not create project.",
+        deleteFailed: "Could not delete project.",
+        sendFailed: "Could not send request.",
+        rollbackFailed: "Could not rollback version.",
+        emptyPrompt: "Enter a design request first.",
+        noCredit: "You need at least 1 credit to call AI."
+      }
+    },
     selectTransformation: "Select Transformation",
     selectPreset: "Select Preset",
     customPrompt: "Custom Prompt",
@@ -231,6 +319,7 @@ export default {
       refresh: "Refresh",
       loading: "Loading...",
       empty: "No generations yet.",
+      loginRequired: "Sign in to view your generation history.",
       preview: "Preview",
       openPreview: "Open preview",
       id: "ID",
