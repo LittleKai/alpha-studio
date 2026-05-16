@@ -4,6 +4,7 @@ import { useAuth } from '../auth/context';
 import { useTranslation } from '../i18n/context';
 import { useConfirm } from '../components/ui/ConfirmDialog';
 import { uploadToB2 } from '../services/b2StorageService';
+import { generateObjFromCabinetModel, triggerDownload, downloadRemoteImage, createAiImagePackage, downloadDataUrl } from '../utils/cabinetExport';
 import {
     createInteriorProject,
     deleteInteriorProject,
@@ -85,6 +86,9 @@ const InteriorDesignPage: React.FC = () => {
     const [generalNote, setGeneralNote] = useState('');
     const [togglingPref, setTogglingPref] = useState(false);
     const [settingsOpen, setSettingsOpen] = useState(false);
+    const [exportDialogOpen, setExportDialogOpen] = useState(false);
+    const [aiPackageBusy, setAiPackageBusy] = useState(false);
+    const [aiPackageError, setAiPackageError] = useState('');
 
     const twoStepConfirm = !!user?.preferences?.interiorTwoStepConfirm;
 
@@ -94,6 +98,64 @@ const InteriorDesignPage: React.FC = () => {
         window.addEventListener('keydown', onKey);
         return () => window.removeEventListener('keydown', onKey);
     }, [settingsOpen]);
+
+    useEffect(() => {
+        if (!exportDialogOpen) return;
+        const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setExportDialogOpen(false); };
+        window.addEventListener('keydown', onKey);
+        return () => window.removeEventListener('keydown', onKey);
+    }, [exportDialogOpen]);
+
+    // Ảnh tham chiếu user đã upload — gom unique URL trong branch hiện tại.
+    const exportImages = useMemo(() => {
+        if (!project) return [] as { url: string; version: number }[];
+        const seen = new Set<string>();
+        const images: { url: string; version: number }[] = [];
+        for (const v of project.versions) {
+            if (v.index > project.currentVersionIndex) continue;
+            if (!Array.isArray(v.refImageUrls)) continue;
+            for (const url of v.refImageUrls) {
+                if (url && !seen.has(url)) {
+                    seen.add(url);
+                    images.push({ url, version: v.index });
+                }
+            }
+        }
+        return images;
+    }, [project]);
+
+    const handleExportObj = () => {
+        if (!project || !activeVersion) return;
+        const safeName = (project.name || 'cabinet').replace(/[^A-Za-z0-9_-]/g, '_').slice(0, 40) || 'cabinet';
+        const mtlFilename = `${safeName}_v${activeVersion.index}.mtl`;
+        const { obj, mtl } = generateObjFromCabinetModel(activeVersion.modelJson as any, mtlFilename);
+        triggerDownload(`${safeName}_v${activeVersion.index}.obj`, obj, 'text/plain;charset=utf-8');
+        setTimeout(() => triggerDownload(mtlFilename, mtl, 'text/plain;charset=utf-8'), 200);
+    };
+
+    const handleDownloadImage = async (url: string, version: number, index: number) => {
+        const safeName = (project?.name || 'project').replace(/[^A-Za-z0-9_-]/g, '_').slice(0, 30) || 'project';
+        const extMatch = url.split('?')[0].match(/\.([a-zA-Z0-9]{2,5})$/);
+        const ext = extMatch ? extMatch[1] : 'jpg';
+        await downloadRemoteImage(url, `${safeName}_v${version}_img${index + 1}.${ext}`);
+    };
+
+    const handleDownloadAiPackage = async () => {
+        if (!project || !activeVersion) return;
+        setAiPackageBusy(true);
+        setAiPackageError('');
+        try {
+            const pkg = await createAiImagePackage(activeVersion.modelJson);
+            // Trigger each download với delay nhỏ tránh browser block batch download.
+            pkg.files.forEach((file, i) => {
+                setTimeout(() => downloadDataUrl(file.dataUrl, file.name), i * 200);
+            });
+        } catch (err) {
+            setAiPackageError(err instanceof Error ? err.message : 'Lỗi tạo bộ AI');
+        } finally {
+            setAiPackageBusy(false);
+        }
+    };
 
     const activeVersion = useMemo(() => {
         if (!project) return null;
@@ -598,21 +660,38 @@ const InteriorDesignPage: React.FC = () => {
                 </aside>
 
                 <main className={`${mobileTab === 'preview' ? 'block' : 'hidden'} lg:block rounded-lg border border-[var(--border-primary)] bg-[var(--bg-card)] overflow-hidden`}>
-                    <div className="flex min-h-[56px] items-center justify-between border-b border-[var(--border-primary)] px-4 py-3">
-                        <div>
-                            <h2 className="font-bold">{project?.name || t('studio.interior.noProjectSelected')}</h2>
+                    <div className="flex min-h-[56px] items-center justify-between gap-3 border-b border-[var(--border-primary)] px-4 py-3">
+                        <div className="min-w-0">
+                            <h2 className="truncate font-bold">{project?.name || t('studio.interior.noProjectSelected')}</h2>
                             <p className="text-xs text-[var(--text-tertiary)]">
                                 {activeVersion ? `${t('studio.interior.previewing')} V${activeVersion.index}` : t('studio.interior.createFirst')}
                             </p>
                         </div>
-                        {previewVersionIndex !== null && (
-                            <button
-                                onClick={() => setPreviewVersionIndex(null)}
-                                className="rounded-lg border border-[var(--border-primary)] px-3 py-2 text-xs font-semibold text-[var(--text-secondary)] hover:border-[var(--accent-primary)]"
-                            >
-                                {t('studio.interior.backToCurrent')}
-                            </button>
-                        )}
+                        <div className="flex items-center gap-2">
+                            {previewVersionIndex !== null && (
+                                <button
+                                    onClick={() => setPreviewVersionIndex(null)}
+                                    className="rounded-lg border border-[var(--border-primary)] px-3 py-2 text-xs font-semibold text-[var(--text-secondary)] hover:border-[var(--accent-primary)]"
+                                >
+                                    {t('studio.interior.backToCurrent')}
+                                </button>
+                            )}
+                            {project && (
+                                <button
+                                    type="button"
+                                    onClick={() => setExportDialogOpen(true)}
+                                    className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--accent-primary)] bg-[var(--accent-primary)]/10 px-3 py-2 text-xs font-bold text-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/20"
+                                    title={t('studio.interior.export.title')}
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                        <polyline points="7 10 12 15 17 10" />
+                                        <line x1="12" y1="15" x2="12" y2="3" />
+                                    </svg>
+                                    {t('studio.interior.export.openButton')}
+                                </button>
+                            )}
+                        </div>
                     </div>
                     <div className="relative h-[calc(100vh-220px)] min-h-[560px]">
                         {project ? (
@@ -980,6 +1059,111 @@ const InteriorDesignPage: React.FC = () => {
                                 className="rounded-lg border border-[var(--border-primary)] bg-[var(--bg-card)] px-4 py-2 text-sm font-semibold text-[var(--text-primary)] hover:border-[var(--accent-primary)] disabled:opacity-50"
                             >
                                 {t('studio.interior.proposal.cancel')}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {exportDialogOpen && project && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+                    onClick={() => setExportDialogOpen(false)}
+                >
+                    <div
+                        className="flex max-h-[90vh] w-full max-w-2xl flex-col rounded-lg border border-[var(--border-primary)] bg-[var(--bg-card)] shadow-lg"
+                        onClick={(event) => event.stopPropagation()}
+                    >
+                        <div className="flex items-center justify-between border-b border-[var(--border-primary)] px-5 py-4">
+                            <div>
+                                <h3 className="text-lg font-bold text-[var(--text-primary)]">{t('studio.interior.export.title')}</h3>
+                                <p className="text-xs text-[var(--text-tertiary)]">{project.name}</p>
+                            </div>
+                            <button
+                                type="button"
+                                onClick={() => setExportDialogOpen(false)}
+                                className="rounded-lg p-1.5 text-[var(--text-tertiary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]"
+                                title={t('studio.interior.settings.close')}
+                            >
+                                ✕
+                            </button>
+                        </div>
+
+                        <div className="flex-1 overflow-y-auto px-5 py-4">
+                            <section className="mb-5">
+                                <h4 className="mb-2 text-xs font-bold uppercase tracking-wide text-[var(--text-tertiary)]">{t('studio.interior.export.sketchupSection')}</h4>
+                                <div className="rounded-lg border border-[var(--border-primary)] bg-[var(--bg-secondary)]/50 p-3">
+                                    <p className="mb-2 text-sm text-[var(--text-secondary)]">{t('studio.interior.export.sketchupDesc')}</p>
+                                    <button
+                                        type="button"
+                                        onClick={handleExportObj}
+                                        disabled={!activeVersion}
+                                        className="rounded-lg bg-[var(--accent-primary)] px-4 py-2 text-sm font-bold text-[var(--text-on-accent)] hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+                                    >
+                                        {t('studio.interior.export.downloadObj').replace('{n}', String(activeVersion?.index ?? 0))}
+                                    </button>
+                                    <p className="mt-2 text-xs text-[var(--text-tertiary)]">{t('studio.interior.export.sketchupHint')}</p>
+                                </div>
+                            </section>
+
+                            <section className="mb-5">
+                                <h4 className="mb-2 text-xs font-bold uppercase tracking-wide text-[var(--text-tertiary)]">{t('studio.interior.export.aiPackageSection')}</h4>
+                                <div className="rounded-lg border border-[var(--border-primary)] bg-[var(--bg-secondary)]/50 p-3">
+                                    <p className="mb-2 text-sm text-[var(--text-secondary)]">{t('studio.interior.export.aiPackageDesc')}</p>
+                                    <ul className="mb-3 ml-5 list-disc text-xs text-[var(--text-tertiary)]">
+                                        <li>reference-front.png / side.png / plan.png / 3d.png</li>
+                                        <li>ai-image-prompt-en.txt + ai-image-prompt-vi.txt</li>
+                                        <li>huong-dan-tao-anh-ai.txt + design-model.json</li>
+                                    </ul>
+                                    <button
+                                        type="button"
+                                        onClick={handleDownloadAiPackage}
+                                        disabled={!activeVersion || aiPackageBusy}
+                                        className="rounded-lg bg-[var(--accent-primary)] px-4 py-2 text-sm font-bold text-[var(--text-on-accent)] hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+                                    >
+                                        {aiPackageBusy ? t('studio.interior.export.aiPackageBusy') : t('studio.interior.export.aiPackageDownload')}
+                                    </button>
+                                    {aiPackageError && (
+                                        <p className="mt-2 text-xs text-red-400">{aiPackageError}</p>
+                                    )}
+                                    <p className="mt-2 text-xs text-[var(--text-tertiary)]">{t('studio.interior.export.aiPackageHint')}</p>
+                                </div>
+                            </section>
+
+                            <section>
+                                <h4 className="mb-2 text-xs font-bold uppercase tracking-wide text-[var(--text-tertiary)]">
+                                    {t('studio.interior.export.imagesSection')} ({exportImages.length})
+                                </h4>
+                                <p className="mb-2 text-xs text-[var(--text-tertiary)]">{t('studio.interior.export.imagesHint')}</p>
+                                {exportImages.length === 0 ? (
+                                    <p className="rounded-lg border border-[var(--border-primary)] bg-[var(--bg-secondary)]/50 px-3 py-2 text-xs text-[var(--text-tertiary)]">{t('studio.interior.export.imagesEmpty')}</p>
+                                ) : (
+                                    <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
+                                        {exportImages.map((img, idx) => (
+                                            <div key={`${img.url}-${idx}`} className="relative overflow-hidden rounded-lg border border-[var(--border-primary)] bg-[var(--bg-secondary)]">
+                                                <img src={img.url} alt={`v${img.version}-${idx}`} className="h-24 w-full object-cover" />
+                                                <span className="absolute left-1 top-1 rounded bg-black/60 px-1.5 py-0.5 text-[10px] text-white">V{img.version}</span>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => handleDownloadImage(img.url, img.version, idx)}
+                                                    className="absolute bottom-0 left-0 right-0 bg-[var(--accent-primary)]/90 px-1 py-1 text-[11px] font-bold text-[var(--text-on-accent)] hover:opacity-90"
+                                                >
+                                                    {t('studio.interior.export.downloadImage')}
+                                                </button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </section>
+                        </div>
+
+                        <div className="border-t border-[var(--border-primary)] px-5 py-3 text-right">
+                            <button
+                                type="button"
+                                onClick={() => setExportDialogOpen(false)}
+                                className="rounded-lg border border-[var(--border-primary)] bg-[var(--bg-card)] px-4 py-2 text-sm font-semibold text-[var(--text-primary)] hover:border-[var(--accent-primary)]"
+                            >
+                                {t('studio.interior.settings.close')}
                             </button>
                         </div>
                     </div>

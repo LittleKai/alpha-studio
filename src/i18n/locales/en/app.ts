@@ -170,6 +170,23 @@ export default {
         close: "Close",
         lockedDuringProposal: "A proposal is awaiting confirmation — settings are locked until you apply or cancel."
       },
+      export: {
+        title: "Export project",
+        openButton: "Export project",
+        sketchupSection: "3D model (for SketchUp)",
+        sketchupDesc: "Download .obj of the current version to import into SketchUp (select Centimeters as units). The .mtl file carries material colors.",
+        sketchupHint: "Only solid parts with opacity ≥ 0.5 are exported (transparent reference zones are skipped).",
+        downloadObj: "Download .obj + .mtl (V{n})",
+        aiPackageSection: "AI image generation package",
+        aiPackageDesc: "Generate a bundle to feed into any image-gen AI (Imagen, Banana, Midjourney…) to render a photorealistic image of this design. Includes 4 reference views + EN/VI prompts + a usage guide.",
+        aiPackageDownload: "Download AI image package",
+        aiPackageBusy: "Building package...",
+        aiPackageHint: "The browser will trigger multiple downloads in sequence. Allow \"Download multiple files\" if prompted.",
+        imagesSection: "Uploaded reference images",
+        imagesHint: "Images the user attached during chat. Download to use alongside the AI package above.",
+        imagesEmpty: "No images uploaded in this project yet.",
+        downloadImage: "Download"
+      },
       proposal: {
         title: "AI proposal",
         applyHint: "Read carefully before applying. Click apply to generate the model JSON (+1 credit).",

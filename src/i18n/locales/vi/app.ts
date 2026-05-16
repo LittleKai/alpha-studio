@@ -170,6 +170,23 @@ export default {
         close: "Đóng",
         lockedDuringProposal: "Đang có đề xuất chờ xác nhận — không thể đổi cài đặt cho đến khi áp dụng hoặc hủy."
       },
+      export: {
+        title: "Xuất dự án",
+        openButton: "Xuất dự án",
+        sketchupSection: "Model 3D (cho SketchUp)",
+        sketchupDesc: "Tải file .obj của phiên bản đang xem để import vào SketchUp (chọn đơn vị Centimeters khi import). Đi kèm .mtl chứa màu vật liệu.",
+        sketchupHint: "Chỉ xuất các tấm gỗ/khung có opacity ≥ 0.5 (bỏ qua các vùng tham chiếu trong suốt).",
+        downloadObj: "Tải .obj + .mtl (V{n})",
+        aiPackageSection: "Bộ dữ liệu cho AI tạo ảnh",
+        aiPackageDesc: "Sinh bộ file dùng để feed vào AI tạo ảnh (Imagen, Banana, Midjourney…) để render ảnh photorealistic của thiết kế. Bao gồm 4 góc nhìn tham chiếu + prompt EN/VI + hướng dẫn.",
+        aiPackageDownload: "Tải bộ AI tạo ảnh",
+        aiPackageBusy: "Đang tạo bộ file...",
+        aiPackageHint: "Browser sẽ tự tải về nhiều file liên tiếp. Cho phép \"Download multiple files\" nếu trình duyệt hỏi.",
+        imagesSection: "Ảnh tham chiếu đã upload",
+        imagesHint: "Các ảnh user đã đính kèm trong quá trình chat. Tải về để dùng kèm với bộ AI ở trên.",
+        imagesEmpty: "Chưa có ảnh nào được upload trong dự án này.",
+        downloadImage: "Tải về"
+      },
       proposal: {
         title: "Đề xuất từ AI",
         applyHint: "Đọc kỹ trước khi áp dụng. Bấm áp dụng để AI sinh model JSON (+1 credit).",
