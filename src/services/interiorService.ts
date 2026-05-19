@@ -57,13 +57,17 @@ export interface InteriorApplyResult {
     version: InteriorVersion;
     cost: number;
     balance: number;
+    meta?: {
+        newInlineTemplates?: string[];
+        droppedTemplates?: Array<{ id: string; category: string; reason: string }>;
+    };
 }
 
 export type InteriorChatResult = InteriorProposalResult | InteriorApplyResult;
 
 export type InteriorModel = 'gemini-3-flash-preview' | 'gemini-3.1-pro-preview';
 export const INTERIOR_MODELS: InteriorModel[] = ['gemini-3-flash-preview', 'gemini-3.1-pro-preview'];
-export const INTERIOR_DEFAULT_MODEL: InteriorModel = 'gemini-3-flash-preview';
+export const INTERIOR_DEFAULT_MODEL: InteriorModel = 'gemini-3.1-pro-preview';
 
 export interface InteriorProject {
     _id: string;
@@ -71,6 +75,7 @@ export interface InteriorProject {
     name: string;
     currentVersionIndex: number;
     versions: InteriorVersion[];
+    agentRunActive?: boolean | null;
     isDeleted: boolean;
     createdAt: string;
     updatedAt: string;
@@ -165,4 +170,39 @@ export function rollbackInteriorProject(token: string, projectId: string, target
         method: 'POST',
         body: JSON.stringify({ targetVersionId })
     });
+}
+
+export interface InteriorAiLog {
+    _id: string;
+    userId: { _id: string; name?: string; email?: string } | string | null;
+    projectId: string;
+    stage: 'proposal' | 'apply';
+    model: string;
+    versionIndex: number | null;
+    prompt: string;
+    refImageUrls: string[];
+    rawResponse: string;
+    parsedReply: string;
+    latencyMs: number | null;
+    usage: InteriorUsage | null;
+    status: 'ok' | 'parse-failed' | 'validation-failed' | 'upstream-error';
+    errorMessage: string;
+    createdAt: string;
+}
+
+export function listInteriorAiLogs(token: string, params: {
+    projectId?: string;
+    userId?: string;
+    stage?: 'proposal' | 'apply';
+    status?: 'ok' | 'parse-failed' | 'validation-failed' | 'upstream-error';
+    limit?: number;
+} = {}) {
+    const search = new URLSearchParams();
+    if (params.projectId) search.set('projectId', params.projectId);
+    if (params.userId) search.set('userId', params.userId);
+    if (params.stage) search.set('stage', params.stage);
+    if (params.status) search.set('status', params.status);
+    if (params.limit) search.set('limit', String(params.limit));
+    const query = search.toString();
+    return request<{ logs: InteriorAiLog[] }>(`/admin/logs${query ? `?${query}` : ''}`, token);
 }

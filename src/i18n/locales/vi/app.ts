@@ -165,6 +165,23 @@ export default {
         label: "Xác nhận trước khi áp dụng",
         desc: "AI phân tích ảnh và đề xuất trước, bạn xem rồi mới bấm áp dụng. Tốn thêm 1 credit/lần."
       },
+      agent: {
+        title: "Tien trinh AI agent",
+        running: "AI dang thiet ke...",
+        creditNote: "Agent AI ton 2 credit khi luu phien ban moi.",
+        stop: "Dung",
+        steps: "buoc",
+        committed: "Hoan thanh - da luu phien ban moi",
+        aborted: "AI da dung: {reason}",
+        maxSteps: "Da vuot gioi han 30 buoc. Hay chia nho yeu cau."
+      },
+      upload: {
+        entry: "Phân tích ảnh phòng",
+        intro: "Tải ảnh phòng, AI phân tích và sinh model thiết kế tự động.",
+        errQuota: "Đã hết lượt phân tích AI hôm nay. Vui lòng quay lại vào ngày mai.",
+        errAuth: "Phiên đăng nhập đã hết hạn, vui lòng đăng nhập lại.",
+        errGeneric: "Không thể phân tích ảnh. Vui lòng thử lại."
+      },
       settings: {
         title: "Cài đặt Interior AI",
         close: "Đóng",
@@ -187,6 +204,13 @@ export default {
         imagesEmpty: "Chưa có ảnh nào được upload trong dự án này.",
         downloadImage: "Tải về"
       },
+      droppedBanner: "{count} template AI tạo bị từ chối — module rớt về box thô.",
+      commitBanner: "{count} mẫu tủ mới do AI tạo. Đóng góp cho thư viện?",
+      commitBannerCta: "Chia sẻ cho admin review",
+      commitToastSuccess: "Đã gửi {count} mẫu cho admin review",
+      commitModalTitle: "Đóng góp mẫu tủ cho thư viện",
+      commitModalDesc: "Admin sẽ review và quyết định có thêm vào catalog dùng chung cho mọi user hay không. Mẫu vẫn dùng được trong dự án này dù không được duyệt.",
+      commitModalSubmit: "Gửi đã chọn",
       proposal: {
         title: "Đề xuất từ AI",
         applyHint: "Đọc kỹ trước khi áp dụng. Bấm áp dụng để AI sinh model JSON (+1 credit).",
@@ -234,8 +258,36 @@ export default {
         deleteFailed: "Không thể xóa dự án.",
         sendFailed: "Không thể gửi yêu cầu.",
         rollbackFailed: "Không thể khôi phục phiên bản.",
+        renameFailed: "Không thể đổi tên dự án.",
         emptyPrompt: "Hãy nhập yêu cầu thiết kế trước.",
         noCredit: "Bạn cần ít nhất 1 credit để gọi AI."
+      },
+      rename: {
+        tooltip: "Bấm để đổi tên dự án"
+      },
+      sidebar: {
+        collapse: "Ẩn cột dự án",
+        expand: "Hiện cột dự án"
+      },
+      adminLog: {
+        button: "Log AI (admin)",
+        title: "Log phản hồi AI",
+        empty: "Chưa có log nào cho dự án này.",
+        close: "Đóng",
+        loading: "Đang tải log...",
+        loadFailed: "Không thể tải log.",
+        stage: "Giai đoạn",
+        model: "Model",
+        status: "Trạng thái",
+        latency: "Độ trễ",
+        tokens: "Tokens",
+        versionIndex: "Version",
+        createdAt: "Thời gian",
+        promptLabel: "Prompt gửi AI",
+        responseLabel: "Phản hồi raw",
+        errorLabel: "Lỗi",
+        refresh: "Làm mới",
+        forbidden: "Chỉ admin được xem log."
       }
     },
     selectTransformation: "Chọn hiệu ứng",

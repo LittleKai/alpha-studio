@@ -165,6 +165,23 @@ export default {
         label: "Confirm before applying",
         desc: "AI analyzes and proposes first, you review then click apply. Costs 1 extra credit per request."
       },
+      agent: {
+        title: "AI agent timeline",
+        running: "AI is designing...",
+        creditNote: "Agent AI costs 2 credits when it saves a new version.",
+        stop: "Stop",
+        steps: "steps",
+        committed: "Complete - saved a new version",
+        aborted: "AI stopped: {reason}",
+        maxSteps: "Exceeded the 30-step limit. Please split the request into smaller parts."
+      },
+      upload: {
+        entry: "Analyze room photo",
+        intro: "Upload a room photo, AI will analyze and generate a design model automatically.",
+        errQuota: "Daily AI analysis limit reached. Please try again tomorrow.",
+        errAuth: "Your session has expired. Please sign in again.",
+        errGeneric: "Could not analyze the image. Please try again."
+      },
       settings: {
         title: "Interior AI settings",
         close: "Close",
@@ -187,6 +204,13 @@ export default {
         imagesEmpty: "No images uploaded in this project yet.",
         downloadImage: "Download"
       },
+      droppedBanner: "{count} AI-generated template(s) rejected — modules fell back to raw boxes.",
+      commitBanner: "{count} new cabinet templates created by AI. Share them to the library?",
+      commitBannerCta: "Share for admin review",
+      commitToastSuccess: "Sent {count} templates for admin review",
+      commitModalTitle: "Contribute templates to the library",
+      commitModalDesc: "Admin will review and decide whether to add it to the shared catalog used by all users. Templates remain usable in this project even if not approved.",
+      commitModalSubmit: "Submit selected",
       proposal: {
         title: "AI proposal",
         applyHint: "Read carefully before applying. Click apply to generate the model JSON (+1 credit).",
@@ -234,8 +258,36 @@ export default {
         deleteFailed: "Could not delete project.",
         sendFailed: "Could not send request.",
         rollbackFailed: "Could not rollback version.",
+        renameFailed: "Could not rename project.",
         emptyPrompt: "Enter a design request first.",
         noCredit: "You need at least 1 credit to call AI."
+      },
+      rename: {
+        tooltip: "Click to rename project"
+      },
+      sidebar: {
+        collapse: "Collapse projects column",
+        expand: "Expand projects column"
+      },
+      adminLog: {
+        button: "AI logs (admin)",
+        title: "AI response logs",
+        empty: "No logs for this project yet.",
+        close: "Close",
+        loading: "Loading logs...",
+        loadFailed: "Could not load logs.",
+        stage: "Stage",
+        model: "Model",
+        status: "Status",
+        latency: "Latency",
+        tokens: "Tokens",
+        versionIndex: "Version",
+        createdAt: "Time",
+        promptLabel: "Prompt sent",
+        responseLabel: "Raw response",
+        errorLabel: "Error",
+        refresh: "Refresh",
+        forbidden: "Admin only."
       }
     },
     selectTransformation: "Select Transformation",

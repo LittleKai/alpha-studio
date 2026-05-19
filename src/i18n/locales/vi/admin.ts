@@ -15,7 +15,27 @@ export default {
       transactionsList: "Giao dịch",
       webhooks: "Webhook Logs",
       community: "Cộng đồng",
-      studio: "Cài đặt Studio"
+      studio: "Cài đặt Studio",
+      interiorTemplates: "Mẫu Tủ AI"
+    },
+    interiorTemplates: {
+      statusSeed: "Seed",
+      statusPending: "Chờ duyệt",
+      statusApproved: "Đã duyệt",
+      statusDeprecated: "Đã ẩn",
+      empty: "Không có template",
+      selectHint: "Chọn 1 template ở danh sách bên trái",
+      author: "Tác giả",
+      preview: "Xem trước",
+      searchPlaceholder: "Tìm id / tag / mô tả...",
+      approve: "Duyệt",
+      editSave: "Sửa & Lưu (bump v)",
+      deprecate: "Ẩn (deprecate)",
+      reject: "Từ chối + xoá",
+      confirmDeprecateTitle: "Ẩn template?",
+      confirmDeprecate: "Ẩn template này khỏi AI catalog?",
+      confirmRejectTitle: "Xoá template?",
+      confirmReject: "Xoá template này khỏi DB? Không thể hoàn tác."
     },
     community: {
       featuredStudents: "Học viên nổi bật",

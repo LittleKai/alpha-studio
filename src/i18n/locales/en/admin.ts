@@ -15,7 +15,27 @@ export default {
       transactionsList: "Transactions",
       webhooks: "Webhook Logs",
       community: "Community",
-      studio: "Studio Settings"
+      studio: "Studio Settings",
+      interiorTemplates: "AI Cabinet Templates"
+    },
+    interiorTemplates: {
+      statusSeed: "Seed",
+      statusPending: "Pending",
+      statusApproved: "Approved",
+      statusDeprecated: "Deprecated",
+      empty: "No templates",
+      selectHint: "Pick a template from the list",
+      author: "Author",
+      preview: "Preview",
+      searchPlaceholder: "Search id / tag / description...",
+      approve: "Approve",
+      editSave: "Edit & Save (bump v)",
+      deprecate: "Deprecate",
+      reject: "Reject + delete",
+      confirmDeprecateTitle: "Deprecate template?",
+      confirmDeprecate: "Hide this template from the AI catalog?",
+      confirmRejectTitle: "Delete template?",
+      confirmReject: "Delete this template from the DB? This cannot be undone."
     },
     community: {
       featuredStudents: "Featured Students",

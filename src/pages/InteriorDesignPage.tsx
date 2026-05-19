@@ -3,7 +3,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../auth/context';
 import { useTranslation } from '../i18n/context';
 import { useConfirm } from '../components/ui/ConfirmDialog';
+import AgentTimeline from '../components/interior/AgentTimeline';
 import { uploadToB2 } from '../services/b2StorageService';
+import { commitInlineTemplate } from '../services/interiorTemplateService';
+import { runAgent, type AgentStep } from '../services/interiorAgentService';
 import { generateObjFromCabinetModel, triggerDownload, downloadRemoteImage, createAiImagePackage, downloadDataUrl } from '../utils/cabinetExport';
 import {
     createInteriorProject,
@@ -12,14 +15,19 @@ import {
     InteriorApiError,
     InteriorProject,
     InteriorVersion,
+    listInteriorAiLogs,
     listInteriorProjects,
+    renameInteriorProject,
     rollbackInteriorProject,
     sendInteriorMessage,
     INTERIOR_MODELS,
     INTERIOR_DEFAULT_MODEL,
+    type InteriorAiLog,
     type InteriorModel,
     type InteriorProposalStructured
 } from '../services/interiorService';
+
+const SIDEBAR_COLLAPSED_KEY = 'interior-sidebar-collapsed';
 
 interface PendingProposal {
     message: string;
@@ -89,6 +97,74 @@ const InteriorDesignPage: React.FC = () => {
     const [exportDialogOpen, setExportDialogOpen] = useState(false);
     const [aiPackageBusy, setAiPackageBusy] = useState(false);
     const [aiPackageError, setAiPackageError] = useState('');
+    const [editingName, setEditingName] = useState(false);
+    const [nameDraft, setNameDraft] = useState('');
+    const [renaming, setRenaming] = useState(false);
+    const [adminLogOpen, setAdminLogOpen] = useState(false);
+    const [adminLogs, setAdminLogs] = useState<InteriorAiLog[]>([]);
+    const [adminLogsLoading, setAdminLogsLoading] = useState(false);
+    const [adminLogsError, setAdminLogsError] = useState('');
+    const [expandedLogId, setExpandedLogId] = useState<string | null>(null);
+    const [pendingInlineCommitIds, setPendingInlineCommitIds] = useState<string[]>([]);
+    const [commitModalOpen, setCommitModalOpen] = useState(false);
+    const [commitSelections, setCommitSelections] = useState<Record<string, boolean>>({});
+    const [committingInline, setCommittingInline] = useState(false);
+    const [commitToast, setCommitToast] = useState<string | null>(null);
+    const [droppedTemplates, setDroppedTemplates] = useState<Array<{ id: string; category: string; reason: string }>>([]);
+    const [agentSteps, setAgentSteps] = useState<AgentStep[]>([]);
+    const [agentRunning, setAgentRunning] = useState(false);
+    const agentAbortRef = useRef<AbortController | null>(null);
+    const isAdmin = user?.role === 'admin';
+    const [sidebarCollapsed, setSidebarCollapsed] = useState(() => {
+        try {
+            return localStorage.getItem(SIDEBAR_COLLAPSED_KEY) === '1';
+        } catch {
+            return false;
+        }
+    });
+    const nameInputRef = useRef<HTMLInputElement | null>(null);
+
+    useEffect(() => {
+        try {
+            localStorage.setItem(SIDEBAR_COLLAPSED_KEY, sidebarCollapsed ? '1' : '0');
+        } catch {
+            /* ignore */
+        }
+    }, [sidebarCollapsed]);
+
+    useEffect(() => {
+        if (editingName && nameInputRef.current) {
+            nameInputRef.current.focus();
+            nameInputRef.current.select();
+        }
+    }, [editingName]);
+
+    useEffect(() => {
+        if (!adminLogOpen) return;
+        const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setAdminLogOpen(false); };
+        window.addEventListener('keydown', onKey);
+        return () => window.removeEventListener('keydown', onKey);
+    }, [adminLogOpen]);
+
+    const loadAdminLogs = useCallback(async () => {
+        if (!token || !project || !isAdmin) return;
+        setAdminLogsLoading(true);
+        setAdminLogsError('');
+        try {
+            const result = await listInteriorAiLogs(token, { projectId: project._id, limit: 100 });
+            setAdminLogs(result.logs);
+        } catch (err) {
+            setAdminLogsError(err instanceof Error ? err.message : t('studio.interior.adminLog.loadFailed'));
+        } finally {
+            setAdminLogsLoading(false);
+        }
+    }, [token, project, isAdmin, t]);
+
+    const handleOpenAdminLog = () => {
+        setAdminLogOpen(true);
+        setExpandedLogId(null);
+        loadAdminLogs();
+    };
 
     const twoStepConfirm = !!user?.preferences?.interiorTwoStepConfirm;
 
@@ -167,7 +243,9 @@ const InteriorDesignPage: React.FC = () => {
 
     const canUseAi = isAuthenticated && !!token && !!project && !busy;
     const needsCredit = user?.role !== 'admin' && user?.role !== 'mod';
-    const hasCredit = !needsCredit || (user?.balance || 0) >= 1;
+    const useAgentMode = (import.meta.env.VITE_INTERIOR_AGENT_MODE ?? 'true') === 'true';
+    const requiredCredits = useAgentMode ? 2 : 1;
+    const hasCredit = !needsCredit || (user?.balance || 0) >= requiredCredits;
 
     // First user message của dự án (xét theo branch hiện tại sau khi rollback) →
     // luôn ép 2-step để user xác nhận baseline understanding.
@@ -363,6 +441,43 @@ const InteriorDesignPage: React.FC = () => {
             // Kết hợp URL khôi phục từ rollback + URL mới upload, tôn trọng giới hạn 5 ảnh.
             const refImageUrls = [...restoredRefImageUrls, ...newUrls].slice(0, MAX_REF_IMAGES);
 
+            if (useAgentMode) {
+                const controller = new AbortController();
+                agentAbortRef.current = controller;
+                setAgentSteps([]);
+                setAgentRunning(true);
+                await runAgent({
+                    token,
+                    projectId: project._id,
+                    message: message.trim(),
+                    refImageUrls,
+                    model: selectedModel,
+                    signal: controller.signal,
+                    onStep: (step) => {
+                        setAgentSteps((prev) => [...prev, { ...step, status: 'pending' }]);
+                    },
+                    onResult: (index, result, latencyMs) => {
+                        setAgentSteps((prev) => prev.map((step) => (
+                            step.index === index
+                                ? { ...step, result, latencyMs, status: result.ok ? 'ok' : 'error' }
+                                : step
+                        )));
+                    },
+                    onDone: ({ project: updatedProject }) => {
+                        setProject(updatedProject);
+                        setProjects((prev) => [updatedProject, ...prev.filter((item) => item._id !== updatedProject._id)]);
+                        setMessage('');
+                        setRefFiles([]);
+                        setRestoredRefImageUrls([]);
+                        setPreviewVersionIndex(null);
+                        setMobileTab('preview');
+                        refreshUser();
+                    },
+                    onError: (err) => setError(err.message)
+                });
+                return;
+            }
+
             const stage = effectiveTwoStep ? 'proposal' : 'apply';
             const result = await sendInteriorMessage(token, project._id, {
                 message: message.trim(),
@@ -399,14 +514,27 @@ const InteriorDesignPage: React.FC = () => {
             setRestoredRefImageUrls([]);
             setPreviewVersionIndex(null);
             setMobileTab('preview');
+            const newInline = result.meta?.newInlineTemplates || [];
+            if (newInline.length) {
+                setPendingInlineCommitIds(newInline);
+                setCommitSelections(Object.fromEntries(newInline.map((id) => [id, true])));
+            }
+            setDroppedTemplates(result.meta?.droppedTemplates || []);
         } catch (err) {
             if (err instanceof InteriorApiError && err.status === 409 && (err.data as any)?.data?.project) {
                 setProject((err.data as any).data.project);
             }
             setError(err instanceof Error ? err.message : t('studio.interior.errors.sendFailed'));
         } finally {
+            setAgentRunning(false);
+            agentAbortRef.current = null;
             setBusy(false);
         }
+    };
+
+    const handleStopAgent = () => {
+        agentAbortRef.current?.abort();
+        setAgentRunning(false);
     };
 
     const buildEnrichedProposalContext = (): string => {
@@ -466,6 +594,12 @@ const InteriorDesignPage: React.FC = () => {
             setGeneralNote('');
             setPreviewVersionIndex(null);
             setMobileTab('preview');
+            const newInline = result.meta?.newInlineTemplates || [];
+            if (newInline.length) {
+                setPendingInlineCommitIds(newInline);
+                setCommitSelections(Object.fromEntries(newInline.map((id) => [id, true])));
+            }
+            setDroppedTemplates(result.meta?.droppedTemplates || []);
         } catch (err) {
             if (err instanceof InteriorApiError && err.status === 409 && (err.data as any)?.data?.project) {
                 setProject((err.data as any).data.project);
@@ -496,6 +630,45 @@ const InteriorDesignPage: React.FC = () => {
         setProposalAnswers((prev) => prev.map((a, i) => (i === index ? { ...a, note: value } : a)));
     };
 
+    const handleDismissCommitBanner = () => {
+        setPendingInlineCommitIds([]);
+        setCommitModalOpen(false);
+        setCommitSelections({});
+    };
+
+    const handleSubmitInlineCommits = async () => {
+        if (!project || !token) return;
+        const selected = pendingInlineCommitIds.filter((id) => commitSelections[id]);
+        if (!selected.length) {
+            setCommitModalOpen(false);
+            return;
+        }
+        setCommittingInline(true);
+        try {
+            let succeeded = 0;
+            const failures: string[] = [];
+            for (const id of selected) {
+                try {
+                    await commitInlineTemplate(project._id, id);
+                    succeeded += 1;
+                } catch (err) {
+                    failures.push(`${id}: ${err instanceof Error ? err.message : String(err)}`);
+                }
+            }
+            if (succeeded > 0) {
+                const template = t('studio.interior.commitToastSuccess') || 'Đã gửi {count} mẫu cho admin review';
+                setCommitToast(template.replace('{count}', String(succeeded)));
+                setTimeout(() => setCommitToast(null), 4000);
+            }
+            if (failures.length) {
+                setError(failures.join('\n'));
+            }
+            handleDismissCommitBanner();
+        } finally {
+            setCommittingInline(false);
+        }
+    };
+
     const handleToggleTwoStep = async () => {
         if (!token || togglingPref) return;
         const next = !twoStepConfirm;
@@ -507,6 +680,39 @@ const InteriorDesignPage: React.FC = () => {
             setError(err instanceof Error ? err.message : t('studio.interior.errors.sendFailed'));
         } finally {
             setTogglingPref(false);
+        }
+    };
+
+    const handleStartRename = () => {
+        if (!project || busy || renaming) return;
+        setNameDraft(project.name);
+        setEditingName(true);
+    };
+
+    const handleCancelRename = () => {
+        setEditingName(false);
+        setNameDraft('');
+    };
+
+    const handleSubmitRename = async () => {
+        if (!token || !project) return;
+        const trimmed = nameDraft.trim();
+        if (!trimmed || trimmed === project.name) {
+            handleCancelRename();
+            return;
+        }
+        setRenaming(true);
+        setError('');
+        try {
+            const result = await renameInteriorProject(token, project._id, trimmed.slice(0, 120));
+            setProject(result.project);
+            setProjects((prev) => prev.map((item) => (item._id === result.project._id ? result.project : item)));
+            setEditingName(false);
+            setNameDraft('');
+        } catch (err) {
+            setError(err instanceof Error ? err.message : t('studio.interior.errors.renameFailed'));
+        } finally {
+            setRenaming(false);
         }
     };
 
@@ -619,11 +825,23 @@ const InteriorDesignPage: React.FC = () => {
                 </div>
             )}
 
-            <div className="mx-auto grid max-w-[1800px] grid-cols-1 gap-4 p-4 lg:grid-cols-[300px_minmax(0,1fr)_380px]">
-                <aside className={`${mobileTab === 'projects' ? 'block' : 'hidden'} lg:block rounded-lg border border-[var(--border-primary)] bg-[var(--bg-card)]`}>
+            <div className={`mx-auto grid max-w-[1800px] grid-cols-1 gap-4 p-4 ${sidebarCollapsed ? 'lg:grid-cols-[minmax(0,1fr)_380px]' : 'lg:grid-cols-[300px_minmax(0,1fr)_380px]'}`}>
+                <aside className={`${mobileTab === 'projects' ? 'block' : 'hidden'} ${sidebarCollapsed ? 'lg:hidden' : 'lg:block'} rounded-lg border border-[var(--border-primary)] bg-[var(--bg-card)]`}>
                     <div className="flex items-center justify-between border-b border-[var(--border-primary)] p-4">
                         <h2 className="font-bold">{t('studio.interior.projects')}</h2>
-                        <span className="text-xs text-[var(--text-tertiary)]">{projects.length}</span>
+                        <div className="flex items-center gap-2">
+                            <span className="text-xs text-[var(--text-tertiary)]">{projects.length}</span>
+                            <button
+                                type="button"
+                                onClick={() => setSidebarCollapsed(true)}
+                                title={t('studio.interior.sidebar.collapse')}
+                                className="hidden rounded-md p-1 text-[var(--text-tertiary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--accent-primary)] lg:inline-flex"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <polyline points="15 18 9 12 15 6" />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                     <div className="max-h-[calc(100vh-210px)] overflow-y-auto p-2">
                         {loading && <div className="p-4 text-sm text-[var(--text-secondary)]">{t('studio.interior.loading')}</div>}
@@ -661,11 +879,53 @@ const InteriorDesignPage: React.FC = () => {
 
                 <main className={`${mobileTab === 'preview' ? 'block' : 'hidden'} lg:block rounded-lg border border-[var(--border-primary)] bg-[var(--bg-card)] overflow-hidden`}>
                     <div className="flex min-h-[56px] items-center justify-between gap-3 border-b border-[var(--border-primary)] px-4 py-3">
-                        <div className="min-w-0">
-                            <h2 className="truncate font-bold">{project?.name || t('studio.interior.noProjectSelected')}</h2>
-                            <p className="text-xs text-[var(--text-tertiary)]">
-                                {activeVersion ? `${t('studio.interior.previewing')} V${activeVersion.index}` : t('studio.interior.createFirst')}
-                            </p>
+                        <div className="flex min-w-0 items-center gap-2">
+                            {sidebarCollapsed && (
+                                <button
+                                    type="button"
+                                    onClick={() => setSidebarCollapsed(false)}
+                                    title={t('studio.interior.sidebar.expand')}
+                                    className="hidden shrink-0 rounded-lg border border-[var(--border-primary)] bg-[var(--bg-secondary)] p-1.5 text-[var(--text-secondary)] hover:border-[var(--accent-primary)] hover:text-[var(--accent-primary)] lg:inline-flex"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <polyline points="9 18 15 12 9 6" />
+                                    </svg>
+                                </button>
+                            )}
+                            <div className="min-w-0">
+                                {editingName && project ? (
+                                    <input
+                                        ref={nameInputRef}
+                                        type="text"
+                                        value={nameDraft}
+                                        onChange={(event) => setNameDraft(event.target.value)}
+                                        onBlur={handleSubmitRename}
+                                        onKeyDown={(event) => {
+                                            if (event.key === 'Enter') {
+                                                event.preventDefault();
+                                                handleSubmitRename();
+                                            } else if (event.key === 'Escape') {
+                                                event.preventDefault();
+                                                handleCancelRename();
+                                            }
+                                        }}
+                                        disabled={renaming}
+                                        maxLength={120}
+                                        className="w-full rounded-md border border-[var(--accent-primary)] bg-[var(--bg-secondary)] px-2 py-1 text-base font-bold text-[var(--text-primary)] outline-none disabled:opacity-60"
+                                    />
+                                ) : (
+                                    <h2
+                                        className={`truncate font-bold ${project ? 'cursor-text rounded px-1 hover:bg-[var(--bg-secondary)]' : ''}`}
+                                        onClick={handleStartRename}
+                                        title={project ? t('studio.interior.rename.tooltip') : undefined}
+                                    >
+                                        {project?.name || t('studio.interior.noProjectSelected')}
+                                    </h2>
+                                )}
+                                <p className="text-xs text-[var(--text-tertiary)]">
+                                    {activeVersion ? `${t('studio.interior.previewing')} V${activeVersion.index}` : t('studio.interior.createFirst')}
+                                </p>
+                            </div>
                         </div>
                         <div className="flex items-center gap-2">
                             {previewVersionIndex !== null && (
@@ -674,6 +934,22 @@ const InteriorDesignPage: React.FC = () => {
                                     className="rounded-lg border border-[var(--border-primary)] px-3 py-2 text-xs font-semibold text-[var(--text-secondary)] hover:border-[var(--accent-primary)]"
                                 >
                                     {t('studio.interior.backToCurrent')}
+                                </button>
+                            )}
+                            {project && isAdmin && (
+                                <button
+                                    type="button"
+                                    onClick={handleOpenAdminLog}
+                                    className="inline-flex items-center gap-1.5 rounded-lg border border-purple-500/60 bg-purple-500/10 px-3 py-2 text-xs font-bold text-purple-300 hover:bg-purple-500/20"
+                                    title={t('studio.interior.adminLog.title')}
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                        <polyline points="14 2 14 8 20 8" />
+                                        <line x1="16" y1="13" x2="8" y2="13" />
+                                        <line x1="16" y1="17" x2="8" y2="17" />
+                                    </svg>
+                                    {t('studio.interior.adminLog.button')}
                                 </button>
                             )}
                             {project && (
@@ -725,7 +1001,9 @@ const InteriorDesignPage: React.FC = () => {
                     <div className="border-b border-[var(--border-primary)] p-4">
                         <h2 className="font-bold">{t('studio.interior.chat')}</h2>
                         <p className="mt-1 text-xs text-[var(--text-tertiary)]">
-                            {twoStepConfirm
+                            {useAgentMode
+                                ? t('studio.interior.agent.creditNote')
+                                : twoStepConfirm
                                 ? t('studio.interior.creditNote2Step')
                                 : isFirstUserMessage
                                     ? t('studio.interior.creditNoteFirstMessage')
@@ -773,9 +1051,66 @@ const InteriorDesignPage: React.FC = () => {
                         ))}
                     </div>
 
+                    <AgentTimeline steps={agentSteps} isRunning={agentRunning} onStop={handleStopAgent} />
+
                     {pendingProposal && (
                         <div className="border-t border-[var(--border-primary)] bg-[var(--accent-primary)]/10 px-4 py-3 text-sm">
                             <span className="font-semibold text-[var(--accent-primary)]">{t('studio.interior.proposal.pendingBanner')}</span>
+                        </div>
+                    )}
+
+                    {pendingInlineCommitIds.length > 0 && (
+                        <div className="border-t border-purple-500/40 bg-purple-500/10 px-4 py-3 text-sm flex flex-wrap items-center gap-2">
+                            <span className="text-purple-200">
+                                {(t('studio.interior.commitBanner') || '{count} mẫu tủ mới do AI tạo. Đóng góp cho thư viện?').replace('{count}', String(pendingInlineCommitIds.length))}
+                            </span>
+                            <div className="ml-auto flex items-center gap-2">
+                                <button
+                                    type="button"
+                                    onClick={() => setCommitModalOpen(true)}
+                                    className="rounded-md bg-purple-600 hover:bg-purple-500 px-2 py-1 text-xs text-white"
+                                >
+                                    {t('studio.interior.commitBannerCta') || 'Chia sẻ cho admin'}
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={handleDismissCommitBanner}
+                                    className="rounded-md border border-purple-400/40 px-2 py-1 text-xs text-purple-200 hover:bg-purple-500/10"
+                                >
+                                    {t('common.dismiss') || 'Bỏ qua'}
+                                </button>
+                            </div>
+                        </div>
+                    )}
+
+                    {commitToast && (
+                        <div className="border-t border-green-500/40 bg-green-500/10 px-4 py-2 text-xs text-green-200">
+                            {commitToast}
+                        </div>
+                    )}
+
+                    {droppedTemplates.length > 0 && (
+                        <div className="border-t border-yellow-500/40 bg-yellow-500/10 px-4 py-3 text-xs text-yellow-200">
+                            <div className="flex items-center justify-between gap-2 mb-1">
+                                <span className="font-semibold">
+                                    {(t('studio.interior.droppedBanner') || '{count} template AI tạo bị từ chối — module rớt về box thô.').replace('{count}', String(droppedTemplates.length))}
+                                </span>
+                                <button
+                                    type="button"
+                                    onClick={() => setDroppedTemplates([])}
+                                    className="text-yellow-200 hover:text-yellow-100"
+                                    aria-label="dismiss"
+                                >
+                                    ×
+                                </button>
+                            </div>
+                            <ul className="list-disc pl-4 space-y-0.5 text-yellow-100/80">
+                                {droppedTemplates.map((d, idx) => (
+                                    <li key={idx}>
+                                        <span className="font-mono">{d.id}</span> ({d.category}): {d.reason}
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
                     )}
 
@@ -1170,6 +1505,105 @@ const InteriorDesignPage: React.FC = () => {
                 </div>
             )}
 
+            {adminLogOpen && isAdmin && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+                    onClick={() => setAdminLogOpen(false)}
+                >
+                    <div
+                        className="flex max-h-[90vh] w-full max-w-5xl flex-col rounded-lg border border-[var(--border-primary)] bg-[var(--bg-card)] shadow-lg"
+                        onClick={(event) => event.stopPropagation()}
+                    >
+                        <div className="flex items-center justify-between gap-2 border-b border-[var(--border-primary)] px-5 py-4">
+                            <div>
+                                <h3 className="text-lg font-bold text-[var(--text-primary)]">{t('studio.interior.adminLog.title')}</h3>
+                                <p className="text-xs text-[var(--text-tertiary)]">{project?.name}</p>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <button
+                                    type="button"
+                                    onClick={loadAdminLogs}
+                                    disabled={adminLogsLoading}
+                                    className="rounded-lg border border-[var(--border-primary)] bg-[var(--bg-secondary)] px-3 py-1.5 text-xs font-semibold text-[var(--text-primary)] hover:border-[var(--accent-primary)] disabled:opacity-50"
+                                >
+                                    {t('studio.interior.adminLog.refresh')}
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setAdminLogOpen(false)}
+                                    className="rounded-lg p-1.5 text-[var(--text-tertiary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]"
+                                    title={t('studio.interior.adminLog.close')}
+                                >
+                                    ✕
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className="flex-1 overflow-y-auto px-5 py-4">
+                            {adminLogsLoading && (
+                                <p className="text-sm text-[var(--text-secondary)]">{t('studio.interior.adminLog.loading')}</p>
+                            )}
+                            {adminLogsError && (
+                                <p className="rounded-lg border border-red-500/40 bg-red-500/10 px-3 py-2 text-sm text-red-300">{adminLogsError}</p>
+                            )}
+                            {!adminLogsLoading && !adminLogsError && adminLogs.length === 0 && (
+                                <p className="rounded-lg border border-[var(--border-primary)] bg-[var(--bg-secondary)]/50 px-3 py-2 text-sm text-[var(--text-tertiary)]">{t('studio.interior.adminLog.empty')}</p>
+                            )}
+                            {!adminLogsLoading && adminLogs.map((log) => {
+                                const expanded = expandedLogId === log._id;
+                                const statusColor = log.status === 'ok'
+                                    ? 'border-green-500/60 bg-green-500/10 text-green-300'
+                                    : 'border-red-500/60 bg-red-500/10 text-red-300';
+                                return (
+                                    <div key={log._id} className="mb-2 rounded-lg border border-[var(--border-primary)] bg-[var(--bg-secondary)]/40">
+                                        <button
+                                            type="button"
+                                            onClick={() => setExpandedLogId(expanded ? null : log._id)}
+                                            className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left hover:bg-[var(--bg-secondary)]/70"
+                                        >
+                                            <div className="flex flex-wrap items-center gap-2 text-xs">
+                                                <span className={`rounded-md border px-2 py-0.5 font-bold ${statusColor}`}>{log.status}</span>
+                                                <span className="rounded-md bg-[var(--bg-card)] px-2 py-0.5 text-[var(--text-secondary)]">{log.stage}</span>
+                                                <span className="rounded-md bg-[var(--bg-card)] px-2 py-0.5 text-[var(--text-secondary)]">{log.model || '?'}</span>
+                                                {log.versionIndex !== null && (
+                                                    <span className="rounded-md bg-[var(--bg-card)] px-2 py-0.5 text-[var(--text-secondary)]">V{log.versionIndex}</span>
+                                                )}
+                                                {log.latencyMs !== null && (
+                                                    <span className="text-[var(--text-tertiary)]">{log.latencyMs}ms</span>
+                                                )}
+                                                {log.usage?.totalTokens != null && (
+                                                    <span className="text-[var(--text-tertiary)]">{log.usage.totalTokens} tok</span>
+                                                )}
+                                                <span className="text-[var(--text-tertiary)]">{formatDateTime(log.createdAt)}</span>
+                                            </div>
+                                            <span className="text-[var(--text-tertiary)]">{expanded ? '▼' : '▶'}</span>
+                                        </button>
+                                        {expanded && (
+                                            <div className="border-t border-[var(--border-primary)] px-4 py-3 text-xs">
+                                                {log.errorMessage && (
+                                                    <div className="mb-3">
+                                                        <div className="mb-1 font-bold uppercase tracking-wide text-red-400">{t('studio.interior.adminLog.errorLabel')}</div>
+                                                        <pre className="whitespace-pre-wrap rounded border border-red-500/40 bg-red-500/5 p-2 text-red-300">{log.errorMessage}</pre>
+                                                    </div>
+                                                )}
+                                                <div className="mb-3">
+                                                    <div className="mb-1 font-bold uppercase tracking-wide text-[var(--text-tertiary)]">{t('studio.interior.adminLog.promptLabel')}</div>
+                                                    <pre className="max-h-64 overflow-auto whitespace-pre-wrap rounded border border-[var(--border-primary)] bg-[var(--bg-card)] p-2 font-mono text-[var(--text-secondary)]">{log.prompt}</pre>
+                                                </div>
+                                                <div>
+                                                    <div className="mb-1 font-bold uppercase tracking-wide text-[var(--text-tertiary)]">{t('studio.interior.adminLog.responseLabel')}</div>
+                                                    <pre className="max-h-96 overflow-auto whitespace-pre-wrap rounded border border-[var(--border-primary)] bg-[var(--bg-card)] p-2 font-mono text-[var(--text-secondary)]">{log.rawResponse || '(empty)'}</pre>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {settingsOpen && (
                 <div
                     className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
@@ -1211,6 +1645,52 @@ const InteriorDesignPage: React.FC = () => {
                                 {t('studio.interior.settings.lockedDuringProposal')}
                             </p>
                         )}
+                    </div>
+                </div>
+            )}
+
+            {commitModalOpen && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4" onClick={() => !committingInline && setCommitModalOpen(false)}>
+                    <div
+                        className="w-full max-w-lg rounded-lg border border-[var(--border-primary)] bg-[var(--bg-card)] p-5 shadow-xl"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <h3 className="mb-1 text-lg font-semibold text-[var(--text-primary)]">
+                            {t('studio.interior.commitModalTitle') || 'Đóng góp mẫu tủ cho thư viện'}
+                        </h3>
+                        <p className="mb-3 text-sm text-[var(--text-secondary)]">
+                            {t('studio.interior.commitModalDesc') || 'Admin sẽ review và quyết định có thêm vào catalog dùng chung cho mọi user hay không. Mẫu vẫn dùng được trong dự án này dù không được duyệt.'}
+                        </p>
+                        <div className="max-h-[40vh] overflow-y-auto border border-[var(--border-primary)] rounded">
+                            {pendingInlineCommitIds.map((id) => (
+                                <label key={id} className="flex items-center gap-2 border-b border-[var(--border-primary)] px-3 py-2 last:border-b-0">
+                                    <input
+                                        type="checkbox"
+                                        checked={!!commitSelections[id]}
+                                        onChange={(e) => setCommitSelections((prev) => ({ ...prev, [id]: e.target.checked }))}
+                                    />
+                                    <span className="font-mono text-sm text-[var(--text-primary)]">{id}</span>
+                                </label>
+                            ))}
+                        </div>
+                        <div className="mt-4 flex justify-end gap-2">
+                            <button
+                                type="button"
+                                onClick={() => setCommitModalOpen(false)}
+                                disabled={committingInline}
+                                className="px-3 py-1.5 text-sm border border-[var(--border-primary)] rounded text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]"
+                            >
+                                {t('common.cancel') || 'Huỷ'}
+                            </button>
+                            <button
+                                type="button"
+                                onClick={handleSubmitInlineCommits}
+                                disabled={committingInline}
+                                className="px-3 py-1.5 text-sm bg-purple-600 hover:bg-purple-500 text-white rounded disabled:opacity-50"
+                            >
+                                {committingInline ? (t('common.sending') || 'Đang gửi...') : (t('studio.interior.commitModalSubmit') || 'Gửi đã chọn')}
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}

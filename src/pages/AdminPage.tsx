@@ -8,6 +8,7 @@ import ArticlesAdminTab from '../components/admin/ArticlesAdminTab';
 import CloudAdminTab from '../components/admin/CloudAdminTab';
 import FeaturedStudentsAdminTab from '../components/admin/FeaturedStudentsAdminTab';
 import StudioAdminTab from '../components/admin/StudioAdminTab';
+import InteriorTemplatesAdminTab from '../components/admin/InteriorTemplatesAdminTab';
 import {
     getUsers,
     getUserDetails,
@@ -26,7 +27,7 @@ import {
     type WebhookLog,
 } from '../services/adminService';
 
-type TopTabType = 'articles' | 'community' | 'transactions' | 'cloud' | 'studio';
+type TopTabType = 'articles' | 'community' | 'transactions' | 'cloud' | 'studio' | 'interior-templates';
 type ArticlesSubTabType = 'about' | 'news' | 'services';
 type CommunitySubTabType = 'featuredStudents';
 type SubTabType = 'users' | 'transactionsList' | 'webhooks';
@@ -66,6 +67,7 @@ export default function AdminPage() {
             { id: 'transactions' as TopTabType, label: t('admin.tabs.transactions') },
             { id: 'cloud' as TopTabType, label: t('admin.tabs.cloud') },
             { id: 'studio' as TopTabType, label: t('admin.tabs.studio') || 'Studio API' },
+            { id: 'interior-templates' as TopTabType, label: t('admin.tabs.interiorTemplates') || 'Mẫu Tủ AI' },
         ] : []),
     ];
 
@@ -137,6 +139,7 @@ export default function AdminPage() {
                     )}
                     {activeTopTab === 'cloud' && <CloudAdminTab />}
                     {activeTopTab === 'studio' && <StudioAdminTab />}
+                    {activeTopTab === 'interior-templates' && <InteriorTemplatesAdminTab />}
                     {activeTopTab === 'community' && (
                         <div>
                             <div className="flex gap-2 mb-6">

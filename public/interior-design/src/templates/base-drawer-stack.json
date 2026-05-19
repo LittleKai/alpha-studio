@@ -1,0 +1,167 @@
+{
+  "id": "base-drawer-stack",
+  "version": 1,
+  "category": "drawer-base",
+  "tags": [
+    "kitchen",
+    "base",
+    "drawer"
+  ],
+  "description": {
+    "vi": "Tu bep duoi ngan keo",
+    "en": "Kitchen drawer base"
+  },
+  "params": {
+    "width": {
+      "type": "number",
+      "min": 45,
+      "max": 100,
+      "default": 60
+    },
+    "height": {
+      "type": "number",
+      "min": 80,
+      "max": 95,
+      "default": 86
+    },
+    "depth": {
+      "type": "number",
+      "min": 55,
+      "max": 65,
+      "default": 60
+    }
+  },
+  "style": {},
+  "frontSvg": [
+    {
+      "type": "rect",
+      "x": 0,
+      "y": 0,
+      "w": "{{width}}",
+      "h": "{{height}}",
+      "fill": "$cab",
+      "stroke": "$cabDark",
+      "sw": 1.3
+    },
+    {
+      "type": "rect",
+      "x": 0,
+      "y": 0,
+      "w": "{{width}}",
+      "h": 4,
+      "fill": "$woodTop",
+      "stroke": "$cabDark",
+      "sw": 0.7
+    },
+    {
+      "type": "rect",
+      "x": 4,
+      "y": 8,
+      "w": "{{width - 8}}",
+      "h": "{{(height - 12) / 3}}",
+      "fill": "$cabLight",
+      "stroke": "$cabEdge",
+      "sw": 0.8
+    },
+    {
+      "type": "rect",
+      "x": 4,
+      "y": "{{8 + (height - 12) / 3}}",
+      "w": "{{width - 8}}",
+      "h": "{{(height - 12) / 3}}",
+      "fill": "$cabLight",
+      "stroke": "$cabEdge",
+      "sw": 0.8
+    },
+    {
+      "type": "rect",
+      "x": 4,
+      "y": "{{8 + (height - 12) * 2 / 3}}",
+      "w": "{{width - 8}}",
+      "h": "{{(height - 12) / 3}}",
+      "fill": "$cabLight",
+      "stroke": "$cabEdge",
+      "sw": 0.8
+    },
+    {
+      "type": "rect",
+      "x": "{{width / 2 - 12}}",
+      "y": 18,
+      "w": 24,
+      "h": 2,
+      "rx": 1,
+      "fill": "$handle"
+    },
+    {
+      "type": "rect",
+      "x": "{{width / 2 - 12}}",
+      "y": "{{18 + (height - 12) / 3}}",
+      "w": 24,
+      "h": 2,
+      "rx": 1,
+      "fill": "$handle"
+    },
+    {
+      "type": "rect",
+      "x": "{{width / 2 - 12}}",
+      "y": "{{18 + (height - 12) * 2 / 3}}",
+      "w": 24,
+      "h": 2,
+      "rx": 1,
+      "fill": "$handle"
+    }
+  ],
+  "sideSvg": [
+    {
+      "type": "rect",
+      "x": 0,
+      "y": 0,
+      "w": "{{depth}}",
+      "h": "{{height}}",
+      "fill": "$cab",
+      "stroke": "$cabDark",
+      "sw": 1
+    }
+  ],
+  "planSvg": [
+    {
+      "type": "rect",
+      "x": 0,
+      "y": 0,
+      "w": "{{width}}",
+      "h": "{{depth}}",
+      "fill": "$cab",
+      "stroke": "$cabDark",
+      "sw": 1
+    }
+  ],
+  "isoBoxes": [
+    {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": "{{width}}",
+      "h": "{{height}}",
+      "d": "{{depth}}",
+      "faces": {
+        "top": "$woodTop",
+        "front": "$woodFront",
+        "right": "$woodSide",
+        "left": "$woodDark",
+        "back": "$woodBack"
+      }
+    },
+    {
+      "x": 3,
+      "y": 8,
+      "z": "{{depth - 1}}",
+      "w": "{{width - 6}}",
+      "h": "{{height - 12}}",
+      "d": 1,
+      "faces": {
+        "front": "$woodFrontL",
+        "top": "$woodTop"
+      }
+    }
+  ]
+}

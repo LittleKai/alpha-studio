@@ -1,0 +1,129 @@
+{
+  "id": "tall-cabinet",
+  "version": 1,
+  "category": "tall-cabinet",
+  "tags": [
+    "kitchen",
+    "tall",
+    "pantry",
+    "fridge"
+  ],
+  "description": {
+    "vi": "Tu cao bep hoac khoang tu lanh",
+    "en": "Tall pantry or fridge tower"
+  },
+  "params": {
+    "width": {
+      "type": "number",
+      "min": 55,
+      "max": 90,
+      "default": 70
+    },
+    "height": {
+      "type": "number",
+      "min": 180,
+      "max": 260,
+      "default": 220
+    },
+    "depth": {
+      "type": "number",
+      "min": 55,
+      "max": 70,
+      "default": 60
+    }
+  },
+  "style": {},
+  "frontSvg": [
+    {
+      "type": "rect",
+      "x": 0,
+      "y": 0,
+      "w": "{{width}}",
+      "h": "{{height}}",
+      "fill": "$cab",
+      "stroke": "$cabDark",
+      "sw": 1.4
+    },
+    {
+      "type": "rect",
+      "x": 5,
+      "y": 8,
+      "w": "{{width - 10}}",
+      "h": "{{height / 2 - 12}}",
+      "fill": "$cabLight",
+      "stroke": "$cabEdge",
+      "sw": 0.8
+    },
+    {
+      "type": "rect",
+      "x": 5,
+      "y": "{{height / 2 + 4}}",
+      "w": "{{width - 10}}",
+      "h": "{{height / 2 - 12}}",
+      "fill": "$cabLight",
+      "stroke": "$cabEdge",
+      "sw": 0.8
+    },
+    {
+      "type": "rect",
+      "x": "{{width - 8}}",
+      "y": "{{height / 2 - 30}}",
+      "w": 2,
+      "h": 60,
+      "rx": 1,
+      "fill": "$handle"
+    }
+  ],
+  "sideSvg": [
+    {
+      "type": "rect",
+      "x": 0,
+      "y": 0,
+      "w": "{{depth}}",
+      "h": "{{height}}",
+      "fill": "$cab",
+      "stroke": "$cabDark",
+      "sw": 1
+    }
+  ],
+  "planSvg": [
+    {
+      "type": "rect",
+      "x": 0,
+      "y": 0,
+      "w": "{{width}}",
+      "h": "{{depth}}",
+      "fill": "$cab",
+      "stroke": "$cabDark",
+      "sw": 1
+    }
+  ],
+  "isoBoxes": [
+    {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": "{{width}}",
+      "h": "{{height}}",
+      "d": "{{depth}}",
+      "faces": {
+        "top": "$woodTop",
+        "front": "$woodFront",
+        "right": "$woodSide",
+        "left": "$woodDark",
+        "back": "$woodBack"
+      }
+    },
+    {
+      "x": 3,
+      "y": 6,
+      "z": "{{depth - 1}}",
+      "w": "{{width - 6}}",
+      "h": "{{height - 12}}",
+      "d": 1,
+      "faces": {
+        "front": "$woodFrontL"
+      }
+    }
+  ]
+}

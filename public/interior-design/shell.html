@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Interior Design Engine Shell</title>
-  <link rel="stylesheet" href="./interior-design-engine.css">
+  <!-- Cache-bust tag — bump on each engine release. Build script may replace with git short SHA. -->
+  <link rel="stylesheet" href="./interior-design-engine.css?v=20260518">
   <style>
     html,
     body {
@@ -37,16 +38,21 @@
     <div class="ide-shell-state">Đang chờ model thiết kế...</div>
   </div>
 
-  <script src="./interior-design-engine.js"></script>
-  <script>
+  <script type="module" src="./interior-design-engine.js?v=20260518"></script>
+  <script type="module">
     const tabs = ["front", "side", "plan", "3d", "specs"];
+    let currentModel = null;
+    let currentLanguage = "vi";
 
     function renderModel(model) {
-      if (!window.InteriorDesigner || !model) return;
+      if (!window.InteriorDesigner) return;
+      if (model) currentModel = model;
+      if (!currentModel) return;
       window.InteriorDesigner.render({
         mount: "#app",
         tabs,
-        model
+        model: currentModel,
+        language: currentLanguage
       });
     }
 
@@ -54,6 +60,9 @@
       const data = event.data || {};
       if (data.type === "APPLY_MODEL") {
         renderModel(data.model);
+      } else if (data.type === "SET_LANGUAGE" && (data.lang === "vi" || data.lang === "en")) {
+        currentLanguage = data.lang;
+        if (currentModel) renderModel(currentModel);
       }
     });
 

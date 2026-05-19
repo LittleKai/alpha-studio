@@ -1,0 +1,105 @@
+{
+  "id": "corner-cabinet",
+  "version": 1,
+  "category": "corner-cabinet",
+  "tags": [
+    "kitchen",
+    "corner",
+    "l-shape"
+  ],
+  "description": {
+    "vi": "Tu goc bep chu L",
+    "en": "L-shape kitchen corner cabinet"
+  },
+  "params": {
+    "width": {
+      "type": "number",
+      "min": 80,
+      "max": 110,
+      "default": 90
+    },
+    "height": {
+      "type": "number",
+      "min": 80,
+      "max": 95,
+      "default": 86
+    },
+    "depth": {
+      "type": "number",
+      "min": 80,
+      "max": 110,
+      "default": 90
+    }
+  },
+  "style": {},
+  "frontSvg": [
+    {
+      "type": "rect",
+      "x": 0,
+      "y": 0,
+      "w": "{{width}}",
+      "h": "{{height}}",
+      "fill": "$cab",
+      "stroke": "$cabDark",
+      "sw": 1.3
+    },
+    {
+      "type": "text",
+      "x": "{{width / 2}}",
+      "y": "{{height / 2}}",
+      "text": "Goc L",
+      "fill": "$dim",
+      "fontSize": 10
+    }
+  ],
+  "sideSvg": [
+    {
+      "type": "rect",
+      "x": 0,
+      "y": 0,
+      "w": "{{depth}}",
+      "h": "{{height}}",
+      "fill": "$cab",
+      "stroke": "$cabDark",
+      "sw": 1
+    }
+  ],
+  "planSvg": [
+    {
+      "type": "rect",
+      "x": 0,
+      "y": 0,
+      "w": "{{width}}",
+      "h": "{{depth}}",
+      "fill": "$cab",
+      "stroke": "$cabDark",
+      "sw": 1
+    },
+    {
+      "type": "line",
+      "x1": 0,
+      "y1": "{{depth / 2}}",
+      "x2": "{{width}}",
+      "y2": "{{depth / 2}}",
+      "stroke": "$cabEdge",
+      "sw": 0.8
+    }
+  ],
+  "isoBoxes": [
+    {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": "{{width}}",
+      "h": "{{height}}",
+      "d": "{{depth}}",
+      "faces": {
+        "top": "$woodTop",
+        "front": "$woodFront",
+        "right": "$woodSide",
+        "left": "$woodDark",
+        "back": "$woodBack"
+      }
+    }
+  ]
+}
