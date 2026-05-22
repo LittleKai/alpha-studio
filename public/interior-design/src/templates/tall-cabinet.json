@@ -33,72 +33,7 @@
     }
   },
   "style": {},
-  "frontSvg": [
-    {
-      "type": "rect",
-      "x": 0,
-      "y": 0,
-      "w": "{{width}}",
-      "h": "{{height}}",
-      "fill": "$cab",
-      "stroke": "$cabDark",
-      "sw": 1.4
-    },
-    {
-      "type": "rect",
-      "x": 5,
-      "y": 8,
-      "w": "{{width - 10}}",
-      "h": "{{height / 2 - 12}}",
-      "fill": "$cabLight",
-      "stroke": "$cabEdge",
-      "sw": 0.8
-    },
-    {
-      "type": "rect",
-      "x": 5,
-      "y": "{{height / 2 + 4}}",
-      "w": "{{width - 10}}",
-      "h": "{{height / 2 - 12}}",
-      "fill": "$cabLight",
-      "stroke": "$cabEdge",
-      "sw": 0.8
-    },
-    {
-      "type": "rect",
-      "x": "{{width - 8}}",
-      "y": "{{height / 2 - 30}}",
-      "w": 2,
-      "h": 60,
-      "rx": 1,
-      "fill": "$handle"
-    }
-  ],
-  "sideSvg": [
-    {
-      "type": "rect",
-      "x": 0,
-      "y": 0,
-      "w": "{{depth}}",
-      "h": "{{height}}",
-      "fill": "$cab",
-      "stroke": "$cabDark",
-      "sw": 1
-    }
-  ],
-  "planSvg": [
-    {
-      "type": "rect",
-      "x": 0,
-      "y": 0,
-      "w": "{{width}}",
-      "h": "{{depth}}",
-      "fill": "$cab",
-      "stroke": "$cabDark",
-      "sw": 1
-    }
-  ],
-  "isoBoxes": [
+  "boxes": [
     {
       "x": 0,
       "y": 0,

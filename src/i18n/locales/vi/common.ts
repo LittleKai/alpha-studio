@@ -9,6 +9,8 @@ export default {
       reportConfirm: "Báo cáo bình luận này vi phạm nội dung?",
     },
     cancel: "Hủy",
+    dismiss: "Bỏ qua",
+    sending: "Đang gửi...",
     saving: "Đang lưu...",
     update: "Cập nhật",
     create: "Tạo mới",

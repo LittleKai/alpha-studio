@@ -32,74 +32,7 @@
     }
   },
   "style": {},
-  "frontSvg": [
-    {
-      "type": "rect",
-      "x": 0,
-      "y": 0,
-      "w": "{{width}}",
-      "h": "{{height}}",
-      "fill": "$cab",
-      "stroke": "$cabDark",
-      "sw": 1.3
-    },
-    {
-      "type": "rect",
-      "x": "{{width / 2 - 18}}",
-      "y": 5,
-      "w": 36,
-      "h": 12,
-      "rx": 4,
-      "fill": "$glass",
-      "stroke": "$glassBorder",
-      "sw": 1
-    },
-    {
-      "type": "line",
-      "x1": "{{width / 2}}",
-      "y1": 20,
-      "x2": "{{width / 2}}",
-      "y2": "{{height}}",
-      "stroke": "$cabEdge",
-      "sw": 1
-    }
-  ],
-  "sideSvg": [
-    {
-      "type": "rect",
-      "x": 0,
-      "y": 0,
-      "w": "{{depth}}",
-      "h": "{{height}}",
-      "fill": "$cab",
-      "stroke": "$cabDark",
-      "sw": 1
-    }
-  ],
-  "planSvg": [
-    {
-      "type": "rect",
-      "x": 0,
-      "y": 0,
-      "w": "{{width}}",
-      "h": "{{depth}}",
-      "fill": "$cab",
-      "stroke": "$cabDark",
-      "sw": 1
-    },
-    {
-      "type": "rect",
-      "x": "{{width / 2 - 20}}",
-      "y": 10,
-      "w": 40,
-      "h": 28,
-      "rx": 5,
-      "fill": "$glass",
-      "stroke": "$glassBorder",
-      "sw": 1
-    }
-  ],
-  "isoBoxes": [
+  "boxes": [
     {
       "x": 0,
       "y": 0,

@@ -6,7 +6,7 @@ import { useConfirm } from '../components/ui/ConfirmDialog';
 import AgentTimeline from '../components/interior/AgentTimeline';
 import { uploadToB2 } from '../services/b2StorageService';
 import { commitInlineTemplate } from '../services/interiorTemplateService';
-import { runAgent, type AgentStep } from '../services/interiorAgentService';
+import { runAgent, resumeAgent, listAgentRuns, getAgentRun, type AgentStep } from '../services/interiorAgentService';
 import { generateObjFromCabinetModel, triggerDownload, downloadRemoteImage, createAiImagePackage, downloadDataUrl } from '../utils/cabinetExport';
 import {
     createInteriorProject,
@@ -113,6 +113,10 @@ const InteriorDesignPage: React.FC = () => {
     const [droppedTemplates, setDroppedTemplates] = useState<Array<{ id: string; category: string; reason: string }>>([]);
     const [agentSteps, setAgentSteps] = useState<AgentStep[]>([]);
     const [agentRunning, setAgentRunning] = useState(false);
+    const [agentPaused, setAgentPaused] = useState<{ runId: string; reason: string } | null>(null);
+    const [delegateFlash, setDelegateFlash] = useState<boolean>(() => {
+        try { return localStorage.getItem('interior_delegate_flash') === 'true'; } catch { return false; }
+    });
     const agentAbortRef = useRef<AbortController | null>(null);
     const isAdmin = user?.role === 'admin';
     const [sidebarCollapsed, setSidebarCollapsed] = useState(() => {
@@ -181,6 +185,62 @@ const InteriorDesignPage: React.FC = () => {
         window.addEventListener('keydown', onKey);
         return () => window.removeEventListener('keydown', onKey);
     }, [exportDialogOpen]);
+
+    // Reset all per-project agent UI state when the user switches projects.
+    // Otherwise the previous project's timeline + resume banner leak into the
+    // newly opened project, even after F5.
+    useEffect(() => {
+        // Abort any in-flight stream for the previous project.
+        agentAbortRef.current?.abort();
+        agentAbortRef.current = null;
+        setAgentSteps([]);
+        setAgentRunning(false);
+        setAgentPaused(null);
+    }, [project?._id]);
+
+    // Restore any paused / errored agent run for this project. Backend keeps
+    // full conversation state in InteriorAgentLog so an F5 refresh (or coming
+    // back days later) replays the timeline AND surfaces the resume banner.
+    // Both 'paused' (maxSteps, rate-limit exhaustion, client navigation away)
+    // and 'error' (JSON parse fail, upstream crash) are restorable — the
+    // resume endpoint accepts both.
+    useEffect(() => {
+        if (!token || !project?._id) return;
+        let cancelled = false;
+        (async () => {
+            try {
+                const runs = await listAgentRuns(token, project._id);
+                if (cancelled) return;
+                const resumable = runs.find((r) => r.status === 'paused' || r.status === 'error');
+                if (!resumable) return;
+
+                // Pull full run detail so the previously-executed steps render
+                // inside AgentTimeline. listAgentRuns omits steps[] for size.
+                const detail = await getAgentRun(token, project._id, resumable.runId);
+                if (cancelled) return;
+                const restoredSteps: AgentStep[] = (detail.steps || []).map((s) => ({
+                    index: s.index,
+                    thought: s.thought,
+                    tool: s.tool,
+                    args: (s.args as Record<string, unknown>) || {},
+                    result: s.result || null,
+                    latencyMs: s.latencyMs ?? null,
+                    model: s.model || undefined,
+                    tokens: s.tokens || null,
+                    error: s.error,
+                    status: s.result?.ok === true ? 'ok' : (s.result ? 'error' : 'pending')
+                }));
+                setAgentSteps(restoredSteps);
+                setAgentPaused({
+                    runId: resumable.runId,
+                    reason: resumable.abortReason || `${resumable.stepsCount} bước đã chạy`
+                });
+            } catch (err) {
+                console.warn('[interior:agent] failed to restore run:', err);
+            }
+        })();
+        return () => { cancelled = true; };
+    }, [token, project?._id]);
 
     // Ảnh tham chiếu user đã upload — gom unique URL trong branch hiện tại.
     const exportImages = useMemo(() => {
@@ -441,17 +501,52 @@ const InteriorDesignPage: React.FC = () => {
             // Kết hợp URL khôi phục từ rollback + URL mới upload, tôn trọng giới hạn 5 ảnh.
             const refImageUrls = [...restoredRefImageUrls, ...newUrls].slice(0, MAX_REF_IMAGES);
 
+            // When agent mode + two-step are both on, do a proposal pre-flight
+            // through the legacy /chat endpoint first. The proposal dialog asks
+            // the user to confirm changes + answer clarifying questions before
+            // the agent loop actually starts. handleApplyProposal will then
+            // route the enriched message to runAgent.
+            if (useAgentMode && effectiveTwoStep) {
+                const proposalResult = await sendInteriorMessage(token, project._id, {
+                    message: message.trim(),
+                    refImageUrls,
+                    expectedCurrentVersionIndex: project.currentVersionIndex,
+                    model: selectedModel,
+                    stage: 'proposal'
+                });
+                setUploadProgress(0);
+                refreshUser();
+                if (proposalResult.stage === 'proposal') {
+                    const structured = proposalResult.structured;
+                    setPendingProposal({
+                        message: message.trim(),
+                        refImageUrls: proposalResult.refImageUrls,
+                        structured,
+                        aiModel: proposalResult.aiModel,
+                        totalTokens: proposalResult.usage?.totalTokens ?? null
+                    });
+                    setEditedChanges(structured.proposedChanges.join('\n'));
+                    setProposalAnswers(structured.questions.map(() => ({ selected: null, note: '' })));
+                    setGeneralNote('');
+                    setRefFiles([]);
+                    setRestoredRefImageUrls([]);
+                }
+                return;
+            }
+
             if (useAgentMode) {
                 const controller = new AbortController();
                 agentAbortRef.current = controller;
                 setAgentSteps([]);
                 setAgentRunning(true);
+                setAgentPaused(null);
                 await runAgent({
                     token,
                     projectId: project._id,
                     message: message.trim(),
                     refImageUrls,
                     model: selectedModel,
+                    delegateFlash,
                     signal: controller.signal,
                     onStep: (step) => {
                         setAgentSteps((prev) => [...prev, { ...step, status: 'pending' }]);
@@ -471,7 +566,14 @@ const InteriorDesignPage: React.FC = () => {
                         setRestoredRefImageUrls([]);
                         setPreviewVersionIndex(null);
                         setMobileTab('preview');
+                        setAgentPaused(null);
                         refreshUser();
+                    },
+                    onPaused: (payload) => {
+                        setAgentPaused({ runId: payload.runId, reason: payload.reason });
+                        // Clear any prior red error banner — the yellow resume
+                        // banner already carries the failure reason.
+                        setError('');
                     },
                     onError: (err) => setError(err.message)
                 });
@@ -537,6 +639,93 @@ const InteriorDesignPage: React.FC = () => {
         setAgentRunning(false);
     };
 
+    // Warn the user when switching project / leaving the page while an agent
+    // is running. The backend marks signal-aborted runs as 'paused' (not
+    // terminal), so the run is preserved and the next page load will surface
+    // the resume banner with all prior steps — we still want explicit consent
+    // because the user may have forgotten the agent is mid-flight.
+    const handleSwitchProject = async (targetId: string) => {
+        if (targetId === project?._id) return;
+        if (agentRunning) {
+            const ok = await confirm({
+                title: t('studio.interior.agent.switchTitle') || 'Tiến trình AI đang chạy',
+                message: t('studio.interior.agent.switchMessage') ||
+                    'Chuyển sang dự án khác sẽ tạm dừng tiến trình hiện tại. Tiến trình sẽ được lưu lại và có thể tiếp tục sau. Tiếp tục?',
+                variant: 'warning'
+            });
+            if (!ok) return;
+        }
+        navigate(`/studio/interior-design/${targetId}`);
+        setMobileTab('preview');
+    };
+
+    // Browser-level warning: full reload / close tab while running. We can only
+    // raise the native confirm dialog (text is locked by the browser) but the
+    // signal abort still fires through req.on('close') on the server so state
+    // is persisted regardless of the user's choice.
+    useEffect(() => {
+        if (!agentRunning) return;
+        const handler = (event: BeforeUnloadEvent) => {
+            event.preventDefault();
+            event.returnValue = '';
+            return '';
+        };
+        window.addEventListener('beforeunload', handler);
+        return () => window.removeEventListener('beforeunload', handler);
+    }, [agentRunning]);
+
+    const handleResumeAgent = async () => {
+        if (!token || !project || !agentPaused) return;
+        const controller = new AbortController();
+        agentAbortRef.current = controller;
+        const runId = agentPaused.runId;
+        setAgentPaused(null);
+        setAgentRunning(true);
+        try {
+            await resumeAgent({
+                token,
+                projectId: project._id,
+                runId,
+                signal: controller.signal,
+                onStep: (step) => {
+                    setAgentSteps((prev) => {
+                        if (prev.some((s) => s.index === step.index)) return prev;
+                        return [...prev, { ...step, status: 'pending' }];
+                    });
+                },
+                onResult: (index, result, latencyMs) => {
+                    setAgentSteps((prev) => prev.map((step) => (
+                        step.index === index
+                            ? { ...step, result, latencyMs, status: result.ok ? 'ok' : 'error' }
+                            : step
+                    )));
+                },
+                onDone: ({ project: updatedProject }) => {
+                    setProject(updatedProject);
+                    setProjects((prev) => [updatedProject, ...prev.filter((item) => item._id !== updatedProject._id)]);
+                    setMobileTab('preview');
+                    setAgentPaused(null);
+                    refreshUser();
+                },
+                onPaused: (payload) => {
+                    setAgentPaused({ runId: payload.runId, reason: payload.reason });
+                    setError('');
+                },
+                onError: (err) => setError(err.message)
+            });
+        } finally {
+            setAgentRunning(false);
+        }
+    };
+
+    const handleToggleDelegateFlash = () => {
+        setDelegateFlash((prev) => {
+            const next = !prev;
+            try { localStorage.setItem('interior_delegate_flash', String(next)); } catch { /* ignore */ }
+            return next;
+        });
+    };
+
     const buildEnrichedProposalContext = (): string => {
         if (!pendingProposal) return '';
         const { structured } = pendingProposal;
@@ -572,13 +761,78 @@ const InteriorDesignPage: React.FC = () => {
         setBusy(true);
         setError('');
         try {
+            // Build the enriched prompt that combines the user's original
+            // message with their confirmed/edited proposal context (observation,
+            // proposed changes after edits, Q&A answers, extra notes). This is
+            // the same text the legacy /chat apply stage receives — we just
+            // route it through whichever flow is active.
+            const enrichedContext = buildEnrichedProposalContext();
+            const enrichedMessage = enrichedContext
+                ? `${pendingProposal.message}\n\n[CONTEXT TỪ ĐỀ XUẤT]\n${enrichedContext}`
+                : pendingProposal.message;
+
+            if (useAgentMode) {
+                // Agent flow: kick off the multi-step harness with the enriched
+                // message. The proposal dialog is cleared so the chat returns
+                // to the regular pending-state UI while the agent timeline runs.
+                const controller = new AbortController();
+                agentAbortRef.current = controller;
+                setAgentSteps([]);
+                setAgentRunning(true);
+                setAgentPaused(null);
+                setPendingProposal(null);
+                setProposalAnswers([]);
+                setEditedChanges('');
+                setGeneralNote('');
+                try {
+                    await runAgent({
+                        token,
+                        projectId: project._id,
+                        message: enrichedMessage,
+                        refImageUrls: pendingProposal.refImageUrls,
+                        model: selectedModel,
+                        delegateFlash,
+                        signal: controller.signal,
+                        onStep: (step) => setAgentSteps((prev) => [...prev, { ...step, status: 'pending' }]),
+                        onResult: (index, result, latencyMs) => {
+                            setAgentSteps((prev) => prev.map((step) => (
+                                step.index === index
+                                    ? { ...step, result, latencyMs, status: result.ok ? 'ok' : 'error' }
+                                    : step
+                            )));
+                        },
+                        onDone: ({ project: updatedProject }) => {
+                            setProject(updatedProject);
+                            setProjects((prev) => [updatedProject, ...prev.filter((item) => item._id !== updatedProject._id)]);
+                            setMessage('');
+                            setRefFiles([]);
+                            setRestoredRefImageUrls([]);
+                            setPreviewVersionIndex(null);
+                            setMobileTab('preview');
+                            setAgentPaused(null);
+                            refreshUser();
+                        },
+                        onPaused: (payload) => {
+                            setAgentPaused({ runId: payload.runId, reason: payload.reason });
+                            setError('');
+                        },
+                        onError: (err) => setError(err.message)
+                    });
+                } finally {
+                    setAgentRunning(false);
+                    agentAbortRef.current = null;
+                }
+                return;
+            }
+
+            // Legacy /chat apply path (when agent mode is off).
             const result = await sendInteriorMessage(token, project._id, {
                 message: pendingProposal.message,
                 refImageUrls: pendingProposal.refImageUrls,
                 expectedCurrentVersionIndex: project.currentVersionIndex,
                 model: selectedModel,
                 stage: 'apply',
-                proposalText: buildEnrichedProposalContext()
+                proposalText: enrichedContext
             });
             refreshUser();
             if (result.stage !== 'apply') {
@@ -854,10 +1108,7 @@ const InteriorDesignPage: React.FC = () => {
                                 className={`mb-2 rounded-lg border p-3 ${item._id === project?._id ? 'border-[var(--accent-primary)] bg-[var(--accent-primary)]/10' : 'border-[var(--border-primary)] bg-[var(--bg-secondary)]'}`}
                             >
                                 <button
-                                    onClick={() => {
-                                        navigate(`/studio/interior-design/${item._id}`);
-                                        setMobileTab('preview');
-                                    }}
+                                    onClick={() => handleSwitchProject(item._id)}
                                     className="block w-full text-left"
                                 >
                                     <div className="font-semibold text-[var(--text-primary)]">{item.name}</div>
@@ -1052,6 +1303,38 @@ const InteriorDesignPage: React.FC = () => {
                     </div>
 
                     <AgentTimeline steps={agentSteps} isRunning={agentRunning} onStop={handleStopAgent} />
+
+                    {agentPaused && !agentRunning && (
+                        <div className="border-t border-amber-500/50 bg-amber-500/10 px-4 py-3 text-sm">
+                            <div className="flex items-center gap-2">
+                                <span className="inline-flex h-2 w-2 shrink-0 rounded-full bg-amber-500" />
+                                <span className="font-semibold text-[var(--text-primary)]">
+                                    {t('studio.interior.agent.pausedTitle') || 'Phiên agent đã tạm dừng'}
+                                </span>
+                            </div>
+                            {agentPaused.reason && (
+                                <p className="mt-1 break-words text-xs text-[var(--text-secondary)]">
+                                    {agentPaused.reason}
+                                </p>
+                            )}
+                            <div className="mt-3 flex flex-wrap gap-2">
+                                <button
+                                    type="button"
+                                    onClick={handleResumeAgent}
+                                    className="rounded-md bg-amber-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-amber-500"
+                                >
+                                    {t('studio.interior.agent.resume') || 'Tiếp tục'}
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setAgentPaused(null)}
+                                    className="rounded-md border border-[var(--border-primary)] px-3 py-1.5 text-xs text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]"
+                                >
+                                    {t('common.dismiss') || 'Bỏ qua'}
+                                </button>
+                            </div>
+                        </div>
+                    )}
 
                     {pendingProposal && (
                         <div className="border-t border-[var(--border-primary)] bg-[var(--accent-primary)]/10 px-4 py-3 text-sm">
@@ -1551,9 +1834,13 @@ const InteriorDesignPage: React.FC = () => {
                             )}
                             {!adminLogsLoading && adminLogs.map((log) => {
                                 const expanded = expandedLogId === log._id;
-                                const statusColor = log.status === 'ok'
+                                const isAgent = log.kind === 'agent';
+                                const statusOk = isAgent ? log.status === 'committed' : log.status === 'ok';
+                                const statusColor = statusOk
                                     ? 'border-green-500/60 bg-green-500/10 text-green-300'
-                                    : 'border-red-500/60 bg-red-500/10 text-red-300';
+                                    : log.status === 'paused' || log.status === 'running'
+                                        ? 'border-amber-500/60 bg-amber-500/10 text-amber-300'
+                                        : 'border-red-500/60 bg-red-500/10 text-red-300';
                                 return (
                                     <div key={log._id} className="mb-2 rounded-lg border border-[var(--border-primary)] bg-[var(--bg-secondary)]/40">
                                         <button
@@ -1562,17 +1849,31 @@ const InteriorDesignPage: React.FC = () => {
                                             className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left hover:bg-[var(--bg-secondary)]/70"
                                         >
                                             <div className="flex flex-wrap items-center gap-2 text-xs">
+                                                <span className={`rounded-md border px-2 py-0.5 font-bold ${isAgent ? 'border-purple-500/60 bg-purple-500/10 text-purple-300' : 'border-blue-500/60 bg-blue-500/10 text-blue-300'}`}>
+                                                    {isAgent ? 'AGENT' : 'CHAT'}
+                                                </span>
                                                 <span className={`rounded-md border px-2 py-0.5 font-bold ${statusColor}`}>{log.status}</span>
-                                                <span className="rounded-md bg-[var(--bg-card)] px-2 py-0.5 text-[var(--text-secondary)]">{log.stage}</span>
-                                                <span className="rounded-md bg-[var(--bg-card)] px-2 py-0.5 text-[var(--text-secondary)]">{log.model || '?'}</span>
-                                                {log.versionIndex !== null && (
+                                                {!isAgent && log.stage && (
+                                                    <span className="rounded-md bg-[var(--bg-card)] px-2 py-0.5 text-[var(--text-secondary)]">{log.stage}</span>
+                                                )}
+                                                <span className="rounded-md bg-[var(--bg-card)] px-2 py-0.5 text-[var(--text-secondary)]">{(isAgent ? log.selectedModel : log.model) || '?'}</span>
+                                                {isAgent && log.delegateFlash && (
+                                                    <span className="rounded-md bg-[var(--bg-card)] px-2 py-0.5 text-[var(--text-secondary)]" title="Delegate Flash on">+Flash</span>
+                                                )}
+                                                {!isAgent && log.versionIndex != null && (
                                                     <span className="rounded-md bg-[var(--bg-card)] px-2 py-0.5 text-[var(--text-secondary)]">V{log.versionIndex}</span>
                                                 )}
-                                                {log.latencyMs !== null && (
+                                                {isAgent && log.stepsCount != null && (
+                                                    <span className="rounded-md bg-[var(--bg-card)] px-2 py-0.5 text-[var(--text-secondary)]">{log.stepsCount} bước</span>
+                                                )}
+                                                {!isAgent && log.latencyMs != null && (
                                                     <span className="text-[var(--text-tertiary)]">{log.latencyMs}ms</span>
                                                 )}
-                                                {log.usage?.totalTokens != null && (
+                                                {!isAgent && log.usage?.totalTokens != null && (
                                                     <span className="text-[var(--text-tertiary)]">{log.usage.totalTokens} tok</span>
+                                                )}
+                                                {isAgent && log.totalTokens != null && log.totalTokens > 0 && (
+                                                    <span className="text-[var(--text-tertiary)]">{log.totalTokens} tok</span>
                                                 )}
                                                 <span className="text-[var(--text-tertiary)]">{formatDateTime(log.createdAt)}</span>
                                             </div>
@@ -1580,20 +1881,84 @@ const InteriorDesignPage: React.FC = () => {
                                         </button>
                                         {expanded && (
                                             <div className="border-t border-[var(--border-primary)] px-4 py-3 text-xs">
-                                                {log.errorMessage && (
+                                                {!isAgent && log.errorMessage && (
                                                     <div className="mb-3">
                                                         <div className="mb-1 font-bold uppercase tracking-wide text-red-400">{t('studio.interior.adminLog.errorLabel')}</div>
                                                         <pre className="whitespace-pre-wrap rounded border border-red-500/40 bg-red-500/5 p-2 text-red-300">{log.errorMessage}</pre>
                                                     </div>
                                                 )}
-                                                <div className="mb-3">
-                                                    <div className="mb-1 font-bold uppercase tracking-wide text-[var(--text-tertiary)]">{t('studio.interior.adminLog.promptLabel')}</div>
-                                                    <pre className="max-h-64 overflow-auto whitespace-pre-wrap rounded border border-[var(--border-primary)] bg-[var(--bg-card)] p-2 font-mono text-[var(--text-secondary)]">{log.prompt}</pre>
-                                                </div>
-                                                <div>
-                                                    <div className="mb-1 font-bold uppercase tracking-wide text-[var(--text-tertiary)]">{t('studio.interior.adminLog.responseLabel')}</div>
-                                                    <pre className="max-h-96 overflow-auto whitespace-pre-wrap rounded border border-[var(--border-primary)] bg-[var(--bg-card)] p-2 font-mono text-[var(--text-secondary)]">{log.rawResponse || '(empty)'}</pre>
-                                                </div>
+                                                {isAgent && log.abortReason && (
+                                                    <div className="mb-3">
+                                                        <div className="mb-1 font-bold uppercase tracking-wide text-amber-400">Lý do dừng</div>
+                                                        <pre className="whitespace-pre-wrap rounded border border-amber-500/40 bg-amber-500/5 p-2 text-amber-200">{log.abortReason}</pre>
+                                                    </div>
+                                                )}
+                                                {!isAgent && (
+                                                    <>
+                                                        <div className="mb-3">
+                                                            <div className="mb-1 font-bold uppercase tracking-wide text-[var(--text-tertiary)]">{t('studio.interior.adminLog.promptLabel')}</div>
+                                                            <pre className="max-h-64 overflow-auto whitespace-pre-wrap rounded border border-[var(--border-primary)] bg-[var(--bg-card)] p-2 font-mono text-[var(--text-secondary)]">{log.prompt}</pre>
+                                                        </div>
+                                                        <div>
+                                                            <div className="mb-1 font-bold uppercase tracking-wide text-[var(--text-tertiary)]">{t('studio.interior.adminLog.responseLabel')}</div>
+                                                            <pre className="max-h-96 overflow-auto whitespace-pre-wrap rounded border border-[var(--border-primary)] bg-[var(--bg-card)] p-2 font-mono text-[var(--text-secondary)]">{log.rawResponse || '(empty)'}</pre>
+                                                        </div>
+                                                    </>
+                                                )}
+                                                {isAgent && (
+                                                    <>
+                                                        {log.userPrompt && (
+                                                            <div className="mb-3">
+                                                                <div className="mb-1 font-bold uppercase tracking-wide text-[var(--text-tertiary)]">Prompt người dùng</div>
+                                                                <pre className="max-h-32 overflow-auto whitespace-pre-wrap rounded border border-[var(--border-primary)] bg-[var(--bg-card)] p-2 font-mono text-[var(--text-secondary)]">{log.userPrompt}</pre>
+                                                            </div>
+                                                        )}
+                                                        {log.finalReply && (
+                                                            <div className="mb-3">
+                                                                <div className="mb-1 font-bold uppercase tracking-wide text-[var(--text-tertiary)]">Reply commit</div>
+                                                                <pre className="max-h-32 overflow-auto whitespace-pre-wrap rounded border border-[var(--border-primary)] bg-[var(--bg-card)] p-2 text-[var(--text-secondary)]">{log.finalReply}</pre>
+                                                            </div>
+                                                        )}
+                                                        <div className="mb-1 font-bold uppercase tracking-wide text-[var(--text-tertiary)]">
+                                                            Các bước ({log.steps?.length ?? 0})
+                                                        </div>
+                                                        <div className="max-h-96 space-y-1 overflow-auto rounded border border-[var(--border-primary)] bg-[var(--bg-card)] p-2">
+                                                            {(log.steps || []).map((step) => {
+                                                                const stepStatusColor = step.result?.ok === false
+                                                                    ? 'border-red-500/40 bg-red-500/5'
+                                                                    : step.result?.ok === true
+                                                                        ? 'border-emerald-500/40 bg-emerald-500/5'
+                                                                        : 'border-yellow-500/40 bg-yellow-500/5';
+                                                                return (
+                                                                    <details key={step.index} className={`rounded border ${stepStatusColor} px-2 py-1`}>
+                                                                        <summary className="cursor-pointer">
+                                                                            <span className="font-mono text-[var(--text-primary)]">#{step.index} {step.tool}</span>
+                                                                            {step.model && (
+                                                                                <span className="ml-2 text-[10px] text-[var(--text-tertiary)]">{step.model}</span>
+                                                                            )}
+                                                                            {step.tokens?.total != null && step.tokens.total > 0 && (
+                                                                                <span className="ml-2 text-[10px] text-[var(--text-tertiary)]">{step.tokens.total} tok</span>
+                                                                            )}
+                                                                            {step.latencyMs != null && (
+                                                                                <span className="ml-2 text-[10px] text-[var(--text-tertiary)]">{step.latencyMs}ms</span>
+                                                                            )}
+                                                                            <p className="mt-0.5 italic text-[var(--text-secondary)]">{step.thought}</p>
+                                                                        </summary>
+                                                                        <div className="mt-2 grid gap-1 text-[11px]">
+                                                                            <pre className="overflow-auto rounded bg-[var(--bg-secondary)] p-2 text-[var(--text-secondary)]">{JSON.stringify(step.args, null, 2)}</pre>
+                                                                            {step.result && (
+                                                                                <pre className="overflow-auto rounded bg-[var(--bg-secondary)] p-2 text-[var(--text-secondary)]">{JSON.stringify(step.result, null, 2)}</pre>
+                                                                            )}
+                                                                            {step.error && (
+                                                                                <pre className="overflow-auto rounded border border-red-500/40 bg-red-500/5 p-2 text-red-300">{step.error}</pre>
+                                                                            )}
+                                                                        </div>
+                                                                    </details>
+                                                                );
+                                                            })}
+                                                        </div>
+                                                    </>
+                                                )}
                                             </div>
                                         )}
                                     </div>
@@ -1637,6 +2002,22 @@ const InteriorDesignPage: React.FC = () => {
                                 <span className="mt-1 block text-xs text-[var(--text-tertiary)]">{t('studio.interior.twoStep.desc')}</span>
                             </span>
                         </label>
+
+                        {useAgentMode && (
+                            <label className="mt-4 flex cursor-pointer items-start gap-3">
+                                <input
+                                    type="checkbox"
+                                    checked={delegateFlash}
+                                    onChange={handleToggleDelegateFlash}
+                                    disabled={busy || agentRunning}
+                                    className="mt-1 h-4 w-4 cursor-pointer accent-[var(--accent-primary)] disabled:cursor-not-allowed"
+                                />
+                                <span className="flex-1">
+                                    <span className="font-semibold text-[var(--text-primary)]">{t('studio.interior.delegateFlash.label') || 'Phân chia task nhỏ cho Flash'}</span>
+                                    <span className="mt-1 block text-xs text-[var(--text-tertiary)]">{t('studio.interior.delegateFlash.desc') || 'Khi chạy Pro: các bước thao tác cơ học (add/update/remove module) sẽ chuyển sang Flash để tiết kiệm token. Bước lập kế hoạch, đọc skill, commit vẫn dùng Pro.'}</span>
+                                </span>
+                            </label>
+                        )}
                         <p className="mt-4 rounded-lg border border-[var(--border-primary)] bg-[var(--bg-secondary)] px-3 py-2 text-xs text-[var(--text-secondary)]">
                             {twoStepConfirm ? t('studio.interior.creditNote2Step') : t('studio.interior.creditNote')}
                         </p>

@@ -173,7 +173,15 @@ export default {
         steps: "steps",
         committed: "Complete - saved a new version",
         aborted: "AI stopped: {reason}",
-        maxSteps: "Exceeded the 30-step limit. Please split the request into smaller parts."
+        maxSteps: "Exceeded the 30-step limit. Please split the request into smaller parts.",
+        pausedTitle: "Agent session paused",
+        resume: "Resume",
+        switchTitle: "AI agent is running",
+        switchMessage: "Switching project will pause the current agent run. Progress is saved and can be resumed later. Continue?"
+      },
+      delegateFlash: {
+        label: "Delegate small tasks to Flash",
+        desc: "When running Pro: mechanical mutation steps (add/update/remove module) switch to Flash to save tokens. Planning, skill-reading, and commit stay on Pro."
       },
       upload: {
         entry: "Analyze room photo",

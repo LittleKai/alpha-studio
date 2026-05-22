@@ -166,14 +166,22 @@ export default {
         desc: "AI phân tích ảnh và đề xuất trước, bạn xem rồi mới bấm áp dụng. Tốn thêm 1 credit/lần."
       },
       agent: {
-        title: "Tien trinh AI agent",
-        running: "AI dang thiet ke...",
-        creditNote: "Agent AI ton 2 credit khi luu phien ban moi.",
-        stop: "Dung",
-        steps: "buoc",
-        committed: "Hoan thanh - da luu phien ban moi",
-        aborted: "AI da dung: {reason}",
-        maxSteps: "Da vuot gioi han 30 buoc. Hay chia nho yeu cau."
+        title: "Tiến trình AI agent",
+        running: "AI đang thiết kế...",
+        creditNote: "Agent AI tốn 2 credit khi lưu phiên bản mới.",
+        stop: "Dừng",
+        steps: "bước",
+        committed: "Hoàn thành — đã lưu phiên bản mới",
+        aborted: "AI đã dừng: {reason}",
+        maxSteps: "Đã vượt giới hạn 30 bước. Hãy chia nhỏ yêu cầu.",
+        pausedTitle: "Phiên agent đã tạm dừng",
+        resume: "Tiếp tục",
+        switchTitle: "Tiến trình AI đang chạy",
+        switchMessage: "Chuyển sang dự án khác sẽ tạm dừng tiến trình hiện tại. Tiến trình sẽ được lưu lại và có thể tiếp tục sau. Tiếp tục?"
+      },
+      delegateFlash: {
+        label: "Phân chia task nhỏ cho Flash",
+        desc: "Khi chạy Pro: các bước thao tác cơ học (add/update/remove module) sẽ chuyển sang Flash để tiết kiệm token. Bước lập kế hoạch, đọc skill, commit vẫn dùng Pro."
       },
       upload: {
         entry: "Phân tích ảnh phòng",

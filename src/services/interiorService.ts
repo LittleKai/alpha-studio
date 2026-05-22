@@ -172,22 +172,48 @@ export function rollbackInteriorProject(token: string, projectId: string, target
     });
 }
 
+export interface InteriorAgentStepLog {
+    index: number;
+    thought: string;
+    tool: string;
+    args: Record<string, unknown>;
+    result?: { ok: boolean; data?: unknown; error?: string } | null;
+    latencyMs?: number | null;
+    model?: string;
+    tokens?: { prompt: number; completion: number; total: number } | null;
+    error?: string;
+}
+
 export interface InteriorAiLog {
     _id: string;
+    kind?: 'chat' | 'agent';
     userId: { _id: string; name?: string; email?: string } | string | null;
     projectId: string;
-    stage: 'proposal' | 'apply';
-    model: string;
-    versionIndex: number | null;
-    prompt: string;
-    refImageUrls: string[];
-    rawResponse: string;
-    parsedReply: string;
-    latencyMs: number | null;
-    usage: InteriorUsage | null;
-    status: 'ok' | 'parse-failed' | 'validation-failed' | 'upstream-error';
-    errorMessage: string;
     createdAt: string;
+    // chat-kind fields
+    stage?: 'proposal' | 'apply';
+    model?: string;
+    versionIndex?: number | null;
+    prompt?: string;
+    refImageUrls?: string[];
+    rawResponse?: string;
+    parsedReply?: string;
+    latencyMs?: number | null;
+    usage?: InteriorUsage | null;
+    status?: 'ok' | 'parse-failed' | 'validation-failed' | 'upstream-error' | 'committed' | 'paused' | 'aborted' | 'error' | 'maxSteps' | 'running';
+    errorMessage?: string;
+    // agent-kind fields
+    stepsCount?: number;
+    totalTokens?: number;
+    userPrompt?: string;
+    selectedModel?: string;
+    delegateFlash?: boolean;
+    steps?: InteriorAgentStepLog[];
+    finalReply?: string;
+    abortReason?: string;
+    startedAt?: string;
+    finishedAt?: string | null;
+    lastActiveAt?: string;
 }
 
 export function listInteriorAiLogs(token: string, params: {

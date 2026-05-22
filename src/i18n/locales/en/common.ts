@@ -9,6 +9,8 @@ export default {
       reportConfirm: "Report this comment as inappropriate?",
     },
     cancel: "Cancel",
+    dismiss: "Dismiss",
+    sending: "Sending...",
     saving: "Saving...",
     update: "Update",
     create: "Create",
