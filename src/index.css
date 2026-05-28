@@ -184,3 +184,8 @@ input[type="checkbox"]:checked::after {
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
+
+/* Light theme checkbox checkmark */
+html[data-theme="light"] input[type="checkbox"]:checked::after {
+  border-color: #000000;
+}

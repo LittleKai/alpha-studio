@@ -93,7 +93,7 @@
         --accent-primary-hover: #0369a1;
         --accent-shadow: rgba(2, 132, 199, 0.22);
 
-        --text-on-accent: #0f172a;
+        --text-on-accent: #ffffff;
 
         --bg-error: rgba(239, 68, 68, 0.1);
         --border-error: #ef4444;
@@ -520,6 +520,11 @@
 
       html[data-theme="light"] ::-webkit-scrollbar-thumb {
         background: var(--bg-tertiary);
+      }
+
+      /* Light theme checkbox checkmark */
+      html[data-theme="light"] input[type="checkbox"]:checked::after {
+        border-color: #000000;
       }
     </style>
   </head>

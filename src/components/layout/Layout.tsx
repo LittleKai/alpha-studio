@@ -132,7 +132,7 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                                         </svg>
                                     </button>
                                     <div className="absolute right-0 mt-2 w-56 py-2 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-                                        <div className="px-4 py-3 border-b border-[var(--border-primary)]">
+                                        <div className="px-4 py-3">
                                             <div className="flex items-center gap-3">
                                                 {user?.avatar ? (
                                                     <img src={user.avatar} alt={user.name} className="w-10 h-10 rounded-full object-cover" />
@@ -176,7 +176,7 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                                                 </Link>
                                             )}
                                         </div>
-                                        <div className="border-t border-[var(--border-primary)] pt-1">
+                                        <div className="pt-1">
                                             <button onClick={handleLogout} className="w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-red-500/10 transition-colors flex items-center gap-2">
                                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clipRule="evenodd" /></svg>
                                                 {t('login.logout') || 'Sign Out'}

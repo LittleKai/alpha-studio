@@ -111,8 +111,8 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess, onClose }) => {
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in"
       onClick={handleOverlayClick}
     >
-      <div className="relative w-full max-w-md animate-scale-in">
-        <div className="bg-[var(--bg-card)] backdrop-blur-xl rounded-2xl shadow-2xl border border-[var(--border-primary)] p-8 relative">
+      <div role="dialog" className="relative w-full max-w-md animate-scale-in">
+        <div className="bg-[var(--dialog-surface)] rounded-2xl shadow-2xl border border-[var(--border-primary)] p-8 relative">
           {/* Close button */}
           <button
             onClick={onClose}
