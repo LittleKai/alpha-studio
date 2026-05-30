@@ -51,7 +51,7 @@ const CrmPage: React.FC = () => {
         <div className="w-full h-full min-h-[calc(100vh-80px)] flex flex-col bg-[var(--bg-primary)]">
             <button
                 onClick={() => navigate('/studio')}
-                className="fixed top-20 left-4 z-40 hidden md:inline-flex items-center gap-2 px-4 py-2 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-full shadow-lg text-sm font-semibold text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] hover:border-[var(--accent-primary)] hover:scale-105 transition-all"
+                className="fixed top-[11px] left-4 md:left-[190px] z-[60] hidden md:inline-flex items-center gap-2 px-4 py-1.5 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-full shadow-lg text-xs font-bold text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] hover:border-[var(--accent-primary)] hover:scale-105 transition-all"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />

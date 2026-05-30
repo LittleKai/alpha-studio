@@ -6,6 +6,7 @@ interface ToolCard {
   key: 'generate' | 'edit' | 'vocab' | 'interior' | 'crm';
   to: string;
   icon: ReactNode;
+  bgGradient: string;
 }
 
 const TOOLS: ToolCard[] = [
@@ -13,48 +14,53 @@ const TOOLS: ToolCard[] = [
     key: 'generate',
     to: '/studio/generate',
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8" className="h-9 w-9">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
         <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4-4 3 3 5-6 4 5M4 6h16v12H4z" />
       </svg>
     ),
+    bgGradient: 'from-cyan-500 to-blue-600',
   },
   {
     key: 'edit',
     to: '/studio/edit',
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8" className="h-9 w-9">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
         <path strokeLinecap="round" strokeLinejoin="round" d="M11 5H5a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-6M17.5 3.5a2.121 2.121 0 113 3L12 15l-4 1 1-4 8.5-8.5z" />
       </svg>
     ),
+    bgGradient: 'from-purple-500 to-indigo-600',
   },
   {
     key: 'crm',
     to: '/studio/crm',
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8" className="h-9 w-9">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
         <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
       </svg>
     ),
+    bgGradient: 'from-emerald-400 to-teal-600',
   },
   {
     key: 'interior',
     to: '/studio/interior-design',
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8" className="h-9 w-9">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
         <path strokeLinecap="round" strokeLinejoin="round" d="M4 20V8l8-4 8 4v12M8 20V10h8v10" />
         <path strokeLinecap="round" strokeLinejoin="round" d="M10 14h4M10 17h4M8 10h8" />
       </svg>
     ),
+    bgGradient: 'from-amber-500 to-orange-600',
   },
   {
     key: 'vocab',
     to: '/studio/vocab',
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8" className="h-9 w-9">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
         <path strokeLinecap="round" strokeLinejoin="round" d="M4 5a2 2 0 012-2h9l5 5v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5z" />
         <path strokeLinecap="round" strokeLinejoin="round" d="M14 3v5h5M8 13h8M8 17h5" />
       </svg>
     ),
+    bgGradient: 'from-rose-500 to-pink-600',
   },
 ];
 
@@ -81,7 +87,7 @@ export default function StudioHub() {
               onClick={() => navigate(tool.to)}
               className="group glass-card text-left p-6 rounded-2xl border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-all hover:-translate-y-1 hover:shadow-xl flex flex-col h-full"
             >
-              <div className="text-[var(--accent-primary)] mb-4">
+              <div className={`p-3 rounded-xl mb-4 w-12 h-12 flex items-center justify-center bg-gradient-to-br ${tool.bgGradient} text-white shadow-md group-hover:scale-110 transition-transform`}>
                 {tool.icon}
               </div>
               <h2 className="text-xl font-bold mb-2 text-[var(--text-primary)]">
