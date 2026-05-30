@@ -129,6 +129,10 @@ export default {
           title: "Chỉnh sửa ảnh",
           desc: "Biến đổi, ghép, vẽ mặt nạ và remix ảnh bằng Gemini"
         },
+        crm: {
+          title: "Alpha CRM",
+          desc: "Hệ thống quản lý khách hàng và chiến dịch tiếp thị Zalo"
+        },
         vocab: {
           title: "VocabFlip",
           desc: "Học từ vựng bằng flashcard tích hợp"

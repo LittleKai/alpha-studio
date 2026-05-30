@@ -129,6 +129,10 @@ export default {
           title: "Edit Image",
           desc: "Transform, compose, mask and remix images with Gemini"
         },
+        crm: {
+          title: "Alpha CRM",
+          desc: "Customer relationship and Zalo marketing campaign management system"
+        },
         vocab: {
           title: "VocabFlip",
           desc: "Learn vocabulary with the integrated flashcard app"
