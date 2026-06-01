@@ -16,7 +16,8 @@ export default {
       webhooks: "Webhook Logs",
       community: "Cộng đồng",
       studio: "Cài đặt Studio",
-      interiorTemplates: "Mẫu Tủ AI"
+      interiorTemplates: "Mẫu Tủ AI",
+      crm: "CRM Ops"
     },
     interiorTemplates: {
       statusSeed: "Seed",

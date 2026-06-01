@@ -16,7 +16,8 @@ export default {
       webhooks: "Webhook Logs",
       community: "Community",
       studio: "Studio Settings",
-      interiorTemplates: "AI Cabinet Templates"
+      interiorTemplates: "AI Cabinet Templates",
+      crm: "CRM Ops"
     },
     interiorTemplates: {
       statusSeed: "Seed",

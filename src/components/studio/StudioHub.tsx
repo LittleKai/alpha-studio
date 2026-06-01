@@ -82,10 +82,10 @@ export default function StudioHub() {
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {TOOLS.map(tool => (
-            <button
+            <div
               key={tool.key}
               onClick={() => navigate(tool.to)}
-              className="group glass-card text-left p-6 rounded-2xl border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-all hover:-translate-y-1 hover:shadow-xl flex flex-col h-full"
+              className="group glass-card text-left p-6 rounded-2xl border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-all hover:-translate-y-1 hover:shadow-xl flex flex-col h-full cursor-pointer"
             >
               <div className={`p-3 rounded-xl mb-4 w-12 h-12 flex items-center justify-center bg-gradient-to-br ${tool.bgGradient} text-white shadow-md group-hover:scale-110 transition-transform`}>
                 {tool.icon}
@@ -96,13 +96,33 @@ export default function StudioHub() {
               <p className="text-sm text-[var(--text-secondary)] flex-1">
                 {t(`studio.hub.cards.${tool.key}.desc`)}
               </p>
-              <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-[var(--accent-primary)] group-hover:gap-2 transition-all">
-                {t('studio.hub.open')}
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </span>
-            </button>
+              {tool.key === 'crm' ? (
+                <div className="mt-5 flex items-center justify-between w-full" onClick={e => e.stopPropagation()}>
+                  <button
+                    onClick={() => navigate('/studio/crm')}
+                    className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--accent-primary)] hover:underline"
+                  >
+                    {t('studio.hub.open')}
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => navigate('/studio/crm/subscription')}
+                    className="text-xs text-[var(--text-secondary)] hover:text-[var(--accent-primary)] font-bold border border-[var(--border-primary)] rounded-xl px-3 py-1.5 hover:border-[var(--accent-primary)] transition-all bg-[var(--bg-secondary)]"
+                  >
+                    Quản lý gói
+                  </button>
+                </div>
+              ) : (
+                <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-[var(--accent-primary)] group-hover:gap-2 transition-all">
+                  {t('studio.hub.open')}
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </span>
+              )}
+            </div>
           ))}
         </div>
       </main>

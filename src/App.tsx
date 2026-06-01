@@ -31,6 +31,7 @@ const WalletPage = lazy(() => import('./pages/WalletPage'));
 const VocabPage = lazy(() => import('./pages/VocabPage'));
 const InteriorDesignPage = lazy(() => import('./pages/InteriorDesignPage'));
 const CrmPage = lazy(() => import('./pages/CrmPage'));
+const CrmSubscriptionPage = lazy(() => import('./pages/CrmSubscriptionPage'));
 
 // Loading spinner component
 const LoadingSpinner: React.FC = () => (
@@ -261,6 +262,17 @@ const CrmPageWrapper: React.FC = () => {
     );
 };
 
+// CRM Subscription Page
+const CrmSubscriptionPageWrapper: React.FC = () => {
+    return (
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <CrmSubscriptionPage />
+            </Suspense>
+        </Layout>
+    );
+};
+
 // 404 Not Found Page
 const NotFoundPage: React.FC = () => {
     const navigate = useNavigate();
@@ -318,6 +330,14 @@ const App: React.FC = () => {
                     element={
                         <ProtectedRoute>
                             <CrmPageWrapper />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/studio/crm/subscription"
+                    element={
+                        <ProtectedRoute>
+                            <CrmSubscriptionPageWrapper />
                         </ProtectedRoute>
                     }
                 />
