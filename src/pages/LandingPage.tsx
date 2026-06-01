@@ -203,7 +203,7 @@ const LandingPage: React.FC = () => {
                     </p>
 
                     <div className="flex flex-wrap justify-center gap-5 pt-6">
-                        <button onClick={() => navigateToProtectedPage('/studio')} className="liquid-cta-hover py-4 px-12 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-black rounded-2xl shadow-xl hover:bg-[var(--accent-secondary)] transition-all duration-300">
+                        <button onClick={() => navigate('/studio')} className="liquid-cta-hover py-4 px-12 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-black rounded-2xl shadow-xl hover:bg-[var(--accent-secondary)] transition-all duration-300">
                             {t('landing.hero.exploreStudio')}
                         </button>
                         <button onClick={() => navigateToProtectedPage('/server')} className="liquid-cta-hover py-4 px-12 glass-card text-[var(--text-primary)] font-black rounded-2xl hover:border-[var(--accent-primary)] transition-all duration-300">

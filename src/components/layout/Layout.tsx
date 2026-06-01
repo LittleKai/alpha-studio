@@ -89,6 +89,9 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                         <Link to="/" className={`whitespace-nowrap transition-colors ${location.pathname === '/' ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-primary)]'}`}>
                             {t('landing.nav.academy')}
                         </Link>
+                        <Link to="/studio" className={`whitespace-nowrap transition-colors ${isStudioPage ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-primary)]'}`}>
+                            {t('landing.nav.enterStudio')}
+                        </Link>
                         <Link to="/news" className={`whitespace-nowrap transition-colors ${isNewsPage ? 'text-[var(--accent-primary)]' : 'text-[var(--text-secondary)] hover:text-[var(--accent-primary)]'}`}>
                             {t('landing.nav.news')}
                         </Link>
@@ -226,6 +229,9 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                             </Link>
                             <Link onClick={closeMobile} to="/" className={`block px-4 py-3 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors ${location.pathname === '/' ? 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]' : 'text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]'}`}>
                                 {t('landing.nav.academy')}
+                            </Link>
+                            <Link onClick={closeMobile} to="/studio" className={`block px-4 py-3 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors ${isStudioPage ? 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]' : 'text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]'}`}>
+                                {t('landing.nav.enterStudio')}
                             </Link>
                             <Link onClick={closeMobile} to="/news" className={`block px-4 py-3 rounded-lg text-sm font-bold uppercase tracking-wider transition-colors ${isNewsPage ? 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]' : 'text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]'}`}>
                                 {t('landing.nav.news')}
