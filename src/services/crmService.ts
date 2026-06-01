@@ -188,7 +188,6 @@ export const getCrmQuota = async (): Promise<CrmQuota['data']> => {
  */
 export const createCrmCheckout = async (payload: {
     productId: string;
-    productType: 'plan' | 'addon';
     paymentMethod: 'credits' | 'bank_transfer';
 }): Promise<{ order: CrmBillingOrder; qrCodeUrl?: string; bankInfo?: any }> => {
     const res = await fetch(`${API_URL}/crm/billing/checkout`, {

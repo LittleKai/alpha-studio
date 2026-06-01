@@ -19,18 +19,6 @@ const CrmPage: React.FC = () => {
     }, [token]);
 
     useEffect(() => {
-        const handleIframeLoad = () => sendAuthToken();
-
-        const iframe = iframeRef.current;
-        if (iframe) {
-            iframe.addEventListener('load', handleIframeLoad);
-            return () => {
-                iframe.removeEventListener('load', handleIframeLoad);
-            };
-        }
-    }, [sendAuthToken]);
-
-    useEffect(() => {
         sendAuthToken();
     }, [sendAuthToken]);
 
@@ -65,6 +53,7 @@ const CrmPage: React.FC = () => {
                     className="absolute inset-0 w-full h-full border-0"
                     title={t('studio.hub.cards.crm.title')}
                     allow="microphone; camera"
+                    onLoad={sendAuthToken}
                 />
             </div>
         </div>

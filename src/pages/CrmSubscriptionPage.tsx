@@ -99,7 +99,6 @@ export default function CrmSubscriptionPage() {
         try {
             const res = await createCrmCheckout({
                 productId: selectedProduct.id,
-                productType: selectedProduct.type,
                 paymentMethod: method
             });
 
