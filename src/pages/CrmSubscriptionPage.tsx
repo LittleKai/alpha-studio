@@ -159,7 +159,7 @@ export default function CrmSubscriptionPage() {
     };
 
     // Robust variables calculation to completely prevent NaN
-    const includedLimit = sub?.includedAiLimit ?? 500;
+    const includedLimit = sub?.includedAiLimit ?? 1000;
     const includedUsed = sub?.includedAiUsed ?? 0;
     const extraAi = sub?.extraAiRemaining ?? 0;
 
@@ -526,8 +526,8 @@ export default function CrmSubscriptionPage() {
                                         onClick={() => handleSelectProduct({
                                             id: 'crm_monthly',
                                             name: t('studio.hub.cards.crm.subscription.monthlyPlanName') || 'Giấy phép Alpha CRM 1 Tháng',
-                                            priceVnd: 200000,
-                                            priceCredits: 210,
+                                            priceVnd: 500000,
+                                            priceCredits: 525,
                                             type: 'plan'
                                         })}
                                         className="w-full py-3 rounded-xl font-bold bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] hover:border-[var(--accent-primary)] hover:text-[var(--accent-primary)] spring-bounce text-sm cursor-pointer"
@@ -709,14 +709,14 @@ export default function CrmSubscriptionPage() {
                                     <button
                                         onClick={() => handleSelectProduct({
                                             id: 'crm_ai_pack_100',
-                                            name: t('studio.hub.cards.crm.subscription.addonPack100Name') || 'Gói AI Top-up 100',
+                                            name: t('studio.hub.cards.crm.subscription.addonPack100Name') || 'Gói AI Top-up 200',
                                             priceVnd: 50000,
                                             priceCredits: 50,
                                             type: 'addon'
                                         })}
                                         className="w-full py-3 rounded-xl font-bold bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-cyan-500 hover:text-cyan-400 mt-8 spring-bounce text-sm cursor-pointer"
                                     >
-                                        {t('studio.hub.cards.crm.subscription.addonBtn').replace('{{amount}}', '100')}
+                                        {t('studio.hub.cards.crm.subscription.addonBtn').replace('{{amount}}', '200')}
                                     </button>
                                 </div>
 
@@ -750,14 +750,14 @@ export default function CrmSubscriptionPage() {
                                     <button
                                         onClick={() => handleSelectProduct({
                                             id: 'crm_ai_pack_500',
-                                            name: t('studio.hub.cards.crm.subscription.addonPack500Name') || 'Gói AI Top-up 500',
+                                            name: t('studio.hub.cards.crm.subscription.addonPack500Name') || 'Gói AI Top-up 1000',
                                             priceVnd: 200000,
                                             priceCredits: 200,
                                             type: 'addon'
                                         })}
                                         className="w-full py-3 rounded-xl font-bold bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-black hover:opacity-90 shadow-lg hover:shadow-cyan-500/10 mt-8 spring-bounce text-sm cursor-pointer"
                                     >
-                                        {t('studio.hub.cards.crm.subscription.addonBtn').replace('{{amount}}', '500')}
+                                        {t('studio.hub.cards.crm.subscription.addonBtn').replace('{{amount}}', '1000')}
                                     </button>
                                 </div>
 
@@ -786,14 +786,14 @@ export default function CrmSubscriptionPage() {
                                     <button
                                         onClick={() => handleSelectProduct({
                                             id: 'crm_ai_pack_1000',
-                                            name: t('studio.hub.cards.crm.subscription.addonPack1000Name') || 'Gói AI Top-up 1000',
+                                            name: t('studio.hub.cards.crm.subscription.addonPack1000Name') || 'Gói AI Top-up 2000',
                                             priceVnd: 350000,
                                             priceCredits: 350,
                                             type: 'addon'
                                         })}
                                         className="w-full py-3 rounded-xl font-bold bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-cyan-500 hover:text-cyan-400 mt-8 spring-bounce text-sm cursor-pointer"
                                     >
-                                        {t('studio.hub.cards.crm.subscription.addonBtn').replace('{{amount}}', '1000')}
+                                        {t('studio.hub.cards.crm.subscription.addonBtn').replace('{{amount}}', '2000')}
                                     </button>
                                 </div>
                             </div>

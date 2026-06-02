@@ -186,7 +186,7 @@ export const getCrmSubscription = async (): Promise<CrmSubscription | null> => {
     }
 
     const json = await res.json();
-    return json.data;
+    return json.data?.subscription || null;
 };
 
 /**
