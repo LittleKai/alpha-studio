@@ -39,6 +39,23 @@ export default {
       confirmReject: "Delete this template from the DB? This cannot be undone."
     },
     crm: {
+      health: {
+        tab: "Tenant Health",
+        title: "CRM Tenant Health",
+        subtitle: "Operational view for subscriptions, devices, command backlog, AI usage, and group summaries.",
+        activeSubscriptions: "Active subs",
+        activeDevices: "Active devices",
+        commandBacklog: "Command backlog",
+        failedCampaigns: "Risk campaigns",
+        groupSummaries: "Group summaries",
+        aiRequests: "AI requests",
+        aiUsageBreakdown: "AI usage by request type",
+        noAiUsage: "No AI usage yet",
+        disableAutomation: "Disable automation",
+        disableConfirm: "Disable CRM automation for risky devices now?",
+        disableSuccess: "CRM automation disabled.",
+        disableError: "Could not disable CRM automation."
+      },
       audit: {
         tab: "Audit Timeline",
         empty: "No CRM audit logs yet",

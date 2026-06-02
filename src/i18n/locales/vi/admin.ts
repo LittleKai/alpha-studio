@@ -39,6 +39,23 @@ export default {
       confirmReject: "Xoá template này khỏi DB? Không thể hoàn tác."
     },
     crm: {
+      health: {
+        tab: "Suc khoe tenant",
+        title: "Suc khoe CRM tenant",
+        subtitle: "Theo doi goi dang ky, thiet bi, backlog lenh, AI usage va tom tat nhom.",
+        activeSubscriptions: "Goi active",
+        activeDevices: "Thiet bi active",
+        commandBacklog: "Backlog lenh",
+        failedCampaigns: "Campaign rui ro",
+        groupSummaries: "Tom tat nhom",
+        aiRequests: "Luot AI",
+        aiUsageBreakdown: "AI usage theo loai request",
+        noAiUsage: "Chua co usage AI",
+        disableAutomation: "Tat automation",
+        disableConfirm: "Tat automation CRM cho cac thiet bi rui ro ngay bay gio?",
+        disableSuccess: "Da tat automation CRM.",
+        disableError: "Khong the tat automation CRM."
+      },
       audit: {
         tab: "Nhật ký Audit",
         empty: "Chưa có audit log CRM nào",

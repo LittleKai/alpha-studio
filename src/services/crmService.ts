@@ -106,6 +106,15 @@ export interface CrmAiUsageLog {
     createdAt: string;
 }
 
+export interface CrmTenantHealth {
+    activeSubscriptions: number;
+    activeDevices: number;
+    commandBacklog: number;
+    failedCampaigns: number;
+    aiUsageByType: Array<{ requestType: string; count: number }>;
+    groupSummaryUsage: number;
+}
+
 export interface CrmReleaseInfo {
     version: string;
     windowsInstallerUrl: string;
@@ -331,6 +340,42 @@ export const disableCrmAdminDevice = async (deviceId: string): Promise<CrmDevice
 
     const json = await res.json();
     return json.data;
+};
+
+/**
+ * Admin: Fetch CRM tenant health summary
+ */
+export const getCrmAdminTenantHealth = async (): Promise<CrmTenantHealth> => {
+    const res = await fetch(`${API_URL}/crm/admin/tenant-health`, {
+        method: 'GET',
+        headers: getHeaders(true),
+    });
+
+    if (!res.ok) {
+        throw new Error('Failed to fetch CRM tenant health');
+    }
+
+    const json = await res.json();
+    return json.data;
+};
+
+/**
+ * Admin: Disable risky CRM automation.
+ */
+export const disableCrmAdminAutomation = async (payload: {
+    deviceId?: string;
+    reason?: string;
+}): Promise<void> => {
+    const res = await fetch(`${API_URL}/crm/admin/automation/disable`, {
+        method: 'POST',
+        headers: getHeaders(true),
+        body: JSON.stringify(payload),
+    });
+
+    if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.message || 'Failed to disable CRM automation');
+    }
 };
 
 /**

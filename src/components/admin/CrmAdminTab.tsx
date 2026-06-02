@@ -9,20 +9,23 @@ import {
     approveCrmAdminBillingOrder,
     listCrmAdminAiUsage,
     listCrmAdminAuditLogs,
+    getCrmAdminTenantHealth,
+    disableCrmAdminAutomation,
     formatCurrency,
     type CrmSubscription,
     type CrmDevice,
     type CrmBillingOrder,
     type CrmAiUsageLog,
-    type CrmAuditLog
+    type CrmAuditLog,
+    type CrmTenantHealth
 } from '../../services/crmService';
 
-type AdminSubTab = 'subscriptions' | 'devices' | 'billing' | 'aiUsage' | 'audit';
+type AdminSubTab = 'health' | 'subscriptions' | 'devices' | 'billing' | 'aiUsage' | 'audit';
 
 export default function CrmAdminTab() {
     const { confirm: confirmDialog } = useConfirm();
     const { t } = useTranslation();
-    const [activeSubTab, setActiveSubTab] = useState<AdminSubTab>('subscriptions');
+    const [activeSubTab, setActiveSubTab] = useState<AdminSubTab>('health');
     const [loading, setLoading] = useState(true);
     const [actionLoading, setActionLoading] = useState<string | null>(null);
 
@@ -32,6 +35,7 @@ export default function CrmAdminTab() {
     const [billingOrders, setBillingOrders] = useState<CrmBillingOrder[]>([]);
     const [aiUsageLogs, setAiUsageLogs] = useState<CrmAiUsageLog[]>([]);
     const [auditLogs, setAuditLogs] = useState<CrmAuditLog[]>([]);
+    const [tenantHealth, setTenantHealth] = useState<CrmTenantHealth | null>(null);
 
     // Filters
     const [subStatusFilter, setSubStatusFilter] = useState('');
@@ -40,7 +44,10 @@ export default function CrmAdminTab() {
     const loadTabDetails = useCallback(async () => {
         try {
             setLoading(true);
-            if (activeSubTab === 'subscriptions') {
+            if (activeSubTab === 'health') {
+                const data = await getCrmAdminTenantHealth();
+                setTenantHealth(data);
+            } else if (activeSubTab === 'subscriptions') {
                 const data = await listCrmAdminSubscriptions({
                     status: subStatusFilter || undefined,
                     email: subEmailSearch || undefined
@@ -106,6 +113,24 @@ export default function CrmAdminTab() {
         }
     };
 
+    const handleDisableAutomation = async () => {
+        if (!await confirmDialog({
+            message: t('admin.crm.health.disableConfirm'),
+            variant: 'danger'
+        })) return;
+
+        setActionLoading('automation');
+        try {
+            await disableCrmAdminAutomation({ reason: 'Manual admin tenant health action' });
+            alert(t('admin.crm.health.disableSuccess'));
+            loadTabDetails();
+        } catch (err: any) {
+            alert(err.message || t('admin.crm.health.disableError'));
+        } finally {
+            setActionLoading(null);
+        }
+    };
+
     const getStatusText = (status: string) => {
         switch (status) {
             case 'completed': return 'Đã duyệt / Hoàn thành';
@@ -122,6 +147,7 @@ export default function CrmAdminTab() {
     };
 
     const tabs: { id: AdminSubTab; label: string }[] = [
+        { id: 'health', label: t('admin.crm.health.tab') },
         { id: 'subscriptions', label: 'Danh Sách Gói Đăng Ký' },
         { id: 'devices', label: 'Danh Sách Thiết Bị / Machine' },
         { id: 'billing', label: 'Đơn Hàng & VietQR' },
@@ -155,6 +181,59 @@ export default function CrmAdminTab() {
                 </div>
             ) : (
                 <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-xl overflow-hidden shadow-lg animate-fade-in">
+                    {/* Health Tab */}
+                    {activeSubTab === 'health' && (
+                        <div className="p-5 space-y-5">
+                            <div className="flex items-start justify-between gap-4">
+                                <div>
+                                    <h3 className="text-sm font-bold text-[var(--text-primary)]">{t('admin.crm.health.title')}</h3>
+                                    <p className="text-xs text-[var(--text-secondary)] mt-1">{t('admin.crm.health.subtitle')}</p>
+                                </div>
+                                <button
+                                    onClick={handleDisableAutomation}
+                                    disabled={actionLoading !== null}
+                                    className="px-3 py-2 bg-red-500 hover:opacity-90 text-white rounded-lg text-xs font-bold transition-all disabled:opacity-50"
+                                >
+                                    {actionLoading === 'automation' ? '...' : t('admin.crm.health.disableAutomation')}
+                                </button>
+                            </div>
+                            {tenantHealth && (
+                                <>
+                                    <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-6 gap-3">
+                                        {[
+                                            [t('admin.crm.health.activeSubscriptions'), tenantHealth.activeSubscriptions],
+                                            [t('admin.crm.health.activeDevices'), tenantHealth.activeDevices],
+                                            [t('admin.crm.health.commandBacklog'), tenantHealth.commandBacklog],
+                                            [t('admin.crm.health.failedCampaigns'), tenantHealth.failedCampaigns],
+                                            [t('admin.crm.health.groupSummaries'), tenantHealth.groupSummaryUsage],
+                                            [t('admin.crm.health.aiRequests'), tenantHealth.aiUsageByType.reduce((sum, item) => sum + item.count, 0)],
+                                        ].map(([label, value]) => (
+                                            <div key={String(label)} className="rounded-lg border border-[var(--border-primary)] bg-[var(--bg-secondary)] p-3">
+                                                <p className="text-[10px] uppercase tracking-wide text-[var(--text-tertiary)]">{label}</p>
+                                                <p className="text-xl font-black text-[var(--text-primary)] mt-1">{value}</p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <div className="rounded-lg border border-[var(--border-primary)] overflow-hidden">
+                                        <div className="px-3 py-2 bg-[var(--bg-secondary)] text-xs font-bold text-[var(--text-secondary)]">
+                                            {t('admin.crm.health.aiUsageBreakdown')}
+                                        </div>
+                                        <div className="divide-y divide-[var(--border-primary)]">
+                                            {tenantHealth.aiUsageByType.length === 0 ? (
+                                                <p className="p-3 text-xs text-[var(--text-tertiary)]">{t('admin.crm.health.noAiUsage')}</p>
+                                            ) : tenantHealth.aiUsageByType.map(item => (
+                                                <div key={item.requestType} className="p-3 flex items-center justify-between text-xs">
+                                                    <span className="font-mono text-[var(--text-secondary)]">{item.requestType || 'unknown'}</span>
+                                                    <span className="font-bold text-[var(--text-primary)]">{item.count}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </>
+                            )}
+                        </div>
+                    )}
+
                     {/* Subscriptions Tab */}
                     {activeSubTab === 'subscriptions' && (
                         <div>
