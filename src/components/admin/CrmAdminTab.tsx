@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useConfirm } from '../ui/ConfirmDialog';
+import { useTranslation } from '../../i18n/context';
 import {
     listCrmAdminSubscriptions,
     listCrmAdminDevices,
@@ -7,17 +8,20 @@ import {
     listCrmAdminBillingOrders,
     approveCrmAdminBillingOrder,
     listCrmAdminAiUsage,
+    listCrmAdminAuditLogs,
     formatCurrency,
     type CrmSubscription,
     type CrmDevice,
     type CrmBillingOrder,
-    type CrmAiUsageLog
+    type CrmAiUsageLog,
+    type CrmAuditLog
 } from '../../services/crmService';
 
-type AdminSubTab = 'subscriptions' | 'devices' | 'billing' | 'aiUsage';
+type AdminSubTab = 'subscriptions' | 'devices' | 'billing' | 'aiUsage' | 'audit';
 
 export default function CrmAdminTab() {
     const { confirm: confirmDialog } = useConfirm();
+    const { t } = useTranslation();
     const [activeSubTab, setActiveSubTab] = useState<AdminSubTab>('subscriptions');
     const [loading, setLoading] = useState(true);
     const [actionLoading, setActionLoading] = useState<string | null>(null);
@@ -27,6 +31,7 @@ export default function CrmAdminTab() {
     const [devices, setDevices] = useState<CrmDevice[]>([]);
     const [billingOrders, setBillingOrders] = useState<CrmBillingOrder[]>([]);
     const [aiUsageLogs, setAiUsageLogs] = useState<CrmAiUsageLog[]>([]);
+    const [auditLogs, setAuditLogs] = useState<CrmAuditLog[]>([]);
 
     // Filters
     const [subStatusFilter, setSubStatusFilter] = useState('');
@@ -50,6 +55,9 @@ export default function CrmAdminTab() {
             } else if (activeSubTab === 'aiUsage') {
                 const data = await listCrmAdminAiUsage();
                 setAiUsageLogs(data);
+            } else if (activeSubTab === 'audit') {
+                const data = await listCrmAdminAuditLogs();
+                setAuditLogs(data);
             }
         } catch (err) {
             console.error('Failed to load CRM admin tab details:', err);
@@ -101,6 +109,8 @@ export default function CrmAdminTab() {
     const getStatusText = (status: string) => {
         switch (status) {
             case 'completed': return 'Đã duyệt / Hoàn thành';
+            case 'paid': return 'Đã thanh toán';
+            case 'fulfilling': return 'Đang kích hoạt';
             case 'pending': return 'Đang chờ duyệt';
             case 'failed': return 'Thất bại';
             case 'cancelled': return 'Đã hủy';
@@ -115,7 +125,8 @@ export default function CrmAdminTab() {
         { id: 'subscriptions', label: 'Danh Sách Gói Đăng Ký' },
         { id: 'devices', label: 'Danh Sách Thiết Bị / Machine' },
         { id: 'billing', label: 'Đơn Hàng & VietQR' },
-        { id: 'aiUsage', label: 'Nhật Ký Sử Dụng AI' }
+        { id: 'aiUsage', label: 'Nhật Ký Sử Dụng AI' },
+        { id: 'audit', label: t('admin.crm.audit.tab') }
     ];
 
     return (
@@ -212,7 +223,7 @@ export default function CrmAdminTab() {
                                                         +{s.extraAiRemaining} Requests
                                                     </td>
                                                     <td className="p-3 text-center">
-                                                        {s.autoRenew ? 'Có' : 'Không'}
+                                                        {(s.autoRenewCredit ?? s.autoRenew) ? 'Có' : 'Không'}
                                                     </td>
                                                 </tr>
                                             ))}
@@ -315,14 +326,14 @@ export default function CrmAdminTab() {
                                                     <td className="p-3 font-mono font-bold text-[var(--text-secondary)]">{b.transactionCode}</td>
                                                     <td className="p-3 font-semibold">{b.description}</td>
                                                     <td className="p-3">
-                                                        {b.paymentMethod === 'credits' ? 'Credits Wallet' : 'Bank Transfer'}
+                                                        {b.paymentMethod === 'credit' || b.paymentMethod === 'credits' ? 'Credits Wallet' : 'Bank Transfer'}
                                                     </td>
                                                     <td className="p-3 text-right font-bold">
-                                                        {b.paymentMethod === 'credits' ? `${b.credits} Credits` : formatCurrency(b.amount)}
+                                                        {b.paymentMethod === 'credit' || b.paymentMethod === 'credits' ? `${b.credits} Credits` : formatCurrency(b.amountVnd ?? b.amount ?? 0)}
                                                     </td>
                                                     <td className="p-3 text-center">
                                                         <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
-                                                            b.status === 'completed' ? 'bg-green-500/10 text-green-500' :
+                                                            (b.status === 'completed' || b.status === 'paid') ? 'bg-green-500/10 text-green-500' :
                                                             b.status === 'pending' ? 'bg-yellow-500/10 text-yellow-500' :
                                                             'bg-red-500/10 text-red-500'
                                                         }`}>
@@ -407,6 +418,51 @@ export default function CrmAdminTab() {
                                                     </td>
                                                     <td className="p-3 text-[var(--text-secondary)]">
                                                         {new Date(l.createdAt).toLocaleString('vi-VN')}
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            )}
+                        </div>
+                    )}
+
+                    {/* Audit Timeline Tab */}
+                    {activeSubTab === 'audit' && (
+                        <div>
+                            {auditLogs.length === 0 ? (
+                                <p className="text-xs text-[var(--text-tertiary)] py-12 text-center">{t('admin.crm.audit.empty')}</p>
+                            ) : (
+                                <div className="overflow-x-auto">
+                                    <table className="w-full text-left text-xs border-collapse">
+                                        <thead>
+                                            <tr className="bg-[var(--bg-secondary)] text-[var(--text-secondary)] uppercase font-semibold">
+                                                <th className="p-3">{t('admin.crm.audit.time')}</th>
+                                                <th className="p-3">{t('admin.crm.audit.user')}</th>
+                                                <th className="p-3">{t('admin.crm.audit.event')}</th>
+                                                <th className="p-3">{t('admin.crm.audit.device')}</th>
+                                                <th className="p-3">{t('admin.crm.audit.details')}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="divide-y divide-[var(--border-primary)] text-[var(--text-primary)]">
+                                            {auditLogs.map(log => (
+                                                <tr key={log._id} className="hover:bg-[var(--bg-secondary)]/30 transition-colors">
+                                                    <td className="p-3 text-[var(--text-secondary)]">
+                                                        {new Date(log.createdAt).toLocaleString('vi-VN')}
+                                                    </td>
+                                                    <td className="p-3">
+                                                        <span className="font-bold">{log.userId?.name || 'User'}</span>
+                                                        <span className="block text-[10px] text-[var(--text-secondary)] mt-0.5">{log.userId?.email || 'N/A'}</span>
+                                                    </td>
+                                                    <td className="p-3 font-mono text-[10px] font-bold text-emerald-400">{log.action}</td>
+                                                    <td className="p-3 text-[var(--text-secondary)]">
+                                                        {log.deviceId?.displayName || log.deviceId || '-'}
+                                                    </td>
+                                                    <td className="p-3">
+                                                        <pre className="max-w-[360px] whitespace-pre-wrap break-words rounded bg-[var(--bg-secondary)] p-2 text-[10px] text-[var(--text-secondary)]">
+                                                            {JSON.stringify(log.details || {}, null, 2)}
+                                                        </pre>
                                                     </td>
                                                 </tr>
                                             ))}

@@ -22,7 +22,8 @@ export interface CrmSubscription {
     includedAiLimit: number;
     includedAiUsed: number;
     extraAiRemaining: number;
-    autoRenew: boolean;
+    autoRenewCredit?: boolean;
+    autoRenew?: boolean;
     createdAt: string;
     updatedAt: string;
 }
@@ -44,11 +45,13 @@ export interface CrmBillingOrder {
     _id: string;
     userId: any;
     productId: string;
-    productType: 'plan' | 'addon';
-    amount: number;
+    productType?: 'plan' | 'addon';
+    orderType?: 'subscription' | 'ai_pack';
+    amount?: number;
+    amountVnd?: number;
     credits: number;
-    paymentMethod: 'credits' | 'bank_transfer';
-    status: 'pending' | 'completed' | 'failed' | 'cancelled';
+    paymentMethod: 'credit' | 'credits' | 'bank_transfer';
+    status: 'pending' | 'fulfilling' | 'paid' | 'completed' | 'failed' | 'cancelled' | 'expired';
     transactionCode: string;
     description: string;
     qrCodeUrl?: string;
@@ -56,6 +59,17 @@ export interface CrmBillingOrder {
     fulfilledAt?: string;
     createdAt: string;
     updatedAt: string;
+}
+
+export interface CrmAuditLog {
+    _id: string;
+    userId: any;
+    subscriptionId?: string;
+    deviceId?: any;
+    action: string;
+    details?: Record<string, unknown>;
+    ipAddress?: string;
+    createdAt: string;
 }
 
 export interface CrmDevice {
@@ -188,12 +202,15 @@ export const getCrmQuota = async (): Promise<CrmQuota['data']> => {
  */
 export const createCrmCheckout = async (payload: {
     productId: string;
-    paymentMethod: 'credits' | 'bank_transfer';
+    paymentMethod: 'credit' | 'credits' | 'bank_transfer';
 }): Promise<{ order: CrmBillingOrder; qrCodeUrl?: string; bankInfo?: any }> => {
     const res = await fetch(`${API_URL}/crm/billing/checkout`, {
         method: 'POST',
         headers: getHeaders(true),
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+            ...payload,
+            paymentMethod: payload.paymentMethod === 'credits' ? 'credit' : payload.paymentMethod
+        }),
     });
 
     if (!res.ok) {
@@ -362,6 +379,34 @@ export const listCrmAdminAiUsage = async (userId?: string): Promise<CrmAiUsageLo
 
     if (!res.ok) {
         throw new Error('Failed to fetch CRM AI usage logs');
+    }
+
+    const json = await res.json();
+    return json.data;
+};
+
+/**
+ * Admin: Fetch CRM audit logs
+ */
+export const listCrmAdminAuditLogs = async (params?: {
+    userId?: string;
+    subscriptionId?: string;
+    deviceId?: string;
+    action?: string;
+}): Promise<CrmAuditLog[]> => {
+    const query = new URLSearchParams();
+    if (params?.userId) query.append('userId', params.userId);
+    if (params?.subscriptionId) query.append('subscriptionId', params.subscriptionId);
+    if (params?.deviceId) query.append('deviceId', params.deviceId);
+    if (params?.action) query.append('action', params.action);
+
+    const res = await fetch(`${API_URL}/crm/admin/audit-logs?${query.toString()}`, {
+        method: 'GET',
+        headers: getHeaders(true),
+    });
+
+    if (!res.ok) {
+        throw new Error('Failed to fetch CRM audit logs');
     }
 
     const json = await res.json();

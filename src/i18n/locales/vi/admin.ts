@@ -38,6 +38,17 @@ export default {
       confirmRejectTitle: "Xoá template?",
       confirmReject: "Xoá template này khỏi DB? Không thể hoàn tác."
     },
+    crm: {
+      audit: {
+        tab: "Nhật ký Audit",
+        empty: "Chưa có audit log CRM nào",
+        time: "Thời gian",
+        user: "Người dùng",
+        event: "Sự kiện",
+        device: "Thiết bị",
+        details: "Chi tiết"
+      }
+    },
     community: {
       featuredStudents: "Học viên nổi bật",
       featuredStudentsDesc: "Quản lý danh sách học viên nổi bật hiển thị trên trang chủ",

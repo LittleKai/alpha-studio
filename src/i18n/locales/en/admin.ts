@@ -38,6 +38,17 @@ export default {
       confirmRejectTitle: "Delete template?",
       confirmReject: "Delete this template from the DB? This cannot be undone."
     },
+    crm: {
+      audit: {
+        tab: "Audit Timeline",
+        empty: "No CRM audit logs yet",
+        time: "Time",
+        user: "User",
+        event: "Event",
+        device: "Device",
+        details: "Details"
+      }
+    },
     community: {
       featuredStudents: "Featured Students",
       featuredStudentsDesc: "Manage the featured students list displayed on the landing page",

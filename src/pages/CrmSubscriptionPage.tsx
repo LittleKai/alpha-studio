@@ -91,7 +91,7 @@ export default function CrmSubscriptionPage() {
         setShowCheckoutModal(true);
     };
 
-    const handleCheckout = async (method: 'credits' | 'bank_transfer') => {
+    const handleCheckout = async (method: 'credit' | 'bank_transfer') => {
         if (!selectedProduct) return;
         setActionLoading(method);
         setError(null);
@@ -104,7 +104,7 @@ export default function CrmSubscriptionPage() {
 
             setCheckoutResponse(res);
 
-            if (method === 'credits') {
+            if (method === 'credit') {
                 alert(t('workflow.wallet.paySuccess') || 'Thanh toán thành công! Gói dịch vụ đã được kích hoạt.');
                 setShowCheckoutModal(false);
                 refreshUser(); // Refresh wallet credits display
@@ -477,19 +477,19 @@ export default function CrmSubscriptionPage() {
                                                     <td className="p-3 font-mono text-xs">{o.transactionCode}</td>
                                                     <td className="p-3 font-semibold">{o.description}</td>
                                                     <td className="p-3">
-                                                        {o.paymentMethod === 'credits' ? 'Credits Wallet' : 'Bank Transfer'}
+                                                        {o.paymentMethod === 'credit' || o.paymentMethod === 'credits' ? 'Credits Wallet' : 'Bank Transfer'}
                                                     </td>
                                                     <td className="p-3 text-right font-bold">
-                                                        {o.paymentMethod === 'credits' ? `${o.credits} Credits` : formatCurrency(o.amount)}
+                                                        {o.paymentMethod === 'credit' || o.paymentMethod === 'credits' ? `${o.credits} Credits` : formatCurrency(o.amountVnd ?? o.amount ?? 0)}
                                                     </td>
                                                     <td className="p-3 text-center">
                                                         <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
-                                                            o.status === 'completed' ? 'bg-green-500/10 text-green-500' :
+                                                        (o.status === 'completed' || o.status === 'paid') ? 'bg-green-500/10 text-green-500' :
                                                             o.status === 'pending' ? 'bg-yellow-500/10 text-yellow-500' :
                                                             o.status === 'failed' ? 'bg-red-500/10 text-red-500' :
                                                             'bg-gray-500/10 text-gray-500'
                                                         }`}>
-                                                            {o.status === 'completed' ? 'Đã duyệt' :
+                                                        {(o.status === 'completed' || o.status === 'paid') ? 'Đã duyệt' :
                                                              o.status === 'pending' ? 'Chờ duyệt' : o.status}
                                                         </span>
                                                     </td>
@@ -534,7 +534,7 @@ export default function CrmSubscriptionPage() {
                                     <div className="grid grid-cols-1 gap-4">
                                         {/* Credits Payment */}
                                         <button
-                                            onClick={() => handleCheckout('credits')}
+                                            onClick={() => handleCheckout('credit')}
                                             disabled={actionLoading !== null}
                                             className="flex items-center justify-between p-4 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-xl hover:border-emerald-500 hover:bg-emerald-500/5 transition-all text-left"
                                         >
