@@ -36,25 +36,43 @@ export default {
       confirmDeprecateTitle: "Ẩn template?",
       confirmDeprecate: "Ẩn template này khỏi AI catalog?",
       confirmRejectTitle: "Xoá template?",
-      confirmReject: "Xoá template này khỏi DB? Không thể hoàn tác."
+      confirmReject: "Xoá template này khỏi DB? Không thể hoàn tác.",
+      categories: {
+        all: "Tất cả",
+        "upper-cabinet": "Tủ trên",
+        "lower-cabinet": "Tủ dưới",
+        wardrobe: "Tủ quần áo",
+        shelf: "Kệ",
+        desk: "Bàn làm việc",
+        void: "Trống",
+        other: "Khác"
+      }
     },
     crm: {
+      tabs: {
+        health: "Sức khỏe tenant",
+        subscriptions: "Danh Sách Gói Đăng Ký",
+        devices: "Danh Sách Thiết Bị / Machine",
+        billing: "Đơn Hàng & VietQR",
+        aiUsage: "Nhật Ký Sử Dụng AI",
+        audit: "Nhật ký Audit"
+      },
       health: {
-        tab: "Suc khoe tenant",
-        title: "Suc khoe CRM tenant",
-        subtitle: "Theo doi goi dang ky, thiet bi, backlog lenh, AI usage va tom tat nhom.",
-        activeSubscriptions: "Goi active",
-        activeDevices: "Thiet bi active",
-        commandBacklog: "Backlog lenh",
-        failedCampaigns: "Campaign rui ro",
-        groupSummaries: "Tom tat nhom",
-        aiRequests: "Luot AI",
-        aiUsageBreakdown: "AI usage theo loai request",
-        noAiUsage: "Chua co usage AI",
-        disableAutomation: "Tat automation",
-        disableConfirm: "Tat automation CRM cho cac thiet bi rui ro ngay bay gio?",
-        disableSuccess: "Da tat automation CRM.",
-        disableError: "Khong the tat automation CRM."
+        tab: "Sức khỏe tenant",
+        title: "Sức khỏe CRM tenant",
+        subtitle: "Theo dõi gói đăng ký, thiết bị, backlog lệnh, AI usage và tóm tắt nhóm.",
+        activeSubscriptions: "Gói active",
+        activeDevices: "Thiết bị active",
+        commandBacklog: "Backlog lệnh",
+        failedCampaigns: "Campaign rủi ro",
+        groupSummaries: "Tóm tắt nhóm",
+        aiRequests: "Lượt AI",
+        aiUsageBreakdown: "AI usage theo loại request",
+        noAiUsage: "Chưa có usage AI",
+        disableAutomation: "Tắt automation",
+        disableConfirm: "Tắt automation CRM cho các thiết bị rủi ro ngay bây giờ?",
+        disableSuccess: "Đã tắt automation CRM.",
+        disableError: "Không thể tắt automation CRM."
       },
       audit: {
         tab: "Nhật ký Audit",
@@ -87,7 +105,10 @@ export default {
       chatProviderDesc: "Bật để giữ context theo từng user qua OpenClaw. Tắt để gọi gcli trực tiếp qua GCLI_DIRECT_URL, nhanh hơn nhưng không giữ session context.",
       gcliBotModelLabel: "Model gcli cho AI Bot",
       gcliBotModelDesc: "Chọn model gcli khi OpenClaw tắt. Mặc định gemini-3.1-flash-lite.",
-      modelDefault: "mặc định"
+      modelDefault: "mặc định",
+      subtabs: {
+        apiSettings: "Cài đặt API"
+      }
     },
     articles: {
       title: "Tiêu đề",

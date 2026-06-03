@@ -147,12 +147,12 @@ export default function CrmAdminTab() {
     };
 
     const tabs: { id: AdminSubTab; label: string }[] = [
-        { id: 'health', label: t('admin.crm.health.tab') },
-        { id: 'subscriptions', label: 'Danh Sách Gói Đăng Ký' },
-        { id: 'devices', label: 'Danh Sách Thiết Bị / Machine' },
-        { id: 'billing', label: 'Đơn Hàng & VietQR' },
-        { id: 'aiUsage', label: 'Nhật Ký Sử Dụng AI' },
-        { id: 'audit', label: t('admin.crm.audit.tab') }
+        { id: 'health', label: t('admin.crm.tabs.health') || t('admin.crm.health.tab') },
+        { id: 'subscriptions', label: t('admin.crm.tabs.subscriptions') || 'Danh Sách Gói Đăng Ký' },
+        { id: 'devices', label: t('admin.crm.tabs.devices') || 'Danh Sách Thiết Bị / Machine' },
+        { id: 'billing', label: t('admin.crm.tabs.billing') || 'Đơn Hàng & VietQR' },
+        { id: 'aiUsage', label: t('admin.crm.tabs.aiUsage') || 'Nhật Ký Sử Dụng AI' },
+        { id: 'audit', label: t('admin.crm.tabs.audit') || t('admin.crm.audit.tab') }
     ];
 
     return (

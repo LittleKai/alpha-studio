@@ -26,11 +26,11 @@ const CATEGORY_OPTIONS: ('all' | InteriorTemplateCategory)[] = ['all', 'upper-ca
 
 function statusBadgeClass(status: InteriorTemplateStatus): string {
     switch (status) {
-        case 'approved': return 'bg-green-500/20 text-green-300 border-green-500/40';
-        case 'pending': return 'bg-yellow-500/20 text-yellow-300 border-yellow-500/40';
-        case 'deprecated': return 'bg-zinc-500/20 text-zinc-300 border-zinc-500/40';
-        case 'seed': return 'bg-blue-500/20 text-blue-300 border-blue-500/40';
-        default: return 'bg-zinc-500/20 text-zinc-300 border-zinc-500/40';
+        case 'approved': return 'bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20';
+        case 'pending': return 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border-yellow-500/20';
+        case 'deprecated': return 'bg-zinc-500/10 text-zinc-600 dark:text-zinc-400 border-zinc-500/20';
+        case 'seed': return 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20';
+        default: return 'bg-zinc-500/10 text-zinc-600 dark:text-zinc-400 border-zinc-500/20';
     }
 }
 
@@ -145,7 +145,7 @@ export default function InteriorTemplatesAdminTab() {
                 tabs: ['front', '3d'],
                 model: {
                     title: detail.templateId,
-                    subtitle: `${detail.category} · v${detail.version}`,
+                    subtitle: `${t('admin.interiorTemplates.categories.' + detail.category) || detail.category} · v${detail.version}`,
                     units: 'cm',
                     width: previewW,
                     height: previewH,
@@ -174,8 +174,8 @@ export default function InteriorTemplatesAdminTab() {
     const onDeprecate = async () => {
         if (!detail) return;
         const ok = await confirm({
-            title: t('interiorTemplates.confirmDeprecateTitle') || 'Ẩn template?',
-            message: t('interiorTemplates.confirmDeprecate') || 'Ẩn template này khỏi AI catalog?',
+            title: t('admin.interiorTemplates.confirmDeprecateTitle') || 'Ẩn template?',
+            message: t('admin.interiorTemplates.confirmDeprecate') || 'Ẩn template này khỏi AI catalog?',
             variant: 'warning'
         });
         if (!ok) return;
@@ -190,8 +190,8 @@ export default function InteriorTemplatesAdminTab() {
     const onReject = async () => {
         if (!detail) return;
         const ok = await confirm({
-            title: t('interiorTemplates.confirmRejectTitle') || 'Xoá template?',
-            message: t('interiorTemplates.confirmReject') || 'Xoá template này khỏi DB? Không thể hoàn tác.',
+            title: t('admin.interiorTemplates.confirmRejectTitle') || 'Xoá template?',
+            message: t('admin.interiorTemplates.confirmReject') || 'Xoá template này khỏi DB? Không thể hoàn tác.',
             variant: 'danger'
         });
         if (!ok) return;
@@ -231,10 +231,10 @@ export default function InteriorTemplatesAdminTab() {
     };
 
     const statusLabel = useMemo(() => ({
-        seed: t('interiorTemplates.statusSeed') || 'Seed',
-        pending: t('interiorTemplates.statusPending') || 'Chờ duyệt',
-        approved: t('interiorTemplates.statusApproved') || 'Đã duyệt',
-        deprecated: t('interiorTemplates.statusDeprecated') || 'Đã ẩn'
+        seed: t('admin.interiorTemplates.statusSeed') || 'Seed',
+        pending: t('admin.interiorTemplates.statusPending') || 'Chờ duyệt',
+        approved: t('admin.interiorTemplates.statusApproved') || 'Đã duyệt',
+        deprecated: t('admin.interiorTemplates.statusDeprecated') || 'Đã ẩn'
     }), [t]);
 
     return (
@@ -246,8 +246,8 @@ export default function InteriorTemplatesAdminTab() {
                         type="button"
                         onClick={() => setStatusFilter(s)}
                         className={`px-3 py-1.5 text-sm rounded border transition ${statusFilter === s
-                            ? 'bg-purple-500/30 border-purple-400 text-purple-100'
-                            : 'border-zinc-700 text-zinc-400 hover:border-zinc-500 hover:text-zinc-200'}`}
+                            ? 'bg-[var(--accent-primary)]/10 border-[var(--accent-primary)] text-[var(--accent-primary)]'
+                            : 'border-[var(--border-primary)] text-[var(--text-secondary)] hover:border-[var(--border-secondary)] hover:text-[var(--text-primary)]'}`}
                     >
                         {statusLabel[s]}
                     </button>
@@ -255,90 +255,92 @@ export default function InteriorTemplatesAdminTab() {
                 <select
                     value={categoryFilter}
                     onChange={(e) => setCategoryFilter(e.target.value as any)}
-                    className="ml-2 px-3 py-1.5 text-sm bg-zinc-900 border border-zinc-700 rounded text-zinc-200"
+                    className="ml-2 px-3 py-1.5 text-sm bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded text-[var(--text-primary)]"
                 >
                     {CATEGORY_OPTIONS.map((c) => (
-                        <option key={c} value={c}>{c}</option>
+                        <option key={c} value={c}>
+                            {t('admin.interiorTemplates.categories.' + c) || c}
+                        </option>
                     ))}
                 </select>
                 <input
                     type="text"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    placeholder={t('interiorTemplates.searchPlaceholder') || 'Tìm id / tag / mô tả...'}
-                    className="ml-2 flex-1 min-w-[200px] px-3 py-1.5 text-sm bg-zinc-900 border border-zinc-700 rounded text-zinc-200"
+                    placeholder={t('admin.interiorTemplates.searchPlaceholder') || 'Tìm id / tag / mô tả...'}
+                    className="ml-2 flex-1 min-w-[200px] px-3 py-1.5 text-sm bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded text-[var(--text-primary)]"
                 />
                 <button
                     type="button"
                     onClick={loadList}
-                    className="px-3 py-1.5 text-sm border border-zinc-700 rounded text-zinc-300 hover:border-zinc-500"
+                    className="px-3 py-1.5 text-sm border border-[var(--border-primary)] rounded text-[var(--text-secondary)] hover:border-[var(--border-secondary)] hover:text-[var(--text-primary)] bg-[var(--bg-secondary)]"
                 >
                     ↻
                 </button>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-[320px_minmax(0,1fr)] gap-4">
-                <div className="border border-zinc-800 rounded bg-zinc-950/40 max-h-[70vh] overflow-y-auto">
-                    {loading && <div className="p-3 text-sm text-zinc-500">{t('common.loading') || 'Đang tải...'}</div>}
+                <div className="border border-[var(--border-primary)] rounded bg-[var(--bg-card)] max-h-[70vh] overflow-y-auto">
+                    {loading && <div className="p-3 text-sm text-[var(--text-tertiary)]">{t('common.loading') || 'Đang tải...'}</div>}
                     {!loading && items.length === 0 && (
-                        <div className="p-3 text-sm text-zinc-500">{t('interiorTemplates.empty') || 'Không có template'}</div>
+                        <div className="p-3 text-sm text-[var(--text-tertiary)]">{t('admin.interiorTemplates.empty') || 'Không có template'}</div>
                     )}
                     {items.map((row) => (
                         <button
                             key={row._id}
                             type="button"
                             onClick={() => setSelectedId(row._id)}
-                            className={`w-full text-left px-3 py-2 border-b border-zinc-800 hover:bg-zinc-800/50 transition ${selectedId === row._id ? 'bg-purple-500/10' : ''}`}
+                            className={`w-full text-left px-3 py-2 border-b border-[var(--border-primary)] hover:bg-[var(--bg-secondary)]/50 transition ${selectedId === row._id ? 'bg-[var(--accent-primary)]/10' : ''}`}
                         >
                             <div className="flex items-center gap-2 mb-1">
-                                <span className="font-mono text-sm text-zinc-200">{row.templateId}</span>
+                                <span className="font-mono text-sm text-[var(--text-primary)]">{row.templateId}</span>
                                 <span className={`text-xs px-1.5 py-0.5 rounded border ${statusBadgeClass(row.status)}`}>{row.status}</span>
-                                <span className="text-xs text-zinc-500">v{row.version}</span>
+                                <span className="text-xs text-[var(--text-tertiary)]">v{row.version}</span>
                             </div>
-                            <div className="text-xs text-zinc-500 truncate">{row.category} · {(row.tags || []).slice(0, 3).join(', ')}</div>
-                            <div className="text-xs text-zinc-500 truncate">{t('interiorTemplates.author') || 'Tác giả'}: {authorLabel(row.authorId)}</div>
+                            <div className="text-xs text-[var(--text-secondary)] truncate">{t('admin.interiorTemplates.categories.' + row.category) || row.category} · {(row.tags || []).slice(0, 3).join(', ')}</div>
+                            <div className="text-xs text-[var(--text-secondary)] truncate">{t('admin.interiorTemplates.author') || 'Tác giả'}: {authorLabel(row.authorId)}</div>
                         </button>
                     ))}
                 </div>
 
-                <div className="border border-zinc-800 rounded bg-zinc-950/40 p-4">
-                    {!detail && <div className="text-sm text-zinc-500">{t('interiorTemplates.selectHint') || 'Chọn 1 template ở danh sách'}</div>}
+                <div className="border border-[var(--border-primary)] rounded bg-[var(--bg-card)] p-4">
+                    {!detail && <div className="text-sm text-[var(--text-tertiary)]">{t('admin.interiorTemplates.selectHint') || 'Chọn 1 template ở danh sách'}</div>}
                     {detail && (
                         <>
                             <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                                 <div>
-                                    <h3 className="font-mono text-base text-zinc-100">{detail.templateId}@{detail.version}</h3>
-                                    <p className="text-xs text-zinc-500">{detail.category} · {(detail.tags || []).join(', ')}</p>
-                                    <p className="text-xs text-zinc-500">{detail.description?.vi || detail.description?.en}</p>
+                                    <h3 className="font-mono text-base text-[var(--text-primary)]">{detail.templateId}@{detail.version}</h3>
+                                    <p className="text-xs text-[var(--text-secondary)]">{t('admin.interiorTemplates.categories.' + detail.category) || detail.category} · {(detail.tags || []).join(', ')}</p>
+                                    <p className="text-xs text-[var(--text-secondary)]">{detail.description?.vi || detail.description?.en}</p>
                                 </div>
                                 <span className={`text-xs px-2 py-1 rounded border ${statusBadgeClass(detail.status)}`}>{detail.status}</span>
                             </div>
 
                             <div className="grid grid-cols-1 xl:grid-cols-2 gap-3">
                                 <div>
-                                    <div className="text-xs text-zinc-400 mb-1">{t('interiorTemplates.preview') || 'Xem trước'}</div>
+                                    <div className="text-xs text-[var(--text-secondary)] mb-1">{t('admin.interiorTemplates.preview') || 'Xem trước'}</div>
                                     <div ref={previewRef} className="bg-[#e9e4da] rounded h-[360px] overflow-hidden" />
                                     <div className="flex items-center gap-2 mt-2 text-xs">
                                         <label className="flex items-center gap-1">
-                                            <span className="text-zinc-400">W</span>
-                                            <input type="number" value={previewW} onChange={(e) => setPreviewW(Number(e.target.value) || 0)} className="w-16 px-1 bg-zinc-900 border border-zinc-700 rounded text-zinc-200" />
+                                            <span className="text-[var(--text-secondary)]">W</span>
+                                            <input type="number" value={previewW} onChange={(e) => setPreviewW(Number(e.target.value) || 0)} className="w-16 px-1 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded text-[var(--text-primary)]" />
                                         </label>
                                         <label className="flex items-center gap-1">
-                                            <span className="text-zinc-400">H</span>
-                                            <input type="number" value={previewH} onChange={(e) => setPreviewH(Number(e.target.value) || 0)} className="w-16 px-1 bg-zinc-900 border border-zinc-700 rounded text-zinc-200" />
+                                            <span className="text-[var(--text-secondary)]">H</span>
+                                            <input type="number" value={previewH} onChange={(e) => setPreviewH(Number(e.target.value) || 0)} className="w-16 px-1 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded text-[var(--text-primary)]" />
                                         </label>
                                         <label className="flex items-center gap-1">
-                                            <span className="text-zinc-400">D</span>
-                                            <input type="number" value={previewD} onChange={(e) => setPreviewD(Number(e.target.value) || 0)} className="w-16 px-1 bg-zinc-900 border border-zinc-700 rounded text-zinc-200" />
+                                            <span className="text-[var(--text-secondary)]">D</span>
+                                            <input type="number" value={previewD} onChange={(e) => setPreviewD(Number(e.target.value) || 0)} className="w-16 px-1 bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded text-[var(--text-primary)]" />
                                         </label>
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="text-xs text-zinc-400 mb-1">DSL</div>
+                                    <div className="text-xs text-[var(--text-secondary)] mb-1">DSL</div>
                                     <textarea
                                         value={dslText}
                                         onChange={(e) => setDslText(e.target.value)}
-                                        className="w-full h-[360px] font-mono text-xs px-2 py-2 bg-zinc-950 border border-zinc-700 rounded text-zinc-200"
+                                        className="w-full h-[360px] font-mono text-xs px-2 py-2 bg-[var(--bg-primary)] border border-[var(--border-primary)] rounded text-[var(--text-primary)]"
                                         spellCheck={false}
                                     />
                                     {dslError && <div className="text-xs text-red-400 mt-1">{dslError}</div>}
@@ -348,7 +350,7 @@ export default function InteriorTemplatesAdminTab() {
                             <div className="flex flex-wrap items-center gap-2 mt-4">
                                 {detail.status !== 'approved' && (
                                     <button type="button" onClick={onApprove} className="px-3 py-1.5 text-sm bg-green-600 hover:bg-green-500 text-white rounded">
-                                        {t('interiorTemplates.approve') || 'Duyệt'}
+                                        {t('admin.interiorTemplates.approve') || 'Duyệt'}
                                     </button>
                                 )}
                                 <button
@@ -357,16 +359,16 @@ export default function InteriorTemplatesAdminTab() {
                                     disabled={saving || !!dslError}
                                     className="px-3 py-1.5 text-sm bg-purple-600 hover:bg-purple-500 text-white rounded disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                    {saving ? (t('common.saving') || 'Đang lưu...') : (t('interiorTemplates.editSave') || 'Sửa & Lưu (bump v)')}
+                                    {saving ? (t('common.saving') || 'Đang lưu...') : (t('admin.interiorTemplates.editSave') || 'Sửa & Lưu (bump v)')}
                                 </button>
                                 {detail.status !== 'deprecated' && detail.status !== 'seed' && (
-                                    <button type="button" onClick={onDeprecate} className="px-3 py-1.5 text-sm border border-yellow-500/40 hover:bg-yellow-500/10 text-yellow-200 rounded">
-                                        {t('interiorTemplates.deprecate') || 'Ẩn'}
+                                    <button type="button" onClick={onDeprecate} className="px-3 py-1.5 text-sm border border-yellow-500/40 hover:bg-yellow-500/10 text-yellow-600 dark:text-yellow-200 rounded">
+                                        {t('admin.interiorTemplates.deprecate') || 'Ẩn'}
                                     </button>
                                 )}
                                 {detail.status !== 'seed' && (
-                                    <button type="button" onClick={onReject} className="px-3 py-1.5 text-sm border border-red-500/40 hover:bg-red-500/10 text-red-300 rounded">
-                                        {t('interiorTemplates.reject') || 'Từ chối + xoá'}
+                                    <button type="button" onClick={onReject} className="px-3 py-1.5 text-sm border border-red-500/40 hover:bg-red-500/10 text-red-600 dark:text-red-300 rounded">
+                                        {t('admin.interiorTemplates.reject') || 'Từ chối + xoá'}
                                     </button>
                                 )}
                             </div>

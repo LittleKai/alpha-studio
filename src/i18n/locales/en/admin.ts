@@ -39,6 +39,14 @@ export default {
       confirmReject: "Delete this template from the DB? This cannot be undone."
     },
     crm: {
+      tabs: {
+        health: "Tenant Health",
+        subscriptions: "Subscriptions List",
+        devices: "Devices / Machines List",
+        billing: "Orders & VietQR",
+        aiUsage: "AI Usage Timeline",
+        audit: "Audit Timeline"
+      },
       health: {
         tab: "Tenant Health",
         title: "CRM Tenant Health",
@@ -87,7 +95,10 @@ export default {
       chatProviderDesc: "Keep this on to preserve per-user context through OpenClaw. Turn it off to call gcli directly via GCLI_DIRECT_URL, which is simpler but does not keep session context.",
       gcliBotModelLabel: "gcli model for AI Bot",
       gcliBotModelDesc: "Pick the gcli model used when OpenClaw is off. Default is gemini-3.1-flash-lite.",
-      modelDefault: "default"
+      modelDefault: "default",
+      subtabs: {
+        apiSettings: "API Settings"
+      }
     },
     articles: {
       title: "Title",

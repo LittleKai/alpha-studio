@@ -28,10 +28,11 @@ import {
     type WebhookLog,
 } from '../services/adminService';
 
-type TopTabType = 'articles' | 'community' | 'transactions' | 'cloud' | 'studio' | 'interior-templates' | 'crm';
+type TopTabType = 'articles' | 'community' | 'transactions' | 'cloud' | 'studio';
 type ArticlesSubTabType = 'about' | 'news' | 'services';
 type CommunitySubTabType = 'featuredStudents';
 type SubTabType = 'users' | 'transactionsList' | 'webhooks';
+type StudioSubTabType = 'api-settings' | 'interior-templates' | 'crm';
 
 export default function AdminPage() {
     const navigate = useNavigate();
@@ -41,6 +42,7 @@ export default function AdminPage() {
     const [activeArticlesSubTab, setActiveArticlesSubTab] = useState<ArticlesSubTabType>('about');
     const [activeSubTab, setActiveSubTab] = useState<SubTabType>('users');
     const [activeCommunitySubTab, setActiveCommunitySubTab] = useState<CommunitySubTabType>('featuredStudents');
+    const [activeStudioSubTab, setActiveStudioSubTab] = useState<StudioSubTabType>('api-settings');
 
     // Check admin/mod access
     useEffect(() => {
@@ -67,9 +69,7 @@ export default function AdminPage() {
             { id: 'community' as TopTabType, label: t('admin.tabs.community') },
             { id: 'transactions' as TopTabType, label: t('admin.tabs.transactions') },
             { id: 'cloud' as TopTabType, label: t('admin.tabs.cloud') },
-            { id: 'studio' as TopTabType, label: t('admin.tabs.studio') || 'Studio API' },
-            { id: 'interior-templates' as TopTabType, label: t('admin.tabs.interiorTemplates') || 'Mẫu Tủ AI' },
-            { id: 'crm' as TopTabType, label: t('admin.tabs.crm') || 'CRM Ops' },
+            { id: 'studio' as TopTabType, label: t('admin.tabs.studio') || 'Cài đặt Studio' },
         ] : []),
     ];
 
@@ -87,6 +87,12 @@ export default function AdminPage() {
         { id: 'users' as SubTabType, label: t('admin.tabs.users') },
         { id: 'transactionsList' as SubTabType, label: t('admin.tabs.transactionsList') },
         { id: 'webhooks' as SubTabType, label: t('admin.tabs.webhooks') },
+    ];
+
+    const studioSubTabs = [
+        { id: 'api-settings' as StudioSubTabType, label: t('admin.studio.subtabs.apiSettings') || 'Cài đặt API' },
+        { id: 'interior-templates' as StudioSubTabType, label: t('admin.tabs.interiorTemplates') || 'Mẫu Tủ AI' },
+        { id: 'crm' as StudioSubTabType, label: t('admin.tabs.crm') || 'CRM Ops' },
     ];
 
     return (
@@ -140,9 +146,28 @@ export default function AdminPage() {
                         </div>
                     )}
                     {activeTopTab === 'cloud' && <CloudAdminTab />}
-                    {activeTopTab === 'studio' && <StudioAdminTab />}
-                    {activeTopTab === 'interior-templates' && <InteriorTemplatesAdminTab />}
-                    {activeTopTab === 'crm' && <CrmAdminTab />}
+                    {activeTopTab === 'studio' && (
+                        <div>
+                            <div className="flex gap-2 mb-6">
+                                {studioSubTabs.map((tab) => (
+                                    <button
+                                        key={tab.id}
+                                        onClick={() => setActiveStudioSubTab(tab.id)}
+                                        className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
+                                            activeStudioSubTab === tab.id
+                                                ? 'bg-[var(--accent-primary)]/10 text-[var(--accent-primary)]'
+                                                : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
+                                        }`}
+                                    >
+                                        {tab.label}
+                                    </button>
+                                ))}
+                            </div>
+                            {activeStudioSubTab === 'api-settings' && <StudioAdminTab />}
+                            {activeStudioSubTab === 'interior-templates' && <InteriorTemplatesAdminTab />}
+                            {activeStudioSubTab === 'crm' && <CrmAdminTab />}
+                        </div>
+                    )}
                     {activeTopTab === 'community' && (
                         <div>
                             <div className="flex gap-2 mb-6">
