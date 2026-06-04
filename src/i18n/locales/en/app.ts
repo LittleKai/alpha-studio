@@ -245,7 +245,37 @@ export default {
         },
         vocab: {
           title: "VocabFlip",
-          desc: "Learn vocabulary with the integrated flashcard app"
+          desc: "Learn vocabulary with Web, Android, and Windows flashcards",
+          page: {
+            tag: "Vocabulary learning app",
+            title: "VocabFlip for Web, Android, and Windows",
+            subtitle: "Create decks, review with spaced repetition, look up dictionary data, and sync your learning library with your Alpha Studio account. No monthly subscription required.",
+            openWebApp: "Open Web app",
+            quickApk: "Download APK",
+            releaseHeading: "Latest release",
+            releaseLoading: "Checking...",
+            noMonthly: "No monthly plan",
+            languages: "Learning languages",
+            scheduler: "Review scheduler",
+            releaseFallback: "Release metadata could not be read from the CDN, so fallback download links are being shown.",
+            downloadWindowsTitle: "Download VocabFlip for Windows",
+            downloadWindowsDesc: "ZIP package for Windows, suited for studying and managing decks on a larger screen.",
+            downloadAndroidTitle: "Download VocabFlip APK",
+            downloadAndroidDesc: "Install directly on Android to review anywhere and sync with your Studio account.",
+            versionMeta: "Version {{version}}",
+            releaseVersion: "v{{version}}",
+            releaseDate: "Updated {{date}}",
+            featureDecksTitle: "Personal decks",
+            featureDecksDesc: "Create multilingual decks, add tags, filter quickly, and start sessions based on due cards.",
+            featureSyncTitle: "Studio sync",
+            featureSyncDesc: "Sign in with Alpha Studio to store your personal library, public decks, and sync notifications.",
+            featureDictionaryTitle: "Built-in dictionary",
+            featureDictionaryDesc: "Supports meaning lookup, pronunciation, and study data suggestions for English, Vietnamese, Japanese, and Chinese.",
+            webHeadingEyebrow: "Embedded Web app",
+            webHeading: "Study inside Studio",
+            webDesc: "The Web app shares the Alpha Studio sign-in token, so you can study quickly without installing another app.",
+            webTitle: "VocabFlip Web App"
+          }
         },
         interior: {
           title: "Interior Design",

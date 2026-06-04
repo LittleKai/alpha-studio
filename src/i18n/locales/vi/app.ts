@@ -245,7 +245,37 @@ export default {
         },
         vocab: {
           title: "VocabFlip",
-          desc: "Học từ vựng bằng flashcard tích hợp"
+          desc: "Học từ vựng bằng flashcard, có bản Web, Android và Windows",
+          page: {
+            tag: "Ứng dụng học từ vựng",
+            title: "VocabFlip cho Web, Android và Windows",
+            subtitle: "Tạo bộ thẻ, ôn tập theo lặp lại ngắt quãng, tra từ điển và đồng bộ thư viện học tập bằng tài khoản Alpha Studio. Không cần đăng ký gói tháng.",
+            openWebApp: "Mở bản Web",
+            quickApk: "Tải APK",
+            releaseHeading: "Bản phát hành mới nhất",
+            releaseLoading: "Đang kiểm tra...",
+            noMonthly: "Không cần gói tháng",
+            languages: "Ngôn ngữ học",
+            scheduler: "Lịch ôn tập",
+            releaseFallback: "Chưa đọc được metadata phát hành trên CDN, hệ thống đang dùng link tải dự phòng.",
+            downloadWindowsTitle: "Tải VocabFlip cho Windows",
+            downloadWindowsDesc: "Gói ZIP chạy trên Windows, phù hợp học và quản lý bộ thẻ trên màn hình lớn.",
+            downloadAndroidTitle: "Tải VocabFlip APK",
+            downloadAndroidDesc: "Cài trực tiếp trên Android để ôn từ vựng mọi lúc và đồng bộ với tài khoản Studio.",
+            versionMeta: "Phiên bản {{version}}",
+            releaseVersion: "v{{version}}",
+            releaseDate: "Cập nhật {{date}}",
+            featureDecksTitle: "Bộ thẻ cá nhân",
+            featureDecksDesc: "Tạo deck đa ngôn ngữ, gắn tag, lọc nhanh và vào phiên học theo số thẻ đến hạn.",
+            featureSyncTitle: "Đồng bộ Studio",
+            featureSyncDesc: "Đăng nhập bằng tài khoản Alpha Studio để lưu thư viện cá nhân, public deck và thông báo đồng bộ.",
+            featureDictionaryTitle: "Từ điển tích hợp",
+            featureDictionaryDesc: "Hỗ trợ tra nghĩa, phát âm và gợi ý dữ liệu học cho tiếng Anh, Việt, Nhật và Trung.",
+            webHeadingEyebrow: "Bản Web nhúng",
+            webHeading: "Học ngay trong Studio",
+            webDesc: "Bản Web dùng chung token đăng nhập với Alpha Studio, nên bạn có thể học nhanh mà không cần cài thêm ứng dụng.",
+            webTitle: "VocabFlip Web App"
+          }
         },
         interior: {
           title: "Thiết kế nội thất",
