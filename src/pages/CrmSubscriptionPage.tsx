@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import { useAuth } from '../auth/context';
 import {
@@ -27,6 +28,7 @@ interface CrmProductSelection {
 export default function CrmSubscriptionPage() {
     const { t } = useTranslation();
     const { user, refreshUser } = useAuth();
+    const navigate = useNavigate();
 
     // Data states
     const [sub, setSub] = useState<CrmSubscription | null>(null);
@@ -181,6 +183,15 @@ export default function CrmSubscriptionPage() {
 
     return (
         <div className="min-h-[calc(100vh-64px)] bg-[var(--bg-primary)] p-4 sm:p-8 pt-14 sm:pt-16 text-[var(--text-primary)] relative overflow-hidden">
+            <button
+                onClick={() => navigate('/studio')}
+                className="fixed top-20 left-4 z-40 hidden md:inline-flex items-center gap-2 px-4 py-2 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-full shadow-lg text-sm font-semibold text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] hover:border-[var(--accent-primary)] hover:scale-105 transition-all"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                {t('studio.hub.backToStudio')}
+            </button>
             {/* Custom Embedded Premium Styles */}
             <style dangerouslySetInnerHTML={{ __html: `
                 .premium-title-gradient {

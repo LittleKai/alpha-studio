@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { useLocation } from 'react-router-dom';
 import { useAuth } from '../../auth/context';
 import { useTranslation } from '../../i18n/context';
 import { useConfirm } from '../ui/ConfirmDialog';
@@ -13,7 +12,6 @@ import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 
 export default function FloatingChat() {
-    const location = useLocation();
     const { isAuthenticated } = useAuth();
     const { t } = useTranslation();
     const { confirm } = useConfirm();
@@ -123,9 +121,6 @@ export default function FloatingChat() {
 
     const showGreeting = isAuthenticated && hasLoadedHistory && messages.length === 0 && !isSending;
 
-    if (location.pathname.startsWith('/studio')) {
-        return null;
-    }
 
     return (
         <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">

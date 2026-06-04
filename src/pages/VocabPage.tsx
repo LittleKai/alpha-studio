@@ -1,20 +1,11 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
-import { useAuth } from '../auth/context';
 import {
     VOCAB_FALLBACK_RELEASE,
     getLatestVocabRelease,
     type VocabReleaseInfo,
 } from '../services/vocabReleaseService';
-
-interface DownloadCardProps {
-    title: string;
-    description: string;
-    meta: string;
-    href: string;
-    platform: 'windows' | 'android';
-}
 
 interface FeatureCardProps {
     title: string;
@@ -23,49 +14,10 @@ interface FeatureCardProps {
     icon: React.ReactNode;
 }
 
-const formatFileSize = (size?: number): string => {
-    if (!size) return '';
-    return `${(size / 1024 / 1024).toFixed(1)} MB`;
-};
-
 const formatReleaseDate = (value: string, locale: string): string => {
     const date = new Date(value);
     if (Number.isNaN(date.getTime())) return '';
     return date.toLocaleDateString(locale);
-};
-
-const DownloadCard: React.FC<DownloadCardProps> = ({ title, description, meta, href, platform }) => {
-    const isWindows = platform === 'windows';
-
-    return (
-        <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`group flex min-h-[132px] items-center gap-4 rounded-2xl border p-4 text-left shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl ${
-                isWindows
-                    ? 'border-sky-500/30 bg-gradient-to-br from-sky-600 to-cyan-600'
-                    : 'border-emerald-500/30 bg-gradient-to-br from-emerald-600 to-teal-600'
-            }`}
-        >
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/10 text-white ring-1 ring-white/15 transition-transform group-hover:scale-105">
-                {isWindows ? (
-                    <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M0 3.45 9.75 2.1v9.45H0V3.45Zm0 9h9.75v9.45L0 20.55v-8.1ZM11.25 1.9 24 0v11.55H11.25V1.9Zm0 10.55H24V24l-12.75-1.9v-9.65Z" />
-                    </svg>
-                ) : (
-                    <svg className="h-7 w-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M17.52 15.3 19.34 18.45a.5.5 0 1 1-.86.5l-1.85-3.2c-1.42.62-2.99.95-4.63.95s-3.21-.33-4.63-.95l-1.85 3.2a.5.5 0 1 1-.86-.5L6.48 15.3C3.72 13.78 2 11.08 2 8h20c0 3.08-1.72 5.78-4.48 7.3ZM7 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z" />
-                    </svg>
-                )}
-            </span>
-            <span className="min-w-0 space-y-1">
-                <span className="block text-base font-black text-white">{title}</span>
-                <span className="block text-sm leading-relaxed text-white/90">{description}</span>
-                <span className="block text-xs font-semibold text-white/75">{meta}</span>
-            </span>
-        </a>
-    );
 };
 
 const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, tone, icon }) => (
@@ -80,22 +32,10 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, tone, ico
 
 const VocabPage: React.FC = () => {
     const { t, language } = useTranslation();
-    const { token } = useAuth();
     const navigate = useNavigate();
-    const iframeRef = useRef<HTMLIFrameElement>(null);
-    const webAppRef = useRef<HTMLDivElement>(null);
     const [release, setRelease] = useState<VocabReleaseInfo>(VOCAB_FALLBACK_RELEASE);
     const [releaseLoading, setReleaseLoading] = useState(true);
     const [releaseError, setReleaseError] = useState(false);
-
-    const sendAuthToken = useCallback(() => {
-        if (!iframeRef.current?.contentWindow || !token) return;
-
-        iframeRef.current.contentWindow.postMessage(
-            { type: 'AUTH_TOKEN', token },
-            window.location.origin
-        );
-    }, [token]);
 
     useEffect(() => {
         let cancelled = false;
@@ -122,42 +62,6 @@ const VocabPage: React.FC = () => {
         };
     }, []);
 
-    useEffect(() => {
-        const handleIframeLoad = () => sendAuthToken();
-
-        const iframe = iframeRef.current;
-        if (iframe) {
-            iframe.addEventListener('load', handleIframeLoad);
-            return () => {
-                iframe.removeEventListener('load', handleIframeLoad);
-            };
-        }
-    }, [sendAuthToken]);
-
-    useEffect(() => {
-        sendAuthToken();
-    }, [sendAuthToken]);
-
-    useEffect(() => {
-        const handleMessage = (event: MessageEvent) => {
-            if (event.origin !== window.location.origin) return;
-            if (event.source !== iframeRef.current?.contentWindow) return;
-            if (event.data?.type === 'AUTH_READY') {
-                sendAuthToken();
-            }
-        };
-
-        window.addEventListener('message', handleMessage);
-        return () => window.removeEventListener('message', handleMessage);
-    }, [sendAuthToken]);
-
-    const handleOpenWebApp = useCallback(() => {
-        webAppRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        sendAuthToken();
-    }, [sendAuthToken]);
-
-    const windowsSize = formatFileSize(release.windowsSize);
-    const androidSize = formatFileSize(release.androidSize);
     const publishedDate = formatReleaseDate(release.publishedAt, language === 'vi' ? 'vi-VN' : 'en-US');
     const releaseMeta = [
         t('studio.hub.cards.vocab.page.releaseVersion').replace('{{version}}', release.version),
@@ -168,7 +72,7 @@ const VocabPage: React.FC = () => {
         <div className="min-h-[calc(100vh-80px)] bg-[var(--bg-primary)] text-[var(--text-primary)]">
             <button
                 onClick={() => navigate('/studio')}
-                className="fixed top-[11px] left-4 md:left-[190px] z-[60] hidden md:inline-flex items-center gap-2 px-4 py-1.5 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-full shadow-lg text-xs font-bold text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] hover:border-[var(--accent-primary)] hover:scale-105 transition-all"
+                className="fixed top-20 left-4 z-40 hidden md:inline-flex items-center gap-2 px-4 py-2 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-full shadow-lg text-sm font-semibold text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] hover:border-[var(--accent-primary)] hover:scale-105 transition-all"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -194,15 +98,28 @@ const VocabPage: React.FC = () => {
                         </div>
 
                         <div className="flex flex-wrap gap-3">
-                            <button
-                                onClick={handleOpenWebApp}
+                            <a
+                                href="/vocab/index.html"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-[var(--accent-primary)] px-5 py-3 text-sm font-black text-[var(--text-on-accent)] shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-xl"
                             >
                                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2m5-2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                 </svg>
                                 {t('studio.hub.cards.vocab.page.openWebApp')}
-                            </button>
+                            </a>
+                            <a
+                                href={release.windowsInstallerUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2 rounded-xl border border-[var(--border-primary)] bg-[var(--bg-card)] px-5 py-3 text-sm font-black text-[var(--text-primary)] transition-all hover:-translate-y-0.5 hover:border-sky-500 hover:text-sky-500"
+                            >
+                                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M0 3.45 9.75 2.1v9.45H0V3.45Zm0 9h9.75v9.45L0 20.55v-8.1ZM11.25 1.9 24 0v11.55H11.25V1.9Zm0 10.55H24V24l-12.75-1.9v-9.65Z" />
+                                </svg>
+                                {t('studio.hub.cards.vocab.page.downloadWindows')}
+                            </a>
                             <a
                                 href={release.androidApkUrl}
                                 target="_blank"
@@ -231,9 +148,6 @@ const VocabPage: React.FC = () => {
                                             {releaseLoading ? t('studio.hub.cards.vocab.page.releaseLoading') : releaseMeta}
                                         </p>
                                     </div>
-                                    <span className="rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-black text-emerald-400">
-                                        {t('studio.hub.cards.vocab.page.noMonthly')}
-                                    </span>
                                 </div>
 
                                 <div className="grid grid-cols-2 gap-3 text-center">
@@ -261,29 +175,6 @@ const VocabPage: React.FC = () => {
                     </div>
                 </section>
 
-                <section className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                    <DownloadCard
-                        platform="windows"
-                        href={release.windowsInstallerUrl}
-                        title={t('studio.hub.cards.vocab.page.downloadWindowsTitle')}
-                        description={t('studio.hub.cards.vocab.page.downloadWindowsDesc')}
-                        meta={[
-                            t('studio.hub.cards.vocab.page.versionMeta').replace('{{version}}', release.version),
-                            windowsSize,
-                        ].filter(Boolean).join(' - ')}
-                    />
-                    <DownloadCard
-                        platform="android"
-                        href={release.androidApkUrl}
-                        title={t('studio.hub.cards.vocab.page.downloadAndroidTitle')}
-                        description={t('studio.hub.cards.vocab.page.downloadAndroidDesc')}
-                        meta={[
-                            t('studio.hub.cards.vocab.page.versionMeta').replace('{{version}}', release.version),
-                            androidSize,
-                        ].filter(Boolean).join(' - ')}
-                    />
-                </section>
-
                 <section className="grid grid-cols-1 gap-4 md:grid-cols-3">
                     <FeatureCard
                         title={t('studio.hub.cards.vocab.page.featureDecksTitle')}
@@ -303,44 +194,6 @@ const VocabPage: React.FC = () => {
                         tone="bg-amber-500/10 text-amber-400"
                         icon={<svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.2" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M5 5.5A2.5 2.5 0 0 1 7.5 3H20v16H7.5A2.5 2.5 0 0 0 5 21.5v-16Z" /><path strokeLinecap="round" strokeLinejoin="round" d="M9 7h7M9 11h5" /></svg>}
                     />
-                </section>
-
-                <section ref={webAppRef} className="space-y-4 scroll-mt-20">
-                    <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-                        <div>
-                            <p className="text-xs font-black uppercase text-[var(--accent-primary)]">
-                                {t('studio.hub.cards.vocab.page.webHeadingEyebrow')}
-                            </p>
-                            <h2 className="mt-1 text-2xl font-black text-[var(--text-primary)]">
-                                {t('studio.hub.cards.vocab.page.webHeading')}
-                            </h2>
-                        </div>
-                        <p className="max-w-xl text-sm leading-relaxed text-[var(--text-secondary)]">
-                            {t('studio.hub.cards.vocab.page.webDesc')}
-                        </p>
-                    </div>
-
-                    <div className="overflow-hidden rounded-3xl border border-[var(--border-primary)] bg-[var(--bg-card)] shadow-2xl">
-                        <div className="flex items-center justify-between border-b border-[var(--border-primary)] bg-[var(--bg-secondary)] px-4 py-3">
-                            <div className="flex items-center gap-1.5">
-                                <span className="h-3 w-3 rounded-full bg-red-400" />
-                                <span className="h-3 w-3 rounded-full bg-amber-400" />
-                                <span className="h-3 w-3 rounded-full bg-emerald-400" />
-                            </div>
-                            <span className="rounded-full bg-[var(--bg-card)] px-3 py-1 text-xs font-semibold text-[var(--text-tertiary)]">
-                                /vocab/index.html
-                            </span>
-                        </div>
-                        <div className="relative h-[78vh] min-h-[760px] w-full bg-[var(--bg-primary)]">
-                            <iframe
-                                ref={iframeRef}
-                                src="/vocab/index.html"
-                                className="absolute inset-0 h-full w-full border-0"
-                                title={t('studio.hub.cards.vocab.page.webTitle')}
-                                allow="microphone; camera"
-                            />
-                        </div>
-                    </div>
                 </section>
             </div>
         </div>

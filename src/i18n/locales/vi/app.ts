@@ -249,8 +249,9 @@ export default {
           page: {
             tag: "Ứng dụng học từ vựng",
             title: "VocabFlip cho Web, Android và Windows",
-            subtitle: "Tạo bộ thẻ, ôn tập theo lặp lại ngắt quãng, tra từ điển và đồng bộ thư viện học tập bằng tài khoản Alpha Studio. Không cần đăng ký gói tháng.",
+            subtitle: "Tạo bộ thẻ, ôn tập theo lặp lại ngắt quãng, tra từ điển và đồng bộ thư viện học tập bằng tài khoản Alpha Studio.",
             openWebApp: "Mở bản Web",
+            downloadWindows: "Tải Windows",
             quickApk: "Tải APK",
             releaseHeading: "Bản phát hành mới nhất",
             releaseLoading: "Đang kiểm tra...",
