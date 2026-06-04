@@ -1,8 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import { useAuth } from '../auth/context';
-import { useConfirm } from '../components/ui/ConfirmDialog';
 import {
     getCrmSubscription,
     createCrmCheckout,
@@ -13,12 +11,22 @@ import {
     type CrmBillingOrder,
     type CrmReleaseInfo
 } from '../services/crmService';
+import {
+    CRM_MONTHLY_RENEWAL_PLAN,
+    buildRenewalConfirmationDetails,
+} from './crmSubscriptionRenewal';
+
+interface CrmProductSelection {
+    id: string;
+    name: string;
+    priceVnd: number;
+    priceCredits: number;
+    type: 'plan' | 'addon';
+}
 
 export default function CrmSubscriptionPage() {
     const { t } = useTranslation();
     const { user, refreshUser } = useAuth();
-    const { confirm } = useConfirm();
-    const navigate = useNavigate();
 
     // Data states
     const [sub, setSub] = useState<CrmSubscription | null>(null);
@@ -30,7 +38,8 @@ export default function CrmSubscriptionPage() {
 
     // Modal & QR code checkout states
     const [showCheckoutModal, setShowCheckoutModal] = useState(false);
-    const [selectedProduct, setSelectedProduct] = useState<{ id: string; name: string; priceVnd: number; priceCredits: number; type: 'plan' | 'addon' } | null>(null);
+    const [showRenewalConfirmModal, setShowRenewalConfirmModal] = useState(false);
+    const [selectedProduct, setSelectedProduct] = useState<CrmProductSelection | null>(null);
     const [checkoutResponse, setCheckoutResponse] = useState<{ order: CrmBillingOrder; qrCodeUrl?: string; bankInfo?: any } | null>(null);
     const [countdown, setCountdown] = useState(5 * 60); // 5 mins
     const countdownRef = useRef<NodeJS.Timeout | null>(null);
@@ -90,9 +99,18 @@ export default function CrmSubscriptionPage() {
         return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
     };
 
-    const handleSelectProduct = (product: { id: string; name: string; priceVnd: number; priceCredits: number; type: 'plan' | 'addon' }) => {
+    const handleSelectProduct = (product: CrmProductSelection) => {
         setSelectedProduct(product);
         setCheckoutResponse(null);
+        if (product.id === CRM_MONTHLY_RENEWAL_PLAN.productId) {
+            setShowRenewalConfirmModal(true);
+            return;
+        }
+        setShowCheckoutModal(true);
+    };
+
+    const handleContinueRenewalCheckout = () => {
+        setShowRenewalConfirmModal(false);
         setShowCheckoutModal(true);
     };
 
@@ -102,6 +120,18 @@ export default function CrmSubscriptionPage() {
         setError(null);
 
         try {
+            const balanceCredits = Number((user as any)?.balance || 0);
+            if (
+                method === 'credit' &&
+                selectedProduct.id === CRM_MONTHLY_RENEWAL_PLAN.productId &&
+                balanceCredits < selectedProduct.priceCredits
+            ) {
+                throw new Error(
+                    t('studio.hub.cards.crm.subscription.renewInsufficientCredits')
+                        .replace('{{missing}}', String(selectedProduct.priceCredits - balanceCredits)),
+                );
+            }
+
             const res = await createCrmCheckout({
                 productId: selectedProduct.id,
                 paymentMethod: method
@@ -110,8 +140,9 @@ export default function CrmSubscriptionPage() {
             setCheckoutResponse(res);
 
             if (method === 'credit') {
-                alert(t('workflow.wallet.paySuccess') || 'Thanh toán thành công! Gói dịch vụ đã được kích hoạt.');
                 setShowCheckoutModal(false);
+                setSelectedProduct(null);
+                setCheckoutResponse(null);
                 refreshUser(); // Refresh wallet credits display
                 loadData();
             } else {
@@ -137,27 +168,6 @@ export default function CrmSubscriptionPage() {
         loadData();
     };
 
-    // Click handler for Mở Zalo Bot Studio
-    const handleOpenStudio = async () => {
-        if (sub && sub.status === 'active') {
-            navigate('/studio/crm');
-        } else {
-            const ok = await confirm({
-                title: t('studio.hub.cards.crm.subscription.confirmTitle') || 'Giấy phép chưa kích hoạt',
-                message: t('studio.hub.cards.crm.subscription.confirmMessage') || 'Bạn cần sở hữu giấy phép Alpha CRM đang hoạt động để truy cập Zalo Bot Studio. Kích hoạt hoặc đăng ký ngay?',
-                confirmText: t('studio.hub.cards.crm.subscription.confirmBtn') || 'Xem các gói dịch vụ',
-                cancelText: t('studio.hub.cards.crm.subscription.confirmClose') || 'Đóng',
-                variant: 'info'
-            });
-            if (ok) {
-                const pricingSec = document.getElementById('pricing-plans');
-                if (pricingSec) {
-                    pricingSec.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-        }
-    };
-
     // Robust variables calculation to completely prevent NaN
     const includedLimit = sub?.includedAiLimit ?? 1000;
     const includedUsed = sub?.includedAiUsed ?? 0;
@@ -166,6 +176,8 @@ export default function CrmSubscriptionPage() {
     const includedRemaining = Math.max(0, includedLimit - includedUsed);
     const totalRemaining = includedRemaining + extraAi;
     const includedPct = includedLimit > 0 ? (includedUsed / includedLimit) * 100 : 0;
+    const userCreditBalance = Number((user as any)?.balance || 0);
+    const renewalDetails = buildRenewalConfirmationDetails(userCreditBalance);
 
     return (
         <div className="min-h-[calc(100vh-64px)] bg-[var(--bg-primary)] p-4 sm:p-8 pt-14 sm:pt-16 text-[var(--text-primary)] relative overflow-hidden">
@@ -330,19 +342,6 @@ export default function CrmSubscriptionPage() {
                             <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed max-w-xl">
                                 {t('studio.hub.cards.crm.subscription.desc') || 'Giải pháp tự động hóa phễu tiếp thị, gửi tin nhắn hàng loạt và chăm sóc khách hàng tự động tối ưu chi phí qua nền tảng Zalo.'}
                             </p>
-                        </div>
-
-                        {/* Top Action & Launch Button */}
-                        <div className="flex flex-wrap gap-4 pt-1">
-                            <button
-                                onClick={handleOpenStudio}
-                                className="px-8 py-3 rounded-xl font-bold bg-[var(--accent-primary)] text-black shadow-lg hover:shadow-cyan-500/20 spring-bounce transition-all flex items-center gap-2 cursor-pointer relative overflow-hidden"
-                            >
-                                <span>{t('studio.hub.cards.crm.subscription.openCrm') || 'Mở Zalo Bot Studio'}</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                    <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                                </svg>
-                            </button>
                         </div>
 
                         {/* HIGH-ALTITUDE DOWNLOAD AREA with STRICT WHITE FONT COLOR */}
@@ -524,10 +523,10 @@ export default function CrmSubscriptionPage() {
                                 <div className="mt-6">
                                     <button
                                         onClick={() => handleSelectProduct({
-                                            id: 'crm_monthly',
+                                            id: CRM_MONTHLY_RENEWAL_PLAN.productId,
                                             name: t('studio.hub.cards.crm.subscription.monthlyPlanName') || 'Giấy phép Alpha CRM 1 Tháng',
-                                            priceVnd: 500000,
-                                            priceCredits: 525,
+                                            priceVnd: CRM_MONTHLY_RENEWAL_PLAN.priceVnd,
+                                            priceCredits: CRM_MONTHLY_RENEWAL_PLAN.priceCredits,
                                             type: 'plan'
                                         })}
                                         className="w-full py-3 rounded-xl font-bold bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] hover:border-[var(--accent-primary)] hover:text-[var(--accent-primary)] spring-bounce text-sm cursor-pointer"
@@ -665,7 +664,7 @@ export default function CrmSubscriptionPage() {
                                             {t('studio.hub.cards.crm.subscription.timelineStep4Title') || 'Vận hành phễu tự động hóa CRM'}
                                         </p>
                                         <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                                            {t('studio.hub.cards.crm.subscription.timelineStep4Desc') || 'Truy cập Zalo Bot Studio trên Web, import tệp khách hàng tiềm năng và lên lịch chạy gửi tin chăm sóc hàng loạt.'}
+                                            {t('studio.hub.cards.crm.subscription.timelineStep4Desc') || 'Mở Alpha CRM Client, import tệp khách hàng tiềm năng và lên lịch chạy gửi tin chăm sóc hàng loạt.'}
                                         </p>
                                     </div>
                                 </div>
@@ -890,6 +889,123 @@ export default function CrmSubscriptionPage() {
                 </div>
             )}
 
+            {/* Renewal confirmation modal */}
+            {showRenewalConfirmModal && selectedProduct && (
+                <div
+                    className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in-fast"
+                    onClick={() => {
+                        setShowRenewalConfirmModal(false);
+                        setSelectedProduct(null);
+                    }}
+                >
+                    <div
+                        className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl animate-scale-in"
+                        onClick={e => e.stopPropagation()}
+                    >
+                        <div className="p-5 border-b border-[var(--border-primary)] bg-[var(--bg-secondary)] flex items-start justify-between gap-4">
+                            <div className="space-y-1">
+                                <p className="text-[10px] uppercase tracking-widest font-black text-[var(--accent-primary)]">
+                                    {t('studio.hub.cards.crm.subscription.renewConfirmEyebrow') || 'Xác nhận gia hạn'}
+                                </p>
+                                <h3 className="text-lg font-black text-[var(--text-primary)]">
+                                    {t('studio.hub.cards.crm.subscription.renewConfirmTitle') || 'Gia hạn gói Alpha CRM hàng tháng'}
+                                </h3>
+                                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                                    {t('studio.hub.cards.crm.subscription.renewConfirmDesc') || 'Vui lòng kiểm tra thông tin trước khi tiếp tục thanh toán.'}
+                                </p>
+                            </div>
+                            <button
+                                onClick={() => {
+                                    setShowRenewalConfirmModal(false);
+                                    setSelectedProduct(null);
+                                }}
+                                className="p-2 rounded-full bg-[var(--bg-card)] border border-[var(--border-primary)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] cursor-pointer"
+                                aria-label={t('studio.hub.cards.crm.subscription.checkoutClose') || 'Đóng'}
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4.5 w-4.5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div className="p-6 space-y-5">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <div className="p-4 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-primary)]">
+                                    <p className="text-[10px] uppercase font-black tracking-wider text-[var(--text-tertiary)]">
+                                        {t('studio.hub.cards.crm.subscription.renewConfirmCost') || 'Chi phí'}
+                                    </p>
+                                    <p className="mt-1 text-2xl font-black text-yellow-500 monospaced-nums">
+                                        {CRM_MONTHLY_RENEWAL_PLAN.priceCredits}
+                                        <span className="ml-1 text-xs text-[var(--text-tertiary)]">Credits</span>
+                                    </p>
+                                    <p className="text-xs text-[var(--text-secondary)] monospaced-nums">
+                                        {formatCurrency(CRM_MONTHLY_RENEWAL_PLAN.priceVnd)}
+                                    </p>
+                                </div>
+                                <div className="p-4 rounded-2xl bg-[var(--bg-secondary)] border border-[var(--border-primary)]">
+                                    <p className="text-[10px] uppercase font-black tracking-wider text-[var(--text-tertiary)]">
+                                        {t('studio.hub.cards.crm.subscription.renewConfirmQuota') || 'Quota gói mới'}
+                                    </p>
+                                    <p className="mt-1 text-2xl font-black text-[var(--accent-primary)] monospaced-nums">
+                                        {CRM_MONTHLY_RENEWAL_PLAN.includedAiLimit}
+                                        <span className="ml-1 text-xs text-[var(--text-tertiary)]">AI</span>
+                                    </p>
+                                    <p className="text-xs text-[var(--text-secondary)]">
+                                        {t('studio.hub.cards.crm.subscription.renewConfirmDuration') || 'Hiệu lực 1 tháng'}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="rounded-2xl border border-[var(--border-primary)] divide-y divide-[var(--border-primary)] overflow-hidden">
+                                {renewalDetails.detailRows.map((row, index) => (
+                                    <div key={row.label} className="flex items-start justify-between gap-4 p-3 bg-[var(--bg-card)]">
+                                        <span className="text-xs font-bold text-[var(--text-secondary)]">
+                                            {t(`studio.hub.cards.crm.subscription.renewDetail${index + 1}Label`) || row.label}
+                                        </span>
+                                        <span className="text-xs text-right font-semibold text-[var(--text-primary)]">
+                                            {t(`studio.hub.cards.crm.subscription.renewDetail${index + 1}Value`) || row.value}
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className={`p-4 rounded-2xl border text-xs leading-relaxed ${
+                                renewalDetails.canPayWithCredits
+                                    ? 'bg-green-500/10 border-green-500/20 text-green-400'
+                                    : 'bg-yellow-500/10 border-yellow-500/20 text-yellow-400'
+                            }`}>
+                                {renewalDetails.canPayWithCredits
+                                    ? (t('studio.hub.cards.crm.subscription.renewBalanceOk')
+                                        .replace('{{balance}}', String(userCreditBalance)) ||
+                                        `Số dư hiện tại: ${userCreditBalance} Credits. Bạn có thể thanh toán bằng Credits.`)
+                                    : (t('studio.hub.cards.crm.subscription.renewBalanceLow')
+                                        .replace('{{balance}}', String(userCreditBalance))
+                                        .replace('{{missing}}', String(renewalDetails.missingCredits)) ||
+                                        `Số dư hiện tại: ${userCreditBalance} Credits, thiếu ${renewalDetails.missingCredits} Credits. Bạn vẫn có thể chọn VietQR.`)}
+                            </div>
+                        </div>
+
+                        <div className="p-4 border-t border-[var(--border-primary)] flex flex-col sm:flex-row gap-3 bg-black/20">
+                            <button
+                                onClick={() => {
+                                    setShowRenewalConfirmModal(false);
+                                    setSelectedProduct(null);
+                                }}
+                                className="flex-1 py-2.5 rounded-xl font-bold bg-[var(--bg-secondary)] text-[var(--text-secondary)] hover:bg-[var(--border-primary)] border border-[var(--border-primary)] spring-bounce text-xs sm:text-sm cursor-pointer"
+                            >
+                                {t('studio.hub.cards.crm.subscription.renewCancel') || 'Chưa gia hạn'}
+                            </button>
+                            <button
+                                onClick={handleContinueRenewalCheckout}
+                                className="flex-1 py-2.5 rounded-xl font-bold bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-black hover:opacity-95 shadow-md spring-bounce text-xs sm:text-sm cursor-pointer"
+                            >
+                                {t('studio.hub.cards.crm.subscription.renewContinue') || 'Tôi xác nhận gia hạn'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {/* Checkout / QR Payment Modal */}
             {showCheckoutModal && selectedProduct && (
                 <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in-fast" onClick={closeCheckout}>
@@ -918,7 +1034,13 @@ export default function CrmSubscriptionPage() {
                                         {/* Credits Payment */}
                                         <button
                                             onClick={() => handleCheckout('credit')}
-                                            disabled={actionLoading !== null}
+                                            disabled={
+                                                actionLoading !== null ||
+                                                (
+                                                    selectedProduct.id === CRM_MONTHLY_RENEWAL_PLAN.productId &&
+                                                    !renewalDetails.canPayWithCredits
+                                                )
+                                            }
                                             className="flex items-center justify-between p-4 bg-black/20 border border-[var(--border-primary)] rounded-2xl hover:border-cyan-500 hover:bg-cyan-500/[0.03] transition-all text-left spring-bounce group cursor-pointer"
                                         >
                                             <div className="space-y-1">
@@ -926,7 +1048,7 @@ export default function CrmSubscriptionPage() {
                                                     {t('studio.hub.cards.crm.subscription.checkoutWalletTitle') || 'Tài khoản Tín dụng (Credits)'}
                                                 </p>
                                                 <p className="text-[10px] text-[var(--text-secondary)]">
-                                                    {t('studio.hub.cards.crm.subscription.checkoutWalletDesc').replace('{{balance}}', String((user as any)?.balance || 0))}
+                                                    {t('studio.hub.cards.crm.subscription.checkoutWalletDesc').replace('{{balance}}', String(userCreditBalance))}
                                                 </p>
                                             </div>
                                             <div className="text-right">
