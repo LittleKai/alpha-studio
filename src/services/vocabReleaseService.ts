@@ -1,5 +1,5 @@
 const VOCAB_RELEASE_BASE_URL = 'https://cdn.giaiphapsangtao.com/file/alpha-studio/vocabflip-app';
-const VOCAB_FALLBACK_VERSION = '1.1.5';
+const VOCAB_FALLBACK_VERSION = '1.1.6';
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
 interface ReleaseAsset {

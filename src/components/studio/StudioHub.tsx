@@ -34,9 +34,7 @@ const TOOLS: ToolCard[] = [
     key: 'crm',
     to: '/studio/crm/subscription',
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-      </svg>
+      <img src="/crm/favicon.png" alt="Alpha CRM" className="w-full h-full object-contain drop-shadow-sm rounded" />
     ),
     bgGradient: 'from-emerald-400 to-teal-600',
   },
@@ -55,10 +53,7 @@ const TOOLS: ToolCard[] = [
     key: 'vocab',
     to: '/studio/vocab',
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M4 5a2 2 0 012-2h9l5 5v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M14 3v5h5M8 13h8M8 17h5" />
-      </svg>
+      <img src="/vocab/favicon.png" alt="VocabFlip" className="w-full h-full object-contain drop-shadow-sm rounded" />
     ),
     bgGradient: 'from-rose-500 to-pink-600',
   },

@@ -158,7 +158,7 @@ const VocabPage: React.FC = () => {
                                         </p>
                                     </div>
                                     <div className="rounded-2xl border border-[var(--border-primary)] bg-[var(--bg-secondary)] p-4">
-                                        <p className="text-3xl font-black text-emerald-400">SM-2</p>
+                                        <p className="text-3xl font-black text-emerald-400">FSRS</p>
                                         <p className="mt-1 text-xs font-semibold text-[var(--text-secondary)]">
                                             {t('studio.hub.cards.vocab.page.scheduler')}
                                         </p>
