@@ -7,6 +7,7 @@ interface ToolCard {
   to: string;
   icon: ReactNode;
   bgGradient: string;
+  paddingClass?: string;
 }
 
 const TOOLS: ToolCard[] = [
@@ -37,6 +38,7 @@ const TOOLS: ToolCard[] = [
       <img src="/crm/favicon.png" alt="Alpha CRM" className="w-full h-full object-contain drop-shadow-sm rounded" />
     ),
     bgGradient: 'from-emerald-400 to-teal-600',
+    paddingClass: 'p-1',
   },
   {
     key: 'interior',
@@ -56,6 +58,7 @@ const TOOLS: ToolCard[] = [
       <img src="/vocab/favicon.png" alt="VocabFlip" className="w-full h-full object-contain drop-shadow-sm rounded" />
     ),
     bgGradient: 'from-rose-500 to-pink-600',
+    paddingClass: 'p-1',
   },
 ];
 
@@ -82,7 +85,7 @@ export default function StudioHub() {
               onClick={() => navigate(tool.to)}
               className="group glass-card text-left p-6 rounded-2xl border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-all hover:-translate-y-1 hover:shadow-xl flex flex-col h-full cursor-pointer"
             >
-              <div className={`p-3 rounded-xl mb-4 w-12 h-12 flex items-center justify-center bg-gradient-to-br ${tool.bgGradient} text-white shadow-md group-hover:scale-110 transition-transform`}>
+              <div className={`${tool.paddingClass || 'p-3'} rounded-xl mb-4 w-12 h-12 flex items-center justify-center bg-gradient-to-br ${tool.bgGradient} text-white shadow-md group-hover:scale-110 transition-transform`}>
                 {tool.icon}
               </div>
               <h2 className="text-xl font-bold mb-2 text-[var(--text-primary)]">
