@@ -94,7 +94,7 @@ export default {
       chatProviderTitle: "Use OpenClaw for AI Chat",
       chatProviderDesc: "Keep this on to preserve per-user context through OpenClaw. Turn it off to call gcli directly via GCLI_DIRECT_URL, which is simpler but does not keep session context.",
       gcliBotModelLabel: "gcli model for AI Bot",
-      gcliBotModelDesc: "Pick the gcli model used when OpenClaw is off. Default is gemini-3.1-flash-lite.",
+      gcliBotModelDesc: "Pick the gcli model used when OpenClaw is off. Default is gemini-3-flash-preview.",
       modelDefault: "default",
       subtabs: {
         apiSettings: "API Settings"
