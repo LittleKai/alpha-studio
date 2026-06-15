@@ -249,7 +249,7 @@ export default {
           page: {
             tag: "Vocabulary learning app",
             title: "VocabFlip for Web, Android, and Windows",
-            subtitle: "Create decks, review with spaced repetition, look up dictionary data, and sync your learning library with your Alpha Studio account.",
+            subtitle: "Create decks, review with spaced repetition, look up dictionary data, and sync your learning library with your Alpha Studio account. It is recommended to download the Windows or Android version for full features and better stability compared to the Web app.",
             openWebApp: "Open Web app",
             downloadWindows: "Download Windows",
             quickApk: "Download APK",

@@ -35,7 +35,7 @@ const TOOLS: ToolCard[] = [
     key: 'crm',
     to: '/studio/crm/subscription',
     icon: (
-      <img src="/crm/favicon.png" alt="Alpha CRM" className="w-full h-full object-contain drop-shadow-sm rounded" />
+      <img src="/crm-logo.png" alt="Alpha CRM" className="w-full h-full object-contain drop-shadow-sm rounded" />
     ),
     bgGradient: 'from-emerald-400 to-teal-600',
     paddingClass: 'p-1',
@@ -55,7 +55,7 @@ const TOOLS: ToolCard[] = [
     key: 'vocab',
     to: '/studio/vocab',
     icon: (
-      <img src="/vocab/favicon.png" alt="VocabFlip" className="w-full h-full object-contain drop-shadow-sm rounded" />
+      <img src="/vocab/icons/Icon-192.png" alt="VocabFlip" className="w-full h-full object-contain drop-shadow-sm rounded" />
     ),
     bgGradient: 'from-rose-500 to-pink-600',
     paddingClass: 'p-1',
