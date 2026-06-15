@@ -35,6 +35,7 @@ export default function CrmSubscriptionPage() {
     const [release, setRelease] = useState<CrmReleaseInfo | null>(null);
     const [orders, setOrders] = useState<CrmBillingOrder[]>([]);
     const [loading, setLoading] = useState(true);
+    const [subLoading, setSubLoading] = useState(true);
     const [actionLoading, setActionLoading] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
 
@@ -49,15 +50,25 @@ export default function CrmSubscriptionPage() {
     // Image Zoom modal state
     const [showZoomModal, setShowZoomModal] = useState(false);
 
+    const loadSubscription = useCallback(async () => {
+        try {
+            setSubLoading(true);
+            const subData = await getCrmSubscription();
+            setSub(subData);
+        } catch (err: any) {
+            console.error('Failed to load CRM subscription status:', err);
+        } finally {
+            setSubLoading(false);
+        }
+    }, []);
+
     const loadData = useCallback(async () => {
         try {
             setLoading(true);
-            const [subData, releaseData, ordersData] = await Promise.all([
-                getCrmSubscription(),
+            const [releaseData, ordersData] = await Promise.all([
                 getLatestCrmRelease().catch(() => null),
                 listCrmBillingOrders().catch(() => [])
             ]);
-            setSub(subData);
             setRelease(releaseData);
             setOrders(ordersData);
         } catch (err: any) {
@@ -70,7 +81,8 @@ export default function CrmSubscriptionPage() {
 
     useEffect(() => {
         loadData();
-    }, [loadData]);
+        loadSubscription();
+    }, [loadData, loadSubscription]);
 
     // Cleanup countdown timer
     useEffect(() => {
@@ -147,6 +159,7 @@ export default function CrmSubscriptionPage() {
                 setCheckoutResponse(null);
                 refreshUser(); // Refresh wallet credits display
                 loadData();
+                loadSubscription();
             } else {
                 startCountdown(); // Start OCB bank transfer QR expiration countdown
             }
@@ -168,6 +181,7 @@ export default function CrmSubscriptionPage() {
         setSelectedProduct(null);
         setCheckoutResponse(null);
         loadData();
+        loadSubscription();
     };
 
     // Robust variables calculation to completely prevent NaN
@@ -451,22 +465,6 @@ export default function CrmSubscriptionPage() {
                     </div>
                 </div>
 
-                {loading ? (
-                    /* High-Fidelity Skeleton Loader */
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
-                        {[1, 2, 3].map(i => (
-                            <div key={i} className="glass-card rounded-2xl p-6 h-[220px] flex flex-col justify-between overflow-hidden">
-                                <div className="space-y-4">
-                                    <div className="h-4 w-28 shimmer-bg rounded"></div>
-                                    <div className="h-10 w-44 shimmer-bg rounded"></div>
-                                    <div className="h-3 w-56 shimmer-bg rounded"></div>
-                                </div>
-                                <div className="h-10 w-full shimmer-bg rounded-xl"></div>
-                            </div>
-                        ))}
-                    </div>
-                ) : (
-                    <>
                         {/* Error Alert */}
                         {error && (
                             <div className="p-4 bg-[var(--bg-error)] border border-[var(--border-error)] rounded-2xl text-[var(--text-error)] text-sm flex items-center gap-3">
@@ -479,7 +477,20 @@ export default function CrmSubscriptionPage() {
 
                         {/* Subscription Quota Dashboard Grid */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            {/* Card 1: Subscription Status */}
+                            {subLoading ? (
+                                [1, 2, 3].map(i => (
+                                    <div key={i} className="glass-card rounded-2xl p-6 h-[220px] flex flex-col justify-between overflow-hidden relative">
+                                        <div className="space-y-4">
+                                            <div className="h-4 w-28 shimmer-bg rounded"></div>
+                                            <div className="h-10 w-44 shimmer-bg rounded"></div>
+                                            <div className="h-3 w-56 shimmer-bg rounded"></div>
+                                        </div>
+                                        <div className="h-10 w-full shimmer-bg rounded-xl"></div>
+                                    </div>
+                                ))
+                            ) : (
+                                <>
+                                    {/* Card 1: Subscription Status */}
                             <div className="glass-card rounded-2xl p-6 flex flex-col justify-between overflow-hidden relative">
                                 <div className="space-y-4">
                                     <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--text-tertiary)]">
@@ -618,6 +629,8 @@ export default function CrmSubscriptionPage() {
                                     {t('studio.hub.cards.crm.subscription.extraNote') || '* Khi gói chính hết hạn, quota này sẽ tạm khóa cho tới khi gia hạn thành công.'}
                                 </div>
                             </div>
+                                </>
+                            )}
                         </div>
 
                         {/* Pairing Timeline Quickstart Guide */}
@@ -815,7 +828,11 @@ export default function CrmSubscriptionPage() {
                                 {t('studio.hub.cards.crm.subscription.historyTitle') || 'Lịch sử giao dịch CRM'}
                             </h3>
 
-                            {orders.length === 0 ? (
+                            {loading ? (
+                                <div className="py-8 flex justify-center">
+                                    <div className="w-8 h-8 border-3 border-[var(--accent-primary)]/20 border-t-[var(--accent-primary)] rounded-full animate-spin"></div>
+                                </div>
+                            ) : orders.length === 0 ? (
                                 <p className="text-xs text-[var(--text-tertiary)] py-8 text-center italic">
                                     {t('studio.hub.cards.crm.subscription.historyEmpty') || 'Chưa phát hiện giao dịch CRM nào trong tài khoản.'}
                                 </p>
@@ -869,8 +886,6 @@ export default function CrmSubscriptionPage() {
                                 </div>
                             )}
                         </div>
-                    </>
-                )}
             </div>
 
             {/* Interactive Image Zoom Modal */}

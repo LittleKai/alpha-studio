@@ -40,10 +40,10 @@ const VocabPage: React.FC = () => {
     const [activeImageIndex, setActiveImageIndex] = useState(0);
 
     const vocabImages = [
-        '/vocab/img/vocab-preview.png',
-        '/vocab/img/vocab-preview-1.png',
-        '/vocab/img/vocab-preview-2.png',
-        '/vocab/img/vocab-preview-3.png',
+        '/images/vocab/vocab-preview.png',
+        '/images/vocab/vocab-preview-1.png',
+        '/images/vocab/vocab-preview-2.png',
+        '/images/vocab/vocab-preview-3.png',
     ];
 
     useEffect(() => {
@@ -232,7 +232,7 @@ const VocabPage: React.FC = () => {
                             {/* Aspect Ratio Landscape CSS Background Image Cover */}
                             <div 
                                 className="flex-1 w-full bg-slate-950 bg-cover bg-center bg-no-repeat relative group-hover:scale-[1.02] transition-transform duration-700 ease-out"
-                                style={{ backgroundImage: "url('/vocab/img/vocab-preview.png')" }}
+                                style={{ backgroundImage: "url('/images/vocab/vocab-preview.png')" }}
                             >
                                 {/* Bottom vignette gradient */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity"></div>
