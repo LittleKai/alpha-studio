@@ -93,11 +93,11 @@ export default {
       successInfo: "Downloaded at {{quality}}",
       labelImage1k: "1K (default, fast)",
       labelImage2k: "2K (~30s)",
-      labelImage4k: "4K (5 credits, ~60s)",
+      labelImage4k: "4K (50 credits, ~60s)",
       labelVideo270p: "270p (animated GIF)",
       labelVideo720p: "720p (default, fast)",
       labelVideo1080p: "1080p (~60s)",
-      labelVideo4k: "4K (50 credits, ~2 min)",
+      labelVideo4k: "4K (500 credits, ~2 min)",
       insufficientBalance: "Insufficient balance ({{balance}}/{{cost}} credits)",
     },
     useAsInput: "Use as Input",
@@ -226,7 +226,7 @@ export default {
             renewDetail1Label: "Renewal plan",
             renewDetail1Value: "Alpha CRM 1 month",
             renewDetail2Label: "Cost",
-            renewDetail2Value: "525 Credits or 500,000 VND",
+            renewDetail2Value: "5250 Credits or 500,000 VND",
             renewDetail3Label: "New AI quota",
             renewDetail3Value: "1000 AI requests / cycle",
             renewDetail4Label: "Effect",
@@ -303,17 +303,17 @@ export default {
       createFirst: "Create or select a project first.",
       loading: "Loading...",
       chat: "AI chat",
-      creditNote: "Each AI call costs 1 credit.",
-      creditNote2Step: "Two-step confirm is ON: each request costs 2 credits (1 analyze + 1 apply).",
-      creditNoteFirstMessage: "The first request of a project always uses two-step (2 credits). Subsequent requests cost 1 credit unless you enable confirmation in settings.",
+      creditNote: "Each AI call costs 10 credits.",
+      creditNote2Step: "Two-step confirm is ON: each request costs 20 credits (1 analyze + 1 apply).",
+      creditNoteFirstMessage: "The first request of a project always uses two-step (20 credits). Subsequent requests cost 10 credits unless you enable confirmation in settings.",
       twoStep: {
         label: "Confirm before applying",
-        desc: "AI analyzes and proposes first, you review then click apply. Costs 1 extra credit per request."
+        desc: "AI analyzes and proposes first, you review then click apply. Costs 10 extra credits per request."
       },
       agent: {
         title: "AI agent timeline",
         running: "AI is designing...",
-        creditNote: "Agent AI costs 2 credits when it saves a new version.",
+        creditNote: "Agent AI costs 20 credits when it saves a new version.",
         stop: "Stop",
         steps: "steps",
         committed: "Complete - saved a new version",
@@ -366,8 +366,8 @@ export default {
       commitModalSubmit: "Submit selected",
       proposal: {
         title: "AI proposal",
-        applyHint: "Read carefully before applying. Click apply to generate the model JSON (+1 credit).",
-        apply: "Apply (+1 credit)",
+        applyHint: "Read carefully before applying. Click apply to generate the model JSON (+10 credits).",
+        apply: "Apply (+10 credits)",
         cancel: "Cancel / Refine prompt",
         pendingBanner: "Waiting for you to confirm the proposal in the dialog...",
         observation: "Image observation",
@@ -413,7 +413,7 @@ export default {
         rollbackFailed: "Could not rollback version.",
         renameFailed: "Could not rename project.",
         emptyPrompt: "Enter a design request first.",
-        noCredit: "You need at least 1 credit to call AI."
+        noCredit: "You need at least 10 credits to call AI."
       },
       rename: {
         tooltip: "Click to rename project"

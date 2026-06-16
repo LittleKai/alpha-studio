@@ -14,6 +14,7 @@ import {
 
 // SVG Icons for packages
 const PackageIcons: Record<string, JSX.Element> = {
+  pkg_20k: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>,
   pkg0: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="8" strokeWidth={2} /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v8m-2-6h4" /></svg>,
   pkg1: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>,
   pkg2: <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
@@ -23,11 +24,12 @@ const PackageIcons: Record<string, JSX.Element> = {
 
 // Credit packages with display info
 const CREDIT_PACKAGES: (CreditPackage & { priceLabel: string; color: string })[] = [
-  { id: 'pkg0', credits: 500, price: 50000, label: '500 Credits', priceLabel: '50.000đ', color: 'from-gray-500 to-slate-500' },
-  { id: 'pkg1', credits: 100, price: 100000, label: '100 Credits', priceLabel: '100.000đ', color: 'from-blue-500 to-cyan-500' },
-  { id: 'pkg2', credits: 210, price: 200000, label: '210 Credits', priceLabel: '200.000đ', bonus: '+5%', color: 'from-green-500 to-emerald-500' },
-  { id: 'pkg3', credits: 550, price: 500000, label: '550 Credits', priceLabel: '500.000đ', bonus: '+10%', popular: true, color: 'from-purple-500 to-pink-500' },
-  { id: 'pkg4', credits: 1120, price: 1000000, label: '1.120 Credits', priceLabel: '1.000.000đ', bonus: '+12%', color: 'from-orange-500 to-red-500' },
+  { id: 'pkg_20k', credits: 2000, price: 20000, label: '2000 Credits', priceLabel: '20.000đ', color: 'from-gray-400 to-slate-400' },
+  { id: 'pkg0', credits: 5000, price: 50000, label: '5000 Credits', priceLabel: '50.000đ', color: 'from-gray-500 to-slate-500' },
+  { id: 'pkg1', credits: 10000, price: 100000, label: '10000 Credits', priceLabel: '100.000đ', color: 'from-blue-500 to-cyan-500' },
+  { id: 'pkg2', credits: 21000, price: 200000, label: '21000 Credits', priceLabel: '200.000đ', bonus: '+5%', color: 'from-green-500 to-emerald-500' },
+  { id: 'pkg3', credits: 55000, price: 500000, label: '55000 Credits', priceLabel: '500.000đ', bonus: '+10%', popular: true, color: 'from-purple-500 to-pink-500' },
+  { id: 'pkg4', credits: 112000, price: 1000000, label: '112.000 Credits', priceLabel: '1.000.000đ', bonus: '+12%', color: 'from-orange-500 to-red-500' },
 ];
 
 export default function WalletView() {

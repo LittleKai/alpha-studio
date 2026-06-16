@@ -93,11 +93,11 @@ export default {
       successInfo: "Đã tải {{quality}}",
       labelImage1k: "1K (mặc định, nhanh)",
       labelImage2k: "2K (~30s)",
-      labelImage4k: "4K (5 credit, ~60s)",
+      labelImage4k: "4K (50 credit, ~60s)",
       labelVideo270p: "270p (animated GIF)",
       labelVideo720p: "720p (mặc định, nhanh)",
       labelVideo1080p: "1080p (~60s)",
-      labelVideo4k: "4K (50 credit, ~2 phút)",
+      labelVideo4k: "4K (500 credit, ~2 phút)",
       insufficientBalance: "Số dư không đủ ({{balance}}/{{cost}} credit)",
     },
     useAsInput: "Dùng làm đầu vào",
@@ -226,7 +226,7 @@ export default {
             renewDetail1Label: "Gói gia hạn",
             renewDetail1Value: "Alpha CRM 1 tháng",
             renewDetail2Label: "Chi phí",
-            renewDetail2Value: "525 Credits hoặc 500.000đ",
+            renewDetail2Value: "5250 Credits hoặc 500.000đ",
             renewDetail3Label: "Hạn mức AI mới",
             renewDetail3Value: "1000 yêu cầu AI / chu kỳ",
             renewDetail4Label: "Hiệu lực",
@@ -303,17 +303,17 @@ export default {
       createFirst: "Hãy tạo hoặc chọn một dự án trước.",
       loading: "Đang tải...",
       chat: "Chat AI",
-      creditNote: "Mỗi lần gọi AI tốn 1 credit.",
-      creditNote2Step: "Đang bật xác nhận 2 bước: mỗi yêu cầu tốn 2 credit (1 phân tích + 1 áp dụng).",
-      creditNoteFirstMessage: "Yêu cầu đầu tiên của dự án sẽ tự động dùng 2 bước (2 credit). Các lần sau chỉ 1 credit nếu bạn không bật xác nhận trong cài đặt.",
+      creditNote: "Mỗi lần gọi AI tốn 10 credit.",
+      creditNote2Step: "Đang bật xác nhận 2 bước: mỗi yêu cầu tốn 20 credit (1 phân tích + 1 áp dụng).",
+      creditNoteFirstMessage: "Yêu cầu đầu tiên của dự án sẽ tự động dùng 2 bước (20 credit). Các lần sau chỉ 10 credit nếu bạn không bật xác nhận trong cài đặt.",
       twoStep: {
         label: "Xác nhận trước khi áp dụng",
-        desc: "AI phân tích ảnh và đề xuất trước, bạn xem rồi mới bấm áp dụng. Tốn thêm 1 credit/lần."
+        desc: "AI phân tích ảnh và đề xuất trước, bạn xem rồi mới bấm áp dụng. Tốn thêm 10 credit/lần."
       },
       agent: {
         title: "Tiến trình AI agent",
         running: "AI đang thiết kế...",
-        creditNote: "Agent AI tốn 2 credit khi lưu phiên bản mới.",
+        creditNote: "Agent AI tốn 20 credit khi lưu phiên bản mới.",
         stop: "Dừng",
         steps: "bước",
         committed: "Hoàn thành — đã lưu phiên bản mới",
@@ -366,8 +366,8 @@ export default {
       commitModalSubmit: "Gửi đã chọn",
       proposal: {
         title: "Đề xuất từ AI",
-        applyHint: "Đọc kỹ trước khi áp dụng. Bấm áp dụng để AI sinh model JSON (+1 credit).",
-        apply: "Áp dụng (+1 credit)",
+        applyHint: "Đọc kỹ trước khi áp dụng. Bấm áp dụng để AI sinh model JSON (+10 credit).",
+        apply: "Áp dụng (+10 credit)",
         cancel: "Hủy / Sửa prompt",
         pendingBanner: "Đang chờ bạn xác nhận đề xuất trong dialog...",
         observation: "Quan sát ảnh",
@@ -413,7 +413,7 @@ export default {
         rollbackFailed: "Không thể khôi phục phiên bản.",
         renameFailed: "Không thể đổi tên dự án.",
         emptyPrompt: "Hãy nhập yêu cầu thiết kế trước.",
-        noCredit: "Bạn cần ít nhất 1 credit để gọi AI."
+        noCredit: "Bạn cần ít nhất 10 credit để gọi AI."
       },
       rename: {
         tooltip: "Bấm để đổi tên dự án"

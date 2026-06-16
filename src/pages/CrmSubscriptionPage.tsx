@@ -734,7 +734,7 @@ export default function CrmSubscriptionPage() {
                                         <div className="text-3xl font-black text-[var(--text-primary)] monospaced-nums pt-1">
                                             {t('studio.hub.cards.crm.subscription.addonPriceVnd').replace('{{price}}', '50.000')}
                                             <span className="text-xs text-[var(--text-tertiary)] font-semibold block sm:inline sm:ml-2">
-                                                {t('studio.hub.cards.crm.subscription.addonPriceCredits').replace('{{credits}}', '50')}
+                                                {t('studio.hub.cards.crm.subscription.addonPriceCredits').replace('{{credits}}', '5000')}
                                             </span>
                                         </div>
                                     </div>
@@ -744,7 +744,7 @@ export default function CrmSubscriptionPage() {
                                             id: 'crm_ai_pack_100',
                                             name: t('studio.hub.cards.crm.subscription.addonPack100Name') || 'Gói AI Top-up 200',
                                             priceVnd: 50000,
-                                            priceCredits: 50,
+                                            priceCredits: 500,
                                             type: 'addon'
                                         })}
                                         className="w-full py-3 rounded-xl font-bold bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-cyan-500 hover:text-cyan-400 mt-8 spring-bounce text-sm cursor-pointer"
@@ -775,7 +775,7 @@ export default function CrmSubscriptionPage() {
                                         <div className="text-3xl font-black text-[var(--text-primary)] monospaced-nums pt-1">
                                             {t('studio.hub.cards.crm.subscription.addonPriceVnd').replace('{{price}}', '200.000')}
                                             <span className="text-xs text-[var(--text-tertiary)] font-semibold block sm:inline sm:ml-2">
-                                                {t('studio.hub.cards.crm.subscription.addonPriceCredits').replace('{{credits}}', '200')}
+                                                {t('studio.hub.cards.crm.subscription.addonPriceCredits').replace('{{credits}}', '2000')}
                                             </span>
                                         </div>
                                     </div>
@@ -785,7 +785,7 @@ export default function CrmSubscriptionPage() {
                                             id: 'crm_ai_pack_500',
                                             name: t('studio.hub.cards.crm.subscription.addonPack500Name') || 'Gói AI Top-up 1000',
                                             priceVnd: 200000,
-                                            priceCredits: 200,
+                                            priceCredits: 2000,
                                             type: 'addon'
                                         })}
                                         className="w-full py-3 rounded-xl font-bold bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)] text-black hover:opacity-90 shadow-lg hover:shadow-cyan-500/10 mt-8 spring-bounce text-sm cursor-pointer"
@@ -811,7 +811,7 @@ export default function CrmSubscriptionPage() {
                                         <div className="text-3xl font-black text-[var(--text-primary)] monospaced-nums pt-1">
                                             {t('studio.hub.cards.crm.subscription.addonPriceVnd').replace('{{price}}', '350.000')}
                                             <span className="text-xs text-[var(--text-tertiary)] font-semibold block sm:inline sm:ml-2">
-                                                {t('studio.hub.cards.crm.subscription.addonPriceCredits').replace('{{credits}}', '350')}
+                                                {t('studio.hub.cards.crm.subscription.addonPriceCredits').replace('{{credits}}', '35000')}
                                             </span>
                                         </div>
                                     </div>
@@ -821,7 +821,7 @@ export default function CrmSubscriptionPage() {
                                             id: 'crm_ai_pack_1000',
                                             name: t('studio.hub.cards.crm.subscription.addonPack1000Name') || 'Gói AI Top-up 2000',
                                             priceVnd: 350000,
-                                            priceCredits: 350,
+                                            priceCredits: 3500,
                                             type: 'addon'
                                         })}
                                         className="w-full py-3 rounded-xl font-bold bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-cyan-500 hover:text-cyan-400 mt-8 spring-bounce text-sm cursor-pointer"

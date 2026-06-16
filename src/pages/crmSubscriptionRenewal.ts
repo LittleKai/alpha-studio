@@ -19,7 +19,7 @@ export interface RenewalConfirmationDetails {
 
 export const CRM_MONTHLY_RENEWAL_PLAN: CrmMonthlyRenewalPlan = {
     productId: 'crm_monthly',
-    priceCredits: 525,
+    priceCredits: 5250,
     priceVnd: 500000,
     includedAiLimit: 1000,
     durationLabel: '1 tháng',
