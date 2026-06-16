@@ -36,6 +36,7 @@ export default function CrmSubscriptionPage() {
     const [orders, setOrders] = useState<CrmBillingOrder[]>([]);
     const [loading, setLoading] = useState(true);
     const [subLoading, setSubLoading] = useState(true);
+    const [releaseLoading, setReleaseLoading] = useState(true);
     const [actionLoading, setActionLoading] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
 
@@ -62,27 +63,36 @@ export default function CrmSubscriptionPage() {
         }
     }, []);
 
-    const loadData = useCallback(async () => {
+    const loadRelease = useCallback(async () => {
+        try {
+            setReleaseLoading(true);
+            const releaseData = await getLatestCrmRelease();
+            setRelease(releaseData);
+        } catch (err: any) {
+            console.error('Failed to load CRM release info:', err);
+        } finally {
+            setReleaseLoading(false);
+        }
+    }, []);
+
+    const loadOrders = useCallback(async () => {
         try {
             setLoading(true);
-            const [releaseData, ordersData] = await Promise.all([
-                getLatestCrmRelease().catch(() => null),
-                listCrmBillingOrders().catch(() => [])
-            ]);
-            setRelease(releaseData);
+            const ordersData = await listCrmBillingOrders();
             setOrders(ordersData);
         } catch (err: any) {
-            console.error('Failed to load CRM subscription data:', err);
+            console.error('Failed to load CRM billing orders:', err);
             setError(err.message || t('studio.hub.cards.crm.subscription.loadError') || 'Failed to load data');
         } finally {
             setLoading(false);
         }
-    }, []);
+    }, [t]);
 
     useEffect(() => {
-        loadData();
+        loadRelease();
+        loadOrders();
         loadSubscription();
-    }, [loadData, loadSubscription]);
+    }, [loadRelease, loadOrders, loadSubscription]);
 
     // Cleanup countdown timer
     useEffect(() => {
@@ -158,7 +168,7 @@ export default function CrmSubscriptionPage() {
                 setSelectedProduct(null);
                 setCheckoutResponse(null);
                 refreshUser(); // Refresh wallet credits display
-                loadData();
+                loadOrders();
                 loadSubscription();
             } else {
                 startCountdown(); // Start OCB bank transfer QR expiration countdown
@@ -180,7 +190,7 @@ export default function CrmSubscriptionPage() {
         setShowCheckoutModal(false);
         setSelectedProduct(null);
         setCheckoutResponse(null);
-        loadData();
+        loadOrders();
         loadSubscription();
     };
 
@@ -392,7 +402,7 @@ export default function CrmSubscriptionPage() {
                                             {t('studio.hub.cards.crm.subscription.downloadPCTitle') || 'Windows Client'}
                                         </span>
                                         <span className="block text-[10px] text-white/90 monospaced-nums">
-                                            {t('studio.hub.cards.crm.subscription.downloadPCDesc').replace('{{version}}', release?.version || '0.0.1')}
+                                            {t('studio.hub.cards.crm.subscription.downloadPCDesc').replace('{{version}}', releaseLoading ? '...' : (release?.version || '0.0.1'))}
                                         </span>
                                     </div>
                                 </a>
