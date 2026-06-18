@@ -280,6 +280,7 @@ export default {
             webHeading: "Học ngay trong Studio",
             webDesc: "Bản Web dùng chung token đăng nhập với Alpha Studio, nên bạn có thể học nhanh mà không cần cài thêm ứng dụng.",
             webTitle: "VocabFlip Web App",
+            compareVersionsBtn: "So sánh phiên bản",
             comparisonTitle: "Bảng so sánh phiên bản VocabFlip",
             comparisonDesc: "Chi tiết các tính năng và mức độ hỗ trợ trên các nền tảng Web, Android và Windows.",
             tableColFeature: "Tính năng / Nền tảng",
@@ -305,6 +306,18 @@ export default {
               browserDependent: "Tùy trình duyệt",
               high: "Rất cao (Tối ưu)",
               good: "Khá",
+            },
+            panels: {
+              studyTitle: "Phương pháp học thông minh & Phản xạ",
+              studyDesc: "Ôn tập hiệu quả gấp 10 lần nhờ thuật toán lặp lại ngắt quãng (FSRS). Hệ thống tự động tính toán thời điểm tối ưu để ôn lại từng từ vựng dựa trên mức độ ghi nhớ của bạn, giúp khắc sâu kiến thức vào trí nhớ dài hạn.",
+              studyBullet1: "Thuật toán giãn cách FSRS tối ưu hóa thời gian học",
+              studyBullet2: "Phiên học phản xạ nhanh dạng Flashcard sinh động",
+              studyBullet3: "Hỗ trợ phát âm chuẩn bản xứ cho nhiều ngôn ngữ",
+              libraryTitle: "Thư viện chia sẻ & Đồng bộ đám mây",
+              libraryDesc: "Khám phá hàng ngàn bộ thẻ từ vựng chất lượng cao do cộng đồng đóng góp, hoặc tự tạo bộ thẻ và chia sẻ với mọi người. Toàn bộ tiến trình học tập được đồng bộ hóa tức thì giữa tất cả thiết bị của bạn.",
+              libraryBullet1: "Thư viện bộ thẻ cộng đồng (Public Decks) phong phú",
+              libraryBullet2: "Đồng bộ đám mây tức thì qua tài khoản Alpha Studio",
+              libraryBullet3: "Quản lý, sao lưu và import từ file Excel dễ dàng",
             }
           }
         },

@@ -280,6 +280,7 @@ export default {
             webHeading: "Study inside Studio",
             webDesc: "The Web app shares the Alpha Studio sign-in token, so you can study quickly without installing another app.",
             webTitle: "VocabFlip Web App",
+            compareVersionsBtn: "Compare versions",
             comparisonTitle: "VocabFlip Version Comparison",
             comparisonDesc: "Detailed feature sets and support levels across Web, Android, and Windows platforms.",
             tableColFeature: "Feature / Platform",
@@ -305,6 +306,18 @@ export default {
               browserDependent: "Browser-dependent",
               high: "Optimized (High)",
               good: "Good",
+            },
+            panels: {
+              studyTitle: "Smart Study Method & Spaced Repetition",
+              studyDesc: "Review 10x more efficiently using the FSRS spaced repetition algorithm. The system automatically calculates the optimal time to review each word based on your retention level, cementing knowledge into your long-term memory.",
+              studyBullet1: "FSRS spaced repetition algorithm optimizes study intervals",
+              studyBullet2: "Active recall sessions with interactive and fluid flashcards",
+              studyBullet3: "Supports native pronunciation audio for multiple languages",
+              libraryTitle: "Shared Library & Cloud Sync",
+              libraryDesc: "Explore thousands of high-quality vocabulary decks contributed by the community, or build and share your own. Your entire learning progress syncs instantly across all your devices.",
+              libraryBullet1: "Rich community deck library (Public Decks) to explore",
+              libraryBullet2: "Instant cloud sync via your Alpha Studio account",
+              libraryBullet3: "Easily manage, backup, and import from Excel spreadsheets",
             }
           }
         },
