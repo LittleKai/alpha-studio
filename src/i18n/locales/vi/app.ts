@@ -240,7 +240,9 @@ export default {
             addonPack500Name: "Gói AI Top-up 1000",
             addonPack1000Name: "Gói AI Top-up 2000",
             loadError: "Không thể tải thông tin dịch vụ.",
-            checkoutError: "Lỗi khi xử lý thanh toán."
+            checkoutError: "Lỗi khi xử lý thanh toán.",
+            releaseLoadError: "Không thể tải thông tin phiên bản ứng dụng.",
+            retryBtn: "Tải lại"
           }
         },
         vocab: {

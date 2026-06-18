@@ -377,57 +377,101 @@ export default function CrmSubscriptionPage() {
                             <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed max-w-xl">
                                 {t('studio.hub.cards.crm.subscription.desc') || 'Giải pháp tự động hóa phễu tiếp thị, gửi tin nhắn hàng loạt và chăm sóc khách hàng tự động tối ưu chi phí qua nền tảng Zalo.'}
                             </p>
-                        </div>
 
-                        {/* HIGH-ALTITUDE DOWNLOAD AREA with STRICT WHITE FONT COLOR */}
-                        <div className="space-y-2 pt-2 border-t border-[var(--border-primary)]/50 max-w-xl">
-                            <p className="text-xs uppercase tracking-wider text-[var(--text-tertiary)] font-bold">
-                                {t('studio.hub.cards.crm.subscription.downloadsHeading') || 'Tải bộ cài đặt Client & Connectors:'}
-                            </p>
-                            <div className="grid grid-cols-2 gap-3.5">
-                                {/* Windows Download Card */}
-                                <a
-                                    href={release?.windowsInstallerUrl || 'https://cdn.giaiphapsangtao.com/file/alpha-studio/crm-app/releases/alpha-crm-windows-v0.0.1.zip'}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-3 p-3 bg-gradient-to-r from-sky-600 to-cyan-600 border border-sky-500/30 rounded-xl hover:border-cyan-400/50 hover:from-sky-500 hover:to-cyan-500 transition-all text-left spring-bounce shadow-md"
-                                >
-                                    <div className="w-9 h-9 rounded-lg bg-white/10 text-cyan-100 flex items-center justify-center shrink-0">
-                                        <svg className="w-5.5 h-5.5" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M0 3.449L9.75 2.1v9.45H0V3.449zM0 12.45h9.75v9.45L0 20.551v-8.101zM11.25 1.9L24 0v11.55H11.25V1.9zM11.25 12.45H24v11.55l-12.75-1.9v-9.65z"/>
-                                        </svg>
+                            {/* HIGH-ALTITUDE DOWNLOAD AREA with STRICT WHITE FONT COLOR */}
+                            <div className="space-y-2 pt-2 border-t border-[var(--border-primary)]/50 max-w-xl">
+                                <p className="text-xs uppercase tracking-wider text-[var(--text-tertiary)] font-bold">
+                                    {t('studio.hub.cards.crm.subscription.downloadsHeading') || 'Tải bộ cài đặt Client & Connectors:'}
+                                </p>
+                                
+                                {releaseLoading ? (
+                                    <div className="grid grid-cols-2 gap-3.5">
+                                        {/* Skeleton Windows Card */}
+                                        <div className="flex items-center gap-3 p-3 bg-slate-800/40 border border-slate-700/30 rounded-xl select-none">
+                                            <div className="w-9 h-9 rounded-lg shimmer-bg flex items-center justify-center shrink-0">
+                                                <div className="w-5.5 h-5.5 bg-white/5 rounded" />
+                                            </div>
+                                            <div className="space-y-1.5 flex-1">
+                                                <div className="h-3 shimmer-bg rounded w-2/3" />
+                                                <div className="h-2 shimmer-bg rounded w-1/2" />
+                                            </div>
+                                        </div>
+                                        {/* Skeleton Android Card */}
+                                        <div className="flex items-center gap-3 p-3 bg-slate-800/40 border border-slate-700/30 rounded-xl select-none">
+                                            <div className="w-9 h-9 rounded-lg shimmer-bg flex items-center justify-center shrink-0">
+                                                <div className="w-5.5 h-5.5 bg-white/5 rounded" />
+                                            </div>
+                                            <div className="space-y-1.5 flex-1">
+                                                <div className="h-3 shimmer-bg rounded w-2/3" />
+                                                <div className="h-2 shimmer-bg rounded w-1/2" />
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="space-y-0.5 select-none">
-                                        <span className="block font-bold text-xs text-white">
-                                            {t('studio.hub.cards.crm.subscription.downloadPCTitle') || 'Windows Client'}
-                                        </span>
-                                        <span className="block text-[10px] text-white/90 monospaced-nums">
-                                            {t('studio.hub.cards.crm.subscription.downloadPCDesc').replace('{{version}}', releaseLoading ? '...' : (release?.version || '0.0.1'))}
-                                        </span>
+                                ) : !release ? (
+                                    <div className="p-3.5 bg-red-500/10 border border-red-500/20 rounded-xl flex items-center justify-between gap-3 text-sm">
+                                        <div className="flex items-center gap-2.5 text-[var(--text-error)] font-medium">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                            </svg>
+                                            <span>{t('studio.hub.cards.crm.subscription.releaseLoadError') || 'Không thể tải thông tin phiên bản ứng dụng.'}</span>
+                                        </div>
+                                        <button
+                                            onClick={loadRelease}
+                                            className="px-3.5 py-1.5 bg-[var(--bg-secondary)] hover:bg-[var(--bg-tertiary)] border border-[var(--border-primary)] rounded-lg text-xs font-bold hover:border-[var(--accent-primary)] text-[var(--text-primary)] hover:text-[var(--accent-primary)] hover:scale-105 transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 7.89H18v3" />
+                                            </svg>
+                                            {t('app.regenerate') || t('studio.hub.cards.crm.subscription.retryBtn') || 'Tải lại'}
+                                        </button>
                                     </div>
-                                </a>
+                                ) : (
+                                    <div className="grid grid-cols-2 gap-3.5">
+                                        {/* Windows Download Card */}
+                                        <a
+                                            href={release.windowsInstallerUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-3 p-3 bg-gradient-to-r from-sky-600 to-cyan-600 border border-sky-500/30 rounded-xl hover:border-cyan-400/50 hover:from-sky-500 hover:to-cyan-500 transition-all text-left spring-bounce shadow-md"
+                                        >
+                                            <div className="w-9 h-9 rounded-lg bg-white/10 text-cyan-100 flex items-center justify-center shrink-0">
+                                                <svg className="w-5.5 h-5.5" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M0 3.449L9.75 2.1v9.45H0V3.449zM0 12.45h9.75v9.45L0 20.551v-8.101zM11.25 1.9L24 0v11.55H11.25V1.9zM11.25 12.45H24v11.55l-12.75-1.9v-9.65z"/>
+                                                </svg>
+                                            </div>
+                                            <div className="space-y-0.5 select-none">
+                                                <span className="block font-bold text-xs text-white">
+                                                    {t('studio.hub.cards.crm.subscription.downloadPCTitle') || 'Windows Client'}
+                                                </span>
+                                                <span className="block text-[10px] text-white/90 monospaced-nums font-medium">
+                                                    {t('studio.hub.cards.crm.subscription.downloadPCDesc').replace('{{version}}', release.version)}
+                                                </span>
+                                            </div>
+                                        </a>
 
-                                {/* Android Download Card */}
-                                <a
-                                    href={release?.androidApkUrl || 'https://cdn.giaiphapsangtao.com/file/alpha-studio/crm-app/releases/alpha-crm-v0.0.1.apk'}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-3 p-3 bg-gradient-to-r from-sky-600 to-cyan-600 border border-sky-500/30 rounded-xl hover:border-cyan-400/50 hover:from-sky-500 hover:to-cyan-500 transition-all text-left spring-bounce shadow-md"
-                                >
-                                    <div className="w-9 h-9 rounded-lg bg-white/10 text-cyan-100 flex items-center justify-center shrink-0">
-                                        <svg className="w-5.5 h-5.5" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M17.523 15.3l1.816 3.146a.5.5 0 01-.173.682.5.5 0 01-.682-.172L16.63 15.75c-1.42.617-2.992.95-4.63.95s-3.21-.333-4.63-.95L5.516 18.8a.5.5 0 01-.682.173.5.5 0 01-.173-.682l1.816-3.146C3.722 13.784 2 11.082 2 8h20c0 3.082-1.722 5.784-4.477 7.3zM7 6a1 1 0 100-2 1 1 0 000 2zm10 0a1 1 0 100-2 1 1 0 000 2z"/>
-                                        </svg>
+                                        {/* Android Download Card */}
+                                        <a
+                                            href={release.androidApkUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-3 p-3 bg-gradient-to-r from-sky-600 to-cyan-600 border border-sky-500/30 rounded-xl hover:border-cyan-400/50 hover:from-sky-500 hover:to-cyan-500 transition-all text-left spring-bounce shadow-md"
+                                        >
+                                            <div className="w-9 h-9 rounded-lg bg-white/10 text-cyan-100 flex items-center justify-center shrink-0">
+                                                <svg className="w-5.5 h-5.5" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M17.523 15.3l1.816 3.146a.5.5 0 01-.173.682.5.5 0 01-.682-.172L16.63 15.75c-1.42.617-2.992.95-4.63.95s-3.21-.333-4.63-.95L5.516 18.8a.5.5 0 01-.682.173.5.5 0 01-.173-.682l1.816-3.146C3.722 13.784 2 11.082 2 8h20c0 3.082-1.722 5.784-4.477 7.3zM7 6a1 1 0 100-2 1 1 0 000 2zm10 0a1 1 0 100-2 1 1 0 000 2z"/>
+                                                </svg>
+                                            </div>
+                                            <div className="space-y-0.5 select-none">
+                                                <span className="block font-bold text-xs text-white">
+                                                    {t('studio.hub.cards.crm.subscription.downloadAndroidTitle') || 'Android APK'}
+                                                </span>
+                                                <span className="block text-[10px] text-white/90 font-medium">
+                                                    {t('studio.hub.cards.crm.subscription.downloadAndroidDesc') || 'Pair QR Connector'}
+                                                </span>
+                                            </div>
+                                        </a>
                                     </div>
-                                    <div className="space-y-0.5 select-none">
-                                        <span className="block font-bold text-xs text-white">
-                                            {t('studio.hub.cards.crm.subscription.downloadAndroidTitle') || 'Android APK'}
-                                        </span>
-                                        <span className="block text-[10px] text-white/90">
-                                            {t('studio.hub.cards.crm.subscription.downloadAndroidDesc') || 'Pair QR Connector'}
-                                        </span>
-                                    </div>
-                                </a>
+                                )}
                             </div>
                         </div>
                     </div>

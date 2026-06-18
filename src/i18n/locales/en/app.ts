@@ -240,7 +240,9 @@ export default {
             addonPack500Name: "AI Top-up 1000 Pack",
             addonPack1000Name: "AI Top-up 2000 Pack",
             loadError: "Failed to load subscription services.",
-            checkoutError: "Error processing the checkout request."
+            checkoutError: "Error processing the checkout request.",
+            releaseLoadError: "Unable to load application version info.",
+            retryBtn: "Retry"
           }
         },
         vocab: {
