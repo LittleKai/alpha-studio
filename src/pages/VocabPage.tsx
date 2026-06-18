@@ -185,14 +185,14 @@ const VocabPage: React.FC = () => {
                             </div>
                         </div>
 
-                        <div className="flex flex-wrap gap-3">
+                        <div className="flex flex-wrap items-center gap-3">
                             <a
                                 href="/vocab/index.html"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-[var(--accent-primary)] px-5 py-3 text-sm font-black text-[var(--text-on-accent)] shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-xl"
                             >
-                                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+                                <svg className="h-5 w-5 text-amber-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6l4 2m5-2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                 </svg>
                                 {t('studio.hub.cards.vocab.page.openWebApp')}
@@ -210,7 +210,7 @@ const VocabPage: React.FC = () => {
                                         rel="noopener noreferrer"
                                         className="inline-flex items-center justify-center gap-2 rounded-xl border border-[var(--border-primary)] bg-[var(--bg-card)] px-5 py-3 text-sm font-black text-[var(--text-primary)] transition-all hover:-translate-y-0.5 hover:border-sky-500 hover:text-sky-500"
                                     >
-                                        <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <svg className="h-5 w-5 text-sky-500" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                             <path d="M0 3.45 9.75 2.1v9.45H0V3.45Zm0 9h9.75v9.45L0 20.55v-8.1ZM11.25 1.9 24 0v11.55H11.25V1.9Zm0 10.55H24V24l-12.75-1.9v-9.65Z" />
                                         </svg>
                                         {t('studio.hub.cards.vocab.page.downloadWindows')}
@@ -221,7 +221,7 @@ const VocabPage: React.FC = () => {
                                         rel="noopener noreferrer"
                                         className="inline-flex items-center justify-center gap-2 rounded-xl border border-[var(--border-primary)] bg-[var(--bg-card)] px-5 py-3 text-sm font-black text-[var(--text-primary)] transition-all hover:-translate-y-0.5 hover:border-emerald-400 hover:text-emerald-400"
                                     >
-                                        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+                                        <svg className="h-5 w-5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v12m0 0 4-4m-4 4-4-4M5 20h14" />
                                         </svg>
                                         {t('studio.hub.cards.vocab.page.quickApk')}
@@ -230,12 +230,12 @@ const VocabPage: React.FC = () => {
                             )}
                             <button
                                 onClick={() => setShowComparisonModal(true)}
-                                className="inline-flex items-center justify-center gap-2 rounded-xl border border-[var(--border-primary)] bg-[var(--bg-card)] px-5 py-3 text-sm font-black text-[var(--text-primary)] transition-all hover:-translate-y-0.5 hover:border-[var(--accent-primary)] hover:text-[var(--accent-primary)] cursor-pointer"
+                                className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--border-primary)] bg-[var(--bg-card)] text-[var(--text-primary)] transition-all hover:-translate-y-0.5 hover:border-[var(--accent-primary)] hover:text-[var(--accent-primary)] cursor-pointer shadow-md shrink-0"
+                                title={t('studio.hub.cards.vocab.page.compareVersionsBtn') || 'So sánh phiên bản'}
                             >
-                                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+                                <svg className="h-5.5 w-5.5 text-violet-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                 </svg>
-                                {t('studio.hub.cards.vocab.page.compareVersionsBtn') || 'So sánh phiên bản'}
                             </button>
                         </div>
                     </div>
@@ -531,18 +531,18 @@ const VocabPage: React.FC = () => {
             {/* Platform Comparison Modal */}
             {showComparisonModal && (
                 <div
-                    className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in-fast cursor-zoom-out"
+                    className="fixed inset-0 z-50 bg-black/60 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in-fast cursor-zoom-out"
                     onClick={() => setShowComparisonModal(false)}
                 >
                     <div 
-                        className="relative max-w-3xl w-full flex flex-col gap-6 max-h-[90vh] overflow-y-auto rounded-3xl border border-white/10 shadow-2xl bg-slate-950 p-6 sm:p-8 cursor-default animate-scale-up"
+                        className="relative max-w-3xl w-full flex flex-col gap-6 max-h-[90vh] overflow-y-auto rounded-3xl border border-[var(--border-primary)] shadow-2xl bg-[var(--bg-card)] p-6 sm:p-8 cursor-default animate-scale-up"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Close button */}
                         <div className="absolute top-4 right-4 sm:top-6 sm:right-6">
                             <button
                                 onClick={() => setShowComparisonModal(false)}
-                                className="p-2 rounded-full bg-black/60 hover:bg-black/85 text-white border border-white/10 spring-bounce cursor-pointer"
+                                className="p-2 rounded-full bg-[var(--bg-secondary)] hover:bg-[var(--bg-tertiary)] text-[var(--text-primary)] border border-[var(--border-primary)] spring-bounce cursor-pointer"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                     <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -551,7 +551,7 @@ const VocabPage: React.FC = () => {
                         </div>
 
                         <div className="space-y-2">
-                            <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight">
+                            <h2 className="text-xl sm:text-2xl font-black text-[var(--text-primary)] tracking-tight">
                                 {t('studio.hub.cards.vocab.page.comparisonTitle')}
                             </h2>
                             <p className="text-xs sm:text-sm text-[var(--text-secondary)]">
@@ -559,10 +559,10 @@ const VocabPage: React.FC = () => {
                             </p>
                         </div>
 
-                        <div className="overflow-x-auto rounded-xl border border-white/10 bg-slate-900/50">
+                        <div className="overflow-x-auto rounded-xl border border-[var(--border-primary)] bg-[var(--bg-secondary)]/30">
                             <table className="w-full text-left border-collapse text-xs sm:text-sm text-[var(--text-primary)]">
                                 <thead>
-                                    <tr className="border-b border-white/10 bg-white/5 text-[var(--text-secondary)] font-semibold">
+                                    <tr className="border-b border-[var(--border-primary)] bg-[var(--bg-card)]/50 text-[var(--text-secondary)] font-semibold">
                                         <th className="p-4">{t('studio.hub.cards.vocab.page.tableColFeature')}</th>
                                         <th className="p-4">{t('studio.hub.cards.vocab.page.tableColWeb')}</th>
                                         <th className="p-4">{t('studio.hub.cards.vocab.page.tableColAndroid')}</th>
@@ -570,53 +570,53 @@ const VocabPage: React.FC = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                                        <td className="p-4 font-bold text-white">{t('studio.hub.cards.vocab.page.featureList.flashcard')}</td>
+                                    <tr className="border-b border-[var(--border-secondary)] hover:bg-[var(--bg-secondary)]/20 transition-colors">
+                                        <td className="p-4 font-bold text-[var(--text-primary)]">{t('studio.hub.cards.vocab.page.featureList.flashcard')}</td>
                                         <td className="p-4 text-[var(--text-secondary)]">{t('studio.hub.cards.vocab.page.featureSupport.basic')}</td>
-                                        <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.full')}</td>
-                                        <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.full')}</td>
+                                        <td className="p-4 text-emerald-500 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.full')}</td>
+                                        <td className="p-4 text-emerald-500 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.full')}</td>
                                     </tr>
-                                    <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                                        <td className="p-4 font-bold text-white">{t('studio.hub.cards.vocab.page.featureList.fsrs')}</td>
-                                        <td className="p-4 text-emerald-400 font-semibold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
-                                        <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
-                                        <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
+                                    <tr className="border-b border-[var(--border-secondary)] hover:bg-[var(--bg-secondary)]/20 transition-colors">
+                                        <td className="p-4 font-bold text-[var(--text-primary)]">{t('studio.hub.cards.vocab.page.featureList.fsrs')}</td>
+                                        <td className="p-4 text-emerald-500 font-semibold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
+                                        <td className="p-4 text-emerald-500 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
+                                        <td className="p-4 text-emerald-500 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
                                     </tr>
-                                    <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                                        <td className="p-4 font-bold text-white">{t('studio.hub.cards.vocab.page.featureList.sync')}</td>
-                                        <td className="p-4 text-emerald-400 font-semibold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
-                                        <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
-                                        <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
+                                    <tr className="border-b border-[var(--border-secondary)] hover:bg-[var(--bg-secondary)]/20 transition-colors">
+                                        <td className="p-4 font-bold text-[var(--text-primary)]">{t('studio.hub.cards.vocab.page.featureList.sync')}</td>
+                                        <td className="p-4 text-emerald-500 font-semibold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
+                                        <td className="p-4 text-emerald-500 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
+                                        <td className="p-4 text-emerald-500 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
                                     </tr>
-                                    <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                                        <td className="p-4 font-bold text-white">{t('studio.hub.cards.vocab.page.featureList.dict')}</td>
+                                    <tr className="border-b border-[var(--border-secondary)] hover:bg-[var(--bg-secondary)]/20 transition-colors">
+                                        <td className="p-4 font-bold text-[var(--text-primary)]">{t('studio.hub.cards.vocab.page.featureList.dict')}</td>
                                         <td className="p-4 text-[var(--text-secondary)]">{t('studio.hub.cards.vocab.page.featureSupport.limited')}</td>
-                                        <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.full')}</td>
-                                        <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.full')}</td>
+                                        <td className="p-4 text-emerald-500 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.full')}</td>
+                                        <td className="p-4 text-emerald-500 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.full')}</td>
                                     </tr>
-                                    <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                                        <td className="p-4 font-bold text-white">{t('studio.hub.cards.vocab.page.featureList.offline')}</td>
+                                    <tr className="border-b border-[var(--border-secondary)] hover:bg-[var(--bg-secondary)]/20 transition-colors">
+                                        <td className="p-4 font-bold text-[var(--text-primary)]">{t('studio.hub.cards.vocab.page.featureList.offline')}</td>
                                         <td className="p-4 text-[var(--text-error)]">{t('studio.hub.cards.vocab.page.featureSupport.no')}</td>
-                                        <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
-                                        <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
+                                        <td className="p-4 text-emerald-500 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
+                                        <td className="p-4 text-emerald-500 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
                                     </tr>
-                                    <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                                        <td className="p-4 font-bold text-white">{t('studio.hub.cards.vocab.page.featureList.importExport')}</td>
+                                    <tr className="border-b border-[var(--border-secondary)] hover:bg-[var(--bg-secondary)]/20 transition-colors">
+                                        <td className="p-4 font-bold text-[var(--text-primary)]">{t('studio.hub.cards.vocab.page.featureList.importExport')}</td>
                                         <td className="p-4 text-[var(--text-error)]">{t('studio.hub.cards.vocab.page.featureSupport.no')}</td>
                                         <td className="p-4 text-[var(--text-error)]">{t('studio.hub.cards.vocab.page.featureSupport.no')}</td>
-                                        <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
+                                        <td className="p-4 text-emerald-500 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
                                     </tr>
-                                    <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                                        <td className="p-4 font-bold text-white">{t('studio.hub.cards.vocab.page.featureList.tts')}</td>
+                                    <tr className="border-b border-[var(--border-secondary)] hover:bg-[var(--bg-secondary)]/20 transition-colors">
+                                        <td className="p-4 font-bold text-[var(--text-primary)]">{t('studio.hub.cards.vocab.page.featureList.tts')}</td>
                                         <td className="p-4 text-[var(--text-secondary)]">{t('studio.hub.cards.vocab.page.featureSupport.browserDependent')}</td>
-                                        <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
-                                        <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
+                                        <td className="p-4 text-emerald-500 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
+                                        <td className="p-4 text-emerald-500 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
                                     </tr>
-                                    <tr className="hover:bg-white/5 transition-colors">
-                                        <td className="p-4 font-bold text-white">{t('studio.hub.cards.vocab.page.featureList.performance')}</td>
+                                    <tr className="hover:bg-[var(--bg-secondary)]/20 transition-colors">
+                                        <td className="p-4 font-bold text-[var(--text-primary)]">{t('studio.hub.cards.vocab.page.featureList.performance')}</td>
                                         <td className="p-4 text-[var(--text-secondary)]">{t('studio.hub.cards.vocab.page.featureSupport.good')}</td>
-                                        <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.high')}</td>
-                                        <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.high')}</td>
+                                        <td className="p-4 text-emerald-500 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.high')}</td>
+                                        <td className="p-4 text-emerald-500 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.high')}</td>
                                     </tr>
                                 </tbody>
                             </table>

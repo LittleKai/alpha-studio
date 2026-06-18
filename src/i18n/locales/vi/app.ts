@@ -314,7 +314,7 @@ export default {
               studyBullet2: "Phiên học phản xạ nhanh dạng Flashcard sinh động",
               studyBullet3: "Hỗ trợ phát âm chuẩn bản xứ cho nhiều ngôn ngữ",
               libraryTitle: "Thư viện chia sẻ & Đồng bộ đám mây",
-              libraryDesc: "Khám phá hàng ngàn bộ thẻ từ vựng chất lượng cao do cộng đồng đóng góp, hoặc tự tạo bộ thẻ và chia sẻ với mọi người. Toàn bộ tiến trình học tập được đồng bộ hóa tức thì giữa tất cả thiết bị của bạn.",
+              libraryDesc: "Khám phá những bộ thẻ từ vựng do cộng đồng đóng góp, hoặc tự tạo bộ thẻ và chia sẻ với mọi người. Toàn bộ tiến trình học tập được đồng bộ hóa tức thì giữa tất cả thiết bị của bạn.",
               libraryBullet1: "Thư viện bộ thẻ cộng đồng (Public Decks) phong phú",
               libraryBullet2: "Đồng bộ đám mây tức thì qua tài khoản Alpha Studio",
               libraryBullet3: "Quản lý, sao lưu và import từ file Excel dễ dàng",
