@@ -252,6 +252,8 @@ export default {
             tag: "Vocabulary learning app",
             title: "VocabFlip for Web, Android, and Windows",
             subtitle: "Create decks, review with spaced repetition, look up dictionary data, and sync your learning library with your Alpha Studio account. It is recommended to download the Windows or Android version for full features and better stability compared to the Web app.",
+            subtitleText: "Create decks, review with spaced repetition, look up dictionary data, and sync your learning library with your Alpha Studio account.",
+            subtitleRecommend: "It is recommended to download the Windows or Android version for full features and better stability compared to the Web app.",
             openWebApp: "Open Web app",
             downloadWindows: "Download Windows",
             quickApk: "Download APK",
@@ -277,7 +279,33 @@ export default {
             webHeadingEyebrow: "Embedded Web app",
             webHeading: "Study inside Studio",
             webDesc: "The Web app shares the Alpha Studio sign-in token, so you can study quickly without installing another app.",
-            webTitle: "VocabFlip Web App"
+            webTitle: "VocabFlip Web App",
+            comparisonTitle: "VocabFlip Version Comparison",
+            comparisonDesc: "Detailed feature sets and support levels across Web, Android, and Windows platforms.",
+            tableColFeature: "Feature / Platform",
+            tableColWeb: "Embedded Web",
+            tableColAndroid: "Android APK",
+            tableColWindows: "Windows PC",
+            featureList: {
+              flashcard: "Flashcard & Spacing Review",
+              fsrs: "FSRS Spaced Repetition",
+              sync: "Studio Account Sync",
+              dict: "Dictionary & Lookup",
+              offline: "Offline Mode support",
+              importExport: "Import/Export (Excel, Anki)",
+              tts: "High-quality Pronunciation (TTS)",
+              performance: "Performance & Stability",
+            },
+            featureSupport: {
+              basic: "Basic",
+              limited: "Limited",
+              full: "Full support",
+              no: "Not supported",
+              yes: "Supported",
+              browserDependent: "Browser-dependent",
+              high: "Optimized (High)",
+              good: "Good",
+            }
           }
         },
         interior: {

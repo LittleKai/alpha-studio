@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/context';
 import {
@@ -30,6 +30,13 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, tone, ico
     </div>
 );
 
+const vocabImages = [
+    '/images/vocab/vocab-preview.png',
+    '/images/vocab/vocab-preview-1.png',
+    '/images/vocab/vocab-preview-2.png',
+    '/images/vocab/vocab-preview-3.png',
+];
+
 const VocabPage: React.FC = () => {
     const { t, language } = useTranslation();
     const navigate = useNavigate();
@@ -38,38 +45,33 @@ const VocabPage: React.FC = () => {
     const [releaseError, setReleaseError] = useState(false);
     const [showZoomModal, setShowZoomModal] = useState(false);
     const [activeImageIndex, setActiveImageIndex] = useState(0);
-
-    const vocabImages = [
-        '/images/vocab/vocab-preview.png',
-        '/images/vocab/vocab-preview-1.png',
-        '/images/vocab/vocab-preview-2.png',
-        '/images/vocab/vocab-preview-3.png',
-    ];
+    const [currentPreviewIndex, setCurrentPreviewIndex] = useState(0);
 
     useEffect(() => {
-        let cancelled = false;
-
-        getLatestVocabRelease()
-            .then((releaseInfo) => {
-                if (!cancelled) {
-                    setRelease(releaseInfo);
-                    setReleaseError(false);
-                }
-            })
-            .catch(() => {
-                if (!cancelled) {
-                    setRelease(VOCAB_FALLBACK_RELEASE);
-                    setReleaseError(true);
-                }
-            })
-            .finally(() => {
-                if (!cancelled) setReleaseLoading(false);
-            });
-
-        return () => {
-            cancelled = true;
-        };
+        const interval = setInterval(() => {
+            setCurrentPreviewIndex((prev) => (prev + 1) % vocabImages.length);
+        }, 3000);
+        return () => clearInterval(interval);
     }, []);
+
+    const loadRelease = useCallback(async () => {
+        try {
+            setReleaseLoading(true);
+            setReleaseError(false);
+            const releaseInfo = await getLatestVocabRelease();
+            setRelease(releaseInfo);
+        } catch (err) {
+            console.error('Failed to load VocabFlip release metadata:', err);
+            setRelease(VOCAB_FALLBACK_RELEASE);
+            setReleaseError(true);
+        } finally {
+            setReleaseLoading(false);
+        }
+    }, []);
+
+    useEffect(() => {
+        loadRelease();
+    }, [loadRelease]);
 
     const publishedDate = formatReleaseDate(release.publishedAt, language === 'vi' ? 'vi-VN' : 'en-US');
     const releaseMeta = [
@@ -138,6 +140,15 @@ const VocabPage: React.FC = () => {
                 html[data-theme="light"] .ambient-glow-reflector {
                     background: radial-gradient(circle, rgba(2, 132, 199, 0.12) 0%, transparent 70%) !important;
                 }
+                .shimmer-bg {
+                    background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--border-secondary) 50%, var(--bg-secondary) 75%);
+                    background-size: 200% 100%;
+                    animation: shimmerLoading 1.5s infinite linear;
+                }
+                @keyframes shimmerLoading {
+                    0% { background-position: 200% 0; }
+                    100% { background-position: -200% 0; }
+                }
             ` }} />
 
             <button
@@ -163,8 +174,14 @@ const VocabPage: React.FC = () => {
                                 {t('studio.hub.cards.vocab.page.title')}
                             </h1>
                             <p className="max-w-2xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg">
-                                {t('studio.hub.cards.vocab.page.subtitle')}
+                                {t('studio.hub.cards.vocab.page.subtitleText')}
                             </p>
+                            <div className="p-3 bg-amber-500/10 border border-amber-500/20 rounded-xl text-amber-500 text-xs sm:text-sm font-semibold max-w-2xl flex items-center gap-2.5 shadow-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>{t('studio.hub.cards.vocab.page.subtitleRecommend')}</span>
+                            </div>
                         </div>
 
                         <div className="flex flex-wrap gap-3">
@@ -179,28 +196,37 @@ const VocabPage: React.FC = () => {
                                 </svg>
                                 {t('studio.hub.cards.vocab.page.openWebApp')}
                             </a>
-                            <a
-                                href={release.windowsInstallerUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center gap-2 rounded-xl border border-[var(--border-primary)] bg-[var(--bg-card)] px-5 py-3 text-sm font-black text-[var(--text-primary)] transition-all hover:-translate-y-0.5 hover:border-sky-500 hover:text-sky-500"
-                            >
-                                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path d="M0 3.45 9.75 2.1v9.45H0V3.45Zm0 9h9.75v9.45L0 20.55v-8.1ZM11.25 1.9 24 0v11.55H11.25V1.9Zm0 10.55H24V24l-12.75-1.9v-9.65Z" />
-                                </svg>
-                                {t('studio.hub.cards.vocab.page.downloadWindows')}
-                            </a>
-                            <a
-                                href={release.androidApkUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center gap-2 rounded-xl border border-[var(--border-primary)] bg-[var(--bg-card)] px-5 py-3 text-sm font-black text-[var(--text-primary)] transition-all hover:-translate-y-0.5 hover:border-emerald-400 hover:text-emerald-400"
-                            >
-                                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v12m0 0 4-4m-4 4-4-4M5 20h14" />
-                                </svg>
-                                {t('studio.hub.cards.vocab.page.quickApk')}
-                            </a>
+                            {releaseLoading ? (
+                                <>
+                                    <div className="h-11 w-36 rounded-xl shimmer-bg select-none" />
+                                    <div className="h-11 w-28 rounded-xl shimmer-bg select-none" />
+                                </>
+                            ) : (
+                                <>
+                                    <a
+                                        href={release.windowsInstallerUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center gap-2 rounded-xl border border-[var(--border-primary)] bg-[var(--bg-card)] px-5 py-3 text-sm font-black text-[var(--text-primary)] transition-all hover:-translate-y-0.5 hover:border-sky-500 hover:text-sky-500"
+                                    >
+                                        <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M0 3.45 9.75 2.1v9.45H0V3.45Zm0 9h9.75v9.45L0 20.55v-8.1ZM11.25 1.9 24 0v11.55H11.25V1.9Zm0 10.55H24V24l-12.75-1.9v-9.65Z" />
+                                        </svg>
+                                        {t('studio.hub.cards.vocab.page.downloadWindows')}
+                                    </a>
+                                    <a
+                                        href={release.androidApkUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center gap-2 rounded-xl border border-[var(--border-primary)] bg-[var(--bg-card)] px-5 py-3 text-sm font-black text-[var(--text-primary)] transition-all hover:-translate-y-0.5 hover:border-emerald-400 hover:text-emerald-400"
+                                    >
+                                        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v12m0 0 4-4m-4 4-4-4M5 20h14" />
+                                        </svg>
+                                        {t('studio.hub.cards.vocab.page.quickApk')}
+                                    </a>
+                                </>
+                            )}
                         </div>
                     </div>
 
@@ -211,7 +237,7 @@ const VocabPage: React.FC = () => {
 
                         <div
                             onClick={() => {
-                                setActiveImageIndex(0);
+                                setActiveImageIndex(currentPreviewIndex);
                                 setShowZoomModal(true);
                             }}
                             className="mockup-window rounded-2xl overflow-hidden cursor-zoom-in w-full max-w-lg aspect-[16/10] relative group z-10 flex flex-col"
@@ -231,8 +257,8 @@ const VocabPage: React.FC = () => {
 
                             {/* Aspect Ratio Landscape CSS Background Image Cover */}
                             <div 
-                                className="flex-1 w-full bg-slate-950 bg-cover bg-center bg-no-repeat relative group-hover:scale-[1.02] transition-transform duration-700 ease-out"
-                                style={{ backgroundImage: "url('/images/vocab/vocab-preview.png')" }}
+                                className="flex-1 w-full bg-slate-950 bg-cover bg-center bg-no-repeat relative group-hover:scale-[1.02] transition-all duration-700 ease-out"
+                                style={{ backgroundImage: `url('${vocabImages[currentPreviewIndex]}')` }}
                             >
                                 {/* Bottom vignette gradient */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity"></div>
@@ -264,9 +290,20 @@ const VocabPage: React.FC = () => {
                                 {releaseLoading ? t('studio.hub.cards.vocab.page.releaseLoading') : releaseMeta}
                             </h2>
                             {releaseError && (
-                                <p className="text-xs leading-relaxed text-amber-500 max-w-md pt-1">
-                                    {t('studio.hub.cards.vocab.page.releaseFallback')}
-                                </p>
+                                <div className="flex flex-wrap items-center gap-2 pt-1">
+                                    <p className="text-xs leading-relaxed text-amber-500 max-w-md">
+                                        {t('studio.hub.cards.vocab.page.releaseFallback')}
+                                    </p>
+                                    <button
+                                        onClick={loadRelease}
+                                        className="px-2 py-1 bg-[var(--bg-secondary)] hover:bg-[var(--bg-tertiary)] border border-[var(--border-primary)] rounded-lg text-[10px] font-bold hover:border-[var(--accent-primary)] text-[var(--text-primary)] hover:text-[var(--accent-primary)] hover:scale-105 transition-all flex items-center gap-1 cursor-pointer shadow-sm shrink-0"
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 7.89H18v3" />
+                                        </svg>
+                                        {t('app.regenerate') || 'Tải lại'}
+                                    </button>
+                                </div>
                             )}
                         </div>
                         
@@ -306,6 +343,84 @@ const VocabPage: React.FC = () => {
                         tone="bg-amber-500/10 text-amber-400"
                         icon={<svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.2" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M5 5.5A2.5 2.5 0 0 1 7.5 3H20v16H7.5A2.5 2.5 0 0 0 5 21.5v-16Z" /><path strokeLinecap="round" strokeLinejoin="round" d="M9 7h7M9 11h5" /></svg>}
                     />
+                </section>
+
+                {/* Platform Comparison Table */}
+                <section className="glass-card rounded-3xl p-6 sm:p-8 border border-[var(--border-primary)] shadow-xl relative overflow-hidden space-y-6">
+                    <div className="absolute right-[-80px] top-[-80px] h-48 w-48 rounded-full bg-sky-400/5 blur-3xl pointer-events-none" />
+                    <div className="absolute bottom-[-90px] left-[-70px] h-48 w-48 rounded-full bg-emerald-400/5 blur-3xl pointer-events-none" />
+                    
+                    <div className="relative space-y-2">
+                        <h2 className="text-xl sm:text-2xl font-black text-[var(--text-primary)] tracking-tight">
+                            {t('studio.hub.cards.vocab.page.comparisonTitle') || 'Bảng so sánh phiên bản VocabFlip'}
+                        </h2>
+                        <p className="text-sm text-[var(--text-secondary)]">
+                            {t('studio.hub.cards.vocab.page.comparisonDesc') || 'Chi tiết các tính năng và mức độ hỗ trợ trên các nền tảng Web, Android và Windows.'}
+                        </p>
+                    </div>
+
+                    <div className="relative overflow-x-auto rounded-xl border border-[var(--border-primary)] bg-black/10">
+                        <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                            <thead>
+                                <tr className="border-b border-[var(--border-primary)] bg-[var(--bg-secondary)] text-[var(--text-secondary)] font-semibold">
+                                    <th className="p-4">{t('studio.hub.cards.vocab.page.tableColFeature')}</th>
+                                    <th className="p-4">{t('studio.hub.cards.vocab.page.tableColWeb')}</th>
+                                    <th className="p-4">{t('studio.hub.cards.vocab.page.tableColAndroid')}</th>
+                                    <th className="p-4">{t('studio.hub.cards.vocab.page.tableColWindows')}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr className="border-b border-[var(--border-primary)]/30 hover:bg-white/5 transition-colors">
+                                    <td className="p-4 font-bold text-[var(--text-primary)]">{t('studio.hub.cards.vocab.page.featureList.flashcard')}</td>
+                                    <td className="p-4 text-[var(--text-secondary)]">{t('studio.hub.cards.vocab.page.featureSupport.basic')}</td>
+                                    <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.full')}</td>
+                                    <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.full')}</td>
+                                </tr>
+                                <tr className="border-b border-[var(--border-primary)]/30 hover:bg-white/5 transition-colors">
+                                    <td className="p-4 font-bold text-[var(--text-primary)]">{t('studio.hub.cards.vocab.page.featureList.fsrs')}</td>
+                                    <td className="p-4 text-emerald-400 font-semibold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
+                                    <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
+                                    <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
+                                </tr>
+                                <tr className="border-b border-[var(--border-primary)]/30 hover:bg-white/5 transition-colors">
+                                    <td className="p-4 font-bold text-[var(--text-primary)]">{t('studio.hub.cards.vocab.page.featureList.sync')}</td>
+                                    <td className="p-4 text-emerald-400 font-semibold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
+                                    <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
+                                    <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
+                                </tr>
+                                <tr className="border-b border-[var(--border-primary)]/30 hover:bg-white/5 transition-colors">
+                                    <td className="p-4 font-bold text-[var(--text-primary)]">{t('studio.hub.cards.vocab.page.featureList.dict')}</td>
+                                    <td className="p-4 text-[var(--text-secondary)]">{t('studio.hub.cards.vocab.page.featureSupport.limited')}</td>
+                                    <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.full')}</td>
+                                    <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.full')}</td>
+                                </tr>
+                                <tr className="border-b border-[var(--border-primary)]/30 hover:bg-white/5 transition-colors">
+                                    <td className="p-4 font-bold text-[var(--text-primary)]">{t('studio.hub.cards.vocab.page.featureList.offline')}</td>
+                                    <td className="p-4 text-[var(--text-error)]">{t('studio.hub.cards.vocab.page.featureSupport.no')}</td>
+                                    <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
+                                    <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
+                                </tr>
+                                <tr className="border-b border-[var(--border-primary)]/30 hover:bg-white/5 transition-colors">
+                                    <td className="p-4 font-bold text-[var(--text-primary)]">{t('studio.hub.cards.vocab.page.featureList.importExport')}</td>
+                                    <td className="p-4 text-[var(--text-error)]">{t('studio.hub.cards.vocab.page.featureSupport.no')}</td>
+                                    <td className="p-4 text-[var(--text-error)]">{t('studio.hub.cards.vocab.page.featureSupport.no')}</td>
+                                    <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
+                                </tr>
+                                <tr className="border-b border-[var(--border-primary)]/30 hover:bg-white/5 transition-colors">
+                                    <td className="p-4 font-bold text-[var(--text-primary)]">{t('studio.hub.cards.vocab.page.featureList.tts')}</td>
+                                    <td className="p-4 text-[var(--text-secondary)]">{t('studio.hub.cards.vocab.page.featureSupport.browserDependent')}</td>
+                                    <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
+                                    <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.yes')}</td>
+                                </tr>
+                                <tr className="hover:bg-white/5 transition-colors">
+                                    <td className="p-4 font-bold text-[var(--text-primary)]">{t('studio.hub.cards.vocab.page.featureList.performance')}</td>
+                                    <td className="p-4 text-[var(--text-secondary)]">{t('studio.hub.cards.vocab.page.featureSupport.good')}</td>
+                                    <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.high')}</td>
+                                    <td className="p-4 text-emerald-400 font-bold">{t('studio.hub.cards.vocab.page.featureSupport.high')}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </section>
             </div>
 

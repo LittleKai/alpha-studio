@@ -252,6 +252,8 @@ export default {
             tag: "Ứng dụng học từ vựng",
             title: "VocabFlip cho Web, Android và Windows",
             subtitle: "Tạo bộ thẻ, ôn tập theo lặp lại ngắt quãng, tra từ điển và đồng bộ thư viện học tập bằng tài khoản Alpha Studio. Nên tải bản Windows hoặc Android để có đầy đủ tính năng và hoạt động ổn định hơn so với bản Web.",
+            subtitleText: "Tạo bộ thẻ, ôn tập theo lặp lại ngắt quãng, tra từ điển và đồng bộ thư viện học tập bằng tài khoản Alpha Studio.",
+            subtitleRecommend: "Nên tải bản Windows hoặc Android để có đầy đủ tính năng và hoạt động ổn định hơn so với bản Web.",
             openWebApp: "Mở bản Web",
             downloadWindows: "Tải Windows",
             quickApk: "Tải APK",
@@ -277,7 +279,33 @@ export default {
             webHeadingEyebrow: "Bản Web nhúng",
             webHeading: "Học ngay trong Studio",
             webDesc: "Bản Web dùng chung token đăng nhập với Alpha Studio, nên bạn có thể học nhanh mà không cần cài thêm ứng dụng.",
-            webTitle: "VocabFlip Web App"
+            webTitle: "VocabFlip Web App",
+            comparisonTitle: "Bảng so sánh phiên bản VocabFlip",
+            comparisonDesc: "Chi tiết các tính năng và mức độ hỗ trợ trên các nền tảng Web, Android và Windows.",
+            tableColFeature: "Tính năng / Nền tảng",
+            tableColWeb: "Bản Web nhúng",
+            tableColAndroid: "Bản Android APK",
+            tableColWindows: "Bản Windows PC",
+            featureList: {
+              flashcard: "Học Flashcard & Phản xạ",
+              fsrs: "Thuật toán giãn cách FSRS",
+              sync: "Đồng bộ tài khoản Studio",
+              dict: "Từ điển & Tra từ offline",
+              offline: "Chế độ ngoại tuyến (Offline)",
+              importExport: "Nhập/Xuất thẻ từ Excel, Anki",
+              tts: "Phát âm giọng đọc chuẩn (TTS)",
+              performance: "Hiệu năng & Trải nghiệm",
+            },
+            featureSupport: {
+              basic: "Cơ bản",
+              limited: "Giới hạn",
+              full: "Đầy đủ",
+              no: "Không hỗ trợ",
+              yes: "Hỗ trợ",
+              browserDependent: "Tùy trình duyệt",
+              high: "Rất cao (Tối ưu)",
+              good: "Khá",
+            }
           }
         },
         interior: {
