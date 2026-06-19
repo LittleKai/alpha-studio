@@ -65,9 +65,9 @@ export interface InteriorApplyResult {
 
 export type InteriorChatResult = InteriorProposalResult | InteriorApplyResult;
 
-export type InteriorModel = 'gemini-3-flash-preview' | 'gemini-3.1-pro-preview';
-export const INTERIOR_MODELS: InteriorModel[] = ['gemini-3-flash-preview', 'gemini-3.1-pro-preview'];
-export const INTERIOR_DEFAULT_MODEL: InteriorModel = 'gemini-3.1-pro-preview';
+export type InteriorModel = 'gemini-3-flash' | 'gemini-3.5-flash' | 'gemini-3.1-pro';
+export const INTERIOR_MODELS: InteriorModel[] = ['gemini-3-flash', 'gemini-3.5-flash', 'gemini-3.1-pro'];
+export const INTERIOR_DEFAULT_MODEL: InteriorModel = 'gemini-3.1-pro';
 
 export interface InteriorProject {
     _id: string;

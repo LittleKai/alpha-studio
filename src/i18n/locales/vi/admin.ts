@@ -104,7 +104,7 @@ export default {
       chatProviderTitle: "Sử dụng OpenClaw cho AI Chat",
       chatProviderDesc: "Bật để giữ context theo từng user qua OpenClaw. Tắt để gọi gcli trực tiếp qua GCLI_DIRECT_URL, nhanh hơn nhưng không giữ session context.",
       gcliBotModelLabel: "Model gcli cho AI Bot",
-      gcliBotModelDesc: "Chọn model gcli khi OpenClaw tắt. Mặc định gemini-3-flash-preview.",
+      gcliBotModelDesc: "Chọn model gcli khi OpenClaw tắt. Mặc định gemini-2.5-flash.",
       modelDefault: "mặc định",
       subtabs: {
         apiSettings: "Cài đặt API"
