@@ -195,7 +195,8 @@ export default function CrmSubscriptionPage() {
     };
 
     // Robust variables calculation to completely prevent NaN
-    const includedLimit = sub?.includedAiLimit ?? 1000;
+    const isTrial = sub?.entitlementType === 'trial' || sub?.plan === 'crm_trial';
+    const includedLimit = sub?.includedAiLimit ?? 0;
     const includedUsed = sub?.includedAiUsed ?? 0;
     const extraAi = sub?.extraAiRemaining ?? 0;
 
@@ -559,12 +560,22 @@ export default function CrmSubscriptionPage() {
                                                     <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500 active-glow-ring"></span>
                                                 </span>
                                                 <span className="text-2xl font-black text-green-500 tracking-tight">
-                                                    {t('studio.hub.cards.crm.subscription.statusActive') || 'Đang Hoạt Động'}
+                                                    {isTrial
+                                                        ? (t('studio.hub.cards.crm.subscription.statusTrial') || 'Đang dùng thử')
+                                                        : (t('studio.hub.cards.crm.subscription.statusActive') || 'Đang Hoạt Động')}
                                                 </span>
                                             </div>
                                              <p className="text-sm text-[var(--text-secondary)] monospaced-nums">
-                                                {t('studio.hub.cards.crm.subscription.statusExpiry').replace('{{date}}', new Date(sub.periodEnd).toLocaleDateString('vi-VN'))}
+                                                {(isTrial
+                                                    ? t('studio.hub.cards.crm.subscription.statusTrialExpiry')
+                                                    : t('studio.hub.cards.crm.subscription.statusExpiry')
+                                                ).replace('{{date}}', new Date(sub.periodEnd).toLocaleDateString('vi-VN'))}
                                             </p>
+                                            {isTrial && (
+                                                <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                                                    {t('studio.hub.cards.crm.subscription.statusTrialDesc') || 'Mỗi tài khoản mới chỉ được cấp 1 lần dùng thử: 7 ngày và 50 yêu cầu AI.'}
+                                                </p>
+                                            )}
                                         </div>
                                     ) : sub && sub.status === 'expired' ? (
                                         <div className="space-y-2">
@@ -608,7 +619,9 @@ export default function CrmSubscriptionPage() {
                                         className="w-full py-3 rounded-xl font-bold bg-[var(--bg-secondary)] border border-[var(--border-primary)] text-[var(--text-primary)] hover:border-[var(--accent-primary)] hover:text-[var(--accent-primary)] spring-bounce text-sm cursor-pointer"
                                     >
                                         {sub && sub.status === 'active' 
-                                            ? (t('studio.hub.cards.crm.subscription.renewBtn') || 'Gia hạn gói hàng tháng') 
+                                            ? isTrial
+                                                ? (t('studio.hub.cards.crm.subscription.upgradeBtn') || 'Nâng cấp gói 1 tháng')
+                                                : (t('studio.hub.cards.crm.subscription.renewBtn') || 'Gia hạn gói hàng tháng') 
                                             : (t('studio.hub.cards.crm.subscription.subscribeBtn') || 'Đăng ký gói 1 tháng')
                                         }
                                     </button>
@@ -630,7 +643,9 @@ export default function CrmSubscriptionPage() {
                                             <span className="text-sm text-[var(--text-tertiary)] font-bold">/ {includedLimit} requests</span>
                                         </div>
                                          <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                                            {t('studio.hub.cards.crm.subscription.quotaDesc') || 'Hạn ngạch AI hỗ trợ soạn thảo, tối ưu kịch bản và phản hồi tin nhắn tự động hàng tháng.'}
+                                            {isTrial
+                                                ? (t('studio.hub.cards.crm.subscription.trialQuotaDesc') || 'Gói dùng thử có 50 yêu cầu AI, chỉ cấp một lần cho tài khoản mới.')
+                                                : (t('studio.hub.cards.crm.subscription.quotaDesc') || 'Hạn ngạch AI hỗ trợ soạn thảo, tối ưu kịch bản và phản hồi tin nhắn tự động hàng tháng.')}
                                         </p>
                                     </div>
 

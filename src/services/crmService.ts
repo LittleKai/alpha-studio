@@ -17,8 +17,11 @@ export interface CrmSubscription {
     _id: string;
     userId: any; // User ID or populated user object
     status: 'inactive' | 'active' | 'expired';
+    plan?: string;
+    entitlementType?: 'trial' | 'paid';
     periodStart: string;
     periodEnd: string;
+    trialStartedAt?: string | null;
     includedAiLimit: number;
     includedAiUsed: number;
     extraAiRemaining: number;
