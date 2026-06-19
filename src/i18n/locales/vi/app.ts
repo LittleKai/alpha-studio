@@ -151,7 +151,7 @@ export default {
             statusInactive: "Chưa Đăng Ký",
             statusExpiry: "Hạn sử dụng đến: {{date}}",
             statusTrialExpiry: "Dùng thử đến: {{date}}",
-            statusTrialDesc: "Mỗi tài khoản mới chỉ được cấp 1 lần dùng thử: 7 ngày và 50 yêu cầu AI.",
+            statusTrialDesc: "Mỗi tài khoản mới chỉ được cấp 1 lần dùng thử: 14 ngày và 100 yêu cầu AI.",
             statusExpiredDesc: "Đã kết thúc vào {{date}}. Hãy gia hạn để khôi phục các tác vụ tự động gửi tin nhắn.",
             statusInactiveDesc: "Bạn chưa có giấy phép Alpha CRM. Sở hữu giấy phép ngay để liên kết bot và bắt đầu chiến dịch.",
             renewBtn: "Gia hạn gói hàng tháng",
@@ -160,7 +160,7 @@ export default {
             
             quotaTitle: "AI Quota / Chu kỳ",
             quotaDesc: "Hạn ngạch AI hỗ trợ soạn thảo, tối ưu kịch bản và phản hồi tin nhắn tự động hàng tháng.",
-            trialQuotaDesc: "Gói dùng thử có 50 yêu cầu AI, chỉ cấp một lần cho tài khoản mới.",
+            trialQuotaDesc: "Gói dùng thử có 100 yêu cầu AI, chỉ cấp một lần cho tài khoản mới.",
             quotaUsed: "Đã dùng: {{used}}",
             quotaRemaining: "Còn lại: {{remaining}}",
             quotaNote: "* Lượt AI chỉ khấu trừ khi máy chủ trả dữ liệu thành công.",

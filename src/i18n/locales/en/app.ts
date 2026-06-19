@@ -151,7 +151,7 @@ export default {
             statusInactive: "Not Registered",
             statusExpiry: "Valid until: {{date}}",
             statusTrialExpiry: "Trial ends: {{date}}",
-            statusTrialDesc: "Each new account gets one trial only: 7 days and 50 AI requests.",
+            statusTrialDesc: "Each new account gets one trial only: 14 days and 100 AI requests.",
             statusExpiredDesc: "Expired on {{date}}. Please renew to restore Zalo auto-messaging features.",
             statusInactiveDesc: "You do not have an active Alpha CRM license yet. Subscribe now to link your bot and start campaigns.",
             renewBtn: "Renew Monthly",
@@ -160,7 +160,7 @@ export default {
             
             quotaTitle: "AI Quota / Period",
             quotaDesc: "Monthly AI quota for draft helper, campaign optimizer, and auto-reply assistants.",
-            trialQuotaDesc: "Your trial includes 50 AI requests and is granted only once for each new account.",
+            trialQuotaDesc: "Your trial includes 100 AI requests and is granted only once for each new account.",
             quotaUsed: "Used: {{used}}",
             quotaRemaining: "Remaining: {{remaining}}",
             quotaNote: "* AI requests are only charged when completed successfully.",
