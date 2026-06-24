@@ -46,6 +46,23 @@ export default {
       item4: "Exclusive prompt library",
       cta: "OPEN ALPHA CONNECT"
     },
+    toolsShowcase: {
+      title: "AI Studio Tools Ecosystem",
+      subtitle: "A professional suite of tools for learning, task management, and AI skills development.",
+      explore: "Enter Studio",
+      crm: {
+        title: "Alpha CRM",
+        desc: "Client, project, and automated billing management system, optimizing workflows for professional event freelancers."
+      },
+      vocab: {
+        title: "VocabFlip",
+        desc: "Learn specialized event and design English terminology through an intelligent, interactive flashcard system."
+      },
+      skills: {
+        title: "AI Skills Library",
+        desc: "A comprehensive repository of prompts, sample workflows, and guides for applying generative AI models in practice."
+      }
+    },
     course: {
       intro: "Course Intro",
       syllabus: "Syllabus",

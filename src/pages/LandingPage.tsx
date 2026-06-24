@@ -10,12 +10,12 @@ import { getPartners } from '../services/partnerService';
 import type { Partner } from '../services/partnerService';
 import { getFeaturedStudents } from '../services/featuredStudentsService';
 
-// Category to gradient color mapping
+// Category to style mapping (Neon Terminal / Restrained strategy)
 const categoryGradients: Record<string, string> = {
-    'ai-basic': 'from-green-600 to-emerald-500',
-    'ai-advanced': 'from-purple-600 to-pink-500',
-    'ai-studio': 'from-blue-600 to-cyan-500',
-    'ai-creative': 'from-orange-500 to-red-500'
+    'ai-basic': 'bg-green-950/40 text-green-400 border border-green-500/20',
+    'ai-advanced': 'bg-purple-950/40 text-purple-400 border border-purple-500/20',
+    'ai-studio': 'bg-cyan-950/40 text-cyan-400 border border-cyan-500/20',
+    'ai-creative': 'bg-orange-950/40 text-orange-400 border border-orange-500/20'
 };
 
 // Category to icon mapping
@@ -190,7 +190,7 @@ const LandingPage: React.FC = () => {
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent-primary)] opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent-primary)]"></span>
                         </span>
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--accent-primary)]">{t('landing.hero.badge')}</span>
+                        <span className="text-xs font-bold text-[var(--accent-primary)]">{t('landing.hero.badge')}</span>
                     </div>
 
                     <h1 className="text-5xl md:text-8xl font-black text-[var(--text-primary)] leading-[1.1] tracking-tight">
@@ -267,7 +267,7 @@ const LandingPage: React.FC = () => {
                                 <Link
                                     key={course._id}
                                     to={`/courses/${course.slug}`}
-                                    className="group glass-card rounded-[32px] overflow-hidden hover:bg-[var(--bg-card)] transition-all duration-500 cursor-pointer relative flex flex-col h-full"
+                                    className="group glass-card rounded-xl overflow-hidden hover:bg-[var(--bg-card)] transition-all duration-500 cursor-pointer relative flex flex-col h-full"
                                 >
                                     {/* Thumbnail */}
                                     {course.thumbnail ? (
@@ -288,7 +288,7 @@ const LandingPage: React.FC = () => {
                                             </span>
                                         </div>
                                     ) : (
-                                        <div className={`relative h-48 bg-gradient-to-br ${categoryGradients[course.category] || 'from-purple-600 to-pink-500'} flex items-center justify-center`}>
+                                        <div className={`relative h-48 ${categoryGradients[course.category] || 'bg-slate-900 border-b border-[var(--border-primary)]'} flex items-center justify-center`}>
                                             <span className="text-6xl">{categoryIcons[course.category] || '📚'}</span>
                                             {/* Level Badge */}
                                             <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-[10px] font-black uppercase tracking-widest text-white">
@@ -352,6 +352,97 @@ const LandingPage: React.FC = () => {
                 </div>
             </section>
 
+            {/* Tools Showcase Section */}
+            <section className="py-16 bg-[var(--bg-primary)] border-t border-[var(--border-primary)] relative overflow-hidden">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--accent-primary)]/5 rounded-full blur-[160px] -z-10"></div>
+                <div className="container mx-auto px-6">
+                    <div className="text-center mb-16 space-y-4">
+                        <h2 className="text-4xl font-black text-[var(--text-primary)]">
+                            {t('landing.toolsShowcase.title')}
+                        </h2>
+                        <p className="text-[var(--text-secondary)] max-w-2xl mx-auto font-medium">
+                            {t('landing.toolsShowcase.subtitle')}
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {/* Alpha CRM Card */}
+                        <div
+                            onClick={() => navigate('/studio/crm/subscription')}
+                            className="group glass-card rounded-xl p-6 border border-[var(--border-primary)] hover:border-emerald-500/40 hover:shadow-[0_0_15px_rgba(16,185,129,0.1)] transition-all duration-300 flex flex-col justify-between cursor-pointer h-full"
+                        >
+                            <div>
+                                <div className="p-2 rounded-lg mb-4 w-10 h-10 flex items-center justify-center bg-slate-900 border border-[var(--border-primary)] group-hover:scale-105 transition-transform duration-300">
+                                    <img src="/crm-logo.png" alt="Alpha CRM" className="w-full h-full object-contain drop-shadow-sm rounded" />
+                                </div>
+                                <h3 className="text-xl font-bold mb-2 text-[var(--text-primary)] group-hover:text-emerald-400 transition-colors">
+                                    {t('landing.toolsShowcase.crm.title')}
+                                </h3>
+                                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                                    {t('landing.toolsShowcase.crm.desc')}
+                                </p>
+                            </div>
+                            <div className="mt-8 flex items-center gap-2 text-sm font-bold text-emerald-400 group-hover:gap-3 transition-all duration-300">
+                                {t('landing.toolsShowcase.explore')}
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        {/* VocabFlip Card */}
+                        <div
+                            onClick={() => navigate('/studio/vocab')}
+                            className="group glass-card rounded-xl p-6 border border-[var(--border-primary)] hover:border-rose-500/40 hover:shadow-[0_0_15px_rgba(244,63,94,0.1)] transition-all duration-300 flex flex-col justify-between cursor-pointer h-full"
+                        >
+                            <div>
+                                <div className="p-2 rounded-lg mb-4 w-10 h-10 flex items-center justify-center bg-slate-900 border border-[var(--border-primary)] group-hover:scale-105 transition-transform duration-300">
+                                    <img src="/vocab/icons/Icon-192.png" alt="VocabFlip" className="w-full h-full object-contain drop-shadow-sm rounded" />
+                                </div>
+                                <h3 className="text-xl font-bold mb-2 text-[var(--text-primary)] group-hover:text-rose-400 transition-colors">
+                                    {t('landing.toolsShowcase.vocab.title')}
+                                </h3>
+                                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                                    {t('landing.toolsShowcase.vocab.desc')}
+                                </p>
+                            </div>
+                            <div className="mt-8 flex items-center gap-2 text-sm font-bold text-rose-400 group-hover:gap-3 transition-all duration-300">
+                                {t('landing.toolsShowcase.explore')}
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        {/* AI Skills Library Card */}
+                        <div
+                            onClick={() => navigate('/studio/skills')}
+                            className="group glass-card rounded-xl p-6 border border-[var(--border-primary)] hover:border-[var(--accent-primary)]/40 hover:shadow-[0_0_15px_rgba(97,232,255,0.1)] transition-all duration-300 flex flex-col justify-between cursor-pointer h-full"
+                        >
+                            <div>
+                                <div className="p-2 rounded-lg mb-4 w-10 h-10 flex items-center justify-center bg-slate-900 border border-[var(--border-primary)] group-hover:scale-105 transition-transform duration-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="h-5 w-5 text-[var(--accent-primary)]">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                    </svg>
+                                </div>
+                                <h3 className="text-xl font-bold mb-2 text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors">
+                                    {t('landing.toolsShowcase.skills.title')}
+                                </h3>
+                                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                                    {t('landing.toolsShowcase.skills.desc')}
+                                </p>
+                            </div>
+                            <div className="mt-8 flex items-center gap-2 text-sm font-bold text-[var(--accent-primary)] group-hover:gap-3 transition-all duration-300">
+                                {t('landing.toolsShowcase.explore')}
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Student Showcase Section */}
             <section className="py-16 border-t border-[var(--border-primary)] relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] -z-10"></div>
@@ -373,7 +464,7 @@ const LandingPage: React.FC = () => {
                                         {(student.backgroundImage || student.work) ? (
                                             <img src={student.backgroundImage || student.work} alt="Work" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                                         ) : (
-                                            <div className="w-full h-full bg-gradient-to-br from-purple-900 to-indigo-900 transition-transform duration-700 group-hover:scale-110" />
+                                            <div className="w-full h-full bg-slate-950 border border-[var(--border-primary)] transition-transform duration-700 group-hover:scale-110" />
                                         )}
                                         <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] to-transparent opacity-90"></div>
                                         <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
