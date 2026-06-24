@@ -32,6 +32,8 @@ const VocabPage = lazy(() => import('./pages/VocabPage'));
 const InteriorDesignPage = lazy(() => import('./pages/InteriorDesignPage'));
 const CrmPage = lazy(() => import('./pages/CrmPage'));
 const CrmSubscriptionPage = lazy(() => import('./pages/CrmSubscriptionPage'));
+const SkillsPage = lazy(() => import('./pages/SkillsPage'));
+const SkillDetailPage = lazy(() => import('./pages/SkillDetailPage'));
 
 // Loading spinner component
 const LoadingSpinner: React.FC = () => (
@@ -273,6 +275,26 @@ const CrmSubscriptionPageWrapper: React.FC = () => {
     );
 };
 
+const SkillsPageWrapper: React.FC = () => {
+    return (
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <SkillsPage />
+            </Suspense>
+        </Layout>
+    );
+};
+
+const SkillDetailPageWrapper: React.FC = () => {
+    return (
+        <Layout>
+            <Suspense fallback={<LoadingSpinner />}>
+                <SkillDetailPage />
+            </Suspense>
+        </Layout>
+    );
+};
+
 // 404 Not Found Page
 const NotFoundPage: React.FC = () => {
     const navigate = useNavigate();
@@ -341,6 +363,8 @@ const App: React.FC = () => {
                         </ProtectedRoute>
                     }
                 />
+                <Route path="/studio/skills" element={<SkillsPageWrapper />} />
+                <Route path="/studio/skills/:slug" element={<SkillDetailPageWrapper />} />
                 {/* Legacy /vocab → redirect to /studio/vocab */}
                 <Route path="/vocab" element={<Navigate to="/studio/vocab" replace />} />
 

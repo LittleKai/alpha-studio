@@ -1,0 +1,869 @@
+[
+  {
+    "source": "shyft.ai",
+    "url": "https://shyft.ai/skills/xhs-images",
+    "slug": "xhs-images",
+    "name": "browser-use",
+    "headline": "XHS Images Generator - Create Xiaohongshu",
+    "short_description": "Xiaohongshu (Little Red Book) infographic series generator for creating eye-catching social media graphics. Benefits marketing and operations teams by automating visual content creation. Connects to Claude for generating infographics from articles or notes.",
+    "tier": "Silver",
+    "category": "Marketing",
+    "difficulty": "Intermediate",
+    "install_type": "Git Clone",
+    "estimated_time_saving": "120 min",
+    "author": "manwithshit",
+    "install_command": "git clone https://github.com/manwithshit/xhs-images.git",
+    "source_repo_url": "https://github.com/manwithshit/xhs-images",
+    "works_with": [
+      "Claude"
+    ],
+    "tags": [],
+    "sections": {
+      "overview": "XHS Images Generator automates the creation of visually appealing infographic series for Xiaohongshu (Little Red Book) from articles or notes. The skill offers 11 distinct visual styles—ranging from cute aesthetic to modern tech—and 6 information layout types including sparse, balanced, dense, list, comparison, and process flows. Users input content and the skill intelligently selects the best style and layout combination, generating 1-10 polished images automatically. It analyzes content, creates an outline, generates each image, and outputs a complete report with all assets. Marketing and operations teams benefit from reduced time spent on visual content creation while maintaining platform-specific design standards.\nGenerate beauty and fashion infographics for lifestyle content creators\nCreate tech tutorial visuals with modern design for educational posts\nProduce knowledge-sharing graphics with minimal aesthetic for productivity content\nAutomate social media asset creation for marketing campaigns on Xiaohongshu",
+      "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/manwithshit/xhs-images`",
+      "usage": "```\nGenerate a 3-slide Xiaohongshu infographic series based on the following [ARTICLE/TOPIC]. Each slide should have: 1) A bold headline in Chinese, 2) 3-5 key bullet points in Chinese, 3) A minimalist background color and icon. Format as a JSON array with 'slide_1', 'slide_2', 'slide_3' keys. Include pinyin for headlines. Topic: [PLACEHOLDER FOR TOPIC OR ARTICLE TEXT]\n```\nCopy\n\n```\n```json\n[\n  {\n    \"slide_1\": {\n      \"headline\": \"夏日清凉攻略 | Xia Rì Qīng Liáng Gōng Lüè\",\n      \"pinyin\": \"Summer Cooling Guide\",\n      \"bullets\": [\n        \"☀️ 避免10-16点外出 | Bì miǎn 10-16 diǎn wài chū | Avoid going out 10AM-4PM\",\n        \"💧 每天补水2L | Měi tiān bǔ shuǐ 2L | Drink 2L water daily\",\n        \"🍉 多吃西瓜和黄瓜 | Duō chī xī guā hé huáng guā | Eat more watermelon & cucumber\"\n      ],\n      \"background\": \"#FF6B6B\",\n      \"icon\": \"🌞\"\n    },\n    \"slide_2\": {\n      \"headline\": \"DIY清凉小物 | DIY Qīng Liáng Xiǎo Wù\",\n      \"pinyin\": \"DIY Cooling Gadgets\",\n      \"bullets\": [\n        \"🧊 冰袖套自制法 | Bīng xiù tào zì zhì fǎ | DIY arm sleeve cooling\",\n        \"🧴 迷你风扇贴片 | Mí nǐ fēng shàn tiē piàn | Mini fan stickers\",\n        \"🧼 冰毛巾叠法 | Bīng máo jīn dié fǎ | Folded ice towel method\"\n      ],\n      \"background\": \"#4ECDC4\",\n      \"icon\": \"❄️\"\n    },\n    \"slide_3\": {\n      \"headline\": \"宅家也能凉爽 | Zhái jiā yě néng liáng shuǎng\",\n      \"pinyin\": \"Stay Cool Indoors\",\n      \"bullets\": [\n        \"🌬️ 开窗通风夜间 | Kāi chuāng tōng fēng yè jiān | Open windows at night\",\n        \"🍵 喝菊花茶降温 | Hē jú huā chá jiàng wēn | Drink chrysanthemum tea\",\n        \"📱 空调温度26°C | Kōng tiáo wēn dù 26°C | Set AC to 26°C\"\n      ],\n      \"background\": \"#FFE66D\",\n      \"icon\": \"🏠\"\n    }\n  }\n]\n```\n```",
+      "requirements": [
+        "Claude Code or compatible AI agent",
+        "Works with: Claude"
+      ],
+      "related_skills": [
+        "xhs-images#main-content",
+        "xhs-images#overview",
+        "xhs-images#setup",
+        "xhs-images#examples",
+        "xhs-images#tools",
+        "xhs-images#mcp",
+        "xhs-images#related",
+        "find-skills",
+        "vercel-composition-patterns",
+        "browser-use"
+      ],
+      "overview_vi": "XHS Images Generator tự động hóa việc tạo ra các chuỗi infographic bắt mắt cho Xiaohongshu (Tiểu Hồng Thư) từ các văn bản bài viết hoặc ghi chú có sẵn. Kỹ năng này cung cấp 11 phong cách thiết kế độc đáo—từ thẩm mỹ dễ thương đến công nghệ hiện đại—và 6 kiểu bố cục trình bày thông tin bao gồm tối giản, cân đối, mật độ cao, danh sách, so sánh và quy trình. Người dùng chỉ cần nhập nội dung, AI sẽ tự động lựa chọn phong cách và bố cục tối ưu nhất để xuất ra từ 1-10 hình ảnh hoàn chỉnh. Nó phân tích nội dung, lên dàn ý chi tiết, vẽ từng ảnh và xuất báo cáo tổng hợp. Đội ngũ marketing và vận hành sẽ tiết kiệm được tối đa thời gian thiết kế mà vẫn đảm bảo tiêu chuẩn hình ảnh chuyên nghiệp của nền tảng.",
+      "setup_vi": "Không có sẵn lệnh cài đặt tự động. Hãy xem kho mã nguồn GitHub để cài đặt thủ công:\n`git clone https://github.com/manwithshit/xhs-images`",
+      "usage_vi": "Nhập prompt hướng dẫn tạo slide infographic Xiaohongshu dựa trên chủ đề hoặc bài viết mẫu. Cấu trúc kết quả trả về dạng mảng JSON chứa các khóa slide_1, slide_2, slide_3 với tiêu đề chữ Trung, pinyin và nội dung tiếng Anh tương ứng."
+    },
+    "crawl_meta": {
+      "crawled_at": "2026-06-23T18:13:01.848811Z",
+      "http_status": 200,
+      "content_hash": "60b51add77ffa7d7598e25646a14ef18fe441b618ba5bcbcdac24f09f18ec48d",
+      "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\xhs-images.md",
+      "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\xhs-images.html",
+      "schema_version": "1.0"
+    },
+    "headline_vi": "Công cụ tạo ảnh Xiaohongshu (XHS) - Sáng tạo nội dung mạng xã hội",
+    "short_description_vi": "Công cụ tự động hóa thiết kế infographic và hình ảnh chuyên nghiệp cho mạng xã hội Xiaohongshu từ bài viết hoặc ghi chú. Phù hợp cho đội ngũ marketing và vận hành để tối ưu quy trình sản xuất nội dung visual chất lượng cao kết nối với Claude."
+  },
+  {
+    "source": "shyft.ai",
+    "url": "https://shyft.ai/skills/generative-ai-marketing-portal",
+    "slug": "generative-ai-marketing-portal",
+    "name": "instagram-scraper-tool",
+    "headline": "AI Marketing Portal: Generative Content &",
+    "short_description": "AWS CDK deployment for a generative AI-powered marketing portal that creates and distributes personalized content using Amazon Bedrock, Personalize, and Pinpoint.",
+    "tier": "Silver",
+    "category": "Marketing",
+    "difficulty": "Intermediate",
+    "install_type": "Git Clone",
+    "estimated_time_saving": "210 min",
+    "author": "aws-samples",
+    "install_command": "git clone https://github.com/aws-samples/generative-ai-marketing-portal.git",
+    "source_repo_url": "https://github.com/aws-samples/generative-ai-marketing-portal",
+    "works_with": [
+      "Claude"
+    ],
+    "tags": [],
+    "sections": {
+      "overview": "This skill deploys a complete marketing content generation platform leveraging Amazon Bedrock for generative AI, Amazon Personalize for audience segmentation, and Amazon Pinpoint with SES for multi-channel distribution. It provides a web portal with Cognito authentication where marketers can generate personalized content and send campaigns via email and SMS. The solution uses CDK for infrastructure-as-code deployment and includes Lambda functions, Langchain integration, and batch processing capabilities. Ideal for teams needing to automate marketing content creation and distribution workflows on AWS infrastructure.\nGenerate personalized email campaigns at scale using Claude AI models\nCreate segmented audience campaigns based on predicted conversion probability\nDeploy multi-channel marketing communications via email and SMS simultaneously\nBuild custom marketing portals with authentication and content management\nThis CDK deployment script sets up a marketing portal that leverages generative AI to create and distribute content. The portal is designed for **TechInnovate Solutions**, a company in the **technology sector**. The AI generates blog posts, social media updates, and email campaigns based on data provided by the marketing team.",
+      "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/aws-samples/generative-ai-marketing-portal`",
+      "usage": "```\nCreate a CDK deployment script for a marketing portal that uses generative AI to create and distribute content. The portal should be tailored for [COMPANY], a company in the [INDUSTRY] sector. The AI should be able to generate blog posts, social media updates, and email campaigns based on [DATA] provided by the marketing team. Ensure the deployment includes necessary security measures and scalability features.\n```\nCopy\n\n```\n# CDK Deployment Script for Generative AI Marketing Portal",
+      "requirements": [
+        "Claude Code or compatible AI agent",
+        "Works with: Claude"
+      ],
+      "related_skills": [
+        "generative-ai-marketing-portal#main-content",
+        "generative-ai-marketing-portal#overview",
+        "generative-ai-marketing-portal#setup",
+        "generative-ai-marketing-portal#examples",
+        "generative-ai-marketing-portal#tools",
+        "generative-ai-marketing-portal#mcp",
+        "generative-ai-marketing-portal#related",
+        "marketingskills",
+        "copywriting",
+        "instagram-scraper-tool"
+      ],
+      "overview_vi": "Kỹ năng này triển khai một nền tảng tạo nội dung marketing hoàn chỉnh tích hợp Amazon Bedrock cho AI tạo sinh, Amazon Personalize để phân khúc đối tượng và Amazon Pinpoint kèm SES để phân phối đa kênh. Hệ thống cung cấp giao diện web xác thực bằng Cognito giúp các nhà tiếp thị tạo nội dung cá nhân hóa và chạy chiến dịch gửi email/SMS tự động. Giải pháp sử dụng mã nguồn hạ tầng CDK, tích hợp các Lambda function, thư viện Langchain và cơ chế xử lý hàng loạt. Rất lý tưởng cho doanh nghiệp muốn tự động hóa luồng phân phối tiếp thị trên đám mây AWS.",
+      "setup_vi": "Vui lòng kiểm tra GitHub repository để xem hướng dẫn cấu hình thủ công:\n`git clone https://github.com/aws-samples/generative-ai-marketing-portal`",
+      "usage_vi": "Viết mã script triển khai CDK cho cổng thông tin tiếp thị sử dụng trí tuệ nhân tạo để sinh và phân phối nội dung tùy chỉnh theo lĩnh vực doanh nghiệp."
+    },
+    "crawl_meta": {
+      "crawled_at": "2026-06-23T18:13:01.226789Z",
+      "http_status": 200,
+      "content_hash": "869e17eedbe1885f4a0c24afe71d502d84daf26f6b84ab62f5591cf67e08793d",
+      "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\generative-ai-marketing-portal.md",
+      "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\generative-ai-marketing-portal.html",
+      "schema_version": "1.0"
+    },
+    "headline_vi": "Cổng thông tin Marketing Generative AI - Cá nhân hóa nội dung đa kênh",
+    "short_description_vi": "Triển khai hạ tầng AWS CDK cho cổng thông tin tiếp thị ứng dụng AI tạo sinh, tự động tạo và phân phối nội dung cá nhân hóa bằng Amazon Bedrock, Personalize và Pinpoint."
+  },
+  {
+    "source": "shyft.ai",
+    "url": "https://shyft.ai/skills/xhamster-downloader",
+    "slug": "xhamster-downloader",
+    "name": "bilibili-downloader",
+    "headline": "XHamster Downloader: Download Videos as MP4",
+    "short_description": "XHamster Downloader is a browser extension designed for users who want to save XHamster videos for offline viewing. It detects the media source and exports the video as an MP4 file without requiring manual extraction.",
+    "tier": "Bronze",
+    "category": "Marketing",
+    "difficulty": "",
+    "install_type": "Git Clone",
+    "estimated_time_saving": "",
+    "author": "serpdownloaders",
+    "install_command": "git clone https://github.com/serpapps/xhamster-video-downloader",
+    "source_repo_url": "https://github.com/serpapps/xhamster-video-downloader",
+    "works_with": [
+      "Claude Code",
+      "Cursor"
+    ],
+    "tags": [
+      "video-downloading",
+      "xhamster",
+      "downloader"
+    ],
+    "sections": {
+      "overview": "XHamster Downloader is a browser extension that simplifies saving supported XHamster videos for offline playback. It detects active video sources from watch pages, displays available quality options, and exports files as MP4 without requiring manual stream extraction. The extension works across Chrome, Firefox, Edge, and other major browsers, automatically saving downloads to a dedicated folder. It supports xHamster.com and regional mirror domains, and includes a free trial with 3 downloads before requiring a paid license for unlimited use.\nDownload videos directly from XHamster watch pages\nSelect video quality options provided by the player\nSave videos for offline playback and archiving\nAvoid manual digging for video sources",
+      "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/serpdownloaders/skills --skill xhamster-video-downloader`\n`git clone https://github.com/serpapps/xhamster-video-downloader`",
+      "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+      "requirements": [
+        "Claude Code or compatible AI agent"
+      ],
+      "related_skills": [
+        "xhamster-downloader#main-content",
+        "xhamster-downloader#overview",
+        "xhamster-downloader#setup",
+        "xhamster-downloader#examples",
+        "xhamster-downloader#related",
+        "xnxx-downloader",
+        "bilibili-downloader"
+      ],
+      "overview_vi": "XHamster Downloader là một add-on trình duyệt giúp đơn giản hóa việc lưu các video được hỗ trợ trên XHamster để phát offline. Công cụ tự động phát hiện các nguồn video đang chạy trên trang, hiển thị danh sách các tùy chọn chất lượng sẵn có và xuất file định dạng MP4 trực tiếp về thư mục download riêng của bạn mà không cần bóc tách luồng phát (stream extraction) thủ công. Tiện ích hoạt động mượt mà trên Chrome, Firefox, Edge và các trình duyệt phổ biến khác, hỗ trợ trang chủ chính thức cũng như các trang mirror khu vực. Cung cấp 3 lượt tải thử miễn phí trước khi yêu cầu bản quyền không giới hạn.",
+      "setup_vi": "Cài đặt thông qua trình quản lý gói kỹ năng:\n`$ npx skills add https://github.com/serpdownloaders/skills --skill xhamster-video-downloader`\nHoặc tải mã nguồn:\n`git clone https://github.com/serpapps/xhamster-video-downloader`",
+      "usage_vi": "Không có ví dụ mẫu có sẵn. Vui lòng tham khảo tài liệu hướng dẫn trên kho mã nguồn GitHub."
+    },
+    "crawl_meta": {
+      "crawled_at": "2026-06-23T18:13:11.826884Z",
+      "http_status": 200,
+      "content_hash": "f9f59de4f3a76f08aa0b8ec4c278089c87f35fe53c4e3f8d302f5c2d9a87be33",
+      "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\xhamster-downloader.md",
+      "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\xhamster-downloader.html",
+      "schema_version": "1.0"
+    },
+    "headline_vi": "Công cụ tải video XHamster - Lưu trữ video định dạng MP4 ngoại tuyến",
+    "short_description_vi": "Tiện ích mở rộng trên trình duyệt giúp tải và lưu video từ XHamster về máy để xem ngoại tuyến một cách dễ dàng. Tự động nhận diện nguồn phát và xuất file MP4 chất lượng cao không cần quét mã thủ công."
+  },
+  {
+    "source": "shyft.ai",
+    "url": "https://shyft.ai/skills/beads-skill",
+    "slug": "beads-skill",
+    "name": "browser-use",
+    "headline": "beads skill for Claude code",
+    "short_description": "Beads skill enables Claude Code to interact with Beads, a shell-based automation tool. It benefits operations teams by automating workflows and integrating with existing shell scripts. The skill connects Claude Code to Beads, allowing for streamlined automation of repetitive tasks.",
+    "tier": "Silver",
+    "category": "Marketing",
+    "difficulty": "Intermediate",
+    "install_type": "Git Clone",
+    "estimated_time_saving": "20 min",
+    "author": "mrf",
+    "install_command": "git clone https://github.com/mrf/beads-skill.git",
+    "source_repo_url": "https://github.com/mrf/beads-skill",
+    "works_with": [
+      "Claude"
+    ],
+    "tags": [],
+    "sections": {
+      "overview": "The Beads skill connects Claude Code to Beads, a lightweight issue tracker designed for AI agent workflows. It provides slash commands for common operations like creating issues, tracking dependencies, and managing work status, helping Claude remember context across sessions. The skill includes a Project Manager agent that ensures alignment between tracked issues and actual project work. Operations and development teams benefit from automated task tracking, dependency management, and persistent memory that eliminates context loss between sessions.\nTrack coding tasks and dependencies across multiple Claude sessions\nMaintain project alignment with automated Project Manager audits\nCreate and manage hierarchical issues with parent-child relationships\nIdentify unblocked work ready to start with the /beads:ready command",
+      "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mrf/beads-skill`",
+      "usage": "```\nI need to automate a workflow using Beads. Here are the details: [WORKFLOW_DESCRIPTION]. Can you generate the necessary Beads script and explain how it works?\n```\nCopy\n\n```\n# Beads Automation Script for [WORKFLOW_DESCRIPTION]\n\n```bash\n#!/bin/bash\n\n# Define variables\nCOMPANY=\"Example Corp\"\nINDUSTRY=\"Technology\"\nDATA=\"user_data.csv\"\n\n# Step 1: Data Preparation\nif [ -f \"$DATA\" ]; then\n    echo \"Data file found. Preparing for processing...\"\n    # Add data preparation steps here\nelse\n    echo \"Error: Data file not found.\"\n    exit 1\nfi\n\n# Step 2: Data Processing\n# Add data processing steps here\n\n# Step 3: Data Analysis\n# Add data analysis steps here\n\n# Step 4: Report Generation\n# Add report generation steps here\n\necho \"Workflow completed successfully.\"\n```",
+      "requirements": [
+        "Claude Code or compatible AI agent",
+        "Works with: Claude"
+      ],
+      "related_skills": [
+        "beads-skill#main-content",
+        "beads-skill#overview",
+        "beads-skill#setup",
+        "beads-skill#examples",
+        "beads-skill#tools",
+        "beads-skill#mcp",
+        "beads-skill#related",
+        "find-skills",
+        "vercel-composition-patterns",
+        "browser-use"
+      ],
+      "overview_vi": "Kỹ năng Beads kết nối Claude Code với hệ thống quản lý công việc và tiến trình Beads siêu nhẹ dành riêng cho các AI agent. Kỹ năng này cung cấp các lệnh slash (lệnh gạch chéo) cho các thao tác phổ biến như tạo thẻ công việc, theo dõi tiến trình phụ thuộc và cập nhật trạng thái làm việc, giúp Claude ghi nhớ ngữ cảnh dự án giữa các phiên làm việc khác nhau. Đi kèm với một agent Quản lý dự án để giám sát công việc. Đội ngũ phát triển và vận hành sẽ được hưởng lợi lớn nhờ tính năng theo dõi tự động và bộ nhớ dài hạn tránh mất mát thông tin dự án.",
+      "setup_vi": "Xem hướng dẫn cấu hình thủ công tại GitHub:\n`git clone https://github.com/mrf/beads-skill`",
+      "usage_vi": "Kịch bản tự động hóa quy trình chuẩn bị, xử lý, phân tích dữ liệu và xuất báo cáo bằng shell script sử dụng Beads."
+    },
+    "crawl_meta": {
+      "crawled_at": "2026-06-23T18:13:12.879177Z",
+      "http_status": 200,
+      "content_hash": "9bb7534f9a4a634c9530b5237291d19483d7fab7f3699833797abf5cceaaf9a5",
+      "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\beads-skill.md",
+      "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\beads-skill.html",
+      "schema_version": "1.0"
+    },
+    "headline_vi": "Kỹ năng Beads cho Claude Code - Tự động hóa quy trình quản lý tác vụ",
+    "short_description_vi": "Kích hoạt khả năng kết nối giữa Claude Code và Beads - công cụ tự động hóa dòng lệnh. Hỗ trợ đắc lực cho đội ngũ vận hành trong việc thiết lập kịch bản shell tự động và quản lý tiến độ công việc liên thông."
+  },
+  {
+    "source": "shyft.ai",
+    "url": "https://shyft.ai/skills/svg-animations",
+    "slug": "svg-animations",
+    "name": "React Native Reanimated Code Generator",
+    "headline": "SVG Animations: Create Icons & Path Effects",
+    "short_description": "This skill guides the creation of SVG animations, perfect for developers looking to create both simple animated icons and complex multi-stage path animations. It helps users leverage the SVG markup language to produce dynamic visuals.",
+    "tier": "Bronze",
+    "category": "Marketing",
+    "difficulty": "",
+    "install_type": "Git Clone",
+    "estimated_time_saving": "",
+    "author": "supermemoryai",
+    "install_command": "git clone https://github.com/supermemoryai/skills",
+    "source_repo_url": "https://github.com/supermemoryai/skills",
+    "works_with": [
+      "Claude Code",
+      "Cursor"
+    ],
+    "tags": [
+      "animations",
+      "animation"
+    ],
+    "sections": {
+      "overview": "This skill guides handcrafted SVG animations for developers of all levels. Learn SVG fundamentals including coordinate systems, shape primitives, and the powerful path element with Bézier curves and arcs. Master three animation approaches: CSS-driven animations with stroke-dasharray effects for drawing paths, SMIL animations embedded directly in SVG markup that work in restricted contexts like img tags, and the modern CSS d property for morphing shapes. Create loading spinners, animated illustrations, and icons with gradients, masks, and filters for visual polish.\nAnimate icons for web design\nCreate visual representations of data\nDevelop interactive infographics\nDesign engaging presentations with animations",
+      "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/supermemoryai/skills --skill svg-animations`\n`git clone https://github.com/supermemoryai/skills`",
+      "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+      "requirements": [
+        "Claude Code or compatible AI agent"
+      ],
+      "related_skills": [
+        "svg-animations#main-content",
+        "svg-animations#overview",
+        "svg-animations#setup",
+        "svg-animations#examples",
+        "svg-animations#related",
+        "reanimated-skia-performance",
+        "svg-assembly-animator",
+        "react-native-reanimated-code-generator"
+      ],
+      "overview_vi": "Kỹ năng này hướng dẫn lập trình các hiệu ứng hoạt họa SVG thủ công dành cho lập trình viên ở mọi cấp độ. Bạn sẽ nắm vững các nền tảng SVG bao gồm hệ tọa độ, các khối hình cơ bản, và thẻ path nâng cao kết hợp đường cong Bézier. Làm chủ 3 phương pháp làm ảnh động: hiệu ứng vẽ viền nét bằng CSS (stroke-dasharray), hoạt họa SMIL nhúng trực tiếp hoạt động được cả trong thẻ img, và thuộc tính d-path CSS hiện đại để biến đổi hình dạng (morphing). Tạo thanh tải dữ liệu (loading spinner), hình minh họa động và các icon chất lượng cao kết hợp mask, bộ lọc.",
+      "setup_vi": "Thêm kỹ năng vào dự án:\n`$ npx skills add https://github.com/supermemoryai/skills --skill svg-animations`\nHoặc clone repository:\n`git clone https://github.com/supermemoryai/skills`",
+      "usage_vi": "Tham khảo mã nguồn hoặc tài liệu đính kèm trên GitHub để xem các ví dụ minh họa chi tiết."
+    },
+    "crawl_meta": {
+      "crawled_at": "2026-06-23T18:13:21.829137Z",
+      "http_status": 200,
+      "content_hash": "5be086def67ffa08c252e4948c07afbd89d49b1331231acf49105048369c5a1f",
+      "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\svg-animations.md",
+      "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\svg-animations.html",
+      "schema_version": "1.0"
+    },
+    "headline_vi": "Công cụ tạo hiệu ứng hoạt hình SVG - Thiết kế Icon & Hiệu ứng vẽ nét",
+    "short_description_vi": "Hướng dẫn và hỗ trợ tạo các hiệu ứng hoạt hình SVG động, từ các biểu tượng icon đơn giản đến các đường path chuyển động phức tạp nhiều giai đoạn bằng mã markup SVG tối giản."
+  },
+  {
+    "source": "shyft.ai",
+    "url": "https://shyft.ai/skills/cam4-downloader",
+    "slug": "cam4-downloader",
+    "name": "RedTube Downloader",
+    "headline": "Cam4 Downloader: Record & Download Videos",
+    "short_description": "Cam4 Downloader is a browser extension for users who want to save Cam4 videos easily. It allows for recording live streams and downloading videos in various resolutions, saving them as MP4 files for offline use.",
+    "tier": "Bronze",
+    "category": "Marketing",
+    "difficulty": "",
+    "install_type": "Git Clone",
+    "estimated_time_saving": "",
+    "author": "serpdownloaders",
+    "install_command": "git clone https://github.com/serpapps/cam4-downloader",
+    "source_repo_url": "https://github.com/serpapps/cam4-downloader",
+    "works_with": [
+      "Claude Code",
+      "Cursor"
+    ],
+    "tags": [
+      "downloader",
+      "browser-extension",
+      "cam4"
+    ],
+    "sections": {
+      "overview": "Cam4 Downloader is a browser extension designed to capture live Cam4 broadcasts and download recorded videos before they disappear from the platform. It detects available stream qualities automatically, supports resolutions up to 1080p at 60fps, and saves all content as standard MP4 files for offline playback on any device. The extension works directly in your browser with popup controls, in-page buttons, and right-click context menus—no need to extract URLs or use separate desktop tools. It includes 3 free downloads to test the workflow, with unlimited downloads available through a paid license. Compatible with Chrome, Edge, Firefox, Brave, Opera, and other major browsers.\nRecord live Cam4 streams before they end\nDownload recorded videos from performer and profile pages\nChoose video resolutions up to 1080p and 60fps\nSave videos as standard MP4 files for playback",
+      "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/serpdownloaders/skills --skill cam4-downloader`\n`git clone https://github.com/serpapps/cam4-downloader`",
+      "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+      "requirements": [
+        "Claude Code or compatible AI agent"
+      ],
+      "related_skills": [
+        "cam4-downloader#main-content",
+        "cam4-downloader#overview",
+        "cam4-downloader#setup",
+        "cam4-downloader#examples",
+        "cam4-downloader#related",
+        "hentaihaven-downloader",
+        "ashemaletube-downloader",
+        "redtube-downloader"
+      ],
+      "overview_vi": "Cam4 Downloader là extension trình duyệt được thiết kế để bắt và ghi lại các chương trình phát sóng trực tiếp trên Cam4, giúp tải về máy trước khi chúng bị gỡ bỏ khỏi hệ thống. Tiện ích tự động dò tìm độ phân giải nguồn (hỗ trợ lên tới 1080p 60fps) và xuất file MP4 tiêu chuẩn phát được trên mọi thiết bị. Giao diện trực quan tích hợp nút tải nhanh trên trang và menu chuột phải tiện lợi. Tương thích tốt với Chrome, Edge, Firefox, Brave, Opera. Đi kèm 3 lượt tải thử trước khi nâng cấp giấy phép.",
+      "setup_vi": "Thêm qua CLI:\n`$ npx skills add https://github.com/serpdownloaders/skills --skill cam4-downloader`\nHoặc tải mã nguồn:\n`git clone https://github.com/serpapps/cam4-downloader`",
+      "usage_vi": "Vui lòng xem kho lưu trữ GitHub để biết thêm hướng dẫn sử dụng."
+    },
+    "crawl_meta": {
+      "crawled_at": "2026-06-23T18:13:22.800232Z",
+      "http_status": 200,
+      "content_hash": "5780d9e75a6f6510b01e4ba82a7a26c61590c107634b082fdfb1d202d595026f",
+      "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cam4-downloader.md",
+      "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\cam4-downloader.html",
+      "schema_version": "1.0"
+    },
+    "headline_vi": "Công cụ tải video Cam4 - Ghi hình & Tải luồng phát trực tiếp",
+    "short_description_vi": "Tiện ích trình duyệt giúp lưu video từ Cam4. Hỗ trợ ghi lại các luồng phát trực tiếp (live streams) và tải video với nhiều tùy chọn độ phân giải khác nhau sang định dạng MP4 để lưu trữ."
+  },
+  {
+    "source": "shyft.ai",
+    "url": "https://shyft.ai/skills/ipsw-skill",
+    "slug": "ipsw-skill",
+    "name": "browser-use",
+    "headline": "ipsw-skill - Apple Firmware Reverse Engineering",
+    "short_description": "AI skill for Apple firmware and binary reverse engineering using the ipsw CLI tool. Supports Claude Code, Codex CLI, and Gemini CLI. Helps operations teams analyze firmware, extract binaries, and identify vulnerabilities.",
+    "tier": "Silver",
+    "category": "Marketing",
+    "difficulty": "Intermediate",
+    "install_type": "Git Clone",
+    "estimated_time_saving": "30 min",
+    "author": "blacktop",
+    "install_command": "git clone https://github.com/blacktop/ipsw-skill.git",
+    "source_repo_url": "https://github.com/blacktop/ipsw-skill",
+    "works_with": [
+      "Claude"
+    ],
+    "tags": [
+      "apple",
+      "claude-skills",
+      "vulnerability-research",
+      "claude-code",
+      "ipsw",
+      "reverse-engineering",
+      "codex",
+      "skill"
+    ],
+    "sections": {
+      "overview": "ipsw-skill is an AI agent skill that integrates the ipsw CLI tool to automate Apple firmware and binary reverse engineering tasks. It enables agents to download and extract IPSWs, OTAs, kernelcaches, and dyld_shared_cache; perform userspace reverse engineering including DSC disassembly and symbol lookup; dump Objective-C headers from private frameworks; analyze kernel and KEXT binaries; research entitlements; and inspect Mach-O signatures and entitlements. The skill works with Claude Code, Codex CLI, Gemini CLI, and Pi coding agents, making it valuable for security researchers, firmware engineers, and operations teams investigating iOS vulnerabilities and system internals.\nExtract and analyze kernel and dyld_shared_cache from iOS firmware images\nDump Objective-C headers from private system frameworks for reverse engineering\nSearch for entitlements and capabilities across iOS binaries\nDisassemble functions and locate symbol addresses in system libraries",
+      "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/blacktop/ipsw-skill`",
+      "usage": "```\nUse the ipsw CLI tool to analyze the iOS [VERSION] IPSW file for [DEVICE_MODEL]. Extract the kernelcache and dyld_shared_cache, then identify all executable binaries in the root filesystem. For each binary, check for known vulnerabilities using [VULNERABILITY_DATABASE] and generate a report listing: 1) Binary path and architecture, 2) Detected CVEs, 3) Potential impact, and 4) Recommended mitigation steps. Focus on binaries with high severity vulnerabilities (CVSS >= 7.0).\n```\nCopy\n\n```",
+      "requirements": [
+        "Claude Code or compatible AI agent",
+        "Works with: Claude"
+      ],
+      "related_skills": [
+        "ipsw-skill#main-content",
+        "ipsw-skill#overview",
+        "ipsw-skill#setup",
+        "ipsw-skill#examples",
+        "ipsw-skill#tools",
+        "ipsw-skill#mcp",
+        "ipsw-skill#related",
+        "find-skills",
+        "vercel-composition-patterns",
+        "browser-use"
+      ],
+      "overview_vi": "ipsw-skill tích hợp bộ công cụ dòng lệnh ipsw vào quy trình làm việc của AI Agent để tự động hóa các tác vụ nghiên cứu firmware và mã nhị phân của Apple. Công cụ hỗ trợ tải và giải nén file IPSW, OTA, bộ nhớ cache kernel và dyld_shared_cache; phân tích mã nguồn người dùng (userspace reverse engineering) bao gồm dịch ngược DSC và tra cứu biểu tượng; trích xuất Objective-C header từ các framework hệ thống; nghiên cứu quyền hạn (entitlements) và chữ ký Mach-O. Hoạt động tương thích với Claude Code, Codex CLI, Gemini CLI.",
+      "setup_vi": "Tham khảo tài liệu hướng dẫn và tải từ repository:\n`git clone https://github.com/blacktop/ipsw-skill`",
+      "usage_vi": "Sử dụng ipsw CLI để phân tích tệp tin iOS IPSW, trích xuất bộ nhớ cache nhân (kernelcache) và kiểm tra các lỗ hổng bảo mật trên các tệp tin nhị phân hệ thống."
+    },
+    "crawl_meta": {
+      "crawled_at": "2026-06-23T18:13:33.587277Z",
+      "http_status": 200,
+      "content_hash": "f06dac070d0fce4b26728e5e6a0b93cb53ffc59cdba3631b4c16e45a850494b0",
+      "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ipsw-skill.md",
+      "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\ipsw-skill.html",
+      "schema_version": "1.0"
+    },
+    "headline_vi": "Kỹ năng IPSW - Kỹ thuật đảo ngược & Phân tích Firmware Apple",
+    "short_description_vi": "Kỹ năng AI hỗ trợ phân tích và đảo ngược firmware iOS/macOS bằng công cụ dòng lệnh ipsw. Hỗ trợ đắc lực cho chuyên gia bảo mật phân tích nhân hệ điều hành, trích xuất dyld_shared_cache và tìm kiếm lỗ hổng."
+  },
+  {
+    "source": "shyft.ai",
+    "url": "https://shyft.ai/skills/marketingskills",
+    "slug": "marketingskills",
+    "name": "instagram-scraper-tool",
+    "headline": "Essential Marketing Skills for AI Agents",
+    "short_description": "Marketingskills offers essential marketing capabilities tailored for Claude Code and AI agents, covering areas like CRO, copywriting, SEO, analytics, and growth engineering to enhance your marketing strategies.",
+    "tier": "Gold",
+    "category": "MarketingGrowth",
+    "difficulty": "Intermediate",
+    "install_type": "Git Clone",
+    "estimated_time_saving": "30 min",
+    "author": "coreyhaines31",
+    "install_command": "claude install coreyhaines31/marketingskills",
+    "source_repo_url": "https://github.com/coreyhaines31/marketingskills",
+    "works_with": [
+      "Claude"
+    ],
+    "tags": [
+      "analytics",
+      "SEO",
+      "CRO",
+      "growth engineering",
+      "copywriting"
+    ],
+    "sections": {
+      "overview": "Marketingskills is a directory skill that equips AI agents and Claude Code with foundational marketing expertise. The skill covers conversion rate optimization (CRO), copywriting techniques, search engine optimization, analytics interpretation, and growth engineering methodologies. It enables marketing professionals and teams to leverage AI agents for strategy development, content optimization, and performance analysis. By integrating these essential marketing domains into a single skill, it helps practitioners automate and enhance their marketing workflows without requiring manual tool switching or fragmented resources.\nOptimize website conversion rates through targeted A/B testing and CRO techniques.\nCreate compelling marketing copy for landing pages and advertisements to engage potential customers.\nImprove search engine rankings by implementing effective SEO strategies and content optimization.\nAnalyze marketing performance metrics to identify areas for improvement and drive better results.",
+      "setup": "Terminal\nCopy\n`claude install coreyhaines31/marketingskills`\n`git clone https://github.com/coreyhaines31/marketingskills`",
+      "usage": "```\nAnalyze the market positioning of [COMPETITOR] in the [INDUSTRY] sector. Identify their top 3 marketing strategies that have contributed to their success. Suggest how [OUR_COMPANY] can adapt or improve upon these strategies to gain a competitive edge. Provide specific examples and data points to support your recommendations.\n```\nCopy\n\n```\nAfter analyzing the market positioning of Acme Corp in the SaaS industry, it's clear that their top three marketing strategies have significantly contributed to their success. First, Acme Corp has effectively leveraged content marketing to establish thought leadership. Their blog, which receives over 500,000 monthly visitors, covers a wide range of topics relevant to their target audience. To adapt this strategy, [Our Company] should invest in creating high-quality, SEO-optimized content that addresses the pain points of our target market. Second, Acme Corp has successfully utilized account-based marketing (ABM) to target high-value accounts. They have created personalized content and experiences for key decision-makers within these accounts, resulting in a 30% increase in conversion rates. [Our Company] can adopt a similar approach by identifying high-value accounts and tailoring our marketing efforts to their specific needs. Lastly, Acme Corp has effectively used social proof to build trust and credibility. They have showcased customer success stories and testimonials on their website and social media channels, which has led to a 25% increase in website traffic. [Our Company] can follow suit by highlighting our satisfied customers and their achievements.\n```",
+      "requirements": [
+        "Claude Code or compatible AI agent",
+        "Works with: Claude"
+      ],
+      "related_skills": [
+        "marketingskills#main-content",
+        "marketingskills#overview",
+        "marketingskills#setup",
+        "marketingskills#examples",
+        "marketingskills#tools",
+        "marketingskills#mcp",
+        "marketingskills#related",
+        "copywriting",
+        "generative-ai-marketing-portal",
+        "instagram-scraper-tool"
+      ],
+      "overview_vi": "Marketingskills là thư viện trang bị cho AI Agent kiến thức chuyên môn vững chắc về marketing. Các chủ đề bao gồm tối ưu hóa tỷ lệ chuyển đổi (CRO) thông qua thử nghiệm A/B, nghệ thuật viết tiêu đề bài đăng thu hút, tối ưu hóa công cụ tìm kiếm (SEO) và phân tích hành vi người dùng. Giúp các marketer tận dụng tối đa sức mạnh của AI trong việc lên kế hoạch chiến dịch, viết bài và theo dõi hiệu suất tự động mà không cần chuyển đổi công cụ thủ công.",
+      "setup_vi": "Cài đặt trực tiếp qua Claude:\n`claude install coreyhaines31/marketingskills`\nHoặc clone dự án:\n`git clone https://github.com/coreyhaines31/marketingskills`",
+      "usage_vi": "Yêu cầu AI phân tích vị thế thị trường của đối thủ cạnh tranh, đề xuất chiến lược tiếp thị nội dung và cách thức áp dụng tối ưu hóa tỷ lệ chuyển đổi."
+    },
+    "crawl_meta": {
+      "crawled_at": "2026-06-23T18:13:33.810885Z",
+      "http_status": 200,
+      "content_hash": "1c44c8b9a59091b648ad487ecd7ba7d8b5498108b27c1982f055c9285779539a",
+      "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\marketingskills.md",
+      "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\marketingskills.html",
+      "schema_version": "1.0"
+    },
+    "headline_vi": "Bộ kỹ năng tiếp thị chuyên sâu cho AI Agent - CRO, Copywriting & SEO",
+    "short_description_vi": "Cung cấp các kỹ năng tiếp thị cốt lõi được tối ưu hóa cho Claude Code và AI Agent, bao gồm tối ưu hóa chuyển đổi (CRO), viết lời quảng cáo (copywriting), SEO và phân tích số liệu tăng trưởng."
+  },
+  {
+    "source": "shyft.ai",
+    "url": "https://shyft.ai/skills/hentaihaven-downloader",
+    "slug": "hentaihaven-downloader",
+    "name": "RedTube Downloader",
+    "headline": "HentaiHaven Downloader: MP4 Video Downloads",
+    "short_description": "HentaiHaven Downloader is a browser extension for users who want a cleaner way to save supported HentaiHaven videos. It detects video pages in the browser and allows downloads in various qualities, exporting them as MP4 files.",
+    "tier": "Bronze",
+    "category": "Marketing",
+    "difficulty": "",
+    "install_type": "Git Clone",
+    "estimated_time_saving": "",
+    "author": "serpdownloaders",
+    "install_command": "git clone https://github.com/serpapps/hentaihaven-downloader",
+    "source_repo_url": "https://github.com/serpapps/hentaihaven-downloader",
+    "works_with": [
+      "Claude Code",
+      "Cursor"
+    ],
+    "tags": [
+      "downloader",
+      "browser-extension",
+      "hentaihaven"
+    ],
+    "sections": {
+      "overview": "HentaiHaven Downloader is a browser extension that enables direct downloading of supported HentaiHaven videos without relying on generic downloader sites or external tools. The extension detects video pages automatically, exposes available quality options, and exports finished downloads as standard MP4 files for easier playback and transfer. Users can initiate downloads through in-page controls, popup workflows, or right-click actions, with all files organized in a dedicated folder. It supports Chrome, Edge, Brave, Opera, Firefox, Whale, and Yandex, requiring only an active browser session to access and save media. The extension includes a free trial with 3 downloads before unlimited access requires a paid license.\nDownload supported HentaiHaven videos directly from the page.\nChoose from the quality options exposed by the source.\nSave finished files as standard MP4.\nUse in-page controls, popup controls, or right-click actions.",
+      "setup": "Terminal\nCopy\n`$ npx skills add https://github.com/serpdownloaders/skills --skill hentaihaven-downloader`\n`git clone https://github.com/serpapps/hentaihaven-downloader`",
+      "usage": "📝\n### No Examples Available\nCheck the GitHub repository or documentation for usage examples.",
+      "requirements": [
+        "Claude Code or compatible AI agent"
+      ],
+      "related_skills": [
+        "hentaihaven-downloader#main-content",
+        "hentaihaven-downloader#overview",
+        "hentaihaven-downloader#setup",
+        "hentaihaven-downloader#examples",
+        "hentaihaven-downloader#related",
+        "cam4-downloader",
+        "ashemaletube-downloader",
+        "redtube-downloader"
+      ],
+      "overview_vi": "HentaiHaven Downloader là extension trình duyệt hỗ trợ tải nhanh video từ hệ thống HentaiHaven mà không cần dùng đến các trang web trung gian chứa quảng cáo độc hại. Tiện ích tự động quét luồng dữ liệu trên trang xem, hiển thị danh sách các tùy chọn chất lượng video sẵn có và tải về dưới định dạng MP4 tiêu chuẩn giúp lưu trữ ngoại tuyến thuận tiện. Hoạt động trên Chrome, Edge, Brave, Opera, Firefox, hỗ trợ dùng thử 3 lượt đầu.",
+      "setup_vi": "Thêm qua tiện ích dòng lệnh:\n`$ npx skills add https://github.com/serpdownloaders/skills --skill hentaihaven-downloader`\nHoặc clone repo:\n`git clone https://github.com/serpapps/hentaihaven-downloader`",
+      "usage_vi": "Vui lòng xem kho lưu trữ GitHub để tham khảo tài liệu hướng dẫn sử dụng."
+    },
+    "crawl_meta": {
+      "crawled_at": "2026-06-23T18:14:00.865629Z",
+      "http_status": 200,
+      "content_hash": "d0ded267037ff9c8ea3e2e65c339ec5c6e019449ccfa2baf70017d162bd90069",
+      "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\hentaihaven-downloader.md",
+      "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\hentaihaven-downloader.html",
+      "schema_version": "1.0"
+    },
+    "headline_vi": "Công cụ tải video HentaiHaven - Lưu trữ video định dạng MP4 chất lượng cao",
+    "short_description_vi": "Tiện ích mở rộng trên trình duyệt giúp tải trực tiếp các video trên HentaiHaven về máy. Tự động nhận diện trang xem và hiển thị các tùy chọn độ phân giải tải xuống chất lượng cao mà không cần phần mềm bên thứ ba."
+  },
+  {
+    "source": "shyft.ai",
+    "url": "https://shyft.ai/skills/last30days-skill",
+    "slug": "last30days-skill",
+    "name": "browser-use",
+    "headline": "last30days-skill: Research with AI",
+    "short_description": "Researches Reddit and X for trending topics in the last 30 days, generates ready-to-use prompts for Claude. Benefits content creators, marketers, and researchers by providing up-to-date, community-driven insights. Integrates with Claude Code for prompt generation.",
+    "tier": "Silver",
+    "category": "Marketing",
+    "difficulty": "Intermediate",
+    "install_type": "Git Clone",
+    "estimated_time_saving": "120 min",
+    "author": "mvanhorn",
+    "install_command": "git clone https://github.com/mvanhorn/last30days-skill.git",
+    "source_repo_url": "https://github.com/mvanhorn/last30days-skill",
+    "works_with": [
+      "Claude"
+    ],
+    "tags": [
+      "reddit",
+      "claude-code",
+      "claude",
+      "twitter",
+      "ai-prompts"
+    ],
+    "sections": {
+      "overview": "The last30days-skill is a powerful Claude Code skill designed to streamline the research process by aggregating discussions from Reddit and other platforms over the last 30 days. This skill automatically generates copy-paste-ready prompts based on current trends and community sentiments, making it an invaluable tool for anyone looking to stay ahead in their field. By utilizing this skill, users can quickly gather insights and ideas without sifting through countless threads, enhancing their overall productivity. One of the key benefits of the last30days-skill is its ability to save time. While the exact time savings are not quantified, the efficiency gained from automated research can significantly reduce the hours spent on manual data collection and analysis. This skill is particularly beneficial for developers, product managers, and AI practitioners who need to stay updated on the latest trends, user feedback, and best practices in their respective domains. With just 30 minutes of implementation time, users can integrate this skill into their workflows and start generating valuable insights almost immediately. Practical use cases for the last30days-skill are numerous and varied. For instance, legal professionals can use it to research trending prompting techniques for ChatGPT, enhancing their ability to handle complex legal questions. Musicians and marketers can discover the latest viral trends and community sentiments surrounding new music releases, allowing them to tailor their strategies accordingly. Additionally, product teams can generate effective prompts for creating iOS app mockups based on recent discussions, ensuring their designs resonate with current user preferences. The skill also aids in exploring product feedback for the latest tech gadgets, such as the M4 MacBook, providing insights that can drive product development. With an intermediate level of complexity, the last30days-skill requires users to have a basic understanding of AI automation and workflow integration. It is designed to fit seamlessly into AI-first workflows, allowing teams to leverage community-driven insights to inform their decisions and strategies. By incorporating this skill, organizations can enhance their research capabilities, making informed decisions that align with current market trends.\nResearch trending prompting techniques for ChatGPT to improve legal question handling.\nDiscover the latest viral trends and community sentiments about new music releases.\nGenerate effective prompts for creating iOS app mockups based on recent discussions.\nIdentify best practices for using Remotion with Claude Code from community insights.",
+      "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/mvanhorn/last30days-skill`",
+      "usage": "```\nResearch trending topics on Reddit and X from the last 30 days related to [TOPIC]. Focus on discussions with high engagement (e.g., upvotes, replies, shares) and emerging themes. Provide a list of 5-7 key insights with supporting data (e.g., post titles, engagement metrics, timestamps). Then, generate 3 ready-to-use prompts for Claude that leverage these trends for [PURPOSE], such as content creation, marketing strategy, or research. Example topics: 'AI in healthcare,' 'remote work tools,' or 'sustainable fashion brands.'\n```\nCopy\n\n```\nAfter analyzing Reddit and X over the past 30 days, the following trends emerged in the **AI in healthcare** space:\n\n1. **AI Diagnostics Adoption**: A surge in discussions about AI tools like IBM Watson Health and Zebra Medical Vision, with a 40% increase in Reddit posts mentioning \"AI radiology\" (e.g., r/medicine thread on 'AI outperforming radiologists in lung cancer detection' with 1.2k upvotes).\n2. **Ethical Concerns**: Growing skepticism about AI bias in healthcare algorithms, highlighted by a viral X thread (#AIinHealthcare) with 5k+ replies, including debates on FDA regulation of AI diagnostics.\n3. **Patient Engagement**: Viral posts on r/HealthTech about AI chatbots (e.g., Ada Health) improving patient triage, with a 30% uptick in engagement on posts tagged #PatientExperience.\n4. **Regulatory Updates**: Multiple Reddit threads discussing the EU AI Act’s impact on healthcare AI, with users sharing drafts of compliance guidelines.\n5. **Cost Savings**: A LinkedIn post by a healthcare CIO noted 25% cost reductions in diagnostic imaging after implementing AI tools, sparking a 200+ comment discussion.\n\n**Ready-to-use Claude prompts:**\n1. *Content Creation*: \"Write a LinkedIn post for a healthcare tech company announcing a new AI diagnostic tool. Highlight the 40% accuracy improvement in lung cancer detection and address ethical concerns by citing the FDA’s role in regulation. Use a tone that balances innovation with transparency.\"\n2. *Marketing Strategy*: \"Generate a 30-day content calendar for a healthcare AI startup targeting hospital CIOs. Include 3 blog topics (e.g., 'How AI Reduces Diagnostic Costs'), 2 X threads (e.g., 'Ethical AI in Healthcare: Myths vs. Facts'), and 1 Reddit AMA idea focused on regulatory compliance.\"\n3. *Research Deep Dive*: \"Analyze the sentiment trends in Reddit discussions about AI in healthcare over the last 30 days. Identify the top 3 positive and negative themes, and suggest 2 follow-up questions for a survey targeting healthcare professionals.\"\n```",
+      "requirements": [
+        "Claude Code or compatible AI agent",
+        "Works with: Claude"
+      ],
+      "related_skills": [
+        "last30days-skill#main-content",
+        "last30days-skill#overview",
+        "last30days-skill#setup",
+        "last30days-skill#examples",
+        "last30days-skill#tools",
+        "last30days-skill#mcp",
+        "last30days-skill#related",
+        "find-skills",
+        "vercel-composition-patterns",
+        "browser-use"
+      ],
+      "overview_vi": "last30days-skill giúp tối ưu hóa quy trình nghiên cứu thị trường bằng cách tổng hợp các thảo luận có tương tác cao trên Reddit và X trong 30 ngày gần nhất. Dựa trên dữ liệu cào được, công cụ tự động biên soạn các câu lệnh (prompts) ăn liền cho Claude, giúp người sáng tạo nội dung, nhà tiếp thị và nghiên cứu nắm bắt nhanh tâm lý cộng đồng mà không cần lướt mạng xã hội hàng giờ liền. Rất phù hợp để theo dõi phản hồi sản phẩm công nghệ mới, tìm kiếm ý tưởng viết lách và các kỹ thuật lập trình AI thịnh hành.",
+      "setup_vi": "Xem chi tiết hướng dẫn cài đặt thủ công trên GitHub:\n`git clone https://github.com/mvanhorn/last30days-skill`",
+      "usage_vi": "Nghiên cứu các chủ đề nóng hổi trong lĩnh vực cụ thể (ví dụ: AI trong y tế) trên Reddit/X và tạo ra các prompt viết bài PR hoặc nội dung tiếp thị dựa trên xu hướng đó."
+    },
+    "crawl_meta": {
+      "crawled_at": "2026-06-23T18:13:45.629535Z",
+      "http_status": 200,
+      "content_hash": "f3a54309ffd037a783f8241daaf1c2056b8c2920a834e293fa11056cd4b424bd",
+      "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\last30days-skill.md",
+      "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\last30days-skill.html",
+      "schema_version": "1.0"
+    },
+    "headline_vi": "Kỹ năng Nghiên cứu Xu hướng 30 ngày qua - Phân tích Reddit & X bằng AI",
+    "short_description_vi": "Quét và phân tích các chủ đề xu hướng nóng hổi trên Reddit và mạng xã hội X trong vòng 30 ngày qua, tự động sinh các prompt chất lượng cao cho Claude giúp người sáng tạo nội dung dẫn đầu xu thế thị trường."
+  },
+  {
+    "source": "shyft.ai",
+    "url": "https://shyft.ai/skills/instagram-scraper-tool",
+    "slug": "instagram-scraper-tool",
+    "name": "generative-ai-marketing-portal",
+    "headline": "Instagram Scraper Tool: Automated Insights",
+    "short_description": "instagram scraper tool automated insights",
+    "tier": "Silver",
+    "category": "Marketing",
+    "difficulty": "Intermediate",
+    "install_type": "Git Clone",
+    "estimated_time_saving": "90 min",
+    "author": "Z786ZA",
+    "install_command": "git clone https://github.com/Z786ZA/instagram-scraper-tool.git",
+    "source_repo_url": "https://github.com/Z786ZA/instagram-scraper-tool",
+    "works_with": [
+      "Claude"
+    ],
+    "tags": [
+      "analytics",
+      "marketing",
+      "playwright",
+      "proxy",
+      "selenium",
+      "dataset",
+      "bot",
+      "social-media",
+      "crawler",
+      "tool",
+      "instagram",
+      "scraper",
+      "instagram-scraper-tool",
+      "automation",
+      "data-mining",
+      "api"
+    ],
+    "sections": {
+      "overview": "The Instagram Scraper Tool is an advanced Claude Code skill designed to automate the process of gathering insights from Instagram. This tool enables users to extract valuable data such as follower counts, engagement metrics, and post performance without manual effort. By leveraging AI automation, it simplifies the data collection process, allowing marketers to focus on strategy rather than tedious data entry. One of the key benefits of the Instagram Scraper Tool is its ability to save time and enhance marketing strategies. While the exact time savings are currently unknown, users can expect significant efficiency improvements by automating data extraction. This skill is particularly beneficial for marketers, product managers, and AI practitioners who require timely insights to inform their campaigns and decision-making processes. With a moderate implementation time of just 30 minutes, it is accessible for those with intermediate technical skills. This tool is ideal for professionals in marketing departments looking to optimize their social media strategies. For instance, a product manager could use the Instagram Scraper Tool to analyze competitors' engagement rates, helping to refine their own content strategy. Similarly, marketers can track influencer performance over time, allowing for data-driven decisions when selecting partnerships. The practical applications of this skill are vast, making it a valuable addition to any marketing toolkit. As businesses increasingly adopt AI-first workflows, the Instagram Scraper Tool fits seamlessly into this paradigm. It allows teams to integrate automated insights into their existing processes, enhancing overall productivity. By incorporating this AI agent skill into their marketing strategies, organizations can gain a competitive edge in a data-driven landscape. With its focus on workflow automation, the Instagram Scraper Tool is a must-have for those looking to leverage AI for enhanced marketing performance.",
+      "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/Z786ZA/instagram-scraper-tool`",
+      "usage": "```\nAct as an Instagram scraper tool. Extract the following data for [COMPANY] in the [INDUSTRY] sector: 1) Top 10 hashtags used by competitors, 2) Average engagement rate of their last 20 posts, 3) Most common posting times, and 4) Top 5 performing posts. Use [DATA] if available for more accurate results.\n```\nCopy\n\n```\n# Instagram Scraping Results for [COMPANY]",
+      "requirements": [
+        "Claude Code or compatible AI agent",
+        "Works with: Claude"
+      ],
+      "related_skills": [
+        "instagram-scraper-tool#main-content",
+        "instagram-scraper-tool#overview",
+        "instagram-scraper-tool#setup",
+        "instagram-scraper-tool#examples",
+        "instagram-scraper-tool#tools",
+        "instagram-scraper-tool#mcp",
+        "instagram-scraper-tool#related",
+        "marketingskills",
+        "copywriting",
+        "generative-ai-marketing-portal"
+      ],
+      "overview_vi": "Instagram Scraper Tool là kỹ năng nâng cao cho Claude Code giúp tự động hóa hoạt động nghiên cứu mạng xã hội. Kỹ năng này cho phép bạn thu thập nhanh các số liệu quan trọng của tài khoản đích như số lượng follower, tỷ lệ tương tác (engagement rate) và hiệu suất bài viết mà không cần sao chép thủ công. Rất hữu ích cho các chuyên gia phân tích thương hiệu, marketer để theo dõi hiệu quả làm việc của KOLs hoặc nghiên cứu chiến lược đăng bài của đối thủ cạnh tranh.",
+      "setup_vi": "Clone repository về máy để cấu hình:\n`git clone https://github.com/Z786ZA/instagram-scraper-tool.git`",
+      "usage_vi": "Cào và phân tích tài khoản đối thủ để trích xuất 10 hashtag hàng đầu, tỷ lệ tương tác trung bình của 20 bài viết gần nhất và khung giờ đăng bài có tương tác cao."
+    },
+    "crawl_meta": {
+      "crawled_at": "2026-06-23T18:14:01.267802Z",
+      "http_status": 200,
+      "content_hash": "6df01ecc37e019cc3a6098e9fb0dd4b0310efc72faa0778255425700ae5439c2",
+      "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\instagram-scraper-tool.md",
+      "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\instagram-scraper-tool.html",
+      "schema_version": "1.0"
+    },
+    "headline_vi": "Công cụ cào dữ liệu Instagram - Tự động hóa phân tích mạng xã hội",
+    "short_description_vi": "Tự động thu thập dữ liệu chỉ số tương tác, bài viết hàng đầu, hashtag và thời gian đăng bài tối ưu của đối thủ cạnh tranh trên Instagram bằng Playwright và Selenium."
+  },
+  {
+    "source": "shyft.ai",
+    "url": "https://shyft.ai/skills/simple-claude-deep-research-agent",
+    "slug": "simple-claude-deep-research-agent",
+    "name": "browser-use",
+    "headline": "Simple Claude Deep Research Agent - Automated Web",
+    "short_description": "一个为 Claude Code 设计的简化版多智能体研究系统，通过并行子代理执行基于 Web 的综合性研究。  概述 本系统使用三种专门的代理类型：  研究主导代理（Research Lead Agent）：统筹研究、规划任务、委派给子代理、综合发现 研究子代理（Research Subagents）：使用 Web 工具并行执行专注的研究任务 引用代理（Citations Agent）：为研究报告添加适当的引用",
+    "tier": "Silver",
+    "category": "Marketing",
+    "difficulty": "Intermediate",
+    "install_type": "Git Clone",
+    "estimated_time_saving": "180 min",
+    "author": "liangdabiao",
+    "install_command": "git clone https://github.com/liangdabiao/simple_claude_deep_research_agent.git",
+    "source_repo_url": "https://github.com/liangdabiao/simple_claude_deep_research_agent",
+    "works_with": [
+      "Claude"
+    ],
+    "tags": [
+      "claude-code"
+    ],
+    "sections": {
+      "overview": "Simple Claude Deep Research Agent is a multi-agent research system designed for Claude Code that automates comprehensive web-based research through parallel execution. It uses three specialized agent types: a Research Lead Agent that coordinates tasks and synthesizes findings, Research Subagents that perform focused research using web tools, and a Citations Agent that adds proper attribution. The system automatically detects query complexity and deploys 1-6 subagents in parallel, with built-in support for both static HTML pages and JavaScript-heavy dynamic content via Playwright MCP. It handles straightforward fact-finding, breadth-first comparisons, and depth-first multi-perspective analysis.\nComparing cloud providers' pricing and features across AWS, Azure, and Google Cloud\nAnalyzing complex topics like financial crises from multiple economic and historical perspectives\nFact-finding queries like population statistics or current events\nMarket research and competitive analysis across multiple dimensions",
+      "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/liangdabiao/simple_claude_deep_research_agent`",
+      "usage": "```\nAct as the Research Lead Agent for [COMPANY] in the [INDUSTRY] sector. I need you to plan and execute a deep research project on [TOPIC]. Break this down into specific tasks for Research Subagents and ensure the Citations Agent properly attributes all sources. Provide a detailed research plan with clear objectives, milestones, and expected outcomes.\n```\nCopy\n\n```\n# Research Plan for [COMPANY] in the [INDUSTRY] Sector",
+      "requirements": [
+        "Claude Code or compatible AI agent",
+        "Works with: Claude"
+      ],
+      "related_skills": [
+        "simple-claude-deep-research-agent#main-content",
+        "simple-claude-deep-research-agent#overview",
+        "simple-claude-deep-research-agent#setup",
+        "simple-claude-deep-research-agent#examples",
+        "simple-claude-deep-research-agent#tools",
+        "simple-claude-deep-research-agent#mcp",
+        "simple-claude-deep-research-agent#related",
+        "find-skills",
+        "vercel-composition-patterns",
+        "browser-use"
+      ],
+      "overview_vi": "Simple Claude Deep Research Agent là hệ thống nghiên cứu đa tác vụ tích hợp vào Claude Code để tự động hóa việc tìm kiếm thông tin trên Web. Hệ thống điều phối 3 loại Agent chuyên biệt: Agent trưởng nhóm (Research Lead) lên kế hoạch và tổng hợp kết quả, các Agent thành viên (Research Subagents) thực hiện cào và đọc trang song song bằng Playwright, và Agent trích nguồn (Citations Agent) để gắn thẻ liên kết nguồn chính xác. Hệ thống tự động phân chia công việc từ 1-6 luồng chạy song song tùy theo độ phức tạp của câu hỏi.",
+      "setup_vi": "Tham khảo tài liệu hướng dẫn trên GitHub để thiết lập:\n`git clone https://github.com/liangdabiao/simple_claude_deep_research_agent`",
+      "usage_vi": "Đóng vai trò Agent trưởng nhóm để lập kế hoạch và phân công nghiên cứu chủ đề cụ thể (như so sánh giá cả/tính năng dịch vụ đám mây AWS, Azure và Google Cloud)."
+    },
+    "crawl_meta": {
+      "crawled_at": "2026-06-23T18:14:13.107757Z",
+      "http_status": 200,
+      "content_hash": "5fc6b82ffd9e2b0f9ac928f5c0cc9f8533379638aa18822891fddf3c63000d6a",
+      "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\simple-claude-deep-research-agent.md",
+      "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\simple-claude-deep-research-agent.html",
+      "schema_version": "1.0"
+    },
+    "headline_vi": "Agent nghiên cứu chuyên sâu cho Claude - Tự động hóa tìm kiếm thông tin",
+    "short_description_vi": "Hệ thống đa Agent siêu gọn cho Claude Code, tự động thực hiện nghiên cứu song song trên môi trường Web để xuất bản các báo cáo tổng hợp chi tiết kèm trích nguồn đầy đủ."
+  },
+  {
+    "source": "shyft.ai",
+    "url": "https://shyft.ai/skills/claude-skill-vue-development",
+    "slug": "claude-skill-vue-development",
+    "name": "browser-use",
+    "headline": "Develop with Vue.js and TypeScript using Claude",
+    "short_description": "A Claude Code Agent Skill for Vue.js development with TypeScript, emphasizing testing-first development, functional patterns, and maintainable architecture.",
+    "tier": "Silver",
+    "category": "Development",
+    "difficulty": "Intermediate",
+    "install_type": "Git Clone",
+    "estimated_time_saving": "50 min",
+    "author": "alexanderop",
+    "install_command": "git clone https://github.com/alexanderop/claude-skill-vue-development.git",
+    "source_repo_url": "https://github.com/alexanderop/claude-skill-vue-development",
+    "works_with": [
+      "Claude"
+    ],
+    "tags": [],
+    "sections": {
+      "overview": "This skill trains Claude agents to write production-quality Vue 3 code using TypeScript-first patterns, the modern Composition API (defineModel, not manual props), and user-behavior testing with Testing Library. It enforces 12 anti-patterns as red flags, includes a rationalization table that counters common excuses, and provides reference documentation for components, composables, routing, and testing. The skill achieved 100% compliance in test scenarios—a 167% improvement from baseline—by catching shortcuts like setTimeout() in tests, manual modelValue props, UI logic in composables, and generic parameter names.\nBuilding Vue 3 components with strict TypeScript typing and defineModel for v-model binding\nWriting composables with single responsibility principle and proper error exposure\nImplementing user-behavior testing with Testing Library instead of implementation-detail testing\nSetting up file-based routing with unplugin-vue-router and typed named routes",
+      "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/alexanderop/claude-skill-vue-development`",
+      "usage": "```\nAct as a Vue.js developer with expertise in TypeScript, testing-first development, and functional patterns. Create a [COMPONENT_NAME] component for a [COMPANY] in the [INDUSTRY] sector. The component should include unit tests using Jest and Vue Test Utils, and follow functional programming principles. Provide the component code, test files, and any necessary TypeScript interfaces.\n```\nCopy\n\n```\n```typescript\n// src/components/UserProfile.vue\n<template>\n  <div class=\"user-profile\">\n    <h2>{{ user.name }}</h2>\n    <p>{{ user.email }}</p>\n    <button @click=\"updateUser\">Update Profile</button>\n  </div>\n</template>\n\n<script lang=\"ts\">\nimport { defineComponent, PropType } from 'vue'\n\ninterface User {\n  id: number\n  name: string\n  email: string\n}\n\nexport default defineComponent({\n  name: 'UserProfile',\n  props: {\n    user: {\n      type: Object as PropType<User>,\n      required: true\n    }\n  },\n  setup(props) {\n    const updateUser = () => {\n      // Functional update logic here\n      console.log('Updating user:', props.user.id)\n    }\n\n    return {\n      updateUser\n    }\n  }\n})\n</script>\n\n// src/components/__tests__/UserProfile.spec.ts\nimport { mount } from '@vue/test-utils'\nimport UserProfile from '@/components/UserProfile.vue'\n\ndescribe('UserProfile', () => {\n  it('renders user data correctly', () => {\n    const user = {\n      id: 1,\n      name: 'John Doe',\n      email: 'john@example.com'\n    }\n    const wrapper = mount(UserProfile, {\n      props: { user }\n    })\n    expect(wrapper.text()).toContain('John Doe')\n    expect(wrapper.text()).toContain('john@example.com')\n  })\n})\n```\n```",
+      "requirements": [
+        "Claude Code or compatible AI agent",
+        "Works with: Claude"
+      ],
+      "related_skills": [
+        "claude-skill-vue-development#main-content",
+        "claude-skill-vue-development#overview",
+        "claude-skill-vue-development#setup",
+        "claude-skill-vue-development#examples",
+        "claude-skill-vue-development#tools",
+        "claude-skill-vue-development#mcp",
+        "claude-skill-vue-development#related",
+        "find-skills",
+        "vercel-composition-patterns",
+        "browser-use"
+      ],
+      "overview_vi": "Kỹ năng này huấn luyện các AI Agent viết code Vue 3 chuẩn sản xuất bằng cách áp dụng TypeScript, Composition API hiện đại (defineModel thay vì props thủ công) và kiểm thử hành vi người dùng thông qua Testing Library. Nó thiết lập 12 mẫu code xấu (anti-patterns) làm cảnh báo đỏ, cung cấp tài liệu tham khảo cho các component, composable, định tuyến (routing) và kiểm thử, giúp nâng cao chất lượng code đáng kể trong các dự án thực tế.",
+      "setup_vi": "Tải mã nguồn hướng dẫn tại GitHub:\n`git clone https://github.com/alexanderop/claude-skill-vue-development.git`",
+      "usage_vi": "Đóng vai trò lập trình viên Vue chuyên nghiệp để viết component hoàn chỉnh kèm mã kiểm thử Unit Test sử dụng Jest và Vue Test Utils."
+    },
+    "crawl_meta": {
+      "crawled_at": "2026-06-23T18:14:12.291492Z",
+      "http_status": 200,
+      "content_hash": "2cdab59dc67b6dd83e42e67cb47595c35cd39d6a07a2f58b502c2f1463d1f210",
+      "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-skill-vue-development.md",
+      "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\claude-skill-vue-development.html",
+      "schema_version": "1.0"
+    },
+    "headline_vi": "Kỹ năng lập trình Vue & TypeScript - Chuẩn hóa kiến trúc và kiểm thử",
+    "short_description_vi": "Kỹ năng huấn luyện AI Agent viết code Vue 3 chất lượng cao kết hợp TypeScript, áp dụng mô hình Test-Driven Development (TDD) và các mẫu thiết kế component hiện đại, dễ bảo trì."
+  },
+  {
+    "source": "shyft.ai",
+    "url": "https://shyft.ai/skills/vibe-filmmaking-veo3-claude",
+    "slug": "vibe-filmmaking-veo3-claude",
+    "name": "browser-use",
+    "headline": "Vibe Filmmaking - AI Video Production",
+    "short_description": "Automate video production with Claude Code and Google Veo 3.1 for high-quality, AI-assisted filmmaking. Ideal for operations teams creating promotional or educational content. Integrates with YouTube for distribution and Claude for script generation.",
+    "tier": "Silver",
+    "category": "Marketing",
+    "difficulty": "Intermediate",
+    "install_type": "Git Clone",
+    "estimated_time_saving": "45 min",
+    "author": "zechenzhangAGI",
+    "install_command": "git clone https://github.com/zechenzhangAGI/vibe-filmmaking-veo3-claude.git",
+    "source_repo_url": "https://github.com/zechenzhangAGI/vibe-filmmaking-veo3-claude",
+    "works_with": [
+      "Claude"
+    ],
+    "tags": [
+      "google-ai-studio",
+      "ai-scientist",
+      "claude-code",
+      "science",
+      "veo3",
+      "claude",
+      "film",
+      "film-making",
+      "diffusion-models",
+      "google"
+    ],
+    "sections": {
+      "overview": "Vibe Filmmaking automates video production by combining Claude Code's iterative prompt generation with Google Veo 3.1's video synthesis capabilities. The workflow guides users through creative collaboration—describing their vision, letting Claude Code help refine prompts, testing different animation styles, and generating clips systematically. All production scripts, prompts, and aesthetic decisions are co-created through conversation with Claude Code, then executed by Veo 3.1. The result is high-quality, artistically coherent video content without traditional filmmaking overhead. Best suited for teams creating promotional videos, educational content, or branded manifestos who want AI to handle generation while preserving human creative direction.\nCreating branded promotional videos through iterative AI collaboration\nGenerating educational content with consistent visual aesthetics\nProducing manifesto-style videos with artistic animation\nTesting multiple creative directions before final production",
+      "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/zechenzhangAGI/vibe-filmmaking-veo3-claude`",
+      "usage": "```\nI need to create a promotional video for [COMPANY] in the [INDUSTRY] sector. Generate a script for a 2-minute video highlighting [KEY MESSAGE] and [KEY FEATURES]. Then, use Google Veo 3.1 to produce the video with the following visual style: [STYLE DESCRIPTION]. Ensure the video is optimized for YouTube distribution.\n```\nCopy\n\n```\n# Video Script for [COMPANY] Promotional Video",
+      "requirements": [
+        "Claude Code or compatible AI agent",
+        "Works with: Claude"
+      ],
+      "related_skills": [
+        "vibe-filmmaking-veo3-claude#main-content",
+        "vibe-filmmaking-veo3-claude#overview",
+        "vibe-filmmaking-veo3-claude#setup",
+        "vibe-filmmaking-veo3-claude#examples",
+        "vibe-filmmaking-veo3-claude#tools",
+        "vibe-filmmaking-veo3-claude#mcp",
+        "vibe-filmmaking-veo3-claude#related",
+        "find-skills",
+        "vercel-composition-patterns",
+        "browser-use"
+      ],
+      "overview_vi": "Vibe Filmmaking là kỹ năng tự động hóa quy trình làm phim thông qua việc kết hợp khả năng sinh prompt tinh tế của Claude Code với mô hình tạo video Google Veo 3.1. Quy trình hướng dẫn người dùng qua các bước cộng tác sáng tạo—từ mô tả ý tưởng, tinh chỉnh prompt chuyển động, thử nghiệm các phong cách nghệ thuật đến sinh clip hàng loạt một cách hệ thống. Giúp các nhóm làm nội dung quảng cáo, bài học giáo dục hoặc video ngắn có chất lượng hình ảnh nghệ thuật đồng nhất mà không cần trường quay truyền thống.",
+      "setup_vi": "Vui lòng xem GitHub repository để cấu hình thủ công:\n`git clone https://github.com/zechenzhangAGI/vibe-filmmaking-veo3-claude.git`",
+      "usage_vi": "Lên kịch bản video quảng cáo 2 phút cho doanh nghiệp và phối hợp với Google Veo 3.1 để kết xuất sản phẩm theo phong cách nghệ thuật được chọn."
+    },
+    "crawl_meta": {
+      "crawled_at": "2026-06-23T18:14:23.268397Z",
+      "http_status": 200,
+      "content_hash": "24852d610a854aea9f59d18b75f202a5cda3a45a5825f3d4d6c1ca3ea18f9734",
+      "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vibe-filmmaking-veo3-claude.md",
+      "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\vibe-filmmaking-veo3-claude.html",
+      "schema_version": "1.0"
+    },
+    "headline_vi": "Sản xuất phim ngắn nghệ thuật AI - Tự động hóa tạo Video với Veo 3.1",
+    "short_description_vi": "Tự động hóa quy trình làm phim và sản xuất video ngắn bằng cách kết hợp thế mạnh biên kịch của Claude Code với năng lực dựng video chất lượng cao của Google Veo 3.1."
+  },
+  {
+    "source": "shyft.ai",
+    "url": "https://shyft.ai/skills/using-git-worktrees",
+    "slug": "using-git-worktrees",
+    "name": "react-native-best-practices",
+    "headline": "using-git-worktrees: Git Management",
+    "short_description": "The using-git-worktrees skill enables developers to manage multiple working directories for a single Git repository. This skill streamlines the development process, allowing for efficient parallel feature development and testing without the overhead of multiple clones.",
+    "tier": "Silver",
+    "category": "Marketing",
+    "difficulty": "Intermediate",
+    "install_type": "Git Clone",
+    "estimated_time_saving": "45 min",
+    "author": "obra",
+    "install_command": "git clone https://github.com/obra/superpowers.git",
+    "source_repo_url": "https://github.com/obra/superpowers",
+    "works_with": [
+      "Claude"
+    ],
+    "tags": [],
+    "sections": {
+      "overview": "The using-git-worktrees skill provides a powerful way for developers to utilize Git worktrees, allowing them to create multiple working directories linked to a single repository. This capability is particularly beneficial for managing different features or bug fixes simultaneously without the need for multiple repository clones. By leveraging this skill, developers can switch contexts swiftly, enhancing productivity and reducing setup time. One of the primary benefits of using this skill is the significant time savings it offers. Developers can work on multiple branches in isolation, ensuring that changes do not interfere with one another. This leads to a more organized workflow, where testing and development can occur in parallel, ultimately speeding up the release cycle. The skill is designed to integrate seamlessly into existing Git workflows, making it an essential tool for any developer looking to optimize their coding practices. This skill is ideal for developers, product managers, and AI practitioners who are involved in software development and need to manage complex workflows. It is particularly useful in environments where rapid iteration is necessary, such as agile development teams. For instance, a developer can work on a new feature while simultaneously fixing bugs in another branch, all within their main repository, thus avoiding the clutter of multiple clones. Implementation of the using-git-worktrees skill is straightforward, requiring a basic understanding of Git commands. As teams adopt more AI-first workflows, this skill becomes invaluable, allowing for efficient collaboration and version control in projects that may involve AI automation and AI agent skills. By integrating this skill into their toolset, teams can enhance their workflow automation and improve overall project efficiency.\nSimultaneously develop new features while fixing bugs in separate worktrees.\nTest experimental changes in a dedicated worktree without impacting the main branch.\nCollaborate on multiple features within a single repository by creating isolated worktrees.\nManage different versions of a project tailored for various clients using distinct worktrees.",
+      "setup": "No install command available. Check the GitHub repository for manual installation instructions.\n`git clone https://github.com/obra/superpowers`",
+      "usage": "```\nI'm working on a project with [NUMBER] active branches. Set up [NUMBER] worktrees for me in my Git repository. The branches are named [BRANCH_NAMES]. I want to work on [PRIMARY_BRANCH] as my main worktree and the others as secondary worktrees. Provide the commands I need to run in my terminal.\n```\nCopy\n\n```\nTo set up your worktrees, follow these steps:\n\n1. First, navigate to your main repository directory in your terminal:\n```bash\ncd /path/to/your/repository\n```\n\n2. Run the following commands to create your worktrees:\n```bash\n# Create worktree for feature/login\ngit worktree add ../login-feature feature/login\n\n# Create worktree for feature/dashboard\ngit worktree add ../dashboard-feature feature/dashboard\n\n# Create worktree for bugfix/header\ngit worktree add ../header-bugfix bugfix/header\n```\n\n3. Now you can navigate to each worktree directory and start working on your respective branches:\n```bash\ncd ../login-feature\n# Make changes and commit\n\ncd ../dashboard-feature\n# Make changes and commit\n\ncd ../header-bugfix\n# Make changes and commit\n```\n\nRemember to use `git status` in each worktree to check the status of your changes.\n```",
+      "requirements": [
+        "Claude Code or compatible AI agent",
+        "Works with: Claude"
+      ],
+      "related_skills": [
+        "using-git-worktrees#main-content",
+        "using-git-worktrees#overview",
+        "using-git-worktrees#setup",
+        "using-git-worktrees#examples",
+        "using-git-worktrees#tools",
+        "using-git-worktrees#mcp",
+        "using-git-worktrees#related",
+        "vue-best-practices",
+        "expo-dev-client",
+        "react-native-best-practices"
+      ],
+      "overview_vi": "using-git-worktrees trang bị cho lập trình viên khả năng sử dụng Git worktree hiệu quả để mở và xử lý nhiều nhánh (branches) cùng lúc trên máy. Điều này giúp chuyển đổi ngữ cảnh lập trình cực kỳ nhanh chóng giữa việc làm tính năng mới và sửa lỗi nóng (hotfixes) mà không làm bẩn thư mục hiện tại hay mất công stash code. Tối ưu hóa chu kỳ thử nghiệm và release trong các đội ngũ phát triển nhanh.",
+      "setup_vi": "Xem hướng dẫn chi tiết tại kho mã nguồn:\n`git clone https://github.com/obra/superpowers`",
+      "usage_vi": "Thiết lập các worktree khác nhau cho các nhánh tính năng đang phát triển song song trên máy tính cá nhân."
+    },
+    "crawl_meta": {
+      "crawled_at": "2026-06-23T18:14:24.314169Z",
+      "http_status": 200,
+      "content_hash": "bcbcd0196ffff630ac610a0ec15311b5338e5929964ea7001e738555b8b316cf",
+      "raw_markdown_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\using-git-worktrees.md",
+      "raw_html_path": "D:\\Dev\\2.reference_pj\\.skill-ref\\crawl\\.shifty-crawl\\output\\shyft-skills\\raw\\using-git-worktrees.html",
+      "schema_version": "1.0"
+    },
+    "headline_vi": "Kỹ năng sử dụng Git Worktrees - Quản lý nhánh và phát triển song song",
+    "short_description_vi": "Hướng dẫn và hỗ trợ AI Agent quản lý nhiều thư mục làm việc (working directories) chạy song song trên cùng một kho lưu trữ Git mà không cần clone nhiều dự án độc lập."
+  }
+]

@@ -329,8 +329,35 @@ export default {
         interior: {
           title: "Thiết kế nội thất",
           desc: "Công cụ vẽ tủ & nội thất tương tác"
+        },
+        skills: {
+          title: "Thư viện Kỹ năng AI",
+          desc: "Khám phá, tham khảo và cài đặt các kỹ năng lập trình cho AI Agent của bạn"
         }
       }
+    },
+    skills: {
+      title: "Thư viện Kỹ năng AI",
+      subtitle: "Tham khảo các kỹ năng lập trình mạnh mẽ giúp mở rộng năng lực của AI Agent",
+      searchPlaceholder: "Tìm kiếm kỹ năng, công nghệ hoặc tác giả...",
+      category: "Danh mục",
+      allCategories: "Tất cả danh mục",
+      difficulty: "Độ khó",
+      allDifficulties: "Tất cả độ khó",
+      timeSaving: "Tiết kiệm thời gian",
+      worksWith: "Hoạt động với",
+      installCommand: "Lệnh cài đặt",
+      copySuccess: "Đã sao chép lệnh!",
+      backToList: "Quay lại danh sách",
+      overview: "Tổng quan",
+      setup: "Cài đặt & Cấu hình",
+      usage: "Ví dụ sử dụng",
+      requirements: "Yêu cầu hệ thống",
+      sourceRepo: "Repository nguồn",
+      author: "Tác giả",
+      tier: "Cấp độ",
+      noSkillsFound: "Không tìm thấy kỹ năng phù hợp.",
+      relatedSkills: "Kỹ năng liên quan"
     },
     // ─── Edit tab (Gemini) ──────────────────────────────────────────
     interior: {

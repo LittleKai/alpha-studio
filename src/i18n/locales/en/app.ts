@@ -329,8 +329,35 @@ export default {
         interior: {
           title: "Interior Design",
           desc: "Interactive cabinet & interior layout tool"
+        },
+        skills: {
+          title: "AI Skills Hub",
+          desc: "Browse, inspect, and install programming skills for your AI Agents"
         }
       }
+    },
+    skills: {
+      title: "AI Skills Hub",
+      subtitle: "Explore powerful programming skills that expand your AI Agent's capabilities",
+      searchPlaceholder: "Search skills, technologies, or authors...",
+      category: "Category",
+      allCategories: "All Categories",
+      difficulty: "Difficulty",
+      allDifficulties: "All Difficulties",
+      timeSaving: "Time Saved",
+      worksWith: "Works with",
+      installCommand: "Install Command",
+      copySuccess: "Install command copied!",
+      backToList: "Back to list",
+      overview: "Overview",
+      setup: "Setup & Config",
+      usage: "Usage Examples",
+      requirements: "Requirements",
+      sourceRepo: "Source Repo",
+      author: "Author",
+      tier: "Tier",
+      noSkillsFound: "No matching skills found.",
+      relatedSkills: "Related Skills"
     },
     // ─── Edit tab (Gemini) ──────────────────────────────────────────
     interior: {
