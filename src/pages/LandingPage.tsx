@@ -9,6 +9,13 @@ import { getFeaturedCourses, Course } from '../services/courseService';
 import { getPartners } from '../services/partnerService';
 import type { Partner } from '../services/partnerService';
 import { getFeaturedStudents } from '../services/featuredStudentsService';
+import { motion } from 'framer-motion';
+import Reveal, { RevealItem } from '../components/motion/Reveal';
+import HoverSpring from '../components/motion/HoverSpring';
+import TextReveal from '../components/motion/TextReveal';
+import LiquidEther from '../components/ui/LiquidEther';
+
+
 
 // Category to style mapping (Neon Terminal / Restrained strategy)
 const categoryGradients: Record<string, string> = {
@@ -181,42 +188,63 @@ const LandingPage: React.FC = () => {
             />
             {/* Hero Section */}
             <section className="relative py-10 flex flex-col items-center justify-center text-center px-6 overflow-hidden">
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[var(--accent-primary)]/10 rounded-full blur-[120px] -z-10"></div>
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] -z-10"></div>
-
-                <div className="max-w-4xl space-y-10">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--accent-primary)]/10 border border-[var(--accent-primary)]/20">
-                        <span className="relative flex h-2 w-2">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent-primary)] opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent-primary)]"></span>
-                        </span>
-                        <span className="text-xs font-bold text-[var(--accent-primary)]">{t('landing.hero.badge')}</span>
-                    </div>
-
-                    <h1 className="text-5xl md:text-8xl font-black text-[var(--text-primary)] leading-[1.1] tracking-tight">
-                        {t('landing.hero.title1')} <br />
-                        <span className="text-gradient">{t('landing.hero.title2')}</span>
-                    </h1>
-
-                    <p className="text-lg md:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto font-medium">
-                        {t('landing.hero.subtitle')}
-                    </p>
-
-                    <div className="flex flex-wrap justify-center gap-5 pt-6">
-                        <button onClick={() => navigate('/studio')} className="liquid-cta-hover py-4 px-12 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-black rounded-2xl shadow-xl hover:bg-[var(--accent-secondary)] transition-all duration-300">
-                            {t('landing.hero.exploreStudio')}
-                        </button>
-                        <button onClick={() => navigateToProtectedPage('/server')} className="liquid-cta-hover py-4 px-12 glass-card text-[var(--text-primary)] font-black rounded-2xl hover:border-[var(--accent-primary)] transition-all duration-300">
-                            {t('landing.hero.gpuServer')}
-                        </button>
-                    </div>
+                {/* Fluid Interactive Canvas Background */}
+                <div className="absolute inset-0 -z-10 opacity-30 pointer-events-none">
+                    <LiquidEther 
+                        colors={['#61e8ff', '#8b7dff', '#000000']} 
+                        mouseForce={15} 
+                        cursorSize={100}
+                    />
                 </div>
+                <motion.div 
+                    animate={{ y: [0, -20, 0], x: [0, 15, 0] }}
+                    transition={{ repeat: Infinity, duration: 10, ease: "easeInOut" }}
+                    className="absolute top-1/4 left-1/4 w-96 h-96 bg-[var(--accent-primary)]/10 rounded-full blur-[120px] -z-10"
+                ></motion.div>
+                <motion.div 
+                    animate={{ y: [0, 20, 0], x: [0, -15, 0] }}
+                    transition={{ repeat: Infinity, duration: 12, ease: "easeInOut" }}
+                    className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] -z-10"
+                ></motion.div>
+
+                <Reveal staggerChildren={0.15} delay={0.1} className="max-w-4xl space-y-10">
+                    <RevealItem y={15}>
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--accent-primary)]/10 border border-[var(--accent-primary)]/20">
+                            <span className="premium-blinking-dot"></span>
+                            <span className="text-xs font-bold text-[var(--accent-primary)]">{t('landing.hero.badge')}</span>
+                        </div>
+                    </RevealItem>
+
+                    <RevealItem tag="h1" y={25} className="text-5xl md:text-8xl font-black text-[var(--text-primary)] leading-[1.1] tracking-tight">
+                        <TextReveal text={t('landing.hero.title1')} delay={0.1} /> <br />
+                        <span className="text-gradient">
+                            <TextReveal text={t('landing.hero.title2')} delay={0.4} />
+                        </span>
+                    </RevealItem>
+
+                    <RevealItem tag="p" y={25} className="text-lg md:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto font-medium">
+                        {t('landing.hero.subtitle')}
+                    </RevealItem>
+
+                    <RevealItem y={25} className="flex flex-wrap justify-center gap-5 pt-6">
+                        <HoverSpring scale={1.05} y={-3} className="inline-block">
+                            <button onClick={() => navigate('/studio')} className="liquid-cta-hover py-4 px-12 bg-[var(--accent-primary)] text-[var(--text-on-accent)] font-black rounded-2xl shadow-xl hover:bg-[var(--accent-secondary)] transition-all duration-300">
+                                {t('landing.hero.exploreStudio')}
+                            </button>
+                        </HoverSpring>
+                        <HoverSpring scale={1.05} y={-3} className="inline-block">
+                            <button onClick={() => navigateToProtectedPage('/server')} className="liquid-cta-hover py-4 px-12 glass-card text-[var(--text-primary)] font-black rounded-2xl hover:border-[var(--accent-primary)] transition-all duration-300">
+                                {t('landing.hero.gpuServer')}
+                            </button>
+                        </HoverSpring>
+                    </RevealItem>
+                </Reveal>
             </section>
 
             {/* Featured Courses Section */}
             <section className="py-10 bg-[var(--bg-secondary)]/50 border-t border-[var(--border-primary)]">
                 <div className="container mx-auto px-6">
-                    <div className="flex justify-between items-end mb-16">
+                    <Reveal y={20} className="flex justify-between items-end mb-16">
                         <div className="space-y-2">
                             <h2 className="text-4xl font-black text-[var(--text-primary)]">{t('landing.courses.title')}</h2>
                             <p className="text-[var(--text-secondary)]">{t('landing.courses.subtitle')}</p>
@@ -226,7 +254,7 @@ const LandingPage: React.FC = () => {
                                 {t('landing.courses.viewAll')}
                             </Link>
                         </div>
-                    </div>
+                    </Reveal>
 
                     {/* Loading State */}
                     {coursesLoading && (
@@ -262,85 +290,88 @@ const LandingPage: React.FC = () => {
 
                     {/* Courses Grid */}
                     {!coursesLoading && !coursesError && courses.length > 0 && (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <Reveal staggerChildren={0.1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {courses.map(course => (
-                                <Link
-                                    key={course._id}
-                                    to={`/courses/${course.slug}`}
-                                    className="group glass-card rounded-xl overflow-hidden hover:bg-[var(--bg-card)] transition-all duration-500 cursor-pointer relative flex flex-col h-full"
-                                >
-                                    {/* Thumbnail */}
-                                    {course.thumbnail ? (
-                                        <div className="relative h-48 overflow-hidden">
-                                            <img
-                                                src={course.thumbnail}
-                                                alt={getLocalizedText(course.title)}
-                                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                            />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] to-transparent opacity-60"></div>
-                                            {/* Level Badge */}
-                                            <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[var(--bg-tertiary)]/80 backdrop-blur-sm border border-[var(--border-primary)] text-[10px] font-black uppercase tracking-widest text-[var(--accent-primary)]">
-                                                {t(levelKeys[course.level] || 'courseCatalog.levels.beginner')}
-                                            </span>
-                                            {/* Price Badge */}
-                                            <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-[var(--accent-primary)] text-[var(--text-on-accent)] text-[11px] font-black">
-                                                {course.discount > 0 ? formatPrice(course.finalPrice) : formatPrice(course.price)}
-                                            </span>
-                                        </div>
-                                    ) : (
-                                        <div className={`relative h-48 ${categoryGradients[course.category] || 'bg-slate-900 border-b border-[var(--border-primary)]'} flex items-center justify-center`}>
-                                            <span className="text-6xl">{categoryIcons[course.category] || '📚'}</span>
-                                            {/* Level Badge */}
-                                            <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-[10px] font-black uppercase tracking-widest text-white">
-                                                {t(levelKeys[course.level] || 'courseCatalog.levels.beginner')}
-                                            </span>
-                                            {/* Price Badge */}
-                                            <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-white text-[var(--accent-primary)] text-[11px] font-black">
-                                                {course.discount > 0 ? formatPrice(course.finalPrice) : formatPrice(course.price)}
-                                            </span>
-                                        </div>
-                                    )}
-
-                                    <div className="p-6 flex flex-col flex-grow">
-                                        <div className="space-y-3 flex-grow">
-                                            <h3 className="text-xl font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors line-clamp-2">
-                                                {getLocalizedText(course.title)}
-                                            </h3>
-                                            <p className="text-sm text-[var(--text-secondary)] leading-relaxed line-clamp-2">
-                                                {getLocalizedText(course.description)}
-                                            </p>
-                                        </div>
-
-                                        <div className="mt-4">
-                                            <span className="w-full py-2.5 rounded-xl bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] font-bold text-sm border border-[var(--accent-primary)]/20 hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-all flex items-center justify-center gap-2">
-                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                                                </svg>
-                                                {t('landing.course.startLearning')}
-                                            </span>
-                                        </div>
-
-                                        <div className="flex justify-between items-center mt-4 pt-4 border-t border-[var(--border-primary)] text-[11px] font-bold text-[var(--text-tertiary)]">
-                                            <div className="flex gap-4">
-                                                <span>⏱ {course.duration} {t('landing.course.hours')}</span>
-                                                <span>📚 {course.totalLessons} {t('landing.course.lessons')}</span>
-                                            </div>
-                                            <div className="flex items-center gap-3">
-                                                {course.rating > 0 ? (
-                                                    <span className="flex items-center gap-1 text-yellow-400">
-                                                        ⭐ {course.rating.toFixed(1)}
-                                                        <span className="text-[var(--text-tertiary)]">({course.reviewCount})</span>
+                                <RevealItem key={course._id}>
+                                    <HoverSpring scale={1.02} y={-6} className="h-full">
+                                        <Link
+                                            to={`/courses/${course.slug}`}
+                                            className="group glass-card rounded-xl overflow-hidden hover:bg-[var(--bg-card)] transition-all duration-500 cursor-pointer relative flex flex-col h-full"
+                                        >
+                                            {/* Thumbnail */}
+                                            {course.thumbnail ? (
+                                                <div className="relative h-48 overflow-hidden">
+                                                    <img
+                                                        src={course.thumbnail}
+                                                        alt={getLocalizedText(course.title)}
+                                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                                    />
+                                                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] to-transparent opacity-60"></div>
+                                                    {/* Level Badge */}
+                                                    <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[var(--bg-tertiary)]/80 backdrop-blur-sm border border-[var(--border-primary)] text-[10px] font-black uppercase tracking-widest text-[var(--accent-primary)]">
+                                                        {t(levelKeys[course.level] || 'courseCatalog.levels.beginner')}
                                                     </span>
-                                                ) : (
-                                                    <span className="text-[var(--text-tertiary)]">⭐ —</span>
-                                                )}
-                                                <span>👥 {course.enrolledCount} {t('landing.courses.enrolled')}</span>
+                                                    {/* Price Badge */}
+                                                    <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-[var(--accent-primary)] text-[var(--text-on-accent)] text-[11px] font-black">
+                                                        {course.discount > 0 ? formatPrice(course.finalPrice) : formatPrice(course.price)}
+                                                    </span>
+                                                </div>
+                                            ) : (
+                                                <div className={`relative h-48 ${categoryGradients[course.category] || 'bg-slate-900 border-b border-[var(--border-primary)]'} flex items-center justify-center`}>
+                                                    <span className="text-6xl">{categoryIcons[course.category] || '📚'}</span>
+                                                    {/* Level Badge */}
+                                                    <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-[10px] font-black uppercase tracking-widest text-white">
+                                                        {t(levelKeys[course.level] || 'courseCatalog.levels.beginner')}
+                                                    </span>
+                                                    {/* Price Badge */}
+                                                    <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-white text-[var(--accent-primary)] text-[11px] font-black">
+                                                        {course.discount > 0 ? formatPrice(course.finalPrice) : formatPrice(course.price)}
+                                                    </span>
+                                                </div>
+                                            )}
+
+                                            <div className="p-6 flex flex-col flex-grow">
+                                                <div className="space-y-3 flex-grow">
+                                                    <h3 className="text-xl font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors line-clamp-2">
+                                                        {getLocalizedText(course.title)}
+                                                    </h3>
+                                                    <p className="text-sm text-[var(--text-secondary)] leading-relaxed line-clamp-2">
+                                                        {getLocalizedText(course.description)}
+                                                    </p>
+                                                </div>
+
+                                                <div className="mt-4">
+                                                    <span className="w-full py-2.5 rounded-xl bg-[var(--accent-primary)]/10 text-[var(--accent-primary)] font-bold text-sm border border-[var(--accent-primary)]/20 hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-all flex items-center justify-center gap-2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                                                        </svg>
+                                                        {t('landing.course.startLearning')}
+                                                    </span>
+                                                </div>
+
+                                                <div className="flex justify-between items-center mt-4 pt-4 border-t border-[var(--border-primary)] text-[11px] font-bold text-[var(--text-tertiary)]">
+                                                    <div className="flex gap-4">
+                                                        <span>⏱ {course.duration} {t('landing.course.hours')}</span>
+                                                        <span>📚 {course.totalLessons} {t('landing.course.lessons')}</span>
+                                                    </div>
+                                                    <div className="flex items-center gap-3">
+                                                        {course.rating > 0 ? (
+                                                            <span className="flex items-center gap-1 text-yellow-400">
+                                                                ⭐ {course.rating.toFixed(1)}
+                                                                <span className="text-[var(--text-tertiary)]">({course.reviewCount})</span>
+                                                            </span>
+                                                        ) : (
+                                                            <span className="text-[var(--text-tertiary)]">⭐ —</span>
+                                                        )}
+                                                        <span>👥 {course.enrolledCount} {t('landing.courses.enrolled')}</span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </Link>
+                                        </Link>
+                                    </HoverSpring>
+                                </RevealItem>
                             ))}
-                        </div>
+                        </Reveal>
                     )}
 
                     {/* Mobile View All Link */}
@@ -356,90 +387,102 @@ const LandingPage: React.FC = () => {
             <section className="py-16 bg-[var(--bg-primary)] border-t border-[var(--border-primary)] relative overflow-hidden">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--accent-primary)]/5 rounded-full blur-[160px] -z-10"></div>
                 <div className="container mx-auto px-6">
-                    <div className="text-center mb-16 space-y-4">
+                    <Reveal y={20} className="text-center mb-16 space-y-4">
                         <h2 className="text-4xl font-black text-[var(--text-primary)]">
                             {t('landing.toolsShowcase.title')}
                         </h2>
                         <p className="text-[var(--text-secondary)] max-w-2xl mx-auto font-medium">
                             {t('landing.toolsShowcase.subtitle')}
                         </p>
-                    </div>
+                    </Reveal>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <Reveal staggerChildren={0.12} className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {/* Alpha CRM Card */}
-                        <div
-                            onClick={() => navigate('/studio/crm/subscription')}
-                            className="group glass-card rounded-xl p-6 border border-[var(--border-primary)] hover:border-emerald-500/40 hover:shadow-[0_0_15px_rgba(16,185,129,0.1)] transition-all duration-300 flex flex-col justify-between cursor-pointer h-full"
-                        >
-                            <div>
-                                <div className="p-2 rounded-lg mb-4 w-10 h-10 flex items-center justify-center bg-slate-900 border border-[var(--border-primary)] group-hover:scale-105 transition-transform duration-300">
-                                    <img src="/crm-logo.png" alt="Alpha CRM" className="w-full h-full object-contain drop-shadow-sm rounded" />
+                        <RevealItem className="h-full">
+                            <HoverSpring scale={1.03} y={-6} className="h-full">
+                                <div
+                                    onClick={() => navigate('/studio/crm/subscription')}
+                                    className="group glass-card rounded-xl p-6 border border-[var(--border-primary)] hover:border-emerald-500/40 hover:shadow-[0_0_15px_rgba(16,185,129,0.15)] transition-all duration-300 flex flex-col justify-between cursor-pointer h-full"
+                                >
+                                    <div>
+                                        <div className="p-2 rounded-lg mb-4 w-10 h-10 flex items-center justify-center bg-slate-900 border border-[var(--border-primary)] group-hover:scale-105 transition-transform duration-300">
+                                            <img src="/crm-logo.png" alt="Alpha CRM" className="w-full h-full object-contain drop-shadow-sm rounded" />
+                                        </div>
+                                        <h3 className="text-xl font-bold mb-2 text-[var(--text-primary)] group-hover:text-emerald-400 transition-colors">
+                                            {t('landing.toolsShowcase.crm.title')}
+                                        </h3>
+                                        <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                                            {t('landing.toolsShowcase.crm.desc')}
+                                        </p>
+                                    </div>
+                                    <div className="mt-8 flex items-center gap-2 text-sm font-bold text-emerald-400 group-hover:gap-3 transition-all duration-300">
+                                        {t('landing.toolsShowcase.explore')}
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                        </svg>
+                                    </div>
                                 </div>
-                                <h3 className="text-xl font-bold mb-2 text-[var(--text-primary)] group-hover:text-emerald-400 transition-colors">
-                                    {t('landing.toolsShowcase.crm.title')}
-                                </h3>
-                                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                                    {t('landing.toolsShowcase.crm.desc')}
-                                </p>
-                            </div>
-                            <div className="mt-8 flex items-center gap-2 text-sm font-bold text-emerald-400 group-hover:gap-3 transition-all duration-300">
-                                {t('landing.toolsShowcase.explore')}
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg>
-                            </div>
-                        </div>
+                            </HoverSpring>
+                        </RevealItem>
 
                         {/* VocabFlip Card */}
-                        <div
-                            onClick={() => navigate('/studio/vocab')}
-                            className="group glass-card rounded-xl p-6 border border-[var(--border-primary)] hover:border-rose-500/40 hover:shadow-[0_0_15px_rgba(244,63,94,0.1)] transition-all duration-300 flex flex-col justify-between cursor-pointer h-full"
-                        >
-                            <div>
-                                <div className="p-2 rounded-lg mb-4 w-10 h-10 flex items-center justify-center bg-slate-900 border border-[var(--border-primary)] group-hover:scale-105 transition-transform duration-300">
-                                    <img src="/vocab/icons/Icon-192.png" alt="VocabFlip" className="w-full h-full object-contain drop-shadow-sm rounded" />
+                        <RevealItem className="h-full">
+                            <HoverSpring scale={1.03} y={-6} className="h-full">
+                                <div
+                                    onClick={() => navigate('/studio/vocab')}
+                                    className="group glass-card rounded-xl p-6 border border-[var(--border-primary)] hover:border-rose-500/40 hover:shadow-[0_0_15px_rgba(244,63,94,0.15)] transition-all duration-300 flex flex-col justify-between cursor-pointer h-full"
+                                >
+                                    <div>
+                                        <div className="p-2 rounded-lg mb-4 w-10 h-10 flex items-center justify-center bg-slate-900 border border-[var(--border-primary)] group-hover:scale-105 transition-transform duration-300">
+                                            <img src="/vocab/icons/Icon-192.png" alt="VocabFlip" className="w-full h-full object-contain drop-shadow-sm rounded" />
+                                        </div>
+                                        <h3 className="text-xl font-bold mb-2 text-[var(--text-primary)] group-hover:text-rose-400 transition-colors">
+                                            {t('landing.toolsShowcase.vocab.title')}
+                                        </h3>
+                                        <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                                            {t('landing.toolsShowcase.vocab.desc')}
+                                        </p>
+                                    </div>
+                                    <div className="mt-8 flex items-center gap-2 text-sm font-bold text-rose-400 group-hover:gap-3 transition-all duration-300">
+                                        {t('landing.toolsShowcase.explore')}
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                        </svg>
+                                    </div>
                                 </div>
-                                <h3 className="text-xl font-bold mb-2 text-[var(--text-primary)] group-hover:text-rose-400 transition-colors">
-                                    {t('landing.toolsShowcase.vocab.title')}
-                                </h3>
-                                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                                    {t('landing.toolsShowcase.vocab.desc')}
-                                </p>
-                            </div>
-                            <div className="mt-8 flex items-center gap-2 text-sm font-bold text-rose-400 group-hover:gap-3 transition-all duration-300">
-                                {t('landing.toolsShowcase.explore')}
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg>
-                            </div>
-                        </div>
+                            </HoverSpring>
+                        </RevealItem>
 
                         {/* AI Skills Library Card */}
-                        <div
-                            onClick={() => navigate('/studio/skills')}
-                            className="group glass-card rounded-xl p-6 border border-[var(--border-primary)] hover:border-[var(--accent-primary)]/40 hover:shadow-[0_0_15px_rgba(97,232,255,0.1)] transition-all duration-300 flex flex-col justify-between cursor-pointer h-full"
-                        >
-                            <div>
-                                <div className="p-2 rounded-lg mb-4 w-10 h-10 flex items-center justify-center bg-slate-900 border border-[var(--border-primary)] group-hover:scale-105 transition-transform duration-300">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="h-5 w-5 text-[var(--accent-primary)]">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                                    </svg>
+                        <RevealItem className="h-full">
+                            <HoverSpring scale={1.03} y={-6} className="h-full">
+                                <div
+                                    onClick={() => navigate('/studio/skills')}
+                                    className="group glass-card rounded-xl p-6 border border-[var(--border-primary)] hover:border-[var(--accent-primary)]/40 hover:shadow-[0_0_15px_rgba(97,232,255,0.15)] transition-all duration-300 flex flex-col justify-between cursor-pointer h-full"
+                                >
+                                    <div>
+                                        <div className="p-2 rounded-lg mb-4 w-10 h-10 flex items-center justify-center bg-slate-900 border border-[var(--border-primary)] group-hover:scale-105 transition-transform duration-300">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="h-5 w-5 text-[var(--accent-primary)]">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                            </svg>
+                                        </div>
+                                        <h3 className="text-xl font-bold mb-2 text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors">
+                                            {t('landing.toolsShowcase.skills.title')}
+                                        </h3>
+                                        <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                                            {t('landing.toolsShowcase.skills.desc')}
+                                        </p>
+                                    </div>
+                                    <div className="mt-8 flex items-center gap-2 text-sm font-bold text-[var(--accent-primary)] group-hover:gap-3 transition-all duration-300">
+                                        {t('landing.toolsShowcase.explore')}
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                        </svg>
+                                    </div>
                                 </div>
-                                <h3 className="text-xl font-bold mb-2 text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors">
-                                    {t('landing.toolsShowcase.skills.title')}
-                                </h3>
-                                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                                    {t('landing.toolsShowcase.skills.desc')}
-                                </p>
-                            </div>
-                            <div className="mt-8 flex items-center gap-2 text-sm font-bold text-[var(--accent-primary)] group-hover:gap-3 transition-all duration-300">
-                                {t('landing.toolsShowcase.explore')}
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
+                            </HoverSpring>
+                        </RevealItem>
+                    </Reveal>
                 </div>
             </section>
 
@@ -447,57 +490,63 @@ const LandingPage: React.FC = () => {
             <section className="py-16 border-t border-[var(--border-primary)] relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] -z-10"></div>
                 <div className="container mx-auto px-6">
-                    <div className="text-center mb-16 space-y-4">
+                    <Reveal y={20} className="text-center mb-16 space-y-4">
                         <h2 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[var(--accent-primary)] to-[var(--accent-secondary)]">{t('landing.showcase.title')}</h2>
                         <p className="text-[var(--text-secondary)]">{t('landing.showcase.subtitle')}</p>
-                    </div>
+                    </Reveal>
 
                     {studentsLoading ? (
                         <div className="flex justify-center py-16">
                             <div className="w-10 h-10 border-3 border-[var(--accent-primary)]/30 border-t-[var(--accent-primary)] rounded-full animate-spin" />
                         </div>
                     ) : (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <Reveal staggerChildren={0.1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {featuredStudents.map((student, idx) => (
-                                <Link to={`/users/${student.id}`} key={idx} className="glass-card rounded-2xl overflow-hidden group hover:-translate-y-2 transition-transform duration-500 cursor-pointer">
-                                    <div className="relative aspect-[4/3] overflow-hidden">
-                                        {(student.backgroundImage || student.work) ? (
-                                            <img src={student.backgroundImage || student.work} alt="Work" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                                        ) : (
-                                            <div className="w-full h-full bg-slate-950 border border-[var(--border-primary)] transition-transform duration-700 group-hover:scale-110" />
-                                        )}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] to-transparent opacity-90"></div>
-                                        <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                                            <div className="flex items-center gap-3">
-                                                {student.image ? (
-                                                    <img src={student.image} alt={student.name} className="w-10 h-10 rounded-full border-2 border-[var(--accent-primary)] object-cover" />
+                                <RevealItem key={idx}>
+                                    <HoverSpring scale={1.02} y={-6} className="h-full">
+                                        <Link to={`/users/${student.id}`} className="glass-card rounded-2xl overflow-hidden group hover:shadow-[0_10px_20px_rgba(0,0,0,0.15)] transition-all duration-500 cursor-pointer block h-full">
+                                            <div className="relative aspect-[4/3] overflow-hidden">
+                                                {(student.backgroundImage || student.work) ? (
+                                                    <img src={student.backgroundImage || student.work} alt="Work" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                                                 ) : (
-                                                    <div className="w-10 h-10 rounded-full border-2 border-[var(--accent-primary)] bg-[var(--accent-primary)]/20 flex items-center justify-center text-sm font-bold text-[var(--accent-primary)]">
-                                                        {student.name.charAt(0).toUpperCase()}
-                                                    </div>
+                                                    <div className="w-full h-full bg-slate-950 border border-[var(--border-primary)] transition-transform duration-700 group-hover:scale-110" />
                                                 )}
-                                                <div className="text-left">
-                                                    <h4 className="text-[var(--text-primary)] font-bold text-sm">{student.name}</h4>
-                                                    <p className="text-[10px] text-[var(--accent-primary)] uppercase tracking-wide">{student.role}</p>
+                                                <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] to-transparent opacity-90"></div>
+                                                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                                                    <div className="flex items-center gap-3">
+                                                        {student.image ? (
+                                                            <img src={student.image} alt={student.name} className="w-10 h-10 rounded-full border-2 border-[var(--accent-primary)] object-cover" />
+                                                        ) : (
+                                                            <div className="w-10 h-10 rounded-full border-2 border-[var(--accent-primary)] bg-[var(--accent-primary)]/20 flex items-center justify-center text-sm font-bold text-[var(--accent-primary)]">
+                                                                {student.name.charAt(0).toUpperCase()}
+                                                            </div>
+                                                        )}
+                                                        <div className="text-left">
+                                                            <h4 className="text-[var(--text-primary)] font-bold text-sm">{student.name}</h4>
+                                                            <p className="text-[10px] text-[var(--accent-primary)] uppercase tracking-wide">{student.role}</p>
+                                                        </div>
+                                                    </div>
+                                                    {student.hired && (
+                                                        <span className="bg-green-500/20 text-green-400 text-[9px] font-black px-2 py-1 rounded-full border border-green-500/30 uppercase tracking-wider">
+                                                            {t('landing.showcase.hired')}
+                                                        </span>
+                                                    )}
                                                 </div>
                                             </div>
-                                            {student.hired && (
-                                                <span className="bg-green-500/20 text-green-400 text-[9px] font-black px-2 py-1 rounded-full border border-green-500/30 uppercase tracking-wider">
-                                                    {t('landing.showcase.hired')}
-                                                </span>
-                                            )}
-                                        </div>
-                                    </div>
-                                </Link>
+                                        </Link>
+                                    </HoverSpring>
+                                </RevealItem>
                             ))}
-                        </div>
+                        </Reveal>
                     )}
 
-                    <div className="mt-12 text-center">
-                        <button onClick={() => navigateToProtectedPage('/workflow')} className="liquid-cta-hover py-3 px-8 rounded-full border border-[var(--border-primary)] hover:border-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-all duration-300 text-sm font-bold text-[var(--accent-primary)]">
-                            {t('landing.showcase.cta')}
-                        </button>
-                    </div>
+                    <Reveal y={20} delay={0.1} className="mt-12 text-center">
+                        <HoverSpring scale={1.05} y={-2} className="inline-block">
+                            <button onClick={() => navigateToProtectedPage('/workflow')} className="liquid-cta-hover py-3 px-8 rounded-full border border-[var(--border-primary)] hover:border-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/10 transition-all duration-300 text-sm font-bold text-[var(--accent-primary)]">
+                                {t('landing.showcase.cta')}
+                            </button>
+                        </HoverSpring>
+                    </Reveal>
                 </div>
             </section>
 
@@ -505,7 +554,7 @@ const LandingPage: React.FC = () => {
             <section className="py-10 bg-[var(--bg-secondary)]/50 border-y border-[var(--border-primary)]">
                 <div className="container mx-auto px-6">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
-                        <div className="w-full md:w-1/3 space-y-4 text-center md:text-left">
+                        <Reveal y={20} className="w-full md:w-1/3 space-y-4 text-center md:text-left">
                             <h2 className="text-3xl font-black text-[var(--text-primary)]">{t('landing.partners.title')}</h2>
                             <p className="text-[var(--text-secondary)] text-sm leading-relaxed">
                                 {t('landing.partners.subtitle')}
@@ -513,7 +562,7 @@ const LandingPage: React.FC = () => {
                             <button onClick={() => navigateToProtectedPage('/workflow')} className="text-[var(--accent-primary)] text-sm font-bold inline-flex items-center gap-2 hover:underline">
                                 {t('landing.partners.join')} →
                             </button>
-                        </div>
+                        </Reveal>
                         <div className="w-full md:w-2/3">
                             {partnersLoading ? (
                                 <div className="flex items-center justify-center py-12">
@@ -524,30 +573,33 @@ const LandingPage: React.FC = () => {
                                     {language === 'vi' ? 'Chưa có đối tác nào' : 'No partners yet'}
                                 </div>
                             ) : (
-                                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                                <Reveal staggerChildren={0.08} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                                     {partners.map((partner) => (
-                                        <Link
-                                            key={partner._id}
-                                            to={`/partners/${partner.slug}`}
-                                            className="relative group cursor-pointer aspect-square rounded-2xl overflow-hidden border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-all duration-300"
-                                        >
-                                            <div className="absolute inset-0">
-                                                <img src={partner.backgroundImage || partner.logo || "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=400&fit=crop"} alt={partner.companyName} className="w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
-                                                <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent"></div>
-                                            </div>
-                                            <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center z-10">
-                                                <div className="w-12 h-12 rounded-xl bg-[var(--bg-tertiary)]/50 backdrop-blur-md flex items-center justify-center mb-2 shadow-lg group-hover:scale-110 transition-transform duration-300 overflow-hidden">
-                                                    {partner.logo && partner.logo.startsWith('http') ? (
-                                                        <img src={partner.logo} alt={partner.companyName} className="w-full h-full object-contain p-1" />
-                                                    ) : (
-                                                        <span className="text-2xl">{partner.logo || '🤝'}</span>
-                                                    )}
-                                                </div>
-                                                <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors line-clamp-2">{partner.companyName}</span>
-                                            </div>
-                                        </Link>
+                                        <RevealItem key={partner._id}>
+                                            <HoverSpring scale={1.05} y={-4}>
+                                                <Link
+                                                    to={`/partners/${partner.slug}`}
+                                                    className="relative group cursor-pointer aspect-square rounded-2xl overflow-hidden border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-all duration-300 block"
+                                                >
+                                                    <div className="absolute inset-0">
+                                                        <img src={partner.backgroundImage || partner.logo || "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=400&fit=crop"} alt={partner.companyName} className="w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
+                                                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-transparent"></div>
+                                                    </div>
+                                                    <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center z-10">
+                                                        <div className="w-12 h-12 rounded-xl bg-[var(--bg-tertiary)]/50 backdrop-blur-md flex items-center justify-center mb-2 shadow-lg group-hover:scale-110 transition-transform duration-300 overflow-hidden">
+                                                            {partner.logo && partner.logo.startsWith('http') ? (
+                                                                <img src={partner.logo} alt={partner.companyName} className="w-full h-full object-contain p-1" />
+                                                            ) : (
+                                                                <span className="text-2xl">{partner.logo || '🤝'}</span>
+                                                            )}
+                                                        </div>
+                                                        <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors line-clamp-2">{partner.companyName}</span>
+                                                    </div>
+                                                </Link>
+                                            </HoverSpring>
+                                        </RevealItem>
                                     ))}
-                                </div>
+                                </Reveal>
                             )}
                         </div>
                     </div>
@@ -557,14 +609,14 @@ const LandingPage: React.FC = () => {
             {/* Features Showcase */}
             <section className="py-16">
                 <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    <div className="space-y-8">
-                        <h2 className="text-4xl md:text-5xl font-black text-[var(--text-primary)]">
+                    <Reveal staggerChildren={0.12} className="space-y-8">
+                        <RevealItem tag="h2" y={20} className="text-4xl md:text-5xl font-black text-[var(--text-primary)]">
                             {t('landing.features.title')} <span className="text-gradient">{t('landing.features.highlight')}</span>
-                        </h2>
-                        <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
+                        </RevealItem>
+                        <RevealItem tag="p" y={20} className="text-lg text-[var(--text-secondary)] leading-relaxed">
                             {t('landing.features.description')}
-                        </p>
-                        <ul className="space-y-4">
+                        </RevealItem>
+                        <RevealItem tag="ul" y={20} className="space-y-4">
                             {[
                                 t('landing.features.item1'),
                                 t('landing.features.item2'),
@@ -576,23 +628,31 @@ const LandingPage: React.FC = () => {
                                     {item}
                                 </li>
                             ))}
-                        </ul>
-                        <button onClick={() => navigateToProtectedPage('/workflow')} className="liquid-cta-hover py-4 px-10 glass-card rounded-2xl text-[var(--accent-primary)] font-black hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-all duration-300">
-                            {t('landing.features.cta')}
-                        </button>
-                    </div>
-                    <div className="relative">
+                        </RevealItem>
+                        <RevealItem y={20}>
+                            <HoverSpring scale={1.05} y={-2} className="inline-block">
+                                <button onClick={() => navigateToProtectedPage('/workflow')} className="liquid-cta-hover py-4 px-10 glass-card rounded-2xl text-[var(--accent-primary)] font-black hover:bg-[var(--accent-primary)] hover:text-[var(--text-on-accent)] transition-all duration-300">
+                                    {t('landing.features.cta')}
+                                </button>
+                            </HoverSpring>
+                        </RevealItem>
+                    </Reveal>
+                    <Reveal y={30} scale={0.95} className="relative">
                         <div className="aspect-square glass-card rounded-[40px] flex items-center justify-center p-12 overflow-hidden shadow-2xl">
                             <div className="grid grid-cols-2 gap-4 w-full">
                                 {[1, 2, 3, 4].map(i => (
-                                    <div key={i} className={`h-40 rounded-3xl bg-[var(--bg-tertiary)]/30 border border-[var(--border-primary)] flex items-center justify-center text-4xl animate-pulse`}>
+                                    <motion.div 
+                                        key={i} 
+                                        whileHover={{ scale: 1.05, rotate: i % 2 === 0 ? 2 : -2 }}
+                                        className={`h-40 rounded-3xl bg-[var(--bg-tertiary)]/30 border border-[var(--border-primary)] flex items-center justify-center text-4xl cursor-pointer hover:bg-[var(--accent-primary)]/10 transition-colors`}
+                                    >
                                         {i === 1 ? '🎨' : i === 2 ? '📂' : i === 3 ? '⚙️' : '💻'}
-                                    </div>
+                                    </motion.div>
                                 ))}
                             </div>
                         </div>
                         <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[var(--accent-primary)] rounded-full blur-[60px] opacity-30"></div>
-                    </div>
+                    </Reveal>
                 </div>
             </section>
 

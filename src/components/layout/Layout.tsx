@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from '../../i18n/context';
 import { useAuth } from '../../auth/context';
+import { useTheme } from '../../theme/context';
 import ThemeSwitcher from '../ui/ThemeSwitcher';
 import LanguageSwitcher from '../ui/LanguageSwitcher';
 import Login from '../ui/Login';
 import FloatingChat from '../chat/FloatingChat';
+import LiquidEther from '../ui/LiquidEther';
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -15,6 +17,11 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
     const { t } = useTranslation();
     const { isAuthenticated, user, logout } = useAuth();
+    const { theme } = useTheme();
+
+    const bgColors = theme === 'dark' 
+        ? ["#5227FF", "#FF9FFC", "#B497CF"]
+        : ["#bae6fd", "#ddd6fe", "#fbcfe8"];
     const navigate = useNavigate();
     const location = useLocation();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -69,7 +76,22 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
     const closeMobile = () => setMobileMenuOpen(false);
 
     return (
-        <div className="min-h-screen flex flex-col bg-[var(--bg-primary)]">
+        <div className="min-h-screen flex flex-col bg-[var(--bg-primary)] relative overflow-hidden">
+            <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-60">
+                <LiquidEther
+                    mouseForce={20}
+                    cursorSize={100}
+                    isViscous={false}
+                    viscous={30}
+                    colors={bgColors}
+                    autoDemo
+                    autoSpeed={0.5}
+                    autoIntensity={2.2}
+                    isBounce={false}
+                    resolution={0.5}
+                />
+            </div>
+            <div className="relative z-10 flex flex-col flex-1">
             {/* Global Navigation */}
             <nav className="sticky top-0 z-50 glass-card border-b border-[var(--border-primary)]">
                 <div className="w-full px-4 md:px-6 py-1.5 md:py-2 lg:py-2.5 flex justify-between items-center">
@@ -316,6 +338,7 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
             )}
 
             <FloatingChat />
+            </div>
         </div>
     );
 };
