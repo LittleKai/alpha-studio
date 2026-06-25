@@ -125,7 +125,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess, onClose }) => {
           </button>
 
           <div className="text-center mb-8">
-            <img src="/alpha-logo.png" alt="Alpha Studio" className="w-16 h-16 mx-auto mb-4 rounded-2xl object-contain shadow-lg" />
+            <img src="/alpha-logo-animated.svg" alt="Alpha Studio" className="w-16 h-16 mx-auto mb-4 rounded-2xl object-contain shadow-lg" />
             <h1 className="text-2xl font-bold text-[var(--text-primary)]">ALPHA CONNECT</h1>
             <p className="text-[var(--text-secondary)] mt-1">
               {mode === 'login'

@@ -96,7 +96,7 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
             <nav className="sticky top-0 z-50 glass-card border-b border-[var(--border-primary)]">
                 <div className="w-full px-4 md:px-6 py-1 md:py-1.5 lg:py-2 flex justify-between items-center">
                     <Link to="/" className="flex items-center gap-2 cursor-pointer group">
-                        <img src="/alpha-logo.png" alt="Alpha Studio" className="h-7 w-7 md:h-8 md:w-8 xl:h-9 xl:w-9 rounded-xl object-contain group-hover:rotate-12 transition-transform" />
+                        <img src="/alpha-logo-animated.svg" alt="Alpha Studio" className="h-7 w-7 md:h-8 md:w-8 xl:h-9 xl:w-9 rounded-xl object-contain group-hover:rotate-12 transition-transform" />
                         <div className="flex md:hidden lg:flex flex-col">
                             <span className="text-lg xl:text-xl font-bold tracking-tight text-[var(--text-primary)] leading-none">ALPHA STUDIO</span>
                             <span className="text-[9px] xl:text-[10px] text-[var(--accent-primary)] font-bold tracking-widest uppercase">AI Academy</span>
@@ -122,7 +122,7 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                         </button>
                     </div>
 
-                    <div className="flex items-center md:gap-2 lg:gap-3 xl:gap-4">
+                    <div className="flex items-center gap-3 md:gap-2 lg:gap-3 xl:gap-4">
                         <LanguageSwitcher />
                         <ThemeSwitcher />
 
@@ -237,10 +237,10 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
             {mobileMenuOpen && (
                 <div className="fixed inset-0 z-[100] md:hidden">
                     <div className="absolute inset-0 bg-black/60 backdrop-blur-sm animate-fade-in-backdrop" onClick={closeMobile} />
-                    <div className="absolute right-0 top-0 h-full w-80 bg-[var(--bg-card-alpha)] backdrop-blur-2xl border-l border-[var(--border-primary)] shadow-[0_0_50px_rgba(0,0,0,0.3)] overflow-y-auto flex flex-col justify-between animate-slide-in-right z-50">
+                    <div className="absolute right-0 top-0 h-full w-80 bg-[var(--bg-primary)] border-l border-[var(--border-primary)] shadow-[0_0_50px_rgba(0,0,0,0.3)] overflow-y-auto flex flex-col justify-between animate-slide-in-right z-50">
                         <div className="flex-1 flex flex-col">
                             {/* Close button */}
-                            <div className="flex items-center justify-between p-4 border-b border-[var(--border-primary)]">
+                            <div className="flex items-center justify-between py-4 px-1 border-b border-[var(--border-primary)]">
                                 <span className="text-sm font-bold text-[var(--text-primary)] uppercase tracking-widest">Menu</span>
                                 <button onClick={closeMobile} className="p-2 rounded-lg hover:bg-[var(--bg-secondary)] transition-colors">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[var(--text-primary)]" viewBox="0 0 20 20" fill="currentColor">
@@ -250,7 +250,7 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                             </div>
 
                             {/* Nav Links */}
-                            <div className="p-4 space-y-1.5 flex-1">
+                            <div className="py-4 px-1 space-y-1 flex-1">
                                 <Link 
                                     onClick={closeMobile} 
                                     to="/" 
@@ -328,9 +328,9 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
                         </div>
 
                         {/* Mobile Account */}
-                        <div className="border-t border-[var(--border-primary)] p-4 bg-[var(--bg-secondary)]/30 backdrop-blur-md">
+                        <div className="border-t border-[var(--border-primary)] py-4 px-1 bg-[var(--bg-secondary)]">
                             {isAuthenticated ? (
-                                <div className="space-y-2">
+                                <div className="space-y-1">
                                     <div className="bg-[var(--bg-secondary)] border border-[var(--border-primary)] rounded-2xl p-4 mb-3 shadow-sm">
                                         <div className="flex items-center gap-3">
                                             {user?.avatar ? (

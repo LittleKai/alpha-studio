@@ -1,0 +1,60 @@
+{
+  "input": "D:\\Dev\\NodeJS\\alpha-studio\\alpha-studio\\public\\alpha-logo.png",
+  "foreground_detection": {
+    "mode": "alpha",
+    "alpha_threshold": 12
+  },
+  "groups": [
+    {
+      "fill": "#2b3990",
+      "area_pixels": 578360,
+      "loop_count": 6,
+      "point_count": 597
+    },
+    {
+      "fill": "#be1e2d",
+      "area_pixels": 69255,
+      "loop_count": 4,
+      "point_count": 73
+    },
+    {
+      "fill": "#ffffff",
+      "area_pixels": 59616,
+      "loop_count": 19,
+      "point_count": 1527
+    },
+    {
+      "fill": "#cbc7dd",
+      "area_pixels": 4379,
+      "loop_count": 2528,
+      "point_count": 10112
+    },
+    {
+      "fill": "#6e77b3",
+      "area_pixels": 3994,
+      "loop_count": 2413,
+      "point_count": 9652
+    },
+    {
+      "fill": "#ce5662",
+      "area_pixels": 916,
+      "loop_count": 522,
+      "point_count": 2083
+    }
+  ],
+  "metrics": {
+    "source_foreground_pixels": 716520,
+    "vector_foreground_pixels": 716557,
+    "intersection_pixels": 710378,
+    "union_pixels": 722699,
+    "iou": 0.982951,
+    "recall_source_covered_by_vector": 0.991428,
+    "precision_vector_inside_source": 0.991377
+  },
+  "outputs": {
+    "svg": "D:\\Dev\\NodeJS\\alpha-studio\\alpha-studio\\public\\logo-trace-1\\logo.svg",
+    "html": "D:\\Dev\\NodeJS\\alpha-studio\\alpha-studio\\public\\logo-trace-1\\logo.html",
+    "vector_render": "D:\\Dev\\NodeJS\\alpha-studio\\alpha-studio\\public\\logo-trace-1\\vector_render.png",
+    "overlay": "D:\\Dev\\NodeJS\\alpha-studio\\alpha-studio\\public\\logo-trace-1\\overlay.png"
+  }
+}

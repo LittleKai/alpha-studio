@@ -674,7 +674,7 @@ const LandingPage: React.FC = () => {
             <footer className="py-16 border-t border-[var(--border-primary)] bg-[var(--bg-primary)] mt-auto">
                 <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
                     <div className="flex items-center gap-2">
-                        <img src="/alpha-logo.png" alt="Alpha Studio" className="h-8 w-8 rounded-lg object-contain" />
+                        <img src="/alpha-logo-animated.svg" alt="Alpha Studio" className="h-8 w-8 rounded-lg object-contain" />
                         <span className="text-sm font-bold text-[var(--text-primary)] tracking-widest">ALPHA STUDIO ACADEMY</span>
                     </div>
                     <p className="text-[10px] text-[var(--text-tertiary)] font-bold uppercase tracking-widest">

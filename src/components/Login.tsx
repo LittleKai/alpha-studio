@@ -46,7 +46,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         <div className="bg-[var(--bg-secondary)]/80 backdrop-blur-xl rounded-2xl shadow-2xl border border-[var(--border-primary)] p-8">
           {/* Logo */}
           <div className="text-center mb-8">
-            <img src="/alpha-logo.png" alt="Alpha Studio" className="w-16 h-16 mx-auto mb-4 rounded-2xl object-contain shadow-lg" />
+            <img src="/alpha-logo-animated.svg" alt="Alpha Studio" className="w-16 h-16 mx-auto mb-4 rounded-2xl object-contain shadow-lg" />
             <h1 className="text-2xl font-bold text-[var(--text-primary)]">Alpha Studio</h1>
             <p className="text-[var(--text-secondary)] mt-1">{t('login.subtitle')}</p>
           </div>
