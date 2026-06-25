@@ -88,7 +88,8 @@ export default {
       subtitle: "Tài năng hàng đầu và cơ hội nghề nghiệp.",
       pro: "Học viên Pro",
       hired: "Đã được tuyển",
-      cta: "Trở thành Pro Member"
+      cta: "Trở thành Pro Member",
+      viewProfile: "Chi tiết"
     },
     partners: {
       title: "Đối tác chiến lược",

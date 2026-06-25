@@ -1,79 +1,111 @@
 import type { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from '../../i18n/context';
+import { ToolShowcaseCard } from './ToolShowcaseCard';
 
 interface ToolCard {
   key: 'generate' | 'edit' | 'vocab' | 'interior' | 'crm' | 'skills';
   to: string;
-  icon: ReactNode;
-  bgGradient: string;
-  paddingClass?: string;
+  cardClass: string;
+  logo: ReactNode;
+  previewImage: string;
+  getStats: (language: string) => { bigText: string; regularText: string }[];
 }
 
 const TOOLS: ToolCard[] = [
   {
     key: 'generate',
     to: '/studio/generate',
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
+    cardClass: 'generate-card',
+    logo: (
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="text-white">
         <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4-4 3 3 5-6 4 5M4 6h16v12H4z" />
       </svg>
     ),
-    bgGradient: 'from-cyan-500 to-blue-600',
+    previewImage: '/generate-preview.jpg',
+    getStats: (lang) => [
+      { bigText: 'Fast', regularText: lang === 'vi' ? 'Tốc độ' : 'Speed' },
+      { bigText: '4K', regularText: lang === 'vi' ? 'Chất lượng' : 'Quality' },
+      { bigText: 'Pro', regularText: lang === 'vi' ? 'Mô hình' : 'Model' },
+    ],
   },
   {
     key: 'edit',
     to: '/studio/edit',
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
+    cardClass: 'edit-card',
+    logo: (
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="text-white">
         <path strokeLinecap="round" strokeLinejoin="round" d="M11 5H5a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2v-6M17.5 3.5a2.121 2.121 0 113 3L12 15l-4 1 1-4 8.5-8.5z" />
       </svg>
     ),
-    bgGradient: 'from-purple-500 to-indigo-600',
+    previewImage: '/edit-preview.jpg',
+    getStats: (lang) => [
+      { bigText: 'Smart', regularText: lang === 'vi' ? 'Chọn vùng' : 'Masking' },
+      { bigText: 'AI-Erase', regularText: lang === 'vi' ? 'Xóa vật' : 'Erase' },
+      { bigText: 'Canvas', regularText: lang === 'vi' ? 'Vô hạn' : 'Infinite' },
+    ],
   },
   {
     key: 'crm',
     to: '/studio/crm/subscription',
-    icon: (
-      <img src="/crm-logo.png" alt="Alpha CRM" className="w-full h-full object-contain drop-shadow-sm rounded" />
-    ),
-    bgGradient: 'from-emerald-400 to-teal-600',
-    paddingClass: 'p-1',
+    cardClass: 'crm-card',
+    logo: <img src="/crm-logo.png" alt="Alpha CRM" />,
+    previewImage: '/crm-preview.png',
+    getStats: (lang) => [
+      { bigText: '100+', regularText: lang === 'vi' ? 'Chiến dịch' : 'Campaigns' },
+      { bigText: '14 Ngày', regularText: lang === 'vi' ? 'Dùng thử' : 'Trial' },
+      { bigText: 'Web/App', regularText: lang === 'vi' ? 'Đa nền tảng' : 'Platform' },
+    ],
   },
   {
     key: 'interior',
     to: '/studio/interior-design',
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
+    cardClass: 'interior-card',
+    logo: (
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="text-white">
         <path strokeLinecap="round" strokeLinejoin="round" d="M4 20V8l8-4 8 4v12M8 20V10h8v10" />
         <path strokeLinecap="round" strokeLinejoin="round" d="M10 14h4M10 17h4M8 10h8" />
       </svg>
     ),
-    bgGradient: 'from-amber-500 to-orange-600',
+    previewImage: '/interior-preview.jpg',
+    getStats: (lang) => [
+      { bigText: '3D', regularText: lang === 'vi' ? 'Không gian' : 'Space' },
+      { bigText: 'AI-Render', regularText: lang === 'vi' ? 'Vật liệu' : 'Materials' },
+      { bigText: 'Scale', regularText: lang === 'vi' ? 'Chính xác' : 'Precision' },
+    ],
   },
   {
     key: 'vocab',
     to: '/studio/vocab',
-    icon: (
-      <img src="/vocab/icons/Icon-192.png" alt="VocabFlip" className="w-full h-full object-contain drop-shadow-sm rounded" />
-    ),
-    bgGradient: 'from-rose-500 to-pink-600',
-    paddingClass: 'p-1',
+    cardClass: 'vocab-card',
+    logo: <img src="/vocab/icons/Icon-192.png" alt="VocabFlip" />,
+    previewImage: '/images/vocab/vocab-preview.png',
+    getStats: (lang) => [
+      { bigText: 'Smart', regularText: lang === 'vi' ? 'Học từ vựng' : 'Study' },
+      { bigText: 'Win/Apk', regularText: lang === 'vi' ? 'Hỗ trợ' : 'Supports' },
+      { bigText: 'Shared', regularText: lang === 'vi' ? 'Thư viện' : 'Library' },
+    ],
   },
   {
     key: 'skills',
     to: '/studio/skills',
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="h-6 w-6">
+    cardClass: 'skills-card',
+    logo: (
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="text-white">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
       </svg>
     ),
-    bgGradient: 'from-indigo-500 via-purple-600 to-pink-500',
+    previewImage: '/skills-preview.jpg',
+    getStats: (lang) => [
+      { bigText: '20+', regularText: lang === 'vi' ? 'Thực chiến' : 'Skills' },
+      { bigText: 'Daily', regularText: lang === 'vi' ? 'Cập nhật' : 'Updates' },
+      { bigText: 'AI-Gen', regularText: lang === 'vi' ? 'Tài nguyên' : 'Resources' },
+    ],
   },
 ];
 
 export default function StudioHub() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const navigate = useNavigate();
 
   return (
@@ -88,29 +120,18 @@ export default function StudioHub() {
           </p>
         </header>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {TOOLS.map(tool => (
-            <div
+            <ToolShowcaseCard
               key={tool.key}
+              cardClass={tool.cardClass}
               onClick={() => navigate(tool.to)}
-              className="group glass-card text-left p-6 rounded-2xl border border-[var(--border-primary)] hover:border-[var(--accent-primary)] transition-all hover:-translate-y-1 hover:shadow-xl flex flex-col h-full cursor-pointer"
-            >
-              <div className={`${tool.paddingClass || 'p-3'} rounded-xl mb-4 w-12 h-12 flex items-center justify-center bg-gradient-to-br ${tool.bgGradient} text-white shadow-md group-hover:scale-110 transition-transform`}>
-                {tool.icon}
-              </div>
-              <h2 className="text-xl font-bold mb-2 text-[var(--text-primary)]">
-                {t(`studio.hub.cards.${tool.key}.title`)}
-              </h2>
-              <p className="text-sm text-[var(--text-secondary)] flex-1">
-                {t(`studio.hub.cards.${tool.key}.desc`)}
-              </p>
-              <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-[var(--accent-primary)] group-hover:gap-2 transition-all">
-                {t('studio.hub.open')}
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </span>
-            </div>
+              logo={tool.logo}
+              previewImage={tool.previewImage}
+              title={t(`studio.hub.cards.${tool.key}.title`)}
+              desc={t(`studio.hub.cards.${tool.key}.desc`)}
+              stats={tool.getStats(language)}
+            />
           ))}
         </div>
       </main>

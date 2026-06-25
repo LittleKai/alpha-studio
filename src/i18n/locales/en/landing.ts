@@ -88,7 +88,8 @@ export default {
       subtitle: "Top talent and career opportunities.",
       pro: "Pro Student",
       hired: "Hired",
-      cta: "Become a Pro Member"
+      cta: "Become a Pro Member",
+      viewProfile: "Profile"
     },
     partners: {
       title: "Strategic Partners",

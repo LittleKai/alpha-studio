@@ -2,6 +2,36 @@ import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import './LiquidEther.css';
 
+function makePaletteTexture(stops) {
+  let arr;
+  if (Array.isArray(stops) && stops.length > 0) {
+    if (stops.length === 1) {
+      arr = [stops[0], stops[0]];
+    } else {
+      arr = stops;
+    }
+  } else {
+    arr = ['#ffffff', '#ffffff'];
+  }
+  const w = arr.length;
+  const data = new Uint8Array(w * 4);
+  for (let i = 0; i < w; i++) {
+    const c = new THREE.Color(arr[i]);
+    data[i * 4 + 0] = Math.round(c.r * 255);
+    data[i * 4 + 1] = Math.round(c.g * 255);
+    data[i * 4 + 2] = Math.round(c.b * 255);
+    data[i * 4 + 3] = 255;
+  }
+  const tex = new THREE.DataTexture(data, w, 1, THREE.RGBAFormat);
+  tex.magFilter = THREE.LinearFilter;
+  tex.minFilter = THREE.LinearFilter;
+  tex.wrapS = THREE.ClampToEdgeWrapping;
+  tex.wrapT = THREE.ClampToEdgeWrapping;
+  tex.generateMipmaps = false;
+  tex.needsUpdate = true;
+  return tex;
+}
+
 export default function LiquidEther({
   mouseForce = 20,
   cursorSize = 100,
@@ -33,36 +63,6 @@ export default function LiquidEther({
 
   useEffect(() => {
     if (!mountRef.current) return;
-
-    function makePaletteTexture(stops) {
-      let arr;
-      if (Array.isArray(stops) && stops.length > 0) {
-        if (stops.length === 1) {
-          arr = [stops[0], stops[0]];
-        } else {
-          arr = stops;
-        }
-      } else {
-        arr = ['#ffffff', '#ffffff'];
-      }
-      const w = arr.length;
-      const data = new Uint8Array(w * 4);
-      for (let i = 0; i < w; i++) {
-        const c = new THREE.Color(arr[i]);
-        data[i * 4 + 0] = Math.round(c.r * 255);
-        data[i * 4 + 1] = Math.round(c.g * 255);
-        data[i * 4 + 2] = Math.round(c.b * 255);
-        data[i * 4 + 3] = 255;
-      }
-      const tex = new THREE.DataTexture(data, w, 1, THREE.RGBAFormat);
-      tex.magFilter = THREE.LinearFilter;
-      tex.minFilter = THREE.LinearFilter;
-      tex.wrapS = THREE.ClampToEdgeWrapping;
-      tex.wrapT = THREE.ClampToEdgeWrapping;
-      tex.generateMipmaps = false;
-      tex.needsUpdate = true;
-      return tex;
-    }
 
     const paletteTex = makePaletteTexture(colors);
     const bgVec4 = new THREE.Vector4(0, 0, 0, 0); // always transparent
@@ -1105,7 +1105,6 @@ export default function LiquidEther({
     mouseForce,
     resolution,
     viscous,
-    colors,
     autoDemo,
     autoSpeed,
     autoIntensity,
@@ -1117,6 +1116,18 @@ export default function LiquidEther({
   useEffect(() => {
     const webgl = webglRef.current;
     if (!webgl) return;
+
+    // Update colors dynamically without recreating the WebGL context
+    const mesh = webgl.output?.output;
+    if (mesh && mesh.material && mesh.material.uniforms) {
+      const oldTex = mesh.material.uniforms.palette.value;
+      const newTex = makePaletteTexture(colors);
+      mesh.material.uniforms.palette.value = newTex;
+      if (oldTex) {
+        oldTex.dispose();
+      }
+    }
+
     const sim = webgl.output?.simulation;
     if (!sim) return;
     const prevRes = sim.options.resolution;
@@ -1146,6 +1157,7 @@ export default function LiquidEther({
       sim.resize();
     }
   }, [
+    colors,
     mouseForce,
     cursorSize,
     isViscous,

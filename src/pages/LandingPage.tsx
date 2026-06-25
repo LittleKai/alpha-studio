@@ -14,6 +14,7 @@ import Reveal, { RevealItem } from '../components/motion/Reveal';
 import HoverSpring from '../components/motion/HoverSpring';
 import TextReveal from '../components/motion/TextReveal';
 import LiquidEther from '../components/ui/LiquidEther';
+import { ToolShowcaseCard } from '../components/studio/ToolShowcaseCard';
 
 
 
@@ -399,88 +400,57 @@ const LandingPage: React.FC = () => {
                     <Reveal staggerChildren={0.12} className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {/* Alpha CRM Card */}
                         <RevealItem className="h-full">
-                            <HoverSpring scale={1.03} y={-6} className="h-full">
-                                <div
-                                    onClick={() => navigate('/studio/crm/subscription')}
-                                    className="group glass-card rounded-xl p-6 border border-[var(--border-primary)] hover:border-emerald-500/40 hover:shadow-[0_0_15px_rgba(16,185,129,0.15)] transition-all duration-300 flex flex-col justify-between cursor-pointer h-full"
-                                >
-                                    <div>
-                                        <div className="p-2 rounded-lg mb-4 w-10 h-10 flex items-center justify-center bg-slate-900 border border-[var(--border-primary)] group-hover:scale-105 transition-transform duration-300">
-                                            <img src="/crm-logo.png" alt="Alpha CRM" className="w-full h-full object-contain drop-shadow-sm rounded" />
-                                        </div>
-                                        <h3 className="text-xl font-bold mb-2 text-[var(--text-primary)] group-hover:text-emerald-400 transition-colors">
-                                            {t('landing.toolsShowcase.crm.title')}
-                                        </h3>
-                                        <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                                            {t('landing.toolsShowcase.crm.desc')}
-                                        </p>
-                                    </div>
-                                    <div className="mt-8 flex items-center gap-2 text-sm font-bold text-emerald-400 group-hover:gap-3 transition-all duration-300">
-                                        {t('landing.toolsShowcase.explore')}
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </HoverSpring>
+                            <ToolShowcaseCard
+                                cardClass="crm-card"
+                                onClick={() => navigate('/studio/crm/subscription')}
+                                logo={<img src="/crm-logo.png" alt="Alpha CRM" />}
+                                previewImage="/crm-preview.png"
+                                title={t('landing.toolsShowcase.crm.title')}
+                                desc={t('landing.toolsShowcase.crm.desc')}
+                                stats={[
+                                    { bigText: '100+', regularText: language === 'vi' ? 'Chiến dịch' : 'Campaigns' },
+                                    { bigText: '14 Ngày', regularText: language === 'vi' ? 'Dùng thử' : 'Trial' },
+                                    { bigText: 'Web/App', regularText: language === 'vi' ? 'Đa nền tảng' : 'Platform' }
+                                ]}
+                            />
                         </RevealItem>
 
                         {/* VocabFlip Card */}
                         <RevealItem className="h-full">
-                            <HoverSpring scale={1.03} y={-6} className="h-full">
-                                <div
-                                    onClick={() => navigate('/studio/vocab')}
-                                    className="group glass-card rounded-xl p-6 border border-[var(--border-primary)] hover:border-rose-500/40 hover:shadow-[0_0_15px_rgba(244,63,94,0.15)] transition-all duration-300 flex flex-col justify-between cursor-pointer h-full"
-                                >
-                                    <div>
-                                        <div className="p-2 rounded-lg mb-4 w-10 h-10 flex items-center justify-center bg-slate-900 border border-[var(--border-primary)] group-hover:scale-105 transition-transform duration-300">
-                                            <img src="/vocab/icons/Icon-192.png" alt="VocabFlip" className="w-full h-full object-contain drop-shadow-sm rounded" />
-                                        </div>
-                                        <h3 className="text-xl font-bold mb-2 text-[var(--text-primary)] group-hover:text-rose-400 transition-colors">
-                                            {t('landing.toolsShowcase.vocab.title')}
-                                        </h3>
-                                        <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                                            {t('landing.toolsShowcase.vocab.desc')}
-                                        </p>
-                                    </div>
-                                    <div className="mt-8 flex items-center gap-2 text-sm font-bold text-rose-400 group-hover:gap-3 transition-all duration-300">
-                                        {t('landing.toolsShowcase.explore')}
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </HoverSpring>
+                            <ToolShowcaseCard
+                                cardClass="vocab-card"
+                                onClick={() => navigate('/studio/vocab')}
+                                logo={<img src="/vocab/icons/Icon-192.png" alt="VocabFlip" />}
+                                previewImage="/images/vocab/vocab-preview.png"
+                                title={t('landing.toolsShowcase.vocab.title')}
+                                desc={t('landing.toolsShowcase.vocab.desc')}
+                                stats={[
+                                    { bigText: 'Smart', regularText: language === 'vi' ? 'Học từ vựng' : 'Study' },
+                                    { bigText: 'Win/Apk', regularText: language === 'vi' ? 'Hỗ trợ' : 'Supports' },
+                                    { bigText: 'Shared', regularText: language === 'vi' ? 'Thư viện' : 'Library' }
+                                ]}
+                            />
                         </RevealItem>
 
                         {/* AI Skills Library Card */}
                         <RevealItem className="h-full">
-                            <HoverSpring scale={1.03} y={-6} className="h-full">
-                                <div
-                                    onClick={() => navigate('/studio/skills')}
-                                    className="group glass-card rounded-xl p-6 border border-[var(--border-primary)] hover:border-[var(--accent-primary)]/40 hover:shadow-[0_0_15px_rgba(97,232,255,0.15)] transition-all duration-300 flex flex-col justify-between cursor-pointer h-full"
-                                >
-                                    <div>
-                                        <div className="p-2 rounded-lg mb-4 w-10 h-10 flex items-center justify-center bg-slate-900 border border-[var(--border-primary)] group-hover:scale-105 transition-transform duration-300">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="h-5 w-5 text-[var(--accent-primary)]">
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                                            </svg>
-                                        </div>
-                                        <h3 className="text-xl font-bold mb-2 text-[var(--text-primary)] group-hover:text-[var(--accent-primary)] transition-colors">
-                                            {t('landing.toolsShowcase.skills.title')}
-                                        </h3>
-                                        <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-                                            {t('landing.toolsShowcase.skills.desc')}
-                                        </p>
-                                    </div>
-                                    <div className="mt-8 flex items-center gap-2 text-sm font-bold text-[var(--accent-primary)] group-hover:gap-3 transition-all duration-300">
-                                        {t('landing.toolsShowcase.explore')}
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </HoverSpring>
+                            <ToolShowcaseCard
+                                cardClass="skills-card"
+                                onClick={() => navigate('/studio/skills')}
+                                logo={
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" className="text-white">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                    </svg>
+                                }
+                                previewImage="/skills-preview.jpg"
+                                title={t('landing.toolsShowcase.skills.title')}
+                                desc={t('landing.toolsShowcase.skills.desc')}
+                                stats={[
+                                    { bigText: '20+', regularText: language === 'vi' ? 'Thực chiến' : 'Skills' },
+                                    { bigText: 'Daily', regularText: language === 'vi' ? 'Cập nhật' : 'Updates' },
+                                    { bigText: 'AI-Gen', regularText: language === 'vi' ? 'Tài nguyên' : 'Resources' }
+                                ]}
+                            />
                         </RevealItem>
                     </Reveal>
                 </div>
@@ -503,38 +473,82 @@ const LandingPage: React.FC = () => {
                         <Reveal staggerChildren={0.1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {featuredStudents.map((student, idx) => (
                                 <RevealItem key={idx}>
-                                    <HoverSpring scale={1.02} y={-6} className="h-full">
-                                        <Link to={`/users/${student.id}`} className="glass-card rounded-2xl overflow-hidden group hover:shadow-[0_10px_20px_rgba(0,0,0,0.15)] transition-all duration-500 cursor-pointer block h-full">
-                                            <div className="relative aspect-[4/3] overflow-hidden">
-                                                {(student.backgroundImage || student.work) ? (
-                                                    <img src={student.backgroundImage || student.work} alt="Work" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                                                ) : (
-                                                    <div className="w-full h-full bg-slate-950 border border-[var(--border-primary)] transition-transform duration-700 group-hover:scale-110" />
-                                                )}
-                                                <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] to-transparent opacity-90"></div>
-                                                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                                                    <div className="flex items-center gap-3">
-                                                        {student.image ? (
-                                                            <img src={student.image} alt={student.name} className="w-10 h-10 rounded-full border-2 border-[var(--accent-primary)] object-cover" />
-                                                        ) : (
-                                                            <div className="w-10 h-10 rounded-full border-2 border-[var(--accent-primary)] bg-[var(--accent-primary)]/20 flex items-center justify-center text-sm font-bold text-[var(--accent-primary)]">
-                                                                {student.name.charAt(0).toUpperCase()}
-                                                            </div>
-                                                        )}
-                                                        <div className="text-left">
-                                                            <h4 className="text-[var(--text-primary)] font-bold text-sm">{student.name}</h4>
-                                                            <p className="text-[10px] text-[var(--accent-primary)] uppercase tracking-wide">{student.role}</p>
-                                                        </div>
-                                                    </div>
-                                                    {student.hired && (
-                                                        <span className="bg-green-500/20 text-green-400 text-[9px] font-black px-2 py-1 rounded-full border border-green-500/30 uppercase tracking-wider">
-                                                            {t('landing.showcase.hired')}
-                                                        </span>
-                                                    )}
-                                                </div>
+                                    <Link to={`/users/${student.id}`} className="student-card group">
+                                        {/* Contact Button */}
+                                        <div 
+                                            className="contact-btn" 
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                                if (student.socials?.linkedin) {
+                                                    window.open(student.socials.linkedin, '_blank');
+                                                } else if (student.socials?.facebook) {
+                                                    window.open(student.socials.facebook, '_blank');
+                                                } else {
+                                                    navigate(`/users/${student.id}`);
+                                                }
+                                            }}
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                                <polyline points="22,6 12,13 2,6"></polyline>
+                                            </svg>
+                                        </div>
+
+                                        {/* Hired badge */}
+                                        {student.hired && (
+                                            <div className="hired-badge">
+                                                {t('landing.showcase.hired')}
                                             </div>
-                                        </Link>
-                                    </HoverSpring>
+                                        )}
+
+                                        {/* Profile Pic: Student work image (Main background) */}
+                                        <div className="profile-pic">
+                                            {(student.backgroundImage || student.work) ? (
+                                                <img src={student.backgroundImage || student.work} alt="Work" />
+                                            ) : (
+                                                <div className="fallback-pic">
+                                                    <span>🎨</span>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* Student Avatar: Circular avatar overlay, only visible when hovered */}
+                                        <div className="student-avatar-pic">
+                                            {student.image ? (
+                                                <img src={student.image} alt={student.name} />
+                                            ) : (
+                                                <div className="avatar-fallback">
+                                                    <span>{student.name.charAt(0).toUpperCase()}</span>
+                                                </div>
+                                            )}
+                                        </div>
+
+                                        {/* Bottom Slide Up Content */}
+                                        <div className="bottom">
+                                            <div className="content">
+                                                <span className="name">{student.name}</span>
+                                                <span className="role-text">{student.role}</span>
+                                                <span className="about-me line-clamp-2">
+                                                    {student.bio || (language === 'vi' ? 'Học viên tiêu biểu tại Alpha Studio với nhiều tác phẩm xuất sắc.' : 'Featured student at Alpha Studio with outstanding works.')}
+                                                </span>
+                                                {/* Skills tags */}
+                                                {student.skills && student.skills.length > 0 && (
+                                                    <div className="skills-container">
+                                                        {student.skills.slice(0, 3).map((skill, sIdx) => (
+                                                            <span key={sIdx} className="skill-tag">{skill}</span>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </div>
+                                            
+                                            <div className="bottom-bottom">
+                                                <button className="view-profile-btn">
+                                                    {t('landing.showcase.viewProfile')}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </Link>
                                 </RevealItem>
                             ))}
                         </Reveal>
