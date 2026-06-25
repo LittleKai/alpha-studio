@@ -45,6 +45,7 @@ export default function TextReveal({
 
   return (
     <motion.span
+      key={text}
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
@@ -53,8 +54,8 @@ export default function TextReveal({
     >
       {words.map((word, index) => (
         <span
-          key={index}
-          className="inline-block overflow-hidden pb-[0.15em] mb-[-0.15em]"
+          key={`${word}-${index}`}
+          className="inline-block overflow-hidden pt-[0.25em] mt-[-0.25em] pb-[0.25em] mb-[-0.25em]"
         >
           <motion.span
             variants={wordVariants}

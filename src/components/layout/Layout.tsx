@@ -20,8 +20,8 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
     const { theme } = useTheme();
 
     const bgColors = theme === 'dark' 
-        ? ["#5227FF", "#FF9FFC", "#B497CF"]
-        : ["#bae6fd", "#ddd6fe", "#fbcfe8"];
+        ? ["#0B2545", "#0077B6", "#00B4D8"]
+        : ["#005F73", "#0A9396", "#94D2BD"];
     const navigate = useNavigate();
     const location = useLocation();
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -77,18 +77,18 @@ const Layout: React.FC<LayoutProps> = ({ children, showNav = true }) => {
 
     return (
         <div className="min-h-screen flex flex-col bg-[var(--bg-primary)] relative overflow-hidden">
-            <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-60">
+            <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
                 <LiquidEther
-                    mouseForce={20}
+                    mouseForce={8}
                     cursorSize={100}
                     isViscous={false}
                     viscous={30}
                     colors={bgColors}
                     autoDemo
-                    autoSpeed={0.5}
-                    autoIntensity={2.2}
+                    autoSpeed={0.15}
+                    autoIntensity={1.8}
                     isBounce={false}
-                    resolution={0.5}
+                    resolution={0.15}
                 />
             </div>
             <div className="relative z-10 flex flex-col flex-1">
