@@ -1220,3 +1220,140 @@ html[data-theme="light"] .user-dropdown-card .list.logout-list .element:hover sv
   animation: fadeInBackdrop 0.3s ease-out forwards;
 }
 
+/* ==========================================================================
+   Mean Bird 62 Inspired Button Effects (Customized for Alpha Studio)
+   ========================================================================== */
+
+@keyframes rotate-mean-bird {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes path-mean-bird {
+  0%, 34%, 71%, 100% {
+    transform: scale(1);
+  }
+  17% {
+    transform: scale(1.3);
+  }
+  49% {
+    transform: scale(1.2);
+  }
+  83% {
+    transform: scale(1.4);
+  }
+}
+
+.mean-bird-button {
+  --active: 0;
+  --accent-color: #ff5a1f;
+  cursor: pointer;
+  position: relative;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: visible;
+  z-index: 1;
+}
+
+.mean-bird-button:is(:hover, :focus-visible),
+.group:hover .mean-bird-button {
+  --active: 1;
+  color: var(--accent-color) !important;
+}
+
+.mean-bird-button.active {
+  --active: 1;
+  color: var(--accent-color) !important;
+}
+
+.mean-bird-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: transparent;
+  transition: all 0.3s ease-in-out;
+  z-index: -2;
+}
+
+.mean-bird-button.active::before {
+  background-color: rgba(255, 90, 31, 0.08); /* bg-orange-500/10 */
+}
+
+.mean-bird-button:hover:not(.active)::before {
+  background-color: var(--bg-secondary);
+  opacity: 0.5;
+}
+
+.mean-bird-button .dots_border {
+  --size_border: calc(100% + 2px);
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--size_border);
+  height: var(--size_border);
+  background-color: transparent;
+  border-radius: inherit;
+  z-index: -1;
+  opacity: var(--active);
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+
+  /* CSS Mask to crop center area, keeping only a 1.5px border outline */
+  border: 1.5px solid transparent;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask: linear-gradient(#fff 0 0) padding-box exclude, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+}
+
+.mean-bird-button .dots_border::before {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform-origin: left;
+  transform: rotate(0deg);
+
+  width: 100%;
+  height: 2rem;
+  background-color: var(--accent-color);
+
+  mask: linear-gradient(transparent 0%, white 120%);
+  -webkit-mask: linear-gradient(transparent 0%, white 120%);
+  animation: rotate-mean-bird 2.5s linear infinite;
+  z-index: 1;
+}
+
+
+
+.mean-bird-button .sparkle {
+  position: relative;
+  z-index: 10;
+  width: 1.25rem;
+  height: 1.25rem;
+  opacity: var(--active);
+  transform: scale(var(--active));
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.mean-bird-button .sparkle .path {
+  fill: var(--accent-color);
+  stroke: var(--accent-color);
+  transform-origin: center;
+}
+
+.mean-bird-button:is(:hover, :focus) .sparkle .path,
+.mean-bird-button.active .sparkle .path {
+  animation: path-mean-bird 3.5s ease-in-out infinite;
+}
+
+

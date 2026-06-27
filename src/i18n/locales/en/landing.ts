@@ -24,7 +24,46 @@ export default {
       title2: "AI POWER",
       subtitle: "Comprehensive AI learning and working ecosystem for Event Designers & Creative Staff. Integrated with high-performance RTX 4090 GPU servers.",
       exploreStudio: "EXPLORE STUDIO",
-      gpuServer: "GPU SERVER"
+      gpuServer: "GPU SERVER",
+      workflow: {
+        workspace: "AI Core Engine",
+        subworkspace: "AI Core Hub",
+        active: "Active",
+        btn: {
+          connect: "Connect",
+          sync: "Sync",
+          newFlow: "+ New Flow"
+        },
+        node: {
+          nvidia: "GPU Server (NVIDIA)",
+          b2: "B2 Storage (Backblaze)",
+          generator: "AI Generator",
+          labs: "Google Labs",
+          tinymce: "TinyMCE Editor",
+          casso: "Casso Pay (VietQR)",
+          vnc: "VNC Remote Control"
+        },
+        header: {
+          name: "Flow Name",
+          status: "Status",
+          integrations: "Integrations"
+        },
+        task1: {
+          title: "Language Models",
+          desc: "Gemini 2.5 Pro",
+          status: "Processing"
+        },
+        task2: {
+          title: "Multi-Modal Engine",
+          desc: "Image & Video Synthesis",
+          status: "Ready"
+        },
+        footer: {
+          active: "Active Flows: 2",
+          sync: "Sync All"
+        },
+        manage: "Details"
+      }
     },
     courses: {
       title: "Featured Courses",

@@ -349,6 +349,8 @@ export default {
       installCommand: "Install Command",
       copySuccess: "Install command copied!",
       backToList: "Back to list",
+      backToStudio: "Back to Studio",
+      backToSkills: "Back to Skills Hub",
       overview: "Overview",
       setup: "Setup & Config",
       usage: "Usage Examples",

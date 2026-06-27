@@ -10,7 +10,3 @@ interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
 
-declare module '*/LiquidEther' {
-  const LiquidEther: React.ComponentType<any>;
-  export default LiquidEther;
-}

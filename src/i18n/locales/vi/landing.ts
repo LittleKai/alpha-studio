@@ -24,7 +24,46 @@ export default {
       title2: "SỨC MẠNH AI",
       subtitle: "Hệ sinh thái học tập và làm việc AI toàn diện cho Designer sự kiện & Creative Staff. Tích hợp máy chủ GPU RTX 4090 hiệu suất cao.",
       exploreStudio: "KHÁM PHÁ STUDIO",
-      gpuServer: "GPU SERVER"
+      gpuServer: "GPU SERVER",
+      workflow: {
+        workspace: "AI Core Engine",
+        subworkspace: "Trung tâm AI cốt lõi",
+        active: "Hoạt Động",
+        btn: {
+          connect: "Kết nối",
+          sync: "Đồng bộ",
+          newFlow: "+ Luồng mới"
+        },
+        node: {
+          nvidia: "Máy chủ GPU (NVIDIA)",
+          b2: "Lưu trữ B2 (Backblaze)",
+          generator: "AI tạo sinh",
+          labs: "Google Labs",
+          tinymce: "Trình soạn thảo TinyMCE",
+          casso: "Casso thanh toán (VietQR)",
+          vnc: "Điều khiển từ xa VNC"
+        },
+        header: {
+          name: "Tên luồng",
+          status: "Trạng thái",
+          integrations: "Tích hợp"
+        },
+        task1: {
+          title: "Mô hình Ngôn ngữ",
+          desc: "Gemini 2.5 Pro",
+          status: "Đang xử lý"
+        },
+        task2: {
+          title: "Sinh Đa phương tiện",
+          desc: "Tạo Ảnh & Video AI",
+          status: "Sẵn sàng"
+        },
+        footer: {
+          active: "Luồng hoạt động: 2",
+          sync: "Đồng bộ tất cả"
+        },
+        manage: "Chi tiết"
+      }
     },
     courses: {
       title: "Khóa học nổi bật",

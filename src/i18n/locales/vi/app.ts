@@ -349,6 +349,8 @@ export default {
       installCommand: "Lệnh cài đặt",
       copySuccess: "Đã sao chép lệnh!",
       backToList: "Quay lại danh sách",
+      backToStudio: "Quay lại Studio",
+      backToSkills: "Quay lại thư viện kỹ năng",
       overview: "Tổng quan",
       setup: "Cài đặt & Cấu hình",
       usage: "Ví dụ sử dụng",

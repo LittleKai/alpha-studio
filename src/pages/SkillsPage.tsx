@@ -385,6 +385,15 @@ export default function SkillsPage() {
     <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] pb-20">
       <SEOHead title={t('skills.title')} description={t('skills.subtitle')} path="/studio/skills" />
       <div className="max-w-7xl mx-auto px-6 py-12">
+        {/* Back to Studio navigation */}
+        <div className="flex items-center justify-start mb-6">
+          <button 
+            onClick={() => navigate('/studio')}
+            className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[var(--bg-secondary)] border border-[var(--border-primary)] hover:border-[#ff5a1f] text-[var(--text-secondary)] hover:text-[#ff5a1f] text-xs font-semibold transition-all cursor-pointer focus:outline-none shadow-sm"
+          >
+            &larr; {t('skills.backToStudio')}
+          </button>
+        </div>
         {/* Hero Banner Section */}
         <div className="text-center max-w-4xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--accent-primary)]/10 border border-[var(--accent-primary)]/20 text-[var(--accent-primary)] text-sm font-semibold mb-6">
@@ -760,7 +769,7 @@ export default function SkillsPage() {
                       return (
                         <div
                           key={skill.slug}
-                          onClick={() => navigate(`/studio/skills/${skill.slug}`)}
+                          onClick={() => window.open(`/studio/skills/${skill.slug}`, '_blank')}
                           className="group bg-[var(--bg-card)] p-6 rounded-xl border border-[var(--border-primary)] hover:border-[#ff5a1f] transition-all flex flex-col h-full cursor-pointer relative overflow-hidden"
                           style={{
                             backgroundImage: 'radial-gradient(rgba(205, 235, 255, 0.03) 1px, transparent 1px)',
@@ -862,7 +871,7 @@ export default function SkillsPage() {
                       return (
                         <div
                           key={skill.slug}
-                          onClick={() => navigate(`/studio/skills/${skill.slug}`)}
+                          onClick={() => window.open(`/studio/skills/${skill.slug}`, '_blank')}
                           className="group bg-[var(--bg-card)] p-5 rounded-xl border border-[var(--border-primary)] hover:border-[#ff5a1f] transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-4 cursor-pointer"
                         >
                           <div className="flex-1 space-y-2 min-w-0">
