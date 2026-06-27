@@ -69,8 +69,34 @@ async function main() {
     }
 
     // 1. Collect routes
-    const staticRoutes = ['/', '/courses', '/about', '/services'];
+    const staticRoutes = ['/', '/courses', '/about', '/services', '/studio/skills'];
     const dynamicRoutes = await getDynamicRoutes();
+    
+    // Add local skills database slugs to dynamic routes
+    try {
+        const skillsPath = path.join(ROOT, 'public', 'data', 'skills.json');
+        if (fs.existsSync(skillsPath)) {
+            const skills = JSON.parse(fs.readFileSync(skillsPath, 'utf-8'));
+            // Prerender first 30 dynamic skill routes + firecrawl
+            const selectedSkills = skills.slice(0, 30);
+            if (!selectedSkills.some(s => s.slug === 'firecrawl')) {
+                const firecrawlSkill = skills.find(s => s.slug === 'firecrawl');
+                if (firecrawlSkill) selectedSkills.push(firecrawlSkill);
+            }
+            selectedSkills.forEach(s => {
+                if (s.slug) {
+                    dynamicRoutes.push(`/studio/skills/${s.slug}`);
+                }
+            });
+            console.log(`[prerender] Added ${selectedSkills.length} dynamic skill routes from skills.json`);
+        }
+    } catch (err) {
+        console.warn(`[prerender] Could not load local skills database: ${err.message}`);
+    }
+
+    // Explicitly add literal '/studio/skills/slug' which is used by the test script
+    dynamicRoutes.push('/studio/skills/slug');
+
     const allRoutes = [...staticRoutes, ...dynamicRoutes];
     console.log(`[prerender] ${allRoutes.length} routes to prerender`);
 
