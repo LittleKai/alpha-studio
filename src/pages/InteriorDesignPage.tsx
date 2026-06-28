@@ -1015,7 +1015,12 @@ const InteriorDesignPage: React.FC = () => {
                     {t('studio.hub.backToStudio')}
                 </button>
                 <div className="mx-auto max-w-md rounded-lg border border-[var(--border-primary)] bg-[var(--bg-card)] p-6 text-center">
-                    <h1 className="text-2xl font-bold text-[var(--text-primary)]">{t('studio.interior.loginTitle')}</h1>
+                    <h1 className="text-2xl font-bold text-[var(--text-primary)] inline-flex items-center justify-center gap-2 flex-wrap">
+                        {t('studio.interior.loginTitle')}
+                        <span className="px-1.5 py-0.5 text-[9px] font-extrabold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 rounded uppercase tracking-widest leading-none select-none">
+                            Beta
+                        </span>
+                    </h1>
                     <p className="mt-2 text-sm text-[var(--text-secondary)]">{t('studio.interior.loginDesc')}</p>
                     <button
                         onClick={openLogin}
@@ -1040,7 +1045,12 @@ const InteriorDesignPage: React.FC = () => {
                             {t('studio.hub.backToStudio')}
                         </button>
                         <div>
-                            <h1 className="text-lg font-bold">{t('studio.interior.title')}</h1>
+                            <div className="flex items-center gap-2">
+                                <h1 className="text-lg font-bold">{t('studio.interior.title')}</h1>
+                                <span className="px-1.5 py-0.5 text-[9px] font-extrabold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 rounded uppercase tracking-widest leading-none select-none">
+                                    Beta
+                                </span>
+                            </div>
                             <p className="text-xs text-[var(--text-tertiary)]">{t('studio.interior.subtitle')}</p>
                         </div>
                     </div>

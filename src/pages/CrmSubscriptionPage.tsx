@@ -400,8 +400,11 @@ export default function CrmSubscriptionPage() {
                         </div>
 
                         <div className="space-y-3">
-                            <h1 className="text-4xl sm:text-5xl font-black tracking-tight premium-title-gradient leading-[1.1]">
+                            <h1 className="text-4xl sm:text-5xl font-black tracking-tight premium-title-gradient leading-[1.1] flex items-center gap-3 flex-wrap">
                                 {t('studio.hub.cards.crm.subscription.title') || 'Alpha CRM Studio'}
+                                <span className="px-2 py-0.5 text-xs font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 rounded uppercase tracking-wider select-none leading-normal">
+                                    Beta
+                                </span>
                             </h1>
                             <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed max-w-xl">
                                 {t('studio.hub.cards.crm.subscription.desc') || 'Giải pháp tự động hóa phễu tiếp thị, gửi tin nhắn hàng loạt và chăm sóc khách hàng tự động tối ưu chi phí qua nền tảng Zalo.'}

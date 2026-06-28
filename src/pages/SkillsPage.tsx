@@ -403,8 +403,11 @@ export default function SkillsPage() {
             {t('skills.badgeText')}
           </div>
           
-          <h1 className="text-3xl md:text-5xl font-extrabold text-[var(--text-primary)] mb-6 tracking-tight">
+          <h1 className="text-3xl md:text-5xl font-extrabold text-[var(--text-primary)] mb-6 tracking-tight inline-flex items-center justify-center gap-3 flex-wrap">
             {t('skills.heroTitle')}
+            <span className="px-2 py-0.5 text-xs font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 rounded uppercase tracking-wider select-none leading-normal">
+              Beta
+            </span>
           </h1>
           
           <p className="text-base md:text-lg text-[var(--text-secondary)] mb-8 max-w-3xl mx-auto leading-relaxed">

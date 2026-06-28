@@ -42,7 +42,12 @@ export const ToolShowcaseCard: React.FC<ToolShowcaseCardProps> = ({
       </div>
       <div className="bottom-section">
         <div className="title-desc">
-          <span className="title">{title}</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '0.4rem' }}>
+            <span className="title" style={{ marginBottom: 0 }}>{title}</span>
+            <span className="px-1.5 py-0.5 text-[9px] font-extrabold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 rounded uppercase tracking-widest leading-none select-none">
+              Beta
+            </span>
+          </div>
           <span className="desc">{desc}</span>
         </div>
         <div className="row">

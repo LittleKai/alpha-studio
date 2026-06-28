@@ -171,8 +171,11 @@ const VocabPage: React.FC = () => {
                         </div>
 
                         <div className="space-y-4">
-                            <h1 className="text-4xl font-black leading-tight sm:text-5xl premium-title-gradient">
+                            <h1 className="text-4xl font-black leading-tight sm:text-5xl premium-title-gradient flex items-center gap-3 flex-wrap">
                                 {t('studio.hub.cards.vocab.page.title')}
+                                <span className="px-2 py-0.5 text-xs font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 rounded uppercase tracking-wider select-none leading-normal">
+                                    Beta
+                                </span>
                             </h1>
                             <p className="max-w-2xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg">
                                 {t('studio.hub.cards.vocab.page.subtitleText')}
@@ -450,7 +453,7 @@ const VocabPage: React.FC = () => {
                                     <span className="w-2 h-2 rounded-full bg-yellow-500/80 inline-block"></span>
                                     <span className="w-2 h-2 rounded-full bg-green-500/80 inline-block"></span>
                                 </div>
-                                <img src="/images/vocab/vocab-preview-2.png" alt="Library Sync Feature" className="w-full h-full object-cover" />
+                                <img src="/images/vocab/vocab-preview.png" alt="Library Sync Feature" className="w-full h-full object-cover" />
                             </div>
                         </div>
                     </div>

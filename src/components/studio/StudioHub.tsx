@@ -13,6 +13,7 @@ interface ToolCard {
 }
 
 const TOOLS: ToolCard[] = [
+  /*
   {
     key: 'generate',
     to: '/studio/generate',
@@ -45,6 +46,7 @@ const TOOLS: ToolCard[] = [
       { bigText: 'Canvas', regularText: lang === 'vi' ? 'Vô hạn' : 'Infinite' },
     ],
   },
+  */
   {
     key: 'crm',
     to: '/studio/crm/subscription',
@@ -67,7 +69,7 @@ const TOOLS: ToolCard[] = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M10 14h4M10 17h4M8 10h8" />
       </svg>
     ),
-    previewImage: '/interior-preview.jpg',
+    previewImage: '/interior-preview.png',
     getStats: (lang) => [
       { bigText: '3D', regularText: lang === 'vi' ? 'Không gian' : 'Space' },
       { bigText: 'AI-Render', regularText: lang === 'vi' ? 'Vật liệu' : 'Materials' },
@@ -95,7 +97,7 @@ const TOOLS: ToolCard[] = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
       </svg>
     ),
-    previewImage: '/skills-preview.jpg',
+    previewImage: '/skills-preview.png',
     getStats: (lang) => [
       { bigText: '20+', regularText: lang === 'vi' ? 'Thực chiến' : 'Skills' },
       { bigText: 'Daily', regularText: lang === 'vi' ? 'Cập nhật' : 'Updates' },
@@ -118,6 +120,12 @@ export default function StudioHub() {
           <p className="mt-3 text-base md:text-lg text-[var(--text-secondary)]">
             {t('studio.hub.subtitle')}
           </p>
+          <div className="mt-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 select-none">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+            {language === 'vi' 
+              ? 'Tất cả dự án và công cụ đang trong giai đoạn Thử nghiệm (Beta)' 
+              : 'All projects and tools are currently in Beta (Experimental) phase'}
+          </div>
         </header>
 
         <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">

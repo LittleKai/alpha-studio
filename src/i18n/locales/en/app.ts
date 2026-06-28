@@ -319,10 +319,10 @@ export default {
               studyBullet2: "Active recall sessions with interactive and fluid flashcards",
               studyBullet3: "Supports native pronunciation audio for multiple languages",
               libraryTitle: "Shared Library & Cloud Sync",
-              libraryDesc: "Explore thousands of high-quality vocabulary decks contributed by the community, or build and share your own. Your entire learning progress syncs instantly across all your devices.",
+              libraryDesc: "Explore thousands of vocabulary decks contributed by the community, or build and share your own. Your entire learning progress syncs instantly across all your devices. Plus, the built-in AI Card Generator helps you automatically create decks on demand.",
               libraryBullet1: "Rich community deck library (Public Decks) to explore",
               libraryBullet2: "Instant cloud sync via your Alpha Studio account",
-              libraryBullet3: "Easily manage, backup, and import from Excel spreadsheets",
+              libraryBullet3: "AI assistant for generating custom decks on demand",
             }
           }
         },
