@@ -215,10 +215,10 @@ export default function SkillDetailPage() {
 
   const getTierColor = (tier: string) => {
     switch (tier.toLowerCase()) {
-      case 'gold': return 'bg-amber-500/10 text-amber-500 border-amber-500/30';
-      case 'silver': return 'bg-slate-400/10 text-slate-300 border-slate-400/30';
-      case 'bronze': return 'bg-orange-700/10 text-orange-400 border-orange-700/30';
-      default: return 'bg-gray-500/10 text-gray-400 border-gray-500/30';
+      case 'gold': return 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/30';
+      case 'silver': return 'bg-slate-400/10 text-slate-600 dark:text-white border-slate-400/30';
+      case 'bronze': return 'bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/30';
+      default: return 'bg-gray-500/10 text-gray-500 dark:text-white border-gray-500/30';
     }
   };
 
