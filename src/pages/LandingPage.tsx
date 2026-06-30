@@ -41,6 +41,14 @@ const levelKeys: Record<string, string> = {
     'advanced': 'courseCatalog.levels.advanced'
 };
 
+const getHeroImageSrc = (width: number): string => {
+    if (width >= 1600) return '/images/hero-gate-21x9.webp?v=5';
+    if (width >= 1024) return '/images/hero-gate-16x9.webp?v=5';
+    if (width >= 768) return '/images/hero-gate-1x1.webp?v=5';
+    if (width >= 480) return '/images/hero-gate-4x5.webp?v=5';
+    return '/images/hero-gate-9x16.webp?v=5';
+};
+
 const LandingPage: React.FC = () => {
     const { t, language } = useTranslation();
     const { isAuthenticated } = useAuth();
@@ -54,6 +62,30 @@ const LandingPage: React.FC = () => {
     // Scroll indicator state
     const [showScrollIndicator, setShowScrollIndicator] = useState(true);
     const [scrollY, setScrollY] = useState(0);
+    const [heroImageSrc, setHeroImageSrc] = useState(() => getHeroImageSrc(
+        typeof window === 'undefined' ? 0 : window.innerWidth
+    ));
+
+    useEffect(() => {
+        let resizeTimer: number | undefined;
+
+        const updateHeroImage = () => {
+            const nextSrc = getHeroImageSrc(window.innerWidth);
+            setHeroImageSrc((currentSrc) => currentSrc === nextSrc ? currentSrc : nextSrc);
+        };
+
+        const handleResize = () => {
+            window.clearTimeout(resizeTimer);
+            resizeTimer = window.setTimeout(updateHeroImage, 120);
+        };
+
+        updateHeroImage();
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.clearTimeout(resizeTimer);
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -206,40 +238,58 @@ const LandingPage: React.FC = () => {
                 jsonLd={landingJsonLd}
             />
             {/* Hero Section - Event Gate Redesign based on image.png */}
-            {/* Responsive Hero Background — 5 aspect ratios for all media */}
+            {/* Responsive hero image - keep mobile assets full-width without background cropping */}
             <style dangerouslySetInnerHTML={{__html: `
-                /* ── Mobile portrait (< 480px) → 9:16 ── */
-                :root {
-                    --hero-bg: url('/images/hero-gate-9x16.webp?v=2');
+                .alpha-hero {
+                    min-height: 100dvh;
                 }
-                /* ── Large phone / small tablet portrait (480–767px) → 4:5 ── */
-                @media (min-width: 480px) {
-                    :root { --hero-bg: url('/images/hero-gate-4x5.webp?v=2'); }
+                .alpha-hero-media {
+                    position: absolute;
+                    inset: 0;
+                    z-index: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+                    pointer-events: none;
                 }
-                /* ── Tablet portrait / landscape (768–1023px) → 1:1 ── */
-                @media (min-width: 768px) {
-                    :root { --hero-bg: url('/images/hero-gate-1x1.webp?v=2'); }
-                }
-                /* ── Laptop & Desktop (1024px+) → 16:9 ── */
-                @media (min-width: 1024px) {
-                    :root { --hero-bg: url('/images/hero-gate-16x9.webp?v=2'); }
-                }
-                /* ── Ultrawide / large desktop (1600px+) → 21:9 ── */
-                @media (min-width: 1600px) {
-                    :root { --hero-bg: url('/images/hero-gate-21x9.webp?v=2'); }
+                .alpha-hero-image {
+                    display: block;
+                    width: var(--image-natural-width, auto);
+                    height: 100%;
+                    max-width: none;
+                    max-height: none;
+                    object-fit: cover;
+                    user-select: none;
                 }
             `}} />
-            <section 
-                className="relative w-full min-h-[100dvh] flex items-center justify-center px-6 overflow-hidden border-b border-[var(--border-primary)] transition-colors duration-300"
-                style={{
-                    backgroundImage: 'var(--hero-bg)',
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat',
-                }}
+            <section
+                data-hero
+                className="alpha-hero relative w-full flex items-center justify-center overflow-hidden border-b border-[var(--border-primary)] bg-[var(--bg-secondary)] transition-colors duration-300"
             >
+                <div className="alpha-hero-media" aria-hidden="true">
+                    <img
+                        src={heroImageSrc}
+                        alt=""
+                        className="alpha-hero-image"
+                        draggable={false}
+                        onLoad={(event) => {
+                            const img = event.currentTarget;
+                            const section = img.closest('[data-hero]') as HTMLElement | null;
+                            img.style.setProperty('--image-natural-width', `${img.naturalWidth}px`);
+                            console.group(`[Hero loaded] ${window.innerWidth}x${window.innerHeight}`);
+                            console.log('selected src         :', heroImageSrc);
+                            console.log('loaded currentSrc    :', img.currentSrc);
+                            console.log('section offsetHeight :', section?.offsetHeight ?? 'N/A', 'px');
+                            console.log('img naturalSize      :', `${img.naturalWidth}x${img.naturalHeight}`);
+                            console.log('img clientSize       :', `${img.clientWidth}x${img.clientHeight}`);
+                            console.groupEnd();
+                        }}
+                    />
+                </div>
+
                 {/* Theme-aware darkening overlay */}
-                <div className={`absolute inset-0 transition-opacity duration-300 -z-10 ${
+                <div className={`absolute inset-0 z-[1] pointer-events-none transition-opacity duration-300 ${
                     theme === 'dark' 
                         ? 'bg-gradient-to-b from-[#07111f]/85 via-[#07111f]/65 to-[#07111f]/90' 
                         : 'bg-white/10'
