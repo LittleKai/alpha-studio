@@ -63,7 +63,8 @@ export default {
           sync: "Sync All"
         },
         manage: "Details"
-      }
+      },
+      scrollDown: "Scroll to explore the ecosystem"
     },
     courses: {
       title: "Featured Courses",

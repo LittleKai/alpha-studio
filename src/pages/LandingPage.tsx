@@ -41,229 +41,6 @@ const levelKeys: Record<string, string> = {
     'advanced': 'courseCatalog.levels.advanced'
 };
 
-interface WorkflowMapProps {
-    t: (key: string) => string;
-    theme: string;
-}
-
-const WorkflowMap: React.FC<WorkflowMapProps> = ({ t, theme }) => {
-    const { language } = useTranslation();
-    const isLight = theme === 'light';
-
-    return (
-        <div className="relative w-full max-w-[480px] h-[620px] flex items-center justify-center select-none">
-            <style dangerouslySetInnerHTML={{__html: `
-                @keyframes dash-flow {
-                    to {
-                        stroke-dashoffset: -20;
-                    }
-                }
-                .animate-dash {
-                    stroke-dasharray: 6, 4;
-                    animation: dash-flow 0.8s linear infinite;
-                }
-                .animate-dash-reverse {
-                    stroke-dasharray: 6, 4;
-                    animation: dash-flow 0.8s linear infinite reverse;
-                }
-            `}} />
-            
-            {/* SVG Background Lines - 10 connection lines mirroring example.png (Height 620px) */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 480 620" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Top Network Lines */}
-                <path d="M240 187 L 240 10" stroke={isLight ? "#cbd5e1" : "rgba(255, 255, 255, 0.45)"} strokeWidth="1.5" strokeDasharray="4 4" className="animate-dash-reverse" />
-                <path d="M240 187 C 160 187, 77 165, 77 132 L 37 10" stroke={isLight ? "#cbd5e1" : "rgba(255, 255, 255, 0.45)"} strokeWidth="1.5" strokeDasharray="4 4" className="animate-dash" />
-                <path d="M240 187 C 320 187, 403 165, 403 132 L 443 10" stroke={isLight ? "#cbd5e1" : "rgba(255, 255, 255, 0.45)"} strokeWidth="1.5" strokeDasharray="4 4" className="animate-dash-reverse" />
-                
-                {/* Bottom Network Lines */}
-                <path d="M240 433 L 240 610" stroke={isLight ? "#cbd5e1" : "rgba(255, 255, 255, 0.45)"} strokeWidth="1.5" strokeDasharray="4 4" className="animate-dash" />
-                <path d="M240 433 C 160 433, 77 455, 77 488 L 37 610" stroke={isLight ? "#cbd5e1" : "rgba(255, 255, 255, 0.45)"} strokeWidth="1.5" strokeDasharray="4 4" className="animate-dash-reverse" />
-                <path d="M240 433 C 320 433, 403 455, 403 488 L 443 610" stroke={isLight ? "#cbd5e1" : "rgba(255, 255, 255, 0.45)"} strokeWidth="1.5" strokeDasharray="4 4" className="animate-dash" />
-            </svg>
-
-            {/* Top Network - (+) Connect Button */}
-            <div className={`absolute top-[185px] lg:top-[175px] left-[190px] w-[100px] h-[24px] rounded-full border flex items-center justify-center gap-1 shadow-sm z-20 transition-all duration-300 ${
-                isLight ? 'bg-white border-stone-200/80 text-stone-800' : 'bg-slate-900 border-slate-800 text-white'
-            }`}>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" className="w-3 h-3 text-indigo-600">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-                <span className="text-[10px] font-black uppercase tracking-wider">{t('landing.hero.workflow.btn.connect')}</span>
-            </div>
-
-            {/* Bottom Network - (+) Sync Button */}
-            <div className={`absolute bottom-[185px] lg:bottom-[175px] left-[190px] w-[100px] h-[24px] rounded-full border flex items-center justify-center gap-1 shadow-sm z-20 transition-all duration-300 ${
-                isLight ? 'bg-white border-stone-200/80 text-stone-800' : 'bg-slate-900 border-slate-800 text-white'
-            }`}>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor" className="w-3 h-3 text-emerald-600">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
-                </svg>
-                <span className="text-[10px] font-black uppercase tracking-wider">{t('landing.hero.workflow.btn.sync')}</span>
-            </div>
-
-            {/* Top Node Icons - Symmetrical Layout (Height 620px optimized) */}
-            {/* Node 1: GPU Server (Top Left - Top) - Official NVIDIA green logo */}
-            <div className="absolute top-[15px] left-[15px] w-11 h-11 rounded-full bg-white border border-stone-200/80 shadow-md flex items-center justify-center overflow-hidden hover:scale-110 transition-transform duration-300 z-10" title={t('landing.hero.workflow.node.nvidia')}>
-                <img src="/nvidia-logo.jpg" alt="NVIDIA" className="w-8 h-8 object-contain" />
-            </div>
-            {/* Node 2: B2 Storage (Top Left - Middle) - Backblaze Red-Orange Flame */}
-            <div className="absolute top-[110px] left-[55px] w-11 h-11 rounded-full bg-white border border-stone-200/80 shadow-md flex items-center justify-center overflow-hidden hover:scale-110 transition-transform duration-300 z-10" title={t('landing.hero.workflow.node.b2')}>
-                <img src="/b2-logo.png" alt="Backblaze B2" className="w-8 h-8 object-contain" />
-            </div>
-            {/* Node 3: AI Generator (Top Center) - AI Generator Logo */}
-            <div className="absolute top-[40px] left-[218px] w-11 h-11 rounded-full bg-white border border-stone-200/80 shadow-md flex items-center justify-center overflow-hidden hover:scale-110 transition-transform duration-300 z-10" title={t('landing.hero.workflow.node.generator')}>
-                <img src="/ai-generator.webp" alt="AI Generator" className="w-8 h-8 object-contain" />
-            </div>
-            {/* Node 4: Google Labs (Top Right - Middle) - Google Labs Flask */}
-            <div className="absolute top-[110px] right-[55px] w-11 h-11 rounded-full bg-white border border-stone-200/80 shadow-md flex items-center justify-center overflow-hidden hover:scale-110 transition-transform duration-300 z-10" title={t('landing.hero.workflow.node.labs')}>
-                <img src="/google-labs.svg" alt="Google Labs" className="w-8 h-8 object-contain" />
-            </div>
-            {/* Node 5: TinyMCE Docs (Top Right - Top) - TinyMCE Green Symbol */}
-            <div className="absolute top-[15px] right-[15px] w-11 h-11 rounded-full bg-emerald-50 border border-emerald-200 shadow-md flex items-center justify-center hover:scale-110 transition-transform duration-300 z-10" title={t('landing.hero.workflow.node.tinymce')}>
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-[#22c55e]">
-                    <path d="M7 6h10v3h-3.5v9h-3v-9H7V6z" fill="currentColor" />
-                    <circle cx="17" cy="18" r="2.5" fill="currentColor" />
-                </svg>
-            </div>
-
-            {/* Center Core AI Card - Redesigned to look like a premium SaaS dashboard workflow list with adaptive theme colors, color accents, no Gemini 2.5 Pro subtext and larger text sizes */}
-            <div className={`z-10 rounded-2xl border p-5 w-[340px] flex flex-col gap-4 transition-all duration-300 ${
-                isLight 
-                    ? 'bg-gradient-to-br from-white via-[#fcfbfa] to-[#f8f6f2] border-stone-200/80 shadow-xl' 
-                    : 'bg-gradient-to-br from-slate-900 via-slate-900/98 to-indigo-950/30 border-slate-800 shadow-2xl backdrop-blur-md'
-            }`}>
-                <div className={`flex justify-between items-center pb-2.5 border-b ${isLight ? 'border-stone-100' : 'border-slate-800'}`}>
-                    <div className="flex flex-col">
-                        <span className={`text-xs md:text-sm font-extrabold uppercase tracking-wide ${isLight ? 'text-stone-800' : 'text-slate-100'}`}>
-                            {t('landing.hero.workflow.workspace')}
-                        </span>
-                        <span className={`text-[9px] md:text-[10px] font-bold uppercase tracking-wider ${isLight ? 'text-stone-400' : 'text-white'}`}>
-                            {t('landing.hero.workflow.subworkspace')}
-                        </span>
-                    </div>
-                    <button className="bg-indigo-600 hover:bg-indigo-700 text-white text-[10px] font-extrabold uppercase tracking-wider px-3 py-1.5 rounded-lg transition-colors shadow-sm cursor-pointer">
-                        {t('landing.hero.workflow.btn.newFlow')}
-                    </button>
-                </div>
-                
-                {/* Micro Table */}
-                <div className="space-y-3">
-                    {/* Header line */}
-                    <div className={`flex text-[9px] md:text-[10px] font-bold uppercase tracking-wider px-1 ${isLight ? 'text-stone-400' : 'text-white'}`}>
-                        <div className="w-[140px]">{t('landing.hero.workflow.header.name')}</div>
-                        <div className="w-[80px] text-center">{t('landing.hero.workflow.header.status')}</div>
-                        <div className="w-[80px] text-right">{t('landing.hero.workflow.header.integrations')}</div>
-                    </div>
-
-                    {/* Row 1 - Language Model (Purple Border Accent) */}
-                    <div className={`flex items-center text-xs font-semibold p-2 rounded-lg border transition-colors ${
-                        isLight 
-                            ? 'bg-purple-50/20 border-purple-100 hover:bg-purple-50/50 text-stone-700' 
-                            : 'bg-purple-950/5 border-purple-900/30 hover:bg-purple-950/15 text-slate-200'
-                    }`}>
-                        <div className="w-[140px] flex flex-col">
-                            <span className={`font-bold text-xs md:text-[13px] ${isLight ? 'text-stone-800' : 'text-slate-100'}`}>
-                                {t('landing.hero.workflow.task1.title')}
-                            </span>
-                        </div>
-                        <div className="w-[80px] flex justify-center">
-                            <span className={`text-[9px] font-black px-2 py-0.5 rounded-full border flex items-center gap-1 ${
-                                isLight 
-                                    ? 'bg-purple-100/70 border-purple-200 text-purple-700' 
-                                    : 'bg-purple-950/40 border-purple-800/50 text-purple-300'
-                            }`}>
-                                <span className="w-1 h-1 rounded-full bg-purple-500 animate-pulse"></span>
-                                {language === 'vi' ? 'Đang chạy' : 'Running'}
-                            </span>
-                        </div>
-                        <div className="w-[80px] flex justify-end -space-x-2">
-                            {/* Gemini Icon */}
-                            <div className={`w-5 h-5 rounded-full flex items-center justify-center border shadow-sm ${isLight ? 'bg-white border-stone-200/60' : 'bg-slate-900 border-slate-800'}`} title="Gemini (Google)">
-                                <svg viewBox="0 0 24 24" fill="none" className="w-3 h-3 text-indigo-500" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2z" fill="currentColor" />
-                                </svg>
-                            </div>
-                            {/* Claude Icon */}
-                            <div className={`w-5 h-5 rounded-full flex items-center justify-center border shadow-sm ${isLight ? 'bg-white border-stone-200/60' : 'bg-slate-900 border-slate-800'}`} title="Claude (Anthropic)">
-                                <span className="text-[8px] font-black text-amber-600">C</span>
-                            </div>
-                            {/* ChatGPT Icon */}
-                            <div className={`w-5 h-5 rounded-full flex items-center justify-center border shadow-sm ${isLight ? 'bg-white border-stone-200/60' : 'bg-slate-900 border-slate-800'}`} title="ChatGPT (OpenAI)">
-                                <svg viewBox="0 0 24 24" fill="none" className="w-3 h-3 text-emerald-500" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M21.7 10.3a3.5 3.5 0 0 0-.8-2.6 3.6 3.6 0 0 0-1.8-1.5c.2-.5.2-1 0-1.5a3.6 3.6 0 0 0-2.8-2.5c-.5-.1-1 0-1.4.2a3.6 3.6 0 0 0-4.1-1.6 3.6 3.6 0 0 0-2.6 2c-.5-.2-1-.2-1.5 0a3.6 3.6 0 0 0-2.5 2.8c-.1.5 0 1 .2 1.4a3.6 3.6 0 0 0-1.6 4.1 3.6 3.6 0 0 0 2 2.6c-.2.5-.2 1 0 1.5a3.6 3.6 0 0 0 2.8 2.5c.5.1 1 0 1.4-.2a3.6 3.6 0 0 0 4.1 1.6 3.6 3.6 0 0 0 2.6-2c.5.2 1 .2 1.5 0a3.6 3.6 0 0 0 2.5-2.8c.1-.5 0-1-.2-1.4a3.6 3.6 0 0 0 1.6-4.1zm-8.6 8.3l-3.3-1.9.1-.2 2.5-1.4 1.4.8c.3.2.7.2 1 0l2.7-1.6.8 1.4-2.7 1.6-2.5 1.3zm-5.4-3.1l-1-1.7 2.7-1.6.8 1.4-2.5 1.4v.5zm-.9-5.1l-.1-.2.8-1.4 3.3 1.9-.8 1.4-2.5-1.4-.7-.3zm6.3-2.6L12 4.3l1.8 1 1 1.7-2.7 1.6-.1-.1-1.8-1zm4.5 4.8l-2.7 1.6-.8-1.4 2.5-1.4v.5l1 1.7zm-.9-3.2l-.8 1.4-3.3-1.9.8-1.4 2.5 1.4.8.5z" fill="currentColor"/>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Row 2 - Multi-Modal Synth (Cyan Border Accent) */}
-                    <div className={`flex items-center text-xs font-semibold p-2 rounded-lg border transition-colors ${
-                        isLight 
-                            ? 'bg-cyan-50/20 border-cyan-100 hover:bg-cyan-50/50 text-stone-700' 
-                            : 'bg-cyan-950/5 border-cyan-900/30 hover:bg-cyan-950/15 text-slate-200'
-                    }`}>
-                        <div className="w-[140px] flex flex-col">
-                            <span className={`font-bold text-xs md:text-[13px] ${isLight ? 'text-stone-800' : 'text-slate-100'}`}>
-                                {t('landing.hero.workflow.task2.title')}
-                            </span>
-                        </div>
-                        <div className="w-[80px] flex justify-center">
-                            <span className={`text-[9px] font-black px-2 py-0.5 rounded-full border flex items-center gap-1 ${
-                                isLight 
-                                    ? 'bg-emerald-100/70 border-emerald-200 text-emerald-700' 
-                                    : 'bg-emerald-950/40 border-emerald-800/50 text-emerald-300'
-                            }`}>
-                                <span className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse"></span>
-                                {language === 'vi' ? 'Sẵn sàng' : 'Ready'}
-                            </span>
-                        </div>
-                        <div className="w-[80px] flex justify-end -space-x-2">
-                            {/* Midjourney Icon */}
-                            <div className={`w-5 h-5 rounded-full flex items-center justify-center border shadow-sm ${isLight ? 'bg-white border-stone-200/60' : 'bg-slate-900 border-slate-800'}`} title="Midjourney">
-                                <span className="text-[8px] font-black text-amber-500">M</span>
-                            </div>
-                            {/* Luma AI Icon */}
-                            <div className={`w-5 h-5 rounded-full flex items-center justify-center border shadow-sm ${isLight ? 'bg-white border-stone-200/60' : 'bg-slate-900 border-slate-800'}`} title="Luma AI">
-                                <span className="text-[8px] font-black text-rose-500">L</span>
-                            </div>
-                            {/* Runway Icon */}
-                            <div className={`w-5 h-5 rounded-full flex items-center justify-center border shadow-sm ${isLight ? 'bg-white border-stone-200/60' : 'bg-slate-900 border-slate-800'}`} title="Runway">
-                                <span className="text-[8px] font-black text-stone-700 dark:text-stone-300">R</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Bottom Node Icons - 5 icons with REAL logos */}
-            {/* Node 6: VocabFlip (Bottom Left - Bottom) - Real App Logo Image */}
-            <div className="absolute bottom-[15px] left-[15px] w-11 h-11 rounded-full bg-white border border-stone-200/80 shadow-md flex items-center justify-center overflow-hidden hover:scale-110 transition-transform duration-300 z-10" title="VocabFlip">
-                <img src="/vocab/icons/Icon-192.png" alt="VocabFlip" className="w-8 h-8 object-contain" />
-            </div>
-            {/* Node 7: Alpha CRM (Bottom Left - Middle) - Real App Logo Image */}
-            <div className="absolute bottom-[110px] left-[55px] w-11 h-11 rounded-full bg-white border border-stone-200/80 shadow-md flex items-center justify-center overflow-hidden hover:scale-110 transition-transform duration-300 z-10" title="Alpha CRM">
-                <img src="/crm-logo.png" alt="Alpha CRM" className="w-7 h-7 object-contain" />
-            </div>
-            {/* Node 8: Alpha Studio (Bottom Center) - Official Web SVG Logo */}
-            <div className="absolute bottom-[40px] left-[218px] w-11 h-11 rounded-full bg-white border border-stone-200/80 shadow-md flex items-center justify-center overflow-hidden hover:scale-110 transition-transform duration-300 z-10" title="Alpha Studio">
-                <img src="/alpha-logo-clean.svg" alt="Alpha Studio" className="w-8 h-8 object-contain" />
-            </div>
-            {/* Node 9: Casso Pay (Bottom Right - Middle) - Casso Pay Logo */}
-            <div className="absolute bottom-[110px] right-[55px] w-11 h-11 rounded-full bg-white border border-stone-200/80 shadow-md flex items-center justify-center overflow-hidden hover:scale-110 transition-transform duration-300 z-10" title={t('landing.hero.workflow.node.casso')}>
-                <img src="/casso-logo.png" alt="Casso Pay" className="w-8 h-8 object-contain" />
-            </div>
-            {/* Node 10: Remote VNC (Bottom Right - Bottom) - RealVNC Monitor Control */}
-            <div className="absolute bottom-[15px] right-[15px] w-11 h-11 rounded-full bg-indigo-50 border border-indigo-200 shadow-md flex items-center justify-center hover:scale-110 transition-transform duration-300 z-10" title={t('landing.hero.workflow.node.vnc')}>
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-indigo-600">
-                    <rect x="3" y="4" width="18" height="12" rx="2" stroke="currentColor" strokeWidth="2.2" />
-                    <path d="M9 20h6m-3-4v4M6 8l3 3-3 3m12-6l-3 3 3 3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-            </div>
-        </div>
-    );
-};
-
-
 const LandingPage: React.FC = () => {
     const { t, language } = useTranslation();
     const { isAuthenticated } = useAuth();
@@ -273,6 +50,24 @@ const LandingPage: React.FC = () => {
     // Login dialog state (for content CTAs)
     const [showLoginDialog, setShowLoginDialog] = useState(false);
     const [pendingNavigation, setPendingNavigation] = useState<string | null>(null);
+
+    // Scroll indicator state
+    const [showScrollIndicator, setShowScrollIndicator] = useState(true);
+    const [scrollY, setScrollY] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            setScrollY(currentScrollY);
+            if (currentScrollY > window.innerHeight * 0.5) {
+                setShowScrollIndicator(false);
+            } else {
+                setShowScrollIndicator(true);
+            }
+        };
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     // Courses state
     const [courses, setCourses] = useState<Course[]>([]);
@@ -410,79 +205,112 @@ const LandingPage: React.FC = () => {
                 path="/"
                 jsonLd={landingJsonLd}
             />
-            {/* Hero Section - Original Adaptive Background Color matching system theme */}
-            <section className="relative py-16 md:py-24 px-6 overflow-hidden border-b border-[var(--border-primary)] bg-[var(--bg-primary)] transition-colors duration-300">
-                {/* CSS Adaptive Grid Background */}
-                <div className={`absolute inset-0 bg-[linear-gradient(to_right,var(--grid-color)_1px,transparent_1px),linear-gradient(to_bottom,var(--grid-color)_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_80%,transparent_100%)] -z-10`} style={{
-                    ['--grid-color' as any]: theme === 'light' ? '#e5e5e0' : 'rgba(255,255,255,0.04)'
-                }}></div>
-                
-                {/* Vibrant Soft Glow Spots */}
-                <div className={`absolute top-1/4 left-1/3 w-96 h-96 rounded-full blur-[150px] -z-10 animate-pulse`} style={{ 
-                    animationDuration: '8s',
-                    backgroundColor: theme === 'light' ? 'rgba(251, 191, 36, 0.15)' : 'rgba(97, 232, 255, 0.05)'
-                }}></div>
-                <div className={`absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-[150px] -z-10 animate-pulse`} style={{ 
-                    animationDuration: '10s',
-                    backgroundColor: theme === 'light' ? 'rgba(99, 102, 241, 0.12)' : 'rgba(59, 130, 246, 0.05)'
-                }}></div>
+            {/* Hero Section - Event Gate Redesign based on image.png */}
+            {/* Responsive Hero Background — 5 aspect ratios for all media */}
+            <style dangerouslySetInnerHTML={{__html: `
+                /* ── Mobile portrait (< 480px) → 9:16 ── */
+                :root {
+                    --hero-bg: url('/images/hero-gate-9x16.webp?v=2');
+                }
+                /* ── Large phone / small tablet portrait (480–767px) → 4:5 ── */
+                @media (min-width: 480px) {
+                    :root { --hero-bg: url('/images/hero-gate-4x5.webp?v=2'); }
+                }
+                /* ── Tablet portrait / landscape (768–1023px) → 1:1 ── */
+                @media (min-width: 768px) {
+                    :root { --hero-bg: url('/images/hero-gate-1x1.webp?v=2'); }
+                }
+                /* ── Laptop & Desktop (1024px+) → 16:9 ── */
+                @media (min-width: 1024px) {
+                    :root { --hero-bg: url('/images/hero-gate-16x9.webp?v=2'); }
+                }
+                /* ── Ultrawide / large desktop (1600px+) → 21:9 ── */
+                @media (min-width: 1600px) {
+                    :root { --hero-bg: url('/images/hero-gate-21x9.webp?v=2'); }
+                }
+            `}} />
+            <section 
+                className="relative w-full min-h-[100dvh] flex items-center justify-center px-6 overflow-hidden border-b border-[var(--border-primary)] transition-colors duration-300"
+                style={{
+                    backgroundImage: 'var(--hero-bg)',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                }}
+            >
+                {/* Theme-aware darkening overlay */}
+                <div className={`absolute inset-0 transition-opacity duration-300 -z-10 ${
+                    theme === 'dark' 
+                        ? 'bg-gradient-to-b from-[#07111f]/85 via-[#07111f]/65 to-[#07111f]/90' 
+                        : 'bg-white/10'
+                }`} />
 
-                <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-16 items-center">
-                    {/* Left text and buttons (Adaptive theme optimized typography) */}
-                    <Reveal staggerChildren={0.12} delay={0.05} className="lg:col-span-7 flex flex-col items-center text-center space-y-8 z-10 w-full">
-                        <RevealItem y={15}>
-                            <div className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full border shadow-sm ${
-                                theme === 'light' 
-                                    ? 'bg-slate-200/70 border-slate-300 text-slate-700' 
-                                    : 'bg-[var(--accent-primary)]/10 border-[var(--accent-primary)]/20 text-[var(--accent-primary)]'
-                            }`}>
-                                <span className={`premium-blinking-dot ${theme === 'light' ? 'bg-indigo-600' : 'bg-[var(--accent-primary)]'}`}></span>
-                                <span className="text-sm font-bold">{t('landing.hero.badge')}</span>
-                            </div>
-                        </RevealItem>
+                {/* Central Floating Glassmorphic Card */}
+                <Reveal staggerChildren={0.12} delay={0.05} className="z-10 w-full max-w-[800px] mx-auto px-6 py-10 md:py-14 text-center rounded-[20px] border border-white/15 bg-gradient-to-br from-slate-950/70 via-slate-950/50 to-indigo-950/20 backdrop-blur-xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.18)] flex flex-col items-center justify-center space-y-6 md:space-y-8">
+                    <RevealItem tag="h1" y={15} className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.15] tracking-tight text-white uppercase select-none">
+                        <TextReveal text={t('landing.hero.title1')} delay={0.05} /> <br />
+                        <span className="text-white font-black">
+                            <TextReveal text={t('landing.hero.title2')} delay={0.25} />
+                        </span>
+                    </RevealItem>
 
-                        <RevealItem tag="h1" y={20} className={`text-5xl md:text-7xl xl:text-8xl font-black leading-[1.1] tracking-tight ${
-                            theme === 'light' ? 'text-slate-900' : 'text-[var(--text-primary)]'
-                        }`}>
-                            <TextReveal text={t('landing.hero.title1')} delay={0.05} /> <br />
-                            <span className={theme === 'light' ? 'text-indigo-600' : 'text-[var(--accent-primary)]'}>
-                                <TextReveal text={t('landing.hero.title2')} delay={0.25} />
-                            </span>
-                        </RevealItem>
+                    <RevealItem tag="p" y={15} className="text-sm md:text-base lg:text-lg font-medium leading-relaxed text-white max-w-[65ch] mx-auto">
+                        {t('landing.hero.subtitle')}
+                    </RevealItem>
 
-                        <RevealItem tag="p" y={20} className={`text-lg md:text-xl font-medium leading-relaxed ${
-                            theme === 'light' ? 'text-slate-600' : 'text-[var(--text-secondary)]'
-                        }`}>
-                            {t('landing.hero.subtitle')}
-                        </RevealItem>
+                    <RevealItem y={15} className="flex flex-wrap justify-center gap-5 pt-2 w-full">
+                        <HoverSpring scale={1.03} y={-2} className="inline-block">
+                            <button 
+                                onClick={() => navigate('/studio')} 
+                                className="py-3 px-8 font-black text-xs md:text-sm rounded-full bg-[var(--accent-primary)] hover:bg-[var(--accent-primary)]/80 text-[var(--bg-primary)] tracking-wider uppercase transition-all duration-300 cursor-pointer shadow-lg shadow-cyan-500/20"
+                            >
+                                {t('landing.hero.exploreStudio')}
+                            </button>
+                        </HoverSpring>
+                        <HoverSpring scale={1.03} y={-2} className="inline-block">
+                            <button 
+                                onClick={() => navigateToProtectedPage('/server')} 
+                                className="py-3 px-8 font-black text-xs md:text-sm rounded-full border border-white/35 hover:border-white hover:bg-white/10 text-white tracking-wider uppercase transition-all duration-300 cursor-pointer"
+                            >
+                                {t('landing.hero.gpuServer')}
+                            </button>
+                        </HoverSpring>
+                    </RevealItem>
+                </Reveal>
 
-                        <RevealItem y={20} className="flex flex-wrap justify-center gap-5 pt-2 w-full">
-                            <HoverSpring scale={1.03} y={-2} className="inline-block">
-                                <button onClick={() => navigate('/studio')} className={`py-4 px-10 font-black text-base rounded-xl shadow-lg transition-all duration-300 cursor-pointer ${
-                                    theme === 'light' 
-                                        ? 'bg-indigo-600 hover:bg-indigo-700 text-white' 
-                                        : 'bg-[var(--accent-primary)] hover:bg-[var(--accent-secondary)] text-[var(--text-on-accent)]'
-                                }`}>
-                                    {t('landing.hero.exploreStudio')}
-                                </button>
-                            </HoverSpring>
-                            <HoverSpring scale={1.03} y={-2} className="inline-block">
-                                <button onClick={() => navigateToProtectedPage('/server')} className={`py-4 px-10 font-black text-base rounded-xl transition-all duration-300 cursor-pointer shadow-md ${
-                                    theme === 'light' 
-                                        ? 'bg-white border-slate-300 text-slate-700 hover:bg-slate-100 hover:border-slate-400' 
-                                        : 'glass-card border-[var(--border-primary)] text-[var(--text-primary)] hover:border-[var(--accent-primary)]'
-                                }`}>
-                                    {t('landing.hero.gpuServer')}
-                                </button>
-                            </HoverSpring>
-                        </RevealItem>
-                    </Reveal>
-
-                    {/* Right Interactive Workflow Connect Map */}
-                    <div className="lg:col-span-5 w-full flex justify-center lg:justify-end z-10 mt-12 lg:-my-24">
-                        <WorkflowMap t={t} theme={theme} />
+                {/* Bottom Scroll Indicator - Sticky fade linked to scroll position */}
+                {showScrollIndicator && (
+                    <div 
+                        className="fixed bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 select-none z-10 hidden md:flex hover:opacity-100 transition-opacity duration-300"
+                        style={{
+                            opacity: Math.max(0, 0.8 - (scrollY / (window.innerHeight * 0.5)) * 0.8),
+                            pointerEvents: scrollY > 50 ? 'none' : 'auto'
+                        }}
+                    >
+                        <style dangerouslySetInnerHTML={{__html: `
+                            @keyframes scroll-dot-slide {
+                                0% { transform: translateY(0); opacity: 0; }
+                                20% { opacity: 1; }
+                                80% { opacity: 1; }
+                                100% { transform: translateY(14px); opacity: 0; }
+                            }
+                            .scroll-mouse-glow {
+                                box-shadow: 0 0 15px rgba(97, 232, 255, 0.15), inset 0 0 5px rgba(255, 255, 255, 0.15);
+                                background: rgba(7, 17, 31, 0.4);
+                                backdrop-filter: blur(6px);
+                            }
+                        `}} />
+                        <div className="w-6 h-10 md:w-7 md:h-12 rounded-full border-2 border-white/30 flex justify-center p-1.5 scroll-mouse-glow transition-all duration-300 hover:border-[var(--accent-primary)]/50">
+                            <div 
+                                className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[var(--accent-primary)]"
+                                style={{ animation: 'scroll-dot-slide 1.8s cubic-bezier(0.16, 1, 0.3, 1) infinite' }}
+                            />
+                        </div>
+                        <span className="text-[10px] md:text-xs font-black text-white tracking-[0.25em] md:tracking-[0.35em] uppercase text-center drop-shadow-md">
+                            {t('landing.hero.scrollDown')}
+                        </span>
                     </div>
-                </div>
+                )}
             </section>
 
             {/* Featured Courses Section */}

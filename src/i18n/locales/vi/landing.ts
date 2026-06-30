@@ -63,7 +63,8 @@ export default {
           sync: "Đồng bộ tất cả"
         },
         manage: "Chi tiết"
-      }
+      },
+      scrollDown: "Cuộn để khám phá hệ sinh thái"
     },
     courses: {
       title: "Khóa học nổi bật",
